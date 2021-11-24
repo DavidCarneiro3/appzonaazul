@@ -1,0 +1,64 @@
+user-info {
+  .user-menu-item {
+    top: 0;
+    background-color: #2b2a32;
+    color: #fff;
+    font-family: "Roboto";
+    margin: 0 0 10px 0;
+    height: 250px;
+
+    .img {
+      @include respond-to(xs) {
+        width: 80px;
+        height: 80px;
+      }
+      @include respond-to(sm) {
+        width: 80px;
+        height: 80px;
+      }
+      @include respond-to(md) {
+        width: 80px;
+        height: 80px;
+      }
+      @include respond-to(lg) {
+        width: 80px;
+        height: 80px;
+      }
+      @include respond-to(xl) {
+        width: 80px;
+        height: 80px;
+      }
+
+      border-radius: 100%;
+      border: 2px solid white;
+    }
+
+    p {
+      color: #fff;
+      font-weight: normal;
+    }
+
+    .name {
+      font-size: 20px;
+      text-transform: capitalize;
+      white-space: pre-wrap;
+      margin-top: 15px;
+    }
+
+    .profile {
+      font-size: 10pt;
+      text-transform: capitalize;
+    }
+
+    .city {
+      font-size: 10pt;
+      text-transform: capitalize;
+    }
+
+    .cads-credits {
+      font-size: 10pt;
+      text-transform: capitalize;
+      margin-top: 20px;
+    }
+  }
+}

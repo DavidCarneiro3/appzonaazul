@@ -1,0 +1,46 @@
+page-veiculos {
+  font-family: "Roboto";
+
+  .header-icon {
+    color: #fff;
+  }
+
+  .btn {
+    border: none !important;
+    background: color($colors, primary);
+    height: 35px;
+    margin-bottom: 20px;
+  }
+
+  .route-item {
+    padding-left: 0;
+
+    .thumbnail-icon {
+      min-width: 40px;
+      min-height: 40px;
+      margin-right: 0;
+
+      img {
+        width: 40px;
+        height: 40px;
+      }
+    }
+
+    .information-date {
+      color: #444;
+      font-weight: normal;
+      font-size: 11.5pt;
+      text-align: left;
+      margin-left: 5%;
+    }
+
+    .information-hour {
+      color: #8c8c8c;
+      font-weight: normal;
+      font-size: 9pt;
+      float: left;
+      margin-left: 5%;
+      margin-top: 3px;
+    }
+  }
+}

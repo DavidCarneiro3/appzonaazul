@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>722683236957-kfdf5ggqvjaqfe10pfh554lak0gucqt0.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.722683236957-kfdf5ggqvjaqfe10pfh554lak0gucqt0</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>722683236957-79rd3tl173t171nlllte995ga6jsv5v2.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDMOZjtrMwZk55oB6lonCS55owl_qAc6aM</string>
+	<key>GCM_SENDER_ID</key>
+	<string>722683236957</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>br.com.zonafacil.for</string>
+	<key>PROJECT_ID</key>
+	<string>zonaazulfortaleza-prod</string>
+	<key>STORAGE_BUCKET</key>
+	<string>zonaazulfortaleza-prod.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:722683236957:ios:215f21f9024ea64a88f3b4</string>
+	<key>DATABASE_URL</key>
+	<string>https://zonaazulfortaleza-prod.firebaseio.com</string>
+</dict>
+</plist>

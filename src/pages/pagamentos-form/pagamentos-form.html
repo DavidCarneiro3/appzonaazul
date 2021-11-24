@@ -1,0 +1,71 @@
+<ion-header no-border>
+
+    <ion-navbar color="header">
+        <ion-title>
+            <ion-label>{{titulo}}</ion-label>
+        </ion-title>
+
+        <ion-buttons end>
+            <button ion-button icon-only (click)="openHelp()">
+                <ion-icon name="help-circle"></ion-icon>
+            </button>
+        </ion-buttons>
+
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-grid class="grid-profile">
+
+        <ion-row class="informacoes-body">
+            <ion-item class="informacoes-body-header">
+                <ion-label class="title-header-body">INFORMAÇÕES DO CARTÃO</ion-label>
+            </ion-item>
+            <form [formGroup]="formGroup" (ngSubmit)="submit()" class="informacoes-body-list">
+                <ion-item class="informacoes-body-list-item" no-lines>
+
+                    <ion-label stacked>
+                        Número do Cartão
+                    </ion-label>
+                    <ion-input type="tel" #numero formControlName="numero" [(ngModel)]="item.numero" id="numero">
+                    </ion-input>
+                    <button ion-button icon-only type="button" item-right clear (click)="scan()" class="scan">
+                        <ion-icon name="camera" class="icon"></ion-icon>
+                    </button>
+                </ion-item>
+                <ion-item class="informacoes-body-list-item" no-lines>
+                    <ion-label stacked>Data de Expiração</ion-label>
+                    <ion-datetime #data id="data" [(min)]="dataMin" [(max)]="dataMax" displayFormat="MM/YYYY"
+                        pickerFormat="MM YYYY" formControlName="data" [(ngModel)]="item.data" cancelText="Cancelar"
+                        doneText="Definir"></ion-datetime>
+                </ion-item>
+                <ion-item class="informacoes-body-list-item" no-lines>
+                    <ion-label stacked>Código de Segurança</ion-label>
+                    <ion-input type="tel" #ccv id="ccv" formControlName="ccv" [(ngModel)]="item.ccv"></ion-input>
+                </ion-item>
+                <ion-item class="informacoes-body-list-item" no-lines>
+                    <ion-label stacked>Nome (Escrito no Cartão)</ion-label>
+                    <ion-input type="text" #nome id="nome" formControlName="nome" [(ngModel)]="item.nome"
+                        (input)="nome.value=$event.target.value.toUpperCase()"></ion-input>
+                </ion-item>
+
+                <ion-item class="informacoes-body-list-item" no-lines>
+                    <ion-label stacked>CPF (Títular do Cartão)</ion-label>
+                    <ion-input type="tel" #cpf id="cpf" formControlName="cpf" [(ngModel)]="item.cpf"
+                        [brmasker]="{mask:'000.000.000-00', len:14, type:'num'}"></ion-input>
+                </ion-item>
+
+
+                <div class="btn-margin">
+                    <ion-item class="btn-row" no-lines>
+                        <button ion-button type="submit" class="btn" block>Salvar</button>
+                    </ion-item>
+                </div>
+            </form>
+
+        </ion-row>
+    </ion-grid>
+
+</ion-content>

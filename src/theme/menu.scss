@@ -1,0 +1,88 @@
+.split-pane-side {
+    // @include respond-to(xl) { max-width: 180px !important; }
+    @include respond-to(xl) { max-width: 20% !important; }
+    @include respond-to(lg) { max-width: 20% !important; }
+
+  .menu {
+    // Variaveis
+    //363441
+    $background-color: #fff;
+    $text-color: #363441;
+    $font-family: 'Roboto';
+    $font-size: 14px;
+
+    color: $text-color;
+    font-family: $font-family;
+
+    background-color: $background-color;
+
+    .default-padding {
+      margin: 0 20px;
+    }
+
+    .list {
+      margin-top: 0px;
+      margin-bottom: 50px;
+    }
+
+    .menu-item-divider {
+      font-family: 'Roboto';
+      font-size: 11px;
+      color: #4b646f;
+      background-color: #1a2226;
+      text-transform: uppercase;
+    }
+
+    .menu-item {
+      background-color: $background-color;
+      color: #363441;
+      font-family: 'Roboto';
+      font-size: $font-size;
+      
+      ion-icon {
+        min-width: 14px;
+        font-size: 2.1rem;
+        min-height: 100%;
+        margin: 0;
+        
+        ion-label {
+          font-family: 'Roboto';
+          font-weight: normal;
+          font-size: 13px;
+        }
+      }
+
+      .text-menu {
+        color: #363441;
+      }
+    }
+
+    .img-logo-menu {
+      bottom: 0;
+
+      .row {
+        margin-right: 0;
+        margin-left: 0;
+      }
+      
+      .img-logo1-menu {
+        text-align: center;
+        img{
+          width: 70%;
+          // height: 30%;
+        }
+      }
+      
+      .img-logo2-menu {
+        text-align: center;
+        img{
+          width: 60%;
+        }
+      }
+    }
+
+    .versao {
+      color: #b2b2b2;
+    }
+  }
+}

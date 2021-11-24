@@ -1,0 +1,30 @@
+veiculos-modal {
+  font-family: "Roboto";
+
+  ion-buttons:hover {
+    cursor: pointer;
+  }
+
+  .header-icon {
+    color: #fff;
+  }
+
+  .item-radio.item-md ion-label {
+    text-align: start;
+    color: rgb(122, 121, 121) !important;
+  }
+
+  .item-radio.item-ios ion-label {
+    text-align: start;
+    color: rgb(122, 121, 121) !important;
+  }
+
+  .titulo {
+    color: #666;
+  }
+
+  .subtitulo {
+    color: #8c8c8c;
+    font-weight: normal;
+  }
+}

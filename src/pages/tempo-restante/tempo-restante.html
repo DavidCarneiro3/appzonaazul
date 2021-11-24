@@ -1,0 +1,93 @@
+<ion-header no-border>
+    <ion-navbar color="header">
+
+        <ion-title style="width: 26em;">
+            <ion-label>Estacionamentos ativos</ion-label>
+        </ion-title>
+
+        <button ion-button icon-only menuToggle *ngIf="!(fromPage === 'comprovante')">
+            <ion-icon class="header-icon" name="menu"></ion-icon>
+        </button>
+
+        <ion-buttons left *ngIf="fromPage == 'comprovante' ">
+            <button ion-button (click)="closeTempoRestantePage()">
+                <span color="light" class="header-text" showWhen="ios">Fechar</span>
+                <ion-icon name="md-arrow-back" class="header-icon" showWhen="android,windows,core"></ion-icon>
+            </button>
+        </ion-buttons>
+
+        <ion-buttons end>
+            <button ion-button icon-only (click)="openHelp()">
+                <ion-icon name="help-circle" class="header-icon"></ion-icon>
+            </button>
+        </ion-buttons>
+
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding class="content">
+    <loading-spinner *ngIf="showSpinner1"></loading-spinner>
+
+    <div *ngIf="!showSpinner1">
+        <ion-row *ngFor="let obj of _estacionados;">
+            <ion-col col-3 class="col-img">
+                <ion-item class="item-img" no-lines no-padding>
+                    <ion-thumbnail item-start class="thumbnail-icon">
+                        <img src="{{getImage(obj?.estacionar?.comprovante?.tipo_veiculo)}}" />
+                    </ion-thumbnail>
+                </ion-item>
+            </ion-col>
+            <ion-col col-5 class="col-details">
+                <p class="item-details-board">{{ obj?.estacionar?.comprovante?.placa }}</p>
+                <p *ngIf="obj.estacionar.veiculo" class="item-details-mark">{{obj?.estacionar?.veiculo?.marca}}
+                    {{obj?.estacionar?.veiculo?.modelo}}</p>
+                <p *ngIf="!obj.estacionar.veiculo" class="item-details-mark">Setor {{obj?.estacionar?.setor_id}}</p>
+                <p class="item-details-city">{{ obj?.estacionar?.cidade }}</p>
+                <ion-row>
+                    <ion-col>
+                        <ion-item class="item-time" no-lines no-padding>
+                            <timer [time]="obj?.estacionar?.tempoEstacionado" [now]="tempoCurrent"
+                                [placa]="obj?.estacionar?.veiculo_id" [status]="obj.estacionar.status"></timer>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col>
+                        <ion-item class="item-time" no-lines no-padding>
+                            <timer [decorrido]="obj?.estacionar?.dataHoraRegistro" [now]="tempoCurrent"
+                                [placa]="obj?.estacionar?.veiculo_id" [status]="obj.estacionar.status">
+                            </timer>
+                        </ion-item>
+                    </ion-col>
+                </ion-row>
+            </ion-col>
+            <ion-col col-1 class="col-details renovar" *ngIf="obj.estacionar.renovar">
+                <ion-row></ion-row>
+                <button ion-button small mode="ios" type="button" (click)="renovarEstacionar(obj.estacionar)"
+                    class="btn-renovar">Renovar</button>
+            </ion-col>
+            <ion-col col-12 class="col-message">
+                <ion-item class="item-messagem" no-lines no-padding>
+
+                    <ion-label *ngIf="obj.estacionar.qtd == 1" class="message">* Esta ativação possui
+                        {{obj.estacionar.qtd}} CAD ativo</ion-label>
+                    <ion-label *ngIf="obj.estacionar.qtd > 1" class="message">* Esta ativação possui
+                        {{obj.estacionar.qtd}} CADs ativos</ion-label>
+                </ion-item>
+            </ion-col>
+            <ion-col col-12 class="col-message">
+                <ion-item class="item-btn-rodape" no-lines no-padding>
+                    <button ion-button clear small color="blue2" icon-start (click)="openVeiculoEstacionado(obj)">
+                        <ion-icon name='ios-pin-outline'></ion-icon>Ver Localização
+                    </button>
+                </ion-item>
+            </ion-col>
+        </ion-row>
+        <ion-row [style.display]="loadObj == false && _estacionados.length == 0 ? 'block' : 'none'" class="row-info">
+            <ion-col col-12>
+                <ion-item no-lines>
+                    <h2>Não há nenhum veículo estacionado</h2>
+                </ion-item>
+            </ion-col>
+        </ion-row>
+    </div>
+
+</ion-content>

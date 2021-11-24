@@ -1,0 +1,60 @@
+<ion-header no-border>
+    <ion-navbar transparent>
+        <button ion-button icon-only menuToggle>
+            <ion-icon class="header-icon" name="menu"></ion-icon>
+        </button>
+        <ion-title>
+            <ion-label>Comprar Créditos</ion-label>
+        </ion-title>
+
+        <ion-buttons end>
+            <button ion-button icon-only (click)="openHelp()">
+                <ion-icon name="help-circle" class="header-icon"></ion-icon>
+            </button>
+        </ion-buttons>
+
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="content">
+
+    <ion-grid class="grid">
+        <ion-row class="row-header" col-10>
+            <ion-col class="col-price" col-12>
+                <ion-label>R$ {{(price-desconto) | number:'1.2-2' | replace:'.':','}}</ion-label>
+            </ion-col>
+            <ion-col class="col-qtd" col-12>
+                <ion-label>{{cads}} CAD(s)</ion-label>
+            </ion-col>
+            <ion-col class="col-info" col-12>
+                <ion-label>Subtotal R$ {{price | number:'1.2-2' | replace:'.':','}}</ion-label>
+            </ion-col>
+            <ion-col class="col-desconto" col-12 *ngIf="user.percent > 0">
+                <ion-label>Desconto R$ {{desconto | number:'1.2-2' | replace:'.':','}} ({{user.percent}}%)</ion-label>
+            </ion-col>
+        </ion-row>
+        <ion-row class="row-body" col-10>
+            <ion-col class="col-description" col-12>
+                <ion-label>Selecione a quantidade de CADs que deseja comprar</ion-label>
+            </ion-col>
+            <ion-col class="col-cad-qtd" col-12>
+                <button ion-button type="button" (click)="selecionarQtd(1)" class="btn-qtd">+1</button>
+                <button ion-button type="button" (click)="selecionarQtd(5)" class="btn-qtd">+5</button>
+                <button ion-button type="button" (click)="selecionarQtd(10)" class="btn-qtd">+10</button>
+            </ion-col>
+            <ion-col class="col-clean-btn" col-12>
+                <button type="button" (click)="clean()" no-border class="btn-clean">Limpar</button>
+            </ion-col>
+            <ion-col class="col-subdescription" col-12 *ngIf="cielo === false">
+                <ion-label>Forma de Pagamento: Cartão de Crédito</ion-label>
+            </ion-col>
+        </ion-row>
+        <ion-row class="row-btn" col-12>
+            <ion-col class="col-btn-comprar">
+                <button type="button" (click)="formaPagamento()"
+                    class="btn-comprar">{{ cielo ? 'FORMA DE PAGAMENTO' : 'COMPRAR' }}</button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+</ion-content>

@@ -1,0 +1,300 @@
+page-historico {
+  font-family: "Roboto";
+
+  .header-icon {
+    color: #fff;
+  }
+
+  .toolbar-background {
+    background-color: #2d324f;
+    border: 0;
+  }
+
+  ion-segment-button {
+    width: 30%;
+  }
+
+  .segments {
+    .segment-activated {
+      background-color: #fff !important;
+      ion-label {
+        color: #2d2d4f !important;
+      }
+    }
+
+    .segment-button {
+      max-width: 119px !important;
+      background-color: #1d2235;
+      border-color: #1d2235;
+
+      ion-label {
+        font-size: 10pt;
+        color: #2c304d;
+      }
+    }
+  }
+
+  .btn-cancel {
+    color: red;
+    height: 1.9em;
+    font-size: 1.3rem;
+    margin-left: 0%;
+  }
+
+  .btn-devolucao {
+    color: cadetblue;
+    height: 1.9em;
+    font-size: 1.3rem;
+    margin-left: 0%;
+  }
+
+  .content {
+    .sum .item-inner {
+      border: none;
+    }
+    background-color: #f2f2f2;
+
+    .placa-item {
+      background-color: transparent !important;
+    }
+
+    .placa {
+      text-align: left;
+      font-weight: 500;
+    }
+
+    ion-input {
+      .text-input {
+        color: #333;
+        text-align: right;
+      }
+    }
+
+    .data-item {
+      background-color: transparent !important;
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    .grid-historico-estacionamento {
+      .row {
+        background-color: #fff;
+        border-bottom: 1px solid #f4f4f4;
+        margin-bottom: 20px;
+
+        ion-col {
+          padding: 0;
+        }
+
+        ion-label {
+          margin-left: 0 !important;
+          margin-right: 0 !important;
+          padding-left: 0 !important;
+          padding-right: 0 !important;
+        }
+
+        .col-info {
+          .placa {
+            text-align: left;
+            margin-bottom: 5px;
+            font-size: 12pt;
+            font-weight: normal;
+            color: #6c6c6c;
+            margin-top: 20px;
+            margin-left: 10px;
+            font-weight: 400;
+          }
+
+          .data {
+            text-align: left;
+            margin-bottom: 5px;
+            font-size: 9pt;
+            color: #7d7d7d;
+            word-break: break-word;
+            margin-top: 5px;
+            margin-left: 10px;
+            font-weight: 300;
+          }
+
+          .cidade {
+            color: #6d6d6d;
+            text-align: left;
+            font-size: 9.5pt;
+            margin-top: 5px;
+            margin-left: 10px;
+            font-weight: 400;
+          }
+        }
+
+        .col-status {
+          .status-renovacao {
+            background-color: #4cda64 !important;
+          }
+
+          .status-aquisicao {
+            background-color: #0690ce !important;
+          }
+
+          .status {
+            background-color: #fff;
+            height: 20px;
+            border-radius: 10px;
+            color: #fff;
+            float: right;
+            margin-top: 20px;
+            padding-left: 15px;
+            padding-right: 15px;
+            margin-right: 5px;
+          }
+        }
+
+        .line {
+          border-bottom: 1px solid #f4f4f4;
+        }
+
+        .col-rodape-btn {
+          padding: 0 !important;
+          padding-right: 5px !important;
+        }
+
+       
+
+        .col-rodape {
+          padding: 10px 0 10px 15px;
+
+          .cads {
+            text-align: left;
+            margin-left: 5px;
+            font-weight: normal;
+            color: #707070;
+            font-size: 11pt;
+          }
+
+          .price {
+            text-align: right;
+            font-weight: normal;
+            color: transparent;
+            font-size: 11pt;
+            font-weight: 300;
+          }
+
+          .recibo {
+            background: #adadad;
+          }
+        }
+      
+    }
+
+    .grid-historico-creditos {
+      .row {
+        background-color: #fff;
+        border-bottom: 1px solid #f4f4f4;
+        margin-bottom: 20px;
+
+        ion-col {
+          padding: 0;
+        }
+
+        .col-info {
+          .numero-cartao {
+            color: #707070;
+            text-align: left;
+            font-size: 12pt;
+            font-weight: 400;
+            margin: 0;
+            margin-top: 20px;
+            margin-left: 10px;
+          }
+
+          .tipo-cartao {
+            color: #6c6c6c;
+            text-align: left;
+            font-size: 12pt;
+            font-weight: 400;
+            margin-top: 5px;
+            margin-left: 10px;
+          }
+
+          .data {
+            color: #7d7d7d;
+            text-align: left;
+            font-size: 9pt;
+            font-weight: 300;
+            margin-top: 5px;
+            margin-left: 10px;
+            margin-bottom: 5px;
+          }
+        }
+
+        .col-status {
+          .status {
+            background-color: #fff;
+            height: 20px;
+            border-radius: 10px;
+            color: #fff;
+            float: right;
+            margin-top: 20px;
+            padding-left: 15px;
+            padding-right: 15px;
+            margin-right: 5px;
+          }
+        }
+
+        .line {
+          border-bottom: 1px solid #f4f4f4;
+        }
+
+        .col-rodape {
+          padding: 10px 0 10px 15px;
+
+          .cads {
+            color: #707070;
+            text-align: left;
+            font-size: 11pt;
+            font-weight: normal;
+            margin-left: 5px;
+            margin: 0;
+            padding: 0;
+          }
+
+          .price {
+            color: #707070;
+            font-size: 11pt;
+            font-weight: normal;
+            float: right;
+            margin: 0 10px 0 0;
+            padding: 0;
+          }
+
+          .desconto {
+            font-size: 9pt !important;
+            text-decoration: line-through;
+            margin-right: 6px;
+            font-style: italic;
+            color: #a0a0a0;
+          }
+
+          .recibo {
+          }
+        }
+      }
+    }
+
+    .row-message {
+      background-color: #fff;
+      border-bottom: 1px solid #f4f4f4;
+
+      .col-message {
+        .item-message {
+          .message {
+            color: #717171;
+            text-align: center;
+            font-size: 11pt;
+            white-space: pre-line;
+          }
+        }
+      }
+    }
+  }
+}
+}
