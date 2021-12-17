@@ -32,14 +32,23 @@ export class TimerComponent implements OnInit {
             this.logger.info('now: ' + this.now);
             this.logger.info('user: ' + this.userID);
             this.logger.info('placa: ' + this.placa);
-
-            if (this.status && this.time) {
-                if (this.time) {
+            console.log(this.userID+' '+this.placa)
+            if (this.time) {
+                
 
                     this.time = (this.time - this.now) / 1000;
-                    if (this.time > 0) {
-                        setInterval(() => {
+                    if (this.time > 0.0) {
+                        let interval = setInterval(() => {
                             this.time--;
+                            //console.log(this.time)
+
+                            if (this.time <= 0.0) {
+                                // TODO: break no setinterval! (pesquisar na internet)
+                                this.estacionarProvider.atualizaStatusPeloTempoExpirado(this.userID, this.placa, () => {
+                                    this.status = false;
+                                });
+                                clearInterval(interval);
+                            } 
                         }, 1000);
                     }
                     else {
@@ -47,13 +56,14 @@ export class TimerComponent implements OnInit {
                             this.status = false;
                         });
                     }
-                }
+                
             }
             else if (this.status && this.decorrido) {
                 this.decorrido = (this.now - this.decorrido) / 1000
                 if (this.decorrido) {
                     setInterval(() => {
                         this.decorrido++;
+                        
                     }, 1000)
                 }
             }

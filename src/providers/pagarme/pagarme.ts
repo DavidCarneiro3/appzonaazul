@@ -1,20 +1,22 @@
-import { environment } from './../../environments/environment';
-import { Injectable, transition } from '@angular/core';
+import { Injectable } from '@angular/core';
+import { AngularFireDatabase } from "angularfire2/database";
+import pagarme from 'pagarme';
+
+import { LoggerProvider } from '../logger/logger';
+
+import { CreditoModel } from '../../models/credito';
 import { CardPagarmeModel } from "../../models/pagarme/card-pagarme";
 import { UserPagarmeModel } from "../../models/pagarme/user-pagarme";
 import { VendaPagarmeModel } from "../../models/pagarme/venda-pagarme";
 
-import pagarme from 'pagarme';
-import { AngularFireDatabase } from "angularfire2/database";
-import { LoggerProvider } from '../logger/logger';
-import { CreditoModel } from '../../models/credito';
+import { environment } from './../../environments/environment';
 
 @Injectable()
 export class PagarmeProvider {
 
     static PAGARME_API_PROD: string = "ak_live_fWyQBJhrvLmRTbQSuESRpBKAOuXL3I";
     static PAGARME_API_DEV: string = "ak_test_KkXzbnmyssmGQC2Esx6Sq6J5KilA6g";
-    // static PAGARME_API_DEV: string = "ak_test_wAGrI8wvapRuUkiBHQPrQoQqrGstv9";
+    // static PAGARME_API_DEV: string = "ek_test_8umHvRaF2G33u8FDlzuh64kMmUqjUZ";
     static PAGARME_API: string = PagarmeProvider.PAGARME_API_DEV;
 
     constructor(public afd: AngularFireDatabase, private logger: LoggerProvider) {
@@ -23,6 +25,7 @@ export class PagarmeProvider {
 
     public pagar(card: CardPagarmeModel, comprador: UserPagarmeModel, venda: VendaPagarmeModel): Promise<any> {
         return new Promise<any>((resolve, reject) => {
+            console.log('API Key',PagarmeProvider.PAGARME_API)
 
             // pega os erros de validação nos campos do form e a bandeira do cartão
             let cardValidations = pagarme.validate({ card: card })

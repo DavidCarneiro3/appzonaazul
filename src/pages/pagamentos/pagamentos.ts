@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AlertController, IonicPage, LoadingController, NavController, NavParams } from 'ionic-angular';
+import { AlertController, IonicPage, LoadingController, NavController, NavParams, ViewController } from 'ionic-angular';
 
 import { User } from '../../models/user';
 
@@ -19,9 +19,11 @@ export class PagamentosPage {
     public user: User;
     list;
     showSpinner: boolean = true;
+    fromPage;
 
     constructor(
         public navCtrl: NavController,
+        public viewCtrl: ViewController,
         public navParams: NavParams,
         public alertCtrl: AlertController,
         public loadingCtrl: LoadingController,
@@ -47,11 +49,25 @@ export class PagamentosPage {
     }
 
     ionViewDidEnter() {
+        this.fromPage = this.navParams.get('fromPage');
+        let goPage = this.navParams.get('gotoPage');
+        console.log('Param',goPage)
+
+        if(goPage && goPage == 'pagamento'){
+            this.navCtrl.pop();
+        }
+    
+        this.carregaCartoes();
+    }
+        
+    private carregaCartoes() {
         this.userProvider.getUserLocal().then(userID => {
             if (userID != null) {
                 this.userProvider.byId(userID).take(1).subscribe((user: User) => {
                     this.user = user;
-                    this.list = this.pagamentosProvider.findByUser(this.user.id);
+                    this.pagamentosProvider.findByUser(this.user.id).take(1).subscribe(_data => {
+                        this.list = _data;
+                    });
                     this.showSpinner = false;
                 });
             }
@@ -73,13 +89,13 @@ export class PagamentosPage {
 
     openPage(event, item, key) {
         event.preventDefault();
-        this.navCtrl.push('PagamentosFormPage', { 'item': item, 'userId': this.user.id });
+        this.navCtrl.push('PagamentosFormPage', { 'item': item, 'user': this.user, 'pgtoAllArr': this.list, 'fromPage': this.fromPage });
     }
 
     getCartaoNumeroFormat(numero: string) {
-        const quatro1 = '****'; //numero.substr(0,4);
-        const quatro2 = '****'; //numero.substr(4,4);
-        const quatro3 = '****'; //numero.substr(5,4);
+        const quatro1 = 'XXXX'; //numero.substr(0,4);
+        const quatro2 = 'XXXX'; //numero.substr(4,4);
+        const quatro3 = 'XXXX'; //numero.substr(5,4);
         const quatro4 = numero.substr(12);
 
         return quatro1 + ' ' + quatro2 + ' ' + quatro3 + ' ' + quatro4;
@@ -88,14 +104,17 @@ export class PagamentosPage {
     excluir(event, cartaoId) {
         event.stopPropagation();
         this.onConfirm(() => {
-            this.pagamentosProvider.remove(this.user.id, cartaoId);
+            this.pagamentosProvider.remove(this.user.id, cartaoId).then(_ => {
+                this.carregaCartoes();
+            });
         })
     }
 
     onConfirm(success) {
         this.alertCtrl.create({
+            title: 'Excluir',
             message: 'Tem certeza que deseja remover este cartão?',
-            cssClass: '',
+            cssClass: 'alert',
             buttons: [
                 {
                     text: 'Sim',
@@ -143,7 +162,7 @@ export class PagamentosPage {
     }
 
     openHelp() {
-        this.showAlert('Ajuda', 'Clique na forma de pagamento para ver e editar as informações ou adicione uma nova.', '', () => { })
+        this.showAlert('Ajuda', 'Adicione uma nova forma de pagamento comprar seus CADs. Você pode também visualizar, alterar ou excluir uma forma de pagamento já existente.', '', () => { })
     }
 
 }

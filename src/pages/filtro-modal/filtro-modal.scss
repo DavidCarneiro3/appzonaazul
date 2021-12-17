@@ -1,137 +1,286 @@
 page-filtro-modal {
+  
+  .scroll-content{
+    font-family: "kanit";
+    background-color: #f7f7f7;
+    .informacoes-body {
+       
+      position: absolute;
+      top: 35px;
+      left: 0;
+      right: 0;
+
+      .informacoes-body-header {
+        
+        padding-top: 30px;
+
+        .title-header-body {
+          text-align: left;
+          color: #8c8c8c;
+          margin-left: 10px;
+          font-weight: 500;
+        }
+      }
+
+      
+
+      .informacoes-body-list {
+        top: 5px !important;
+        background-color: #fff;
+
+        .informacoes-body-list-item{ 
+          background-color: #fff;
+          margin-left: 10px;
+          margin-top: 10px;
+          max-width: 95%;
+          text-decoration: none;
+          .item-md.item-input.input-has-focus .item-inner {
+            box-shadow: none;
+        }
+          
+          input,select,label {
+            font-size: 15px;
+          }
+          .datetime-text{
+            margin-right: 125px;
+          }
+
+          .select-text{
+            margin-left: 0px;
+            margin-top: 10px;
+            //position: absolute;
+          }
+          .select-icon{
+            margin-top: 15px;
+          }
+          .menu-btn{
+            //position: absolute !important;
+            float: right !important;
+            margin-right: -5px;
+            .icon-blue{
+              color: #3F65FF;
+              font-weight: bold;
+            }
+    
+            .icon-grey{
+              color: #828282;
+              font-weight: bold;
+            }
+          }
+          
+          
+          ion-label {
+            text-align: left;
+            color: #7d7d7d;
+            font-size: 14px;
+            font-weight: normal;
+          }
+
+          .grey-component {
+            border: none;
+            padding-left: 9px;
+            color: #3F65FF;
+            font-size: 13px;
+            border-bottom: 1px solid #828282;
+            border-radius: 3px;
+            width: auto;
+            
+          }
+         
+
+          .blue-component {
+            border: none;
+            padding-left: 9px;
+            color: #3F65FF;
+            font-size: 15px;
+            border-bottom: 1px solid #3F65FF;
+            border-radius: 3px;
+            width: auto;
+            
+          }
+          .blue-component:focus{
+            text-decoration: none;
+          }
+
+          
+
+          .profile-icon{
+            color: #3F65FF;
+            width: 15px;
+            height: 15px;
+            font-size: 15px;
+          } 
+        }
+        .btn{
+          border: none !important;
+            // background: #3F65FF;
+            border-radius: 26px;
+            height: 35px;
+            // width: 90%;
+            margin-top: 10px;
+            // color: #000;
+        }
+  
+        .btn-add{
+          border: none !important;
+            background: #27AE60;
+            border-radius: 26px;
+            height: 35px;
+            // width: 90%;
+            // margin-left: 15px;
+            margin-bottom: 20px;
+        }
+  
+        .btn-margin {
+          margin-left: 5%;
+          margin-right: 5%;
+        }
+  
+        .btn-row {
+          margin-top: 20%;
+          margin-bottom: 5%;
+          background-color: #fff;
+  
+          
+        }
+      }
+    }
+  }
   .header-icon {
     color: #fff;
   }
+  .row-header {
+    margin-top: -5px;
+    .col-header {
+      background-color: #f1f1f1;
+      padding: 30px 30px 30px 30px;
+      border-bottom: 1px solid #c6c6c6;
 
-  .grid-historico-estacionamento {
-    .row {
-      background-color: #fff;
-      border-bottom: 1px solid #f4f4f4;
-      margin-bottom: 20px;
-
-      ion-col {
-        padding: 0;
+      .title {
+        color: #8c8c8c;
+        font-size: 9pt;
+        position: absolute;
+        top: 20px;
+        left: 30px;
+        font-weight: 500;
       }
+    }
+  }
 
-      ion-label {
-        margin-left: 0 !important;
-        margin-right: 0 !important;
-        padding-left: 0 !important;
-        padding-right: 0 !important;
-      }
+  .content {
+    .grid-profile {
+      width: 100%;
 
-      .col-info {
-        .placa {
-          text-align: left;
-          margin-bottom: 5px;
-          font-size: 12pt;
-          font-weight: normal;
-          color: #6c6c6c;
-          margin-top: 20px;
-          margin-left: 10px;
-          font-weight: 400;
-        }
+      .centralize {
+        margin: 0 auto;
+        margin-top: 0px;
 
-        .data {
-          text-align: left;
-          margin-bottom: 5px;
-          font-size: 9pt;
-          color: #7d7d7d;
-          word-break: break-word;
-          margin-top: 5px;
-          margin-left: 10px;
-          font-weight: 300;
-        }
+        .profile-img {
+          img {
+            margin: auto;
+          }
 
-        .cidade {
-          color: #6d6d6d;
-          text-align: left;
-          font-size: 9.5pt;
-          margin-top: 5px;
-          margin-left: 10px;
-          font-weight: 400;
-        }
-      }
+          div {
+            position: relative;
 
-      .col-status {
-        .status-renovacao {
-          background-color: #4cda64 !important;
-        }
+            .img {
+              @include respond-to(xs) {
+                width: 105px;
+                height: 105px;
+              }
+              @include respond-to(sm) {
+                width: 105px;
+                height: 105px;
+              }
+              @include respond-to(md) {
+                width: 105px;
+                height: 105px;
+              }
+              @include respond-to(lg) {
+                width: 105px;
+                height: 105px;
+              }
+              @include respond-to(xl) {
+                width: 105px;
+                height: 105px;
+              }
 
-        .status-aquisicao {
-          background-color: #0690ce !important;
-        }
+              border-radius: 100%;
+              border: 2px solid white;
+            }
 
-        .status {
-          background-color: #fff;
-          height: 20px;
-          border-radius: 10px;
-          color: #fff;
-          float: right;
-          margin-top: 20px;
-          padding-left: 15px;
-          padding-right: 15px;
-          margin-right: 5px;
-        }
-      }
+            .icon-img {
+              background-color: #0791cf;
+              height: 30px;
+              width: 30px;
+              border-radius: 100%;
+              border: 2px solid white;
+              position: absolute;
+              top: 64px;
+              left: 57%;
 
-      .line {
-        border-bottom: 1px solid #f4f4f4;
-      }
-
-      .col-rodape-btn {
-        padding: 0 !important;
-        padding-right: 5px !important;
-      }
-
-      .col-rodape {
-        padding: 10px 0 10px 15px;
-
-        .cads {
-          text-align: left;
-          margin-left: 5px;
-          font-weight: normal;
-          color: #707070;
-          font-size: 11pt;
-        }
-
-        .price {
-          text-align: right;
-          font-weight: normal;
-          color: transparent;
-          font-size: 11pt;
-          font-weight: 300;
-        }
-
-        .recibo {
-          background: #adadad;
+              .camera-icon {
+                font-size: 26pt;
+                color: #fff;
+                position: absolute;
+                top: -4px;
+                left: -3px;
+              }
+            }
+          }
         }
       }
     }
   }
 
-  .col-select {
-    margin-bottom: 10px;
-    .item-select {
-      margin-left: 10%;
+  .success {
+    .alert-wrapper {
+      background-color: #00cc99;
+      color: #fff;
+    }
 
-      .title-select {
-        font-weight: normal;
+    .alert-message {
+      color: #fff;
+    }
+
+    .alert-button-group {
+      .btn-ok {
+        color: #fff;
       }
     }
   }
 
-  .label {
-    font-size: 10pt;
-    font-weight: 500;
-    color: #6c6c6c;
+  .error {
+    .alert-wrapper {
+      background-color: #cc0033;
+      color: #fff;
+    }
+
+    .alert-message {
+      color: #fff;
+    }
+
+    .alert-button-group {
+      .btn-ok {
+        color: #fff;
+      }
+    }
   }
 
-  .data-item {
-    background-color: transparent !important;
-    margin-bottom: 10px;
-    padding-right: 105px;
-    border: 1px solid red;
-    color: #333;
+  .info {
+    .alert-wrapper {
+      background-color: #4d90fe;
+      color: #fff;
+    }
+
+    .alert-message {
+      color: #fff;
+    }
+
+    .alert-button-group {
+      .btn-ok {
+        color: #fff;
+      }
+    }
   }
 }

@@ -1,5 +1,5 @@
 page-tempo-restante {
-  font-family: "Roboto";
+  font-family: 'kanit';
 
   .header-icon {
     color: #fff;
@@ -11,12 +11,152 @@ page-tempo-restante {
     font-size: 12pt;
   }
 
-  .content {
-    background: #f4f4f4;
+  .header-title{
+    font-size: 18px;
+    margin-left: -110px;
+  }
 
+  .thumb{
+    margin-top: 15px;
+    width: 100px;
+  }
+
+  .content {
+    background: #f7f7f7;
+
+    .info-content-pink{
+      border-left: 6px solid #BB6BD9;
+      color: #243060;
+      border-radius: 5px;
+      width: 95%;
+      height: 95px;
+      margin-left: 2.5%;
+      margin-top: 3%;
+      background-color: #fff;
+      box-shadow: 1px 3px 3px rgb(145, 145, 145);
+      .item-select{
+        // background-color: #4f4f4f;
+        border-radius: 5px !important;
+        height: 80px;
+        margin-top: 5px;
+      }
+      button{
+        top: -5px;
+        color: #243060;
+        font-size: 12px;
+        position: relative;
+      }
+      ion-select{
+        width: 50%;
+      }
+      .title-select{
+        color: #243060;
+        font-size: 23px;
+        margin-top: 35px;
+      }
+      p{
+        margin-top: 10px;
+        color: #ccc;
+        font-size: 16px;
+      }
+    }
+  
+    
+    .info-content-green{
+      border-left: 6px solid #00cc99;
+      color: #243060;
+      border-radius: 5px;
+      width: 95%;
+      height: 95px;
+      margin-left: 2.5%;
+      margin-top: 3%;
+      background-color: #fff;
+      .item-select{
+        // background-color: #4f4f4f;
+        border-radius: 5px !important;
+        height: 80px;
+        margin-top: 5px;
+      }
+      button{
+        top: -3px;
+        color: #fff;
+        font-size: 12px;
+      }
+      ion-select{
+        width: 50%;
+      }
+      .title-select{
+        color: #243060;
+        font-size: 22px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+      p{
+        margin-top: 0px;
+        color: #ccc;
+      }
+    }
+
+    .time-master{
+      height: 250px;
+    }
+  
+   .item-info{
+          position: relative;
+          top: -135px;
+          left: 7px;
+          width: 50%;
+          float: right;
+          font-size: 11px;
+          color: #4f4f4f;
+          p{
+            margin: 1px;
+          }
+          .price-text{
+            margin-left: 6px;
+          }
+        }
+    .time{
+      top: 50px;
+      left: 13px;
+      font-size: 1pc;
+      position: relative;
+      color: #243060;
+      .clock-text{
+        top: 45px;
+        left: 20px;
+        color: #828282;
+        position: relative;
+      }
+    }
+    
+    .btn-renovar {
+      background-color: #3F65FF;
+      border-radius: 26px;
+      height: 2.5em;
+      width: 20.5em;
+      font-size: 1.3rem;
+      margin-left: 10%;
+      top: -90px;
+      // color: #000
+    }
+    .btn-plus {
+      border: 2px solid #828282;
+      color: #828282;
+      box-sizing: border-box;
+      border-radius: 26px;
+      height: 2.5em;
+      width: 20.5em;
+      font-size: 1.3rem;
+      margin-left: 10%;
+      top: -70px;
+    }
+    
     ion-row {
-      background: #fff;
+      background: #f7f7f7;
       margin-bottom: 20px;
+      
+      
 
       ion-col {
         padding: 0;
@@ -46,6 +186,8 @@ page-tempo-restante {
       .col-details {
         text-align: left;
         margin-top: 10px;
+        
+        
 
         .item-details-board {
           font-size: 12pt;
@@ -58,12 +200,7 @@ page-tempo-restante {
           color: #bebebe;
           word-break: break-word;
         }
-        .btn-renovar {
-          background-color: #4cda64;
-          height: 1.9em;
-          font-size: 1.3rem;
-          margin-left: 0%;
-        }
+        
 
         .item-details-city {
           font-size: 9.5pt;
@@ -100,10 +237,13 @@ page-tempo-restante {
         align-content: flex-end;
         margin-left: 20px;
       }
-
       .col-time {
         text-align: center;
+        left: 45px;
+        background-color: #fff;
       }
+
+      
 
       .col-message {
         border-top: 1px #f4f4f4 solid;

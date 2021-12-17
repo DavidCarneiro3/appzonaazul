@@ -1,14 +1,18 @@
 page-profile-edit {
-  font-family: "Roboto";
+  font-family: "kanit";
+  .scroll-content{
+    background-color: #f7f7f7;
+  }
 
   .header-icon {
     color: white;
   }
-
+  
   .content {
     .grid-profile {
       width: 100%;
-
+      top: 20px !important;
+      background-color: #f7f7f7;
       .centralize {
         margin: 0 auto;
         margin-top: 0px;
@@ -70,13 +74,14 @@ page-profile-edit {
       }
 
       .informacoes-body {
+       
         position: absolute;
-        top: 0;
+        top: 35px;
         left: 0;
         right: 0;
 
         .informacoes-body-header {
-          background-color: #f1f1f1;
+          
           padding-top: 30px;
 
           .title-header-body {
@@ -87,29 +92,94 @@ page-profile-edit {
           }
         }
 
+        
+
         .informacoes-body-list {
-          width: 100%;
+          top: 5px !important;
+          background-color: #f7f7f7;
 
-          .informacoes-body-list-item {
+          .informacoes-body-list-item{ 
+            background-color: #f7f7f7;
             margin-left: 10px;
-            padding-right: 29px;
+            margin-top: 10px;
+            max-width: 95%;
+            text-decoration: none;
+            
+            .item-md.item-input.input-has-focus .item-inner {
+              box-shadow: none;
+            }
 
+            ion-datetime {
+              width: 87% !important;
+            }
+            
+            input,select,label {
+              font-size: 15px;
+            }
+            .datetime-text{
+              margin-right: 125px;
+              margin-left: 10px;
+            }
+
+            .select-text{
+              margin-left: 40px;
+              margin-top: -30px;
+              position: absolute;
+            }
+            .menu-btn{
+              //position: absolute !important;
+              float: right !important;
+              margin-right: -5px;
+              
+              .icon-blue{
+                color: #3F65FF;
+                font-weight: bold;
+              }
+      
+              .icon-grey{
+                color: #828282;
+                font-weight: bold;
+              }
+            }
+            
+            
             ion-label {
               text-align: left;
               color: #7d7d7d;
-              font-size: 11px;
+              font-size: 14px;
               font-weight: normal;
             }
 
-            ion-input,
-            ion-select,
-            ion-datetime {
+            .grey-component {
+              border: none;
               padding-left: 9px;
               color: #747474;
               font-size: 13px;
-              border: 1px solid #c2c2c2;
+              border-bottom: 1px solid #828282;
               border-radius: 3px;
+              width: auto;
             }
+
+            .blue-component {
+              border: none;
+              padding-left: 9px;
+              color: #747474;
+              font-size: 15px;
+              border-bottom: 1px solid #3F65FF;
+              border-radius: 3px;
+              width: auto;
+            }
+
+            .blue-component:focus{
+              text-decoration: none;
+            }
+
+            .profile-icon{
+              color: #3F65FF;
+              width: 15px;
+              height: 15px;
+              font-size: 15px;
+            } 
           }
         }
       }
@@ -120,17 +190,34 @@ page-profile-edit {
       }
 
       .btn-row {
+        background-color: #f7f7f7;
         margin-top: 3%;
         margin-bottom: 5%;
 
         .btn {
           border: none !important;
-          background: color($colors, primary);
+          background: #27AE60;
+          border-radius: 26px;
           height: 35px;
           width: 90%;
-          position: fixed;
-          left: 5%;
-          bottom: 0;
+          margin-left: 15px;
+          margin-bottom: 20px;
+          // color: #fff;
+        }
+        .btn-password {
+          border: 2px solid #828282 !important;
+          background: transparent;
+          color: #828282;
+          border-radius: 26px;
+          height: 35px;
+          margin-top: 0px;
+        }
+        .btn-sair {
+          border: none !important;
+          background: #3f53a7;
+          border-radius: 26px;
+          height: 35px;
+          margin-top: 10px;
         }
       }
     }
@@ -167,6 +254,19 @@ page-profile-edit {
       .btn-ok {
         color: #fff;
       }
+    }
+  }
+  
+  .info-top{
+    text-align: center;
+    color: white;
+    background-color: #283E81;
+    width: 105%;
+    margin-left: -2%;
+    padding: 5px;
+    p{
+      color: #fff;
+      margin: 0px;
     }
   }
 

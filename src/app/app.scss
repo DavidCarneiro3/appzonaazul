@@ -19,6 +19,19 @@
 @import "../theme/menu.scss";
 @import "../theme/footer.scss";
 
+body{
+  font-family: 'kanit';
+}
+
+.header-title {
+  font-family: "kanit";
+  margin-left: -30px;
+
+  .toolbar-title {
+    font-size: 1.8rem;
+  }
+}
+
 .alert {
   background-color: transparent;
   color: color($colors, primary);
@@ -41,6 +54,11 @@
   padding-left: 30px !important;
 }
 
+.text-pdv{
+  font-size: 15px;
+  color: #3F65FF;
+}
+
 .modal-alert {
   .modal-wrapper {
     position: absolute;
@@ -54,4 +72,107 @@
 
 ion-app.platform-ios ion-content {
   pointer-events: auto; /*fix scroll lock on ios12.2*/
+}
+
+.close-button{
+  
+}
+
+.user-menu-item {
+  top: 0;
+  background-color: #283E81;
+  color: #fff;
+  font-family: "kanit";
+  margin: 0 0 10px 0;
+  height: 205px;
+  border-radius: 0 0 2pc 2pc;
+  .top-menu{
+    margin-top: -5%;
+  }
+  .button{
+    top: 20px;
+  }
+  .img {
+    @include respond-to(xs) {
+      width: 60px;
+      height: 60px;
+    }
+    @include respond-to(sm) {
+      width: 60px;
+      height: 60px;
+    }
+    @include respond-to(md) {
+      width: 60px;
+      height: 60px;
+    }
+    @include respond-to(lg) {
+      width: 60px;
+      height: 60px;
+    }
+    @include respond-to(xl) {
+      width: 60px;
+      height: 60px;
+    }
+   margin-top: -2%;
+    border-radius: 100%;
+    border: 2px solid white;
+  }
+
+  p {
+    color: #fff;
+    font-weight: normal;
+  }
+
+  .name {
+    font-size: 16px;
+    text-transform: capitalize;
+    white-space: pre-wrap;
+    margin-top: 10px;
+  }
+
+  .profile {
+    font-size: 8pt;
+    text-transform: capitalize;
+  }
+
+  .city {
+    font-size: 8pt;
+    text-transform: capitalize;
+  }
+
+  .cads-credits {
+    font-size: 8pt;
+    // text-transform: capitalize;
+    margin-top: 0px;
+  }
+
+  .popover-ios{
+  
+    .popover-wrapper{
+        .popover-content{
+            width: 500px;
+            .scroll-content{
+                overflow: hidden;
+            }
+        }
+    }
+
+
+}
+
+  
+}
+.modal-alert .modal-wrapper {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  display: block;
+  width: 80%;
+  height: 290px;
+  overflow: block;
+}
+$text-input-md-show-focus-highlight: false;
+
+.header-title{
+  font-family: "kanit";
 }

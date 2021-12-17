@@ -37,14 +37,15 @@ export class ComprovantePage {
     codPDV: string;
     endereco: string;
     user: User;
-
+    situacao: string;
     comprovante: any;
     loading: any;
     source;
     showCloseButton = true;
-
+    showSpinner: boolean = true
     forceDownload = true;
     path: string;
+    pathObj;
 
     constructor(
         public navCtrl: NavController,
@@ -83,7 +84,7 @@ export class ComprovantePage {
         this.forceDownload = forceDownload !== undefined ? forceDownload : this.forceDownload;
 
         if (this.loading !== undefined)
-            this.loading.dismiss();
+        this.showSpinner = false
 
         if (this.estacionar && this.estacionar.dataHoraRegistro) {
             this.date = new Date(this.estacionar.dataHoraRegistro);
@@ -95,7 +96,9 @@ export class ComprovantePage {
             this.codAuth = this.comprovante.numberAuth;
             this.codPDV = this.comprovante.numberPDV;
             this.endereco = this.comprovante.endereco;
+            this.situacao = this.estacionar.situacao
         }
+
         let download = this.comprovante;
         if (this.user.profile === 'revendedor')
             if (this.forceDownload) {
@@ -110,17 +113,17 @@ export class ComprovantePage {
     closePageComprovante() {
         if (this.source) {
             if (this.source === 'tempo_restante') {
-                this.navCtrl.setRoot(Constants.HOME_PAGE.name, { fromPage: 'comprovante' })
+                this.navCtrl.setRoot(Constants.PRINCIPAL_PAGE.name, { fromPage: 'comprovante' })
             } else {
                 this.navCtrl.pop();
             }
         } else {
-            this.navCtrl.setRoot(Constants.HOME_PAGE.name, { fromPage: 'comprovante' });
+            this.navCtrl.setRoot(Constants.PRINCIPAL_PAGE.name, { fromPage: 'comprovante' });
         }
     }
 
     closeEstacionarPage() {
-        this.navCtrl.setRoot(Constants.HOME_PAGE.name);
+        this.navCtrl.setRoot(Constants.PRINCIPAL_PAGE.name);
     }
 
     makePDF(comprovante) {
@@ -129,7 +132,7 @@ export class ComprovantePage {
         const fileDirectory = this.platform.is('android') ? this.file.externalCacheDirectory : this.file.syncedDataDirectory
 
         if (this.platform.is('cordova')) {
-            pdfmake.createPdf(PDFUtil.gerarPDF(comprovante)).getBuffer(buffer => {
+            pdfmake.createPdf(PDFUtil.gerarPDF(comprovante,this.situacao)).getBuffer(buffer => {
                 const binaryArray = new Uint8Array(buffer).buffer;
                 this.file.writeFile(fileDirectory, filename, binaryArray, { replace: true })
                     .then((fileEntery) => {
@@ -138,7 +141,7 @@ export class ComprovantePage {
                     })
             });
         } else {
-            pdfmake.createPdf(PDFUtil.gerarPDF(comprovante)).download(filename)
+            this.pathObj = pdfmake.createPdf(PDFUtil.gerarPDF(comprovante,this.situacao))
         }
     }
 
@@ -147,18 +150,24 @@ export class ComprovantePage {
      * Gera um pdf, faz download e copia o caminho para aonde foi baixado
      */
     baixarPDF() {
-        const makingPDF = this.loadingCtrl.create({ content: `Gerando PDF! Aguarde...` })
-        makingPDF.present();
-        this.clipBoard.clear();
+        if (this.platform.is('cordova')) {
+            const makingPDF = this.loadingCtrl.create({ content: `Gerando PDF! Aguarde...` })
+            makingPDF.present();
+            this.clipBoard.clear();
 
-        this._fileOpener.open(this.path, 'application/pdf')
-            .then(() => {
-                makingPDF.dismiss()
-            })
-            .catch(err => {
-                alert(err)
-                makingPDF.dismiss();
-            })
+            this._fileOpener.open(this.path, 'application/pdf')
+                .then(() => {
+                    makingPDF.dismiss()
+                })
+                .catch(err => {
+                    alert(err)
+                    makingPDF.dismiss();
+                })
+
+        } else {
+            const filename = this.codAuth + ".pdf"
+            this.pathObj.download(filename)
+        }
     }
     /**
      * Pega o comprovante que foi gerado e partilha via rede Social
@@ -168,10 +177,8 @@ export class ComprovantePage {
             let loading = this.loadingCtrl.create({ content: 'Aguarde...' });
             loading.present();
             const message = 'Comprovante de estacionamento do Zona Fácil.';
-            const filename = this.codAuth + ".pdf";
-            const fileDirectory = this.file.externalRootDirectory + 'Download/'
 
-            this.socialSharing.share(message, null, fileDirectory + filename, null)
+            this.socialSharing.share(message, null, this.path, null)
                 .then(() => {
                     loading.dismiss();
                 })

@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { AlertController, IonicPage, LoadingController, NavController, NavParams } from 'ionic-angular';
+import { AlertController, Events, IonicPage, LoadingController, ModalController, NavController, NavParams, ViewController } from 'ionic-angular';
 import { CardIO } from '@ionic-native/card-io';
 
 import { PagamentoModel } from './../../models/pagamento';
@@ -11,6 +11,8 @@ import { UserProvider } from "../../providers/user/user";
 import { MyApp } from "../../app/app.component";
 import { FunctionsUtil } from "../../util/functions.util";
 import { MapUtil } from "../../util/map.util";
+import { Constants } from '../../environments/constants';
+import { PagamentosPage } from '../pagamentos/pagamentos';
 
 @IonicPage()
 @Component({
@@ -19,7 +21,12 @@ import { MapUtil } from "../../util/map.util";
 })
 export class PagamentosFormPage {
 
+    fromPage;
     userId;
+    user;
+    pgtoAllArr = [];
+    itemTmp;
+
     @ViewChild('numero') numero;
 
     public formGroup: FormGroup;
@@ -36,7 +43,10 @@ export class PagamentosFormPage {
         public formBuilder: FormBuilder,
         private cardIO: CardIO,
         private userProvider: UserProvider,
-        private pagamentosProvider: PagamentosProvider) {
+        private pagamentosProvider: PagamentosProvider,
+        public viewCtrl: ViewController,
+        private modalCtrl: ModalController,
+        private events: Events) {
 
         MyApp.MAP_LOAD = false;
         MapUtil.circles.pop();
@@ -44,7 +54,7 @@ export class PagamentosFormPage {
         this.formGroup = formBuilder.group({
             numero: ['', Validators.compose([Validators.required])],
             data: ['', Validators.required],
-            ccv: ['', Validators.required],
+            //ccv: ['', Validators.required],
             nome: ['', Validators.required],
             cpf: ['', Validators.compose([Validators.minLength(14), Validators.required])],
         });
@@ -71,13 +81,19 @@ export class PagamentosFormPage {
     }
 
     ionViewDidLoad() {
-        let itemTmp = this.navParams.get('item');
-        this.userId = this.navParams.get('userId');
+        this.item.data = '';
+        this.fromPage = this.navParams.get('fromPage');
+        this.pgtoAllArr = this.navParams.get('pgtoAllArr');
+        this.itemTmp = this.navParams.get('item');
+        this.user = this.navParams.get('user');
+        this.userId = this.user.id;
 
-        if (itemTmp) {
+        console.log('itemtmp', this.itemTmp)
+        if (this.itemTmp) {
             this.titulo = 'Detalhes';
 
-            const parseTmp = (typeof itemTmp === "string") ? JSON.parse(itemTmp) : itemTmp;
+            const parseTmp = (typeof this.itemTmp === "string") ? JSON.parse(this.itemTmp) : this.itemTmp;
+            console.log('parsetmp', parseTmp)
             this.item = new PagamentoModel(parseTmp.values);
             this.item.id = parseTmp.key;
             this.item.ccv = '';
@@ -136,9 +152,8 @@ export class PagamentosFormPage {
     }
 
     submit() {
-        let itemTmp = this.navParams.get('item');
         if (!this.formGroup.valid) {
-            this.showAlert('Aviso!', 'Você precisa inserir dados válidos para cadastrar seu cartão!', '', () => {
+            this.showAlert('Aviso!', 'Preencha todos os campos do formulário para cadastrar seu cartão.', '', () => {
             });
             return;
         }
@@ -146,26 +161,78 @@ export class PagamentosFormPage {
         let loading = this.showLoading();
 
         if (FunctionsUtil.checkCPF(this.formGroup.value.cpf)) {
-            this.formGroup.value.cpf = FunctionsUtil.cleanBRMask(this.formGroup.value.cpf), this.formGroup.value.numero = FunctionsUtil.cleanBRMask(this.formGroup.value.numero)
-            if (itemTmp == undefined || itemTmp.key == '') {
-                this.pagamentosProvider.save(this.userId, this.formGroup.value).then(() => {
-                    console.log('valor do form ', this.formGroup.value)
-                    loading.dismiss();
-                    this.navCtrl.pop();
-                }, error => {
-                    alert('Algo deu errado!')
-                });
+            this.formGroup.value.cpf = FunctionsUtil.cleanBRMask(this.formGroup.value.cpf);
+            this.formGroup.value.numero = FunctionsUtil.cleanBRMask(this.formGroup.value.numero);
+            
+            const _filterArr = this.pgtoAllArr.filter(_item => _item.values.numero === this.formGroup.value.numero);
+            if(_filterArr && _filterArr.length > 0) {
 
+                MyApp.showConfirm(this.alertCtrl, 'Ops', 'Seu cartão de crédito já foi inserido, deseja sobrescrevê-lo?', 
+                    () => {
+                        this.itemTmp = _filterArr[0];
+                        this.saveOrUpdate(loading);
+                    }, 
+                    () => { loading.dismiss() }
+                ).present();
             } else {
-                this.pagamentosProvider.update(this.userId, itemTmp.key, this.formGroup.value).then(() => {
-                    loading.dismiss();
-                    this.navCtrl.pop();
-                }, error => {
-                    alert('Algo deu errado!')
-                });
-            }
+                this.saveOrUpdate(loading);
+            }            
+
         } else {
             this.showAlert('Aviso!', 'Você precisa inserir um CPF válido!', '', () => loading.dismiss());
+        }
+    }
+
+    private saveOrUpdate(loading) {
+        if (this.itemTmp == undefined || this.itemTmp.key == '') {
+            let entity = this.formGroup.value;
+            let dataFormat = entity.data;
+            let split = dataFormat.split('/');
+
+            let _data = new Date();
+            _data.setMonth(parseInt(split[0])-1);
+            _data.setFullYear(parseInt(split[1]));
+
+            entity.data = _data.toISOString();
+
+            this.pagamentosProvider.save(this.userId, entity).then(() => {
+                if(this.user && ((this.user.cpf === undefined) || (this.user.cpf !== undefined && this.user.cpf === "")) ) {
+                    this.userProvider.updateUser(this.userId, { cpf: this.formGroup.value.cpf })
+                }
+
+                console.log('valor do form ', entity)
+                loading.dismiss();
+                
+                if(this.fromPage === 'principal' || this.fromPage === 'estacionar') {
+                    this.navCtrl.getPrevious().data.gotoPage = 'pagamento'
+                }
+
+                this.navCtrl.pop();
+            }, error => {
+                this.showAlert('Ops', 'Não foi possível salvar seu cartão! Verifique se os dados estão corretos.', '', () => loading.dismiss());
+            });
+        } else {
+
+            let entity = this.formGroup.value;
+            let dataFormat = entity.data;
+            let split = dataFormat.split('/');
+
+            let _data = new Date();
+            _data.setMonth(parseInt(split[0])-1);
+            _data.setFullYear(parseInt(split[1]));
+
+            entity.data = _data.toISOString();
+
+            this.pagamentosProvider.update(this.userId, this.itemTmp.key, entity).then(() => {
+                if(this.user && ((this.user.cpf === undefined) || (this.user.cpf !== undefined && this.user.cpf === "")) ) {
+                    this.userProvider.updateUser(this.userId, { cpf: entity.cpf })
+                }
+                
+                loading.dismiss();
+                this.navCtrl.pop();
+            }, error => {
+                this.showAlert('Ops', 'Não foi possível salvar seu cartão! Verifique se os dados estão corretos.', '', () => loading.dismiss());
+            });
         }
     }
 
@@ -191,7 +258,7 @@ export class PagamentosFormPage {
     }
 
     openHelp() {
-        this.showAlert('Ajuda', 'Para cadastrar uma forma de pagamento, preencha o formulário conforme os campos solicitados.', '', () => { })
+        this.showAlert('Ajuda', 'Para cadastrar uma forma de pagamento, preencha todos os campos do formulário.', '', () => { })
     }
 
 }

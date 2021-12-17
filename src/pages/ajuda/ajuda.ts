@@ -74,4 +74,8 @@ export class AjudaPage {
         this.navCtrl.push(Constants.TERMS_PAGE.name, { isToggle: true });
     }
 
+    goCompartilhar() {
+        this.navCtrl.push(Constants.COMPARTILHAR_PAGE.name);
+    }
+
 }

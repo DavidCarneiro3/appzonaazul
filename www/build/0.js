@@ -1,16 +1,18 @@
 webpackJsonp([0],{
 
-/***/ 816:
+/***/ 765:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HistoricoPageModule", function() { return HistoricoPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TempoRestantePageModule", function() { return TempoRestantePageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(36);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__historico__ = __webpack_require__(866);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_loading_spinner_loading_spinner_module__ = __webpack_require__(448);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pipes_pipes_module__ = __webpack_require__(457);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__tempo_restante__ = __webpack_require__(824);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_components_module__ = __webpack_require__(419);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_loading_spinner_loading_spinner_module__ = __webpack_require__(418);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angular_svg_round_progressbar__ = __webpack_require__(825);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angular_svg_round_progressbar___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_angular_svg_round_progressbar__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -22,35 +24,38 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var HistoricoPageModule = /** @class */ (function () {
-    function HistoricoPageModule() {
+
+var TempoRestantePageModule = /** @class */ (function () {
+    function TempoRestantePageModule() {
     }
-    HistoricoPageModule = __decorate([
+    TempoRestantePageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__historico__["a" /* HistoricoPage */],
+                __WEBPACK_IMPORTED_MODULE_2__tempo_restante__["a" /* TempoRestantePage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_4__pipes_pipes_module__["a" /* PipesModule */],
-                __WEBPACK_IMPORTED_MODULE_3__components_loading_spinner_loading_spinner_module__["a" /* LoadingSpinnerComponentModule */],
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__historico__["a" /* HistoricoPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__tempo_restante__["a" /* TempoRestantePage */]),
+                __WEBPACK_IMPORTED_MODULE_4__components_loading_spinner_loading_spinner_module__["a" /* LoadingSpinnerComponentModule */],
+                __WEBPACK_IMPORTED_MODULE_3__components_components_module__["a" /* ComponentsModule */],
+                __WEBPACK_IMPORTED_MODULE_5_angular_svg_round_progressbar__["RoundProgressModule"]
             ],
+            schemas: [__WEBPACK_IMPORTED_MODULE_0__angular_core__["CUSTOM_ELEMENTS_SCHEMA"]],
         })
-    ], HistoricoPageModule);
-    return HistoricoPageModule;
+    ], TempoRestantePageModule);
+    return TempoRestantePageModule;
 }());
 
-//# sourceMappingURL=historico.module.js.map
+//# sourceMappingURL=tempo-restante.module.js.map
 
 /***/ }),
 
-/***/ 834:
+/***/ 770:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MapUtil; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pages_home_home__ = __webpack_require__(836);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__environments_constants__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pages_home_home__ = __webpack_require__(772);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__environments_constants__ = __webpack_require__(19);
 
 
 var MapUtil = /** @class */ (function () {
@@ -63,7 +68,7 @@ var MapUtil = /** @class */ (function () {
             mapTypeControl: false,
             clickableIcons: false,
             fullscreenControl: false,
-            zoomControl: true,
+            zoomControl: false,
             zoomControlOptions: {
                 position: google.maps.ControlPosition.RIGHT_BOTTOM
             },
@@ -134,47 +139,54 @@ var MapUtil = /** @class */ (function () {
     MapUtil.prototype.addPolyline = function (item, map) {
         if (item != null && item.setor != null) {
             var polyline = void 0;
-            var marker = void 0;
-            var iconUrlGrenn = "assets/imgs/map-marker-green-4.png";
-            var iconUrlRed = "assets/imgs/map-marker-red-4.png";
+            var marker_1;
+            var iconUrlGrenn = "assets/imgs/map-marker-blue-4.svg";
+            var iconUrlRed = "assets/imgs/map-marker-red-4.svg";
             var totalVagasUtilizadas = item.setor.qtd_deficiente_estacionados + item.setor.qtd_idoso_estacionados + item.setor.qtd_normal_estacionados;
-            polyline = new google.maps.Polyline(this.createPolylineOptions(item.setor, totalVagasUtilizadas));
-            polyline.setMap(map);
-            MapUtil.polylines.push(polyline);
-            marker = new google.maps.Marker({
+            //polyline = new google.maps.Polyline(this.createPolylineOptions(item.setor, totalVagasUtilizadas));
+            //polyline.setMap(map);
+            //MapUtil.polylines.push(polyline);
+            marker_1 = new google.maps.Marker({
                 position: { lat: item.setor.latInicio, lng: item.setor.lngInicio },
                 icon: {
                     url: (item.setor.total_vagas - totalVagasUtilizadas > 0) ? iconUrlGrenn : iconUrlRed,
-                    scaledSize: new google.maps.Size(32, 32)
+                    scaledSize: new google.maps.Size(122, 122)
                 }
             });
             // marker.
-            marker.setMap(map);
+            marker_1.setMap(map);
             var infowindow_1 = new google.maps.InfoWindow({
                 content: this.createInfoPolylines(item.setor, item.area, totalVagasUtilizadas),
             });
             /**
              * Abre as opções do estacionamento
              * polyline  item pressionado onde vai abrir o evento ( linha do inicio e final do Simbolo do carro)
-             */
-            google.maps.event.addListener(polyline, 'click', function (event) {
-                infowindow_1.setPosition(event.latLng);
-                infowindow_1.open(__WEBPACK_IMPORTED_MODULE_0__pages_home_home__["a" /* HomePage */].map);
-                MapUtil.infoWindows.push(infowindow_1);
+             
+            google.maps.event.addListener(polyline, 'click', event => {
+
+                infowindow.setPosition(event.latLng);
+                infowindow.open(HomePage.map);
+                MapUtil.infoWindows.push(infowindow);
+
                 if (MapUtil.infoWindows.length > 1) {
-                    MapUtil.infoWindows.forEach(function (value) {
-                        if (value != infowindow_1) {
+                    MapUtil.infoWindows.forEach(value => {
+                        if (value != infowindow) {
                             value.close();
                         }
-                    });
+                    })
                 }
             });
-            /**
+
+            
              * Abre as opções do estacionamento
              * marker  item pressionado onde vai abrir o evento ( Simbolo do carro verde)
              */
-            google.maps.event.addListener(marker, 'click', function (event) {
-                infowindow_1.setPosition(event.latLng);
+            google.maps.event.addListener(marker_1, 'click', function (event) {
+                // let latLng = event.latLng;
+                var latLng = marker_1.position;
+                console.log('marker', marker_1);
+                console.log('event', event);
+                infowindow_1.setPosition(latLng);
                 infowindow_1.open(__WEBPACK_IMPORTED_MODULE_0__pages_home_home__["a" /* HomePage */].map);
                 MapUtil.infoWindows.push(infowindow_1);
                 if (MapUtil.infoWindows.length > 1) {
@@ -188,8 +200,8 @@ var MapUtil = /** @class */ (function () {
         }
     };
     MapUtil.prototype.findSetor = function (map, setor, area) {
-        var iconUrlGrenn = "assets/imgs/map-marker-green-4.png";
-        var iconUrlRed = "assets/imgs/map-marker-red-4.png";
+        var iconUrlGrenn = "assets/imgs/map-marker-blue-4.svg";
+        var iconUrlRed = "assets/imgs/map-marker-red-4.svg";
         var marker;
         var latlng = new google.maps.LatLng(setor.latInicio, setor.lngInicio);
         map.setCenter(latlng);
@@ -197,6 +209,19 @@ var MapUtil = /** @class */ (function () {
         var totalVagasUtilizadas = setor.qtd_deficiente_estacionados + setor.qtd_idoso_estacionados + setor.qtd_normal_estacionados;
         var infowindow = new google.maps.InfoWindow({
             content: this.createInfoPolylines(setor, area, totalVagasUtilizadas),
+        });
+        google.maps.event.addListener(infowindow, 'domready', function () {
+            // Referência ao DIV que recebe o conteúdo da infowindow recorrendo ao jQuery
+            //var iwOuter = this.getElementByClassName('.gm-style-iw');
+            /* Uma vez que o div pretendido está numa posição anterior ao div .gm-style-iw.
+             * Recorremos ao jQuery e criamos uma variável iwBackground,
+             * e aproveitamos a referência já existente do .gm-style-iw para obter o div anterior com .prev().
+             */
+            //var iwBackground = iwOuter.prev();
+            // Remover o div da sombra do fundo
+            //iwBackground.children(':nth-child(2)').css({'display' : 'none'});
+            // Remover o div de fundo branco
+            //iwBackground.children(':nth-child(4)').css({'display' : 'none'});
         });
         marker = new google.maps.Marker({
             position: { lat: setor.latInicio, lng: setor.lngInicio },
@@ -251,31 +276,42 @@ var MapUtil = /** @class */ (function () {
     MapUtil.prototype.createInfoPolylines = function (setor, area, totalVagasUtilizadas) {
         var div = document.createElement('div');
         div.className = "gm-style gm-style-iw";
-        var setorNome = (setor.nome.length < 3) ? ('Setor ' + setor.nome) : setor.nome;
+        var divl = document.createElement('div');
+        divl.className = "style-left";
+        var divr = document.createElement('div');
+        divr.className = "style-right";
+        //const setorNome = (setor?.nome.toString().length < 3) ? ('Setor ' + setor.nome) : setor.nome;
+        var setorNome = setor.nome;
         // console.log('ST', setorNome + " | " + setor.codigo);
         // console.log('AR', area);
         var h3 = document.createElement('h3');
         h3.className = "setor-codigo";
-        h3.innerText = setorNome + " (" + setor.codigo + ")" + " | Área: " + area.endereco + " (" + area.codigo + ")";
-        var h5vt = document.createElement('h4');
+        //h3.innerText = setorNome + " (" + setor.codigo + ")" + " | Área: " + area.endereco + " (" + area.codigo + ")";
+        // h3.innerText = area.endereco + " (" + area.codigo + ")" + " - " +setorNome;
+        h3.innerText = setorNome + " - " + area.endereco;
+        var h5vt = document.createElement('p');
         h5vt.className = "setor-vagas";
         h5vt.innerText = "Vagas: " + setor.total_vagas;
-        var h5vn = document.createElement('h4');
+        var h5vn = document.createElement('p');
         h5vn.className = "setor-vagas-normal";
         // h5vn.innerText = "Vagas convencionais disponíveis: " + ((setor.total_vagas - (setor.vagas_idoso + setor.vagas_deficiente)) - setor.qtd_normal_estacionados);
         h5vn.innerText = "Vagas convencionais: " + (setor.total_vagas - setor.qtd_normal_estacionados);
-        var h5vd = document.createElement('h4');
-        h5vd.className = "setor-vagas-normal";
-        h5vd.innerText = "Vagas de deficiente: " + (setor.vagas_deficiente - setor.qtd_deficiente_estacionados);
-        var h5vi = document.createElement('h4');
-        h5vi.className = "setor-vagas-normal";
+        var h5vd = document.createElement('p');
+        h5vd.className = "setor-vagas-pcd";
+        h5vd.innerText = "Vagas de PCD: " + (setor.vagas_deficiente - setor.qtd_deficiente_estacionados);
+        var h5vi = document.createElement('p');
+        h5vi.className = "setor-vagas-i";
         h5vi.innerText = "Vagas de idoso: " + (setor.vagas_idoso - setor.qtd_idoso_estacionados);
-        var h5vc = document.createElement('h4');
-        h5vc.className = "setor-vagas-normal";
+        var h5vc = document.createElement('p');
+        h5vc.className = "setor-vagas-cd";
         h5vc.innerText = "Vagas Carga/Descarga: " + (setor.vagas_carga_descarga - setor.qtd_carga_descarga_estacionados);
         var button = document.createElement('button');
         button.className = "btn-estacionar";
-        button.innerText = "Estacionar";
+        button.innerText = "ESTACIONAR";
+        var ico = document.createElement('img');
+        ico.setAttribute("src", "assets/icones/estacionamento-white.svg");
+        ico.className = "pin-view";
+        button.appendChild(ico);
         button.addEventListener('click', function () {
             document.getElementById('btn-show-estacionar-page').setAttribute("setor", setor.codigo);
             document.getElementById('btn-show-estacionar-page').setAttribute("area", area.codigo);
@@ -286,11 +322,18 @@ var MapUtil = /** @class */ (function () {
         if ((setor.total_vagas - totalVagasUtilizadas) <= 0) {
             button.disabled = true;
         }
+        var divpin = document.createElement('div');
+        divpin.className = "btn-pin";
+        // buttonView.innerText = "Ver";
+        var iconpin = document.createElement('img');
+        iconpin.setAttribute("src", "assets/icones/pin-dark.svg");
+        iconpin.className = "pin-btn";
+        divpin.appendChild(iconpin);
         var buttonView = document.createElement('button');
         buttonView.className = "btn-ver";
         // buttonView.innerText = "Ver";
         var icon = document.createElement('img');
-        icon.setAttribute("src", "assets/icon/streat_view.png");
+        icon.setAttribute("src", "assets/icones/shopping-cart-white.svg");
         icon.className = "streat-view";
         buttonView.appendChild(icon);
         buttonView.addEventListener('click', function () {
@@ -298,14 +341,17 @@ var MapUtil = /** @class */ (function () {
             document.getElementById('btn-show-streat-view').setAttribute("area", area.codigo);
             document.getElementById('btn-show-streat-view').click();
         });
-        div.appendChild(h3);
+        divl.appendChild(h3);
         // div.appendChild(h5vt);
-        div.appendChild(h5vn);
-        div.appendChild(h5vd);
-        div.appendChild(h5vi);
-        div.appendChild(h5vc);
-        div.appendChild(button);
-        div.appendChild(buttonView);
+        divr.appendChild(h5vn);
+        divr.appendChild(h5vi);
+        divr.appendChild(h5vd);
+        divr.appendChild(h5vc);
+        divr.appendChild(button);
+        divl.appendChild(buttonView);
+        div.appendChild(divl);
+        div.appendChild(divr);
+        div.appendChild(divpin);
         return div;
     };
     MapUtil.prototype.determineColor = function (vagas) {
@@ -481,7 +527,7 @@ var MapUtil = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 835:
+/***/ 771:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -638,33 +684,33 @@ var FunctionsUtil = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 836:
+/***/ 772:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomePage; });
 /* unused harmony export LatLng */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(36);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_android_permissions__ = __webpack_require__(219);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_location_accuracy__ = __webpack_require__(443);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_speech_recognition__ = __webpack_require__(446);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_geolocation__ = __webpack_require__(445);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_take__ = __webpack_require__(93);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_android_permissions__ = __webpack_require__(200);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_location_accuracy__ = __webpack_require__(416);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_speech_recognition__ = __webpack_require__(417);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_geolocation__ = __webpack_require__(415);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_take__ = __webpack_require__(85);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_take___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_take__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_setores_setores__ = __webpack_require__(442);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__providers_veiculos_veiculos__ = __webpack_require__(441);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__providers_auth_auth__ = __webpack_require__(217);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_setores_setores__ = __webpack_require__(413);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__providers_veiculos_veiculos__ = __webpack_require__(412);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__providers_auth_auth__ = __webpack_require__(199);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__providers_user_user__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__providers_cads_user_cads_user__ = __webpack_require__(218);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__providers_comunicacao_central_comunicacao_central__ = __webpack_require__(220);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__providers_modal_modal__ = __webpack_require__(216);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__providers_area_area__ = __webpack_require__(444);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__environments_constants__ = __webpack_require__(20);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__util_map_util__ = __webpack_require__(834);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__util_functions_util__ = __webpack_require__(835);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__app_app_component__ = __webpack_require__(440);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__providers_estacionar_estacionar__ = __webpack_require__(221);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__providers_cads_user_cads_user__ = __webpack_require__(111);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__providers_comunicacao_central_comunicacao_central__ = __webpack_require__(202);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__providers_modal_modal__ = __webpack_require__(198);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__providers_area_area__ = __webpack_require__(414);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__environments_constants__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__util_map_util__ = __webpack_require__(770);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__util_functions_util__ = __webpack_require__(771);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__app_app_component__ = __webpack_require__(411);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__providers_estacionar_estacionar__ = __webpack_require__(201);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -718,12 +764,18 @@ var HomePage = /** @class */ (function () {
         this.areaProvider = areaProvider;
         this.events = events;
         this.estacionarProvider = estacionarProvider;
+        this.city = 'Fortaleza';
         this.estacionar = [];
         this.setores = [];
         this.qtdCadsUser = 0;
         this.qtdCadsUSados = 0;
         this.mapUtil = new __WEBPACK_IMPORTED_MODULE_16__util_map_util__["a" /* MapUtil */]();
         this.allSetores = [];
+        this.selectOptions = {
+            title: 'Cidade',
+            subTitle: 'Escolha sua cidade',
+            mode: 'ios'
+        };
         this.getAllSetores();
         platform.registerBackButtonAction(function () {
             if (_this.navCtrl.getActive().name == 'HomePage') {
@@ -757,7 +809,7 @@ var HomePage = /** @class */ (function () {
                 console.log(userID);
                 _this.estacionarProvider.countCadsById(userID)
                     .subscribe(function (val) {
-                    console.log(val);
+                    // console.log(val)
                 });
                 _this.cadsUserProvider.findQtdCads(userID).take(1).subscribe(function (value) {
                     value.map(function (cads) {
@@ -997,6 +1049,7 @@ var HomePage = /** @class */ (function () {
                     loading.dismiss();
                     if (_item.length > 0) {
                         _this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_15__environments_constants__["a" /* Constants */].ESTACIONAR_PAGE.name, {
+                            fromPage: 'mapa',
                             setor: codigoSetor,
                             area: codigoArea,
                             'setor-nome': nomeSetor,
@@ -1016,7 +1069,8 @@ var HomePage = /** @class */ (function () {
                                     area: codigoArea,
                                     setor: codigoSetor,
                                     cad: _this.cad,
-                                    qtdCads: (_this.qtdCadsUser - _this.qtdCadsUSados)
+                                    qtdCads: (_this.qtdCadsUser - _this.qtdCadsUSados),
+                                    veiculoAllArr: _item
                                 });
                             });
                         }
@@ -1028,7 +1082,8 @@ var HomePage = /** @class */ (function () {
                                 area: codigoArea,
                                 setor: codigoSetor,
                                 cad: _this.cad,
-                                qtdCads: (_this.qtdCadsUser - _this.qtdCadsUSados)
+                                qtdCads: (_this.qtdCadsUser - _this.qtdCadsUSados),
+                                veiculoAllArr: _item
                             });
                         }
                     }
@@ -1176,23 +1231,25 @@ var HomePage = /** @class */ (function () {
         }, function (error) {
         });
     };
-    HomePage.prototype.showStreatView = function (event) {
-        var _this = this;
-        var wait = this.loadingCtrl.create({ content: 'Aguarde...' });
+    HomePage.prototype.showStreatView = function () {
+        /*let wait = this.loadingCtrl.create({ content: 'Aguarde...' });
         wait.present();
-        var button = document.getElementById('btn-show-streat-view');
-        var codigoSetor = button.getAttribute("setor");
-        var codigoArea = button.getAttribute("area");
+        let button = document.getElementById('btn-show-streat-view');
+        let codigoSetor = button.getAttribute("setor");
+        let codigoArea = button.getAttribute("area");
+
         this.setoresProvider.byId(codigoArea, codigoSetor)
-            .subscribe(function (data) {
-            var streatViewPage = _this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_15__environments_constants__["a" /* Constants */].STREAT_VIEW_PAGE.name, { map: HomePage_1.map, data: data, wait: wait });
-            streatViewPage.present().then(function () {
-                _this.modalProvider.setActive();
-            });
-        }, function (error) {
-            console.log(error);
-            wait.dismiss();
-        });
+            .subscribe(data => {
+                const streatViewPage = this.modalCtrl.create(Constants.STREAT_VIEW_PAGE.name, { map: HomePage.map, data: data, wait: wait });
+                streatViewPage.present().then(() => {
+                    this.modalProvider.setActive();
+                });
+            },
+                (error) => {
+                    console.log(error);
+                    wait.dismiss();
+                })*/
+        this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_15__environments_constants__["a" /* Constants */].PAGAMENTOS_PAGE.name);
     };
     HomePage.prototype.showToast = function (msg, time) {
         var toast = this.toastCtrl.create({
@@ -1262,13 +1319,13 @@ var HomePage = /** @class */ (function () {
     ], HomePage.prototype, "iconElement", void 0);
     HomePage = HomePage_1 = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-home',template:/*ion-inline-start:"/Users/desenvolvedor/Documents/appzonzazul/src/pages/home/home.html"*/'<ion-header no-border>\n    <ion-navbar color="header">\n        <button ion-button icon-only menuToggle>\n            <ion-icon class="header-icon" name="menu"></ion-icon>\n        </button>\n        <ion-title>\n            <ion-label>Início</ion-label>\n        </ion-title>\n\n        <ion-buttons end>\n            <button ion-button icon-only (click)="openTempoRestantePage()">\n                <img src="assets/imgs/time.png" width="30px" height="30px" />\n            </button>\n        </ion-buttons>\n    </ion-navbar>\n</ion-header>\n\n<ion-content class="content">\n    <div #map id="map"></div>\n    <input #search id="search" class="controls" type="text" placeholder="Buscar Local">\n\n    <button ion-button icon-only type="button" item-right clear (click)="listen()" id="mic" [style.display]="\'none\'">\n        <ion-icon name="mic" class="icon"></ion-icon>\n    </button>\n    <ion-fab id="help">\n        <button ion-fab icon-only (click)="openHelp()">\n            <ion-icon name="help"></ion-icon>\n        </button>\n    </ion-fab>\n\n    <ion-fab id="close" (click)="showCloseSetor()">\n        <button ion-fab>\n        </button>\n    </ion-fab>\n\n    <ion-fab>\n        <button ion-fab icon-only color="default" (click)="buscarSetores()" id="locate">\n            <ion-icon name="search" class="icon"></ion-icon>\n        </button>\n    </ion-fab>\n\n    <ion-icon #icon name="close" class="icon-clear" style="display: none" id="icon"></ion-icon>\n    <button ion-button id="btn-show-estacionar-page" (click)="openEstacionarPage($event)"\n        [style.display]="\'none\'"></button>\n    <button ion-button id="btn-show-streat-view" (click)="showStreatView($event)" [style.display]="\'none\'"></button>\n</ion-content>'/*ion-inline-end:"/Users/desenvolvedor/Documents/appzonzazul/src/pages/home/home.html"*/
+            selector: 'page-home',template:/*ion-inline-start:"/Users/desenvolvedor/Documents/zonaazulfortaleza-develop/src/pages/home/home.html"*/'<ion-header no-border>\n    <ion-navbar color="header">\n        <button ion-button icon-only menuToggle>\n            <ion-icon class="header-icon" name="menu"></ion-icon>\n        </button>\n        <ion-title class="title-header">\n            <ion-select [(ngModel)]="city" class="select-city" cancelText="Cancelar" okText="Ok" [selectOptions]="selectOptions">\n                <ion-option value="Fortaleza">Fortaleza</ion-option>\n              </ion-select>\n        </ion-title>\n\n        <ion-buttons end>\n            <button ion-button icon-only (click)="openTempoRestantePage()">\n                <img src="assets/icones/car-white.svg"  />\n            </button>\n        </ion-buttons>\n    </ion-navbar>\n</ion-header>\n\n<ion-content class="content">\n    <div #map id="map"></div>\n    <input #search id="search" class="controls" type="text" placeholder="Buscar">\n\n    <button ion-button icon-only type="button" item-right clear id="mic" >\n        <ion-icon color="gray" name="search" class="icon"></ion-icon>\n    </button>\n    <!--<ion-fab id="help">\n        <button ion-fab icon-only (click)="openHelp()">\n            <ion-icon name="help"></ion-icon>\n        </button>\n    </ion-fab> -->\n\n    <ion-fab id="close" (click)="showCloseSetor()">\n        <button ion-fab>\n        </button>\n    </ion-fab>\n\n   <!-- <ion-fab>\n        <button ion-fab icon-only color="default" (click)="buscarSetores()" id="locate">\n            <ion-icon name="search" class="icon"></ion-icon>\n        </button>\n    </ion-fab> -->\n\n    <ion-icon #icon name="close" class="icon-clear" style="display: none" id="icon"></ion-icon>\n    <button ion-button id="btn-show-estacionar-page" (click)="openEstacionarPage($event)"\n        [style.display]="\'none\'"></button>\n    <button ion-button id="btn-show-streat-view" (click)="showStreatView()" [style.display]="\'none\'"></button>\n</ion-content>'/*ion-inline-end:"/Users/desenvolvedor/Documents/zonaazulfortaleza-develop/src/pages/home/home.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* Platform */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ModalController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* ToastController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* ToastController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* LoadingController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavParams */],
             __WEBPACK_IMPORTED_MODULE_5__ionic_native_geolocation__["a" /* Geolocation */],
@@ -1302,12 +1359,12 @@ var LatLng = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 838:
+/***/ 774:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var isArray_1 = __webpack_require__(224);
+var isArray_1 = __webpack_require__(205);
 function isNumeric(val) {
     // parseFloat NaNs numeric-cast false positives (null|true|false|"")
     // ...but misinterprets leading-number strings, particularly hex literals ("0x...")
@@ -1321,30 +1378,30 @@ exports.isNumeric = isNumeric;
 
 /***/ }),
 
-/***/ 839:
+/***/ 775:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 var Observable_1 = __webpack_require__(4);
-var interval_1 = __webpack_require__(840);
+var interval_1 = __webpack_require__(776);
 Observable_1.Observable.interval = interval_1.interval;
 //# sourceMappingURL=interval.js.map
 
 /***/ }),
 
-/***/ 840:
+/***/ 776:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var IntervalObservable_1 = __webpack_require__(841);
+var IntervalObservable_1 = __webpack_require__(777);
 exports.interval = IntervalObservable_1.IntervalObservable.create;
 //# sourceMappingURL=interval.js.map
 
 /***/ }),
 
-/***/ 841:
+/***/ 777:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1354,9 +1411,9 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var isNumeric_1 = __webpack_require__(838);
+var isNumeric_1 = __webpack_require__(774);
 var Observable_1 = __webpack_require__(4);
-var async_1 = __webpack_require__(63);
+var async_1 = __webpack_require__(58);
 /**
  * We need this JSDoc comment for affecting ESDoc.
  * @extends {Ignored}
@@ -1439,30 +1496,687 @@ exports.IntervalObservable = IntervalObservable;
 
 /***/ }),
 
-/***/ 866:
+/***/ 778:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__(0);
+var platform_browser_1 = __webpack_require__(50);
+var DEGREE_IN_RADIANS = Math.PI / 180;
+var RoundProgressService = (function () {
+    function RoundProgressService(document) {
+        this.supportsSvg = !!(document &&
+            document.createElementNS &&
+            document.createElementNS('http://www.w3.org/2000/svg', 'svg').createSVGRect);
+        this._base = document && document.head.querySelector('base');
+        this._hasPerf = typeof window !== 'undefined' &&
+            window.performance &&
+            window.performance.now &&
+            typeof window.performance.now() === 'number';
+    }
+    /**
+     * Resolves a SVG color against the page's `base` tag.
+     */
+    RoundProgressService.prototype.resolveColor = function (color) {
+        if (this._base && this._base.href) {
+            var hashIndex = color.indexOf('#');
+            if (hashIndex > -1 && color.indexOf('url') > -1) {
+                return color.slice(0, hashIndex) + location.href + color.slice(hashIndex);
+            }
+        }
+        return color;
+    };
+    /**
+     * Generates a timestamp.
+     */
+    RoundProgressService.prototype.getTimestamp = function () {
+        return this._hasPerf ? window.performance.now() : Date.now();
+    };
+    /**
+     * Generates the value for an SVG arc.
+     * @param current       Current value.
+     * @param total         Maximum value.
+     * @param pathRadius    Radius of the SVG path.
+     * @param elementRadius Radius of the SVG container.
+     * @param isSemicircle  Whether the element should be a semicircle.
+     */
+    RoundProgressService.prototype.getArc = function (current, total, pathRadius, elementRadius, isSemicircle) {
+        if (isSemicircle === void 0) { isSemicircle = false; }
+        var value = Math.max(0, Math.min(current || 0, total));
+        var maxAngle = isSemicircle ? 180 : 359.9999;
+        var percentage = total === 0 ? maxAngle : (value / total) * maxAngle;
+        var start = this._polarToCartesian(elementRadius, pathRadius, percentage);
+        var end = this._polarToCartesian(elementRadius, pathRadius, 0);
+        var arcSweep = (percentage <= 180 ? 0 : 1);
+        return "M " + start + " A " + pathRadius + " " + pathRadius + " 0 " + arcSweep + " 0 " + end;
+    };
+    ;
+    /**
+     * Converts polar cooradinates to Cartesian.
+     * @param elementRadius  Radius of the wrapper element.
+     * @param pathRadius     Radius of the path being described.
+     * @param angleInDegrees Degree to be converted.
+     */
+    RoundProgressService.prototype._polarToCartesian = function (elementRadius, pathRadius, angleInDegrees) {
+        var angleInRadians = (angleInDegrees - 90) * DEGREE_IN_RADIANS;
+        var x = elementRadius + (pathRadius * Math.cos(angleInRadians));
+        var y = elementRadius + (pathRadius * Math.sin(angleInRadians));
+        return x + ' ' + y;
+    };
+    return RoundProgressService;
+}());
+RoundProgressService = __decorate([
+    core_1.Injectable(),
+    __param(0, core_1.Optional()), __param(0, core_1.Inject(platform_browser_1.DOCUMENT)),
+    __metadata("design:paramtypes", [Object])
+], RoundProgressService);
+exports.RoundProgressService = RoundProgressService;
+;
+//# sourceMappingURL=round-progress.service.js.map
+
+/***/ }),
+
+/***/ 779:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__(0);
+var RoundProgressConfig = (function () {
+    function RoundProgressConfig() {
+        this._options = {
+            radius: 125,
+            animation: 'easeOutCubic',
+            animationDelay: null,
+            duration: 500,
+            stroke: 15,
+            color: '#45CCCE',
+            background: '#EAEAEA',
+            responsive: false,
+            clockwise: true,
+            semicircle: false,
+            rounded: false
+        };
+    }
+    /** Configures the defaults. */
+    RoundProgressConfig.prototype.setDefaults = function (config) {
+        return Object.assign(this._options, config);
+    };
+    /** Fetches a value from the defaults. */
+    RoundProgressConfig.prototype.get = function (key) {
+        return this._options[key];
+    };
+    return RoundProgressConfig;
+}());
+RoundProgressConfig = __decorate([
+    core_1.Injectable()
+], RoundProgressConfig);
+exports.RoundProgressConfig = RoundProgressConfig;
+//# sourceMappingURL=round-progress.config.js.map
+
+/***/ }),
+
+/***/ 780:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__(0);
+var RoundProgressEase = (function () {
+    function RoundProgressEase() {
+    }
+    // t: current time (or position) of the neonate. This can be seconds or frames, steps,
+    // seconds, ms, whatever – as long as the unit is the same as is used for the total time.
+    // b: beginning value of the property.
+    // c: change between the beginning and destination value of the property.
+    // d: total time of the neonate.
+    RoundProgressEase.prototype.linearEase = function (t, b, c, d) {
+        return c * t / d + b;
+    };
+    ;
+    RoundProgressEase.prototype.easeInQuad = function (t, b, c, d) {
+        return c * (t /= d) * t + b;
+    };
+    ;
+    RoundProgressEase.prototype.easeOutQuad = function (t, b, c, d) {
+        return -c * (t /= d) * (t - 2) + b;
+    };
+    ;
+    RoundProgressEase.prototype.easeInOutQuad = function (t, b, c, d) {
+        if ((t /= d / 2) < 1) {
+            return c / 2 * t * t + b;
+        }
+        return -c / 2 * ((--t) * (t - 2) - 1) + b;
+    };
+    ;
+    RoundProgressEase.prototype.easeInCubic = function (t, b, c, d) {
+        return c * (t /= d) * t * t + b;
+    };
+    ;
+    RoundProgressEase.prototype.easeOutCubic = function (t, b, c, d) {
+        return c * ((t = t / d - 1) * t * t + 1) + b;
+    };
+    ;
+    RoundProgressEase.prototype.easeInOutCubic = function (t, b, c, d) {
+        if ((t /= d / 2) < 1) {
+            return c / 2 * t * t * t + b;
+        }
+        return c / 2 * ((t -= 2) * t * t + 2) + b;
+    };
+    ;
+    RoundProgressEase.prototype.easeInQuart = function (t, b, c, d) {
+        return c * (t /= d) * t * t * t + b;
+    };
+    ;
+    RoundProgressEase.prototype.easeOutQuart = function (t, b, c, d) {
+        return -c * ((t = t / d - 1) * t * t * t - 1) + b;
+    };
+    ;
+    RoundProgressEase.prototype.easeInOutQuart = function (t, b, c, d) {
+        if ((t /= d / 2) < 1) {
+            return c / 2 * t * t * t * t + b;
+        }
+        return -c / 2 * ((t -= 2) * t * t * t - 2) + b;
+    };
+    ;
+    RoundProgressEase.prototype.easeInQuint = function (t, b, c, d) {
+        return c * (t /= d) * t * t * t * t + b;
+    };
+    ;
+    RoundProgressEase.prototype.easeOutQuint = function (t, b, c, d) {
+        return c * ((t = t / d - 1) * t * t * t * t + 1) + b;
+    };
+    ;
+    RoundProgressEase.prototype.easeInOutQuint = function (t, b, c, d) {
+        if ((t /= d / 2) < 1) {
+            return c / 2 * t * t * t * t * t + b;
+        }
+        return c / 2 * ((t -= 2) * t * t * t * t + 2) + b;
+    };
+    ;
+    RoundProgressEase.prototype.easeInSine = function (t, b, c, d) {
+        return -c * Math.cos(t / d * (Math.PI / 2)) + c + b;
+    };
+    ;
+    RoundProgressEase.prototype.easeOutSine = function (t, b, c, d) {
+        return c * Math.sin(t / d * (Math.PI / 2)) + b;
+    };
+    ;
+    RoundProgressEase.prototype.easeInOutSine = function (t, b, c, d) {
+        return -c / 2 * (Math.cos(Math.PI * t / d) - 1) + b;
+    };
+    ;
+    RoundProgressEase.prototype.easeInExpo = function (t, b, c, d) {
+        return (t == 0) ? b : c * Math.pow(2, 10 * (t / d - 1)) + b;
+    };
+    ;
+    RoundProgressEase.prototype.easeOutExpo = function (t, b, c, d) {
+        return (t == d) ? b + c : c * (-Math.pow(2, -10 * t / d) + 1) + b;
+    };
+    ;
+    RoundProgressEase.prototype.easeInOutExpo = function (t, b, c, d) {
+        if (t == 0) {
+            return b;
+        }
+        ;
+        if (t == d) {
+            return b + c;
+        }
+        if ((t /= d / 2) < 1) {
+            return c / 2 * Math.pow(2, 10 * (t - 1)) + b;
+        }
+        return c / 2 * (-Math.pow(2, -10 * --t) + 2) + b;
+    };
+    ;
+    RoundProgressEase.prototype.easeInCirc = function (t, b, c, d) {
+        return -c * (Math.sqrt(1 - (t /= d) * t) - 1) + b;
+    };
+    ;
+    RoundProgressEase.prototype.easeOutCirc = function (t, b, c, d) {
+        return c * Math.sqrt(1 - (t = t / d - 1) * t) + b;
+    };
+    ;
+    RoundProgressEase.prototype.easeInOutCirc = function (t, b, c, d) {
+        if ((t /= d / 2) < 1) {
+            return -c / 2 * (Math.sqrt(1 - t * t) - 1) + b;
+        }
+        return c / 2 * (Math.sqrt(1 - (t -= 2) * t) + 1) + b;
+    };
+    ;
+    RoundProgressEase.prototype.easeInElastic = function (t, b, c, d) {
+        var s = 1.70158;
+        var p = d * 0.3;
+        var a = c;
+        if (t == 0) {
+            return b;
+        }
+        if ((t /= d) == 1) {
+            return b + c;
+        }
+        if (a < Math.abs(c)) {
+            a = c;
+            s = p / 4;
+        }
+        else {
+            s = p / (2 * Math.PI) * Math.asin(c / a);
+        }
+        return -(a * Math.pow(2, 10 * (t--)) * Math.sin((t * d - s) * (2 * Math.PI) / p)) + b;
+    };
+    ;
+    RoundProgressEase.prototype.easeOutElastic = function (t, b, c, d) {
+        var s = 1.70158;
+        var p = d * 0.3;
+        var a = c;
+        if (t == 0) {
+            return b;
+        }
+        if ((t /= d) == 1) {
+            return b + c;
+        }
+        if (a < Math.abs(c)) {
+            a = c;
+            s = p / 4;
+        }
+        else {
+            s = p / (2 * Math.PI) * Math.asin(c / a);
+        }
+        return a * Math.pow(2, -10 * t) * Math.sin((t * d - s) * (2 * Math.PI) / p) + c + b;
+    };
+    ;
+    RoundProgressEase.prototype.easeInOutElastic = function (t, b, c, d) {
+        var s = 1.70158;
+        var p = d * (0.3 * 1.5);
+        var a = c;
+        if (t == 0) {
+            return b;
+        }
+        if ((t /= d / 2) == 2) {
+            return b + c;
+        }
+        if (a < Math.abs(c)) {
+            a = c;
+            s = p / 4;
+        }
+        else {
+            s = p / (2 * Math.PI) * Math.asin(c / a);
+        }
+        if (t < 1) {
+            return -0.5 * (a * Math.pow(2, 10 * (t -= 1)) *
+                Math.sin((t * d - s) * (2 * Math.PI) / p)) + b;
+        }
+        return a * Math.pow(2, -10 * (t -= 1)) *
+            Math.sin((t * d - s) * (2 * Math.PI) / p) * 0.5 + c + b;
+    };
+    ;
+    RoundProgressEase.prototype.easeInBack = function (t, b, c, d, s) {
+        if (s === void 0) { s = 1.70158; }
+        return c * (t /= d) * t * ((s + 1) * t - s) + b;
+    };
+    ;
+    RoundProgressEase.prototype.easeOutBack = function (t, b, c, d, s) {
+        if (s === void 0) { s = 1.70158; }
+        return c * ((t = t / d - 1) * t * ((s + 1) * t + s) + 1) + b;
+    };
+    ;
+    RoundProgressEase.prototype.easeInOutBack = function (t, b, c, d, s) {
+        if (s === void 0) { s = 1.70158; }
+        if ((t /= d / 2) < 1) {
+            return c / 2 * (t * t * (((s *= 1.525) + 1) * t - s)) + b;
+        }
+        return c / 2 * ((t -= 2) * t * (((s *= 1.525) + 1) * t + s) + 2) + b;
+    };
+    ;
+    RoundProgressEase.prototype.easeInBounce = function (t, b, c, d) {
+        return c - this.easeOutBounce(d - t, 0, c, d) + b;
+    };
+    ;
+    RoundProgressEase.prototype.easeOutBounce = function (t, b, c, d) {
+        if ((t /= d) < (1 / 2.75)) {
+            return c * (7.5625 * t * t) + b;
+        }
+        else if (t < (2 / 2.75)) {
+            return c * (7.5625 * (t -= (1.5 / 2.75)) * t + 0.75) + b;
+        }
+        else if (t < (2.5 / 2.75)) {
+            return c * (7.5625 * (t -= (2.25 / 2.75)) * t + 0.9375) + b;
+        }
+        return c * (7.5625 * (t -= (2.625 / 2.75)) * t + 0.984375) + b;
+    };
+    ;
+    RoundProgressEase.prototype.easeInOutBounce = function (t, b, c, d) {
+        if (t < d / 2) {
+            return this.easeInBounce(t * 2, 0, c, d) * 0.5 + b;
+        }
+        return this.easeOutBounce(t * 2 - d, 0, c, d) * 0.5 + c * 0.5 + b;
+    };
+    ;
+    return RoundProgressEase;
+}());
+RoundProgressEase = __decorate([
+    core_1.Injectable()
+], RoundProgressEase);
+exports.RoundProgressEase = RoundProgressEase;
+/**
+ * TERMS OF USE - EASING EQUATIONS
+ * Open source under the BSD License.
+
+ * Copyright © 2001 Robert Penner
+ * All rights reserved.
+ * Redistribution and use in source and binary forms, with or without modification, are permitted
+ * provided that the following conditions are met:
+
+ * Redistributions of source code must retain the above copyright notice, this list of conditions
+ * and the following disclaimer.
+ *
+ * Redistributions in binary form must reproduce the above copyright notice, this list of conditions
+ * and the following disclaimer in the documentation and/or other materials provided with the
+ * distribution.
+ *
+ * Neither the name of the author nor the names of contributors may be used to endorse or promote
+ * products derived from this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR
+ * IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
+ * FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+ * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+ * DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+ * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
+ * ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+//# sourceMappingURL=round-progress.ease.js.map
+
+/***/ }),
+
+/***/ 781:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__(0);
+var round_progress_service_1 = __webpack_require__(778);
+var round_progress_config_1 = __webpack_require__(779);
+var round_progress_ease_1 = __webpack_require__(780);
+var RoundProgressComponent = (function () {
+    function RoundProgressComponent(_service, _easing, _defaults, _ngZone, _renderer) {
+        this._service = _service;
+        this._easing = _easing;
+        this._defaults = _defaults;
+        this._ngZone = _ngZone;
+        this._renderer = _renderer;
+        this._lastAnimationId = 0;
+        this.radius = this._defaults.get('radius');
+        this.animation = this._defaults.get('animation');
+        this.animationDelay = this._defaults.get('animationDelay');
+        this.duration = this._defaults.get('duration');
+        this.stroke = this._defaults.get('stroke');
+        this.color = this._defaults.get('color');
+        this.background = this._defaults.get('background');
+        this.responsive = this._defaults.get('responsive');
+        this.clockwise = this._defaults.get('clockwise');
+        this.semicircle = this._defaults.get('semicircle');
+        this.rounded = this._defaults.get('rounded');
+        this.onRender = new core_1.EventEmitter();
+    }
+    /** Animates a change in the current value. */
+    RoundProgressComponent.prototype._animateChange = function (from, to) {
+        var _this = this;
+        if (typeof from !== 'number') {
+            from = 0;
+        }
+        to = this._clamp(to);
+        from = this._clamp(from);
+        var self = this;
+        var changeInValue = to - from;
+        var duration = self.duration;
+        // Avoid firing change detection for each of the animation frames.
+        self._ngZone.runOutsideAngular(function () {
+            var start = function () {
+                var startTime = self._service.getTimestamp();
+                var id = ++self._lastAnimationId;
+                requestAnimationFrame(function animation() {
+                    var currentTime = Math.min(self._service.getTimestamp() - startTime, duration);
+                    var value = self._easing[self.animation](currentTime, from, changeInValue, duration);
+                    self._setPath(value);
+                    self.onRender.emit(value);
+                    if (id === self._lastAnimationId && currentTime < duration) {
+                        requestAnimationFrame(animation);
+                    }
+                });
+            };
+            if (_this.animationDelay > 0) {
+                setTimeout(start, _this.animationDelay);
+            }
+            else {
+                start();
+            }
+        });
+    };
+    /** Sets the path dimensions. */
+    RoundProgressComponent.prototype._setPath = function (value) {
+        if (this._path) {
+            this._renderer.setElementAttribute(this._path.nativeElement, 'd', this._service.getArc(value, this.max, this.radius - this.stroke / 2, this.radius, this.semicircle));
+        }
+    };
+    /** Clamps a value between the maximum and 0. */
+    RoundProgressComponent.prototype._clamp = function (value) {
+        return Math.max(0, Math.min(value || 0, this.max));
+    };
+    /** Determines the SVG transforms for the <path> node. */
+    RoundProgressComponent.prototype.getPathTransform = function () {
+        var diameter = this._diameter;
+        if (this.semicircle) {
+            return this.clockwise ?
+                "translate(0, " + diameter + ") rotate(-90)" :
+                "translate(" + (diameter + ',' + diameter) + ") rotate(90) scale(-1, 1)";
+        }
+        else if (!this.clockwise) {
+            return "scale(-1, 1) translate(-" + diameter + " 0)";
+        }
+    };
+    /** Resolves a color through the service. */
+    RoundProgressComponent.prototype.resolveColor = function (color) {
+        return this._service.resolveColor(color);
+    };
+    /** Change detection callback. */
+    RoundProgressComponent.prototype.ngOnChanges = function (changes) {
+        if (changes.current) {
+            this._animateChange(changes.current.previousValue, changes.current.currentValue);
+        }
+        else {
+            this._setPath(this.current);
+        }
+    };
+    Object.defineProperty(RoundProgressComponent.prototype, "_diameter", {
+        /** Diameter of the circle. */
+        get: function () {
+            return this.radius * 2;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(RoundProgressComponent.prototype, "_elementHeight", {
+        /** The CSS height of the wrapper element. */
+        get: function () {
+            if (!this.responsive) {
+                return (this.semicircle ? this.radius : this._diameter) + 'px';
+            }
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(RoundProgressComponent.prototype, "_viewBox", {
+        /** Viewbox for the SVG element. */
+        get: function () {
+            var diameter = this._diameter;
+            return "0 0 " + diameter + " " + (this.semicircle ? this.radius : diameter);
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(RoundProgressComponent.prototype, "_paddingBottom", {
+        /** Bottom padding for the wrapper element. */
+        get: function () {
+            if (this.responsive) {
+                return this.semicircle ? '50%' : '100%';
+            }
+        },
+        enumerable: true,
+        configurable: true
+    });
+    return RoundProgressComponent;
+}());
+__decorate([
+    core_1.ViewChild('path'),
+    __metadata("design:type", Object)
+], RoundProgressComponent.prototype, "_path", void 0);
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", Number)
+], RoundProgressComponent.prototype, "current", void 0);
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", Number)
+], RoundProgressComponent.prototype, "max", void 0);
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", Number)
+], RoundProgressComponent.prototype, "radius", void 0);
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", String)
+], RoundProgressComponent.prototype, "animation", void 0);
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", Number)
+], RoundProgressComponent.prototype, "animationDelay", void 0);
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", Number)
+], RoundProgressComponent.prototype, "duration", void 0);
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", Number)
+], RoundProgressComponent.prototype, "stroke", void 0);
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", String)
+], RoundProgressComponent.prototype, "color", void 0);
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", String)
+], RoundProgressComponent.prototype, "background", void 0);
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", Boolean)
+], RoundProgressComponent.prototype, "responsive", void 0);
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", Boolean)
+], RoundProgressComponent.prototype, "clockwise", void 0);
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", Boolean)
+], RoundProgressComponent.prototype, "semicircle", void 0);
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", Boolean)
+], RoundProgressComponent.prototype, "rounded", void 0);
+__decorate([
+    core_1.Output(),
+    __metadata("design:type", core_1.EventEmitter)
+], RoundProgressComponent.prototype, "onRender", void 0);
+RoundProgressComponent = __decorate([
+    core_1.Component({
+        selector: 'round-progress',
+        template: "\n    <svg xmlns=\"http://www.w3.org/2000/svg\" [attr.viewBox]=\"_viewBox\">\n      <circle\n        fill=\"none\"\n        [attr.cx]=\"radius\"\n        [attr.cy]=\"radius\"\n        [attr.r]=\"radius - stroke / 2\"\n        [style.stroke]=\"resolveColor(background)\"\n        [style.stroke-width]=\"stroke\"/>\n\n      <path\n        #path\n        fill=\"none\"\n        [style.stroke-width]=\"stroke\"\n        [style.stroke]=\"resolveColor(color)\"\n        [style.stroke-linecap]=\"rounded ? 'round' : ''\"\n        [attr.transform]=\"getPathTransform()\"/>\n    </svg>\n  ",
+        host: {
+            'role': 'progressbar',
+            '[attr.aria-valuemin]': 'current',
+            '[attr.aria-valuemax]': 'max',
+            '[style.width]': "responsive ? '' : _diameter + 'px'",
+            '[style.height]': '_elementHeight',
+            '[style.padding-bottom]': '_paddingBottom',
+            '[class.responsive]': 'responsive'
+        },
+        styles: [
+            ":host {\n      display: block;\n      position: relative;\n      overflow: hidden;\n    }",
+            ":host.responsive {\n      width: 100%;\n      padding-bottom: 100%;\n    }",
+            ":host.responsive > svg {\n      position: absolute;\n      width: 100%;\n      height: 100%;\n      top: 0;\n      left: 0;\n    }"
+        ]
+    }),
+    __metadata("design:paramtypes", [round_progress_service_1.RoundProgressService,
+        round_progress_ease_1.RoundProgressEase,
+        round_progress_config_1.RoundProgressConfig,
+        core_1.NgZone,
+        core_1.Renderer])
+], RoundProgressComponent);
+exports.RoundProgressComponent = RoundProgressComponent;
+//# sourceMappingURL=round-progress.component.js.map
+
+/***/ }),
+
+/***/ 824:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HistoricoPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TempoRestantePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(36);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_observable_interval__ = __webpack_require__(839);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_observable_interval___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_observable_interval__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_observable_timer__ = __webpack_require__(867);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_observable_timer___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_observable_timer__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__models_cad__ = __webpack_require__(222);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_cads_cads__ = __webpack_require__(133);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_user_user__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__providers_creditos_creditos__ = __webpack_require__(452);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__providers_estacionar_estacionar__ = __webpack_require__(221);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__providers_veiculos_veiculos__ = __webpack_require__(441);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__providers_setores_setores__ = __webpack_require__(442);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__providers_tempo_estacionado_tempo_estacionado__ = __webpack_require__(223);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__app_app_component__ = __webpack_require__(440);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__util_map_util__ = __webpack_require__(834);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__environments_constants__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_estacionar_estacionar__ = __webpack_require__(201);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_veiculos_veiculos__ = __webpack_require__(412);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_user_user__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_tempo_estacionado_tempo_estacionado__ = __webpack_require__(204);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_cads_user_cads_user__ = __webpack_require__(111);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__models_veiculo__ = __webpack_require__(421);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_rxjs_add_observable_interval__ = __webpack_require__(775);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_rxjs_add_observable_interval___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_rxjs_add_observable_interval__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_rxjs_add_operator_take__ = __webpack_require__(85);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_rxjs_add_operator_take___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_rxjs_add_operator_take__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__providers_setores_setores__ = __webpack_require__(413);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__environments_constants__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__app_app_component__ = __webpack_require__(411);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__util_map_util__ = __webpack_require__(770);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__providers_logger_logger__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__providers_modal_modal__ = __webpack_require__(198);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1488,527 +2202,403 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var HistoricoPage = /** @class */ (function () {
-    function HistoricoPage(navCtrl, navParams, modalCtrl, actionSheetCtrl, userProvider, estacionarProvider, loadingCtrl, creditosProvider, cadsProvider, veiculosProvider, tempoEstacionadoProvider, alertCtrl, setorProvider, event) {
+var TempoRestantePage = /** @class */ (function () {
+    function TempoRestantePage(navCtrl, navParams, viewCtrl, userProvider, estacionarProvider, tempoEstacionadoProvider, veiculoProvider, setorProvider, logger, cadsUserProvider, alertCtrl, platform, modalProvider, modalCtrl) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
-        this.modalCtrl = modalCtrl;
-        this.actionSheetCtrl = actionSheetCtrl;
+        this.viewCtrl = viewCtrl;
         this.userProvider = userProvider;
         this.estacionarProvider = estacionarProvider;
-        this.loadingCtrl = loadingCtrl;
-        this.creditosProvider = creditosProvider;
-        this.cadsProvider = cadsProvider;
-        this.veiculosProvider = veiculosProvider;
         this.tempoEstacionadoProvider = tempoEstacionadoProvider;
-        this.alertCtrl = alertCtrl;
+        this.veiculoProvider = veiculoProvider;
         this.setorProvider = setorProvider;
-        this.event = event;
+        this.logger = logger;
+        this.cadsUserProvider = cadsUserProvider;
+        this.alertCtrl = alertCtrl;
+        this.platform = platform;
+        this.modalProvider = modalProvider;
+        this.modalCtrl = modalCtrl;
         this.showSpinner1 = true;
-        this.showSpinner2 = true;
-        this.time15min = 900000;
-        this.time60min = 3600000;
-        this.placa = '';
-        this.historico = "historico-estacionamentos";
-        this.listEstacionamentos = [];
-        this.listEstacionamentosView = [];
-        this.listCreditos = [];
-        this.listCreditosView = [];
-        this.listVeiculos = [];
-        this.cancelAttempt = false;
-        this.timer = 0;
-        this.timer_vetor = [];
-        this.qtdCads = 0;
-        this.valorTotal = 0;
-        this.cad = new __WEBPACK_IMPORTED_MODULE_5__models_cad__["a" /* CadModel */]();
-        this.itensPage = [];
-        this.offset = 10;
-        this.index = 0;
-        __WEBPACK_IMPORTED_MODULE_13__app_app_component__["a" /* MyApp */].MAP_LOAD = false;
-        __WEBPACK_IMPORTED_MODULE_14__util_map_util__["a" /* MapUtil */].circles.pop();
-        var tab = this.navParams.get('tab');
-        if (tab) {
-            this.historico = tab;
-        }
+        // user: User;
+        this.loadObj = true;
+        this.tempoCurrent = Date.now();
+        this._estacionados = [];
+        this.qtdCadsUser = 0;
+        this.qtdCadsUsados = 0;
+        this.fromPage = '';
+        this.canCancel = false;
+        this.veiculos = [];
+        __WEBPACK_IMPORTED_MODULE_12__app_app_component__["a" /* MyApp */].MAP_LOAD = false;
+        __WEBPACK_IMPORTED_MODULE_13__util_map_util__["a" /* MapUtil */].circles.pop();
+        // this.platform.resume.subscribe(event => {
+        //     this.navCtrl.setRoot(Constants.TEMPO_RESTANTE_PAGE.name)
+        // })
     }
-    HistoricoPage.prototype.ionViewDidLoad = function () {
-        var _this = this;
-        this.horaRegistro = Date.now();
-        this.event.subscribe('cancel_list', function (value) {
-            if (value.length > 0) {
-                _this.cancelAttempt = true;
-            }
-            else {
-                _this.cancelAttempt = false;
-            }
-        });
-        this.event.subscribe('f_event', function (value) {
-            var aux = value;
-            _this.listEstacionamentosView = _this.listEstacionamentos;
-            Object.keys(value).map(function (key) {
-                if (value[key] == '') {
-                    delete aux[key];
-                }
-            });
-            var result = _this.listEstacionamentosView.filter(function (item) {
-                return (Object.keys(aux)).every(function (key) {
-                    if (key == 'qtdCads') {
-                        return item.qtd.toString() == aux[key];
-                    }
-                    else if (key == 'valor') {
-                        return item.comprovante.valor == aux[key];
-                    }
-                    return item.comprovante[key] == aux[key] || item[key] == aux[key];
-                });
-            });
-            if (Object.keys(aux).length == 0) {
-                _this.listEstacionamentosView = _this.listEstacionamentos;
-            }
-            else {
-                _this.listEstacionamentosView = result;
-            }
-        });
-        this.event.subscribe('pay_filter_event', function (value) {
-            var aux = value;
-            Object.keys(value).map(function (key) {
-                if (value[key] == '') {
-                    delete aux[key];
-                }
-            });
-            var result = _this.listCreditos.filter(function (item) {
-                var date = new Date(item.dataHoraRegistro).toDateString();
-                return (Object.keys(aux).every(function (key) {
-                    if (key == 'data') {
-                        return new Date(item.dataHoraRegistro).toDateString() == aux[key];
-                    }
-                    else if (key == 'qtdCads') {
-                        return (_this.getValor(item) / _this.cad.valor_unitario).toString() == aux[key];
-                    }
-                    return item[key] == aux[key];
-                }));
-            });
-            if (Object.keys(aux).length == 0) {
-                _this.listCreditosView = _this.listCreditos;
-            }
-            else {
-                _this.listCreditosView = result;
-            }
-        });
-    };
-    HistoricoPage.prototype.ionViewCanEnter = function () {
+    TempoRestantePage.prototype.ionViewCanEnter = function () {
         var _this = this;
         this.userProvider.getUserLocal().then(function (userID) {
             if (userID) {
-                _this.userProvider.byId(userID).subscribe(function (user) {
-                    _this.user = user;
-                });
-                _this.veiculosProvider.findByUser(userID).subscribe(function (value) {
-                    _this.listVeiculos.push(value);
-                });
+                _this.user_id = userID;
                 return true;
             }
         });
     };
-    HistoricoPage.prototype.defineMaxAndMinDate = function (data) {
-        this.minDate = data.getTime() - 1000 * 60 * 60 * 24 * 365;
-        this.maxDate = data.getTime();
-        this.today = new Date(this.maxDate - (data.getTimezoneOffset() * 3 * 60000)).toISOString().substring(0, 10);
-        this.limit = new Date(this.maxDate - 1000 * 60 * 60 * 24 * 4).toISOString().substring(0, 10);
-        this.minlimit = new Date(this.minDate - 1000 * 60 * 60 * 24 * 1).toISOString().substring(0, 10);
+    TempoRestantePage.prototype.getVeiculo = function (veiculo_id, userID) {
+        return this.veiculoProvider.findByVeiculo(veiculo_id, userID);
     };
-    HistoricoPage.prototype.getEstacionamentosByPlaca = function () {
-        var _this = this;
-        if (!this.placa || (this.placa && this.placa !== '')) {
-            this.listEstacionamentosView = this.listEstacionamentos.filter(function (_item) { return _item.comprovante.placa.includes(_this.placa.toUpperCase()); });
+    TempoRestantePage.prototype.renovarEstacionar = function (estacionar) {
+        var profile = localStorage.getItem('userProfile');
+        if (!estacionar.veiculo_id || profile === 'revendedor') {
+            this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_11__environments_constants__["a" /* Constants */].VEICULOS_FORM_PAGE.name, {
+                withMenu: true,
+                userId: this.user_id,
+                fromPage: 'renovar',
+                area: estacionar.area_id,
+                setor: estacionar.setor_id,
+                cad: 1,
+                qtdCads: (this.qtdCadsUser - this.qtdCadsUsados),
+                placa: estacionar.comprovante.placa,
+                tipo_veiculo: estacionar.comprovante.tipo_veiculo,
+                veiculo_id: estacionar.veiculo_id
+            });
         }
         else {
-            this.listEstacionamentosView = this.listEstacionamentos;
+            for (var _i = 0, _a = this._estacionados; _i < _a.length; _i++) {
+                var estacionado = _a[_i];
+                if (estacionado.estacionar.veiculo.placa == estacionar.veiculo.placa) {
+                    var veiculo = {
+                        key: estacionado.estacionar.veiculo_id,
+                        veiculo: estacionado.estacionar.veiculo
+                    };
+                    this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_11__environments_constants__["a" /* Constants */].ESTACIONAR_PAGE.name, {
+                        setor: estacionar.setor_id,
+                        area: estacionar.area_id,
+                        fromPage: 'tempo_restante',
+                        cad: 1,
+                        veiculo: veiculo,
+                        qtdCads: (this.qtdCadsUser - this.qtdCadsUsados),
+                    });
+                    break;
+                }
+            }
         }
     };
-    HistoricoPage.prototype.getEstacionamentos = function (userID) {
+    TempoRestantePage.prototype.validaRenovar = function (estacionar) {
+        estacionar.renovar = true;
+        if (estacionar.qtd === 2) {
+            estacionar.renovar = false;
+        }
+        else if (estacionar.tempoComprado === 300) {
+            estacionar.renovar = false;
+        }
+    };
+    TempoRestantePage.prototype.ionViewWillEnter = function () {
+        //atualizar tempo restante se o usuário vier de comprvante(renovação)
+        var last = this.navParams.get('fromPage');
+        this.fromPage = last;
+        if (last) {
+            if (last == 'comprovante') {
+                // this.ionViewDidLoad();
+            }
+        }
+    };
+    TempoRestantePage.prototype.ionViewDidLoad = function () {
         var _this = this;
-        this.estacionarProvider.find(userID).take(1).subscribe(function (items) {
-            var dataConsulta = new Date(_this.today.split("-")[0], _this.today.split("-")[1] - 1, _this.today.split("-")[2]);
-            dataConsulta.setHours(23);
-            dataConsulta.setMinutes(0);
-            dataConsulta.setSeconds(0);
-            _this.defineMaxAndMinDate(dataConsulta);
-            _this.showSpinner1 = false;
-            _this.listEstacionamentos = items.map(function (item) {
-                _this.qtdCads += item.estacionar.qtd;
-                if (item.estacionar.dataHoraRegistro > _this.minDate &&
-                    item.estacionar.dataHoraRegistro <= _this.maxDate) {
-                    return item.estacionar;
+        this.horaRegistro = Date.now();
+        this.tempoEstacionadoProvider.getHoraAtualFromFirebase().then(function (data) {
+            // console.log('now firebase: ' + JSON.stringify(data));
+            // console.log('now local: ' + this.tempoCurrent);
+            if (data && data.now) {
+                _this.tempoCurrent = data.now;
+            }
+            _this.userProvider.getUserLocal().then(function (userID) {
+                if (userID) {
+                    _this.cadsUserProvider.findQtdCads(userID).take(1).subscribe(function (value) {
+                        value.map(function (cads) {
+                            if (cads.key == "qtdCadsUsados") {
+                                _this.qtdCadsUsados = cads.item;
+                            }
+                            else {
+                                _this.qtdCadsUser += cads.item.qtdCads;
+                            }
+                        });
+                    });
+                    _this.estacionarProvider.findByUser(userID).subscribe(function (_values) {
+                        _this._estacionados = [];
+                        if (_values.length > 0) {
+                            _values.map(function (_item) {
+                                _this.logger.info('estacionado: ' + _item.estacionar.tempoEstacionado + ' | ' + new Date(_item.estacionar.tempoEstacionado));
+                                _this.validaRenovar(_item.estacionar);
+                                if (_item.estacionar.tempoEstacionado - _this.tempoCurrent >= 0) {
+                                    _this._estacionados = [];
+                                    _this.getVeiculo(_item.estacionar.veiculo_id, userID)
+                                        .take(1).subscribe(function (_veiculo) {
+                                        _this.loadObj = false;
+                                        _this.showSpinner1 = false;
+                                        _item.estacionar.veiculo = _veiculo;
+                                        _this.estacionar = _item.estacionar;
+                                        /*this.veiculoSelecionado = _item.estacionar.veiculo;
+                                        this.veiculo_id = _item.estacionar.veiculo.id;
+                                        this.placa = _item.estacionar.veiculo.placa;
+                                        this.veiculo_tipo = _item.estacionar.veiculo.tipo_veiculo;
+                                        this.veiculo_marca = _item.estacionar.veiculo.marca;
+                                        this.veiculo_modelo = _item.estacionar.veiculo.modelo;
+                                        this.dataHoraRegistro = _item.estacionar.dataHoraRegistro;
+                                        this.horario = _item.estacionar.comprovante.horario;
+                                        this.tempoComprado = _item.estacionar.tempoComprado;
+                                        this.qtd = _item.estacionar.qtd;
+                                        this.valor = _item.estacionar.comprovante.valor;
+                                        this.amc = _item.estacionar.comprovante.numberAuth;*/
+                                        _this.logger.info(_item);
+                                        console.log(_this.estacionar);
+                                        _this._estacionados.push(_item);
+                                    });
+                                }
+                                else {
+                                    _this.loadObj = false;
+                                    _this.showSpinner1 = false;
+                                }
+                            });
+                            // this.loadObj = false;
+                            //  this.showSpinner1 = false;
+                            console.log(_this._estacionados);
+                        }
+                        else {
+                            _this.loadObj = false;
+                            _this.showSpinner1 = false;
+                        }
+                    }, function (error) {
+                        _this.showSpinner1 = false;
+                        _this.loadObj = false;
+                    });
                 }
             });
-            _this.valorTotal = _this.qtdCads * 2;
-            _this.qtdEstacionados = _this.listEstacionamentos.length;
-            _this.listEstacionamentosView = [];
-            (_a = _this.listEstacionamentosView).push.apply(_a, _this.listEstacionamentos);
-            var _a;
         });
     };
-    HistoricoPage.prototype.ionViewDidEnter = function () {
+    TempoRestantePage.prototype.openVeiculoEstacionado = function (obj) {
         var _this = this;
-        this.tempoEstacionadoProvider.getHoraAtualFromFirebase().then(function (data) {
-            _this.defineMaxAndMinDate(data.dateNow);
+        this.setorProvider.byId(obj.estacionar.area_id, obj.estacionar.setor_id).take(1).subscribe(function (value) {
+            _this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_11__environments_constants__["a" /* Constants */].VEICULO_ESTACIONADO_PAGE.name, { lat: value.latInicio, lng: value.lngInicio });
         });
-        this.userProvider.getUserLocal().then(function (userID) {
-            if (userID != null) {
-                _this.userLocal = userID;
-                _this.getEstacionamentos(_this.userLocal);
-                _this.creditosProvider.findByUser(userID).take(1).subscribe(function (items) {
-                    _this.showSpinner2 = false;
-                    _this.listCreditos = items.map(function (item) {
-                        if (_this.horaRegistro - item.values.dataHoraRegistro < 120000) {
-                            var tempo = void 0;
-                            _this.timer_vetor.push(_this.startTimer((_this.horaRegistro - item.values.dataHoraRegistro), tempo));
-                        }
-                        return item.values;
-                    });
-                    _this.listCreditosView = [];
-                    (_a = _this.listCreditosView).push.apply(_a, _this.listCreditos);
-                    _this.itensPage = _this.listEstacionamentosView.slice(_this.index, _this.offset + _this.index);
-                    _this.index += _this.offset;
-                    console.log(_this.itensPage);
-                    var _a;
-                });
-                _this.cadsProvider.find().take(1).subscribe(function (value) {
-                    value.map(function (item) {
-                        _this.cad = new __WEBPACK_IMPORTED_MODULE_5__models_cad__["a" /* CadModel */](item.cad);
-                    });
-                });
+    };
+    TempoRestantePage.prototype.closeTempoRestantePage = function () {
+        var _this = this;
+        this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_11__environments_constants__["a" /* Constants */].PRINCIPAL_PAGE.name)
+            .then(function () {
+            _this.modalProvider.desactivate();
+        });
+    };
+    TempoRestantePage.prototype.getImage = function (tipo) {
+        return __WEBPACK_IMPORTED_MODULE_7__models_veiculo__["a" /* VeiculoModel */].getImage(tipo);
+    };
+    TempoRestantePage.prototype.selecionarVeiculo = function () {
+        var _this = this;
+        var veiculos = this._estacionados;
+        console.log(veiculos);
+        var veiculoModal = this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_11__environments_constants__["a" /* Constants */].ESTACIONADOS_MODAL_PAGE.name, { veiculos: veiculos, fromPage: "tempo_restante" });
+        veiculoModal.present();
+        veiculoModal.onDidDismiss(function (data) {
+            if (data) {
+                var veiculo = data;
+                //veiculo.estacionar.veiculo = veiculo;
+                _this.estacionar = veiculo.estacionar;
+                _this.veiculoSelecionado = veiculo.estacionar.veiculo;
+                _this.veiculo_id = veiculo.estacionar.veiculo.id;
+                _this.placa = veiculo.estacionar.veiculo.placa;
+                _this.veiculo_tipo = veiculo.estacionar.veiculo.tipo_veiculo;
+                _this.veiculo_marca = veiculo.estacionar.veiculo.marca;
+                _this.veiculo_modelo = veiculo.estacionar.veiculo.modelo;
+                console.log(_this.estacionar);
+                //this._estacionados.push(veiculo);
             }
         });
     };
-    HistoricoPage.prototype.ionViewWillLeave = function () {
-        this.timer_vetor.map(function (item) {
-            item.unsubscribe();
-        });
-    };
-    HistoricoPage.prototype.segmentChanged = function (event) {
-        switch (event.value) {
-            case 'historico-estacionamentos':
-                this.historico = "historico-estacionamentos";
-                break;
-            case 'historico-creditos':
-                this.historico = "historico-creditos";
-                break;
+    TempoRestantePage.prototype.getVeiculosUser = function (user) {
+        // if (user.profile == "revendedor") {
+        //     // console.log('**********', this.veiculos);
+        //     const _veiculo = this.navParams.get('veiculo') || null;
+        var _this = this;
+        //     if(_veiculo) {
+        //         this.veiculos.push({ key: new Date().valueOf(), veiculo: _veiculo });
+        //         console.log(this.veiculos)
+        //         const _idx = this.veiculos.length-1;
+        //         const _vTmp = this.veiculos[_idx];
+        //         this.veiculo_id = _vTmp.veiculo.id || _vTmp.key;
+        //         this.placa = _vTmp.veiculo.placa;
+        //         this.veiculo_tipo = _vTmp.veiculo.tipo_veiculo;
+        //         console.log(this.placa)
+        //         this.veiculos[_idx].veiculo.id = this.veiculo_id
+        //         this.veiculoSelecionado = this.veiculos[_idx].veiculo;
+        //     }
+        //     this.showSpinner1 = false;
+        // } else {
+        if (this.fromPage) {
+            if (this.fromPage === 'tempo_restante') {
+                //this.fromRenovar = true;
+                var veiculo = this.navParams.get('veiculo');
+                this.veiculo_id = veiculo.key;
+                this.placa = veiculo.veiculo.placa;
+                this.veiculoSelecionado = new __WEBPACK_IMPORTED_MODULE_7__models_veiculo__["a" /* VeiculoModel */](veiculo.veiculo);
+                this.showSpinner1 = false;
+                // para fazer getVeiculos funcionar ... e aparecer o veiculo nas opçoes :/
+                this.veiculos.push({ key: veiculo.key, veiculo: veiculo.veiculo });
+            }
+            else {
+                this.veiculoProvider.findByUser(user.id).take(1).subscribe(function (value) {
+                    value.forEach(function (item) {
+                        item.veiculo.id = item.key;
+                        _this.veiculos.push({ key: item.key, veiculo: item.veiculo });
+                    });
+                    _this.veiculo_id = _this.veiculos[0].key;
+                    _this.placa = _this.veiculos[0].veiculo.placa;
+                    _this.veiculoSelecionado = _this.veiculos[0].veiculo;
+                    _this.showSpinner1 = false;
+                });
+            }
         }
+        else {
+            this.veiculoProvider.findByUser(user.id).take(1).subscribe(function (value) {
+                value.forEach(function (item) {
+                    item.veiculo.id = item.key;
+                    _this.veiculos.push({ key: item.key, veiculo: item.veiculo });
+                });
+                _this.veiculo_id = _this.veiculos[0].key;
+                _this.placa = _this.veiculos[0].veiculo.placa;
+                _this.veiculo_tipo = _this.veiculos[0].veiculo.tipo_veiculo;
+                _this.veiculo_marca = _this.veiculos[0].veiculo.marca;
+                _this.veiculo_modelo = _this.veiculos[0].veiculo.modelo;
+                _this.veiculoSelecionado = _this.veiculos[0].veiculo;
+                console.log(_this.veiculo_marca + ' + ' + _this.veiculo_modelo + ' ' + _this.placa + ' ' + _this.veiculo_tipo);
+                _this.showSpinner1 = false;
+            });
+        }
+        //}
     };
-    HistoricoPage.prototype.getCartaoNumeroFormat = function (numero) {
-        var quatro1 = '****'; //numero.substr(0,4);
-        var quatro2 = '****'; //numero.substr(4,4);
-        var quatro3 = '****'; //numero.substr(5,4);
-        var quatro4 = numero.substr(12);
-        return quatro1 + ' ' + quatro2 + ' ' + quatro3 + ' ' + quatro4;
+    TempoRestantePage.prototype.percent = function (time) {
+        var init;
+        var final;
+        init = new Date(time).getTime();
+        final = new Date(this.tempoCurrent).getTime();
+        var hourDiff = final - init; //in ms
+        var secDiff = hourDiff / 1000; //in s
+        var minDiff = hourDiff / 60 / 1000; //in minutes
+        var hDiff = hourDiff / 3600 / 1000; //in hours
+        var humanReadable = { hours: 0, minutes: 0 };
+        humanReadable.hours = Math.floor(hDiff);
+        humanReadable.minutes = Math.floor(minDiff - 60 * humanReadable.hours);
+        //console.log(date.getHours()+':'+date.getMinutes()+':'+date.getSeconds())
+        time = Number(humanReadable.hours * 60) + Number(humanReadable.minutes);
+        //console.log(humanReadable)
+        //console.log(time)
+        return time;
     };
-    HistoricoPage.prototype.getPlaca = function (veiculoID) {
-        var placa = '';
-        this.listVeiculos.forEach(function (value) {
-            if (value[0].key === veiculoID) {
-                placa = value[0].veiculo.placa;
-            }
-        });
-        return placa;
+    TempoRestantePage.prototype.toTimestamp = function (horario) {
+        var aux = horario.split(':'), dt = new Date();
+        dt.setHours(aux[0]);
+        dt.setMinutes(aux[1]);
+        dt.setSeconds(0);
+        return dt.getTime();
     };
-    HistoricoPage.prototype.openOpcoes = function (estacionar) {
-        var _this = this;
-        var opcoes = this.actionSheetCtrl.create({
-            title: 'Escolha uma opção...',
-            buttons: [
-                {
-                    text: 'Ver Recibo',
-                    role: '',
-                    handler: function () { return _this.openComprovante(estacionar); }
-                }, {
-                    text: 'Ver Local Estacionado',
-                    role: '',
-                    handler: function () { return _this.openVeiculoEstacionado(estacionar); }
-                }
-            ]
-        });
-        opcoes.present();
+    TempoRestantePage.prototype.somaHora = function (hora, minutes) {
+        var minutosAdd = minutes * 60 * 1000;
+        var timeHoraFinal = this.toTimestamp(hora) + minutosAdd;
+        var dt = new Date(timeHoraFinal);
+        var horaRetorno = ((dt.getHours() < 10) ? '0' + dt.getHours() : dt.getHours()) + ':' + ((dt.getMinutes() < 10) ? '0' + dt.getMinutes() : dt.getMinutes());
+        //horaRetorno += (dt.getMinutes() < 10) ? '0'+dt.getMinutes(): dt.getMinutes();
+        return horaRetorno;
     };
-    HistoricoPage.prototype.openVeiculoEstacionado = function (estacionar) {
-        var _this = this;
-        this.setorProvider.byId(estacionar.area_id, estacionar.setor_id).take(1).subscribe(function (value) {
-            _this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_15__environments_constants__["a" /* Constants */].VEICULO_ESTACIONADO_PAGE.name, { lat: value.latInicio, lng: value.lngInicio, estacionar: estacionar });
-        });
-    };
-    HistoricoPage.prototype.getValor = function (credito) {
-        if (!credito)
-            return 0;
-        return credito.valorSemDesconto ? credito.valorSemDesconto : credito.valor;
-    };
-    HistoricoPage.prototype.openComprovante = function (estacionamento) {
-        var loading = this.loadingCtrl.create({ content: 'Aguarde...' });
-        loading.present();
-        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_15__environments_constants__["a" /* Constants */].COMPROVANTE_PAGE.name, {
-            estacionar: estacionamento,
-            forceDownload: true,
-            from: 'historico',
-            user: this.user
-        }).then(function () {
-            loading.dismiss();
-        });
-    };
-    HistoricoPage.prototype.showAlertHelp = function (title, msg, type, callback) {
-        var alert = this.alertCtrl.create({
+    TempoRestantePage.prototype.showAlert = function (title, message, type, callback) {
+        this.alertCtrl.create({
             title: title,
-            message: msg,
+            message: message,
             cssClass: type,
             buttons: [
                 {
                     text: 'OK',
                     cssClass: 'btn-ok',
-                    handler: function (data) {
-                        callback();
-                    }
-                },
-                {
-                    text: 'Cancelar',
-                    cssClass: 'btn-ok',
-                    handler: function (data) {
-                    }
+                    handler: function (data) { return callback(); }
                 }
             ]
-        });
-        alert.present();
+        }).present();
     };
-    HistoricoPage.prototype.startTimer = function (credito, tempo) {
-        var _this = this;
-        return tempo = __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__["Observable"].interval(1000).subscribe(function (x) {
-            if ((credito + (x * 1000)) > _this.time15min) {
-                _this.horaRegistro = Date.now();
-                tempo.unsubscribe();
-            }
-            else {
-            }
+    TempoRestantePage.prototype.openHelp = function () {
+        this.showAlert('Ajuda', 'Aqui você verá seus veículos estacionados e seu tempo restante.', '', function () { });
+    };
+    TempoRestantePage.prototype.cancelaEstacionamento = function (veiculo) {
+        this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_11__environments_constants__["a" /* Constants */].CANCELAR_TRANSACAO_PAGE.name, {
+            estacionar: JSON.stringify(veiculo.estacionar)
         });
     };
-    HistoricoPage.prototype.openHelp = function () {
-        this.historico == 'historico-creditos' ? this.showAlertHelp('Ajuda', 'Histórico de compras de CAD\'s efetuados, especificando forma de pagamento, data de cada compra e a quantidade de CAD\'s comprado!', '', function () { }) :
-            this.showAlertHelp('Ajuda', 'Histórico dos estacionamentos efectuados e quantidades de CAD\'s utilizado em cada estacionamento.', '', function () { });
+    TempoRestantePage.prototype.goComprar = function () {
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_11__environments_constants__["a" /* Constants */].CREDITOS_PAGE.name);
     };
-    HistoricoPage.prototype.openModal = function () {
-        this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_15__environments_constants__["a" /* Constants */].FILTER_MODAL_PAGE.name, { data: { today: this.today, min: this.minlimit, max: this.limit } }).present();
-    };
-    HistoricoPage.prototype.openFilterModal = function () {
-        this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_15__environments_constants__["a" /* Constants */].FILTER_PAGAMENTO_PAGE.name, { data: { today: this.today, min: this.minlimit, max: this.limit } }).present();
-    };
-    HistoricoPage.prototype.limparFiltro = function () {
-        this.listEstacionamentosView = this.listEstacionamentos;
-    };
-    HistoricoPage.prototype.limparFiltroPagamento = function () {
-        this.listCreditosView = this.listCreditos;
-    };
-    HistoricoPage.prototype.cancelarTransacao = function (credito) {
-        var _this = this;
-        if (this.user.profile == 'revendedor') {
-            this.showAlertHelp("Atenção", "Para realizar o cancelamento o PDV deve entrar em contato conosco por meio dos nossos canais de atendimento", '', function () { });
-        }
-        else {
-            var cancel_list = this.listCreditosView.filter(function (item) {
-                if (item.status == 'cancelado') {
-                    _this.timer = Date.now();
-                    if (_this.timer - new Date(item.dadoCancelamento.dataHoraRegistro).getTime() < _this.time60min) {
-                        return new Date(item.dadoCancelamento.dataHoraRegistro).getTime();
-                    }
-                }
-            });
-            this.event.publish('cancel_list', cancel_list);
-            if (this.cancelAttempt) {
-                var update_timer = Math.trunc((this.timer - new Date(cancel_list[0].dadoCancelamento.dataHoraRegistro).getTime()) / (1000 * 60));
-                if (update_timer >= 59) {
-                    this.showAlertHelp("Atenção", "Uma solicitação de cancelamento ja foi realizada,Tente novamente em " + (60 - update_timer) + ' minuto', '', function () { });
-                }
-                else {
-                    this.showAlertHelp("Atenção", "Uma solicitação de cancelamento ja foi realizada,Tente novamente em " + (60 - update_timer) + ' minutos', '', function () { });
-                }
-            }
-            else {
-                this.showAlertHelp("Atenção", "Ao realizar solicitação de cancelamento, só poderá realizar outra após 1 hora", '', function () {
-                    _this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_15__environments_constants__["a" /* Constants */].CANCELAR_TRANSACAO_PAGE.name, { credito: JSON.stringify(credito), cad: _this.cad });
-                });
-            }
-        }
-    };
-    HistoricoPage.prototype.loadData = function (event) {
-        var _this = this;
-        setTimeout(function () {
-            var news = _this.listEstacionamentosView.slice(_this.index, _this.offset + _this.index);
-            _this.index += _this.offset;
-            for (var i = 0; i < news.length; i++) {
-                _this.itensPage.push(news[i]);
-            }
-            event.complete();
-            if (_this.itensPage.length === _this.listEstacionamentosView.length) {
-                event.disabled = true;
-            }
-            console.log(_this.listEstacionamentosView);
-        }, 1200);
-    };
-    HistoricoPage = __decorate([
+    TempoRestantePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-historico',template:/*ion-inline-start:"/Users/desenvolvedor/Documents/appzonzazul/src/pages/historico/historico.html"*/'<ion-header no-border>\n    <ion-navbar color="header" no-margin no-padding>\n        <button ion-button icon-only menuToggle>\n            <ion-icon class="header-icon" name="menu"></ion-icon>\n        </button>\n\n        <ion-title>\n            <ion-label>Histórico</ion-label>\n        </ion-title>\n\n        <ion-buttons end>\n            <button ion-button icon-only (click)="openHelp()">\n                <ion-icon name="help-circle" class="header-icon"></ion-icon>\n            </button>\n        </ion-buttons>\n\n    </ion-navbar>\n    <ion-toolbar no-padding mode="ios">\n        <ion-segment no-padding no-lines no-border class="segments" [(ngModel)]="historico" mode="ios">\n            <ion-segment-button value="historico-estacionamentos" (ionSelect)="segmentChanged($event)">\n                <ion-label style="color: #fff">Estacionamento</ion-label>\n            </ion-segment-button>\n            <ion-segment-button value="historico-creditos" (ionSelect)="segmentChanged($event)">\n                <ion-label style="color: #fff">Pagamento</ion-label>\n            </ion-segment-button>\n        </ion-segment>\n    </ion-toolbar>\n</ion-header>\n\n<ion-content padding class="content">\n    <ion-grid class="grid-historico-estacionamento"\n        [style.display]="historico == \'historico-estacionamentos\' ? \'block\' : \'none\'">\n        <loading-spinner *ngIf="showSpinner1"></loading-spinner>\n\n        <div *ngIf="!showSpinner1 && listEstacionamentos.length > 0">\n            <ion-item class="sum">\n\n                <p>CADS usados - {{ qtdCads }}</p>\n                <p>Valor Total - R$ {{valorTotal | number:\'1.2-2\' | replace:\'.\':\',\'}}</p>\n            </ion-item>\n\n            <ion-item no-lines class="placa-item">\n                <button ion-button (click)="openModal()" style="height:35px;" block> Filtros </button>\n            </ion-item>\n\n            <ion-row *ngFor="let estacionamento of itensPage" [hidden]="estacionamento === false"\n                class="row">\n                <ion-col col-7 class="col-info">\n                    <h2 class="placa">{{estacionamento?.comprovante.placa}}</h2>\n                    <h6 class="data">{{estacionamento?.dataHoraRegistro | date: "dd/MM/yyyy \'às\' HH:mm"}}</h6>\n                    <h2 class="data">AMC: {{estacionamento?.comprovante.numberAuth}}</h2>\n                    <h4 class="cidade">{{estacionamento?.cidade}}</h4>\n                </ion-col>\n                <ion-col col-4 class="col-status">\n                    <ion-badge class="status" item-end\n                        [style.background]="estacionamento?.situacao == \'Ativação\' ? \'#4cda64\' : \'#0690ce\'">\n                        {{estacionamento?.situacao}}</ion-badge>\n                </ion-col>\n                <ion-col col-1></ion-col>\n\n                <ion-col col-12 class="line"></ion-col>\n                <ion-col col-9 class="col-rodape">\n                    <ion-label *ngIf="estacionamento?.qtd == 1" class="cads">{{estacionamento?.qtd}} CAD,\n                        {{estacionamento?.tempoComprado}} Minutos</ion-label>\n                    <ion-label *ngIf="estacionamento?.qtd > 1" class="cads">{{estacionamento?.qtd}} CADs,\n                        {{estacionamento?.tempoComprado}} Minutos</ion-label>\n                    <ion-label class="cads">R$\n                        {{(estacionamento?.comprovante.valor) | number:\'1.2-2\' | replace:\'.\':\',\'}}</ion-label>\n                </ion-col>\n\n                <ion-col col-3 class="col-rodape col-rodape-btn">\n                    <button ion-button small block class="recibo" (click)="openOpcoes(estacionamento)">Opções</button>\n                </ion-col>\n\n            </ion-row>\n            <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">\n                <ion-infinite-scroll-content\n                  loadingSpinner="bubbles"\n                  loadingText="Buscando itens...">\n                </ion-infinite-scroll-content>\n              </ion-infinite-scroll>\n\n            <ion-item no-lines class="placa-item"\n                *ngIf="this.listEstacionamentosView.length !== this.listEstacionamentos.length ">\n                <button ion-button (click)="limparFiltro()" style="height:35px;" block> Remover Filtro </button>\n            </ion-item>\n\n        </div>\n    </ion-grid>\n    <ion-grid [style.display]="historico == \'historico-estacionamentos\' ? \'block\' : \'none\'">\n        <div *ngIf="!showSpinner1 && (listEstacionamentos.length == 0 || !listEstacionamentos[0])">\n            <ion-row class="row-message">\n                <ion-col col-12 class="col-message">\n                    <ion-item no-lines class="item-message">\n                        <h2 class="message">Você não possui histórico de estacionamentos</h2>\n                    </ion-item>\n                </ion-col>\n            </ion-row>\n        </div>\n    </ion-grid>\n    <ion-grid [style.display]="historico == \'historico-creditos\' ? \'block\' : \'none\'" class="grid-historico-creditos">\n        <loading-spinner *ngIf="showSpinner2"></loading-spinner>\n\n        <div *ngIf="!showSpinner2 && listCreditos.length > 0">\n            <ion-item no-lines class="placa-item">\n                <button ion-button (click)="openFilterModal()" style="height:35px;" block> Filtros </button>\n            </ion-item>\n            <ion-row class="row" *ngFor="let credito of listCreditosView">\n                <ion-col col-6 class="col-info">\n                    <h2 class="numero-cartao" *ngIf="credito.numero.length > 0">\n                        {{getCartaoNumeroFormat(credito.numero)}}</h2>\n                    <h4 class="tipo-cartao" *ngIf="credito.numero.length > 0">Cartão de Crédito</h4>\n                    <h4 class="tipo-cartao" *ngIf="!(credito.numero.length > 0)">Boleto</h4>\n                    <h6 class="data">{{credito?.dataHoraRegistro | date: "dd/MM/yyyy \'às\' HH:mm"}}</h6>\n                </ion-col>\n                <ion-col col-5 class="col-status">\n                    <ion-badge class="status" item-end\n                        [style.background]="credito?.status == \'cancelado\' ? \'red\' : \'#4cda64\'">{{credito?.status}}\n                    </ion-badge>\n                </ion-col>\n                <ion-col col-1></ion-col>\n                <ion-col col-12 class="col-rodape">\n                    <ion-label *ngIf="getValor(credito) / cad?.valor_unitario == 1" class="cads">\n                        {{getValor(credito) / cad?.valor_unitario}} CAD</ion-label>\n                    <ion-label *ngIf="getValor(credito) / cad?.valor_unitario > 1" class="cads">\n                        {{getValor(credito) / cad?.valor_unitario}} CADs</ion-label>\n                    <ion-label class="price"><span class="desconto"\n                            *ngIf="(credito?.valorSemDesconto > 0) && (credito?.valorSemDesconto !== credito?.valor)">R$\n                            {{credito?.valorSemDesconto | number:\'1.2-2\' | replace:\'.\':\',\'}}</span>R$\n                        {{credito?.valor | number:\'1.2-2\' | replace:\'.\':\',\'}}</ion-label>\n                </ion-col>\n                <ion-col col-12 class="line"></ion-col>\n                <ion-col col-12>\n                    <ion-item class=\'placa-item\' no-padding no-lines>\n                        <button small clear ion-button style="height: 35px;"\n                            *ngIf="(horaRegistro - credito.dataHoraRegistro < 900000) && (credito.status !== \'cancelado\')"\n                            (click)=\'cancelarTransacao(credito)\' class="btn-cancel">\n                            <ion-icon style="margin-right: 5px;" name="ios-close-circle-outline"></ion-icon>\n                            Cancelar\n                        </button>\n                    </ion-item>\n                </ion-col>\n            </ion-row>\n            <ion-item no-lines class="placa-item" *ngIf="this.listCreditosView.length !== this.listCreditos.length ">\n\n                <button ion-button (click)="limparFiltroPagamento()" style="height:35px;" block> Remover Filtro\n                </button>\n            </ion-item>\n        </div>\n\n    </ion-grid>\n\n    <ion-grid [style.display]="historico == \'historico-creditos\' ? \'block\' : \'none\'">\n        <div *ngIf="!showSpinner2 && listCreditos.length == 0">\n            <ion-row class="row-message">\n                <ion-col col-12 class="col-message">\n                    <ion-item no-lines class="item-message">\n                        <h2 class="message">Você não possui histórico de créditos</h2>\n                    </ion-item>\n                </ion-col>\n            </ion-row>\n        </div>\n    </ion-grid>\n</ion-content>'/*ion-inline-end:"/Users/desenvolvedor/Documents/appzonzazul/src/pages/historico/historico.html"*/,
+            selector: 'page-tempo-restante',template:/*ion-inline-start:"/Users/desenvolvedor/Documents/zonaazulfortaleza-develop/src/pages/tempo-restante/tempo-restante.html"*/'<ion-header no-border>\n    <ion-navbar color="header">\n\n        <ion-title style="width: 26em;">\n            <ion-label class="header-title">Saldo: {{qtdCadsUser - qtdCadsUsados}} CADs</ion-label>\n        </ion-title>\n\n        <button ion-button icon-only menuToggle *ngIf="!(fromPage === \'comprovante\')">\n            <ion-icon class="header-icon" name="menu"></ion-icon>\n        </button>\n\n        <ion-buttons left *ngIf="fromPage == \'comprovante\' ">\n            <button ion-button (click)="closeTempoRestantePage()">\n                <span color="light" class="header-text" showWhen="ios">Fechar</span>\n                <ion-icon name="md-arrow-back" class="header-icon" showWhen="android,windows,core"></ion-icon>\n            </button>\n        </ion-buttons>\n\n        <ion-buttons end>\n            <button ion-button icon-only (click)="goComprar()">\n                <img src="assets/icones/shopping-cart-white.svg" alt="" class="header-img">\n            </button>\n        </ion-buttons>\n\n    </ion-navbar>\n</ion-header>\n\n<ion-content padding class="content">\n    \n\n    <div *ngIf="!showSpinner1">\n        <div class=\'time-master\' *ngIf="estacionar">\n            <div class="{{estacionar?.veiculo?.tipo_veiculo == \'caminhao\'? \'info-content-green\':\'info-content-pink\'}}">\n                <loading-spinner *ngIf="showSpinner"></loading-spinner>\n                <ion-item class="item-select" no-lines mode="md" *ngIf="!showSpinner">\n                    <ion-label text-left class="title-select" mode="md">{{estacionar?.veiculo?.placa}}<p>{{estacionar?.veiculo?.marca || estacionar?.veiculo.modelo | uppercase}}</p></ion-label>\n                    <ion-label text-center mode="md"><img class="thumb" src="assets/icones/{{estacionar?.veiculo.tipo_veiculo == \'caminhao\'? \'caminhao-blue-dark.svg\': \'carro-white.svg\'}}" alt=""></ion-label>\n                </ion-item>\n              \n            </div>\n            \n            <div>\n                <div class="time">\n                    <timer [decorrido]="estacionar?.dataHoraRegistro" \n                           [now]="tempoCurrent"\n                           [placa]="estacionar?.veiculo_id" \n                           [status]="estacionar?.status"></timer>\n                    <p><ion-label class="clock-text">Até {{somaHora(estacionar?.comprovante?.horario,estacionar?.tempoComprado)}} </ion-label></p>\n                </div>        \n                        \n                <round-progress\n                    [current]="percent(estacionar?.dataHoraRegistro)"\n                    [max]="estacionar?.tempoComprado"\n                    [color]="\'#3F65FF\'"\n                    [background]="\'#E0E0E0\'"\n                    [radius]="65"\n                    [stroke]="10"\n                    [semicircle]="false"\n                    [rounded]="true"\n                    [clockwise]="true"\n                    [responsive]="false"\n                    [duration]="800"\n                    [animation]="\'easeInOutQuart\'"\n                    [animationDelay]="0">\n                        <timer [time]="estacionar?.tempoEstacionado" \n                               [now]="tempoCurrent"\n                               [placa]="estacionar?.veiculo_id" \n                               [status]="estacionar?.status"></timer>\n                </round-progress>   \n            </div>\n            <div class="item-info">\n                <p>Placa: {{estacionar?.veiculo?.placa}}</p>\n                <p>CADs Usados: {{estacionar?.qtd}}</p>\n                <p>Tempo de {{estacionar?.qtd}} CAD: {{estacionar?.tempoComprado/60}} Hora(s)</p>\n                <p>Valor: <span class="price-text"> R${{estacionar?.comprovante?.valor}},00</span></p>\n                <p>Data/Hora da ativação: {{estacionar?.comprovante?.data+\' \'+  estacionar?.comprovante?.horario}}</p>\n                <p>Registro AMC: {{estacionar?.comprovante?.numberAuth}}</p>\n            </div>\n            <button ion-button small  mode="ios" type="button" (click)="renovarEstacionar(estacionar)"\n                    class="btn-renovar" icon-end>ESTENDER <ion-icon name="md-time"></ion-icon></button>\n            <button ion-button small clear mode="ios" type="button" (click)="closeTempoRestantePage()"\n                    class="btn-plus" icon-end>ESTACIONAR EM OUTRO LOCAL <ion-icon name="ios-add-outline"></ion-icon></button>       \n                     \n        </div>\n        \n         <!--<ion-row *ngFor="let _estacionados[0] of _estacionados;">\n            \n           <ion-col col-3 class="col-img">\n                <ion-item class="item-img" no-lines no-padding>\n                    <ion-thumbnail item-start class="thumbnail-icon">\n                        <img src="{{getImage(comprovante?.tipo_veiculo)}}" />\n                    </ion-thumbnail>\n                </ion-item>\n            </ion-col>-->\n           <!-- <ion-col col-4 class="col-details">\n                <p class="item-details-board">{{ comprovante?.placa }}</p>\n                <p *ngIf="veiculo" class="item-details-mark">{{veiculo?.marca}}\n                    {{veiculo?.modelo}}</p>\n                <p *ngIf="!veiculo" class="item-details-mark">Setor {{setor_id}}</p>\n                <p class="item-details-city">{{ cidade }}</p>\n                <ion-row>\n                    \n                    <ion-col col-5 class="item-info" >\n                        \n                           \n                        \n                    </ion-col>\n                </ion-row>\n                    <ion-col>\n                        \n                    </ion-col>\n            </ion-col>\n            <ion-col col-1 class="col-details renovar" *ngIf="renovar">\n                <ion-row></ion-row>\n                <button ion-button small mode="ios" type="button" (click)="renovarEstacionar(_estacionados[0].estacionar)"\n                    class="btn-renovar">Renovar</button>\n            </ion-col>\n            <ion-col col-12 class="col-message">\n                <ion-item class="item-messagem" no-lines no-padding>\n\n                    <ion-label *ngIf="qtd == 1" class="message">* Esta ativação possui\n                        {{qtd}} CAD ativo</ion-label>\n                    <ion-label *ngIf="qtd > 1" class="message">* Esta ativação possui\n                        {{qtd}} CADs ativos</ion-label>\n                </ion-item>\n            </ion-col>\n            <ion-col col-12 class="col-message">\n                <ion-item class="item-btn-rodape" no-lines no-padding>\n                    <button ion-button clear small color="blue2" icon-start (click)="openVeiculoEstacionado(_estacionados[0])">\n                        <ion-icon name=\'ios-pin-outline\'></ion-icon>Ver Localização\n                    </button>\n                </ion-item>\n            </ion-col>\n        </ion-row>-->\n        <div *ngIf="!estacionar" class="row-info">\n            <ion-col col-12>\n                <ion-item no-lines>\n                    <h2>Não há nenhum veículo estacionado</h2>\n                </ion-item>\n                \n            </ion-col>\n        </div>\n    </div>\n\n</ion-content>'/*ion-inline-end:"/Users/desenvolvedor/Documents/zonaazulfortaleza-develop/src/pages/tempo-restante/tempo-restante.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ModalController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* ActionSheetController */],
-            __WEBPACK_IMPORTED_MODULE_7__providers_user_user__["a" /* UserProvider */],
-            __WEBPACK_IMPORTED_MODULE_9__providers_estacionar_estacionar__["a" /* EstacionarProvider */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* LoadingController */],
-            __WEBPACK_IMPORTED_MODULE_8__providers_creditos_creditos__["a" /* CreditosProvider */],
-            __WEBPACK_IMPORTED_MODULE_6__providers_cads_cads__["a" /* CadsProvider */],
-            __WEBPACK_IMPORTED_MODULE_10__providers_veiculos_veiculos__["a" /* VeiculosProvider */],
-            __WEBPACK_IMPORTED_MODULE_12__providers_tempo_estacionado_tempo_estacionado__["a" /* TempoEstacionadoProvider */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* ViewController */],
+            __WEBPACK_IMPORTED_MODULE_4__providers_user_user__["a" /* UserProvider */],
+            __WEBPACK_IMPORTED_MODULE_2__providers_estacionar_estacionar__["a" /* EstacionarProvider */],
+            __WEBPACK_IMPORTED_MODULE_5__providers_tempo_estacionado_tempo_estacionado__["a" /* TempoEstacionadoProvider */],
+            __WEBPACK_IMPORTED_MODULE_3__providers_veiculos_veiculos__["a" /* VeiculosProvider */],
+            __WEBPACK_IMPORTED_MODULE_10__providers_setores_setores__["a" /* SetoresProvider */],
+            __WEBPACK_IMPORTED_MODULE_14__providers_logger_logger__["a" /* LoggerProvider */],
+            __WEBPACK_IMPORTED_MODULE_6__providers_cads_user_cads_user__["a" /* CadsUserProvider */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */],
-            __WEBPACK_IMPORTED_MODULE_11__providers_setores_setores__["a" /* SetoresProvider */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* Events */]])
-    ], HistoricoPage);
-    return HistoricoPage;
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* Platform */],
+            __WEBPACK_IMPORTED_MODULE_15__providers_modal_modal__["a" /* ModalProvider */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ModalController */]])
+    ], TempoRestantePage);
+    return TempoRestantePage;
 }());
 
-//# sourceMappingURL=historico.js.map
+//# sourceMappingURL=tempo-restante.js.map
 
 /***/ }),
 
-/***/ 867:
+/***/ 825:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var Observable_1 = __webpack_require__(4);
-var timer_1 = __webpack_require__(868);
-Observable_1.Observable.timer = timer_1.timer;
-//# sourceMappingURL=timer.js.map
-
-/***/ }),
-
-/***/ 868:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var TimerObservable_1 = __webpack_require__(869);
-exports.timer = TimerObservable_1.TimerObservable.create;
-//# sourceMappingURL=timer.js.map
-
-/***/ }),
-
-/***/ 869:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-var isNumeric_1 = __webpack_require__(838);
-var Observable_1 = __webpack_require__(4);
-var async_1 = __webpack_require__(63);
-var isScheduler_1 = __webpack_require__(227);
-var isDate_1 = __webpack_require__(135);
-/**
- * We need this JSDoc comment for affecting ESDoc.
- * @extends {Ignored}
- * @hide true
- */
-var TimerObservable = (function (_super) {
-    __extends(TimerObservable, _super);
-    function TimerObservable(dueTime, period, scheduler) {
-        if (dueTime === void 0) { dueTime = 0; }
-        _super.call(this);
-        this.period = -1;
-        this.dueTime = 0;
-        if (isNumeric_1.isNumeric(period)) {
-            this.period = Number(period) < 1 && 1 || Number(period);
-        }
-        else if (isScheduler_1.isScheduler(period)) {
-            scheduler = period;
-        }
-        if (!isScheduler_1.isScheduler(scheduler)) {
-            scheduler = async_1.async;
-        }
-        this.scheduler = scheduler;
-        this.dueTime = isDate_1.isDate(dueTime) ?
-            (+dueTime - this.scheduler.now()) :
-            dueTime;
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__(0);
+var common_1 = __webpack_require__(44);
+var round_progress_component_1 = __webpack_require__(781);
+var round_progress_service_1 = __webpack_require__(778);
+var round_progress_ease_1 = __webpack_require__(780);
+var round_progress_config_1 = __webpack_require__(779);
+var RoundProgressModule = (function () {
+    function RoundProgressModule() {
     }
-    /**
-     * Creates an Observable that starts emitting after an `initialDelay` and
-     * emits ever increasing numbers after each `period` of time thereafter.
-     *
-     * <span class="informal">Its like {@link interval}, but you can specify when
-     * should the emissions start.</span>
-     *
-     * <img src="./img/timer.png" width="100%">
-     *
-     * `timer` returns an Observable that emits an infinite sequence of ascending
-     * integers, with a constant interval of time, `period` of your choosing
-     * between those emissions. The first emission happens after the specified
-     * `initialDelay`. The initial delay may be a {@link Date}. By default, this
-     * operator uses the `async` IScheduler to provide a notion of time, but you
-     * may pass any IScheduler to it. If `period` is not specified, the output
-     * Observable emits only one value, `0`. Otherwise, it emits an infinite
-     * sequence.
-     *
-     * @example <caption>Emits ascending numbers, one every second (1000ms), starting after 3 seconds</caption>
-     * var numbers = Rx.Observable.timer(3000, 1000);
-     * numbers.subscribe(x => console.log(x));
-     *
-     * @example <caption>Emits one number after five seconds</caption>
-     * var numbers = Rx.Observable.timer(5000);
-     * numbers.subscribe(x => console.log(x));
-     *
-     * @see {@link interval}
-     * @see {@link delay}
-     *
-     * @param {number|Date} initialDelay The initial delay time to wait before
-     * emitting the first value of `0`.
-     * @param {number} [period] The period of time between emissions of the
-     * subsequent numbers.
-     * @param {Scheduler} [scheduler=async] The IScheduler to use for scheduling
-     * the emission of values, and providing a notion of "time".
-     * @return {Observable} An Observable that emits a `0` after the
-     * `initialDelay` and ever increasing numbers after each `period` of time
-     * thereafter.
-     * @static true
-     * @name timer
-     * @owner Observable
-     */
-    TimerObservable.create = function (initialDelay, period, scheduler) {
-        if (initialDelay === void 0) { initialDelay = 0; }
-        return new TimerObservable(initialDelay, period, scheduler);
-    };
-    TimerObservable.dispatch = function (state) {
-        var index = state.index, period = state.period, subscriber = state.subscriber;
-        var action = this;
-        subscriber.next(index);
-        if (subscriber.closed) {
-            return;
-        }
-        else if (period === -1) {
-            return subscriber.complete();
-        }
-        state.index = index + 1;
-        action.schedule(state, period);
-    };
-    TimerObservable.prototype._subscribe = function (subscriber) {
-        var index = 0;
-        var _a = this, period = _a.period, dueTime = _a.dueTime, scheduler = _a.scheduler;
-        return scheduler.schedule(TimerObservable.dispatch, dueTime, {
-            index: index, period: period, subscriber: subscriber
-        });
-    };
-    return TimerObservable;
-}(Observable_1.Observable));
-exports.TimerObservable = TimerObservable;
-//# sourceMappingURL=TimerObservable.js.map
+    return RoundProgressModule;
+}());
+RoundProgressModule = __decorate([
+    core_1.NgModule({
+        imports: [common_1.CommonModule],
+        declarations: [round_progress_component_1.RoundProgressComponent],
+        exports: [round_progress_component_1.RoundProgressComponent],
+        providers: [round_progress_service_1.RoundProgressService, round_progress_ease_1.RoundProgressEase, round_progress_config_1.RoundProgressConfig]
+    })
+], RoundProgressModule);
+exports.RoundProgressModule = RoundProgressModule;
+;
+__export(__webpack_require__(781));
+__export(__webpack_require__(778));
+__export(__webpack_require__(780));
+__export(__webpack_require__(779));
+//# sourceMappingURL=index.js.map
 
 /***/ })
 

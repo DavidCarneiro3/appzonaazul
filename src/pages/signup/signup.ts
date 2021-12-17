@@ -98,8 +98,14 @@ export class SignupPage {
 
             this.authProvider.createUserAuth(user.email, password, user)
                 .then((userAuth: User) => {
-
-                    if (userAuth) {
+                    let res = { 'logged': userAuth };
+                    console.log('userAuth',userAuth)
+                    this.userProvider.saveUserLocal(userAuth.id).then(_ => {
+                        this.logger.info('NOTIFICATION SIGNUP. User: ' + userAuth.id);
+                        this.events.publish('user', user)
+                        this.showPage(userAuth.id, { user: userAuth, fromPage: 'signup' });
+                    })
+                    /*if (userAuth) {
                         let res = { 'logged': userAuth };
 
                         this.modalCtrl.create(Constants.CONFIRMA_CPF_PAGE.name, { res }, { cssClass: 'modal-alert' })
@@ -114,7 +120,7 @@ export class SignupPage {
                                     })
                                 })
                         })
-                    }
+                    }*/
 
                     loading.dismiss();
 
@@ -134,7 +140,7 @@ export class SignupPage {
 
     showHome(userId, params) {
         this.events.publish('user:load', userId);
-        this.navCtrl.setRoot(Constants.HOME_PAGE.name, params);
+        this.navCtrl.setRoot(Constants.PRINCIPAL_PAGE.name, params);
     }
 
     showTerms() {

@@ -1,17 +1,26 @@
 page-configuracoes {
-  font-family: "Roboto";
-
+  
   .header-icon {
     color: #fff;
   }
 
+  .scroll-content{
+    font-family: "kanit";
+    background-color: #E5E5E5;
+  }
+
+  
+
   .content {
+    
     .row-header {
       margin-top: -5px;
       .col-header {
         background-color: #f1f1f1;
-        padding: 30px 30px 30px 30px;
+        //padding: 30px 30px 30px 30px;
         border-bottom: 1px solid #c6c6c6;
+
+        
 
         .title {
           color: #8c8c8c;
@@ -27,15 +36,29 @@ page-configuracoes {
       color: #6f6f6f;
       font-size: 12pt;
       text-align: left;
-      margin-left: 15px;
+      margin-left: 5px;
     }
 
     .title-not {
       margin-top: 15px;
-      color: #a7a7a7;
-      font-size: 10pt;
+      color: #828282;
+      font-size: 15px;
       text-align: left;
-      margin-left: 30px;
+      margin-left: 10px;
+      text-align: justify;
+      white-space: normal;
+    }
+    // .item-list{
+    //   background-color: #4f4f4f;
+    // }
+    .blue{
+      margin-top: 15px;
+      font-size: 15px;
+      text-align: left;
+      margin-left: 10px;
+      text-align: justify;
+      white-space: normal; 
+      color: #3F65FF;
     }
 
     .row-items {

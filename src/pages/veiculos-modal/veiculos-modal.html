@@ -16,7 +16,7 @@
 </ion-header>
 
 <ion-content>
-    <ion-searchbar placeholder="Buscar por placa" color="primary" (ionInput)="procurarVeiculos($event)"></ion-searchbar>
+    <ion-searchbar class="search" placeholder="Buscar por placa" color="primary" (ionInput)="procurarVeiculos($event)"></ion-searchbar>
     <ion-list radio-group>
         <ion-item *ngFor="let veiculo of veiculos" text-wrap>
             <ion-label>
@@ -28,16 +28,16 @@
     </ion-list>
 </ion-content>
 
-<ion-footer class="footer">
-    <ion-toolbar>
-        <ion-title>
+<ion-footer class="footer" mode="md">
+    <ion-toolbar class="toolbar" mode="md">
+        <ion-title mode="md">
             <ion-row class="btn-rows">
                 <ion-col>
-                    <button ion-button block (click)="dismiss()" mode="md">Cancelar</button>
+                    <button ion-button block class="btn-cancelar" (click)="dismiss()" mode="md">Cancelar</button>
                 </ion-col>
 
                 <ion-col>
-                    <button ion-button block color="default" (click)="selectVeiculo()"
+                    <button ion-button block class="btn" (click)="selectVeiculo()"
                         [disabled]="this.veiculoSelecionado.length <= 0" mode="md">OK</button>
                 </ion-col>
             </ion-row>

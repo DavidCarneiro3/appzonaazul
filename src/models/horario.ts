@@ -17,4 +17,11 @@ export class HorarioModel {
 
         this.isExibir = true;//this.canExibir();
     }
+
+    /*private canExibir(){
+        if(this.hora_inicio === '00:00' && this.hora_fim === '00:00')
+            return false;
+
+        return true;
+    }*/
 }

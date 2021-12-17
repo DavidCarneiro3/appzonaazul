@@ -43,6 +43,8 @@ import { FunctionsUtil } from '../../util/functions.util';
 import { environment } from '../../environments/environment';
 import { Constants } from "../../environments/constants";
 
+declare var google: any;
+
 @IonicPage()
 @Component({
     selector: 'page-estacionar',
@@ -53,8 +55,14 @@ import { Constants } from "../../environments/constants";
 export class EstacionarPage {
 
     httpOptions;
+    seletor: boolean = true;
+    selectOption = {
+        title: 'Regra',
+        subtitle: 'Escolha a regra',
+        mode: 'md'
+      };
 
-    cadSelectd: number = 0;
+    cadSelectd: number = 1;
     setor: number;
     qtdCadsUser: number = 0;
     option: string;
@@ -77,6 +85,9 @@ export class EstacionarPage {
     nomeArea: string;
     placa: string;
     veiculo_id: string;
+    veiculo_tipo: string;
+    veiculo_marca: string;
+    veiculo_modelo: string;
 
     veiculos: any[] = [];
     estacionar: EstacionarModel;
@@ -88,6 +99,9 @@ export class EstacionarPage {
     loading;
     veiculoRenovar;
     fromRenovar: boolean = false;
+    latitude: string;
+    longitude: string;
+    radio: any = 1;
 
     // holidays: any = [];
 
@@ -111,7 +125,7 @@ export class EstacionarPage {
         private setorProvider: SetoresProvider,
         private _holidayProvider: HolidaysProvider,
         private viewCtrl: ViewController) {
-
+        
         this.httpOptions = {
             headers: new HttpHeaders({
                 'Content-Type': 'application/x-www-form-urlencoded'
@@ -138,13 +152,18 @@ export class EstacionarPage {
 
         this.setorProvider.byId(this.codigoArea, this.codigoSetor).take(1).subscribe((setor: SetorModel) => {
             this.setorModel = setor;
+            console.log(this.setorModel)
             if (this.setorModel.total_vagas - this.setorModel.qtd_normal_estacionados <= 0) {
-                this.showAlert("Aviso!", "Não há vagas convencionais disponíveis!", "info", () => {
+                this.showAlert("Aviso!", "Não há vagas convencionais disponíveis!", "alert", () => {
                     this.disabledNormal = true;
                 }, () => {
                     this.disabledNormal = true;
                 });
             }
+            this.latitude = this.setorModel.latInicio.toString();
+            this.longitude = this.setorModel.lngInicio.toString();
+            this.criarMap(this.latitude,this.longitude);
+            console.log(this.latitude+' + '+this.longitude);
         });
     }
 
@@ -155,14 +174,34 @@ export class EstacionarPage {
     }
 
     getMinutos(item) {
-        let minutos = (this.veiculoSelecionado && this.veiculoSelecionado.tipo_veiculo == 'caminhao_onibus') ?
-            (this.setorModel.cad_caminhao * item) + ' Minutos' :
-            (this.setorModel.cad_veiculo * item) + ' Minutos (' + (this.cad.tempo_veiculo[this.tempoCadVeiculo] * item) / 60 + 'h)'
+        let  minutos;
+        //console.log('Tipo veiculo Selecionado',this.veiculoSelecionado.tipo_veiculo)
+        if(this.veiculoSelecionado && this.veiculoSelecionado.tipo_veiculo == 'caminhao'){
+            if(this.setorModel.cad_caminhao * item>30){
+                if(this.setorModel.cad_caminhao * item == 60){
+                    minutos = (this.setorModel.cad_caminhao * item)  / 60 + ' Hora';
+                }else{
+                    minutos = (this.setorModel.cad_caminhao * item)  / 60 + ' Horas';
+                }
+                
+            }else{
+                minutos = (this.setorModel.cad_caminhao * item) + ' Minutos';
+            }
+        }else{
+            if(this.setorModel.cad_veiculo * item == 60){
+                minutos = (this.setorModel.cad_veiculo * item)  / 60 + ' Hora';
+            }else{
+                minutos = (this.setorModel.cad_veiculo * item) / 60 + ' Horas';
+            }
+        }
+        
+        
         return minutos;
     }
 
     updateCadsAndHorarios() {
-        if (this.veiculoSelecionado && this.veiculoSelecionado.tipo_veiculo == 'caminhao_onibus') {
+        if (this.veiculoSelecionado && this.veiculoSelecionado.tipo_veiculo == 'caminhao') {
+            
             this.tempoCadVeiculo = this.setorModel.cad_caminhao;
             this.check = 'carga_descarga';
             this.updateQtdCadsSetor();
@@ -184,6 +223,8 @@ export class EstacionarPage {
     }
 
     ionViewCanEnter() {
+        this.qtdCadsUser = this.navParams.get("qtdCads");
+        console.log('qtdCads',this.qtdCadsUser)
         this.userProvider.getUserLocal().then(userID => {
             if (userID) {
                 return true;
@@ -194,6 +235,7 @@ export class EstacionarPage {
     // onCreate
     ionViewDidLoad() {
         this.qtdCadsUser = this.navParams.get("qtdCads");
+        console.log(this.qtdCadsUser)
         this.userProvider.getUserLocal().then(userID => {
             if (userID != null) {
                 this.userProvider.byId(userID).take(1).subscribe((user: User) => {
@@ -207,13 +249,13 @@ export class EstacionarPage {
                     });
                     this.getVeiculosUser(this.user);
                 });
-                // this.updateCadsAndHorarios();
+                 this.updateCadsAndHorarios();
             }
         });
 
         this.check = 'normal';
         this.option = 'especial';
-        document.querySelector("#especial").className = 'option-text';
+        //document.querySelector("#especial").className = 'option-text';
     }
 
     // Adiciona os feriados do firebase em uma lista a ser usada depois para a verificação do estacionamento 
@@ -256,32 +298,41 @@ export class EstacionarPage {
     }
 
     getVeiculosUser(user) {
-        if (user.profile == "revendedor") {
-            // console.log('**********', this.veiculos);
-            const _veiculo = this.navParams.get('veiculo') || null;
+        // if (user.profile == "revendedor") {
+        //     console.log('**********', this.veiculos);
+        //     let _veiculo: any = this.veiculos[0];
+        //     console.log(_veiculo)
+        //     if(_veiculo) {
+        //         this.veiculos.push({ key: new Date().valueOf(), veiculo: _veiculo });
+        //         console.log(this.veiculos)
+        //         const _idx = this.veiculos.length-1;
+        //         const _vTmp = this.veiculos[_idx];
+        //         this.veiculo_id = _vTmp.veiculo.id || _vTmp.key;
+        //         this.placa = _vTmp.veiculo.placa;
+        //         this.veiculo_tipo = _vTmp.veiculo.tipo_veiculo;
+        //         console.log(this.placa)
+        //         this.veiculos[_idx].veiculo.id = this.veiculo_id
+        //         this.veiculoSelecionado = this.veiculos[_idx].veiculo;
+                
+        //     }
 
-            if(_veiculo) {
-                this.veiculos.push({ key: new Date().valueOf(), veiculo: _veiculo });
+        //     this.showSpinner = false;
 
-                const _idx = this.veiculos.length-1;
-                const _vTmp = this.veiculos[_idx];
-                this.veiculo_id = _vTmp.veiculo.id || _vTmp.key;
-                this.placa = _vTmp.veiculo.placa;
-
-                this.veiculos[_idx].veiculo.id = this.veiculo_id
-                this.veiculoSelecionado = this.veiculos[_idx].veiculo;
-            }
-
-            this.showSpinner = false;
-
-        } else {
+        // } else {
             if (this.source) {
-                if (this.source === 'tempo_restante') {
-                    this.fromRenovar = true;
+                if (this.source === 'tempo_restante' || this.source === 'principal') {
+                    if(this.source === 'tempo_restante'){
+                        this.fromRenovar = true;
+                    }
+                    
                     let veiculo = this.navParams.get('veiculo')
-
+                    console.log('Veiculo',veiculo)
                     this.veiculo_id = veiculo.key;
                     this.placa = veiculo.veiculo.placa;
+                    this.veiculo_marca = veiculo.veiculo.marca;
+                    this.veiculo_modelo = veiculo.veiculo.modelo;
+                    this.veiculo_tipo = veiculo.veiculo.tipo_veiculo;
+                    console.log(this.veiculo_tipo)
                     this.veiculoSelecionado = new VeiculoModel(veiculo.veiculo);
                     this.showSpinner = false;
                     // para fazer getVeiculos funcionar ... e aparecer o veiculo nas opçoes :/
@@ -293,8 +344,11 @@ export class EstacionarPage {
                             item.veiculo.id = item.key;
                             this.veiculos.push({ key: item.key, veiculo: item.veiculo });
                         });
+                        console.log('This.veiculos',this.veiculos)
                         this.veiculo_id = this.veiculos[0].key;
                         this.placa = this.veiculos[0].veiculo.placa;
+                        this.veiculo_marca = this.veiculos[0].veiculo.marca;
+                        this.veiculo_modelo = this.veiculos[0].veiculo.modelo;
                         this.veiculoSelecionado = this.veiculos[0].veiculo;
                         this.showSpinner = false;
                     });
@@ -306,14 +360,19 @@ export class EstacionarPage {
                         item.veiculo.id = item.key;
                         this.veiculos.push({ key: item.key, veiculo: item.veiculo });
                     });
+                    console.log('Veiculo',this.veiculos)
                     this.veiculo_id = this.veiculos[0].key;
                     this.placa = this.veiculos[0].veiculo.placa;
-                    // this.veiculoSelecionado = this.veiculos[0].veiculo;
+                    this.veiculo_tipo = this.veiculos[0].veiculo.tipo_veiculo;
+                    this.veiculo_marca = this.veiculos[0].veiculo.marca;
+                    this.veiculo_modelo = this.veiculos[0].veiculo.modelo;
+                    this.veiculoSelecionado = this.veiculos[0].veiculo;
+                    console.log(this.veiculo_marca+' + '+ this.veiculo_modelo+' '+this.placa+' '+this.veiculo_tipo)
                     this.showSpinner = false;
                 });
                 this.updateCadsAndHorarios();
             }
-        }
+        //}
         this.updateCadsAndHorarios();
 
     }
@@ -323,7 +382,8 @@ export class EstacionarPage {
             const value = this.veiculos[i];
 
             if (value.veiculo.placa === placa) {
-                const veiculo_id = this.user.profile == 'revendedor' ? value.veiculo.id : value.key;
+                //const veiculo_id = this.user.profile == 'revendedor' ? value.veiculo.id : value.key;
+                const veiculo_id = value.key;
                 return { veiculo_id: veiculo_id, veiculo: value.veiculo };
             }
         };
@@ -343,6 +403,32 @@ export class EstacionarPage {
                 this.veiculoSelecionado = veiculo.veiculo;
                 this.veiculo_id = veiculo.veiculo.id;
                 this.placa = veiculo.veiculo.placa;
+                this.veiculo_tipo = veiculo.veiculo.tipo_veiculo;
+                this.veiculo_marca = veiculo.veiculo.marca
+                this.veiculo_modelo = veiculo.veiculo.modelo
+                console.log(this.veiculoSelecionado);
+                this.updateCadsAndHorarios();
+
+            }
+
+        })
+    }
+
+    escolherVeiculo() {
+        const veiculos = this.veiculos;
+        const veiculoModal = this.modalCtrl.create(Constants.VEICULOS_MODAL_PAGE.name, { veiculos: veiculos });
+        veiculoModal.present();
+
+        veiculoModal.onDidDismiss(data => {
+            if (data) {
+                const veiculo = data
+                this.veiculoSelecionado = veiculo.veiculo;
+                this.veiculo_id = veiculo.veiculo.id;
+                this.placa = veiculo.veiculo.placa;
+                this.veiculo_marca = veiculo.veiculo.marca;
+                this.veiculo_modelo = veiculo.veiculo.modelo;
+                this.veiculo_tipo = veiculo.veiculo.tipo_veiculo;
+                console.log(this.veiculo_tipo);
                 this.updateCadsAndHorarios();
 
             }
@@ -352,13 +438,15 @@ export class EstacionarPage {
 
     selectCad(value) {
         this.cadSelectd = value;
+        console.log(this.cadSelectd)
     }
 
 
     salvaVeiculoNaoEstacionado(cad, estacionar, tempoEstacionadoEmMilis, dataEnvio: Date) {
+        console.log(cad)
         if (dataEnvio.getHours() >= 0 && dataEnvio.getHours() < 6) {
             this.loading.present()
-            this.showAlert('Aviso!', 'A ativação do estacionamento será considerada apenas no próximo inicio do regulamento para o local! ', '',
+            this.showAlert('Aviso!', 'A ativação do estacionamento será considerada apenas no próximo início do regulamento para o local! ', '',
                 //CallBack quando o usuário Confirmar
                 () => {
                     let estacionamentoAgendadoModel = new AgendarEstacionamentoModel();
@@ -377,6 +465,7 @@ export class EstacionarPage {
                     estacionamentoAgendadoModel.veiculo_id = estacionar.veiculo_id;
 
                     estacionamentoAgendadoModel.time = parseInt(this.horarios[dataEnvio.getDay()].hora_inicio)
+                    console.log('Uid',this.user.id)
                     this.updateQtdCadsUsados(this.user.id, estacionar.qtd);
                     this._agendarEstacionamento(estacionamentoAgendadoModel);
 
@@ -388,7 +477,7 @@ export class EstacionarPage {
                 }, 'Confirmar');
         } else {
             this.showAlert(
-                "Por favor", 'Para estacionar seu veí­culo, clique no botão Confirmar', "", () => {
+                "Confirmação", 'Deseja estacionar seu veículo?', "alert", () => {
 
                     const now = DateUtil.getCurrenteDateFormated()
                     const data2 = DateUtil.convertDate(now);
@@ -398,6 +487,7 @@ export class EstacionarPage {
                         this.loading.dismiss();
                     } else {
                         this.operacaoLinkL2(estacionar, cad, dataEnvio, (dataProcessamento, autenticacao) => {
+                            console.log('Uid',this.user.id)
                             this.updateQtdCadsUsados(this.user.id, cad);
 
                             let estacionarModel = new EstacionarModel(estacionar);
@@ -410,7 +500,7 @@ export class EstacionarPage {
                             this.saveEstacionar(estacionarModel, this.user.id, cad, this.veiculoSelecionado);
                         })
                     }
-                }, () => { this.enabled = true; this.loading.dismiss() }, 'Confirmar');
+                }, () => { this.enabled = true; this.loading.dismiss() }, 'Sim');
             this.enabled = true;
             this.enabled = true;
             this.enabled = true;
@@ -418,6 +508,7 @@ export class EstacionarPage {
     }
 
     salvaVeiculoJaEstacionado(_veiculoEstacionado, cad, estacionar, tempoEstacionadoEmMilis, dataEnvio: Date) {
+        console.log(cad)
         _veiculoEstacionado.map(item => {
 
             const isVeiculoEstacionadoNesteLocal = (item &&
@@ -471,6 +562,7 @@ export class EstacionarPage {
                         
                         else {
                             this.operacaoLinkL2(estacionar, cad, dataEnvio, (dataProcessamento, autenticacao) => {
+                                console.log(dataProcessamento.getTime())
                                 _estacionarTmp.tempoEstacionado = (dataProcessamento.getTime() + tempoEstacionadoEmMilis + tempoAnteriorEmMilis);
                                 _estacionarTmp.dataHoraRegistro = dataProcessamento.getTime();
                                 _estacionarTmp.codAuth = autenticacao;
@@ -491,7 +583,7 @@ export class EstacionarPage {
     }
 
     openComprovante(cad, placa) {
-        console.log('Cads '+cad+', Placa: '+placa)
+        console.log('Cads: '+cad+', Placa: '+placa)
         const veiculo = this.getVeiculo(placa);
         this.veiculo_id = veiculo.veiculo_id;
         // this.veiculoSelecionado = this.source? new VeiculoModel(veiculo.veiculo): veiculo;
@@ -623,8 +715,8 @@ export class EstacionarPage {
                     // }
                     // });
                 } else {
-                    this.showAlert('Olá!', 'Você não possui CADs suficientes. Compre agora para estacionar seu veículo.', '',
-                        () => { this.navCtrl.setRoot(Constants.CREDITOS_PAGE.name, { fromPage: 'estacionar' }); }, () => { }, 'COMPRAR');
+                    this.showAlert('Saldo Insuficiente', 'Você está sem CADs. Deseja comprar CADs para estacionar seu veículo?', '',
+                        () => { this.navCtrl.push(Constants.CREDITOS_PAGE.name, { fromPage: 'estacionar', setor: this.setor, area: this.nomeArea, qtdCads: this.cad }); }, () => { }, 'COMPRAR');
                     this.enabled = true;
                     this.loading.dismiss();
                 }
@@ -663,7 +755,7 @@ export class EstacionarPage {
                     const dataProcessamentoStr = response['dataProcessamento'];
                     const dataProcessamento = DateUtil.convertDate(dataProcessamentoStr);
                     const autenticacao = response['autenticacao'];
-                    console.log(response)
+                    console.log('Resposta',response)
                     if (response['sucesso'] || response['sucesso'] === 'true') {
                         if (callback) {
 
@@ -678,7 +770,7 @@ export class EstacionarPage {
                 }).catch(error => {
                     let result = error.toString();
                     result = result.split(':')[1]
-                    console.log(result)
+                    console.log('Resultado',result)
                     this.showAlert('Indisponível', result, '', () => { }, () => { }, '', 'OK');
                     this.enabled = true;
                     this.loading.dismiss();
@@ -752,7 +844,7 @@ export class EstacionarPage {
             cep: this.user.cep,
             regras: this.cad.regras_comprovante,
             site: this.cad.info.site,
-
+            situacao: estacionar.situacao,
             distribuidorCnpj: this.cad.empresa.cnpj,
             distribuidorRazaoSocial: this.cad.empresa.razao_social,
             distribuidorNomeFantasia: this.cad.empresa.nome_fantasia,
@@ -785,8 +877,9 @@ export class EstacionarPage {
                         }, err => console.log('Algo deu errado =>', err))
                     if (this.source) {
                         if (this.source == 'tempo_restante') {
+                            this.loading.dismiss();
                             console.log('aqui')
-                            this.navCtrl.setRoot(Constants.COMPROVANTE_PAGE.name, {
+                            this.navCtrl.setRoot(Constants.TEMPO_RESTANTE_PAGE.name, {
                                 user: this.user,
                                 estacionar: estacionar,
                                 loading: this.loading,
@@ -795,14 +888,16 @@ export class EstacionarPage {
                             //this.viewCtrl.dismiss();
 
                         } else {
-                            this.navCtrl.setRoot(Constants.COMPROVANTE_PAGE.name, {
+                            this.loading.dismiss();
+                            this.navCtrl.setRoot(Constants.TEMPO_RESTANTE_PAGE.name, {
                                 user: this.user,
                                 estacionar: estacionar,
                                 loading: this.loading
                             });
                         }
                     } else {
-                        this.navCtrl.setRoot(Constants.COMPROVANTE_PAGE.name, {
+                        this.loading.dismiss();
+                        this.navCtrl.setRoot(Constants.TEMPO_RESTANTE_PAGE.name, {
                             user: this.user,
                             estacionar: estacionar,
                             loading: this.loading
@@ -843,8 +938,15 @@ export class EstacionarPage {
     }
 
     updateQtdCadsUsados(userID: string, cads: number) {
+        console.log('Uid User',userID)
+        console.log('item cads',cads)
         this.cadsUserProvider.getQtdCadsUsados(this.user.id).take(1).subscribe((item: string) => {
-            this.cadsUserProvider.updateQtdCadsUsadas(userID, (cads + parseInt(item)));
+            let qtdCads = 0
+            if(item !== null){
+                qtdCads = parseInt(item);
+            }
+            console.log('item cads usados',item)
+            this.cadsUserProvider.updateQtdCadsUsadas(userID, (cads + qtdCads));
         });
     }
 
@@ -1022,11 +1124,15 @@ export class EstacionarPage {
             if (this.source == 'tempo_restante') {
                 this.navCtrl.setRoot(Constants.TEMPO_RESTANTE_PAGE.name);
 
-            } else {
+            } else if (this.source == 'principal'){
+                this.navCtrl.setRoot(Constants.PRINCIPAL_PAGE.name);
+
+            } else if (this.source == 'mapa'){
+                // this.navCtrl.pop();
                 this.navCtrl.setRoot(Constants.HOME_PAGE.name);
             }
         } else {
-            this.navCtrl.setRoot(Constants.HOME_PAGE.name);
+            this.navCtrl.setRoot(Constants.PRINCIPAL_PAGE.name);
         }
     }
 
@@ -1069,7 +1175,7 @@ export class EstacionarPage {
 
         const cancelBtn = {
             text: btnCancelar,
-            cssClass: 'btn-ok',
+            cssClass: 'btn-cancel',
             handler: data => {
                 error();
             }
@@ -1086,7 +1192,7 @@ export class EstacionarPage {
         let alert = this.alertCtrl.create({
             title: title,
             message: msg,
-            cssClass: type,
+            cssClass: 'alert',
             buttons: btns,
             enableBackdropDismiss: false
 
@@ -1133,7 +1239,50 @@ export class EstacionarPage {
     /**
      * Pop-out com as ajudas sobre as informações para o  usuário
      */
-    openHelp() {
-        this.showHelp('Ajuda', 'Verifique se os dados estão corretos e confirme o setor que deseja estacionar.', '', () => { })
+    //openHelp() {
+       // this.showHelp('Ajuda', 'Verifique se os dados estão corretos e confirme o setor que deseja estacionar.', '', () => { })
+    //}
+
+    comprarCads(){
+        this.navCtrl.push(Constants.CREDITOS_PAGE.name,{fromPage: 'estacionar'});
     }
+
+   criarMap(lat,lon){
+       
+       let position = new google.maps.LatLng(lat,lon);
+    function initialize() {
+        var mapOptions = {
+          zoom: 16,
+          center: new google.maps.LatLng(lat+30,lon+30),
+          panControl: false,
+          mapTypeControl: false,
+          scaleControl: false,
+          streetViewControl: false,
+          overviewMapControl: false,
+          rotateControl: false,
+          zoomControl: false,
+          disableDefaultUI: true
+        };
+        var map = new google.maps.Map(document.getElementById('googleMap'),
+            mapOptions);
+        var marker = new google.maps.Marker({
+          position: position,
+          animation:google.maps.Animation.BOUNCE,
+          icon: {
+              url: 'assets/icones/pin-dark.svg',
+              scaledSize: new google.maps.Size(55, 55),  
+            },
+          
+          map: map
+        });
+      }
+      google.maps.event.addDomListener(window, 'load', initialize());
+   }
+
+   checkRadio(radio){
+       this.radio = radio;
+       this.selectCad(radio)
+       //this.getMinutos(radio)
+       console.log(this.radio)
+   }
 }

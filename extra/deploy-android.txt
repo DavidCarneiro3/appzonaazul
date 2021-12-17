@@ -13,7 +13,7 @@ zonaazulfortaleza@123
 -------------------
 
 Passo 3: (Versao Release)
-ionic cordova build android --prod --release
+ionic cordova build android --minifyjs --minifycss --release
 
 Passo 4: (Assinar)
 jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore extra/zonaazulfortaleza.keystore -storepass zonaazulfortaleza@123 -keypass zonaazulfortaleza@123 platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk zonaazulfortaleza

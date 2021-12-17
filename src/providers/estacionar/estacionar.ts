@@ -72,20 +72,6 @@ export class EstacionarProvider {
             });
     }
 
-    countById(id) {
-        return this.afd.list(Constants.PATH_DOCUMENTS_ESTACIONAR + id)
-            .snapshotChanges()
-            .map(changes => changes.map(c => ({ key: c.payload.key, estacionamentos: c.payload.val() })))
-            .map(changes => {
-                let cont = 1;
-                changes.forEach(_item => {
-                    cont += Object.keys(_item.estacionamentos.id.split("_")[0]).length;
-                });
-
-                return cont;
-            });
-    }
-
     countCadsById(id){
         return this.afd.list(Constants.PATH_DOCUMENTS_ESTACIONAR + id)
             .snapshotChanges()

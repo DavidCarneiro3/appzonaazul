@@ -19,8 +19,7 @@ export class VeiculosProvider {
   findByVeiculo(veiculoID: string, userID: string) {
     return this.afd.object(Constants.PATH_DOCUMENTS_VEICULOS + userID + '/' + veiculoID)
         .valueChanges()
-        // .map(changes => changes.map(c => ({ key: c.payload.key, veiculo: c.payload.val() })))
-        ;
+        // .map(changes => changes.map(c => ({ key: c.payload.key, veiculo: c.payload.val() })));
   }
 
   remove(userId, itemId) {

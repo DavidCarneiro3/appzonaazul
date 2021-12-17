@@ -1,15 +1,15 @@
 webpackJsonp([18],{
 
-/***/ 827:
+/***/ 763:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SignupPageModule", function() { return SignupPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(36);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__signup__ = __webpack_require__(880);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_brmasker_ionic_3__ = __webpack_require__(447);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__signup__ = __webpack_require__(822);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_brmasker_ionic_3__ = __webpack_require__(420);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -41,7 +41,7 @@ var SignupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 835:
+/***/ 771:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -198,20 +198,20 @@ var FunctionsUtil = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 880:
+/***/ 822:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SignupPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_ionic_angular__ = __webpack_require__(36);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_ionic_angular__ = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__models_user__ = __webpack_require__(134);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_logger_logger__ = __webpack_require__(40);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_auth_auth__ = __webpack_require__(217);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__models_user__ = __webpack_require__(113);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_logger_logger__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_auth_auth__ = __webpack_require__(199);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_user_user__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__environments_constants__ = __webpack_require__(20);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__util_functions_util__ = __webpack_require__(835);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__environments_constants__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__util_functions_util__ = __webpack_require__(771);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -282,25 +282,34 @@ var SignupPage = /** @class */ (function () {
         if (this.signupForm.valid) {
             var loading_1 = this.loadingCtrl.create({ content: 'Aguarde...' });
             loading_1.present();
-            var user = new __WEBPACK_IMPORTED_MODULE_3__models_user__["a" /* User */](this.signupForm.value);
-            user.uidAparelho = this.navParams.get('uidAparelho');
+            var user_1 = new __WEBPACK_IMPORTED_MODULE_3__models_user__["a" /* User */](this.signupForm.value);
+            user_1.uidAparelho = this.navParams.get('uidAparelho');
             var password = this.signupForm.value.password;
-            this.authProvider.createUserAuth(user.email, password, user)
+            this.authProvider.createUserAuth(user_1.email, password, user_1)
                 .then(function (userAuth) {
-                if (userAuth) {
-                    var res = { 'logged': userAuth };
-                    _this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_7__environments_constants__["a" /* Constants */].CONFIRMA_CPF_PAGE.name, { res: res }, { cssClass: 'modal-alert' })
-                        .present();
-                    _this.events.subscribe('update', function (value) {
-                        _this.userProvider.updateUser(value.logged.id, { cpf: value.logged.cpf })
-                            .then(function (__) {
-                            _this.userProvider.saveUserLocal(userAuth.id).then(function (_) {
-                                _this.logger.info('NOTIFICATION SIGNUP. User: ' + userAuth.id);
-                                _this.showPage(userAuth.id, { user: userAuth, fromPage: 'signup' });
-                            });
-                        });
-                    });
-                }
+                var res = { 'logged': userAuth };
+                console.log('userAuth', userAuth);
+                _this.userProvider.saveUserLocal(userAuth.id).then(function (_) {
+                    _this.logger.info('NOTIFICATION SIGNUP. User: ' + userAuth.id);
+                    _this.events.publish('user', user_1);
+                    _this.showPage(userAuth.id, { user: userAuth, fromPage: 'signup' });
+                });
+                /*if (userAuth) {
+                    let res = { 'logged': userAuth };
+
+                    this.modalCtrl.create(Constants.CONFIRMA_CPF_PAGE.name, { res }, { cssClass: 'modal-alert' })
+                        .present()
+                    this.events.subscribe('update', value => {
+                        this.userProvider.updateUser(value.logged.id, { cpf: value.logged.cpf })
+                            .then(__ => {
+
+                                this.userProvider.saveUserLocal(userAuth.id).then(_ => {
+                                    this.logger.info('NOTIFICATION SIGNUP. User: ' + userAuth.id);
+                                    this.showPage(userAuth.id, { user: userAuth, fromPage: 'signup' });
+                                })
+                            })
+                    })
+                }*/
                 loading_1.dismiss();
                 // this.navCtrl.setRoot(Constants.TERMS_PAGE.name, {user: userAuth, isToggle: false});
             }).catch(function (error) {
@@ -316,7 +325,7 @@ var SignupPage = /** @class */ (function () {
     };
     SignupPage.prototype.showHome = function (userId, params) {
         this.events.publish('user:load', userId);
-        this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_7__environments_constants__["a" /* Constants */].HOME_PAGE.name, params);
+        this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_7__environments_constants__["a" /* Constants */].PRINCIPAL_PAGE.name, params);
     };
     SignupPage.prototype.showTerms = function () {
         this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_7__environments_constants__["a" /* Constants */].TERMS_PAGE.name, { isToggle: false });
@@ -345,7 +354,7 @@ var SignupPage = /** @class */ (function () {
     };
     SignupPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Component"])({
-            selector: 'page-signup',template:/*ion-inline-start:"/Users/desenvolvedor/Documents/appzonzazul/src/pages/signup/signup.html"*/'<ion-header no-border>\n  <ion-navbar transparent class="navbar only-mobile">\n\n    <ion-title>\n      <ion-label>Cadastro</ion-label>\n    </ion-title>\n\n  </ion-navbar>\n</ion-header>\n<ion-content class="signup">\n\n  <div class="logo">\n    <ion-grid class="img img-centralize img-logo">\n      <img src="assets/imgs/logo.png" />\n    </ion-grid>\n  </div>\n\n  <ion-grid class="grid-form">\n    <ion-row justify-content-center>\n      <div class="form-margin">\n        <form class="form" [formGroup]="signupForm" novalidate>\n          <div text-center>\n            <ion-input type="text" #name formControlName="name" id="name" placeholder="Nome"\n              (keyup.enter)="focusInput(email)"></ion-input>\n            <ion-label class="error-message" *ngIf="signupForm.controls.name.invalid  && (submitAttempt)">Insira um nome\n              válido</ion-label>\n          </div>\n          <div text-center>\n            <ion-input type="tel" #phone formControlName="phone" id="telephone" placeholder="Telefone"\n              (keyup.enter)="focusInput(phone)" [brmasker]="{phone: true}"></ion-input>\n            <ion-label class="error-message" *ngIf="signupForm.controls.phone.invalid  && (submitAttempt)">Insira um\n              telefone válido</ion-label>\n          </div>\n          <div text-center>\n            <ion-input type="email" #email formControlName="email" id="email" placeholder="Email"\n              (keyup.enter)="focusInput(password)"></ion-input>\n            <ion-label class="error-message" *ngIf="signupForm.controls.email.invalid  && (submitAttempt)">Insira um\n              email válido</ion-label>\n          </div>\n          <div text-center>\n            <ion-input #password type="password" formControlName="password" id="password"\n              placeholder="Senha: mínimo 6 digitos" (keyup.enter)="register()"></ion-input>\n            <ion-label class="error-message" *ngIf="signupForm.controls.password.invalid  && (submitAttempt)">Insira uma\n              senha válida</ion-label>\n          </div>\n          <ion-row>\n            <ion-col col-12 class="checkbox">\n              <ion-checkbox #terms formControlName="terms" [(ngModel)]="checked" class="check"></ion-checkbox>\n              <ion-label class="text">Eu concordo com os <span class="info-link" (click)="showTerms()">Termos e\n                  Condições</span></ion-label>\n            </ion-col>\n          </ion-row>\n        </form>\n\n        <button ion-button (click)="register()" class="btn" block>Criar Minha Conta</button>\n\n      </div>\n    </ion-row>\n  </ion-grid>\n\n  <div class="logo">\n    <ion-grid class="img img-centralize img-logo logo-amc">\n      <ion-row align-items-center justify-content-center>\n        <ion-col align-items-center class="img-logo1-menu">\n          <img src="assets/imgs/logo-backwhite-cipetran.png" />\n        </ion-col>\n      </ion-row>\n    </ion-grid>\n  </div>\n\n</ion-content>'/*ion-inline-end:"/Users/desenvolvedor/Documents/appzonzazul/src/pages/signup/signup.html"*/,
+            selector: 'page-signup',template:/*ion-inline-start:"/Users/desenvolvedor/Documents/zonaazulfortaleza-develop/src/pages/signup/signup.html"*/'<ion-header no-border>\n  <ion-navbar transparent class="navbar only-mobile">\n\n    <ion-title>\n      <ion-label>Cadastro</ion-label>\n    </ion-title>\n\n  </ion-navbar>\n</ion-header>\n<ion-content class="signup">\n\n  <div class="logo">\n    <ion-grid class="img img-centralize img-logo">\n      <img src="assets/imgs/logo.png" />\n    </ion-grid>\n  </div>\n\n  <ion-grid class="grid-form">\n    <ion-row justify-content-center>\n      <div class="form-margin">\n        <form class="form" [formGroup]="signupForm" novalidate>\n          <div text-center>\n            <ion-input type="text" #name formControlName="name" id="name" placeholder="Nome"\n              (keyup.enter)="focusInput(email)"></ion-input>\n            <ion-label class="error-message" *ngIf="signupForm.controls.name.invalid  && (submitAttempt)">Insira um nome\n              válido</ion-label>\n          </div>\n          <div text-center>\n            <ion-input type="tel" #phone formControlName="phone" id="telephone" placeholder="Telefone"\n              (keyup.enter)="focusInput(phone)" [brmasker]="{phone: true}"></ion-input>\n            <ion-label class="error-message" *ngIf="signupForm.controls.phone.invalid  && (submitAttempt)">Insira um\n              telefone válido</ion-label>\n          </div>\n          <div text-center>\n            <ion-input type="email" #email formControlName="email" id="email" placeholder="Email"\n              (keyup.enter)="focusInput(password)"></ion-input>\n            <ion-label class="error-message" *ngIf="signupForm.controls.email.invalid  && (submitAttempt)">Insira um\n              email válido</ion-label>\n          </div>\n          <div text-center>\n            <ion-input #password type="password" formControlName="password" id="password"\n              placeholder="Senha: mínimo 6 digitos" (keyup.enter)="register()"></ion-input>\n            <ion-label class="error-message" *ngIf="signupForm.controls.password.invalid  && (submitAttempt)">Insira uma\n              senha válida</ion-label>\n          </div>\n          <ion-row>\n            <ion-col col-12 class="checkbox">\n              <ion-checkbox #terms formControlName="terms" [(ngModel)]="checked" class="check"></ion-checkbox>\n              <ion-label class="text">Eu concordo com os <span class="info-link" (click)="showTerms()">Termos e\n                  Condições</span></ion-label>\n            </ion-col>\n          </ion-row>\n        </form>\n\n        <button ion-button (click)="register()" class="btn" block>Criar Minha Conta</button>\n\n      </div>\n    </ion-row>\n  </ion-grid>\n\n  <div class="logo">\n    <ion-grid class="img img-centralize img-logo logo-amc">\n      <ion-row align-items-center justify-content-center>\n        <ion-col align-items-center class="img-logo1-menu">\n          <img src="assets/imgs/logo-backwhite-cipetran.png" />\n        </ion-col>\n      </ion-row>\n    </ion-grid>\n  </div>\n\n</ion-content>'/*ion-inline-end:"/Users/desenvolvedor/Documents/zonaazulfortaleza-develop/src/pages/signup/signup.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0_ionic_angular__["d" /* Events */],
             __WEBPACK_IMPORTED_MODULE_0_ionic_angular__["m" /* NavController */],

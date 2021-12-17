@@ -2,7 +2,7 @@ import { LogoBase64Util } from './logobase64.util';
 
 export class PDFUtil {
 
-    public static gerarPDF(comprovante) {
+    public static gerarPDF(comprovante, sit) {
         let image = LogoBase64Util.getLogo();
         let numberPDV = "PDV nº " + comprovante.numberPDV;
         let numberAuth = "AUTENTICAÇÃO nº " + comprovante.numberAuth;
@@ -11,12 +11,12 @@ export class PDFUtil {
         let value = "VALOR: R$ " + comprovante.valor + ",00";
         let cad = "CAD(s): " + comprovante.cads + " de " + comprovante.tempoComprado + " MINUTOS CADA";
         let formaPgto = "CARTÃO DE CRÉDITO";
-
+        let situacao = "Situação: "+sit;
 
         let conteudo = [];
         conteudo.push({ text: 'ESTACIONAMENTO ROTATIVO FORTALEZA', style: 'header' });
         conteudo.push({ text: 'CARTÃO AZUL DIGITAL', style: 'header' });
-        conteudo.push({ image: image, width: 250, height: 250, alignment: 'center', margin: [0, 20, 0, 0] });
+        conteudo.push({ image: image, width: 200, height: 200, alignment: 'center', margin: [0, 20, 0, 0] });
         conteudo.push({ text: 'COMPROVANTE DE PAGAMENTO', style: 'contentTitle' });
 
         if (comprovante.isPDV) {
@@ -29,6 +29,7 @@ export class PDFUtil {
         conteudo.push({ text: value, style: 'contentBody' });
         conteudo.push({ text: 'FORMA DE PAGAMENTO: ' + formaPgto, style: 'contentBody' });
         conteudo.push({ text: cad, style: 'contentBody' });
+        conteudo.push({ text: situacao, style: 'contentBody' });
 
         conteudo.push({ text: 'DISTRIBUIDOR', style: 'contentTitle' });
         conteudo.push({ text: 'CNPJ: ' + comprovante.distribuidorCnpj, style: 'contentBody' });
@@ -38,6 +39,7 @@ export class PDFUtil {
 
         conteudo.push({ text: 'INSTRUÇÕES PARA UTILIZAÇÃO DO CARTÃO AZUL DIGITAL', style: 'contentTitle' });
         conteudo.push({ text: comprovante.regras, style: 'contentBody' });
+        
 
         // conteudo.push({text: 'DÚVIDAS, RECLAMAÇÕES E SUGESTÕES:', style: 'contentTitle'});
         // conteudo.push({text: 'Fone: 156', style: 'contentBody'});

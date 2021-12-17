@@ -28,7 +28,7 @@ export class XML2JSONUtil {
         // console.log('RESP JSON RAW', rawJson);
 
         const prettyJson = XML2JSONUtil.parseResponse(rawJson);
-        // console.log('RESP JSON PRETTY', prettyJson);
+         console.log('RESP JSON PRETTY', prettyJson);
 
         return prettyJson;
     }
@@ -53,7 +53,7 @@ export class XML2JSONUtil {
      */
     private static parseResponse(json: convert.ElementCompact){
         let result = {};
-
+        console.log('Json',json.elements);
         json.elements.forEach(_element => {
             // const resultado = _element.name; // Tag Resultado
             // console.log('resultado',resultado);

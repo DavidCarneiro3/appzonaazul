@@ -1,5 +1,10 @@
 veiculos-modal {
-  font-family: "Roboto";
+  font-family: "kanit";
+
+  .scroll-content{
+    background-color: #f7f7f7;
+  }
+  
 
   ion-buttons:hover {
     cursor: pointer;
@@ -8,15 +13,31 @@ veiculos-modal {
   .header-icon {
     color: #fff;
   }
-
+  .item-md{
+    background-color: #fff;
+    color: #3F65FF !important;
+  }
   .item-radio.item-md ion-label {
+    background-color: #fff;
     text-align: start;
-    color: rgb(122, 121, 121) !important;
+    .titulo{
+      color: #3F65FF !important;
+    }
+    .subtitulo{
+      color: #ccc !important;
+    }
+    
   }
 
   .item-radio.item-ios ion-label {
+    background-color: #f4f4f4;
     text-align: start;
-    color: rgb(122, 121, 121) !important;
+    .titulo{
+      color: #3F65FF !important;
+    }
+    .titulo{
+      color: #ccc !important;
+    }
   }
 
   .titulo {
@@ -26,5 +47,32 @@ veiculos-modal {
   .subtitulo {
     color: #8c8c8c;
     font-weight: normal;
+  }
+  .footer{
+    background-color: #f7f7f7;
+    .toolbar-background-md {
+      background: #f7f7f7;
+  }
+      
+    .btn-rows{
+      background-color: #f7f7f7;
+      .btn{
+          border: none !important;
+          background: #3F53A7;
+          border-radius: 26px;
+          height: 35px;
+          margin-top: 5px;
+          // color: #000;
+      }
+      .btn-cancelar{
+          border: 2px solid #BDBDBD !important;
+          background: transparent;
+          color: #ccc;
+          border-radius: 26px;
+          height: 35px;
+          margin-top: 5px;
+      }
+    }
+    
   }
 }

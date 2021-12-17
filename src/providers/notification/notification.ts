@@ -80,8 +80,8 @@ export class NotificationProvider {
         this.logger.info('Device registered: ' + JSON.stringify(registration));
 
         this.userService.updateUser(idUser, { notificationKey: registration.registrationId })
-        //.then(_ => alert('ok'))
-        //.catch(error => reject('Você precisa habilitar as permissões para utilizar o aplicativo!'));
+        // .then(_ => alert('ok'))
+        // .catch(error => reject('Você precisa habilitar as permissões para utilizar o aplicativo!'));
 
         resolve('ok');
 
@@ -104,14 +104,14 @@ export class NotificationProvider {
 
         this.pushObject = this.push.init(this.options);
 
-        this.registrar(this.pushObject, idUser)
-        .then(_data => {
-          resolve(_data);
-        })
-        .catch(error => reject(error));
-
         this.listenNotificacao(this.pushObject);
-        
+
+        this.registrar(this.pushObject, idUser)
+          .then(_data => {
+            resolve(_data);
+          })
+          .catch(error => reject(error));
+
         this.listenNotificacaoErro(this.pushObject);
 
       } else {

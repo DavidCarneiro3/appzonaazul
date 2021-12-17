@@ -1,4 +1,4 @@
-import { PagamentoModel } from "../pagamento";
+import {PagamentoModel} from "../pagamento";
 
 export class CardPagarmeModel {
     card_number: string;
@@ -11,9 +11,16 @@ export class CardPagarmeModel {
     }
 
     static fromCardModel(pagamento: PagamentoModel) {
+
+        // let split = pagamento.data.split('/');
+        // let mes = Number(split[0]);
+        // let ano = split[1];
+        let _data = new Date(pagamento.data);
+
         let card = new CardPagarmeModel();
         card.card_number = pagamento.numero;
-        card.card_expiration_date = this.putZero(new Date(pagamento.data).getMonth()) + '' + new Date(pagamento.data).getFullYear();
+        // card.card_expiration_date = this.putZero(mes) + '' + ano;
+        card.card_expiration_date = this.putZero(_data.getMonth()+1) + '' + _data.getFullYear();
         card.card_cvv = pagamento.ccv;
         card.card_holder_name = pagamento.nome;
         card.cpf = pagamento.cpf;
@@ -21,8 +28,8 @@ export class CardPagarmeModel {
         return card;
     }
 
-    static putZero(mes: number) {
-        mes += 1;
+    private static putZero(mes: number) {
+        // mes += 1;
 
         if (mes < 10)
             return '0' + mes;

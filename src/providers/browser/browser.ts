@@ -9,33 +9,33 @@ export class BrowserProvider {
   }
 
   openPdf(url) {
-    if (this.platform.is('android')) {
+    if(this.platform.is('android')){
       url = 'https://docs.google.com/gview?embedded=true&url=' + url;
     }
 
-    this.iab.create(url, '_blank', { closebuttoncaption: 'Fechar', toolbarposition: 'top', clearcache: 'yes', location: 'yes', enableViewportScale: 'yes' });
+    this.iab.create(url, '_blank', {closebuttoncaption: 'Fechar', toolbarposition: 'top', clearcache: 'yes', location: 'yes', enableViewportScale: 'yes'});
   }
 
-  openPage(url, type = undefined) {
+  openPage(url, type=undefined) {
     type = this.getType(type);
 
-    if (type === 'external') {
-      this.iab.create(url, '_blank', { closebuttoncaption: 'Fechar', toolbarposition: 'top', clearcache: 'yes', location: 'yes', enableViewportScale: 'yes' });
-    } else if (type === 'external_system') {
-      this.iab.create(url, '_system', { closebuttoncaption: 'Fechar', toolbarposition: 'top', clearcache: 'yes', location: 'yes', enableViewportScale: 'yes' });
+    if(type === 'external'){
+      this.iab.create(url, '_blank', {closebuttoncaption: 'Fechar', toolbarposition: 'top', clearcache: 'yes', location: 'yes', enableViewportScale: 'yes'});
+    } else if(type === 'external_system'){
+      this.iab.create(url, '_system', {closebuttoncaption: 'Fechar', toolbarposition: 'top', clearcache: 'yes', location: 'yes' , enableViewportScale: 'yes'});
     }
   }
 
-  getType(type = undefined) {
-    if (this.platform.is('android')) {
-      if (type) {
+  getType(type=undefined){
+    if(this.platform.is('android')){
+      if(type){
         return type;
       }
       return 'external_system';
-
-    } else {
+      
+    } else{
       return 'external';
-    }
+    }    
   }
 
 }

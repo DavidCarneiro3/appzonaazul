@@ -83,7 +83,7 @@ export class CancelarTransacaoPage {
     }
 
     this.showAlert(
-      "Aviso!", "Tem certeza que deseja enviar a solicitação de cancelamento?", "", () => {
+      "Cancelamento", "Tem certeza que deseja prosseguir com a solicitação de cancelamento?", "", () => {
         this.tempoEstacionadoProvider.getHoraAtualFromFirebase().then(data => {
           let loading: Loading = this.loadingCtrl.create({ content: 'Aguarde ...' })
           loading.present()
@@ -106,8 +106,8 @@ export class CancelarTransacaoPage {
                 this.updateQtdCadsUsados(this.user.id, cads)
                 loading.dismiss()
 
-                this.showAlert('Tudo certo', 'Sua solicitação de cancelamento ocorreu com sucesso', "", () => {
-                  this.navCtrl.setRoot(Constants.HOME_PAGE.name)
+                this.showAlert('Tudo certo', 'Solicitação realizada com sucesso!', "", () => {
+                  this.navCtrl.setRoot(Constants.PRINCIPAL_PAGE.name)
 
                 }, () => { }, 'OK', 'Cancelar')
               }

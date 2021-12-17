@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, Events, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Events, AlertController, ViewController } from 'ionic-angular';
 
 import { UserProvider } from "../../providers/user/user";
 
@@ -12,49 +12,58 @@ import { FunctionsUtil } from "../../util/functions.util";
 })
 export class ConfirmarCpfModalPage {
 
-  res: any;
+  user: any;
   input: string = "";
-  constructor(public navCtrl: NavController, public navParams: NavParams, public events: Events,
-    public userProvider: UserProvider, public alertCtrl: AlertController) {
-    this.res = this.navParams.get('res')
+
+  constructor(
+    // public navCtrl: NavController, 
+    private viewCtrl: ViewController, 
+    public navParams: NavParams, public events: Events,
+    public userProvider: UserProvider, 
+    public alertCtrl: AlertController) {
+
+    this.user = this.navParams.get('user');
+    this.input = this.user.cpf;
   }
 
   ionViewDidLoad() {
-    this.userProvider.removeUserLocal()
+    // this.userProvider.removeUserLocal()
   }
 
-  teste() {
-
+  save() {
     if (this.input == "") {
       this.showAlert()
     }
 
     else {
       let result = FunctionsUtil.cleanBRMask(this.input)
+
       if (result.length == 11 && FunctionsUtil.checkCPF(result)) {
-        this.res.logged.cpf = result
-        this.events.publish('update', this.res)
-        this.navCtrl.pop()
+        this.user.cpf = result;
+        this.saveUser(this.user);
 
-      }
-      else if (result.length == 14 && FunctionsUtil.checkCNPJ(result)) {
-        this.res.logged.cpf = result
-        this.events.publish('update', this.res)
-        this.navCtrl.pop()
+      } else if (result.length == 14 && FunctionsUtil.checkCNPJ(result)) {
+        this.user.cpf = result;
+        this.saveUser(this.user);
 
-      }
-      else {
+      } else {
         this.showAlert()
       }
     }
+  }
 
+  saveUser(user) {
+    this.userProvider.updateUser(user.id, { cpf: user.cpf })
+      .then(__ => {
+        this.closeModal();
+      })
   }
 
   showAlert() {
     this.alertCtrl.create(
       {
-        title: "Invalido",
-        message: "Insira um CPF ou CPNJ Valido",
+        title: "Inválido",
+        message: "Insira um CPF ou CPNJ válido",
         buttons: [{
           text: 'OK',
         }]
@@ -63,7 +72,8 @@ export class ConfirmarCpfModalPage {
   }
 
   closeModal() {
-    this.navCtrl.pop()
+    // this.navCtrl.pop()
+    this.viewCtrl.dismiss()
   }
 
 }

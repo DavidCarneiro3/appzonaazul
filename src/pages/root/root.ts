@@ -172,7 +172,7 @@ export class RootPage {
 
     showHome() {
         this.setVisibleMenu(true);
-        this.navCtrl.setRoot(Constants.HOME_PAGE.name);
+        this.navCtrl.setRoot(Constants.PRINCIPAL_PAGE.name);
     }
 
     showAlert(title: string, msg: string, type: string, callback) {

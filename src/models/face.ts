@@ -4,9 +4,9 @@ export class FaceModel {
     constructor()
     constructor(obj: any)
     constructor(obj?: any) {
-        if (obj && obj.codigo) {
+        if(obj && obj.codigo){
             this.codigo = obj && obj.codigo || '';
-        } else {
+        } else{
             this.codigo = obj && obj.$key || '';
         }
     }

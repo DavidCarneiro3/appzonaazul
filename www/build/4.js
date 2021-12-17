@@ -1,16 +1,16 @@
 webpackJsonp([4],{
 
-/***/ 812:
+/***/ 745:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EstacionarPageModule", function() { return EstacionarPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(36);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__estacionar__ = __webpack_require__(862);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_components_module__ = __webpack_require__(450);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_loading_spinner_loading_spinner_module__ = __webpack_require__(448);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__estacionar__ = __webpack_require__(801);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_components_module__ = __webpack_require__(419);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_loading_spinner_loading_spinner_module__ = __webpack_require__(418);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -44,13 +44,13 @@ var EstacionarPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 834:
+/***/ 770:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MapUtil; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pages_home_home__ = __webpack_require__(836);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__environments_constants__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pages_home_home__ = __webpack_require__(772);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__environments_constants__ = __webpack_require__(19);
 
 
 var MapUtil = /** @class */ (function () {
@@ -63,7 +63,7 @@ var MapUtil = /** @class */ (function () {
             mapTypeControl: false,
             clickableIcons: false,
             fullscreenControl: false,
-            zoomControl: true,
+            zoomControl: false,
             zoomControlOptions: {
                 position: google.maps.ControlPosition.RIGHT_BOTTOM
             },
@@ -134,47 +134,54 @@ var MapUtil = /** @class */ (function () {
     MapUtil.prototype.addPolyline = function (item, map) {
         if (item != null && item.setor != null) {
             var polyline = void 0;
-            var marker = void 0;
-            var iconUrlGrenn = "assets/imgs/map-marker-green-4.png";
-            var iconUrlRed = "assets/imgs/map-marker-red-4.png";
+            var marker_1;
+            var iconUrlGrenn = "assets/imgs/map-marker-blue-4.svg";
+            var iconUrlRed = "assets/imgs/map-marker-red-4.svg";
             var totalVagasUtilizadas = item.setor.qtd_deficiente_estacionados + item.setor.qtd_idoso_estacionados + item.setor.qtd_normal_estacionados;
-            polyline = new google.maps.Polyline(this.createPolylineOptions(item.setor, totalVagasUtilizadas));
-            polyline.setMap(map);
-            MapUtil.polylines.push(polyline);
-            marker = new google.maps.Marker({
+            //polyline = new google.maps.Polyline(this.createPolylineOptions(item.setor, totalVagasUtilizadas));
+            //polyline.setMap(map);
+            //MapUtil.polylines.push(polyline);
+            marker_1 = new google.maps.Marker({
                 position: { lat: item.setor.latInicio, lng: item.setor.lngInicio },
                 icon: {
                     url: (item.setor.total_vagas - totalVagasUtilizadas > 0) ? iconUrlGrenn : iconUrlRed,
-                    scaledSize: new google.maps.Size(32, 32)
+                    scaledSize: new google.maps.Size(122, 122)
                 }
             });
             // marker.
-            marker.setMap(map);
+            marker_1.setMap(map);
             var infowindow_1 = new google.maps.InfoWindow({
                 content: this.createInfoPolylines(item.setor, item.area, totalVagasUtilizadas),
             });
             /**
              * Abre as opções do estacionamento
              * polyline  item pressionado onde vai abrir o evento ( linha do inicio e final do Simbolo do carro)
-             */
-            google.maps.event.addListener(polyline, 'click', function (event) {
-                infowindow_1.setPosition(event.latLng);
-                infowindow_1.open(__WEBPACK_IMPORTED_MODULE_0__pages_home_home__["a" /* HomePage */].map);
-                MapUtil.infoWindows.push(infowindow_1);
+             
+            google.maps.event.addListener(polyline, 'click', event => {
+
+                infowindow.setPosition(event.latLng);
+                infowindow.open(HomePage.map);
+                MapUtil.infoWindows.push(infowindow);
+
                 if (MapUtil.infoWindows.length > 1) {
-                    MapUtil.infoWindows.forEach(function (value) {
-                        if (value != infowindow_1) {
+                    MapUtil.infoWindows.forEach(value => {
+                        if (value != infowindow) {
                             value.close();
                         }
-                    });
+                    })
                 }
             });
-            /**
+
+            
              * Abre as opções do estacionamento
              * marker  item pressionado onde vai abrir o evento ( Simbolo do carro verde)
              */
-            google.maps.event.addListener(marker, 'click', function (event) {
-                infowindow_1.setPosition(event.latLng);
+            google.maps.event.addListener(marker_1, 'click', function (event) {
+                // let latLng = event.latLng;
+                var latLng = marker_1.position;
+                console.log('marker', marker_1);
+                console.log('event', event);
+                infowindow_1.setPosition(latLng);
                 infowindow_1.open(__WEBPACK_IMPORTED_MODULE_0__pages_home_home__["a" /* HomePage */].map);
                 MapUtil.infoWindows.push(infowindow_1);
                 if (MapUtil.infoWindows.length > 1) {
@@ -188,8 +195,8 @@ var MapUtil = /** @class */ (function () {
         }
     };
     MapUtil.prototype.findSetor = function (map, setor, area) {
-        var iconUrlGrenn = "assets/imgs/map-marker-green-4.png";
-        var iconUrlRed = "assets/imgs/map-marker-red-4.png";
+        var iconUrlGrenn = "assets/imgs/map-marker-blue-4.svg";
+        var iconUrlRed = "assets/imgs/map-marker-red-4.svg";
         var marker;
         var latlng = new google.maps.LatLng(setor.latInicio, setor.lngInicio);
         map.setCenter(latlng);
@@ -197,6 +204,19 @@ var MapUtil = /** @class */ (function () {
         var totalVagasUtilizadas = setor.qtd_deficiente_estacionados + setor.qtd_idoso_estacionados + setor.qtd_normal_estacionados;
         var infowindow = new google.maps.InfoWindow({
             content: this.createInfoPolylines(setor, area, totalVagasUtilizadas),
+        });
+        google.maps.event.addListener(infowindow, 'domready', function () {
+            // Referência ao DIV que recebe o conteúdo da infowindow recorrendo ao jQuery
+            //var iwOuter = this.getElementByClassName('.gm-style-iw');
+            /* Uma vez que o div pretendido está numa posição anterior ao div .gm-style-iw.
+             * Recorremos ao jQuery e criamos uma variável iwBackground,
+             * e aproveitamos a referência já existente do .gm-style-iw para obter o div anterior com .prev().
+             */
+            //var iwBackground = iwOuter.prev();
+            // Remover o div da sombra do fundo
+            //iwBackground.children(':nth-child(2)').css({'display' : 'none'});
+            // Remover o div de fundo branco
+            //iwBackground.children(':nth-child(4)').css({'display' : 'none'});
         });
         marker = new google.maps.Marker({
             position: { lat: setor.latInicio, lng: setor.lngInicio },
@@ -251,31 +271,42 @@ var MapUtil = /** @class */ (function () {
     MapUtil.prototype.createInfoPolylines = function (setor, area, totalVagasUtilizadas) {
         var div = document.createElement('div');
         div.className = "gm-style gm-style-iw";
-        var setorNome = (setor.nome.length < 3) ? ('Setor ' + setor.nome) : setor.nome;
+        var divl = document.createElement('div');
+        divl.className = "style-left";
+        var divr = document.createElement('div');
+        divr.className = "style-right";
+        //const setorNome = (setor?.nome.toString().length < 3) ? ('Setor ' + setor.nome) : setor.nome;
+        var setorNome = setor.nome;
         // console.log('ST', setorNome + " | " + setor.codigo);
         // console.log('AR', area);
         var h3 = document.createElement('h3');
         h3.className = "setor-codigo";
-        h3.innerText = setorNome + " (" + setor.codigo + ")" + " | Área: " + area.endereco + " (" + area.codigo + ")";
-        var h5vt = document.createElement('h4');
+        //h3.innerText = setorNome + " (" + setor.codigo + ")" + " | Área: " + area.endereco + " (" + area.codigo + ")";
+        // h3.innerText = area.endereco + " (" + area.codigo + ")" + " - " +setorNome;
+        h3.innerText = setorNome + " - " + area.endereco;
+        var h5vt = document.createElement('p');
         h5vt.className = "setor-vagas";
         h5vt.innerText = "Vagas: " + setor.total_vagas;
-        var h5vn = document.createElement('h4');
+        var h5vn = document.createElement('p');
         h5vn.className = "setor-vagas-normal";
         // h5vn.innerText = "Vagas convencionais disponíveis: " + ((setor.total_vagas - (setor.vagas_idoso + setor.vagas_deficiente)) - setor.qtd_normal_estacionados);
         h5vn.innerText = "Vagas convencionais: " + (setor.total_vagas - setor.qtd_normal_estacionados);
-        var h5vd = document.createElement('h4');
-        h5vd.className = "setor-vagas-normal";
-        h5vd.innerText = "Vagas de deficiente: " + (setor.vagas_deficiente - setor.qtd_deficiente_estacionados);
-        var h5vi = document.createElement('h4');
-        h5vi.className = "setor-vagas-normal";
+        var h5vd = document.createElement('p');
+        h5vd.className = "setor-vagas-pcd";
+        h5vd.innerText = "Vagas de PCD: " + (setor.vagas_deficiente - setor.qtd_deficiente_estacionados);
+        var h5vi = document.createElement('p');
+        h5vi.className = "setor-vagas-i";
         h5vi.innerText = "Vagas de idoso: " + (setor.vagas_idoso - setor.qtd_idoso_estacionados);
-        var h5vc = document.createElement('h4');
-        h5vc.className = "setor-vagas-normal";
+        var h5vc = document.createElement('p');
+        h5vc.className = "setor-vagas-cd";
         h5vc.innerText = "Vagas Carga/Descarga: " + (setor.vagas_carga_descarga - setor.qtd_carga_descarga_estacionados);
         var button = document.createElement('button');
         button.className = "btn-estacionar";
-        button.innerText = "Estacionar";
+        button.innerText = "ESTACIONAR";
+        var ico = document.createElement('img');
+        ico.setAttribute("src", "assets/icones/estacionamento-white.svg");
+        ico.className = "pin-view";
+        button.appendChild(ico);
         button.addEventListener('click', function () {
             document.getElementById('btn-show-estacionar-page').setAttribute("setor", setor.codigo);
             document.getElementById('btn-show-estacionar-page').setAttribute("area", area.codigo);
@@ -286,11 +317,18 @@ var MapUtil = /** @class */ (function () {
         if ((setor.total_vagas - totalVagasUtilizadas) <= 0) {
             button.disabled = true;
         }
+        var divpin = document.createElement('div');
+        divpin.className = "btn-pin";
+        // buttonView.innerText = "Ver";
+        var iconpin = document.createElement('img');
+        iconpin.setAttribute("src", "assets/icones/pin-dark.svg");
+        iconpin.className = "pin-btn";
+        divpin.appendChild(iconpin);
         var buttonView = document.createElement('button');
         buttonView.className = "btn-ver";
         // buttonView.innerText = "Ver";
         var icon = document.createElement('img');
-        icon.setAttribute("src", "assets/icon/streat_view.png");
+        icon.setAttribute("src", "assets/icones/shopping-cart-white.svg");
         icon.className = "streat-view";
         buttonView.appendChild(icon);
         buttonView.addEventListener('click', function () {
@@ -298,14 +336,17 @@ var MapUtil = /** @class */ (function () {
             document.getElementById('btn-show-streat-view').setAttribute("area", area.codigo);
             document.getElementById('btn-show-streat-view').click();
         });
-        div.appendChild(h3);
+        divl.appendChild(h3);
         // div.appendChild(h5vt);
-        div.appendChild(h5vn);
-        div.appendChild(h5vd);
-        div.appendChild(h5vi);
-        div.appendChild(h5vc);
-        div.appendChild(button);
-        div.appendChild(buttonView);
+        divr.appendChild(h5vn);
+        divr.appendChild(h5vi);
+        divr.appendChild(h5vd);
+        divr.appendChild(h5vc);
+        divr.appendChild(button);
+        divl.appendChild(buttonView);
+        div.appendChild(divl);
+        div.appendChild(divr);
+        div.appendChild(divpin);
         return div;
     };
     MapUtil.prototype.determineColor = function (vagas) {
@@ -481,7 +522,7 @@ var MapUtil = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 835:
+/***/ 771:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -638,33 +679,33 @@ var FunctionsUtil = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 836:
+/***/ 772:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomePage; });
 /* unused harmony export LatLng */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(36);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_android_permissions__ = __webpack_require__(219);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_location_accuracy__ = __webpack_require__(443);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_speech_recognition__ = __webpack_require__(446);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_geolocation__ = __webpack_require__(445);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_take__ = __webpack_require__(93);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_android_permissions__ = __webpack_require__(200);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_location_accuracy__ = __webpack_require__(416);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_speech_recognition__ = __webpack_require__(417);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_geolocation__ = __webpack_require__(415);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_take__ = __webpack_require__(85);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_take___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_take__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_setores_setores__ = __webpack_require__(442);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__providers_veiculos_veiculos__ = __webpack_require__(441);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__providers_auth_auth__ = __webpack_require__(217);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_setores_setores__ = __webpack_require__(413);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__providers_veiculos_veiculos__ = __webpack_require__(412);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__providers_auth_auth__ = __webpack_require__(199);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__providers_user_user__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__providers_cads_user_cads_user__ = __webpack_require__(218);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__providers_comunicacao_central_comunicacao_central__ = __webpack_require__(220);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__providers_modal_modal__ = __webpack_require__(216);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__providers_area_area__ = __webpack_require__(444);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__environments_constants__ = __webpack_require__(20);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__util_map_util__ = __webpack_require__(834);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__util_functions_util__ = __webpack_require__(835);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__app_app_component__ = __webpack_require__(440);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__providers_estacionar_estacionar__ = __webpack_require__(221);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__providers_cads_user_cads_user__ = __webpack_require__(111);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__providers_comunicacao_central_comunicacao_central__ = __webpack_require__(202);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__providers_modal_modal__ = __webpack_require__(198);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__providers_area_area__ = __webpack_require__(414);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__environments_constants__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__util_map_util__ = __webpack_require__(770);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__util_functions_util__ = __webpack_require__(771);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__app_app_component__ = __webpack_require__(411);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__providers_estacionar_estacionar__ = __webpack_require__(201);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -718,12 +759,18 @@ var HomePage = /** @class */ (function () {
         this.areaProvider = areaProvider;
         this.events = events;
         this.estacionarProvider = estacionarProvider;
+        this.city = 'Fortaleza';
         this.estacionar = [];
         this.setores = [];
         this.qtdCadsUser = 0;
         this.qtdCadsUSados = 0;
         this.mapUtil = new __WEBPACK_IMPORTED_MODULE_16__util_map_util__["a" /* MapUtil */]();
         this.allSetores = [];
+        this.selectOptions = {
+            title: 'Cidade',
+            subTitle: 'Escolha sua cidade',
+            mode: 'ios'
+        };
         this.getAllSetores();
         platform.registerBackButtonAction(function () {
             if (_this.navCtrl.getActive().name == 'HomePage') {
@@ -757,7 +804,7 @@ var HomePage = /** @class */ (function () {
                 console.log(userID);
                 _this.estacionarProvider.countCadsById(userID)
                     .subscribe(function (val) {
-                    console.log(val);
+                    // console.log(val)
                 });
                 _this.cadsUserProvider.findQtdCads(userID).take(1).subscribe(function (value) {
                     value.map(function (cads) {
@@ -997,6 +1044,7 @@ var HomePage = /** @class */ (function () {
                     loading.dismiss();
                     if (_item.length > 0) {
                         _this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_15__environments_constants__["a" /* Constants */].ESTACIONAR_PAGE.name, {
+                            fromPage: 'mapa',
                             setor: codigoSetor,
                             area: codigoArea,
                             'setor-nome': nomeSetor,
@@ -1016,7 +1064,8 @@ var HomePage = /** @class */ (function () {
                                     area: codigoArea,
                                     setor: codigoSetor,
                                     cad: _this.cad,
-                                    qtdCads: (_this.qtdCadsUser - _this.qtdCadsUSados)
+                                    qtdCads: (_this.qtdCadsUser - _this.qtdCadsUSados),
+                                    veiculoAllArr: _item
                                 });
                             });
                         }
@@ -1028,7 +1077,8 @@ var HomePage = /** @class */ (function () {
                                 area: codigoArea,
                                 setor: codigoSetor,
                                 cad: _this.cad,
-                                qtdCads: (_this.qtdCadsUser - _this.qtdCadsUSados)
+                                qtdCads: (_this.qtdCadsUser - _this.qtdCadsUSados),
+                                veiculoAllArr: _item
                             });
                         }
                     }
@@ -1176,23 +1226,25 @@ var HomePage = /** @class */ (function () {
         }, function (error) {
         });
     };
-    HomePage.prototype.showStreatView = function (event) {
-        var _this = this;
-        var wait = this.loadingCtrl.create({ content: 'Aguarde...' });
+    HomePage.prototype.showStreatView = function () {
+        /*let wait = this.loadingCtrl.create({ content: 'Aguarde...' });
         wait.present();
-        var button = document.getElementById('btn-show-streat-view');
-        var codigoSetor = button.getAttribute("setor");
-        var codigoArea = button.getAttribute("area");
+        let button = document.getElementById('btn-show-streat-view');
+        let codigoSetor = button.getAttribute("setor");
+        let codigoArea = button.getAttribute("area");
+
         this.setoresProvider.byId(codigoArea, codigoSetor)
-            .subscribe(function (data) {
-            var streatViewPage = _this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_15__environments_constants__["a" /* Constants */].STREAT_VIEW_PAGE.name, { map: HomePage_1.map, data: data, wait: wait });
-            streatViewPage.present().then(function () {
-                _this.modalProvider.setActive();
-            });
-        }, function (error) {
-            console.log(error);
-            wait.dismiss();
-        });
+            .subscribe(data => {
+                const streatViewPage = this.modalCtrl.create(Constants.STREAT_VIEW_PAGE.name, { map: HomePage.map, data: data, wait: wait });
+                streatViewPage.present().then(() => {
+                    this.modalProvider.setActive();
+                });
+            },
+                (error) => {
+                    console.log(error);
+                    wait.dismiss();
+                })*/
+        this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_15__environments_constants__["a" /* Constants */].PAGAMENTOS_PAGE.name);
     };
     HomePage.prototype.showToast = function (msg, time) {
         var toast = this.toastCtrl.create({
@@ -1262,13 +1314,13 @@ var HomePage = /** @class */ (function () {
     ], HomePage.prototype, "iconElement", void 0);
     HomePage = HomePage_1 = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-home',template:/*ion-inline-start:"/Users/desenvolvedor/Documents/appzonzazul/src/pages/home/home.html"*/'<ion-header no-border>\n    <ion-navbar color="header">\n        <button ion-button icon-only menuToggle>\n            <ion-icon class="header-icon" name="menu"></ion-icon>\n        </button>\n        <ion-title>\n            <ion-label>Início</ion-label>\n        </ion-title>\n\n        <ion-buttons end>\n            <button ion-button icon-only (click)="openTempoRestantePage()">\n                <img src="assets/imgs/time.png" width="30px" height="30px" />\n            </button>\n        </ion-buttons>\n    </ion-navbar>\n</ion-header>\n\n<ion-content class="content">\n    <div #map id="map"></div>\n    <input #search id="search" class="controls" type="text" placeholder="Buscar Local">\n\n    <button ion-button icon-only type="button" item-right clear (click)="listen()" id="mic" [style.display]="\'none\'">\n        <ion-icon name="mic" class="icon"></ion-icon>\n    </button>\n    <ion-fab id="help">\n        <button ion-fab icon-only (click)="openHelp()">\n            <ion-icon name="help"></ion-icon>\n        </button>\n    </ion-fab>\n\n    <ion-fab id="close" (click)="showCloseSetor()">\n        <button ion-fab>\n        </button>\n    </ion-fab>\n\n    <ion-fab>\n        <button ion-fab icon-only color="default" (click)="buscarSetores()" id="locate">\n            <ion-icon name="search" class="icon"></ion-icon>\n        </button>\n    </ion-fab>\n\n    <ion-icon #icon name="close" class="icon-clear" style="display: none" id="icon"></ion-icon>\n    <button ion-button id="btn-show-estacionar-page" (click)="openEstacionarPage($event)"\n        [style.display]="\'none\'"></button>\n    <button ion-button id="btn-show-streat-view" (click)="showStreatView($event)" [style.display]="\'none\'"></button>\n</ion-content>'/*ion-inline-end:"/Users/desenvolvedor/Documents/appzonzazul/src/pages/home/home.html"*/
+            selector: 'page-home',template:/*ion-inline-start:"/Users/desenvolvedor/Documents/zonaazulfortaleza-develop/src/pages/home/home.html"*/'<ion-header no-border>\n    <ion-navbar color="header">\n        <button ion-button icon-only menuToggle>\n            <ion-icon class="header-icon" name="menu"></ion-icon>\n        </button>\n        <ion-title class="title-header">\n            <ion-select [(ngModel)]="city" class="select-city" cancelText="Cancelar" okText="Ok" [selectOptions]="selectOptions">\n                <ion-option value="Fortaleza">Fortaleza</ion-option>\n              </ion-select>\n        </ion-title>\n\n        <ion-buttons end>\n            <button ion-button icon-only (click)="openTempoRestantePage()">\n                <img src="assets/icones/car-white.svg"  />\n            </button>\n        </ion-buttons>\n    </ion-navbar>\n</ion-header>\n\n<ion-content class="content">\n    <div #map id="map"></div>\n    <input #search id="search" class="controls" type="text" placeholder="Buscar">\n\n    <button ion-button icon-only type="button" item-right clear id="mic" >\n        <ion-icon color="gray" name="search" class="icon"></ion-icon>\n    </button>\n    <!--<ion-fab id="help">\n        <button ion-fab icon-only (click)="openHelp()">\n            <ion-icon name="help"></ion-icon>\n        </button>\n    </ion-fab> -->\n\n    <ion-fab id="close" (click)="showCloseSetor()">\n        <button ion-fab>\n        </button>\n    </ion-fab>\n\n   <!-- <ion-fab>\n        <button ion-fab icon-only color="default" (click)="buscarSetores()" id="locate">\n            <ion-icon name="search" class="icon"></ion-icon>\n        </button>\n    </ion-fab> -->\n\n    <ion-icon #icon name="close" class="icon-clear" style="display: none" id="icon"></ion-icon>\n    <button ion-button id="btn-show-estacionar-page" (click)="openEstacionarPage($event)"\n        [style.display]="\'none\'"></button>\n    <button ion-button id="btn-show-streat-view" (click)="showStreatView()" [style.display]="\'none\'"></button>\n</ion-content>'/*ion-inline-end:"/Users/desenvolvedor/Documents/zonaazulfortaleza-develop/src/pages/home/home.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* Platform */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ModalController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* ToastController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* ToastController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* LoadingController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavParams */],
             __WEBPACK_IMPORTED_MODULE_5__ionic_native_geolocation__["a" /* Geolocation */],
@@ -1302,7 +1354,7 @@ var LatLng = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 837:
+/***/ 773:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1401,33 +1453,33 @@ var DateUtil = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 862:
+/***/ 801:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EstacionarPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(36);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__(94);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_take__ = __webpack_require__(93);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__(86);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_take__ = __webpack_require__(85);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_take___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_take__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_app_component__ = __webpack_require__(440);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_tempo_estacionado_tempo_estacionado__ = __webpack_require__(223);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_veiculos_veiculos__ = __webpack_require__(441);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_estacionar_estacionar__ = __webpack_require__(221);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_app_component__ = __webpack_require__(411);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_tempo_estacionado_tempo_estacionado__ = __webpack_require__(204);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_veiculos_veiculos__ = __webpack_require__(412);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_estacionar_estacionar__ = __webpack_require__(201);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__providers_user_user__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__providers_cads_user_cads_user__ = __webpack_require__(218);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__providers_setores_setores__ = __webpack_require__(442);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__providers_holidays_holidays__ = __webpack_require__(469);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__providers_cads_cads__ = __webpack_require__(133);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__providers_comunicacao_central_comunicacao_central__ = __webpack_require__(220);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__models_estacionar__ = __webpack_require__(451);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__models_agendamento__ = __webpack_require__(863);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__models_veiculo__ = __webpack_require__(449);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__util_map_util__ = __webpack_require__(834);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__util_date_util__ = __webpack_require__(837);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__environments_environment__ = __webpack_require__(64);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__environments_constants__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__providers_cads_user_cads_user__ = __webpack_require__(111);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__providers_setores_setores__ = __webpack_require__(413);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__providers_holidays_holidays__ = __webpack_require__(440);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__providers_cads_cads__ = __webpack_require__(112);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__providers_comunicacao_central_comunicacao_central__ = __webpack_require__(202);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__models_estacionar__ = __webpack_require__(422);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__models_agendamento__ = __webpack_require__(802);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__models_veiculo__ = __webpack_require__(421);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__util_map_util__ = __webpack_require__(770);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__util_date_util__ = __webpack_require__(773);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__environments_environment__ = __webpack_require__(59);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__environments_constants__ = __webpack_require__(19);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1482,7 +1534,13 @@ var EstacionarPage = /** @class */ (function () {
         this.setorProvider = setorProvider;
         this._holidayProvider = _holidayProvider;
         this.viewCtrl = viewCtrl;
-        this.cadSelectd = 0;
+        this.seletor = true;
+        this.selectOption = {
+            title: 'Regra',
+            subtitle: 'Escolha a regra',
+            mode: 'md'
+        };
+        this.cadSelectd = 1;
         this.qtdCadsUser = 0;
         this.disabledIdoso = false;
         this.disabledDeficientes = false;
@@ -1493,6 +1551,7 @@ var EstacionarPage = /** @class */ (function () {
         this.cads_setor = [];
         this.enabled = true;
         this.fromRenovar = false;
+        this.radio = 1;
         this.httpOptions = {
             headers: new __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["c" /* HttpHeaders */]({
                 'Content-Type': 'application/x-www-form-urlencoded'
@@ -1514,13 +1573,18 @@ var EstacionarPage = /** @class */ (function () {
         });
         this.setorProvider.byId(this.codigoArea, this.codigoSetor).take(1).subscribe(function (setor) {
             _this.setorModel = setor;
+            console.log(_this.setorModel);
             if (_this.setorModel.total_vagas - _this.setorModel.qtd_normal_estacionados <= 0) {
-                _this.showAlert("Aviso!", "Não há vagas convencionais disponíveis!", "info", function () {
+                _this.showAlert("Aviso!", "Não há vagas convencionais disponíveis!", "alert", function () {
                     _this.disabledNormal = true;
                 }, function () {
                     _this.disabledNormal = true;
                 });
             }
+            _this.latitude = _this.setorModel.latInicio.toString();
+            _this.longitude = _this.setorModel.lngInicio.toString();
+            _this.criarMap(_this.latitude, _this.longitude);
+            console.log(_this.latitude + ' + ' + _this.longitude);
         });
     }
     EstacionarPage.prototype.updateQtdCadsSetor = function () {
@@ -1530,13 +1594,33 @@ var EstacionarPage = /** @class */ (function () {
         });
     };
     EstacionarPage.prototype.getMinutos = function (item) {
-        var minutos = (this.veiculoSelecionado && this.veiculoSelecionado.tipo_veiculo == 'caminhao_onibus') ?
-            (this.setorModel.cad_caminhao * item) + ' Minutos' :
-            (this.setorModel.cad_veiculo * item) + ' Minutos (' + (this.cad.tempo_veiculo[this.tempoCadVeiculo] * item) / 60 + 'h)';
+        var minutos;
+        //console.log('Tipo veiculo Selecionado',this.veiculoSelecionado.tipo_veiculo)
+        if (this.veiculoSelecionado && this.veiculoSelecionado.tipo_veiculo == 'caminhao') {
+            if (this.setorModel.cad_caminhao * item > 30) {
+                if (this.setorModel.cad_caminhao * item == 60) {
+                    minutos = (this.setorModel.cad_caminhao * item) / 60 + ' Hora';
+                }
+                else {
+                    minutos = (this.setorModel.cad_caminhao * item) / 60 + ' Horas';
+                }
+            }
+            else {
+                minutos = (this.setorModel.cad_caminhao * item) + ' Minutos';
+            }
+        }
+        else {
+            if (this.setorModel.cad_veiculo * item == 60) {
+                minutos = (this.setorModel.cad_veiculo * item) / 60 + ' Hora';
+            }
+            else {
+                minutos = (this.setorModel.cad_veiculo * item) / 60 + ' Horas';
+            }
+        }
         return minutos;
     };
     EstacionarPage.prototype.updateCadsAndHorarios = function () {
-        if (this.veiculoSelecionado && this.veiculoSelecionado.tipo_veiculo == 'caminhao_onibus') {
+        if (this.veiculoSelecionado && this.veiculoSelecionado.tipo_veiculo == 'caminhao') {
             this.tempoCadVeiculo = this.setorModel.cad_caminhao;
             this.check = 'carga_descarga';
             this.updateQtdCadsSetor();
@@ -1557,6 +1641,8 @@ var EstacionarPage = /** @class */ (function () {
         this.horarios = array.sort(function (a, b) { return (a.sequencial - b.sequencial); });
     };
     EstacionarPage.prototype.ionViewCanEnter = function () {
+        this.qtdCadsUser = this.navParams.get("qtdCads");
+        console.log('qtdCads', this.qtdCadsUser);
         this.userProvider.getUserLocal().then(function (userID) {
             if (userID) {
                 return true;
@@ -1567,6 +1653,7 @@ var EstacionarPage = /** @class */ (function () {
     EstacionarPage.prototype.ionViewDidLoad = function () {
         var _this = this;
         this.qtdCadsUser = this.navParams.get("qtdCads");
+        console.log(this.qtdCadsUser);
         this.userProvider.getUserLocal().then(function (userID) {
             if (userID != null) {
                 _this.userProvider.byId(userID).take(1).subscribe(function (user) {
@@ -1580,12 +1667,12 @@ var EstacionarPage = /** @class */ (function () {
                     });
                     _this.getVeiculosUser(_this.user);
                 });
-                // this.updateCadsAndHorarios();
+                _this.updateCadsAndHorarios();
             }
         });
         this.check = 'normal';
         this.option = 'especial';
-        document.querySelector("#especial").className = 'option-text';
+        //document.querySelector("#especial").className = 'option-text';
     };
     // Adiciona os feriados do firebase em uma lista a ser usada depois para a verificação do estacionamento 
     // getHolidays() {
@@ -1619,46 +1706,42 @@ var EstacionarPage = /** @class */ (function () {
         this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_20__environments_constants__["a" /* Constants */].VEICULOS_FORM_PAGE.name, { type: 'revendedor' });
     };
     EstacionarPage.prototype.getVeiculosUser = function (user) {
+        // if (user.profile == "revendedor") {
+        //     console.log('**********', this.veiculos);
+        //     let _veiculo: any = this.veiculos[0];
+        //     console.log(_veiculo)
+        //     if(_veiculo) {
+        //         this.veiculos.push({ key: new Date().valueOf(), veiculo: _veiculo });
+        //         console.log(this.veiculos)
+        //         const _idx = this.veiculos.length-1;
+        //         const _vTmp = this.veiculos[_idx];
+        //         this.veiculo_id = _vTmp.veiculo.id || _vTmp.key;
+        //         this.placa = _vTmp.veiculo.placa;
+        //         this.veiculo_tipo = _vTmp.veiculo.tipo_veiculo;
+        //         console.log(this.placa)
+        //         this.veiculos[_idx].veiculo.id = this.veiculo_id
+        //         this.veiculoSelecionado = this.veiculos[_idx].veiculo;
         var _this = this;
-        if (user.profile == "revendedor") {
-            // console.log('**********', this.veiculos);
-            var _veiculo = this.navParams.get('veiculo') || null;
-            if (_veiculo) {
-                this.veiculos.push({ key: new Date().valueOf(), veiculo: _veiculo });
-                var _idx = this.veiculos.length - 1;
-                var _vTmp = this.veiculos[_idx];
-                this.veiculo_id = _vTmp.veiculo.id || _vTmp.key;
-                this.placa = _vTmp.veiculo.placa;
-                this.veiculos[_idx].veiculo.id = this.veiculo_id;
-                this.veiculoSelecionado = this.veiculos[_idx].veiculo;
-            }
-            this.showSpinner = false;
-        }
-        else {
-            if (this.source) {
+        //     }
+        //     this.showSpinner = false;
+        // } else {
+        if (this.source) {
+            if (this.source === 'tempo_restante' || this.source === 'principal') {
                 if (this.source === 'tempo_restante') {
                     this.fromRenovar = true;
-                    var veiculo = this.navParams.get('veiculo');
-                    this.veiculo_id = veiculo.key;
-                    this.placa = veiculo.veiculo.placa;
-                    this.veiculoSelecionado = new __WEBPACK_IMPORTED_MODULE_16__models_veiculo__["a" /* VeiculoModel */](veiculo.veiculo);
-                    this.showSpinner = false;
-                    // para fazer getVeiculos funcionar ... e aparecer o veiculo nas opçoes :/
-                    this.veiculos.push({ key: veiculo.key, veiculo: veiculo.veiculo });
                 }
-                else {
-                    this.veiculoService.findByUser(user.id).take(1).subscribe(function (value) {
-                        value.forEach(function (item) {
-                            item.veiculo.id = item.key;
-                            _this.veiculos.push({ key: item.key, veiculo: item.veiculo });
-                        });
-                        _this.veiculo_id = _this.veiculos[0].key;
-                        _this.placa = _this.veiculos[0].veiculo.placa;
-                        _this.veiculoSelecionado = _this.veiculos[0].veiculo;
-                        _this.showSpinner = false;
-                    });
-                    this.updateCadsAndHorarios();
-                }
+                var veiculo = this.navParams.get('veiculo');
+                console.log('Veiculo', veiculo);
+                this.veiculo_id = veiculo.key;
+                this.placa = veiculo.veiculo.placa;
+                this.veiculo_marca = veiculo.veiculo.marca;
+                this.veiculo_modelo = veiculo.veiculo.modelo;
+                this.veiculo_tipo = veiculo.veiculo.tipo_veiculo;
+                console.log(this.veiculo_tipo);
+                this.veiculoSelecionado = new __WEBPACK_IMPORTED_MODULE_16__models_veiculo__["a" /* VeiculoModel */](veiculo.veiculo);
+                this.showSpinner = false;
+                // para fazer getVeiculos funcionar ... e aparecer o veiculo nas opçoes :/
+                this.veiculos.push({ key: veiculo.key, veiculo: veiculo.veiculo });
             }
             else {
                 this.veiculoService.findByUser(user.id).take(1).subscribe(function (value) {
@@ -1666,21 +1749,44 @@ var EstacionarPage = /** @class */ (function () {
                         item.veiculo.id = item.key;
                         _this.veiculos.push({ key: item.key, veiculo: item.veiculo });
                     });
+                    console.log('This.veiculos', _this.veiculos);
                     _this.veiculo_id = _this.veiculos[0].key;
                     _this.placa = _this.veiculos[0].veiculo.placa;
-                    // this.veiculoSelecionado = this.veiculos[0].veiculo;
+                    _this.veiculo_marca = _this.veiculos[0].veiculo.marca;
+                    _this.veiculo_modelo = _this.veiculos[0].veiculo.modelo;
+                    _this.veiculoSelecionado = _this.veiculos[0].veiculo;
                     _this.showSpinner = false;
                 });
                 this.updateCadsAndHorarios();
             }
         }
+        else {
+            this.veiculoService.findByUser(user.id).take(1).subscribe(function (value) {
+                value.forEach(function (item) {
+                    item.veiculo.id = item.key;
+                    _this.veiculos.push({ key: item.key, veiculo: item.veiculo });
+                });
+                console.log('Veiculo', _this.veiculos);
+                _this.veiculo_id = _this.veiculos[0].key;
+                _this.placa = _this.veiculos[0].veiculo.placa;
+                _this.veiculo_tipo = _this.veiculos[0].veiculo.tipo_veiculo;
+                _this.veiculo_marca = _this.veiculos[0].veiculo.marca;
+                _this.veiculo_modelo = _this.veiculos[0].veiculo.modelo;
+                _this.veiculoSelecionado = _this.veiculos[0].veiculo;
+                console.log(_this.veiculo_marca + ' + ' + _this.veiculo_modelo + ' ' + _this.placa + ' ' + _this.veiculo_tipo);
+                _this.showSpinner = false;
+            });
+            this.updateCadsAndHorarios();
+        }
+        //}
         this.updateCadsAndHorarios();
     };
     EstacionarPage.prototype.getVeiculo = function (placa) {
         for (var i = 0; i < this.veiculos.length; i++) {
             var value = this.veiculos[i];
             if (value.veiculo.placa === placa) {
-                var veiculo_id = this.user.profile == 'revendedor' ? value.veiculo.id : value.key;
+                //const veiculo_id = this.user.profile == 'revendedor' ? value.veiculo.id : value.key;
+                var veiculo_id = value.key;
                 return { veiculo_id: veiculo_id, veiculo: value.veiculo };
             }
         }
@@ -1698,18 +1804,43 @@ var EstacionarPage = /** @class */ (function () {
                 _this.veiculoSelecionado = veiculo.veiculo;
                 _this.veiculo_id = veiculo.veiculo.id;
                 _this.placa = veiculo.veiculo.placa;
+                _this.veiculo_tipo = veiculo.veiculo.tipo_veiculo;
+                _this.veiculo_marca = veiculo.veiculo.marca;
+                _this.veiculo_modelo = veiculo.veiculo.modelo;
+                console.log(_this.veiculoSelecionado);
+                _this.updateCadsAndHorarios();
+            }
+        });
+    };
+    EstacionarPage.prototype.escolherVeiculo = function () {
+        var _this = this;
+        var veiculos = this.veiculos;
+        var veiculoModal = this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_20__environments_constants__["a" /* Constants */].VEICULOS_MODAL_PAGE.name, { veiculos: veiculos });
+        veiculoModal.present();
+        veiculoModal.onDidDismiss(function (data) {
+            if (data) {
+                var veiculo = data;
+                _this.veiculoSelecionado = veiculo.veiculo;
+                _this.veiculo_id = veiculo.veiculo.id;
+                _this.placa = veiculo.veiculo.placa;
+                _this.veiculo_marca = veiculo.veiculo.marca;
+                _this.veiculo_modelo = veiculo.veiculo.modelo;
+                _this.veiculo_tipo = veiculo.veiculo.tipo_veiculo;
+                console.log(_this.veiculo_tipo);
                 _this.updateCadsAndHorarios();
             }
         });
     };
     EstacionarPage.prototype.selectCad = function (value) {
         this.cadSelectd = value;
+        console.log(this.cadSelectd);
     };
     EstacionarPage.prototype.salvaVeiculoNaoEstacionado = function (cad, estacionar, tempoEstacionadoEmMilis, dataEnvio) {
         var _this = this;
+        console.log(cad);
         if (dataEnvio.getHours() >= 0 && dataEnvio.getHours() < 6) {
             this.loading.present();
-            this.showAlert('Aviso!', 'A ativação do estacionamento será considerada apenas no próximo inicio do regulamento para o local! ', '', 
+            this.showAlert('Aviso!', 'A ativação do estacionamento será considerada apenas no próximo início do regulamento para o local! ', '', 
             //CallBack quando o usuário Confirmar
             function () {
                 var estacionamentoAgendadoModel = new __WEBPACK_IMPORTED_MODULE_15__models_agendamento__["a" /* AgendarEstacionamentoModel */]();
@@ -1727,6 +1858,7 @@ var EstacionarPage = /** @class */ (function () {
                 estacionamentoAgendadoModel.udid_imei = _this.user.uidAparelho;
                 estacionamentoAgendadoModel.veiculo_id = estacionar.veiculo_id;
                 estacionamentoAgendadoModel.time = parseInt(_this.horarios[dataEnvio.getDay()].hora_inicio);
+                console.log('Uid', _this.user.id);
                 _this.updateQtdCadsUsados(_this.user.id, estacionar.qtd);
                 _this._agendarEstacionamento(estacionamentoAgendadoModel);
                 _this.enabled = true;
@@ -1736,7 +1868,7 @@ var EstacionarPage = /** @class */ (function () {
             }, 'Confirmar');
         }
         else {
-            this.showAlert("Por favor", 'Para estacionar seu veí­culo, clique no botão Confirmar', "", function () {
+            this.showAlert("Confirmação", 'Deseja estacionar seu veículo?', "alert", function () {
                 var now = __WEBPACK_IMPORTED_MODULE_18__util_date_util__["a" /* DateUtil */].getCurrenteDateFormated();
                 var data2 = __WEBPACK_IMPORTED_MODULE_18__util_date_util__["a" /* DateUtil */].convertDate(now);
                 if ((data2.getTime() - dataEnvio.getTime()) > __WEBPACK_IMPORTED_MODULE_13__providers_comunicacao_central_comunicacao_central__["a" /* ComunicacaoCentralProvider */].APP_ESPERA) {
@@ -1745,6 +1877,7 @@ var EstacionarPage = /** @class */ (function () {
                 }
                 else {
                     _this.operacaoLinkL2(estacionar, cad, dataEnvio, function (dataProcessamento, autenticacao) {
+                        console.log('Uid', _this.user.id);
                         _this.updateQtdCadsUsados(_this.user.id, cad);
                         var estacionarModel = new __WEBPACK_IMPORTED_MODULE_14__models_estacionar__["b" /* EstacionarModel */](estacionar);
                         estacionarModel.categoria = _this.check;
@@ -1755,7 +1888,7 @@ var EstacionarPage = /** @class */ (function () {
                         _this.saveEstacionar(estacionarModel, _this.user.id, cad, _this.veiculoSelecionado);
                     });
                 }
-            }, function () { _this.enabled = true; _this.loading.dismiss(); }, 'Confirmar');
+            }, function () { _this.enabled = true; _this.loading.dismiss(); }, 'Sim');
             this.enabled = true;
             this.enabled = true;
             this.enabled = true;
@@ -1763,6 +1896,7 @@ var EstacionarPage = /** @class */ (function () {
     };
     EstacionarPage.prototype.salvaVeiculoJaEstacionado = function (_veiculoEstacionado, cad, estacionar, tempoEstacionadoEmMilis, dataEnvio) {
         var _this = this;
+        console.log(cad);
         _veiculoEstacionado.map(function (item) {
             var isVeiculoEstacionadoNesteLocal = (item &&
                 item.estacionar.area_id === estacionar.area_id &&
@@ -1803,6 +1937,7 @@ var EstacionarPage = /** @class */ (function () {
                     }
                     else {
                         _this.operacaoLinkL2(estacionar, cad, dataEnvio, function (dataProcessamento, autenticacao) {
+                            console.log(dataProcessamento.getTime());
                             _estacionarTmp_1.tempoEstacionado = (dataProcessamento.getTime() + tempoEstacionadoEmMilis + tempoAnteriorEmMilis_1);
                             _estacionarTmp_1.dataHoraRegistro = dataProcessamento.getTime();
                             _estacionarTmp_1.codAuth = autenticacao;
@@ -1819,7 +1954,7 @@ var EstacionarPage = /** @class */ (function () {
     };
     EstacionarPage.prototype.openComprovante = function (cad, placa) {
         var _this = this;
-        console.log('Cads ' + cad + ', Placa: ' + placa);
+        console.log('Cads: ' + cad + ', Placa: ' + placa);
         var veiculo = this.getVeiculo(placa);
         this.veiculo_id = veiculo.veiculo_id;
         // this.veiculoSelecionado = this.source? new VeiculoModel(veiculo.veiculo): veiculo;
@@ -1935,7 +2070,7 @@ var EstacionarPage = /** @class */ (function () {
                     // });
                 }
                 else {
-                    _this.showAlert('Olá!', 'Você não possui CADs suficientes. Compre agora para estacionar seu veículo.', '', function () { _this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_20__environments_constants__["a" /* Constants */].CREDITOS_PAGE.name, { fromPage: 'estacionar' }); }, function () { }, 'COMPRAR');
+                    _this.showAlert('Saldo Insuficiente', 'Você está sem CADs. Deseja comprar CADs para estacionar seu veículo?', '', function () { _this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_20__environments_constants__["a" /* Constants */].CREDITOS_PAGE.name, { fromPage: 'estacionar', setor: _this.setor, area: _this.nomeArea, qtdCads: _this.cad }); }, function () { }, 'COMPRAR');
                     _this.enabled = true;
                     _this.loading.dismiss();
                 }
@@ -1969,7 +2104,7 @@ var EstacionarPage = /** @class */ (function () {
                 var dataProcessamentoStr = response['dataProcessamento'];
                 var dataProcessamento = __WEBPACK_IMPORTED_MODULE_18__util_date_util__["a" /* DateUtil */].convertDate(dataProcessamentoStr);
                 var autenticacao = response['autenticacao'];
-                console.log(response);
+                console.log('Resposta', response);
                 if (response['sucesso'] || response['sucesso'] === 'true') {
                     if (callback) {
                         callback(dataProcessamento, autenticacao);
@@ -1983,7 +2118,7 @@ var EstacionarPage = /** @class */ (function () {
             }).catch(function (error) {
                 var result = error.toString();
                 result = result.split(':')[1];
-                console.log(result);
+                console.log('Resultado', result);
                 _this.showAlert('Indisponível', result, '', function () { }, function () { }, '', 'OK');
                 _this.enabled = true;
                 _this.loading.dismiss();
@@ -2043,6 +2178,7 @@ var EstacionarPage = /** @class */ (function () {
             cep: this.user.cep,
             regras: this.cad.regras_comprovante,
             site: this.cad.info.site,
+            situacao: estacionar.situacao,
             distribuidorCnpj: this.cad.empresa.cnpj,
             distribuidorRazaoSocial: this.cad.empresa.razao_social,
             distribuidorNomeFantasia: this.cad.empresa.nome_fantasia,
@@ -2074,8 +2210,9 @@ var EstacionarPage = /** @class */ (function () {
                     }, function (err) { return console.log('Algo deu errado =>', err); });
                     if (_this.source) {
                         if (_this.source == 'tempo_restante') {
+                            _this.loading.dismiss();
                             console.log('aqui');
-                            _this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_20__environments_constants__["a" /* Constants */].COMPROVANTE_PAGE.name, {
+                            _this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_20__environments_constants__["a" /* Constants */].TEMPO_RESTANTE_PAGE.name, {
                                 user: _this.user,
                                 estacionar: estacionar,
                                 loading: _this.loading,
@@ -2083,7 +2220,8 @@ var EstacionarPage = /** @class */ (function () {
                             //this.viewCtrl.dismiss();
                         }
                         else {
-                            _this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_20__environments_constants__["a" /* Constants */].COMPROVANTE_PAGE.name, {
+                            _this.loading.dismiss();
+                            _this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_20__environments_constants__["a" /* Constants */].TEMPO_RESTANTE_PAGE.name, {
                                 user: _this.user,
                                 estacionar: estacionar,
                                 loading: _this.loading
@@ -2091,7 +2229,8 @@ var EstacionarPage = /** @class */ (function () {
                         }
                     }
                     else {
-                        _this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_20__environments_constants__["a" /* Constants */].COMPROVANTE_PAGE.name, {
+                        _this.loading.dismiss();
+                        _this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_20__environments_constants__["a" /* Constants */].TEMPO_RESTANTE_PAGE.name, {
                             user: _this.user,
                             estacionar: estacionar,
                             loading: _this.loading
@@ -2127,8 +2266,15 @@ var EstacionarPage = /** @class */ (function () {
     };
     EstacionarPage.prototype.updateQtdCadsUsados = function (userID, cads) {
         var _this = this;
+        console.log('Uid User', userID);
+        console.log('item cads', cads);
         this.cadsUserProvider.getQtdCadsUsados(this.user.id).take(1).subscribe(function (item) {
-            _this.cadsUserProvider.updateQtdCadsUsadas(userID, (cads + parseInt(item)));
+            var qtdCads = 0;
+            if (item !== null) {
+                qtdCads = parseInt(item);
+            }
+            console.log('item cads usados', item);
+            _this.cadsUserProvider.updateQtdCadsUsadas(userID, (cads + qtdCads));
         });
     };
     EstacionarPage.prototype.activateOption = function (event) {
@@ -2294,12 +2440,16 @@ var EstacionarPage = /** @class */ (function () {
             if (this.source == 'tempo_restante') {
                 this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_20__environments_constants__["a" /* Constants */].TEMPO_RESTANTE_PAGE.name);
             }
-            else {
+            else if (this.source == 'principal') {
+                this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_20__environments_constants__["a" /* Constants */].PRINCIPAL_PAGE.name);
+            }
+            else if (this.source == 'mapa') {
+                // this.navCtrl.pop();
                 this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_20__environments_constants__["a" /* Constants */].HOME_PAGE.name);
             }
         }
         else {
-            this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_20__environments_constants__["a" /* Constants */].HOME_PAGE.name);
+            this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_20__environments_constants__["a" /* Constants */].PRINCIPAL_PAGE.name);
         }
     };
     /**
@@ -2342,7 +2492,7 @@ var EstacionarPage = /** @class */ (function () {
         };
         var cancelBtn = {
             text: btnCancelar,
-            cssClass: 'btn-ok',
+            cssClass: 'btn-cancel',
             handler: function (data) {
                 error();
             }
@@ -2354,7 +2504,7 @@ var EstacionarPage = /** @class */ (function () {
         var alert = this.alertCtrl.create({
             title: title,
             message: msg,
-            cssClass: type,
+            cssClass: 'alert',
             buttons: btns,
             enableBackdropDismiss: false
         });
@@ -2395,12 +2545,49 @@ var EstacionarPage = /** @class */ (function () {
     /**
      * Pop-out com as ajudas sobre as informações para o  usuário
      */
-    EstacionarPage.prototype.openHelp = function () {
-        this.showHelp('Ajuda', 'Verifique se os dados estão corretos e confirme o setor que deseja estacionar.', '', function () { });
+    //openHelp() {
+    // this.showHelp('Ajuda', 'Verifique se os dados estão corretos e confirme o setor que deseja estacionar.', '', () => { })
+    //}
+    EstacionarPage.prototype.comprarCads = function () {
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_20__environments_constants__["a" /* Constants */].CREDITOS_PAGE.name, { fromPage: 'estacionar' });
+    };
+    EstacionarPage.prototype.criarMap = function (lat, lon) {
+        var position = new google.maps.LatLng(lat, lon);
+        function initialize() {
+            var mapOptions = {
+                zoom: 16,
+                center: new google.maps.LatLng(lat + 30, lon + 30),
+                panControl: false,
+                mapTypeControl: false,
+                scaleControl: false,
+                streetViewControl: false,
+                overviewMapControl: false,
+                rotateControl: false,
+                zoomControl: false,
+                disableDefaultUI: true
+            };
+            var map = new google.maps.Map(document.getElementById('googleMap'), mapOptions);
+            var marker = new google.maps.Marker({
+                position: position,
+                animation: google.maps.Animation.BOUNCE,
+                icon: {
+                    url: 'assets/icones/pin-dark.svg',
+                    scaledSize: new google.maps.Size(55, 55),
+                },
+                map: map
+            });
+        }
+        google.maps.event.addDomListener(window, 'load', initialize());
+    };
+    EstacionarPage.prototype.checkRadio = function (radio) {
+        this.radio = radio;
+        this.selectCad(radio);
+        //this.getMinutos(radio)
+        console.log(this.radio);
     };
     EstacionarPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-estacionar',template:/*ion-inline-start:"/Users/desenvolvedor/Documents/appzonzazul/src/pages/estacionar/estacionar.html"*/'<ion-header no-border>\n    <ion-navbar color="header">\n\n        <ion-buttons left>\n            <button ion-button icon-only (click)="closeEstacionarPage()">\n                <span color="light" class="header-icon" showWhen="ios">Fechar</span>\n                <ion-icon name="md-arrow-back" class="header-icon" showWhen="android,windows"></ion-icon>\n            </button>\n        </ion-buttons>\n        <ion-title>\n            <ion-label>Estacionar (Setor {{codigoSetor}})</ion-label>\n        </ion-title>\n\n        <ion-buttons end>\n            <button ion-button icon-only (click)="openHelp()">\n                <ion-icon name="help-circle" class="header-icon"></ion-icon>\n            </button>\n        </ion-buttons>\n\n    </ion-navbar>\n</ion-header>\n\n<ion-content class="content">\n\n    <ion-grid class="grid">\n        <ion-row class="row-header">\n            <ion-col col-12 class="col-title-setor" align="center">\n                <ion-label class="title">{{nomeSetor}} ({{codigoSetor}}) | {{nomeArea}} ({{codigoArea}})</ion-label>\n            </ion-col>\n            <ion-col col-12 class="col-title" align="center">\n                <ion-label class="title">Prefeitura Municipal de Fortaleza</ion-label>\n            </ion-col>\n            <ion-col col-4 class="col-qtd-cads" align="center">\n                <ion-label *ngIf="qtdCadsUser < 1" class="qtd-cads">0 CADs</ion-label>\n                <ion-label *ngIf="qtdCadsUser > 1" class="qtd-cads">{{qtdCadsUser}} CADs</ion-label>\n                <ion-label *ngIf="qtdCadsUser == 1" class="qtd-cads">{{qtdCadsUser}} CAD</ion-label>\n            </ion-col>\n            <ion-col col-10 class="col-select" (click)="selecionarVeiculo()">\n                <loading-spinner *ngIf="showSpinner"></loading-spinner>\n                <ion-item class="item-select" no-lines mode="md" *ngIf="!showSpinner">\n                    <ion-label text-left class="title-select" mode="md">Veículo :</ion-label>\n                    <ion-label text-center mode="md">{{veiculoSelecionado?.placa || \'Selecione o veiculo\'}}</ion-label>\n                    <ion-label text-right class="search">\n                        <ion-icon ios="ios-search" md="md-search"></ion-icon>\n                    </ion-label>\n                    <!-- <ion-select [(ngModel)]="placa" mode="md" cancelText="Cancelar" okText="Ok" (ionChange)="selecionarVeiculo($event)" [disabled]="fromRenovar">\n                        <ion-option *ngFor="let item of veiculos" value="{{item.veiculo.placa}}" (click)="selecionarVeiculo($event)">{{item?.veiculo?.placa}}</ion-option>\n                    </ion-select> -->\n                </ion-item>\n            </ion-col>\n            <ion-col col-12 class="col-title" align="center" *ngIf="user?.profile === \'revendedor\'">\n                <ion-item class="item-btn" no-lines>\n                    <button ion-button block class="btn-button"  (click)="addVeiculo()" style="height:35px;" block> Inserir Veículo </button>\n                </ion-item>\n            </ion-col>\n        </ion-row>\n        <ion-row class="row-options">\n            <ion-col class="col-rule" col-auto>\n                <ion-item class="item-rule" no-lines no-border>\n                    <label class="rule" (click)="activateOption(\'especial\')">\n                        <span id="especial">CATEGORIA</span>\n                    </label>\n                    <label class="rule" (click)="activateOption(\'horarios\')">\n                        <span id="horarios">HORÁRIOS</span>\n                    </label>\n                    <label class="rule" (click)="activateOption(\'regra\')">\n                        <span id="regra">REGRA</span>\n                    </label>\n                </ion-item>\n            </ion-col>\n        </ion-row>\n        <ion-col col-12 class="row-options-selected">\n            <ion-col col-12 class="col-options-selected-especial"\n                [style.display]="option === \'especial\' ? \'block\' : \'none\'">\n                <ion-list\n                    *ngIf="veiculoSelecionado && veiculoSelecionado.tipo_veiculo == \'caminhao_onibus\'; else cat_automovel"\n                    onshow="checkCategoria(\'carga_descarga\')">\n                    <ion-item class="item-options-selected-especial" no-lines>\n                        <ion-label class="especial-description">Carga/Descarga</ion-label>\n                        <ion-radio [checked]="true" [disabled]="true" item-left mode="md"></ion-radio>\n                    </ion-item>\n                </ion-list>\n                <ng-template #cat_automovel>\n                    <ion-list>\n                        <ion-item class="item-options-selected-especial" no-lines>\n                            <ion-label class="especial-description">Normal</ion-label>\n                            <ion-radio [checked]="check == \'normal\' ? true : false" [disabled]="disabledNormal"\n                                (click)="checkCategoria(\'normal\')" item-left mode="md"></ion-radio>\n                        </ion-item>\n                        <ion-item class="item-options-selected-especial" no-lines>\n                            <ion-label class="especial-description">Deficiente Físico</ion-label>\n                            <ion-radio [checked]="check == \'deficiente\' ? true : false" [disabled]="disabledDeficientes"\n                                (click)="checkCategoria(\'deficiente\')" item-left mode="md">\n                            </ion-radio>\n                        </ion-item>\n                        <ion-item class="item-options-selected-especial" no-lines>\n                            <ion-label class="especial-description">Idoso</ion-label>\n                            <ion-radio [checked]="check == \'idoso\' ? true : false" [disabled]="disabledIdoso"\n                                (click)="checkCategoria(\'idoso\')" item-left mode="md"></ion-radio>\n                        </ion-item>\n                    </ion-list>\n                </ng-template>\n            </ion-col>\n            <ion-col col-11 class="col-options-selected-horarios"\n                [style.display]="option === \'horarios\' ? \'block\' : \'none\'">\n                <ion-label class="cads-title" style="color: #8c8c8c;">Obrigatório o uso de CAD nos seguintes horários\n                </ion-label>\n                <ion-item *ngFor="let horario of horarios" class="item-options-selected-horarios" no-lines\n                    [hidden]="!horario?.isDisponivel">\n                    <p class="horarios-description">{{horario?.dia}}: {{horario?.hora_inicio}} às {{horario?.hora_fim}}\n                    </p>\n                </ion-item>\n            </ion-col>\n            <ion-col col-auto class="col-options-selected-regra"\n                [style.display]="option === \'regra\' ? \'block\' : \'none\'">\n                <ion-item class="item-options-selected-regra" no-lines no-border>\n                    <p class="regra-description">{{cad?.regras}}</p>\n                </ion-item>\n            </ion-col>\n        </ion-col>\n        <ion-row class="row-cads" [style.display]="option === \'especial\' ? \'block\' : \'none\'">\n            <ion-label class="cads-title">Selecione por quanto tempo deseja estacionar:</ion-label>\n            <ion-col col-12 class="col-cads" *ngFor="let item of cads_setor">\n                <ion-item no-lines>\n                    <ion-radio [checked]="cadSelectd == item ? true : false" (click)="selectCad(item)" class="checkbox"\n                        item-left mode="md"></ion-radio>\n                    <ion-label class="cads-hour">\n                        <span>{{ getMinutos(item) }}</span>\n                        <span class="cads-qtd-2"> {{item}} CAD(s)</span>\n                    </ion-label>\n                    <ion-label class="cads-price">R$ {{cad?.valor_unitario * item}},00</ion-label>\n                </ion-item>\n            </ion-col>\n            <ion-item class="item-btn" no-lines>\n                <button ion-button block class="btn-button" (click)="openComprovante(cadSelectd, placa)"\n                    [disabled]="!enabled">Estacionar</button>\n            </ion-item>\n        </ion-row>\n    </ion-grid>\n</ion-content>'/*ion-inline-end:"/Users/desenvolvedor/Documents/appzonzazul/src/pages/estacionar/estacionar.html"*/,
+            selector: 'page-estacionar',template:/*ion-inline-start:"/Users/desenvolvedor/Documents/zonaazulfortaleza-develop/src/pages/estacionar/estacionar.html"*/'<ion-header no-border>\n    <ion-navbar color="header">\n\n        <ion-buttons left>\n            <button color="white" ion-button icon-only (click)="closeEstacionarPage()">\n                <ion-icon name="arrow-back" class="header-icon"></ion-icon>\n            </button>\n        </ion-buttons>\n        <ion-title>\n            <ion-label *ngIf="qtdCadsUser < 1" class="qtd-cads">Saldo: 0 CADs</ion-label>\n                <ion-label *ngIf="qtdCadsUser > 1" class="qtd-cads">Saldo: {{qtdCadsUser}} CADs</ion-label>\n                <ion-label *ngIf="qtdCadsUser == 1" class="qtd-cads">Saldo: {{qtdCadsUser}} CAD</ion-label>\n        </ion-title>\n\n        <ion-buttons end>\n            <button ion-button icon-only (click)="comprarCads()">\n                <img src="assets/icones/shopping-cart-white.svg"  />\n            </button>\n        </ion-buttons>\n\n    </ion-navbar>\n</ion-header>\n\n<ion-content class="content">\n    <div class="info"><p>Atenção esse aplicativo é válido somente</p><p>para a cidade de Fortaleza Ceará</p></div>\n    <div class="{{veiculo_tipo == \'caminhao\'? \'info-content-green\':\'info-content-pink\'}}">\n        <loading-spinner *ngIf="showSpinner"></loading-spinner>\n        <ion-item (click)="selecionarVeiculo()" class="item-select" no-lines mode="md" *ngIf="!showSpinner">\n            <ion-label text-left class="title-select" mode="md">\n                {{veiculoSelecionado?.placa || placa}}\n                <button ion-button small icon-only clear class="btn-arrow">\n                    <ion-icon name="ios-arrow-down"></ion-icon>\n                </button>\n                <p>\n                    {{veiculo_marca || veiculo_modelo | uppercase}}\n                </p>\n            </ion-label>\n            <ion-label text-center mode="md"><img class="thumb" src="assets/icones/{{veiculo_tipo == \'caminhao\'? \'caminhao-blue-dark.svg\': \'carro-white.svg\'}}" alt=""></ion-label>\n        </ion-item>\n        <!--\n            <ion-select [(ngModel)]="placa" mode="md" cancelText="Cancelar" okText="Ok" (ionChange)="selecionarVeiculo($event)" [disabled]="fromRenovar">\n            <ion-option *ngFor="let item of veiculos" value="{{item.veiculo.placa}}" (click)="selecionarVeiculo($event)">{{item?.veiculo?.placa}}</ion-option>\n        </ion-select> \n        -->\n    </div>\n    <div class="map_area">\n        <div id="googleMap"></div>\n    </div>\n    \n\n    <ion-grid class="grid">\n        <ion-label class="title"><p>Quantos cartões deseja usar?</p></ion-label>\n        <ion-row class="radio-row">\n            <div class="radio-master">\n                <div class="{{radio == 1?\'radio checked\':\'radio\'}}">\n                \n                    <div tappable (tap)="checkRadio(1)">\n                        <ion-icon name="{{radio == 1?\'radio-button-on\':\'radio-button-off\'}}"></ion-icon><ion-label class="title-cads">1 CAD</ion-label>\n                    </div>\n                    \n                </div>\n                <div class="{{radio == 2?\'radio checked\':\'radio\'}}">\n                    <div tappable (tap)="checkRadio(2)">\n                        <ion-icon name="{{radio == 2?\'radio-button-on\':\'radio-button-off\'}}"></ion-icon><ion-label class="title-cads">2 CADs</ion-label>\n                    </div>\n                    \n                </div>\n            </div>\n            \n        </ion-row>\n        <!--<ion-row class="row-header">\n            <ion-col col-12 class="col-title-setor" align="center">\n                \n            </ion-col>\n            <ion-col col-12 class="col-title" align="center">\n                <ion-label class="title">Prefeitura Municipal de Fortaleza</ion-label>\n            </ion-col>\n            <ion-col col-4 class="col-qtd-cads" align="center">\n                <ion-label *ngIf="qtdCadsUser < 1" class="qtd-cads">0 CADs</ion-label>\n                <ion-label *ngIf="qtdCadsUser > 1" class="qtd-cads">{{qtdCadsUser}} CADs</ion-label>\n                <ion-label *ngIf="qtdCadsUser == 1" class="qtd-cads">{{qtdCadsUser}} CAD</ion-label>\n            </ion-col>\n            <ion-col col-10 class="col-select" (click)="selecionarVeiculo()">\n                <loading-spinner *ngIf="showSpinner"></loading-spinner>\n                <ion-item class="item-select" no-lines mode="md" *ngIf="!showSpinner">\n                    <ion-label text-left class="title-select" mode="md">Veículo :</ion-label>\n                    <ion-label text-center mode="md">{{veiculoSelecionado?.placa || \'Selecione o veiculo\'}}</ion-label>\n                    <ion-label text-right class="search">\n                        <ion-icon ios="ios-search" md="md-search"></ion-icon>\n                    </ion-label>\n                    \n                </ion-item>\n            </ion-col>\n            <ion-col col-12 class="col-title" align="center" *ngIf="user?.profile === \'revendedor\'">\n                <ion-item class="item-btn" no-lines>\n                    <button ion-button block class="btn-button"  (click)="addVeiculo()" style="height:35px;" block> Inserir Veículo </button>\n                </ion-item>\n            </ion-col>\n        </ion-row>\n        <ion-row class="row-options">\n            <ion-col class="col-rule" col-auto>\n                <ion-item class="item-rule" no-lines no-border>\n                    <label class="rule" (click)="activateOption(\'especial\')">\n                        <span id="especial">CATEGORIA</span>\n                    </label>\n                    <label class="rule" (click)="activateOption(\'horarios\')">\n                        <span id="horarios">HORÁRIOS</span>\n                    </label>\n                    <label class="rule" (click)="activateOption(\'regra\')">\n                        <span id="regra">REGRA</span>\n                    </label>\n                </ion-item>\n            </ion-col>\n        </ion-row>\n        <ion-col col-12 class="row-options-selected">\n            <ion-col col-12 class="col-options-selected-especial"\n                [style.display]="option === \'especial\' ? \'block\' : \'none\'">\n                <ion-list\n                    *ngIf="veiculoSelecionado && veiculoSelecionado.tipo_veiculo == \'caminhao_onibus\'; else cat_automovel"\n                    onshow="checkCategoria(\'carga_descarga\')">\n                    <ion-item class="item-options-selected-especial" no-lines>\n                        <ion-label class="especial-description">Carga/Descarga</ion-label>\n                        <ion-radio [checked]="true" [disabled]="true" item-left mode="md"></ion-radio>\n                    </ion-item>\n                </ion-list>\n                <ng-template #cat_automovel>\n                    <ion-list>\n                        <ion-item class="item-options-selected-especial" no-lines>\n                            <ion-label class="especial-description">Normal</ion-label>\n                            <ion-radio [checked]="check == \'normal\' ? true : false" [disabled]="disabledNormal"\n                                (click)="checkCategoria(\'normal\')" item-left mode="md"></ion-radio>\n                        </ion-item>\n                        <ion-item class="item-options-selected-especial" no-lines>\n                            <ion-label class="especial-description">Deficiente Físico</ion-label>\n                            <ion-radio [checked]="check == \'deficiente\' ? true : false" [disabled]="disabledDeficientes"\n                                (click)="checkCategoria(\'deficiente\')" item-left mode="md">\n                            </ion-radio>\n                        </ion-item>\n                        <ion-item class="item-options-selected-especial" no-lines>\n                            <ion-label class="especial-description">Idoso</ion-label>\n                            <ion-radio [checked]="check == \'idoso\' ? true : false" [disabled]="disabledIdoso"\n                                (click)="checkCategoria(\'idoso\')" item-left mode="md"></ion-radio>\n                        </ion-item>\n                    </ion-list>\n                </ng-template>\n            </ion-col>\n            <ion-col col-11 class="col-options-selected-horarios"\n                [style.display]="option === \'horarios\' ? \'block\' : \'none\'">\n                <ion-label class="cads-title" style="color: #8c8c8c;">Obrigatório o uso de CAD nos seguintes horários\n                </ion-label>\n                <ion-item *ngFor="let horario of horarios" class="item-options-selected-horarios" no-lines\n                    [hidden]="!horario?.isDisponivel">\n                    <p class="horarios-description">{{horario?.dia}}: {{horario?.hora_inicio}} às {{horario?.hora_fim}}\n                    </p>\n                </ion-item>\n            </ion-col>\n            <ion-col col-auto class="col-options-selected-regra"\n                [style.display]="option === \'regra\' ? \'block\' : \'none\'">\n                <ion-item class="item-options-selected-regra" no-lines no-border>\n                    <p class="regra-description">{{cad?.regras}}</p>\n                </ion-item>\n            </ion-col>\n        </ion-col>-->\n        <ion-row class="row-cads">\n            <ion-col col-8 class="col-cads">\n                <ion-label class="cads-title"><p>Escolha a regra de estacionamento abaixo</p> <p>e em seguida confirme a opção desejada:</p></ion-label>\n            </ion-col>\n            \n            <ion-col col-10>\n                <ion-item class="col-cad-select">\n                    \n                    <!--<ion-select style="color: #3F65FF;" [selectOptions]="selectOption" [(ngModel)]="setor_cads" (ionChange)="selectCad(setor_cads)" mode="md" cancelText="Cancelar">\n                        \n                        <ion-option *ngFor="let item of cads_setor" value="{{item}}" selected="{{item==1?\'true\':\'false\'}}" (click)="selectCad(item)">{{item}} CAD(s) = {{ getMinutos(item) }}</ion-option>\n\n                    </ion-select>-->\n                    <label *ngIf="setorModel">{{cadSelectd}} CAD(s) = {{ getMinutos(cadSelectd)}}</label>\n                </ion-item>\n                \n                <!--<ion-item no-lines>\n                    <ion-radio [checked]="cadSelectd == item ? true : false" (click)="selectCad(item)" class="checkbox"\n                        item-left mode="md"></ion-radio>\n                    <ion-label class="cads-hour">\n                    </ion-label>\n                </ion-item> -->\n            </ion-col>\n           <!-- <ion-col col-12 class="col-cads" *ngFor="let item of cads_setor">\n                <ion-item no-lines>\n                    <ion-radio [checked]="cadSelectd == item ? true : false" (click)="selectCad(item)" class="checkbox"\n                        item-left mode="md"></ion-radio>\n                    <ion-label class="cads-hour">\n                        <span>{{ getMinutos(item) }}</span>\n                        <span class="cads-qtd-2"> {{item}} CAD(s)</span>\n                    </ion-label>\n                    <ion-label class="cads-price">R$ {{cad?.valor_unitario * item}},00</ion-label>\n                </ion-item>\n            </ion-col> -->\n            <ion-item class="item-btn" no-lines>\n                <button ion-button block class="btn-button" (click)="openComprovante(cadSelectd, placa)"\n                    >Estacionar</button>\n            </ion-item>\n        </ion-row>\n    </ion-grid>\n</ion-content>'/*ion-inline-end:"/Users/desenvolvedor/Documents/zonaazulfortaleza-develop/src/pages/estacionar/estacionar.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* Platform */],
@@ -2418,7 +2605,7 @@ var EstacionarPage = /** @class */ (function () {
             __WEBPACK_IMPORTED_MODULE_12__providers_cads_cads__["a" /* CadsProvider */],
             __WEBPACK_IMPORTED_MODULE_10__providers_setores_setores__["a" /* SetoresProvider */],
             __WEBPACK_IMPORTED_MODULE_11__providers_holidays_holidays__["a" /* HolidaysProvider */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* ViewController */]])
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* ViewController */]])
     ], EstacionarPage);
     return EstacionarPage;
 }());
@@ -2427,7 +2614,7 @@ var EstacionarPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 863:
+/***/ 802:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

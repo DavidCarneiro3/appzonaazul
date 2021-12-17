@@ -5,6 +5,19 @@ const nodemailer = require('nodemailer');
 
 const Utils = require('./util/utils.js');
 
+const KMZ = require('kmz-geojson');
+const NodeGeodecoder = require('node-geocoder');
+const GeodecoderOptions = {
+    provider: 'google',
+    httpAdapter: 'https',
+    apiKey: 'AIzaSyAUTZetABHq84mkWy3PeuEcFqu31XAQPjs',
+    formatter: null
+};
+//Usado para  obter os bairros através das coordenadas
+const GEODECODER = NodeGeodecoder(GeodecoderOptions);
+
+
+
 // LINK DA AMC DEV
 // COD CLIENTE DEV 
 const URL_CENTRAL = `https://wszonaazuldsv.centralamc.com.br/transacao`;
@@ -16,11 +29,13 @@ const COD_CLIENTE = 75;
 // const URL_CENTRAL = `https://wszonaazulprd.centralamc.com.br/transacao`;
 // const COD_CLIENTE = 82;
 
-admin.initializeApp({
-    credential: admin.credential.applicationDefault(),
-    databaseURL: 'https://zonaazulfortaleza-temp.firebaseio.com',
-    // databaseURL: 'https://zonaazulfortaleza-prod.firebaseio.com'
-});
+// admin.initializeApp({
+//     credential: admin.credential.applicationDefault(),
+//     databaseURL: 'https://zonaazulfortaleza-temp.firebaseio.com',
+//     // databaseURL: 'https://zonaazulfortaleza-prod.firebaseio.com'
+// });
+
+admin.initializeApp();
 
 const TRINTA_MIN = 30 * 60 * 1000;
 const VINT25_MIN = 25 * 60 * 1000;
@@ -257,6 +272,644 @@ exports.checaEstacionamento = functions.https.onRequest((req, res) => {
         });
 });
 
+exports.checaEstacionamento2 = functions.pubsub.schedule('* * * * *').onRun((context) => {
+    const url_estacionar = `/estacionar/${url_base}`;
+
+    const promise1 = admin.database()
+        .ref(url_estacionar)
+        .once("value")
+
+        .then(snapshot => {
+            let arr = [];
+            snapshot.forEach(_snapshot => {
+                let _item = _snapshot.val();
+                Object.keys(_item).forEach(key => _item[key].user_id = _snapshot.key); // salva o id do usuario no obj estacionamento
+                arr.push(_item);
+            });
+            return Promise.all(arr);
+        })
+
+        .then(arr => {
+
+            arr.forEach(_dtHoraObj => {
+                Object.keys(_dtHoraObj).forEach(key => {
+                    let _dtHoraVal = _dtHoraObj[key];
+
+                    if (_dtHoraVal.status === true) { // Somente os veiculos que estao estacionados no momento
+                        const offset = -3; // realiza o timezone para obter a hora no brasil
+                        const dataHoraRegistro = new Date(Date.now() + (3600000 * offset));
+                        const dataHoraFim = new Date(_dtHoraVal.tempoEstacionado + (3600000 * offset));
+                        const { user_id, comprovante, tempoComprado, qtd } = _dtHoraVal;
+                        let podeRenovar = true
+
+                        console.log('executando checkEstacionamento');
+                        podeRenovar = tempoComprado !== 300 && qtd !== 2
+                        const renovar = podeRenovar ? ', entre no app e faça sua renovação.' : ''
+
+                        const diff = dataHoraFim.getTime() - dataHoraRegistro.getTime();
+
+
+                        if (diff >= TRINTA_MIN && diff <= (TRINTA_MIN + LIMITE_MIN)) {
+                            console.log('faltando 30');
+                            sendPushNotification(_dtHoraVal.user_id, url_base, '30 minutos restantes', `Faltam 30 minutos para encerrar seu tempo de estacionamento${renovar}`, 30);
+                        }
+                        else if (diff >= VINT25_MIN && diff <= (VINT25_MIN + LIMITE_MIN)) {
+                            console.log('faltando 25');
+                            sendPushNotification(_dtHoraVal.user_id, url_base, '25 minutos restantes', `Faltam 25 minutos para encerrar seu tempo de estacionamento${renovar}`, 25);
+                        }
+                        else if (diff >= VINTE_MIN && diff <= (VINTE_MIN + LIMITE_MIN)) {
+                            console.log('faltando 20');
+                            sendPushNotification(_dtHoraVal.user_id, url_base, '20 minutos restantes', `Faltam 20 minutos para encerrar seu tempo de estacionamento${renovar}`, 20);
+                        }
+                        else if (diff >= QUINZE_MIN && diff <= (QUINZE_MIN + LIMITE_MIN)) {
+                            console.log('faltando 15');
+                            sendPushNotification(_dtHoraVal.user_id, url_base, '15 minutos restantes', `Faltam 15 minutos para encerrar seu tempo de estacionamento${renovar}`, 15);
+                        } else if (diff >= DEZ_MIN && diff <= (DEZ_MIN + LIMITE_MIN)) {
+                            console.log('faltando 10');
+                            sendPushNotification(_dtHoraVal.user_id, url_base, '10 minutos restantes', `Faltam 10 minutos para encerrar seu tempo de estacionamento${renovar}`, 10);
+
+                        } else if (diff >= CINCO_MIN && diff <= (CINCO_MIN + LIMITE_MIN)) {
+                            console.log('faltando 5');
+                            sendPushNotification(_dtHoraVal.user_id, url_base, '5 minutos restantes', `Faltam 5 minutos para encerrar seu tempo de estacionamento${renovar}`, 5);
+
+                        } else if (diff <= 0) {
+
+                            sendPushNotification(_dtHoraVal.user_id, url_base, 'Tempo encerrado', 'Seu tempo de estacionamento acabou. Retire seu veículo para evitar infração.', 0);
+
+                            const _item = { status: false };
+
+                            admin.database()
+                                .ref(`${url_estacionar}/${_dtHoraVal.user_id}/${key}`)
+                                .update(_item);
+                        }
+                    }
+                })
+            })
+
+            return Promise.all(arr);
+        });
+        
+/*
+    context.set('Acess-Control-Allow-Origin', '*')
+    Promise.all([promise1]).then((response) => {
+        res.status(200).send(`Trigger realizada com sucesso ${new Date(Date.now())} `);
+    })
+        .catch(error => {
+            res.status(500).send(`Algo deu errado ${error}`);
+        });
+        */
+});
+
+exports.getSetoresAMC = functions.https.onRequest((req, res) => {
+    const UrlDoKmzDaAmc = 'http://cmaremoto.ddns.net/zonaazul/zonaazul.kmz';
+    res.set('Access-Control-Allow-Origin', '*') // CrossOrigin Error 
+
+    let todosSetores;
+
+    getZonas(UrlDoKmzDaAmc).then(result => {
+        console.log(result)
+        todosSetores = result;
+        res.status(200).send(todosSetores)
+    }).catch(err => {
+        console.log(err)
+        res.status(401).send(err)
+    })
+});
+
+function getZonas(URL) {
+    return new Promise((resolve, reject) => {
+        let todosSetores = [];
+        let stepPromises = [];
+
+        KMZ.toGeoJSON(URL, function (eror, response) {
+            if (eror) throw 'Erro Conectando ao Servidor da AMC';
+            Object.keys(response.features).forEach(setor => {
+                stepPromises.push(
+                    GEODECODER.reverse({ lat: (response.features[setor].geometry.coordinates[0][1]).toFixed(6), lon: (response.features[setor].geometry.coordinates[0][0]).toFixed(6) }) //mesmo erro....
+                )
+            })
+            Promise.all(stepPromises)
+                .then((result) => {
+                    response.features.forEach((zona, index) => {
+                        let bairro = result[index][0].extra.neighborhood.toUpperCase();
+                        bairro = bairro.normalize('NFD').replace(/[\u0300-\u036f]/g, "")
+                        todosSetores.push(criarJson(zona, bairro))
+                    })
+                    console.log('out of foreach')
+                    resolve(todosSetores)
+                })
+                .catch((erro) => {
+                    return erro
+                })
+        }), reject
+    })
+
+}
+
+function criarJson(zona, bairro) {
+    var todosDias = null
+    var diasUteis = null
+    var diasUteisESabado = null
+    var hora_inicio = null
+    var hora_fim = null
+    var horaInicioSabado = null
+    var horaFimSabado = null
+    var diasUteisSabadoDomingo = null
+
+    var dados = {};
+
+    var nomeRua = zona.properties.name.toUpperCase();
+    nomeRua = nomeRua.normalize('NFD').replace(/[\u0300-\u036f]/g, "").toUpperCase()
+    var latInicio = zona.geometry.coordinates[0][1];
+    var latFim = zona.geometry.coordinates[zona.geometry.coordinates.length - 1][1];
+    var lngInicio = zona.geometry.coordinates[0][0];
+    var lngFim = zona.geometry.coordinates[zona.geometry.coordinates.length - 1][0];
+
+    var vagasConvencionais = zona.properties.description.substr((zona.properties.description.indexOf("Vagas convecionais: ") + "Vagas convecionais: ".length), 3);
+    var vagasCargasDescarga = zona.properties.description.substr((zona.properties.description.indexOf("Vagas Carga e descarga: ") + "Vagas Carga e descarga: ".length), 3);
+    var vagasIdosos = zona.properties.description.substr((zona.properties.description.indexOf("Vagas Idoso: ") + "Vagas Idoso: ".length), 3);
+    var vagasDeficiente = zona.properties.description.substr((zona.properties.description.indexOf("Vagas Def. Físico:") + "Vagas Def. Físico:".length), 3);
+
+    var cadVeiculo = zona.properties.description.substr((zona.properties.description.indexOf("Permanência: ") + "Permanência: ".length), 1) * 60;
+    isNaN(cadVeiculo) ? cadVeiculo = 5 * 60 : ''
+
+    var horario = zona.properties.description.substring(zona.properties.description.indexOf('Horário: ')).split(/\r?\n/);
+    horario = horario[0];
+
+    if (horario.length === 14) {
+        todosDias = horario.substring(horario.indexOf(':') + 2)
+        todosDias = todosDias.split('-')
+        hora_inicio = parseInt(todosDias[0], 10) < 10 ? '0' + parseInt(todosDias[0], 10) + ':00' : parseInt(todosDias[0], 10) + ':00'
+        hora_fim = parseInt(todosDias[1], 10) + ':00'
+
+    } else if (horario.length === 25) {
+        horario = horario.toLowerCase()
+        diasUteis = horario.substring(horario.indexOf('úteis') + 'úteis'.length)
+        diasUteis = diasUteis.split('-')
+        hora_inicio = parseInt(diasUteis[0], 10) < 10 ? '0' + parseInt(diasUteis[0], 10) + ':00' : parseInt(diasUteis[0], 10) + ':00'
+        hora_fim = parseInt(diasUteis[1], 10) + ':00'
+    } else if ((horario.length === 41 || horario.length === 36 || horario.length === 40 || horario.length === 39 || horario.length === 34 || horario.length === 35) && !(horario.indexOf('domingo') != -1)) {
+
+        horario = horario.toLowerCase()
+        horario = horario.substring('horários: dias úteis'.length)
+        horario = horario.split(',')
+        if (horario.length > 1) {
+            var todosHorarios = horario
+            diasUteisESabado = todosHorarios[0].split('-')
+            hora_inicio = diasUteisESabado[0] < 10 ? '0' + diasUteisESabado[0] : diasUteisESabado[0]
+            hora_inicio = hora_inicio + ':00'
+
+            hora_fim = parseInt(diasUteisESabado[1], 10)
+            hora_fim = hora_fim + ':00'
+
+            var sabados = todosHorarios[1]
+            sabados = sabados.substring(' sabados '.length)
+            sabados = sabados.split('-')
+            horaInicioSabado = parseInt(sabados[0], 10) < 10 ? '0' + parseInt(sabados[0], 10) : String(parseInt(sabados[0], 10))
+            horaInicioSabado = horaInicioSabado + ':00'
+            horaFimSabado = String(parseInt(sabados[1], 10))
+            horaFimSabado = horaFimSabado + ':00'
+
+        } else {
+            horario = String(horario[0]).toLowerCase()
+            diasUteisESabado = horario
+            var todashoras = horario.match(/^\d+|\d+\b|\d+(?=\w)/g);
+            if (todashoras.length === 2) {
+                hora_inicio = parseInt(todashoras[0], 10) < 10 ? '0' + parseInt(todashoras[0], 10) + ':00' : parseInt(todashoras[0], 10) + ':00'
+                horaInicioSabado = hora_inicio
+                hora_fim = parseInt(todashoras[1], 10) + ':00'
+                horaFimSabado = hora_fim
+
+            } else {
+                hora_inicio = parseInt(todashoras[0], 10) < 10 ? '0' + parseInt(todashoras[0], 10) + ':00' : parseInt(todashoras[0], 10) + ':00'
+                hora_fim = parseInt(todashoras[1]) + ':00'
+                horaInicioSabado = parseInt(todashoras[2], 10) < 10 ? '0' + parseInt(todashoras[2], 10) + ':00' : parseInt(todashoras[2]) + ':00'
+                horaFimSabado = parseInt(todashoras[3]) + ':00'
+
+            }
+        }
+    } else {
+        horario = horario.toLowerCase()
+        if ((horario.indexOf('dias úteis') !== -1) && (horario.indexOf('domingos') !== -1) && (horario.indexOf('sábados') !== -1)) {
+            diasUteisSabadoDomingo = horario.match(/^\d+|\d+\b|\d+(?=\w)/g);
+            hora_inicio = parseInt(diasUteisSabadoDomingo[0], 10) < 10 ? '0' + parseInt(diasUteisSabadoDomingo[0], 10) + ':00' : parseInt(diasUteisSabadoDomingo[0], 10) + ':00'
+            hora_fim = parseInt(diasUteisSabadoDomingo[1], 10) + ':00'
+
+            horaInicioSabado = parseInt(diasUteisSabadoDomingo[2], 10) < 10 ? '0' + parseInt(diasUteisSabadoDomingo[2], 10) + ':00' : parseInt(diasUteisSabadoDomingo[2], 10) + ':00'
+            horaFimSabado = parseInt(diasUteisSabadoDomingo[3], 10) + ':00'
+
+            var horaInicioDomingo = parseInt(diasUteisSabadoDomingo[4], 10) < 10 ? '0' + parseInt(diasUteisSabadoDomingo[4], 10) + ':00' : parseInt(diasUteisSabadoDomingo[4], 10) + ':00'
+            var horaFimDomingo = parseInt(diasUteisSabadoDomingo[5], 10) + ':00'
+
+        } else {
+            diasUteisSabadoDomingo = null
+        }
+    }
+    if (todosDias) {
+        dados = {
+            "bairro": bairro,
+            "cad_caminhao": 30,
+            "cad_veiculo": cadVeiculo,
+            "codigo": "",
+            "isNew": false,
+            "faces": {
+                "01": {
+                    "codigo": "01"
+                }
+            },
+            "horario": {
+                "domingo": {
+                    "dia": "Domingo",
+                    "hora_fim": hora_fim,
+                    "hora_inicio": hora_inicio,
+                    "isDisponivel": true,
+                    "sequencial": 0
+                },
+                "quarta": {
+                    "dia": "Quarta",
+                    "hora_fim": hora_fim,
+                    "hora_inicio": hora_inicio,
+                    "isDisponivel": true,
+                    "sequencial": 3
+                },
+                "quinta": {
+                    "dia": "Quinta",
+                    "hora_fim": hora_fim,
+                    "hora_inicio": hora_inicio,
+                    "isDisponivel": true,
+                    "sequencial": 4
+                },
+                "sabado": {
+                    "dia": "Sábado",
+                    "hora_fim": hora_fim,
+                    "hora_inicio": hora_inicio,
+                    "isDisponivel": true,
+                    "sequencial": 6
+                },
+                "segunda": {
+                    "dia": "Segunda",
+                    "hora_fim": hora_fim,
+                    "hora_inicio": hora_inicio,
+                    "isDisponivel": true,
+                    "sequencial": 1
+                },
+                "sexta": {
+                    "dia": "Sexta",
+                    "hora_fim": hora_fim,
+                    "hora_inicio": hora_inicio,
+                    "isDisponivel": true,
+                    "sequencial": 5
+                },
+                "terca": {
+                    "dia": "Terça",
+                    "hora_fim": hora_fim,
+                    "hora_inicio": hora_inicio,
+                    "isDisponivel": true,
+                    "sequencial": 2
+                },
+            },
+            "latFim": latFim,
+            "latInicio": latInicio,
+            "lngFim": lngFim,
+            "lngInicio": lngInicio,
+            "nome": nomeRua,
+            "qtd_carga_descarga_estacionados": 0,
+            "qtd_deficiente_estacionados": 0,
+            "qtd_idoso_estacionados": 0,
+            "qtd_normal_estacionados": 0,
+            "total_vagas": parseInt(vagasConvencionais, 10),
+            "vagas_carga_descarga": parseInt(vagasCargasDescarga, 10),
+            "vagas_deficiente": parseInt(vagasDeficiente, 10),
+            "vagas_idoso": parseInt(vagasIdosos, 10)
+        }
+    } else if (diasUteis) {
+        dados = {
+            "bairro": bairro,
+            "cad_caminhao": 30,
+            "cad_veiculo": cadVeiculo,
+            "codigo": "",
+            "isNew": false,
+            "faces": {
+                "01": {
+                    "codigo": "01"
+                }
+            },
+            "horario": {
+                "domingo": {
+                    "dia": "Domingo",
+                    "hora_fim": "00:00",
+                    "hora_inicio": "00:00",
+                    "isDisponivel": false,
+                    "sequencial": 0
+                },
+                "quarta": {
+                    "dia": "Quarta",
+                    "hora_fim": hora_fim,
+                    "hora_inicio": hora_inicio,
+                    "isDisponivel": true,
+                    "sequencial": 3
+                },
+                "quinta": {
+                    "dia": "Quinta",
+                    "hora_fim": hora_fim,
+                    "hora_inicio": hora_inicio,
+                    "isDisponivel": true,
+                    "sequencial": 4
+                },
+                "sabado": {
+                    "dia": "Sábado",
+                    "hora_fim": "00:00",
+                    "hora_inicio": "00:00",
+                    "isDisponivel": false,
+                    "sequencial": 6
+                },
+                "segunda": {
+                    "dia": "Segunda",
+                    "hora_fim": hora_fim,
+                    "hora_inicio": hora_inicio,
+                    "isDisponivel": true,
+                    "sequencial": 1
+                },
+                "sexta": {
+                    "dia": "Sexta",
+                    "hora_fim": hora_fim,
+                    "hora_inicio": hora_inicio,
+                    "isDisponivel": true,
+                    "sequencial": 5
+                },
+                "terca": {
+                    "dia": "Terça",
+                    "hora_fim": hora_fim,
+                    "hora_inicio": hora_inicio,
+                    "isDisponivel": true,
+                    "sequencial": 2
+                },
+            },
+            "latFim": latFim,
+            "latInicio": latInicio,
+            "lngFim": lngFim,
+            "lngInicio": lngInicio,
+            "nome": nomeRua,
+            "qtd_carga_descarga_estacionados": 0,
+            "qtd_deficiente_estacionados": 0,
+            "qtd_idoso_estacionados": 0,
+            "qtd_normal_estacionados": 0,
+            "total_vagas": parseInt(vagasConvencionais, 10),
+            "vagas_carga_descarga": parseInt(vagasCargasDescarga, 10),
+            "vagas_deficiente": parseInt(vagasDeficiente, 10),
+            "vagas_idoso": parseInt(vagasIdosos, 10)
+
+        }
+    } else if (diasUteisESabado) {
+        dados = {
+            "bairro": bairro,
+            "cad_caminhao": 30,
+            "cad_veiculo": cadVeiculo,
+            "codigo": "",
+            "isNew": false,
+            "faces": {
+                "01": {
+                    "codigo": "01"
+                }
+            },
+            "horario": {
+                "domingo": {
+                    "dia": "Domingo",
+                    "hora_fim": "00:00",
+                    "hora_inicio": "00:00",
+                    "isDisponivel": false,
+                    "sequencial": 0
+                },
+                "quarta": {
+                    "dia": "Quarta",
+                    "hora_fim": hora_fim,
+                    "hora_inicio": hora_inicio,
+                    "isDisponivel": true,
+                    "sequencial": 3
+                },
+                "quinta": {
+                    "dia": "Quinta",
+                    "hora_fim": hora_fim,
+                    "hora_inicio": hora_inicio,
+                    "isDisponivel": true,
+                    "sequencial": 4
+                },
+                "sabado": {
+                    "dia": "Sábado",
+                    "hora_fim": hora_fim,
+                    "hora_inicio": hora_inicio,
+                    "isDisponivel": true,
+                    "sequencial": 6
+                },
+                "segunda": {
+                    "dia": "Segunda",
+                    "hora_fim": hora_fim,
+                    "hora_inicio": hora_inicio,
+                    "isDisponivel": true,
+                    "sequencial": 1
+                },
+                "sexta": {
+                    "dia": "Sexta",
+                    "hora_fim": hora_fim,
+                    "hora_inicio": hora_inicio,
+                    "isDisponivel": true,
+                    "sequencial": 5
+                },
+                "terca": {
+                    "dia": "Terça",
+                    "hora_fim": hora_fim,
+                    "hora_inicio": hora_inicio,
+                    "isDisponivel": true,
+                    "sequencial": 2
+                },
+            },
+            "latFim": latFim,
+            "lngInicio": lngInicio,
+            "lngFim": lngFim,
+            "latInicio": latInicio,
+            "nome": nomeRua,
+            "qtd_carga_descarga_estacionados": 0,
+            "qtd_deficiente_estacionados": 0,
+            "qtd_idoso_estacionados": 0,
+            "qtd_normal_estacionados": 0,
+            "total_vagas": parseInt(vagasConvencionais, 10),
+            "vagas_carga_descarga": parseInt(vagasCargasDescarga, 10),
+            "vagas_deficiente": parseInt(vagasDeficiente, 10),
+            "vagas_idoso": parseInt(vagasIdosos, 10)
+
+        }
+    } else if (diasUteisSabadoDomingo) {
+        dados = {
+            "bairro": bairro,
+            "cad_caminhao": 30,
+            "cad_veiculo": cadVeiculo,
+            "codigo": "",
+            "isNew": false,
+            "faces": {
+                "01": {
+                    "codigo": "01"
+                }
+            },
+            "horario": {
+                "domingo": {
+                    "dia": "Domingo",
+                    "hora_fim": horaFimDomingo,
+                    "hora_inicio": horaInicioDomingo,
+                    "isDisponivel": true,
+                    "sequencial": 0
+                },
+                "quarta": {
+                    "dia": "Quarta",
+                    "hora_fim": hora_fim,
+                    "hora_inicio": hora_inicio,
+                    "isDisponivel": true,
+                    "sequencial": 3
+                },
+                "quinta": {
+                    "dia": "Quinta",
+                    "hora_fim": hora_fim,
+                    "hora_inicio": hora_inicio,
+                    "isDisponivel": true,
+                    "sequencial": 4
+                },
+                "sabado": {
+                    "dia": "Sábado",
+                    "hora_fim": horaFimSabado,
+                    "hora_inicio": horaInicioSabado,
+                    "isDisponivel": true,
+                    "sequencial": 6
+                },
+                "segunda": {
+                    "dia": "Segunda",
+                    "hora_fim": hora_fim,
+                    "hora_inicio": hora_inicio,
+                    "isDisponivel": true,
+                    "sequencial": 1
+                },
+                "sexta": {
+                    "dia": "Sexta",
+                    "hora_fim": hora_fim,
+                    "hora_inicio": hora_inicio,
+                    "isDisponivel": true,
+                    "sequencial": 5
+                },
+                "terca": {
+                    "dia": "Terça",
+                    "hora_fim": hora_fim,
+                    "hora_inicio": hora_inicio,
+                    "isDisponivel": true,
+                    "sequencial": 2
+                },
+            },
+            "latFim": latFim,
+            "latInicio": latInicio,
+            "lngFim": lngFim,
+            "lngInicio": lngInicio,
+            "nome": nomeRua,
+            "qtd_carga_descarga_estacionados": 0,
+            "qtd_deficiente_estacionados": 0,
+            "qtd_idoso_estacionados": 0,
+            "qtd_normal_estacionados": 0,
+            "total_vagas": parseInt(vagasConvencionais, 10),
+            "vagas_carga_descarga": parseInt(vagasCargasDescarga, 10),
+            "vagas_deficiente": parseInt(vagasDeficiente, 10),
+            "vagas_idoso": parseInt(vagasIdosos, 10)
+
+        }
+    } else {
+        dados = {
+            "bairro": bairro,
+            "cad_caminhao": 30,
+            "cad_veiculo": cadVeiculo,
+            "codigo": "",
+            "isNew": false,
+            "faces": {
+                "01": {
+                    "codigo": "01"
+                }
+            },
+            "horario": {
+                "domingo": {
+                    "dia": "Domingo",
+                    "hora_fim": "00:00",
+                    "hora_inicio": "00:00",
+                    "isDisponivel": true,
+                    "sequencial": 0
+                },
+                "quarta": {
+                    "dia": "Quarta",
+                    "hora_fim": "00:00",
+                    "hora_inicio": "00:00",
+                    "isDisponivel": false,
+                    "sequencial": 3
+                },
+                "quinta": {
+                    "dia": "Quinta",
+                    "hora_fim": "22:00",
+                    "hora_inicio": "18:00",
+                    "isDisponivel": true,
+                    "sequencial": 4
+                },
+                "sabado": {
+                    "dia": "Sábado",
+                    "hora_fim": "22:00",
+                    "hora_inicio": "18:00",
+                    "isDisponivel": true,
+                    "sequencial": 6
+                },
+                "segunda": {
+                    "dia": "Segunda",
+                    "hora_fim": "00:00",
+                    "hora_inicio": "00:00",
+                    "isDisponivel": false,
+                    "sequencial": 1
+                },
+                "sexta": {
+                    "dia": "Sexta",
+                    "hora_fim": "22:00",
+                    "hora_inicio": "18:00",
+                    "isDisponivel": true,
+                    "sequencial": 5
+                },
+                "terca": {
+                    "dia": "Terça",
+                    "hora_fim": "00:00",
+                    "hora_inicio": "00:00",
+                    "isDisponivel": false,
+                    "sequencial": 2
+                },
+            },
+            "latFim": latFim,
+            "latInicio": latInicio,
+            "lngFim": lngFim,
+            "lngInicio": lngInicio,
+            "nome": nomeRua,
+            "qtd_carga_descarga_estacionados": 0,
+            "qtd_deficiente_estacionados": 0,
+            "qtd_idoso_estacionados": 0,
+            "qtd_normal_estacionados": 0,
+            "total_vagas": parseInt(vagasConvencionais, 10),
+            "vagas_carga_descarga": parseInt(vagasCargasDescarga, 10),
+            "vagas_deficiente": parseInt(vagasDeficiente, 10),
+            "vagas_idoso": parseInt(vagasIdosos, 10)
+
+        }
+    }
+
+    todosDias = null
+    diasUteis = null
+    hora_fim = null
+    hora_inicio = null
+    horaInicioSabado = null
+    horaFimSabado = null
+    diasUteisESabado = null
+    diasUteisSabadoDomingo = null
+    console.log(dados)
+    return dados
+}
+
+
+
 function request(url) {
     return new Promise(function (fulfill, reject) {
         client.get(url, function (data, response) {
@@ -441,8 +1094,9 @@ exports.sendEmail = functions.https.onRequest((req, res) => {
     const userEmail = comprovante.email;
     const assunto = comprovante.from == 'estacionar' ? "Comprovante de Estacionamento - " : "Comprovante de Pagamento -"
 
-    let emailContent = Utils.makeComprovanteEmail(comprovante)
+    const emailContent = Utils.makeComprovanteEmail(comprovante)
 
+    console.log('conteudo do email', JSON.stringify(emailContent))
 
     const emailOptions = {
         from: 'Zona Fácil <contatozonafacil@gmail.com>',

@@ -1,9 +1,7 @@
 <ion-header no-border>
 
   <ion-navbar color="header">
-    <ion-title>
-      <ion-label>Comprovante</ion-label>
-    </ion-title>
+    <ion-title class="header-title">Comprovante</ion-title>
     <ion-buttons end>
       <button ion-button icon-only (click)="compartilhar()">
         <ion-icon name="share" class="header-icon"></ion-icon>
@@ -17,12 +15,13 @@
 <ion-content class="content">
 
   <div class="logo">
-    <ion-grid class="img img-centralize">
-      <img src="assets/imgs/logo-bg.png" />
+    <ion-grid class="img img-centralize img-logo">
+      <img src="assets/imgs/logo.png" />
     </ion-grid>
   </div>
 
   <ion-grid>
+    <loading-spinner *ngIf="showSpinner1"></loading-spinner>
     <ion-row class="informacoes-body">
       <ion-item class="informacoes-body-header">
         <ion-label class="title-header-body">COMPROVANTE DE ESTACIONAMENTO</ion-label>
@@ -57,11 +56,11 @@
           <h2>{{estacionar?.cidade}}</h2>
         </ion-item>
 
-        <ion-item>
+        <ion-item class="btn-control">
           <button ion-button block class="btn" (click)="baixarPDF()">Baixar PDF</button>
         </ion-item>
 
-        <ion-item *ngIf="showCloseButton">
+        <ion-item *ngIf="showCloseButton" class="btn-control">
           <button ion-button block class="btn" (click)="closePageComprovante()">Fechar</button>
         </ion-item>
       </ion-list>

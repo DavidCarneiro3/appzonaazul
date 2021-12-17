@@ -31,8 +31,18 @@ export class VeiculosModalPage {
 
     getVeiculos() {
         return new Promise(resolve => {
-            const veiculos = this.navParams.get('veiculos');
-
+            let fromPage = this.navParams.get('fromPage')
+            let veicTmp = this.navParams.get('veiculos');
+            console.log(fromPage)
+            let veiculos: any;
+            if(fromPage == "tempo_restante"){
+                veiculos = veicTmp[0].estacionar;
+                console.log(veiculos)
+            }else{
+                veiculos = veicTmp;
+            }
+            
+            console.log(veiculos)
             this.copiaVeiculos = veiculos ? veiculos : [];
             this.veiculos = veiculos ? veiculos : [];
             resolve(true)

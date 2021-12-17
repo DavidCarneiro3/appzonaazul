@@ -1,18 +1,17 @@
 import { Injectable } from "@angular/core";
 import { ActionSheetController } from "ionic-angular";
 import { Camera } from "@ionic-native/camera";
-
 import { LoggerProvider } from "../logger/logger";
 
 @Injectable()
 export class CameraProvider {
 
-  constructor(public camera: Camera, private logger: LoggerProvider) { }
+  constructor(public camera: Camera, private logger: LoggerProvider) {}
 
-  openMedia(title: string, actionSheetCtrl: ActionSheetController, sucessCallback, showCamera: boolean = true, cameraOptions: any = undefined) {
+  openMedia(title: string, actionSheetCtrl: ActionSheetController, sucessCallback, showCamera:boolean=true, cameraOptions:any=undefined){
     let buttonsArr = [];
 
-    if (!cameraOptions) {
+    if(!cameraOptions){
       cameraOptions = {
         quality: 50,
         allowEdit: true,
@@ -21,7 +20,7 @@ export class CameraProvider {
       };
     }
 
-    if (showCamera) {
+    if(showCamera){
       buttonsArr.push({ text: 'Da Câmera', handler: () => this.getMediaBase64('camera', sucessCallback, cameraOptions) });
     }
 
@@ -98,18 +97,18 @@ export class CameraProvider {
     let reader = new FileReader();
 
     reader.onload = (readerEvent) => {
-      console.log('me ...' + readerEvent);
+      console.log('me ...' + readerEvent);      
       let imageData = (readerEvent.target as any).result;
       let image = new Image();
       image.src = imageData;
-      console.log('image.data..' + imageData[0]);
+      console.log('image.data..' +imageData[0]);
       image.onload = (data) => {
-        console.log('me data ...' + JSON.stringify(data));
-        // const w = data['path'].naturalWidth;
-        // const h = data['path'].naturalHeight;
-        const w = 200;
-        const h = 200;
-        sucessCallback(imageData, w, h);
+          console.log('me data ...' + JSON.stringify(data));          
+          // const w = data['path'].naturalWidth;
+          // const h = data['path'].naturalHeight;
+          const w = 200;
+          const h = 200;
+          sucessCallback(imageData, w, h);
       }
     };
     // this.showAlert('Camera', 'No success calback...', '', {});

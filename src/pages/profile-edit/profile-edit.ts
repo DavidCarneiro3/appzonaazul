@@ -7,7 +7,8 @@ import {
     NavParams,
     ViewController,
     ActionSheetController,
-    ModalController
+    ModalController,
+    MenuController
 } from 'ionic-angular';
 import { AndroidPermissions } from "@ionic-native/android-permissions";
 import { Camera } from "@ionic-native/camera";
@@ -22,6 +23,7 @@ import { Constants } from "../../environments/constants";
 import { MyApp } from "../../app/app.component";
 import { MapUtil } from "../../util/map.util";
 import { FunctionsUtil } from "../../util/functions.util";
+import { AuthProvider } from '../../providers/auth/auth';
 
 @IonicPage()
 @Component({
@@ -33,7 +35,8 @@ export class ProfileEditPage {
     @ViewChild('fileUserPhoto') fileUserPhoto;
 
     user: User = new User();
-
+    blue: string = "icon-blue";
+    grey: string = "icon-grey";
     constructor(
         public navCtrl: NavController,
         public navParams: NavParams,
@@ -45,7 +48,10 @@ export class ProfileEditPage {
         public actionSheetCtrl: ActionSheetController,
         private userProvider: UserProvider,
         public modalCtrl: ModalController,
-        private cameraProvider: CameraProvider) {
+        private cameraProvider: CameraProvider,
+        private authProvider: AuthProvider,
+        public menu: MenuController,
+        private nav: NavController) {
 
         // this.checkPermission();
         MyApp.MAP_LOAD = false;
@@ -54,6 +60,15 @@ export class ProfileEditPage {
 
     ionViewCanEnter() {
         this.userProvider.getUserLocal().then(userID => {
+            const _userTmp = this.navParams.get('user');
+            if(_userTmp) {
+                this.user = new User(_userTmp);
+            } else {
+                this.userProvider.byId(userID).take(1).subscribe(user => {
+                    this.user = new User(user);
+                });
+            }
+
             if (userID) {
                 return true;
             }
@@ -61,7 +76,7 @@ export class ProfileEditPage {
     }
 
     ionViewDidLoad() {
-        this.user = new User(this.navParams.get('user'));
+        
     }
 
     ionViewWillLeave() {
@@ -101,14 +116,14 @@ export class ProfileEditPage {
                         .then(data => {
                             this.showAlert('Sucesso!', 'Seus Dados foram atualizados!', '', () => {
                                 loader.dismiss();
-                                this.closeProfileEdit();
+                                // this.closeProfileEdit();
                             });
                         }).catch(error => {
                             const message = error
                             console.log(message);
                             this.showAlert('Erro!', error, 'error', () => {
                                 loader.dismiss();
-                                this.closeProfileEdit();
+                                // this.closeProfileEdit();
                             });
                         })
                 })
@@ -165,6 +180,68 @@ export class ProfileEditPage {
                     callback();
                 }
             }]
+        }).present();
+    }
+
+    showConfirm() {
+        this.alertCtrl.create({
+            title: 'Confirmação',
+            message: 'Tem certeza que deseja redefinir a sua senha?',
+            cssClass: 'alert',
+            buttons: [
+                {
+                    text: 'Não', cssClass: 'btn btn-cancel',
+                },
+                {
+                    text: 'Sim',
+                    cssClass: 'btn btn-ok',
+                    handler: data => {
+                        this.changePassword();
+                        return true;
+                    }
+                }
+            ]
+        }).present();
+    }
+    changePassword() {
+
+        let loading = this.loadingCtrl.create({ content: 'Aguarde...' });
+        loading.present();
+
+        this.authProvider.sendPasswordResetEmail(this.user.email)
+            .then(data => {
+                console.log(data);
+                loading.dismiss();
+                this.showAlert('Sucesso!', 'Foi enviado um link para o seu email onde você pode alterar a sua senha.', '', {});
+
+            }).catch(err => {
+
+                console.log(err);
+                loading.dismiss();
+                this.showAlert('Ops!', 'Algo deu errado. Tente novamente mais tarde.', 'error', {});
+            })
+    }
+
+    goLogout() {
+        this.alertCtrl.create({
+            title: 'Sair',
+            message: 'Tem certeza que deseja sair do aplicativo?',
+            cssClass: 'alert',
+            buttons: [
+                {
+                    text: 'Sim', cssClass: 'btn btn-ok',
+                    handler: () => {
+                        this.menu.close();
+                        this.authProvider.logout().then(() => {
+                            this.userProvider.removeUserLocal();
+                            this.nav.setRoot(Constants.LOGIN_PAGE.name);
+                        });
+                    }
+                },
+                {
+                    text: 'Não', cssClass: 'btn btn-cancel',
+                }
+            ]
         }).present();
     }
 }

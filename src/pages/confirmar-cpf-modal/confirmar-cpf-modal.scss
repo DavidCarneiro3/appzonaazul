@@ -2,13 +2,15 @@ page-confirmar-cpf-modal {
   .header-icon {
     color: #fff;
   }
+  
 
   .grid-historico-estacionamento {
     .row {
       background-color: #fff;
       border-bottom: 1px solid #f4f4f4;
       margin-bottom: 20px;
-
+      height: auto;
+      overflow: block;
       ion-col {
         padding: 0;
       }
@@ -134,5 +136,11 @@ page-confirmar-cpf-modal {
     padding-right: 105px;
     border: 1px solid red;
     color: #333;
+  }
+  .rodape {
+    ion-row {
+      margin-left: 0;
+      margin-right: 0;
+    }
   }
 }

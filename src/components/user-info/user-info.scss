@@ -1,32 +1,35 @@
 user-info {
   .user-menu-item {
     top: 0;
-    background-color: #2b2a32;
+    background-color: #243060;
     color: #fff;
     font-family: "Roboto";
     margin: 0 0 10px 0;
-    height: 250px;
-
+    height: 180px;
+    border-radius: 0 0 2pc 2pc;
+    .button{
+      top: 20px;
+    }
     .img {
       @include respond-to(xs) {
-        width: 80px;
-        height: 80px;
+        width: 60px;
+        height: 60px;
       }
       @include respond-to(sm) {
-        width: 80px;
-        height: 80px;
+        width: 60px;
+        height: 60px;
       }
       @include respond-to(md) {
-        width: 80px;
-        height: 80px;
+        width: 60px;
+        height: 60px;
       }
       @include respond-to(lg) {
-        width: 80px;
-        height: 80px;
+        width: 60px;
+        height: 60px;
       }
       @include respond-to(xl) {
-        width: 80px;
-        height: 80px;
+        width: 60px;
+        height: 60px;
       }
 
       border-radius: 100%;
@@ -39,26 +42,26 @@ user-info {
     }
 
     .name {
-      font-size: 20px;
+      font-size: 16px;
       text-transform: capitalize;
       white-space: pre-wrap;
       margin-top: 15px;
     }
 
     .profile {
-      font-size: 10pt;
+      font-size: 8pt;
       text-transform: capitalize;
     }
 
     .city {
-      font-size: 10pt;
+      font-size: 8pt;
       text-transform: capitalize;
     }
 
     .cads-credits {
-      font-size: 10pt;
+      font-size: 8pt;
       text-transform: capitalize;
-      margin-top: 20px;
+      margin-top: 10px;
     }
   }
 }

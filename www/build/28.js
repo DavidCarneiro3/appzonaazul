@@ -1,14 +1,14 @@
 webpackJsonp([28],{
 
-/***/ 819:
+/***/ 758:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PermissionsModalPageModule", function() { return PermissionsModalPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RecoveryPasswordPageModule", function() { return RecoveryPasswordPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(36);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__permissions_screen__ = __webpack_require__(872);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__recovery_password__ = __webpack_require__(817);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,35 +18,37 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var PermissionsModalPageModule = /** @class */ (function () {
-    function PermissionsModalPageModule() {
+var RecoveryPasswordPageModule = /** @class */ (function () {
+    function RecoveryPasswordPageModule() {
     }
-    PermissionsModalPageModule = __decorate([
+    RecoveryPasswordPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__permissions_screen__["a" /* PermissionsModalPage */],
+                __WEBPACK_IMPORTED_MODULE_2__recovery_password__["a" /* RecoveryPasswordPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__permissions_screen__["a" /* PermissionsModalPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__recovery_password__["a" /* RecoveryPasswordPage */]),
             ],
         })
-    ], PermissionsModalPageModule);
-    return PermissionsModalPageModule;
+    ], RecoveryPasswordPageModule);
+    return RecoveryPasswordPageModule;
 }());
 
-//# sourceMappingURL=permissions-screen.module.js.map
+//# sourceMappingURL=recovery-password.module.js.map
 
 /***/ }),
 
-/***/ 872:
+/***/ 817:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PermissionsModalPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RecoveryPasswordPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ionic_native_android_permissions__ = __webpack_require__(219);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(36);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_user_user__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_auth_auth__ = __webpack_require__(199);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_user_user__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__environments_constants__ = __webpack_require__(19);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -60,163 +62,112 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var PermissionsModalPage = /** @class */ (function () {
-    function PermissionsModalPage(navParams, alertCtrl, userProvider, androidPermissions, viewCtrl) {
+
+
+var RecoveryPasswordPage = /** @class */ (function () {
+    function RecoveryPasswordPage(navCtrl, navParams, menu, alertCtrl, loadingCtrl, formBuilder, authProvider, userProvider) {
+        this.navCtrl = navCtrl;
         this.navParams = navParams;
+        this.menu = menu;
         this.alertCtrl = alertCtrl;
+        this.loadingCtrl = loadingCtrl;
+        this.formBuilder = formBuilder;
+        this.authProvider = authProvider;
         this.userProvider = userProvider;
-        this.androidPermissions = androidPermissions;
-        this.viewCtrl = viewCtrl;
-        this.fromPage = '';
-        this.title = '';
-        this.reason = '';
+        this.submitAttempt = false;
+        var emailRegex = /^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/i;
+        this.recoveryForm = formBuilder.group({
+            email: ['', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].compose([__WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].pattern(emailRegex)])]
+        });
     }
-    PermissionsModalPage.prototype.ionViewWillLoad = function () {
-        this.getPage();
-    };
-    PermissionsModalPage.prototype.ionViewCanEnter = function () {
-        var _this = this;
+    RecoveryPasswordPage.prototype.ionViewCanEnter = function () {
+        this.setVisibleMenu(false);
         this.userProvider.getUserLocal().then(function (userID) {
-            if (userID) {
-                _this.user_id = userID;
-                _this.userProvider.byId(userID)
-                    .subscribe(function (user) {
-                    _this.user = user;
-                });
+            if (!userID) {
                 return true;
             }
         });
     };
-    // PROCURAR AQUI PARA DIVIDER CADA PERMISSÃO EM UMA TELA SEPARADA
-    PermissionsModalPage.prototype.getPage = function () {
-        var _this = this;
-        var IMEI = "O Zona F\u00E1cil precisar\u00E1 do seu IMEI para prosseguir. O IMEI \u00E9 o identificador \u00FAnico do seu smartphone e ele garantir\u00E1 a seguran\u00E7a das suas transa\u00E7\u00F5es.";
-        var localização = "O Zona F\u00E1cil est\u00E1 \u00E0 sua disposi\u00E7\u00E3o em muitos bairros, e para melhor atend\u00EA-lo, gostar\u00EDamos da sua permiss\u00E3o para acessar a sua localiza\u00E7\u00E3o para selecionar automaticamente o bairro onde voc\u00EA est\u00E1 localizado e para informar vagas dispon\u00EDveis, nos bairros onde h\u00E1 este servi\u00E7o.";
-        return new Promise(function (resolve) {
-            _this.fromPage = _this.navParams.get('fromPage');
-            if (_this.fromPage == 'profile-edit') {
-                _this.title = 'Acesso a Camera e galeria!';
-                _this.reason = 'O Zona Fácil precisa de acesso a camera  e a galeria para alterar a foto de perfil!';
-            }
-            else if (_this.fromPage === 'phone') {
-                _this.title = 'Acesso ao Telefone';
-                _this.reason = IMEI;
-            }
-            else {
-                _this.title = 'Acesso a Localização!';
-                _this.reason = localização;
-            }
-            resolve(true);
-        });
+    RecoveryPasswordPage.prototype.ionViewDidLoad = function () {
     };
-    PermissionsModalPage.prototype.askPermissions = function () {
-        if (this.fromPage == 'profile-edit') {
-            this.askCameraPermission();
-        }
-        else if (this.fromPage == 'phone') {
-            this.askPhonePermision();
+    RecoveryPasswordPage.prototype.ionViewWillLeave = function () {
+    };
+    RecoveryPasswordPage.prototype.recovery = function () {
+        var _this = this;
+        this.submitAttempt = true;
+        if (this.isValidAttributes()) {
+            var loading_1 = this.showLoading();
+            loading_1.present();
+            this.authProvider.sendPasswordResetEmail(this.recoveryForm.value.email)
+                .then(function () {
+                loading_1.dismiss();
+                _this.showAlert('Sucesso!', 'Você receberá um email com instruções para recuperar sua senha.', '', function () {
+                    _this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_5__environments_constants__["a" /* Constants */].LOGIN_PAGE.name);
+                });
+            }).catch(function (error) {
+                loading_1.dismiss();
+                var errorMessage = 'Não foi possível restaurar sua senha!';
+                if (error['code'] && error['code'] == 'auth/user-not-found') {
+                    errorMessage = 'O usuário não está cadastrado!';
+                }
+                _this.showAlert("Erro!", errorMessage, "error", function () {
+                });
+            });
         }
         else {
-            this.askLocationPermission();
+            var warn = 'Insira um email válido para recuperar sua senha!';
+            this.showAlert("Aviso", warn, "info", function () {
+            });
         }
     };
-    PermissionsModalPage.prototype.askCameraPermission = function () {
-        var _this = this;
-        this.androidPermissions.requestPermissions([
-            this.androidPermissions.PERMISSION.CAMERA,
-            this.androidPermissions.PERMISSION.WRITE_EXTERNAL_STORAGE
-        ])
-            .then(function () {
-            _this.closePage();
-        })
-            .catch(function (error) {
-        });
+    RecoveryPasswordPage.prototype.isValidAttributes = function () {
+        return this.recoveryForm.valid;
     };
-    PermissionsModalPage.prototype.askPhonePermision = function () {
-        var _this = this;
-        this.androidPermissions.requestPermission(this.androidPermissions.PERMISSION.READ_PHONE_STATE)
-            .then(function (result) {
-            if (result.hasPermission) {
-                _this.userProvider.updateUuidOrImei(_this.user_id, function (uuid) {
-                    _this.user.uidAparelho = uuid;
-                });
-                _this.closePage();
-            }
-            else {
-                _this.androidPermissions.checkPermission(_this.androidPermissions.PERMISSION.READ_PHONE_STATE)
-                    .then(function (result) {
-                    if (result.hasPermission) {
-                        _this.closePage();
-                    }
-                    else {
-                        _this.showAlert('Permissão Importante!', 'O Zona Fácil precisa de acesso ao Telefone, para obter o IMEI do dispositivo para o funcionamento do sistema.', 'alert-button-group');
-                    }
-                })
-                    .catch(function (error) {
-                });
-            }
-        });
-    };
-    PermissionsModalPage.prototype.askLocationPermission = function () {
-        var _this = this;
-        this.androidPermissions.requestPermission(this.androidPermissions.PERMISSION.ACCESS_FINE_LOCATION)
-            .then(function (result) {
-            _this.closePage();
-        })
-            .catch(function (err) { return console.log(err); });
-    };
-    PermissionsModalPage.prototype.askPhonePermission = function () {
-        var _this = this;
-        this.androidPermissions.requestPermission(this.androidPermissions.PERMISSION.READ_PHONE_STATE)
-            .then(function (result) {
-            if (result.hasPermission) {
-                _this.userProvider.updateUuidOrImei(_this.user_id, function (uuid) {
-                });
-                _this.closePage();
-            }
-        });
-    };
-    PermissionsModalPage.prototype.closePage = function () {
-        this.viewCtrl.dismiss();
-    };
-    PermissionsModalPage.prototype.showAlert = function (title, msg, type) {
-        var _this = this;
-        this.alertCtrl.create({
+    RecoveryPasswordPage.prototype.showAlert = function (title, msg, type, callback) {
+        var alert = this.alertCtrl.create({
             title: title,
             message: msg,
             cssClass: type,
             buttons: [
                 {
-                    text: 'Autorizar',
+                    text: 'OK',
                     cssClass: 'btn-ok',
-                    handler: function () {
-                        _this.askPhonePermission();
-                    }
-                },
-                {
-                    text: 'Cancelar',
-                    cssClass: 'btn-warning',
-                    handler: function () {
-                        _this.closePage();
+                    handler: function (data) {
+                        callback();
                     }
                 }
             ]
-        }).present();
+        });
+        alert.present();
     };
-    PermissionsModalPage = __decorate([
+    RecoveryPasswordPage.prototype.setVisibleMenu = function (status) {
+        if (status === void 0) { status = false; }
+        this.menu.enable(status);
+        this.menu.swipeEnable(status);
+    };
+    RecoveryPasswordPage.prototype.showLogin = function () {
+        this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_5__environments_constants__["a" /* Constants */].LOGIN_PAGE.name);
+    };
+    RecoveryPasswordPage.prototype.showLoading = function () {
+        return this.loadingCtrl.create({ content: 'Aguarde...' });
+    };
+    RecoveryPasswordPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'permissions-screen',template:/*ion-inline-start:"/Users/desenvolvedor/Documents/appzonzazul/src/pages/permissions/permissions-screen.html"*/'<ion-header no-border text-center>\n    <ion-navbar color="header" text-center>\n        <ion-title>\n            <ion-label>\n                Permissão Requerida\n            </ion-label>\n        </ion-title>\n    </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n    <p class="conteudo-titulo">\n        {{title}}\n    </p>\n    <p class="conteudo-texto">\n        {{reason}}\n    </p>\n</ion-content>\n\n<ion-footer class="footer">\n    <ion-toolbar>\n        <button ion-button block (click)="askPermissions()" mode="md">Continuar</button>\n    </ion-toolbar>\n</ion-footer>'/*ion-inline-end:"/Users/desenvolvedor/Documents/appzonzazul/src/pages/permissions/permissions-screen.html"*/
+            selector: 'page-recovery-password',template:/*ion-inline-start:"/Users/desenvolvedor/Documents/zonaazulfortaleza-develop/src/pages/recovery-password/recovery-password.html"*/'<ion-header no-border>\n  <ion-navbar transparent class="navbar only-mobile">\n    <ion-title>\n      <ion-label>Recuperar Senha</ion-label>\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n<ion-content class="recovery-password">\n\n  <div class="logo">\n    <ion-grid class="img img-centralize img-logo">\n      <img src="assets/imgs/logo.png" />\n    </ion-grid>\n  </div>\n\n  <ion-grid class="grid-form">\n\n    <ion-row justify-content-center>\n      <div class="form-margin">\n        <form class="form" [formGroup]="recoveryForm" novalidate>\n          <div text-center>\n            <ion-input type="email" #email formControlName="email" id="email" placeholder="Email"\n              (keyup.enter)="focusInput(password)"></ion-input>\n            <ion-label class="error-message" *ngIf="recoveryForm.controls.email.invalid  && (submitAttempt)">Insira um\n              email válido</ion-label>\n          </div>\n        </form>\n\n        <button ion-button (click)="recovery()" class="btn" block>Recuperar</button>\n\n      </div>\n    </ion-row>\n  </ion-grid>\n\n  <div class="logo">\n    <ion-grid class="img img-centralize img-logo logo-amc">\n      <ion-row align-items-center justify-content-center>\n        <ion-col align-items-center class="img-logo1-menu">\n          <img src="assets/imgs/logo-backwhite-cipetran.png" />\n        </ion-col>\n      </ion-row>\n    </ion-grid>\n  </div>\n\n</ion-content>'/*ion-inline-end:"/Users/desenvolvedor/Documents/zonaazulfortaleza-develop/src/pages/recovery-password/recovery-password.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["n" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* AlertController */],
-            __WEBPACK_IMPORTED_MODULE_3__providers_user_user__["a" /* UserProvider */],
-            __WEBPACK_IMPORTED_MODULE_1__ionic_native_android_permissions__["a" /* AndroidPermissions */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["q" /* ViewController */]])
-    ], PermissionsModalPage);
-    return PermissionsModalPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* MenuController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* LoadingController */],
+            __WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormBuilder"],
+            __WEBPACK_IMPORTED_MODULE_3__providers_auth_auth__["a" /* AuthProvider */],
+            __WEBPACK_IMPORTED_MODULE_4__providers_user_user__["a" /* UserProvider */]])
+    ], RecoveryPasswordPage);
+    return RecoveryPasswordPage;
 }());
 
-//# sourceMappingURL=permissions-screen.js.map
+//# sourceMappingURL=recovery-password.js.map
 
 /***/ })
 

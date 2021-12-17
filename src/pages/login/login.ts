@@ -102,7 +102,7 @@ export class LoginPage {
                     else {
                         this.events.publish('user:load', res.logged.id);
                         this.events.publish('user', res.logged)
-                        this.navCtrl.setRoot(Constants.HOME_PAGE.name);
+                        this.navCtrl.setRoot(Constants.PRINCIPAL_PAGE.name);
                         this.setVisibleMenu(true);
                     }
                     loading.dismiss();

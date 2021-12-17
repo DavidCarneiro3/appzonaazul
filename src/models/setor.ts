@@ -1,8 +1,8 @@
-import { FaceModel } from "./face";
-import { HorarioModel } from "./horario";
+import {FaceModel} from "./face";
+import {HorarioModel} from "./horario";
 
 export class SetorModel {
-
+    
     nome: string;
     codigo: string;
     faces: FaceModel[];
@@ -49,9 +49,9 @@ export class SetorModel {
         this.qtd_idoso_estacionados = obj && obj.qtd_idoso_estacionados || 0;
         this.qtd_carga_descarga_estacionados = obj && obj.qtd_carga_descarga_estacionados || 0;
 
-    }
+        }
 
-    getCoordenada6Digitos(coordenada: number) {
-        return coordenada.toFixed(6);
-    }
+        getCoordenada6Digitos(coordenada: number){
+            return coordenada.toFixed(6);
+        }
 }

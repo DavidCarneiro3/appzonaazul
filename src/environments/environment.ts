@@ -4,7 +4,7 @@ export const environment = {
     production: false,
     simular_l2: false,
     isDebugMode: false,
-    version: "1.3.5",
+    version: "2.0.0",
 
     middleware_cors: 'https://us-central1-zonaazulfortaleza-prod.cloudfunctions.net/requisicao_amc',
 

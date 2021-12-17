@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { ConfiguracoesPage } from './configuracoes';
 import { AccordionModule } from "../../components/accordion/accordion.module";
+import { LoadingSpinnerComponentModule } from '../../components/loading-spinner/loading-spinner.module';
 
 @NgModule({
   declarations: [
@@ -9,7 +10,8 @@ import { AccordionModule } from "../../components/accordion/accordion.module";
   ],
   imports: [
     IonicPageModule.forChild(ConfiguracoesPage),
-    AccordionModule
+    AccordionModule,
+    LoadingSpinnerComponentModule,
   ],
 })
 export class ConfiguracoesPageModule { }

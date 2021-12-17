@@ -1,21 +1,16 @@
+import { environment } from './../../environments/environment';
+import { MD5Util } from './../../util/md5.util';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { HTTP } from '@ionic-native/http';
-import { Platform } from "ionic-angular";
 import { Observable } from 'rxjs/Observable';
+import { XML2JSONUtil } from '../../util/xml2json.util';
 import 'rxjs/add/operator/timeout';
 import 'rxjs/add/operator/timeoutWith';
 import 'rxjs/add/observable/throw';
-import 'rxjs/operators/catchError';
-
 import { TempoEstacionadoProvider } from '../tempo-estacionado/tempo-estacionado';
 import { LoggerProvider } from '../logger/logger';
 import { FirebaseLoggerProvider } from '../firebase-logger/firebase-logger';
-
-import { environment } from './../../environments/environment';
-import { MD5Util } from './../../util/md5.util';
-import { XML2JSONUtil } from '../../util/xml2json.util';
-// import { timeout, } from 'rxjs/operator'
+import { Platform } from "ionic-angular";
 
 @Injectable()
 export class ComunicacaoCentralProvider {
@@ -29,7 +24,6 @@ export class ComunicacaoCentralProvider {
    */
 
   private URL_CENTRAL: string = `https://wszonaazuldsv.centralamc.com.br/transacao`;
-  private URL_CENTRAL2: string;
   private COD_CLIENTE: number = 75;
   private COD_CLIENTE_PDV: number = 76;
 
@@ -41,25 +35,26 @@ export class ComunicacaoCentralProvider {
 
   constructor(public http: HttpClient,
     public platform: Platform,
-    private httpNative: HTTP,
     private logger: LoggerProvider,
     private firebaseLoggerProvider: FirebaseLoggerProvider,
     private tempoEstacionadoProvider: TempoEstacionadoProvider) {
 
-    if (environment.production) { // PRODUCAO
-      this.URL_CENTRAL = `https://wszonaazulprd.centralamc.com.br/transacao`;
-      this.URL_CENTRAL2 = `https://wszonaazulprd2.centralamc.com.br/transacao`;
+    const isProd = environment.production ? true : false;
+    // const isProd = false;
+
+    if (isProd && !environment.simular_l2) { // PRODUCAO
+      this.URL_CENTRAL = `https://wszonaazuldsv.centralamc.com.br/transacao`;
+      // this.URL_CENTRAL = `https://wszonaazulprd2.centralamc.com.br/transacao`;
       this.COD_CLIENTE = 82;
       this.COD_CLIENTE_PDV = 83;
 
     } else { // DEV
       this.URL_CENTRAL = `https://wszonaazuldsv.centralamc.com.br/transacao`;
-      this.URL_CENTRAL2 = `https://wszonaazulprd2.centralamc.com.br/transacao`;
-      this.COD_CLIENTE = 75;
-      this.COD_CLIENTE_PDV = 76;
+      this.COD_CLIENTE = 106;
+      this.COD_CLIENTE_PDV = 107;
     }
 
-    this.logger.info('AMBIENTE: ' + environment.production ? '** PRODUÇÃO **' : '** DESENVOLVIMENTO **');
+    this.logger.info('AMBIENTE: ' + (isProd ? '** PRODUÇÃO **' : '** DESENVOLVIMENTO **'));
     this.logger.info('URL_CENTRAL: ' + this.URL_CENTRAL);
     this.logger.info('COD_CLIENTE: ' + this.COD_CLIENTE);
     this.logger.info('COD_CLIENTE_PDV: ' + this.COD_CLIENTE_PDV);
@@ -127,7 +122,26 @@ export class ComunicacaoCentralProvider {
     </transacao>
     `;
 
-    return this.genericRequest(this.URL_CENTRAL, requestBody);
+    if (environment.simular_l2) {
+      const resposta = `
+      <?xml version="1.0"?>
+        <Resultado>
+            <dataResultado>${dateStr}</dataResultado>
+            <codigoDistribuidor>${this.COD_CLIENTE}</codigoDistribuidor>
+            <transacaoXml>75, 2018-07-18T11:28:00, 1, 12345, 05591991000148, 1</transacaoXml>
+            <dataProcessamento>${dateStr}</dataProcessamento>
+            <autenticacao>75969070547632873</autenticacao>
+            <sucesso>true</sucesso>
+            <mensagem>Sucesso ao fazer transa&#xE7;&#xE3;o!</mensagem>
+        </Resultado>
+      `;
+
+      const respostaJson = XML2JSONUtil.parseHttpXmlResponse(resposta);
+      console.log('Resposta Json linha 140',respostaJson);
+      return new Promise<{}>((resolve, reject) => resolve(respostaJson));
+    } else {
+      return this.genericRequest(this.URL_CENTRAL, requestBody);
+    }
   }
 
   /**
@@ -203,7 +217,25 @@ export class ComunicacaoCentralProvider {
     </transacao>
     `;
 
-    return this.genericRequest(this.URL_CENTRAL, requestBody);
+    if (environment.simular_l2) {
+      const resposta = `
+      <?xml version="1.0"?>
+      <Resultado>
+        <dataResultado>${dateStr}</dataResultado>
+        <codigoDistribuidor>${this.COD_CLIENTE}</codigoDistribuidor>
+        <transacaoXml>75, 2018-07-18T11:28:00, 1, 260, 05591991000148, 123456789012345, 01, 01, A, -23.71624, -46.778914, VAC9876, 1, 30, 1</transacaoXml>
+        <dataProcessamento>${dateStr}</dataProcessamento>
+        <autenticacao>75380275967530906</autenticacao>
+        <sucesso>true</sucesso>
+        <mensagem>Sucesso ao fazer transa&#xE7;&#xE3;o!</mensagem>
+       </Resultado>
+      `;
+
+      const respostaJson = XML2JSONUtil.parseHttpXmlResponse(resposta);
+      return new Promise<{}>((resolve, reject) => resolve(respostaJson));
+    } else {
+      return this.genericRequest(this.URL_CENTRAL, requestBody);
+    }
   }
 
   /**
@@ -252,7 +284,7 @@ export class ComunicacaoCentralProvider {
 
     const requestBody = `
     <transacao>
-    <codigoDistribuidor>${this.COD_CLIENTE}</codigoDistribuidor>
+      <codigoDistribuidor>${this.COD_CLIENTE}</codigoDistribuidor>
       <dataEnvio>${dateStr}</dataEnvio>
       <tipo>2</tipo>
       <idTransacaoDistribuidor>${idTransacaoDistribuidor}</idTransacaoDistribuidor>
@@ -270,7 +302,26 @@ export class ComunicacaoCentralProvider {
     </transacao>
     `;
 
-    return this.genericRequest(this.URL_CENTRAL, requestBody);
+    if (environment.simular_l2) {
+      const resposta = `
+      <?xml version="1.0"?>
+      <Resultado>
+        <dataResultado>${dateStr}</dataResultado>
+        <codigoDistribuidor>${this.COD_CLIENTE}</codigoDistribuidor>
+        <transacaoXml>75, 2018-07-18T11:28:00, 1, 260, 05591991000148, 123456789012345, 01, 01, A, -23.71624, -46.778914, VAC9876, 1, 30, 1</transacaoXml>
+        <dataProcessamento>${dateStr}</dataProcessamento>
+        <autenticacao>75380275967530906</autenticacao>
+        <sucesso>true</sucesso>
+        <mensagem>Sucesso ao fazer transa&#xE7;&#xE3;o!</mensagem>
+      </Resultado>
+      `;
+
+      const respostaJson = XML2JSONUtil.parseHttpXmlResponse(resposta);
+      console.log('Resposta Json linha 320',respostaJson);
+      return new Promise<{}>((resolve, reject) => resolve(respostaJson));
+    } else {
+      return this.genericRequest(this.URL_CENTRAL, requestBody);
+    }
   }
 
   /**
@@ -312,13 +363,31 @@ export class ComunicacaoCentralProvider {
       <codigoDistribuidor>${this.COD_CLIENTE}</codigoDistribuidor>
       <dataEnvio>${dateStr}</dataEnvio>
       <tipo>4</tipo>
-      <idTransacaoDistribuidor>${idTransacaoDistribuidor}</idTransacaoDistribuidor>
+      <idTransacaoDistribuidor>${idTransacaoDistribuidorCancelamento}</idTransacaoDistribuidor>
       <motivoCancelamento>${motivoCancelamento}</motivoCancelamento>
-      <idTransacaoDistribuidorCancelamento>${idTransacaoDistribuidorCancelamento}</idTransacaoDistribuidorCancelamento>
+      <idTransacaoDistribuidorCancelamento>${idTransacaoDistribuidor}</idTransacaoDistribuidorCancelamento>
     </transacao>
     `;
 
-    return this.genericRequest(this.URL_CENTRAL, requestBody);
+    if (environment.simular_l2) {
+      const resposta = `
+      <?xml version="1.0"?>
+      <Resultado>
+        <dataResultado>${dateStr}</dataResultado>
+        <codigoDistribuidor>${this.COD_CLIENTE}</codigoDistribuidor>
+        <transacaoXml>75, 2018-07-18T11:28:00, 4, 313, Falha de comunicacao, 275</transacaoXml>
+        <dataProcessamento>${dateStr}</dataProcessamento>
+        <autenticacao>75160633052652701</autenticacao>
+        <sucesso>true</sucesso>
+        <mensagem>Erro ao tentar efetuar transa&#xE7;&#xE3;o de cancelamento: c&#xF3;digo da transa&#xE7;&#xE3;o duplicado!</mensagem>
+      </Resultado>
+      `;
+
+      const respostaJson = XML2JSONUtil.parseHttpXmlResponse(resposta);
+      return new Promise<{}>((resolve, reject) => resolve(respostaJson));
+    } else {
+      return this.genericRequest(this.URL_CENTRAL, requestBody);
+    }
   }
 
   /**
@@ -361,7 +430,24 @@ export class ComunicacaoCentralProvider {
     </transacao>
     `;
 
-    return this.genericRequest(this.URL_CENTRAL, requestBody);
+    if (environment.simular_l2) {
+      const resposta = `
+      <?xml version="1.0"?>
+      <ResultadoConsultaTransacao>
+        <dataResultado>${this.getDateComunicacao()}</dataResultado>
+        <transacaoXml>75, 313</transacaoXml>
+        <dataProcessamento>${this.getDateComunicacao()}</dataProcessamento>
+        <autenticacao>75160633052652701</autenticacao>
+        <estado>1</estado>
+        <mensagem>Dados retornados com sucesso!</mensagem>
+      </ResultadoConsultaTransacao>
+      `;
+
+      const respostaJson = XML2JSONUtil.parseHttpXmlResponse(resposta);
+      return new Promise<{}>((resolve, reject) => resolve(respostaJson));
+    } else {
+      return this.genericRequest(this.URL_CENTRAL, requestBody);
+    }
   }
 
   /**
@@ -392,7 +478,24 @@ export class ComunicacaoCentralProvider {
     </transacao>
     `;
 
-    return this.genericRequest(this.URL_CENTRAL, requestBody);
+    if (environment.simular_l2) {
+      const resposta = `
+      <?xml version="1.0"?>
+      <ResultadoConsultaTransacao>
+        <codigoDistribuidor>${this.COD_CLIENTE}</codigoDistribuidor>
+        <data>${this.getDateComunicacao()}</data>
+        <saldoBloqueado>4998</saldoBloqueado>
+        <saldoDesbloqueado/>
+        <totalAtivado>2</totalAtivado>
+        <mensagem>Sucesso ao retornar os dados!</mensagem>
+      </ResultadoConsultaTransacao>
+      `;
+
+      const respostaJson = XML2JSONUtil.parseHttpXmlResponse(resposta);
+      return new Promise<{}>((resolve, reject) => resolve(respostaJson));
+    } else {
+      return this.genericRequest(this.URL_CENTRAL, requestBody);
+    }
   }
 
 
@@ -489,25 +592,28 @@ export class ComunicacaoCentralProvider {
     </transacao>
     `;
 
-    // TODO: NAO PRECISA MANDAR O TIPO DE VEICULO NO PDV?
+    if (environment.simular_l2) {
+      const resposta = `
+      <?xml version="1.0"?>
+      <ResultadoPDV>
+           <dataResultado>${dateStr}</dataResultado>
+           <codigoDistribuidor>${this.COD_CLIENTE}</codigoDistribuidor>
+           <codigoPDV>${codigoPDV}</codigoPDV>
+           <idTransacaoDistribuidor>${idTransacaoDistribuidor}</idTransacaoDistribuidor>
+           <transacaoXml>75, 20, 2018-07-18T07:00:00, 8, 260, 05591991000148, 123456789012345, 01, 01, A, -23.71624, -46.778914, VAC9876, 30, 1</transacaoXml>
+           <dataProcessamento>${dateStr}</dataProcessamento>
+           <autenticacao>75105797701235860</autenticacao>
+           <sucesso>true</sucesso>
+           <mensagem>Erro ao tentar efetuar transa&#xE7;&#xE3;o de desbloqueio com ativa&#xE7;&#xE3;o: ponto de venda inv&#xE1;lido!</mensagem>
+      </ResultadoPDV>
+      `;
 
-    // if(!environment.production && environment.simular_l2){
-    //   const response1 = {
-    //     dataResultado: '2018-07-18T11:26:09',
-    //     codigoDistribuidor: 75,
-    //     codigoPDV: 22,
-    //     idTransacaoDistribuidor: 260,
-    //     dataProcessamento: '2018-07-18T11:26:09',
-    //     transacaoXml: '75, 20, 2018-07-18T07:00:00, 8, 260, 05591991000148, 123456789012345, 01, 01, A, -23.71624, -46.778914, VAC9876, 30, 1',
-    //     autenticacao: 75105797701235860,
-    //     sucesso: 'true',
-    //     mensagem: 'ok'
-    //   }
+      const respostaJson = XML2JSONUtil.parseHttpXmlResponse(resposta);
+      return new Promise<{}>((resolve, reject) => resolve(respostaJson));
+    } else {
+      return this.genericRequest(this.URL_CENTRAL, requestBody, auth);
+    }
 
-    //   return Promise.resolve(response1);
-    // }
-
-    return this.genericRequest(this.URL_CENTRAL, requestBody, auth);
   }
 
   /**
@@ -556,22 +662,42 @@ export class ComunicacaoCentralProvider {
    *     <mensagem>Erro ao tentar efetuar transa&#xE7;&#xE3;o de desbloqueio: ponto de venda inv&#xE1;lido!</mensagem>
    * </Resultado>
    */
-  cancelamentoPDV(idTransacaoDistribuidor: number, motivoCancelamento: string, idTransacaoDistribuidorCancelamento: number, codigoPDV: string, dataEnvio: Date) {
+  cancelamentoPDV(idTransacaoDistribuidor: number, motivoCancelamento: string, idTransacaoDistribuidorCancelamento: number, codigoPDV: number, dataEnvio: Date) {
     const dateStr = this.getDateComunicacao(dataEnvio);
     const auth = btoa(`${this.COD_CLIENTE_PDV}:${this.gerarCodigoAcesso(this.COD_CLIENTE_PDV)}`);
+
     const requestBody = `
     <transacao>
       <codigoDistribuidor>${this.COD_CLIENTE}</codigoDistribuidor>
       <codigoPDV>${codigoPDV}</codigoPDV>
       <dataEnvio>${dateStr}</dataEnvio>
       <tipo>4</tipo>
-      
+      <idTransacaoDistribuidor>${idTransacaoDistribuidorCancelamento}</idTransacaoDistribuidor>
       <motivoCancelamento>${motivoCancelamento}</motivoCancelamento>
-      <idTransacaoDistribuidorCancelamento>${idTransacaoDistribuidorCancelamento}</idTransacaoDistribuidorCancelamento>
+      <idTransacaoDistribuidorCancelamento>${idTransacaoDistribuidor}</idTransacaoDistribuidorCancelamento>
     </transacao>
     `;
 
-    return this.genericRequest(this.URL_CENTRAL, requestBody, auth);
+
+    if (environment.simular_l2) {
+      const resposta = `
+      <?xml version="1.0"?>
+      <Resultado>
+           <dataResultado>${dateStr}</dataResultado>
+           <codigoDistribuidor>${this.COD_CLIENTE}</codigoDistribuidor>
+           <transacaoXml>75, 2018-07-18T11:28:00, 4, 313, Falha de comunicacao, 275</transacaoXml>
+           <dataProcessamento>${dateStr}</dataProcessamento>
+           <autenticacao>75160633052652701</autenticacao>
+           <sucesso>true</sucesso>
+           <mensagem>Erro ao tentar efetuar transa&#xE7;&#xE3;o de cancelamento: c&#xF3;digo da transa&#xE7;&#xE3;o duplicado!</mensagem>
+      </Resultado>
+      `;
+
+      const respostaJson = XML2JSONUtil.parseHttpXmlResponse(resposta);
+      return new Promise<{}>((resolve, reject) => resolve(respostaJson));
+    } else {
+      return this.genericRequest(this.URL_CENTRAL, requestBody, auth);
+    }
   }
 
   private genericRequest(url = this.URL_CENTRAL, requestBody: string, auth = undefined) {
@@ -592,123 +718,54 @@ export class ComunicacaoCentralProvider {
     }
 
     // const body = `username=${usuario}&password=${senha}&grant_type=password`;
-    console.log(requestBody)
+
     this.logger.info('***************************');
     this.logger.info('** HTTP POST CENTRAL');
     this.logger.info('** Basic: ' + auth);
     this.logger.info('** URL: ' + url);
-    this.logger.info('** headers: ' + _headers);
+    this.logger.info('** headers: ' + JSON.stringify(_headers));
     this.logger.info('** requestBody: ' + requestBody);
 
     return this.genericRequestAngular(url, requestBody, auth, _headers);
   }
 
-  private genericRequestNative(url = this.URL_CENTRAL, requestBody: string, auth = undefined, _headers) {
-    this.logger.info('** HTTP POST NATIVE');
-
-    this.httpNative.setRequestTimeout(15);
-    this.httpNative.setDataSerializer('utf8');
-
-    return this.httpNative.post(url, requestBody, _headers)
-      .then(data => {
-
-        const responseXML = data.data;
-        const response = XML2JSONUtil.parseHttpXmlResponse(responseXML);
-
-        // console.log(data.status);
-        // console.log(response); // data received by server
-        // console.log(data.headers);
-        this.logger.info('** response: ' + response);
-        return Promise.resolve(response);
-      })
-      .catch(response => {
-        // console.log(response.status);
-        // console.log(response.error); // error message as string
-        // console.log(response.headers);
-
-        this.logger.error('** HTTP POST CENTRAL');
-        this.logger.error('** Basic: ' + auth);
-        this.logger.error('** URL: ' + url);
-        this.logger.error('** headers: ' + _headers);
-        this.logger.error('** requestBody: ' + requestBody);
-        this.logger.error('** reject: ' + JSON.stringify(response));
-
-        this.firebaseLoggerProvider.enviarFirebase({
-          auth: auth,
-          url: url,
-          headers: _headers,
-          requestBody: requestBody,
-          response: JSON.stringify(response),
-          tipo: 'ERRO',
-          tipoDetalhe: 'Erro na comunicação com a AMC. Link L2.',
-          timestamp: new Date().toISOString(),
-        });
-
-        // if (response.status === 400) {
-        //   const responseJson = response.json();
-
-        //   if (responseJson.error === 'invalid_grant') {
-        //     return Promise.reject('Usuário ou senha inválida!');
-        //   }
-        // }
-
-        return Promise.reject(response);
-      });
-  }
-
-  private genericRequestAngular(url = this.URL_CENTRAL, requestBody: string, auth = undefined, _headers, first = true) {
-    /* 
-           para realizar o teste de redundancia de envio é necessário mandar a primeira requisição para 
-           um endereço errado e após o erro é feito o envio para o endereço certo.
-           no timeout é necessário realizar uma configuração no navegador para atrasar a resposta da AMC
-           para simular não comunicação com o servidor pois não temos com testar a falta de conexão com o 
-           servidor da AMC. 
-           Verificar o ambiente em que vai ser testado para atualizar a URL das requisições
-     */
+  private genericRequestAngular(url = this.URL_CENTRAL, requestBody: string, auth = undefined, _headers) {
     this.logger.info('** HTTP GET ANGULAR');
     const _url = environment.middleware_cors;
     const _urlFull = (`${_url}?url=${url}&body=${encodeURI(requestBody)}&headers=${encodeURI(JSON.stringify(_headers))}`);
     this.logger.info('** url', _url);
     this.logger.info('** url2', _urlFull);
-    console.log(_urlFull)
+
     return new Promise<any>((resolve, reject) => {
       this.http.get(_urlFull, { responseType: 'text' })
         .timeoutWith(ComunicacaoCentralProvider.APP_TIMEOUT, Observable.throw(new Error(`Não foi possível estacionar seu veículo. Seu tempo máximo de resposta durou mais de ${ComunicacaoCentralProvider.APP_TIMEOUT / 1000} segundos`)))
-        .map(response => XML2JSONUtil.parseHttpXmlResponse(response))
+        // .map(response => {
+        //   console.log('Resposta linha 743',response)
+        //   XML2JSONUtil.parseHttpXmlResponse(response)
+          
+        // })
         .take(1)
         .subscribe(response => {
+          console.log('Resposta CC linha 748',response)
           this.logger.info('** response: ', response);
-          return resolve(response);
+          const respostaJson = XML2JSONUtil.parseHttpXmlResponse(response);
+          return resolve(respostaJson);
         }, error => {
-
-          if (first) {
-            this.genericRequestAngular(url = this.URL_CENTRAL2, requestBody, auth = undefined, _headers, first = false)
-              .catch(error => {
-                reject(error)
-              })
-              .then(response => {
-                resolve(response)
-              })
-          }
-
-          else {
-            reject(error)
-          }
-
-
+          this.logger.error('** error: ', error);
+          return reject(error);
         });
     });
   }
-
-  private genericRequestAngularNotCors(url = this.URL_CENTRAL, requestBody: string, auth = undefined, _headers, firstcall = true) {
-    this.logger.info('** HTTP POST ANGULAR');
+  
+  private genericRequestAngularNotCORs(url = this.URL_CENTRAL, requestBody: string, auth = undefined, _headers) {
     return this.http.post(url, requestBody, { headers: _headers, responseType: 'text' })
-      .timeoutWith(ComunicacaoCentralProvider.APP_TIMEOUT, (`Não foi possível realizar a operação. Seu tempo máximo de resposta durou mais de ${ComunicacaoCentralProvider.APP_TIMEOUT / 1000} segundos`))
+      .timeoutWith(ComunicacaoCentralProvider.APP_TIMEOUT, Observable.throw(new Error(`Não foi possível estacionar seu veículo. Seu tempo máximo de resposta durou mais de ${ComunicacaoCentralProvider.APP_TIMEOUT / 1000} segundos`)))
       .map(response => XML2JSONUtil.parseHttpXmlResponse(response))
       .toPromise()
       .then(response => {
         this.logger.info('** response: ' + response);
         // response = response.replace('<?xml version="1.0"?>', '').trim();
+        // this.logger.info('** response 2: '+ response);
         // this.logger.info('** response 2: '+ response);
 
         // const toJSON = XML2JSONUtil.parseHttpXmlResponse(response);
@@ -717,13 +774,13 @@ export class ComunicacaoCentralProvider {
         return Promise.resolve(response);
       })
       .catch(response => {
-
-        this.logger.error('** HTTP POST CENTRAL');
-        this.logger.error('** Basic: ' + auth);
-        this.logger.error('** URL: ' + url);
-        this.logger.error('** headers: ' + _headers);
-        this.logger.error('** requestBody: ' + requestBody);
-        this.logger.error('** reject: ' + JSON.stringify(response));
+        // this.logger.error('** HTTP POST CENTRAL');
+        this.logger.info('** HTTP POST CENTRAL');
+        this.logger.info('** Basic: ' + auth);
+        this.logger.info('** URL: ' + url);
+        this.logger.info('** headers: ' + JSON.stringify(_headers));
+        this.logger.info('** requestBody: ' + requestBody);
+        this.logger.info('** reject: ', response);
 
         this.firebaseLoggerProvider.enviarFirebase({
           auth: auth,
@@ -745,7 +802,6 @@ export class ComunicacaoCentralProvider {
         // }
 
         return Promise.reject(response);
-        // }
       });
   }
 
@@ -777,4 +833,8 @@ export class ComunicacaoCentralProvider {
     return val < 10 ? ('0' + val) : val;
   }
 
+  // private gerarIdTransacao(): number{
+  //   // TODO: OBTER A QUANTIDADE DE VEICULOS ESTACIONADOS NO BANCO INDEPENDENTE DO STATUS
+  //   return parseInt(this.COD_CLIENTE + '' + new Date().getTime());
+  // }
 }

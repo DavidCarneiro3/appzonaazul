@@ -10,7 +10,7 @@ page-login {
 
     .logo {
       padding: 0em 3.5em 0em 3.5em;
-      margin-top: 0;
+      margin-top: 10px;
 
       .img {
         @include respond-to(xs) {
@@ -49,7 +49,7 @@ page-login {
           border-radius: 3px;
         }
         img {
-          width: 55%;
+          width: 40%;
           background: #f2f2f2;
           padding: 5px;
         }
@@ -57,7 +57,7 @@ page-login {
     }
 
     .grid-form {
-      margin-top: 20px;
+      margin-top: 40px;
 
       .form-margin {
         @include respond-to(xs) {

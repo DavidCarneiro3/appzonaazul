@@ -16,6 +16,7 @@ import { LoggerProvider } from '../../providers/logger/logger';
 })
 export class VeiculosFormPage {
 
+    veiculoAllArr;
     userId;
     fromPage;
     area;
@@ -23,13 +24,15 @@ export class VeiculosFormPage {
     cad;
     qtdCads;
     withMenu = false;
-
-    item = new VeiculoModel({ marca: ' ', modelo: ' ', tipo_veiculo: 'automovel' });
-    titulo = 'Adicionar';
+    radio = 'Carro';
+    radiop = 'Padrão'
+    item = new VeiculoModel({ marca: ' ', modelo: ' ', tipo_veiculo: 'automovel', tipo_placa: 'padrao'});
+    titulo = 'Cadastrar Veículos';
     tipos_veiculo = [];
     isPDV = false;
     typeTmp;
 
+   
     constructor(public navCtrl: NavController, public navParams: NavParams,
         public platform: Platform,
         public loadingCtrl: LoadingController,
@@ -64,6 +67,15 @@ export class VeiculosFormPage {
         const withMenu = this.navParams.get('withMenu');
         this.userId = this.navParams.get('userId');
         this.fromPage = this.navParams.get('fromPage');
+        this.veiculoAllArr = this.navParams.get('veiculoAllArr');
+
+        if(!this.veiculoAllArr) {
+            let loading = this.showLoading();
+            this.veiculosProvider.findByUser(this.userId).take(1).subscribe(_data => {
+                this.veiculoAllArr = _data;
+                loading.dismiss();
+            });
+        }
 
         if (this.fromPage == 'estacionar') {
             this.area = this.navParams.get('area');
@@ -154,6 +166,7 @@ export class VeiculosFormPage {
 
     defineTipo(tipo) {
         this.item.tipo_veiculo = tipo;
+        console.log(this.item.tipo_veiculo)
     }
 
 
@@ -169,29 +182,38 @@ export class VeiculosFormPage {
             this.item.placa.charAt(7).match(numbers) &&
             this.item.placa.substr(4).length === 4) {
 
-            MyApp.showConfirm(this.alertCtrl, 'Veículo', 'Seu veículo é de placa ' + this.item.placa + '?', () => {
-                this.saveVeiculo();
-            }).present();
+                const _filterArr = this.veiculoAllArr.filter(_item => _item.veiculo.placa === this.item.placa);
+                if(_filterArr && _filterArr.length > 0) {
+
+                    MyApp.showConfirm(this.alertCtrl, 'Ops', 'Seu veículo já foi inserido, deseja sobrescrevê-lo?', 
+                        () => {
+                            this.item.id = _filterArr[0].key;
+                            this.saveVeiculo();
+                        }
+                    ).present();
+                } else {
+                    this.saveVeiculo();
+                }  
 
         } else {
-            this.showAlert('Aviso', 'Informe uma placa válida! Exemplo: ABC-0001, ou ABC-0A01', '', () => { });
+            this.showAlert('Aviso', 'Insira uma placa válida! Exemplo: ABC-0001 ou ABC-0A01', '', () => { });
         }
     }
 
     private saveVeiculo() {
         let loading = this.showLoading();
 
-        if(this.typeTmp && this.typeTmp === 'revendedor') {
-            loading.dismiss();
-            this.navCtrl.getPrevious().data.veiculo = this.item;
-            this.navCtrl.getPrevious().data.fromVeiculoForm = 'sim';
-            this.navCtrl.pop();
-        } else {
-            if (this.isPDV) {
-                this.item.id = this.navParams.get('veiculo_id');
-                loading.dismiss();
-                this.close();
-            } else {
+        // if(this.typeTmp && this.typeTmp === 'revendedor') {
+        //     loading.dismiss();
+        //     this.navCtrl.getPrevious().data.veiculo = this.item;
+        //     this.navCtrl.getPrevious().data.fromVeiculoForm = 'sim';
+        //     this.navCtrl.pop();
+        // } else {
+        //     if (this.isPDV) {
+        //         this.item.id = this.navParams.get('veiculo_id');
+        //         loading.dismiss();
+        //         this.close();
+        //     } else {
                 if (this.item.id || '') {
                     this.veiculosProvider.update(this.userId, this.item).then(_ => {
                         loading.dismiss();
@@ -212,8 +234,8 @@ export class VeiculosFormPage {
                         loading.dismiss()
                     });
                 }
-            }
-        }
+            //}
+        //}
     }
 
     close() {
@@ -228,7 +250,7 @@ export class VeiculosFormPage {
                     veiculo: this.isPDV ? this.item : null
                 });
             } else {
-                this.navCtrl.setRoot(Constants.HOME_PAGE.name);
+                this.navCtrl.setRoot(Constants.PRINCIPAL_PAGE.name);
             }
         } else {
 
@@ -270,6 +292,16 @@ export class VeiculosFormPage {
      */
     openHelp(): void {
         this.showAlert('Ajuda', 'Para cadastrar um veículo, preencha o formulário conforme os campos solicitados.', '', () => { })
+    }
+
+    checkRadio(radio){
+        this.radio = radio;
+        console.log(this.radiop)
+    }
+
+    checkRadiop(radio){
+        this.item.tipo_placa = radio;
+        console.log(this.item.tipo_placa)
     }
 
 }

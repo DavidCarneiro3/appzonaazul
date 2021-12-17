@@ -1,14 +1,14 @@
 webpackJsonp([27],{
 
-/***/ 822:
+/***/ 759:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RecoveryPasswordPageModule", function() { return RecoveryPasswordPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ReportarProblemaPageModule", function() { return ReportarProblemaPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(36);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__recovery_password__ = __webpack_require__(875);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__reportar_problema__ = __webpack_require__(818);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,37 +18,37 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var RecoveryPasswordPageModule = /** @class */ (function () {
-    function RecoveryPasswordPageModule() {
+var ReportarProblemaPageModule = /** @class */ (function () {
+    function ReportarProblemaPageModule() {
     }
-    RecoveryPasswordPageModule = __decorate([
+    ReportarProblemaPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__recovery_password__["a" /* RecoveryPasswordPage */],
+                __WEBPACK_IMPORTED_MODULE_2__reportar_problema__["a" /* ReportarProblemaPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__recovery_password__["a" /* RecoveryPasswordPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__reportar_problema__["a" /* ReportarProblemaPage */]),
             ],
         })
-    ], RecoveryPasswordPageModule);
-    return RecoveryPasswordPageModule;
+    ], ReportarProblemaPageModule);
+    return ReportarProblemaPageModule;
 }());
 
-//# sourceMappingURL=recovery-password.module.js.map
+//# sourceMappingURL=reportar-problema.module.js.map
 
 /***/ }),
 
-/***/ 875:
+/***/ 818:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RecoveryPasswordPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ReportarProblemaPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(36);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_auth_auth__ = __webpack_require__(217);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_user_user__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__environments_constants__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_user_user__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_reportar_problema_reportar_problema__ = __webpack_require__(441);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__environments_constants__ = __webpack_require__(19);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -64,110 +64,78 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var RecoveryPasswordPage = /** @class */ (function () {
-    function RecoveryPasswordPage(navCtrl, navParams, menu, alertCtrl, loadingCtrl, formBuilder, authProvider, userProvider) {
+var ReportarProblemaPage = /** @class */ (function () {
+    function ReportarProblemaPage(navCtrl, userProvider, formBuilder, alertCtrl, loadingCtrl, reProbProvider) {
         this.navCtrl = navCtrl;
-        this.navParams = navParams;
-        this.menu = menu;
+        this.userProvider = userProvider;
+        this.formBuilder = formBuilder;
         this.alertCtrl = alertCtrl;
         this.loadingCtrl = loadingCtrl;
-        this.formBuilder = formBuilder;
-        this.authProvider = authProvider;
-        this.userProvider = userProvider;
-        this.submitAttempt = false;
-        var emailRegex = /^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/i;
-        this.recoveryForm = formBuilder.group({
-            email: ['', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].compose([__WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].pattern(emailRegex)])]
+        this.reProbProvider = reProbProvider;
+        this.formGroup = this.formBuilder.group({
+            subject: ['', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required],
+            message: ['', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required],
         });
     }
-    RecoveryPasswordPage.prototype.ionViewCanEnter = function () {
-        this.setVisibleMenu(false);
+    ReportarProblemaPage.prototype.ionViewDidLoad = function () {
+        var _this = this;
         this.userProvider.getUserLocal().then(function (userID) {
-            if (!userID) {
-                return true;
+            if (userID != null) {
+                _this.userId = userID;
             }
         });
     };
-    RecoveryPasswordPage.prototype.ionViewDidLoad = function () {
-    };
-    RecoveryPasswordPage.prototype.ionViewWillLeave = function () {
-    };
-    RecoveryPasswordPage.prototype.recovery = function () {
+    ReportarProblemaPage.prototype.sendData = function () {
         var _this = this;
-        this.submitAttempt = true;
-        if (this.isValidAttributes()) {
-            var loading_1 = this.showLoading();
-            loading_1.present();
-            this.authProvider.sendPasswordResetEmail(this.recoveryForm.value.email)
-                .then(function () {
-                loading_1.dismiss();
-                _this.showAlert('Sucesso!', 'Você receberá um email com instruções para recuperar sua senha.', '', function () {
-                    _this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_5__environments_constants__["a" /* Constants */].LOGIN_PAGE.name);
-                });
-            }).catch(function (error) {
-                loading_1.dismiss();
-                var errorMessage = 'Não foi possível restaurar sua senha!';
-                if (error['code'] && error['code'] == 'auth/user-not-found') {
-                    errorMessage = 'O usuário não está cadastrado!';
-                }
-                _this.showAlert("Erro!", errorMessage, "error", function () {
-                });
+        var loading = this.loadingCtrl.create({ content: 'Aguarde...' });
+        loading.present();
+        if (!this.formGroup.valid) {
+            this.showAlert('Aviso!', 'Todos os campos são obrigatórios', '', function () {
+                loading.dismiss();
             });
         }
         else {
-            var warn = 'Insira um email válido para recuperar sua senha!';
-            this.showAlert("Aviso", warn, "info", function () {
+            this.reProbProvider.save(this.userId, this.formGroup.value).then(function (data) {
+                console.log(data);
+                _this.showAlert('Obrigado', 'Recebemos sua mensagem, em breve entraremos em contato com você.', '', function () {
+                    loading.dismiss();
+                    _this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_5__environments_constants__["a" /* Constants */].PRINCIPAL_PAGE.name);
+                });
             });
         }
     };
-    RecoveryPasswordPage.prototype.isValidAttributes = function () {
-        return this.recoveryForm.valid;
-    };
-    RecoveryPasswordPage.prototype.showAlert = function (title, msg, type, callback) {
-        var alert = this.alertCtrl.create({
+    ReportarProblemaPage.prototype.showAlert = function (title, message, type, callback) {
+        this.alertCtrl.create({
             title: title,
-            message: msg,
+            message: message,
             cssClass: type,
             buttons: [
                 {
                     text: 'OK',
                     cssClass: 'btn-ok',
-                    handler: function (data) {
-                        callback();
-                    }
+                    handler: function (data) { return callback(); }
                 }
             ]
-        });
-        alert.present();
+        }).present();
     };
-    RecoveryPasswordPage.prototype.setVisibleMenu = function (status) {
-        if (status === void 0) { status = false; }
-        this.menu.enable(status);
-        this.menu.swipeEnable(status);
+    ReportarProblemaPage.prototype.openHelp = function () {
+        this.showAlert('Ajuda', 'Envie-nos sugestões, críticas e melhorias preenchendo o formulário conforme os campos solicitados.', '', function () { });
     };
-    RecoveryPasswordPage.prototype.showLogin = function () {
-        this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_5__environments_constants__["a" /* Constants */].LOGIN_PAGE.name);
-    };
-    RecoveryPasswordPage.prototype.showLoading = function () {
-        return this.loadingCtrl.create({ content: 'Aguarde...' });
-    };
-    RecoveryPasswordPage = __decorate([
+    ReportarProblemaPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-recovery-password',template:/*ion-inline-start:"/Users/desenvolvedor/Documents/appzonzazul/src/pages/recovery-password/recovery-password.html"*/'<ion-header no-border>\n  <ion-navbar transparent class="navbar only-mobile">\n    <ion-title>\n      <ion-label>Recuperar Senha</ion-label>\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n<ion-content class="recovery-password">\n\n  <div class="logo">\n    <ion-grid class="img img-centralize img-logo">\n      <img src="assets/imgs/logo.png" />\n    </ion-grid>\n  </div>\n\n  <ion-grid class="grid-form">\n\n    <ion-row justify-content-center>\n      <div class="form-margin">\n        <form class="form" [formGroup]="recoveryForm" novalidate>\n          <div text-center>\n            <ion-input type="email" #email formControlName="email" id="email" placeholder="Email"\n              (keyup.enter)="focusInput(password)"></ion-input>\n            <ion-label class="error-message" *ngIf="recoveryForm.controls.email.invalid  && (submitAttempt)">Insira um\n              email válido</ion-label>\n          </div>\n        </form>\n\n        <button ion-button (click)="recovery()" class="btn" block>Recuperar</button>\n\n      </div>\n    </ion-row>\n  </ion-grid>\n\n  <div class="logo">\n    <ion-grid class="img img-centralize img-logo logo-amc">\n      <ion-row align-items-center justify-content-center>\n        <ion-col align-items-center class="img-logo1-menu">\n          <img src="assets/imgs/logo-backwhite-cipetran.png" />\n        </ion-col>\n      </ion-row>\n    </ion-grid>\n  </div>\n\n</ion-content>'/*ion-inline-end:"/Users/desenvolvedor/Documents/appzonzazul/src/pages/recovery-password/recovery-password.html"*/,
+            selector: 'page-reportar-problema',template:/*ion-inline-start:"/Users/desenvolvedor/Documents/zonaazulfortaleza-develop/src/pages/reportar-problema/reportar-problema.html"*/'<ion-header no-border>\n    <ion-navbar color="header">\n        <button ion-button icon-only menuToggle>\n            <ion-icon class="header-icon" name="menu"></ion-icon>\n        </button>\n\n        <ion-title class="header-title">Reportar Problema</ion-title>\n        \n    </ion-navbar>\n</ion-header>\n\n<ion-content class="content">\n    <ion-grid>\n        <ion-row class="row-header">\n            <ion-col col-12 class="col-header">\n                <ion-label class="title"></ion-label>\n            </ion-col>\n        </ion-row>\n        <ion-row>\n            <form [formGroup]="formGroup" (ngSubmit)="sendData()" class="informacoes-body-list">\n                <ion-item class="informacoes-body-list-item" no-lines>\n                    <ion-label ><ion-icon name="ios-help-circle-outline"></ion-icon></ion-label>\n                    <ion-input type="text" mode="ios" formControlName="subject" placeholder="Assunto" class="{{formGroup.controls.subject.valid?\'blue-component\':\'grey-component\'}}">\n\n                    </ion-input><button class="menu-btn" ion-button clear  type="button" item-right> <ion-icon ios="ios-checkmark-circle-outline" class="{{formGroup.controls.subject.valid?\'icon-blue icon icon-ios ion-ios-checkmark-circle-outline\':\'icon-grey icon icon-ios ion-ios-checkmark-circle-outline\'}}"></ion-icon> </button>\n                </ion-item>\n                <ion-item class="informacoes-body-list-item" no-lines>\n                    <ion-label><ion-icon name="ios-mail-outline"></ion-icon></ion-label>\n                    <ion-textarea type="text" mode="ios" rows="4" formControlName="message" placeholder="Mensagem" class="{{formGroup.controls.message.valid?\'blue-component\':\'grey-component\'}}"></ion-textarea>\n                    <button class="menu-btn" ion-button clear  type="button" item-right> <ion-icon ios="ios-checkmark-circle-outline" class="{{formGroup.controls.message.valid?\'icon-blue icon icon-ios ion-ios-checkmark-circle-outline\':\'icon-grey icon icon-ios ion-ios-checkmark-circle-outline\'}}"></ion-icon> </button>\n                </ion-item>\n                <ion-item class="btn-row" no-lines>\n                    <button ion-button type="submit" class="btn" block>Enviar</button>\n                </ion-item>\n            </form>\n        </ion-row>\n    </ion-grid>\n</ion-content>'/*ion-inline-end:"/Users/desenvolvedor/Documents/zonaazulfortaleza-develop/src/pages/reportar-problema/reportar-problema.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* MenuController */],
+            __WEBPACK_IMPORTED_MODULE_3__providers_user_user__["a" /* UserProvider */],
+            __WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormBuilder"],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* LoadingController */],
-            __WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormBuilder"],
-            __WEBPACK_IMPORTED_MODULE_3__providers_auth_auth__["a" /* AuthProvider */],
-            __WEBPACK_IMPORTED_MODULE_4__providers_user_user__["a" /* UserProvider */]])
-    ], RecoveryPasswordPage);
-    return RecoveryPasswordPage;
+            __WEBPACK_IMPORTED_MODULE_4__providers_reportar_problema_reportar_problema__["a" /* ReportarProblemaProvider */]])
+    ], ReportarProblemaPage);
+    return ReportarProblemaPage;
 }());
 
-//# sourceMappingURL=recovery-password.js.map
+//# sourceMappingURL=reportar-problema.js.map
 
 /***/ })
 

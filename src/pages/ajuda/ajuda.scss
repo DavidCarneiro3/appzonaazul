@@ -1,5 +1,9 @@
 page-ajuda {
-  font-family: "Roboto";
+  .scroll-content{
+    font-family: "kanit";
+    background-color: #e5e5e5;
+  }
+  
 
   .header-icon {
     color: #fff;
@@ -8,7 +12,7 @@ page-ajuda {
   .row-header {
     margin-top: -5px;
     .col-header {
-      background-color: #f1f1f1;
+      background-color: #e5e5e5;
       padding: 30px 30px 30px 30px;
       border-bottom: 1px solid #c6c6c6;
 
@@ -49,7 +53,7 @@ page-ajuda {
 
     .col-facebook {
       .item-facebook {
-        background-color: #0690ce;
+        //background-color: #0690ce;
         width: 40px;
         height: 40px;
         border-radius: 100%;
@@ -57,8 +61,8 @@ page-ajuda {
         cursor: pointer;
 
         .img {
-          width: 20px;
-          height: 20px;
+          width: 50px;
+          height: 50px;
           background: transparent;
           position: absolute;
           top: 15px;
@@ -69,7 +73,7 @@ page-ajuda {
 
     .col-twitter {
       .item-twitter {
-        background-color: #0690ce;
+        //background-color: #0690ce;
         width: 40px;
         height: 40px;
         border-radius: 100%;
@@ -77,8 +81,8 @@ page-ajuda {
         cursor: pointer;
 
         .img {
-          width: 20px;
-          height: 20px;
+          width: 30px;
+          height: 30px;
           position: absolute;
           top: 15px;
           margin-left: 10px;
@@ -88,7 +92,7 @@ page-ajuda {
 
     .col-google {
       .item-google {
-        background-color: #0690ce;
+        //background-color: #0690ce;
         width: 40px;
         height: 40px;
         border-radius: 100%;
@@ -96,8 +100,8 @@ page-ajuda {
         cursor: pointer;
 
         .img {
-          width: 20px;
-          height: 20px;
+          width: 50px;
+          height: 50px;
           position: absolute;
           top: 15px;
           margin-left: 10px;
@@ -111,15 +115,25 @@ page-ajuda {
 
     .col-informacoes {
       .informacoes {
-        width: 140px;
-        font-size: 10pt;
+          border: none !important;
+          width: 100%;
+          background: #3F53A7;
+          border-radius: 26px;
+          height: 35px;
+          margin-bottom: 20px;
+          color: white;
       }
     }
 
     .col-termos {
       .termos {
-        width: 140px;
-        font-size: 10pt;
+        height: 35px;
+        width: 100%;
+        margin-left: 15%;
+        margin-top: 4px;
+        border-radius: 26px;
+        color: #828282;
+        border: 2px solid #828282;
       }
     }
   }
@@ -136,5 +150,15 @@ page-ajuda {
         }
       }
     }
+  }
+  .btn{
+    border: 2px solid #828282 !important;
+          background: transparent;
+          color: #828282;
+          border-radius: 26px;
+          width: 80%;
+          height: 35px;
+          margin-top: 0px;
+          margin-left: 40px;
   }
 }

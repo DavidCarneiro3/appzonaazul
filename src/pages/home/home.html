@@ -3,13 +3,15 @@
         <button ion-button icon-only menuToggle>
             <ion-icon class="header-icon" name="menu"></ion-icon>
         </button>
-        <ion-title>
-            <ion-label>Início</ion-label>
+        <ion-title class="title-header">
+            <ion-select [(ngModel)]="city" class="select-city" cancelText="Cancelar" okText="Ok" [selectOptions]="selectOptions">
+                <ion-option value="Fortaleza">Fortaleza</ion-option>
+              </ion-select>
         </ion-title>
 
         <ion-buttons end>
             <button ion-button icon-only (click)="openTempoRestantePage()">
-                <img src="assets/imgs/time.png" width="30px" height="30px" />
+                <img src="assets/icones/car-white.svg"  />
             </button>
         </ion-buttons>
     </ion-navbar>
@@ -17,30 +19,30 @@
 
 <ion-content class="content">
     <div #map id="map"></div>
-    <input #search id="search" class="controls" type="text" placeholder="Buscar Local">
+    <input #search id="search" class="controls" type="text" placeholder="Buscar">
 
-    <button ion-button icon-only type="button" item-right clear (click)="listen()" id="mic" [style.display]="'none'">
-        <ion-icon name="mic" class="icon"></ion-icon>
+    <button ion-button icon-only type="button" item-right clear id="mic" >
+        <ion-icon color="gray" name="search" class="icon"></ion-icon>
     </button>
-    <ion-fab id="help">
+    <!--<ion-fab id="help">
         <button ion-fab icon-only (click)="openHelp()">
             <ion-icon name="help"></ion-icon>
         </button>
-    </ion-fab>
+    </ion-fab> -->
 
     <ion-fab id="close" (click)="showCloseSetor()">
         <button ion-fab>
         </button>
     </ion-fab>
 
-    <ion-fab>
+   <!-- <ion-fab>
         <button ion-fab icon-only color="default" (click)="buscarSetores()" id="locate">
             <ion-icon name="search" class="icon"></ion-icon>
         </button>
-    </ion-fab>
+    </ion-fab> -->
 
     <ion-icon #icon name="close" class="icon-clear" style="display: none" id="icon"></ion-icon>
     <button ion-button id="btn-show-estacionar-page" (click)="openEstacionarPage($event)"
         [style.display]="'none'"></button>
-    <button ion-button id="btn-show-streat-view" (click)="showStreatView($event)" [style.display]="'none'"></button>
+    <button ion-button id="btn-show-streat-view" (click)="showStreatView()" [style.display]="'none'"></button>
 </ion-content>

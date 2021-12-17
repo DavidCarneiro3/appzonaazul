@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { AlertController, IonicPage, NavController, NavParams, LoadingController } from "ionic-angular";
+import { AlertController, IonicPage, NavController, NavParams, LoadingController, PopoverController, Events } from "ionic-angular";
 
 import { User } from "../../models/user";
 import { CadModel } from "../../models/cad";
@@ -29,28 +29,29 @@ export class ComprarCreditosPage {
     user = new User();
     desconto = 0;
     cielo: boolean = true;
+    showSpinner: boolean = true;
 
     constructor(
         public navCtrl: NavController,
         public navParams: NavParams,
         public alertCtrl: AlertController,
         private loadingCtrl: LoadingController,
+        public popoverCtrl: PopoverController,
         private userProvider: UserProvider,
-        private cadProvider: CadsProvider) {
+        private cadProvider: CadsProvider,
+        private events: Events) {
 
         MyApp.MAP_LOAD = false;
         MapUtil.circles.pop();
     }
 
     ionViewCanEnter() {
-        const loading = this.loadingCtrl.create({ content: 'Aguarde...' });
-        loading.present();
-
+       
         this.userProvider.getUserLocal().then(userID => {
             if (userID) {
                 this.userProvider.byId(userID).take(1).subscribe(_user => {
                     this.user = new User(_user);
-                    loading.dismiss();
+                    this.showSpinner = false
                 });
 
                 return true;
@@ -60,6 +61,7 @@ export class ComprarCreditosPage {
 
     ionViewDidLoad() {
         this.fromPage = this.navParams.get('fromPage');
+        console.log(this.fromPage)
         if (this.fromPage == 'estacionar') {
             this.area = this.navParams.get('area');
             this.setor = this.navParams.get('setor');
@@ -166,11 +168,41 @@ export class ComprarCreditosPage {
                 desconto: this.desconto,
                 descontoPercent: this.user.percent,
                 priceNormal: this.price,
+                fromPage: this.fromPage,
             });
         }
 
     }
+    goPag(cads: number, price: number){
+        console.log('POPUP');
+        const popover = this.popoverCtrl.create(Constants.CREDITOS_PAGAMENTO_PAGE.name, {
+            price: (price - this.desconto),
+            cads: cads,
+            //paymentMethod: method ? method : false,
+            desconto: this.desconto,
+            descontoPercent: this.user.percent,
+            priceNormal: price,
+            fromPage: this.fromPage
+        },{cssClass: 'cartao-popover'});
+        
+        popover.present();
 
+        popover.onDidDismiss(_data => {
+            console.log('dismiss', _data);
+
+            this.events.publish('update_saldo', 'update')
+
+            if(_data && _data.gotopage && _data.gotopage === 'historico') {
+                this.navCtrl.setRoot(Constants.HISTORICO_PAGE.name, { tab: 'historico-creditos' }).then(() => {
+                    this.showAlert("Sucesso!", "Transação realizada com sucesso!", "success", () => {});
+                });
+            } else if(_data && _data.gotopage && _data.gotopage === 'estacionar') {
+                this.showAlert("Sucesso!", "Transação realizada com sucesso!", "success", () => {});
+                this.navCtrl.getPrevious().data.qtdCads = _data.qtdCads
+                this.navCtrl.pop();
+            }
+        })
+    }
     showAlert(title: string, msg: string, type: string, callback) {
         let alert = this.alertCtrl.create({
             title: title,
@@ -190,6 +222,6 @@ export class ComprarCreditosPage {
     }
 
     openHelp() {
-        this.showAlert('Ajuda', 'Escolha a quantidade de CAD\'s e em seguida clique no botão comprar para realizar a aquisição de CADs.', '', () => { })
+        this.showAlert('Ajuda', 'Selecione quantidade de CADs que deseja comprar e em seguida prossiga com o pagamento.', '', () => { })
     }
 }

@@ -1,6 +1,7 @@
 import { HomePage } from "../pages/home/home";
 import { SetorModel } from "../models/setor";
 import { Constants } from "../environments/constants";
+import { getHostElement } from "@angular/core/src/render3";
 
 declare var google: any;
 
@@ -23,7 +24,7 @@ export class MapUtil {
             mapTypeControl: false,
             clickableIcons: false,
             fullscreenControl: false,
-            zoomControl: true,
+            zoomControl: false,
             zoomControlOptions: {
                 position: google.maps.ControlPosition.RIGHT_BOTTOM
             },
@@ -105,19 +106,19 @@ export class MapUtil {
 
             let polyline;
             let marker;
-            let iconUrlGrenn = "assets/imgs/map-marker-green-4.png";
-            let iconUrlRed = "assets/imgs/map-marker-red-4.png";
+            let iconUrlGrenn = "assets/imgs/map-marker-blue-4.svg";
+            let iconUrlRed = "assets/imgs/map-marker-red-4.svg";
             let totalVagasUtilizadas = item.setor.qtd_deficiente_estacionados + item.setor.qtd_idoso_estacionados + item.setor.qtd_normal_estacionados;
 
-            polyline = new google.maps.Polyline(this.createPolylineOptions(item.setor, totalVagasUtilizadas));
-            polyline.setMap(map);
-            MapUtil.polylines.push(polyline);
+            //polyline = new google.maps.Polyline(this.createPolylineOptions(item.setor, totalVagasUtilizadas));
+            //polyline.setMap(map);
+            //MapUtil.polylines.push(polyline);
 
             marker = new google.maps.Marker({
                 position: { lat: item.setor.latInicio, lng: item.setor.lngInicio },
                 icon: {
                     url: (item.setor.total_vagas - totalVagasUtilizadas > 0) ? iconUrlGrenn : iconUrlRed,
-                    scaledSize: new google.maps.Size(32, 32)
+                    scaledSize: new google.maps.Size(122, 122)
                 }
             });
             // marker.
@@ -129,7 +130,7 @@ export class MapUtil {
             /**
              * Abre as opções do estacionamento
              * polyline  item pressionado onde vai abrir o evento ( linha do inicio e final do Simbolo do carro) 
-             */
+             
             google.maps.event.addListener(polyline, 'click', event => {
 
                 infowindow.setPosition(event.latLng);
@@ -145,13 +146,17 @@ export class MapUtil {
                 }
             });
 
-            /**
+            
              * Abre as opções do estacionamento
              * marker  item pressionado onde vai abrir o evento ( Simbolo do carro verde) 
              */
             google.maps.event.addListener(marker, 'click', event => {
+                // let latLng = event.latLng;
+                let latLng = marker.position;
+                console.log('marker', marker);
+                console.log('event', event);
 
-                infowindow.setPosition(event.latLng);
+                infowindow.setPosition(latLng);
                 infowindow.open(HomePage.map);
                 MapUtil.infoWindows.push(infowindow);
 
@@ -169,8 +174,8 @@ export class MapUtil {
 
     findSetor(map: any, setor: any, area: string) {
 
-        const iconUrlGrenn = "assets/imgs/map-marker-green-4.png";
-        const iconUrlRed = "assets/imgs/map-marker-red-4.png";
+        const iconUrlGrenn = "assets/imgs/map-marker-blue-4.svg";
+        const iconUrlRed = "assets/imgs/map-marker-red-4.svg";
         let marker;
         const latlng = new google.maps.LatLng(setor.latInicio, setor.lngInicio);
         map.setCenter(latlng);
@@ -180,6 +185,25 @@ export class MapUtil {
         let infowindow = new google.maps.InfoWindow({
             content: this.createInfoPolylines(setor, area, totalVagasUtilizadas),
         });
+
+        google.maps.event.addListener(infowindow, 'domready', function() {
+
+   // Referência ao DIV que recebe o conteúdo da infowindow recorrendo ao jQuery
+   //var iwOuter = this.getElementByClassName('.gm-style-iw');
+
+   /* Uma vez que o div pretendido está numa posição anterior ao div .gm-style-iw.
+    * Recorremos ao jQuery e criamos uma variável iwBackground,
+    * e aproveitamos a referência já existente do .gm-style-iw para obter o div anterior com .prev().
+    */
+   //var iwBackground = iwOuter.prev();
+
+   // Remover o div da sombra do fundo
+   //iwBackground.children(':nth-child(2)').css({'display' : 'none'});
+
+   // Remover o div de fundo branco
+   //iwBackground.children(':nth-child(4)').css({'display' : 'none'});
+
+});
 
         marker = new google.maps.Marker({
             position: { lat: setor.latInicio, lng: setor.lngInicio },
@@ -242,43 +266,56 @@ export class MapUtil {
     }
 
     public createInfoPolylines(setor: SetorModel, area: any, totalVagasUtilizadas: number) {
+        
 
         let div = document.createElement('div');
         div.className = "gm-style gm-style-iw";
 
-        const setorNome = (setor.nome.length < 3) ? ('Setor ' + setor.nome) : setor.nome;
+        let divl = document.createElement('div');
+        divl.className = "style-left";
+
+        let divr = document.createElement('div');
+        divr.className = "style-right";
+
+        //const setorNome = (setor?.nome.toString().length < 3) ? ('Setor ' + setor.nome) : setor.nome;
+        const setorNome = setor.nome;
 
         // console.log('ST', setorNome + " | " + setor.codigo);
         // console.log('AR', area);
 
         let h3 = document.createElement('h3');
         h3.className = "setor-codigo";
-        h3.innerText = setorNome + " (" + setor.codigo + ")" + " | Área: " + area.endereco + " (" + area.codigo + ")";
-
-        let h5vt = document.createElement('h4');
+        //h3.innerText = setorNome + " (" + setor.codigo + ")" + " | Área: " + area.endereco + " (" + area.codigo + ")";
+        // h3.innerText = area.endereco + " (" + area.codigo + ")" + " - " +setorNome;
+        h3.innerText = setorNome + " - " + area.endereco;
+        let h5vt = document.createElement('p');
         h5vt.className = "setor-vagas";
         h5vt.innerText = "Vagas: " + setor.total_vagas;
 
-        let h5vn = document.createElement('h4');
+        let h5vn = document.createElement('p');
         h5vn.className = "setor-vagas-normal";
         // h5vn.innerText = "Vagas convencionais disponíveis: " + ((setor.total_vagas - (setor.vagas_idoso + setor.vagas_deficiente)) - setor.qtd_normal_estacionados);
         h5vn.innerText = "Vagas convencionais: " + (setor.total_vagas - setor.qtd_normal_estacionados);
 
-        let h5vd = document.createElement('h4');
-        h5vd.className = "setor-vagas-normal";
-        h5vd.innerText = "Vagas de deficiente: " + (setor.vagas_deficiente - setor.qtd_deficiente_estacionados);
+        let h5vd = document.createElement('p');
+        h5vd.className = "setor-vagas-pcd";
+        h5vd.innerText = "Vagas de PCD: " + (setor.vagas_deficiente - setor.qtd_deficiente_estacionados);
 
-        let h5vi = document.createElement('h4');
-        h5vi.className = "setor-vagas-normal";
+        let h5vi = document.createElement('p');
+        h5vi.className = "setor-vagas-i";
         h5vi.innerText = "Vagas de idoso: " + (setor.vagas_idoso - setor.qtd_idoso_estacionados);
 
-        let h5vc = document.createElement('h4');
-        h5vc.className = "setor-vagas-normal";
+        let h5vc = document.createElement('p');
+        h5vc.className = "setor-vagas-cd";
         h5vc.innerText = "Vagas Carga/Descarga: " + (setor.vagas_carga_descarga - setor.qtd_carga_descarga_estacionados);
 
         let button = document.createElement('button');
         button.className = "btn-estacionar";
-        button.innerText = "Estacionar";
+        button.innerText = "ESTACIONAR";
+        let ico = document.createElement('img');
+        ico.setAttribute("src", "assets/icones/estacionamento-white.svg");
+        ico.className = "pin-view";
+        button.appendChild(ico);
 
 
         button.addEventListener('click', () => {
@@ -293,12 +330,21 @@ export class MapUtil {
             button.disabled = true;
         }
 
+        let divpin = document.createElement('div');
+        divpin.className = "btn-pin";
+        // buttonView.innerText = "Ver";
+
+        let iconpin = document.createElement('img');
+        iconpin.setAttribute("src", "assets/icones/pin-dark.svg");
+        iconpin.className = "pin-btn";
+        divpin.appendChild(iconpin);
+
         let buttonView = document.createElement('button');
         buttonView.className = "btn-ver";
         // buttonView.innerText = "Ver";
 
         let icon = document.createElement('img');
-        icon.setAttribute("src", "assets/icon/streat_view.png");
+        icon.setAttribute("src", "assets/icones/shopping-cart-white.svg");
         icon.className = "streat-view";
         buttonView.appendChild(icon);
 
@@ -308,14 +354,18 @@ export class MapUtil {
             document.getElementById('btn-show-streat-view').click();
         });
 
-        div.appendChild(h3);
+        divl.appendChild(h3);
         // div.appendChild(h5vt);
-        div.appendChild(h5vn);
-        div.appendChild(h5vd);
-        div.appendChild(h5vi);
-        div.appendChild(h5vc);
-        div.appendChild(button);
-        div.appendChild(buttonView);
+        divr.appendChild(h5vn);
+        divr.appendChild(h5vi);
+        divr.appendChild(h5vd);
+        divr.appendChild(h5vc);
+        divr.appendChild(button);
+        divl.appendChild(buttonView);
+        div.appendChild(divl);
+        div.appendChild(divr);
+        div.appendChild(divpin);
+
 
 
         return div;

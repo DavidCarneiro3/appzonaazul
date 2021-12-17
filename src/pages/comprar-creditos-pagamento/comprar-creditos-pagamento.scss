@@ -1,34 +1,65 @@
 page-comprar-creditos-pagamento {
-  font-family: "Roboto";
+  font-family: "kanit";
+
 
   .header-icon {
-    color: #fff;
+    color: #4F4F4F;
     font-size: 18pt;
   }
 
+  
+
   .header-text {
-    color: #fff;
+    color: color($colors, header-dark);
     font-size: 12pt;
   }
 
+  .btn-confirma {
+    border: none !important;
+    background: #27AE60;
+    border-radius: 26px;
+    width: 100%;
+    height: 35px;
+    // margin-bottom: 20px;
+    margin-left: 0px;
+    margin-top: 10px;
+  }
+
+  .btn-add{
+    width: 90%;
+    margin-left: 4%;
+    margin-top: 10px;
+    border-radius: 26px;
+    color: #828282;
+    ion-icon{
+        margin-left: 5px;
+        margin-top: -1px;
+    }
+}
+
   .btn {
     border: none !important;
-    background: color($colors, primary);
+    //background: color($colors, primary);
     height: 35px;
     margin-bottom: 20px;
   }
 
   .route-item {
     padding-left: 0;
-
+    color: #000;
+    width: 300px;
     .thumbnail-icon {
       min-width: 40px;
       min-height: 40px;
-      margin-right: 0;
+      margin-left: -20px;
 
       img {
-        width: 40px;
-        height: 40px;
+        border-radius: 4px;
+        // width: 40px;
+        // height: 30px;
+        width: auto;
+        height: 25px;
+        margin-top: 8px;
       }
     }
 
@@ -37,7 +68,7 @@ page-comprar-creditos-pagamento {
       font-weight: normal;
       font-size: 11.5pt;
       text-align: left;
-      margin-left: 5%;
+      margin-left: -5%;
     }
 
     .information-hour {
@@ -85,6 +116,18 @@ page-comprar-creditos-pagamento {
   }
 }
 
+.title{
+  color: #4F4F4F;
+  text-align: center;
+  font-weight: bold;
+}
+
+.desc{
+  color: #000;
+  text-align: center;
+  
+}
+
 .info {
   .alert-wrapper {
     background-color: #4d90fe;
@@ -99,6 +142,21 @@ page-comprar-creditos-pagamento {
     .btn-ok {
       color: #fff;
     }
+  }
+
+  .title{
+    color: #4F4F4F;
+    text-align: center;
+    font-weight: bold;
+    font-size: 13.5pt;
+  }
+
+  .information-date-2 {
+    color: #444;
+    font-weight: normal;
+    font-size: 11.5pt;
+    text-align: justify;
+    margin-left: -5%;
   }
 }
 

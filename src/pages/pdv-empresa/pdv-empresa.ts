@@ -27,6 +27,8 @@ import { Constants } from '../../environments/constants';
 })
 export class PdvEmpresaPage {
 
+  modelPdv = 'PDV';
+
   selectOptions = {
     title: 'Modalidade',
     subTitle: 'Escolha sua modalidade de revendedor',
@@ -96,6 +98,11 @@ export class PdvEmpresaPage {
   ionViewWillLeave() {
     this.subscription.add(this.subCurrentUser);
     this.subscription.unsubscribe();
+  }
+
+  hasPhoto() {
+    const doc = this.empresaForm.value.document;
+    return doc && doc.length > 0;
   }
 
   createPDV() {
@@ -210,19 +217,21 @@ export class PdvEmpresaPage {
       this.user.pdvReg = this.pdv;
       //this.loadingCtrl.create({content:"Enviando Solicitacao"}).present()
       this.alertCtrl.create({
-        title: "Envio de Cadastro",
-        message: "A função Quero ser PDV será desabilitada até o resultado sobre esta solicitação seja analisado. deseja continuar?",
+        title: "Confirmar solicitação?",
+        message: "Sua solicitação será analisada pelos nossos consultores e em breve entraremos em contato com você. Deseja continuar?",
         buttons: [
           {
-            text: 'Ok',
+            text: 'Sim',
+            cssClass: 'btn-ok',
             handler: () => {
               this.userProvider.saveUser(this.user)
               this.events.publish('user', this.user)
-              this.navCtrl.setRoot(Constants.HOME_PAGE.name)
+              this.navCtrl.setRoot(Constants.PRINCIPAL_PAGE.name)
             }
           },
           {
-            text: 'Cancelar',
+            text: 'Não',
+            cssClass: 'btn-cancelar'
           }
         ]
       }).present()

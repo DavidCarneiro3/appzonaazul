@@ -52,9 +52,9 @@ export class ReportarProblemaPage {
             this.reProbProvider.save(this.userId, this.formGroup.value).then(data => {
                 console.log(data);
 
-                this.showAlert('Sucesso', 'Sua menssagem foi enviada com sucesso!', '', () => {
+                this.showAlert('Obrigado', 'Recebemos sua mensagem, em breve entraremos em contato com você.', '', () => {
                     loading.dismiss();
-                    this.navCtrl.setRoot(Constants.HOME_PAGE.name);
+                    this.navCtrl.setRoot(Constants.PRINCIPAL_PAGE.name);
                 })
 
             });

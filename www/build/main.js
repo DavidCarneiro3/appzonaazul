@@ -1,13 +1,70 @@
-webpackJsonp([33],{
+webpackJsonp([35],{
 
-/***/ 133:
+/***/ 111:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CadsUserProvider; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angularfire2_database__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__environments_constants__ = __webpack_require__(19);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var CadsUserProvider = /** @class */ (function () {
+    function CadsUserProvider(afd) {
+        this.afd = afd;
+    }
+    CadsUserProvider.prototype.save = function (userID, cadID, entity) {
+        return this.afd.list(__WEBPACK_IMPORTED_MODULE_2__environments_constants__["a" /* Constants */].PATH_DOCUMENTS_CADS_USER + cadID + '/' + userID).push(entity);
+    };
+    CadsUserProvider.prototype.update = function (userId, cadID, entity) {
+        return this.afd.object(__WEBPACK_IMPORTED_MODULE_2__environments_constants__["a" /* Constants */].PATH_DOCUMENTS_CADS_USER + userId + '/' + cadID).set(entity);
+    };
+    CadsUserProvider.prototype.getCads = function (userID) {
+        return this.afd.list(__WEBPACK_IMPORTED_MODULE_2__environments_constants__["a" /* Constants */].PATH_DOCUMENTS_CADS_USER + '/' + userID)
+            .snapshotChanges()
+            .map(function (snapshot) { return snapshot.map(function (item) { return ({ key: item.payload.key, item: item.payload.val() }); }); });
+    };
+    CadsUserProvider.prototype.getQtdCadsUsados = function (userID) {
+        return this.afd.object(__WEBPACK_IMPORTED_MODULE_2__environments_constants__["a" /* Constants */].PATH_DOCUMENTS_CADS_USER + userID + "/qtdCadsUsados").valueChanges();
+    };
+    CadsUserProvider.prototype.updateQtdCadsUsadas = function (userID, entity) {
+        return this.afd.object(__WEBPACK_IMPORTED_MODULE_2__environments_constants__["a" /* Constants */].PATH_DOCUMENTS_CADS_USER + userID + "/qtdCadsUsados").set(entity);
+    };
+    CadsUserProvider.prototype.findQtdCads = function (userID) {
+        return this.afd.list(__WEBPACK_IMPORTED_MODULE_2__environments_constants__["a" /* Constants */].PATH_DOCUMENTS_CADS_USER + '/' + userID)
+            .snapshotChanges()
+            .map(function (snapshot) { return snapshot.map(function (item) { return ({ key: item.payload.key, item: item.payload.val() }); }); });
+    };
+    CadsUserProvider = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_angularfire2_database__["a" /* AngularFireDatabase */]])
+    ], CadsUserProvider);
+    return CadsUserProvider;
+}());
+
+//# sourceMappingURL=cads-user.js.map
+
+/***/ }),
+
+/***/ 112:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CadsProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angularfire2_database__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__environments_constants__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angularfire2_database__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__environments_constants__ = __webpack_require__(19);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -40,13 +97,13 @@ var CadsProvider = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 134:
+/***/ 113:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return User; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__configuracao__ = __webpack_require__(463);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__pdv__ = __webpack_require__(464);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__configuracao__ = __webpack_require__(434);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__pdv__ = __webpack_require__(435);
 
 
 var User = /** @class */ (function () {
@@ -94,12 +151,12 @@ var User = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 20:
+/***/ 19:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Constants; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__environment__ = __webpack_require__(64);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__environment__ = __webpack_require__(59);
 
 var Constants = /** @class */ (function () {
     function Constants() {
@@ -109,6 +166,8 @@ var Constants = /** @class */ (function () {
     Constants.PATH_DOCUMENTS_DEFAULT = "/ce/fortaleza/2018/";
     //Constants used to display pages
     Constants.HOME_PAGE = { id: 'home', name: 'HomePage' };
+    Constants.PRINCIPAL_PAGE = { id: 'principal', name: 'PrincipalPage' };
+    Constants.ESTACIONADOS_MODAL_PAGE = { id: 'estacionados-modal', name: 'EstacionadosModalPage' };
     Constants.LOGIN_PAGE = { id: 'login', name: 'LoginPage' };
     Constants.PAGAMENTOS_PAGE = { id: 'pagamentos', name: 'PagamentosPage' };
     Constants.PAGAMENTOS_FORM_PAGE = { id: 'pagamentos_form', name: 'PagamentosFormPage' };
@@ -221,7 +280,7 @@ var Constants = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 216:
+/***/ 198:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -261,16 +320,16 @@ var ModalProvider = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 217:
+/***/ 199:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AuthProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angularfire2_auth__ = __webpack_require__(142);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angularfire2_auth__ = __webpack_require__(122);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__user_user__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__models_user__ = __webpack_require__(134);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_take__ = __webpack_require__(93);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__models_user__ = __webpack_require__(113);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_take__ = __webpack_require__(85);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_take___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_take__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -348,754 +407,15 @@ var AuthProvider = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 218:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CadsUserProvider; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angularfire2_database__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__environments_constants__ = __webpack_require__(20);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-var CadsUserProvider = /** @class */ (function () {
-    function CadsUserProvider(afd) {
-        this.afd = afd;
-    }
-    CadsUserProvider.prototype.save = function (userID, cadID, entity) {
-        return this.afd.list(__WEBPACK_IMPORTED_MODULE_2__environments_constants__["a" /* Constants */].PATH_DOCUMENTS_CADS_USER + cadID + '/' + userID).push(entity);
-    };
-    CadsUserProvider.prototype.update = function (userId, cadID, entity) {
-        return this.afd.object(__WEBPACK_IMPORTED_MODULE_2__environments_constants__["a" /* Constants */].PATH_DOCUMENTS_CADS_USER + userId + '/' + cadID).set(entity);
-    };
-    CadsUserProvider.prototype.getCads = function (userID) {
-        return this.afd.list(__WEBPACK_IMPORTED_MODULE_2__environments_constants__["a" /* Constants */].PATH_DOCUMENTS_CADS_USER + '/' + userID)
-            .snapshotChanges()
-            .map(function (snapshot) { return snapshot.map(function (item) { return ({ key: item.payload.key, item: item.payload.val() }); }); });
-    };
-    CadsUserProvider.prototype.getQtdCadsUsados = function (userID) {
-        return this.afd.object(__WEBPACK_IMPORTED_MODULE_2__environments_constants__["a" /* Constants */].PATH_DOCUMENTS_CADS_USER + userID + "/qtdCadsUsados").valueChanges();
-    };
-    CadsUserProvider.prototype.updateQtdCadsUsadas = function (userID, entity) {
-        return this.afd.object(__WEBPACK_IMPORTED_MODULE_2__environments_constants__["a" /* Constants */].PATH_DOCUMENTS_CADS_USER + userID + "/qtdCadsUsados").set(entity);
-    };
-    CadsUserProvider.prototype.findQtdCads = function (userID) {
-        return this.afd.list(__WEBPACK_IMPORTED_MODULE_2__environments_constants__["a" /* Constants */].PATH_DOCUMENTS_CADS_USER + '/' + userID)
-            .snapshotChanges()
-            .map(function (snapshot) { return snapshot.map(function (item) { return ({ key: item.payload.key, item: item.payload.val() }); }); });
-    };
-    CadsUserProvider = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_angularfire2_database__["a" /* AngularFireDatabase */]])
-    ], CadsUserProvider);
-    return CadsUserProvider;
-}());
-
-//# sourceMappingURL=cads-user.js.map
-
-/***/ }),
-
-/***/ 220:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ComunicacaoCentralProvider; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(94);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_http__ = __webpack_require__(299);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(36);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_Observable__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_Observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_Observable__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_timeout__ = __webpack_require__(611);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_timeout___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_timeout__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_timeoutWith__ = __webpack_require__(615);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_timeoutWith___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_timeoutWith__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_add_observable_throw__ = __webpack_require__(618);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_add_observable_throw___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_rxjs_add_observable_throw__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_rxjs_operators_catchError__ = __webpack_require__(619);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_rxjs_operators_catchError___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_rxjs_operators_catchError__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__tempo_estacionado_tempo_estacionado__ = __webpack_require__(223);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__logger_logger__ = __webpack_require__(40);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__firebase_logger_firebase_logger__ = __webpack_require__(343);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__environments_environment__ = __webpack_require__(64);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__util_md5_util__ = __webpack_require__(626);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__util_xml2json_util__ = __webpack_require__(627);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import { timeout, } from 'rxjs/operator'
-var ComunicacaoCentralProvider = /** @class */ (function () {
-    // private COD_ACESSO: string = this.gerarCodigoAcesso(this.COD_CLIENTE);
-    // private COD_ACESSO_PDV: string = this.gerarCodigoAcesso(this.COD_CLIENTE_PDV);
-    function ComunicacaoCentralProvider(http, platform, httpNative, logger, firebaseLoggerProvider, tempoEstacionadoProvider) {
-        this.http = http;
-        this.platform = platform;
-        this.httpNative = httpNative;
-        this.logger = logger;
-        this.firebaseLoggerProvider = firebaseLoggerProvider;
-        this.tempoEstacionadoProvider = tempoEstacionadoProvider;
-        /**
-         * Tutorial HTTP Client Angular
-         * https://alligator.io/angular/httpclient-intro/
-         */
-        this.URL_CENTRAL = "https://wszonaazuldsv.centralamc.com.br/transacao";
-        this.COD_CLIENTE = 75;
-        this.COD_CLIENTE_PDV = 76;
-        this.CNPJ_CLIENTE = '05591991000148';
-        this.DMA = this.getDataAtual();
-        this.TOKEN = 'af777ebfab40209d52e5500fd5582214';
-        if (__WEBPACK_IMPORTED_MODULE_12__environments_environment__["a" /* environment */].production) {
-            this.URL_CENTRAL = "https://wszonaazulprd.centralamc.com.br/transacao";
-            this.URL_CENTRAL2 = "https://wszonaazulprd2.centralamc.com.br/transacao";
-            this.COD_CLIENTE = 82;
-            this.COD_CLIENTE_PDV = 83;
-        }
-        else {
-            this.URL_CENTRAL = "https://wszonaazuldsv.centralamc.com.br/transacao";
-            this.URL_CENTRAL2 = "https://wszonaazulprd2.centralamc.com.br/transacao";
-            this.COD_CLIENTE = 75;
-            this.COD_CLIENTE_PDV = 76;
-        }
-        this.logger.info( true ? '** PRODUÇÃO **' : '** DESENVOLVIMENTO **');
-        this.logger.info('URL_CENTRAL: ' + this.URL_CENTRAL);
-        this.logger.info('COD_CLIENTE: ' + this.COD_CLIENTE);
-        this.logger.info('COD_CLIENTE_PDV: ' + this.COD_CLIENTE_PDV);
-        this.logger.info('CNPJ_CLIENTE: ' + this.CNPJ_CLIENTE);
-        this.logger.info('TOKEN: ' + this.TOKEN);
-        this.logger.info('DMA: ' + this.DMA);
-    }
-    ComunicacaoCentralProvider_1 = ComunicacaoCentralProvider;
-    ComunicacaoCentralProvider.prototype.setDMA = function (date) {
-        this.DMA = this.getDataAtual(date);
-        this.logger.info('DMA NTP: ' + this.DMA);
-    };
-    ComunicacaoCentralProvider.prototype.setDMA_NTP = function () {
-        var _this = this;
-        this.tempoEstacionadoProvider.getHoraAtualFromFirebase().then(function (data) {
-            _this.setDMA(data.dateNow);
-        });
-    };
-    // --------------------------------------------------------------------------------
-    // -- APP
-    /**
-     * Desbloqueio - APP
-     *
-     * @param idTransacaoDistribuidor
-     * @param quantidadeCartoes
-     *
-     * DOCUMENTACAO
-     *
-     * <!-- PARAMETROS -->
-     *   <transacao>
-     *       <codigoDistribuidor>75</codigoDistribuidor>
-     *       <dataEnvio>2018-07-18T11:28:00</dataEnvio>
-     *       <tipo>1</tipo>
-     *       <idTransacaoDistribuidor>12345</idTransacaoDistribuidor>
-     *       <cnpj>05591991000148</cnpj>
-     *       <quantidadeCartoes>1</quantidadeCartoes>
-     *   </transacao>
-     *
-     *   <!-- RESPOSTA -->
-     *   <?xml version="1.0"?>
-     *   <Resultado>
-     *       <dataResultado>2018-07-18T11:19:08</dataResultado>
-     *       <codigoDistribuidor>75</codigoDistribuidor>
-     *       <transacaoXml>75, 2018-07-18T11:28:00, 1, 12345, 05591991000148, 1</transacaoXml>
-     *       <dataProcessamento>2018-07-18T11:19:08</dataProcessamento>
-     *       <autenticacao>75969070547632873</autenticacao>
-     *       <sucesso>true</sucesso>
-     *       <mensagem>Sucesso ao fazer transa&#xE7;&#xE3;o!</mensagem>
-     *   </Resultado>
-     */
-    ComunicacaoCentralProvider.prototype.desbloqueioApp = function (quantidadeCartoes, idTransacaoDistribuidor, dataEnvio) {
-        var dateStr = this.getDateComunicacao(dataEnvio);
-        // const idTransacaoDistribuidor = this.gerarIdTransacao();
-        var requestBody = "\n    <transacao>\n      <codigoDistribuidor>" + this.COD_CLIENTE + "</codigoDistribuidor>\n      <dataEnvio>" + dateStr + "</dataEnvio>\n      <tipo>1</tipo>\n      <idTransacaoDistribuidor>" + idTransacaoDistribuidor + "</idTransacaoDistribuidor>\n      <cnpj>" + this.CNPJ_CLIENTE + "</cnpj>\n      <quantidadeCartoes>" + quantidadeCartoes + "</quantidadeCartoes>\n    </transacao>\n    ";
-        return this.genericRequest(this.URL_CENTRAL, requestBody);
-    };
-    /**
-     * Desbloqueio com Ativação - APP
-     *
-     * @param idTransacaoDistribuidor
-     * @param imei
-     * @param area
-     * @param setor
-     * @param face
-     * @param latitude
-     * @param longitude
-     * @param placa
-     * @param tipoVeiculo
-     * @param tempoCartao
-     * @param quantidadeCartoes
-     *
-     * DOCUMENTACAO
-     *
-     * <!-- PARAMETROS -->
-     * <transacao>
-     *  <codigoDistribuidor>75</codigoDistribuidor>
-     *  <dataEnvio>2018-07-18T11:28:00</dataEnvio>
-     *  <tipo>3</tipo>
-     *  <idTransacaoDistribuidor>260</idTransacaoDistribuidor>
-     *  <cnpj>05591991000148</cnpj>
-     *  <imei>123456789012345</imei>
-     *  <area>01</area>
-     *  <setor>01</setor>
-     *  <face>A</face>
-     *  <latitude>-23.71624</latitude>
-     *  <longitude>-46.778914</longitude>
-     *  <placa>VAC9876</placa>
-     *  <tipoVeiculo>1</tipoVeiculo>
-     *  <tempoCartao>30</tempoCartao>
-     *  <quantidadeCartoes>1</quantidadeCartoes>
-     * </transacao>
-     *
-     * <!-- RESPOSTA -->
-     * <?xml version="1.0"?>
-     * <Resultado>
-     *  <dataResultado>2018-07-18T11:20:42</dataResultado>
-     *  <codigoDistribuidor>75</codigoDistribuidor>
-     *  <transacaoXml>75, 2018-07-18T11:28:00, 1, 260, 05591991000148, 123456789012345, 01, 01, A, -23.71624, -46.778914, VAC9876, 1, 30, 1</transacaoXml>
-     *  <dataProcessamento>2018-07-18T11:20:42</dataProcessamento>
-     *  <autenticacao>75380275967530906</autenticacao>
-     *  <sucesso>true</sucesso>
-     *  <mensagem>Sucesso ao fazer transa&#xE7;&#xE3;o!</mensagem>
-     * </Resultado>
-     */
-    ComunicacaoCentralProvider.prototype.desbloqueioAtivacaoApp = function (imei, area, setor, face, latitude, longitude, placa, tipoVeiculo, tempoCartao, quantidadeCartoes, idTransacaoDistribuidor, dataEnvio) {
-        // const idTransacaoDistribuidor = this.gerarIdTransacao();
-        var dateStr = this.getDateComunicacao(dataEnvio);
-        var imeiTitle = (imei.indexOf('-') > 0) ? 'udid' : 'imei';
-        var requestBody = "\n    <transacao>\n      <codigoDistribuidor>" + this.COD_CLIENTE + "</codigoDistribuidor>\n      <dataEnvio>" + dateStr + "</dataEnvio>\n      <tipo>3</tipo>\n      <idTransacaoDistribuidor>" + idTransacaoDistribuidor + "</idTransacaoDistribuidor>\n      <cnpj>" + this.CNPJ_CLIENTE + "</cnpj>\n      <" + imeiTitle + ">" + imei + "</" + imeiTitle + ">\n      <area>" + area + "</area>\n      <setor>" + setor + "</setor>\n      <face>" + face + "</face>\n      <latitude>" + latitude + "</latitude>\n      <longitude>" + longitude + "</longitude>\n      <placa>" + placa + "</placa>\n      <tipoVeiculo>" + tipoVeiculo + "</tipoVeiculo>\n      <tempoCartao>" + tempoCartao + "</tempoCartao>\n      <quantidadeCartoes>" + quantidadeCartoes + "</quantidadeCartoes>\n    </transacao>\n    ";
-        return this.genericRequest(this.URL_CENTRAL, requestBody);
-    };
-    /**
-     * Ativação - APP
-     *
-     * @param idTransacaoDistribuidor
-     * @param quantidadeCartoes
-     *
-     * DOCUMENTACAO
-     *
-     * <!-- PARAMETROS -->
-     * <transacao>
-     *  <codigoDistribuidor>75</codigoDistribuidor>
-     *  <dataEnvio>2018-07-18T11:28:00</dataEnvio>
-     *  <tipo>2</tipo>
-     *  <idTransacaoDistribuidor>313</idTransacaoDistribuidor>
-     *  <cnpj>05591991000148</cnpj>
-     *  <imei>123456789012345</imei>
-     *  <area>01</area>
-     *  <setor>01</setor>
-     *  <face>A</face>
-     *  <latitude>-23.71624</latitude>
-     *  <longitude>-46.778914</longitude>
-     *  <placa>VAC9876</placa>
-     *  <tipoVeiculo>1</tipoVeiculo>
-     *  <tempoCartao>60</tempoCartao>
-     *  <quantidadeCartoes>1</quantidadeCartoes>
-     * </transacao>
-     *
-     * <!-- RESPOSTA -->
-     * <?xml version="1.0"?>
-     * <Resultado>
-     *  <dataResultado>2018-07-18T11:20:42</dataResultado>
-     *  <codigoDistribuidor>75</codigoDistribuidor>
-     *  <transacaoXml>75, 2018-07-18T11:28:00, 1, 260, 05591991000148, 123456789012345, 01, 01, A, -23.71624, -46.778914, VAC9876, 1, 30, 1</transacaoXml>
-     *  <dataProcessamento>2018-07-18T11:20:42</dataProcessamento>
-     *  <autenticacao>75380275967530906</autenticacao>
-     *  <sucesso>true</sucesso>
-     *  <mensagem>Sucesso ao fazer transa&#xE7;&#xE3;o!</mensagem>
-     * </Resultado>
-     */
-    ComunicacaoCentralProvider.prototype.ativacaoApp = function (imei, area, setor, face, latitude, longitude, placa, tipoVeiculo, tempoCartao, quantidadeCartoes, idTransacaoDistribuidor, dataEnvio) {
-        // const idTransacaoDistribuidor = this.gerarIdTransacao();
-        var dateStr = this.getDateComunicacao(dataEnvio);
-        var imeiTitle = (imei.indexOf('-') > 0) ? 'udid' : 'imei';
-        var requestBody = "\n    <transacao>\n    <codigoDistribuidor>" + this.COD_CLIENTE + "</codigoDistribuidor>\n      <dataEnvio>" + dateStr + "</dataEnvio>\n      <tipo>2</tipo>\n      <idTransacaoDistribuidor>" + idTransacaoDistribuidor + "</idTransacaoDistribuidor>\n      <cnpj>" + this.CNPJ_CLIENTE + "</cnpj>\n      <" + imeiTitle + ">" + imei + "</" + imeiTitle + ">\n      <area>" + area + "</area>\n      <setor>" + setor + "</setor>\n      <face>" + face + "</face>\n      <latitude>" + latitude + "</latitude>\n      <longitude>" + longitude + "</longitude>\n      <placa>" + placa + "</placa>\n      <tipoVeiculo>" + tipoVeiculo + "</tipoVeiculo>\n      <tempoCartao>" + tempoCartao + "</tempoCartao>\n      <quantidadeCartoes>" + quantidadeCartoes + "</quantidadeCartoes>\n    </transacao>\n    ";
-        return this.genericRequest(this.URL_CENTRAL, requestBody);
-    };
-    /**
-     * Cancelamento - APP
-     *
-     * @param idTransacaoDistribuidor
-     * @param motivoCancelamento
-     * @param idTransacaoDistribuidorCancelamento
-     *
-     * DOCUMENTACAO
-     *
-     * <!-- PARAMETROS -->
-     * <transacao>
-     *     <codigoDistribuidor>75</codigoDistribuidor>
-     *     <dataEnvio>2018-07-18T11:28:00</dataEnvio>
-     *     <tipo>4</tipo>
-     *     <idTransacaoDistribuidor>313</idTransacaoDistribuidor>
-     *     <motivoCancelamento>Falha de comunicacao</motivoCancelamento>
-     *     <idTransacaoDistribuidorCancelamento>275</idTransacaoDistribuidorCancelamento>
-     * </transacao>
-     *
-     * <!-- RESPOSTA -->
-     * <?xml version="1.0"?>
-     * <Resultado>
-     *     <dataResultado>2018-07-18T11:22:28</dataResultado>
-     *     <codigoDistribuidor>75</codigoDistribuidor>
-     *     <transacaoXml>75, 2018-07-18T11:28:00, 4, 313, Falha de comunicacao, 275</transacaoXml>
-     *     <dataProcessamento>2018-07-18T11:22:28</dataProcessamento>
-     *     <autenticacao>75160633052652701</autenticacao>
-     *     <sucesso>false</sucesso>
-     *     <mensagem>Erro ao tentar efetuar transa&#xE7;&#xE3;o de cancelamento: c&#xF3;digo da transa&#xE7;&#xE3;o duplicado!</mensagem>
-     * </Resultado>
-     */
-    ComunicacaoCentralProvider.prototype.cancelamentoApp = function (idTransacaoDistribuidor, motivoCancelamento, idTransacaoDistribuidorCancelamento, dataEnvio) {
-        var dateStr = this.getDateComunicacao(dataEnvio);
-        var requestBody = "\n    <transacao>\n      <codigoDistribuidor>" + this.COD_CLIENTE + "</codigoDistribuidor>\n      <dataEnvio>" + dateStr + "</dataEnvio>\n      <tipo>4</tipo>\n      <idTransacaoDistribuidor>" + idTransacaoDistribuidor + "</idTransacaoDistribuidor>\n      <motivoCancelamento>" + motivoCancelamento + "</motivoCancelamento>\n      <idTransacaoDistribuidorCancelamento>" + idTransacaoDistribuidorCancelamento + "</idTransacaoDistribuidorCancelamento>\n    </transacao>\n    ";
-        return this.genericRequest(this.URL_CENTRAL, requestBody);
-    };
-    /**
-     * Consulta Transação - APP
-     *
-     * @param idTransacaoDistribuidor
-     *
-     * DOCUMENTACAO
-     *
-     * <!-- PARAMETROS -->
-     * <transacao>
-     *     <codigoDistribuidor>75</codigoDistribuidor>
-     *     <idTransacaoDistribuidor>313</idTransacaoDistribuidor>
-     * </transacao>
-     *
-     * <!-- RESPOSTA -->
-     * <?xml version="1.0"?>
-     * <ResultadoConsultaTransacao>
-     *     <dataResultado>2018-07-18T11:22:28</dataResultado>
-     *     <transacaoXml>75, 313</transacaoXml>
-     *     <dataProcessamento>2018-07-18T11:22:28</dataProcessamento>
-     *     <autenticacao>75160633052652701</autenticacao>
-     *     <estado>1</estado>
-     *     <mensagem>Dados retornados com sucesso!</mensagem>
-     * </ResultadoConsultaTransacao>
-     *
-     * <!-- RESPOSTA DE ERRO -->
-     * <?xml version="1.0"?>
-     * <ResultadoConsultaTransacao>
-     *     <dataResultado>2018-07-18T11:22:28</dataResultado>
-     *     <transacaoXml>75, 232</transacaoXml>
-     *     <mensagem>TRANSACAO INEXISTENTE</mensagem>
-     * </ResultadoConsultaTransacao>
-     */
-    ComunicacaoCentralProvider.prototype.consultaTransacaoApp = function (idTransacaoDistribuidor) {
-        var requestBody = "\n    <transacao>\n      <codigoDistribuidor>" + this.COD_CLIENTE + "</codigoDistribuidor>\n      <idTransacaoDistribuidor>" + idTransacaoDistribuidor + "</idTransacaoDistribuidor>\n    </transacao>\n    ";
-        return this.genericRequest(this.URL_CENTRAL, requestBody);
-    };
-    /**
-     * Consulta Saldo - APP
-     *
-     * DOCUMENTACAO
-     *
-     * <!-- PARAMETROS -->
-     * <transacao>
-     *     <codigoDistribuidor>75</codigoDistribuidor>
-     * </transacao>
-     *
-     * <!-- RESPOSTA -->
-     * <?xml version="1.0"?>
-     * <ResultadoConsultaTransacao>
-     *     <codigoDistribuidor>75</codigoDistribuidor>
-     *     <data>2018-07-18T11:25:20</data>
-     *     <saldoBloqueado>4998</saldoBloqueado>
-     *     <saldoDesbloqueado/>
-     *     <totalAtivado>2</totalAtivado>
-     *     <mensagem>Sucesso ao retornar os dados!</mensagem>
-     * </ResultadoConsultaTransacao>
-     */
-    ComunicacaoCentralProvider.prototype.consultaSaldoApp = function () {
-        var requestBody = "\n    <transacao>\n      <codigoDistribuidor>" + this.COD_CLIENTE + "</codigoDistribuidor>\n    </transacao>\n    ";
-        return this.genericRequest(this.URL_CENTRAL, requestBody);
-    };
-    // --------------------------------------------------------------------------------
-    // -- PDV
-    /**
-     * Desbloqueio com Ativação - PDV
-     *
-     * @param idTransacaoDistribuidor
-     * @param imei
-     * @param area
-     * @param setor
-     * @param face
-     * @param latitude
-     * @param longitude
-     * @param placa
-     * @param tempoCartao
-     * @param quantidadeCartoes
-     * @param codigoPDV
-     *
-     * DOCUMENTACAO
-     *
-     * <!-- PARAMETROS -->
-     * <transacao>
-     *  <codigoDistribuidor>75</codigoDistribuidor>
-     *  <codigoPDV>22</codigoPDV>
-     *  <dataEnvio>2018-07-18T11:28:00</dataEnvio>
-     *  <tipo>3</tipo>
-     *  <idTransacaoDistribuidor>260</idTransacaoDistribuidor>
-     *  <cnpj>05591991000148</cnpj>
-     *  <imei>123456789012345</imei>
-     *  <area>01</area>
-     *  <setor>01</setor>
-     *  <face>A</face>
-     *  <latitude>-23.71624</latitude>
-     *  <longitude>-46.778914</longitude>
-     *  <placa>VAC9876</placa>
-     *  <tempoCartao>30</tempoCartao>
-     *  <quantidadeCartoes>1</quantidadeCartoes>
-     * </transacao>
-     *
-     * <!-- RESPOSTA -->
-     * <?xml version="1.0"?>
-     * <ResultadoPDV>
-     *  <codigoDistribuidor>75</codigoDistribuidor>
-     *  <dataResultado>2018-07-18T11:20:42</dataResultado>
-     *  <codigoPDV>22</codigoPDV>
-     *  <idTransacaoDistribuidor>309</idTransacaoDistribuidor>
-     *  <transacaoXml>75, 2018-07-18T11:28:00, 1, 260, 05591991000148, 123456789012345, 01, 01, A, -23.71624, -46.778914, VAC9876, 1, 30, 1</transacaoXml>
-     *  <dataProcessamento>2018-07-18T11:20:42</dataProcessamento>
-     *  <autenticacao>75380275967530906</autenticacao>
-     *  <sucesso>true</sucesso>
-     *  <mensagem>Sucesso ao fazer transa&#xE7;&#xE3;o!</mensagem>
-     * </ResultadoPDV>
-     *
-     * <!-- RESPOSTA ERRO -->
-     * <?xml version="1.0"?>
-     * <ResultadoPDV>
-     *     <dataResultado>2018-07-18T11:26:09</dataResultado>
-     *     <codigoDistribuidor>75</codigoDistribuidor>
-     *     <codigoPDV>22</codigoPDV>
-     *     <idTransacaoDistribuidor>260</idTransacaoDistribuidor>
-     *     <transacaoXml>75, 20, 2018-07-18T07:00:00, 8, 260, 05591991000148, 123456789012345, 01, 01, A, -23.71624, -46.778914, VAC9876, 30, 1</transacaoXml>
-     *     <dataProcessamento>2018-07-18T11:26:09</dataProcessamento>
-     *     <autenticacao>75105797701235860</autenticacao>
-     *     <sucesso>false</sucesso>
-     *     <mensagem>Erro ao tentar efetuar transa&#xE7;&#xE3;o de desbloqueio com ativa&#xE7;&#xE3;o: ponto de venda inv&#xE1;lido!</mensagem>
-     * </ResultadoPDV>
-     */
-    ComunicacaoCentralProvider.prototype.desbloqueioAtivacaoPDV = function (imei, area, setor, face, latitude, longitude, placa, tipoVeiculo, tempoCartao, quantidadeCartoes, codigoPDV, idTransacaoDistribuidor, dataEnvio) {
-        // const idTransacaoDistribuidor = this.gerarIdTransacao();
-        var dateStr = this.getDateComunicacao(dataEnvio);
-        var imeiTitle = (imei.indexOf('-') > 0) ? 'udid' : 'imei';
-        var auth = btoa(this.COD_CLIENTE_PDV + ":" + this.gerarCodigoAcesso(this.COD_CLIENTE_PDV));
-        var requestBody = "\n    <transacao>\n      <codigoDistribuidor>" + this.COD_CLIENTE + "</codigoDistribuidor>\n      <codigoPDV>" + codigoPDV + "</codigoPDV>\n      <dataEnvio>" + dateStr + "</dataEnvio>\n      <tipo>3</tipo>\n      <idTransacaoDistribuidor>" + idTransacaoDistribuidor + "</idTransacaoDistribuidor>\n      <cnpj>" + this.CNPJ_CLIENTE + "</cnpj>\n      <" + imeiTitle + ">" + imei + "</" + imeiTitle + ">\n      <area>" + area + "</area>\n      <setor>" + setor + "</setor>\n      <face>" + face + "</face>\n      <latitude>" + latitude + "</latitude>\n      <longitude>" + longitude + "</longitude>\n      <placa>" + placa + "</placa>\n      <tempoCartao>" + tempoCartao + "</tempoCartao>\n      <quantidadeCartoes>" + quantidadeCartoes + "</quantidadeCartoes>\n    </transacao>\n    ";
-        // TODO: NAO PRECISA MANDAR O TIPO DE VEICULO NO PDV?
-        // if(!environment.production && environment.simular_l2){
-        //   const response1 = {
-        //     dataResultado: '2018-07-18T11:26:09',
-        //     codigoDistribuidor: 75,
-        //     codigoPDV: 22,
-        //     idTransacaoDistribuidor: 260,
-        //     dataProcessamento: '2018-07-18T11:26:09',
-        //     transacaoXml: '75, 20, 2018-07-18T07:00:00, 8, 260, 05591991000148, 123456789012345, 01, 01, A, -23.71624, -46.778914, VAC9876, 30, 1',
-        //     autenticacao: 75105797701235860,
-        //     sucesso: 'true',
-        //     mensagem: 'ok'
-        //   }
-        //   return Promise.resolve(response1);
-        // }
-        return this.genericRequest(this.URL_CENTRAL, requestBody, auth);
-    };
-    /**
-     * Cancelamento - PDV
-     *
-     * @param idTransacaoDistribuidor
-     * @param motivoCancelamento
-     * @param idTransacaoDistribuidorCancelamento
-     *
-     * DOCUMENTACAO
-     *
-     * <!-- PARAMETROS -->
-     * <transacao>
-     *     <codigoDistribuidor>75</codigoDistribuidor>
-     *     <codigoPDV>22</codigoPDV>
-     *     <dataEnvio>2018-07-18T11:28:00</dataEnvio>
-     *     <tipo>4</tipo>
-     *     <idTransacaoDistribuidor>313</idTransacaoDistribuidor>
-     *     <motivoCancelamento>Falha de comunicacao</motivoCancelamento>
-     *     <idTransacaoDistribuidorCancelamento>275</idTransacaoDistribuidorCancelamento>
-     * </transacao>
-     *
-     * <!-- RESPOSTA -->
-     * <?xml version="1.0"?>
-     * <Resultado>
-     *     <dataResultado>2018-07-18T11:22:28</dataResultado>
-     *     <codigoDistribuidor>75</codigoDistribuidor>
-     *     <transacaoXml>75, 2018-07-18T11:28:00, 4, 313, Falha de comunicacao, 275</transacaoXml>
-     *     <dataProcessamento>2018-07-18T11:22:28</dataProcessamento>
-     *     <autenticacao>75160633052652701</autenticacao>
-     *     <sucesso>false</sucesso>
-     *     <mensagem>Erro ao tentar efetuar transa&#xE7;&#xE3;o de cancelamento: c&#xF3;digo da transa&#xE7;&#xE3;o duplicado!</mensagem>
-     * </Resultado>
-     *
-     * <!-- RESPOSTA ERRO -->
-     * <?xml version="1.0"?>
-     * <Resultado>
-     *     <dataResultado>2018-07-18T11:22:28</dataResultado>
-     *     <codigoDistribuidor>75</codigoDistribuidor>
-     *     <codigoPDV>20</codigoPDV>
-     *     <idTransacaoDistribuidor>276</idTransacaoDistribuidor>
-     *     <transacaoXml>75, 2018-07-18T11:28:00, 4, 313, Falha de comunicacao, 275</transacaoXml>
-     *     <dataProcessamento>2018-07-18T11:22:28</dataProcessamento>
-     *     <autenticacao>75160633052652701</autenticacao>
-     *     <sucesso>false</sucesso>
-     *     <mensagem>Erro ao tentar efetuar transa&#xE7;&#xE3;o de desbloqueio: ponto de venda inv&#xE1;lido!</mensagem>
-     * </Resultado>
-     */
-    ComunicacaoCentralProvider.prototype.cancelamentoPDV = function (idTransacaoDistribuidor, motivoCancelamento, idTransacaoDistribuidorCancelamento, codigoPDV, dataEnvio) {
-        var dateStr = this.getDateComunicacao(dataEnvio);
-        var auth = btoa(this.COD_CLIENTE_PDV + ":" + this.gerarCodigoAcesso(this.COD_CLIENTE_PDV));
-        var requestBody = "\n    <transacao>\n      <codigoDistribuidor>" + this.COD_CLIENTE + "</codigoDistribuidor>\n      <codigoPDV>" + codigoPDV + "</codigoPDV>\n      <dataEnvio>" + dateStr + "</dataEnvio>\n      <tipo>4</tipo>\n      \n      <motivoCancelamento>" + motivoCancelamento + "</motivoCancelamento>\n      <idTransacaoDistribuidorCancelamento>" + idTransacaoDistribuidorCancelamento + "</idTransacaoDistribuidorCancelamento>\n    </transacao>\n    ";
-        return this.genericRequest(this.URL_CENTRAL, requestBody, auth);
-    };
-    ComunicacaoCentralProvider.prototype.genericRequest = function (url, requestBody, auth) {
-        if (url === void 0) { url = this.URL_CENTRAL; }
-        if (auth === void 0) { auth = undefined; }
-        if (auth === undefined) {
-            auth = btoa(this.COD_CLIENTE + ":" + this.gerarCodigoAcesso(this.COD_CLIENTE));
-        }
-        // const _headers = new HttpHeaders();
-        // _headers.append('content-type', 'application/xml');
-        // _headers.append('authorization', `Basic ${auth}`);
-        // _headers.append('Authorization', `Basic NzU6NTM4YjUxNzAxNTU4OTUxNTFjYjAyYTkzZmJmNDMwNjk=`);
-        // _headers.append('Access-Control-Allow-Origin' , '*');
-        // _headers.append('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT');
-        var _headers = {
-            'authorization': "Basic " + auth,
-            'content-type': 'application/xml'
-        };
-        // const body = `username=${usuario}&password=${senha}&grant_type=password`;
-        console.log(requestBody);
-        this.logger.info('***************************');
-        this.logger.info('** HTTP POST CENTRAL');
-        this.logger.info('** Basic: ' + auth);
-        this.logger.info('** URL: ' + url);
-        this.logger.info('** headers: ' + _headers);
-        this.logger.info('** requestBody: ' + requestBody);
-        return this.genericRequestAngular(url, requestBody, auth, _headers);
-    };
-    ComunicacaoCentralProvider.prototype.genericRequestNative = function (url, requestBody, auth, _headers) {
-        var _this = this;
-        if (url === void 0) { url = this.URL_CENTRAL; }
-        if (auth === void 0) { auth = undefined; }
-        this.logger.info('** HTTP POST NATIVE');
-        this.httpNative.setRequestTimeout(15);
-        this.httpNative.setDataSerializer('utf8');
-        return this.httpNative.post(url, requestBody, _headers)
-            .then(function (data) {
-            var responseXML = data.data;
-            var response = __WEBPACK_IMPORTED_MODULE_14__util_xml2json_util__["a" /* XML2JSONUtil */].parseHttpXmlResponse(responseXML);
-            // console.log(data.status);
-            // console.log(response); // data received by server
-            // console.log(data.headers);
-            _this.logger.info('** response: ' + response);
-            return Promise.resolve(response);
-        })
-            .catch(function (response) {
-            // console.log(response.status);
-            // console.log(response.error); // error message as string
-            // console.log(response.headers);
-            _this.logger.error('** HTTP POST CENTRAL');
-            _this.logger.error('** Basic: ' + auth);
-            _this.logger.error('** URL: ' + url);
-            _this.logger.error('** headers: ' + _headers);
-            _this.logger.error('** requestBody: ' + requestBody);
-            _this.logger.error('** reject: ' + JSON.stringify(response));
-            _this.firebaseLoggerProvider.enviarFirebase({
-                auth: auth,
-                url: url,
-                headers: _headers,
-                requestBody: requestBody,
-                response: JSON.stringify(response),
-                tipo: 'ERRO',
-                tipoDetalhe: 'Erro na comunicação com a AMC. Link L2.',
-                timestamp: new Date().toISOString(),
-            });
-            // if (response.status === 400) {
-            //   const responseJson = response.json();
-            //   if (responseJson.error === 'invalid_grant') {
-            //     return Promise.reject('Usuário ou senha inválida!');
-            //   }
-            // }
-            return Promise.reject(response);
-        });
-    };
-    ComunicacaoCentralProvider.prototype.genericRequestAngular = function (url, requestBody, auth, _headers, first) {
-        var _this = this;
-        if (url === void 0) { url = this.URL_CENTRAL; }
-        if (auth === void 0) { auth = undefined; }
-        if (first === void 0) { first = true; }
-        /*
-               para realizar o teste de redundancia de envio é necessário mandar a primeira requisição para
-               um endereço errado e após o erro é feito o envio para o endereço certo.
-               no timeout é necessário realizar uma configuração no navegador para atrasar a resposta da AMC
-               para simular não comunicação com o servidor pois não temos com testar a falta de conexão com o
-               servidor da AMC.
-               Verificar o ambiente em que vai ser testado para atualizar a URL das requisições
-         */
-        this.logger.info('** HTTP GET ANGULAR');
-        var _url = __WEBPACK_IMPORTED_MODULE_12__environments_environment__["a" /* environment */].middleware_cors;
-        var _urlFull = (_url + "?url=" + url + "&body=" + encodeURI(requestBody) + "&headers=" + encodeURI(JSON.stringify(_headers)));
-        this.logger.info('** url', _url);
-        this.logger.info('** url2', _urlFull);
-        console.log(_urlFull);
-        return new Promise(function (resolve, reject) {
-            _this.http.get(_urlFull, { responseType: 'text' })
-                .timeoutWith(ComunicacaoCentralProvider_1.APP_TIMEOUT, __WEBPACK_IMPORTED_MODULE_4_rxjs_Observable__["Observable"].throw(new Error("N\u00E3o foi poss\u00EDvel estacionar seu ve\u00EDculo. Seu tempo m\u00E1ximo de resposta durou mais de " + ComunicacaoCentralProvider_1.APP_TIMEOUT / 1000 + " segundos")))
-                .map(function (response) { return __WEBPACK_IMPORTED_MODULE_14__util_xml2json_util__["a" /* XML2JSONUtil */].parseHttpXmlResponse(response); })
-                .take(1)
-                .subscribe(function (response) {
-                _this.logger.info('** response: ', response);
-                return resolve(response);
-            }, function (error) {
-                if (first) {
-                    _this.genericRequestAngular(url = _this.URL_CENTRAL2, requestBody, auth = undefined, _headers, first = false)
-                        .catch(function (error) {
-                        reject(error);
-                    })
-                        .then(function (response) {
-                        resolve(response);
-                    });
-                }
-                else {
-                    reject(error);
-                }
-            });
-        });
-    };
-    ComunicacaoCentralProvider.prototype.genericRequestAngularNotCors = function (url, requestBody, auth, _headers, firstcall) {
-        var _this = this;
-        if (url === void 0) { url = this.URL_CENTRAL; }
-        if (auth === void 0) { auth = undefined; }
-        if (firstcall === void 0) { firstcall = true; }
-        this.logger.info('** HTTP POST ANGULAR');
-        return this.http.post(url, requestBody, { headers: _headers, responseType: 'text' })
-            .timeoutWith(ComunicacaoCentralProvider_1.APP_TIMEOUT, ("N\u00E3o foi poss\u00EDvel realizar a opera\u00E7\u00E3o. Seu tempo m\u00E1ximo de resposta durou mais de " + ComunicacaoCentralProvider_1.APP_TIMEOUT / 1000 + " segundos"))
-            .map(function (response) { return __WEBPACK_IMPORTED_MODULE_14__util_xml2json_util__["a" /* XML2JSONUtil */].parseHttpXmlResponse(response); })
-            .toPromise()
-            .then(function (response) {
-            _this.logger.info('** response: ' + response);
-            // response = response.replace('<?xml version="1.0"?>', '').trim();
-            // this.logger.info('** response 2: '+ response);
-            // const toJSON = XML2JSONUtil.parseHttpXmlResponse(response);
-            // this.logger.info('** response 2: '+ response);
-            return Promise.resolve(response);
-        })
-            .catch(function (response) {
-            _this.logger.error('** HTTP POST CENTRAL');
-            _this.logger.error('** Basic: ' + auth);
-            _this.logger.error('** URL: ' + url);
-            _this.logger.error('** headers: ' + _headers);
-            _this.logger.error('** requestBody: ' + requestBody);
-            _this.logger.error('** reject: ' + JSON.stringify(response));
-            _this.firebaseLoggerProvider.enviarFirebase({
-                auth: auth,
-                url: url,
-                headers: _headers,
-                requestBody: requestBody,
-                response: JSON.stringify(response),
-                tipo: 'ERRO',
-                tipoDetalhe: 'Erro na comunicação com a AMC. Link L2.',
-                timestamp: new Date().toISOString(),
-            });
-            // if (response.status === 400) {
-            //   const responseJson = response.json();
-            //   if (responseJson.error === 'invalid_grant') {
-            //     return Promise.reject('Usuário ou senha inválida!');
-            //   }
-            // }
-            return Promise.reject(response);
-            // }
-        });
-    };
-    ComunicacaoCentralProvider.prototype.getDateComunicacao = function (date) {
-        if (date === void 0) { date = new Date(); }
-        var dateStr = date.getFullYear() + '-' + this.putZero(date.getMonth() + 1) + '-' + this.putZero(date.getDate()) + 'T' + this.putZero(date.getHours()) + ':' + this.putZero(date.getMinutes()) + ':' + this.putZero(date.getSeconds());
-        return dateStr;
-    };
-    /**
-     * tipo inteiro - data atual "dma" (sem barras ou caracteres e sem zeros a esquerda)
-     */
-    ComunicacaoCentralProvider.prototype.getDataAtual = function (dt) {
-        if (dt === void 0) { dt = new Date(); }
-        return parseInt(dt.getDate() + '' + (dt.getMonth() + 1) + dt.getFullYear()); // 1172018
-    };
-    ComunicacaoCentralProvider.prototype.gerarCodigoAcesso = function (COD) {
-        if (COD === void 0) { COD = this.COD_CLIENTE; }
-        return this.gerarMD5(COD, this.CNPJ_CLIENTE, this.DMA, this.TOKEN);
-    };
-    ComunicacaoCentralProvider.prototype.gerarMD5 = function (cod, cnpj, dma, token) {
-        var md5 = __WEBPACK_IMPORTED_MODULE_13__util_md5_util__["a" /* MD5Util */].hashStr(cod + '' + cnpj + '' + dma + '' + token);
-        // const md5 = Md5.hashStr(cod + '' + cnpj + '' + dma + '' + token);
-        this.logger.info('md5: ' + md5);
-        return md5;
-    };
-    ComunicacaoCentralProvider.prototype.putZero = function (val) {
-        return val < 10 ? ('0' + val) : val;
-    };
-    ComunicacaoCentralProvider.APP_TIMEOUT = 15 * 1000; // 15 segundos (Tempo de Resposta)
-    ComunicacaoCentralProvider.APP_ESPERA = 30 * 1000; // 30 segundos (Tempo de Espera)
-    ComunicacaoCentralProvider = ComunicacaoCentralProvider_1 = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Injectable"])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */],
-            __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["o" /* Platform */],
-            __WEBPACK_IMPORTED_MODULE_2__ionic_native_http__["a" /* HTTP */],
-            __WEBPACK_IMPORTED_MODULE_10__logger_logger__["a" /* LoggerProvider */],
-            __WEBPACK_IMPORTED_MODULE_11__firebase_logger_firebase_logger__["a" /* FirebaseLoggerProvider */],
-            __WEBPACK_IMPORTED_MODULE_9__tempo_estacionado_tempo_estacionado__["a" /* TempoEstacionadoProvider */]])
-    ], ComunicacaoCentralProvider);
-    return ComunicacaoCentralProvider;
-    var ComunicacaoCentralProvider_1;
-}());
-
-//# sourceMappingURL=comunicacao-central.js.map
-
-/***/ }),
-
-/***/ 221:
+/***/ 201:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EstacionarProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angularfire2_database__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_estacionar__ = __webpack_require__(451);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_constants__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angularfire2_database__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_estacionar__ = __webpack_require__(422);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_constants__ = __webpack_require__(19);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1153,18 +473,6 @@ var EstacionarProvider = /** @class */ (function () {
             var cont = 1;
             changes.forEach(function (_item) {
                 cont += Object.keys(_item.estacionamentos).length;
-            });
-            return cont;
-        });
-    };
-    EstacionarProvider.prototype.countById = function (id) {
-        return this.afd.list(__WEBPACK_IMPORTED_MODULE_3__environments_constants__["a" /* Constants */].PATH_DOCUMENTS_ESTACIONAR + id)
-            .snapshotChanges()
-            .map(function (changes) { return changes.map(function (c) { return ({ key: c.payload.key, estacionamentos: c.payload.val() }); }); })
-            .map(function (changes) {
-            var cont = 1;
-            changes.forEach(function (_item) {
-                cont += Object.keys(_item.estacionamentos.id.split("_")[0]).length;
             });
             return cont;
         });
@@ -1267,7 +575,658 @@ var EstacionarProvider = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 222:
+/***/ 202:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ComunicacaoCentralProvider; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__environments_environment__ = __webpack_require__(59);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__util_md5_util__ = __webpack_require__(583);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__(86);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_Observable__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_Observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_Observable__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__util_xml2json_util__ = __webpack_require__(584);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_timeout__ = __webpack_require__(601);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_timeout___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_timeout__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_timeoutWith__ = __webpack_require__(605);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_timeoutWith___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_timeoutWith__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_rxjs_add_observable_throw__ = __webpack_require__(608);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_rxjs_add_observable_throw___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_rxjs_add_observable_throw__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__tempo_estacionado_tempo_estacionado__ = __webpack_require__(204);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__logger_logger__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__firebase_logger_firebase_logger__ = __webpack_require__(330);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_ionic_angular__ = __webpack_require__(35);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+var ComunicacaoCentralProvider = /** @class */ (function () {
+    // private COD_ACESSO: string = this.gerarCodigoAcesso(this.COD_CLIENTE);
+    // private COD_ACESSO_PDV: string = this.gerarCodigoAcesso(this.COD_CLIENTE_PDV);
+    function ComunicacaoCentralProvider(http, platform, logger, firebaseLoggerProvider, tempoEstacionadoProvider) {
+        this.http = http;
+        this.platform = platform;
+        this.logger = logger;
+        this.firebaseLoggerProvider = firebaseLoggerProvider;
+        this.tempoEstacionadoProvider = tempoEstacionadoProvider;
+        /**
+         * Tutorial HTTP Client Angular
+         * https://alligator.io/angular/httpclient-intro/
+         */
+        this.URL_CENTRAL = "https://wszonaazuldsv.centralamc.com.br/transacao";
+        this.COD_CLIENTE = 75;
+        this.COD_CLIENTE_PDV = 76;
+        this.CNPJ_CLIENTE = '05591991000148';
+        this.DMA = this.getDataAtual();
+        this.TOKEN = 'af777ebfab40209d52e5500fd5582214';
+        var isProd = __WEBPACK_IMPORTED_MODULE_0__environments_environment__["a" /* environment */].production ? true : false;
+        // const isProd = false;
+        if (isProd && !__WEBPACK_IMPORTED_MODULE_0__environments_environment__["a" /* environment */].simular_l2) {
+            this.URL_CENTRAL = "https://wszonaazuldsv.centralamc.com.br/transacao";
+            // this.URL_CENTRAL = `https://wszonaazulprd2.centralamc.com.br/transacao`;
+            this.COD_CLIENTE = 82;
+            this.COD_CLIENTE_PDV = 83;
+        }
+        else {
+            this.URL_CENTRAL = "https://wszonaazuldsv.centralamc.com.br/transacao";
+            this.COD_CLIENTE = 106;
+            this.COD_CLIENTE_PDV = 107;
+        }
+        this.logger.info('AMBIENTE: ' + (isProd ? '** PRODUÇÃO **' : '** DESENVOLVIMENTO **'));
+        this.logger.info('URL_CENTRAL: ' + this.URL_CENTRAL);
+        this.logger.info('COD_CLIENTE: ' + this.COD_CLIENTE);
+        this.logger.info('COD_CLIENTE_PDV: ' + this.COD_CLIENTE_PDV);
+        this.logger.info('CNPJ_CLIENTE: ' + this.CNPJ_CLIENTE);
+        this.logger.info('TOKEN: ' + this.TOKEN);
+        this.logger.info('DMA: ' + this.DMA);
+    }
+    ComunicacaoCentralProvider_1 = ComunicacaoCentralProvider;
+    ComunicacaoCentralProvider.prototype.setDMA = function (date) {
+        this.DMA = this.getDataAtual(date);
+        this.logger.info('DMA NTP: ' + this.DMA);
+    };
+    ComunicacaoCentralProvider.prototype.setDMA_NTP = function () {
+        var _this = this;
+        this.tempoEstacionadoProvider.getHoraAtualFromFirebase().then(function (data) {
+            _this.setDMA(data.dateNow);
+        });
+    };
+    // --------------------------------------------------------------------------------
+    // -- APP
+    /**
+     * Desbloqueio - APP
+     *
+     * @param idTransacaoDistribuidor
+     * @param quantidadeCartoes
+     *
+     * DOCUMENTACAO
+     *
+     * <!-- PARAMETROS -->
+     *   <transacao>
+     *       <codigoDistribuidor>75</codigoDistribuidor>
+     *       <dataEnvio>2018-07-18T11:28:00</dataEnvio>
+     *       <tipo>1</tipo>
+     *       <idTransacaoDistribuidor>12345</idTransacaoDistribuidor>
+     *       <cnpj>05591991000148</cnpj>
+     *       <quantidadeCartoes>1</quantidadeCartoes>
+     *   </transacao>
+     *
+     *   <!-- RESPOSTA -->
+     *   <?xml version="1.0"?>
+     *   <Resultado>
+     *       <dataResultado>2018-07-18T11:19:08</dataResultado>
+     *       <codigoDistribuidor>75</codigoDistribuidor>
+     *       <transacaoXml>75, 2018-07-18T11:28:00, 1, 12345, 05591991000148, 1</transacaoXml>
+     *       <dataProcessamento>2018-07-18T11:19:08</dataProcessamento>
+     *       <autenticacao>75969070547632873</autenticacao>
+     *       <sucesso>true</sucesso>
+     *       <mensagem>Sucesso ao fazer transa&#xE7;&#xE3;o!</mensagem>
+     *   </Resultado>
+     */
+    ComunicacaoCentralProvider.prototype.desbloqueioApp = function (quantidadeCartoes, idTransacaoDistribuidor, dataEnvio) {
+        var dateStr = this.getDateComunicacao(dataEnvio);
+        // const idTransacaoDistribuidor = this.gerarIdTransacao();
+        var requestBody = "\n    <transacao>\n      <codigoDistribuidor>" + this.COD_CLIENTE + "</codigoDistribuidor>\n      <dataEnvio>" + dateStr + "</dataEnvio>\n      <tipo>1</tipo>\n      <idTransacaoDistribuidor>" + idTransacaoDistribuidor + "</idTransacaoDistribuidor>\n      <cnpj>" + this.CNPJ_CLIENTE + "</cnpj>\n      <quantidadeCartoes>" + quantidadeCartoes + "</quantidadeCartoes>\n    </transacao>\n    ";
+        if (__WEBPACK_IMPORTED_MODULE_0__environments_environment__["a" /* environment */].simular_l2) {
+            var resposta = "\n      <?xml version=\"1.0\"?>\n        <Resultado>\n            <dataResultado>" + dateStr + "</dataResultado>\n            <codigoDistribuidor>" + this.COD_CLIENTE + "</codigoDistribuidor>\n            <transacaoXml>75, 2018-07-18T11:28:00, 1, 12345, 05591991000148, 1</transacaoXml>\n            <dataProcessamento>" + dateStr + "</dataProcessamento>\n            <autenticacao>75969070547632873</autenticacao>\n            <sucesso>true</sucesso>\n            <mensagem>Sucesso ao fazer transa&#xE7;&#xE3;o!</mensagem>\n        </Resultado>\n      ";
+            var respostaJson_1 = __WEBPACK_IMPORTED_MODULE_5__util_xml2json_util__["a" /* XML2JSONUtil */].parseHttpXmlResponse(resposta);
+            console.log('Resposta Json linha 140', respostaJson_1);
+            return new Promise(function (resolve, reject) { return resolve(respostaJson_1); });
+        }
+        else {
+            return this.genericRequest(this.URL_CENTRAL, requestBody);
+        }
+    };
+    /**
+     * Desbloqueio com Ativação - APP
+     *
+     * @param idTransacaoDistribuidor
+     * @param imei
+     * @param area
+     * @param setor
+     * @param face
+     * @param latitude
+     * @param longitude
+     * @param placa
+     * @param tipoVeiculo
+     * @param tempoCartao
+     * @param quantidadeCartoes
+     *
+     * DOCUMENTACAO
+     *
+     * <!-- PARAMETROS -->
+     * <transacao>
+     *  <codigoDistribuidor>75</codigoDistribuidor>
+     *  <dataEnvio>2018-07-18T11:28:00</dataEnvio>
+     *  <tipo>3</tipo>
+     *  <idTransacaoDistribuidor>260</idTransacaoDistribuidor>
+     *  <cnpj>05591991000148</cnpj>
+     *  <imei>123456789012345</imei>
+     *  <area>01</area>
+     *  <setor>01</setor>
+     *  <face>A</face>
+     *  <latitude>-23.71624</latitude>
+     *  <longitude>-46.778914</longitude>
+     *  <placa>VAC9876</placa>
+     *  <tipoVeiculo>1</tipoVeiculo>
+     *  <tempoCartao>30</tempoCartao>
+     *  <quantidadeCartoes>1</quantidadeCartoes>
+     * </transacao>
+     *
+     * <!-- RESPOSTA -->
+     * <?xml version="1.0"?>
+     * <Resultado>
+     *  <dataResultado>2018-07-18T11:20:42</dataResultado>
+     *  <codigoDistribuidor>75</codigoDistribuidor>
+     *  <transacaoXml>75, 2018-07-18T11:28:00, 1, 260, 05591991000148, 123456789012345, 01, 01, A, -23.71624, -46.778914, VAC9876, 1, 30, 1</transacaoXml>
+     *  <dataProcessamento>2018-07-18T11:20:42</dataProcessamento>
+     *  <autenticacao>75380275967530906</autenticacao>
+     *  <sucesso>true</sucesso>
+     *  <mensagem>Sucesso ao fazer transa&#xE7;&#xE3;o!</mensagem>
+     * </Resultado>
+     */
+    ComunicacaoCentralProvider.prototype.desbloqueioAtivacaoApp = function (imei, area, setor, face, latitude, longitude, placa, tipoVeiculo, tempoCartao, quantidadeCartoes, idTransacaoDistribuidor, dataEnvio) {
+        // const idTransacaoDistribuidor = this.gerarIdTransacao();
+        var dateStr = this.getDateComunicacao(dataEnvio);
+        var imeiTitle = (imei.indexOf('-') > 0) ? 'udid' : 'imei';
+        var requestBody = "\n    <transacao>\n      <codigoDistribuidor>" + this.COD_CLIENTE + "</codigoDistribuidor>\n      <dataEnvio>" + dateStr + "</dataEnvio>\n      <tipo>3</tipo>\n      <idTransacaoDistribuidor>" + idTransacaoDistribuidor + "</idTransacaoDistribuidor>\n      <cnpj>" + this.CNPJ_CLIENTE + "</cnpj>\n      <" + imeiTitle + ">" + imei + "</" + imeiTitle + ">\n      <area>" + area + "</area>\n      <setor>" + setor + "</setor>\n      <face>" + face + "</face>\n      <latitude>" + latitude + "</latitude>\n      <longitude>" + longitude + "</longitude>\n      <placa>" + placa + "</placa>\n      <tipoVeiculo>" + tipoVeiculo + "</tipoVeiculo>\n      <tempoCartao>" + tempoCartao + "</tempoCartao>\n      <quantidadeCartoes>" + quantidadeCartoes + "</quantidadeCartoes>\n    </transacao>\n    ";
+        if (__WEBPACK_IMPORTED_MODULE_0__environments_environment__["a" /* environment */].simular_l2) {
+            var resposta = "\n      <?xml version=\"1.0\"?>\n      <Resultado>\n        <dataResultado>" + dateStr + "</dataResultado>\n        <codigoDistribuidor>" + this.COD_CLIENTE + "</codigoDistribuidor>\n        <transacaoXml>75, 2018-07-18T11:28:00, 1, 260, 05591991000148, 123456789012345, 01, 01, A, -23.71624, -46.778914, VAC9876, 1, 30, 1</transacaoXml>\n        <dataProcessamento>" + dateStr + "</dataProcessamento>\n        <autenticacao>75380275967530906</autenticacao>\n        <sucesso>true</sucesso>\n        <mensagem>Sucesso ao fazer transa&#xE7;&#xE3;o!</mensagem>\n       </Resultado>\n      ";
+            var respostaJson_2 = __WEBPACK_IMPORTED_MODULE_5__util_xml2json_util__["a" /* XML2JSONUtil */].parseHttpXmlResponse(resposta);
+            return new Promise(function (resolve, reject) { return resolve(respostaJson_2); });
+        }
+        else {
+            return this.genericRequest(this.URL_CENTRAL, requestBody);
+        }
+    };
+    /**
+     * Ativação - APP
+     *
+     * @param idTransacaoDistribuidor
+     * @param quantidadeCartoes
+     *
+     * DOCUMENTACAO
+     *
+     * <!-- PARAMETROS -->
+     * <transacao>
+     *  <codigoDistribuidor>75</codigoDistribuidor>
+     *  <dataEnvio>2018-07-18T11:28:00</dataEnvio>
+     *  <tipo>2</tipo>
+     *  <idTransacaoDistribuidor>313</idTransacaoDistribuidor>
+     *  <cnpj>05591991000148</cnpj>
+     *  <imei>123456789012345</imei>
+     *  <area>01</area>
+     *  <setor>01</setor>
+     *  <face>A</face>
+     *  <latitude>-23.71624</latitude>
+     *  <longitude>-46.778914</longitude>
+     *  <placa>VAC9876</placa>
+     *  <tipoVeiculo>1</tipoVeiculo>
+     *  <tempoCartao>60</tempoCartao>
+     *  <quantidadeCartoes>1</quantidadeCartoes>
+     * </transacao>
+     *
+     * <!-- RESPOSTA -->
+     * <?xml version="1.0"?>
+     * <Resultado>
+     *  <dataResultado>2018-07-18T11:20:42</dataResultado>
+     *  <codigoDistribuidor>75</codigoDistribuidor>
+     *  <transacaoXml>75, 2018-07-18T11:28:00, 1, 260, 05591991000148, 123456789012345, 01, 01, A, -23.71624, -46.778914, VAC9876, 1, 30, 1</transacaoXml>
+     *  <dataProcessamento>2018-07-18T11:20:42</dataProcessamento>
+     *  <autenticacao>75380275967530906</autenticacao>
+     *  <sucesso>true</sucesso>
+     *  <mensagem>Sucesso ao fazer transa&#xE7;&#xE3;o!</mensagem>
+     * </Resultado>
+     */
+    ComunicacaoCentralProvider.prototype.ativacaoApp = function (imei, area, setor, face, latitude, longitude, placa, tipoVeiculo, tempoCartao, quantidadeCartoes, idTransacaoDistribuidor, dataEnvio) {
+        // const idTransacaoDistribuidor = this.gerarIdTransacao();
+        var dateStr = this.getDateComunicacao(dataEnvio);
+        var imeiTitle = (imei.indexOf('-') > 0) ? 'udid' : 'imei';
+        var requestBody = "\n    <transacao>\n      <codigoDistribuidor>" + this.COD_CLIENTE + "</codigoDistribuidor>\n      <dataEnvio>" + dateStr + "</dataEnvio>\n      <tipo>2</tipo>\n      <idTransacaoDistribuidor>" + idTransacaoDistribuidor + "</idTransacaoDistribuidor>\n      <cnpj>" + this.CNPJ_CLIENTE + "</cnpj>\n      <" + imeiTitle + ">" + imei + "</" + imeiTitle + ">\n      <area>" + area + "</area>\n      <setor>" + setor + "</setor>\n      <face>" + face + "</face>\n      <latitude>" + latitude + "</latitude>\n      <longitude>" + longitude + "</longitude>\n      <placa>" + placa + "</placa>\n      <tipoVeiculo>" + tipoVeiculo + "</tipoVeiculo>\n      <tempoCartao>" + tempoCartao + "</tempoCartao>\n      <quantidadeCartoes>" + quantidadeCartoes + "</quantidadeCartoes>\n    </transacao>\n    ";
+        if (__WEBPACK_IMPORTED_MODULE_0__environments_environment__["a" /* environment */].simular_l2) {
+            var resposta = "\n      <?xml version=\"1.0\"?>\n      <Resultado>\n        <dataResultado>" + dateStr + "</dataResultado>\n        <codigoDistribuidor>" + this.COD_CLIENTE + "</codigoDistribuidor>\n        <transacaoXml>75, 2018-07-18T11:28:00, 1, 260, 05591991000148, 123456789012345, 01, 01, A, -23.71624, -46.778914, VAC9876, 1, 30, 1</transacaoXml>\n        <dataProcessamento>" + dateStr + "</dataProcessamento>\n        <autenticacao>75380275967530906</autenticacao>\n        <sucesso>true</sucesso>\n        <mensagem>Sucesso ao fazer transa&#xE7;&#xE3;o!</mensagem>\n      </Resultado>\n      ";
+            var respostaJson_3 = __WEBPACK_IMPORTED_MODULE_5__util_xml2json_util__["a" /* XML2JSONUtil */].parseHttpXmlResponse(resposta);
+            console.log('Resposta Json linha 320', respostaJson_3);
+            return new Promise(function (resolve, reject) { return resolve(respostaJson_3); });
+        }
+        else {
+            return this.genericRequest(this.URL_CENTRAL, requestBody);
+        }
+    };
+    /**
+     * Cancelamento - APP
+     *
+     * @param idTransacaoDistribuidor
+     * @param motivoCancelamento
+     * @param idTransacaoDistribuidorCancelamento
+     *
+     * DOCUMENTACAO
+     *
+     * <!-- PARAMETROS -->
+     * <transacao>
+     *     <codigoDistribuidor>75</codigoDistribuidor>
+     *     <dataEnvio>2018-07-18T11:28:00</dataEnvio>
+     *     <tipo>4</tipo>
+     *     <idTransacaoDistribuidor>313</idTransacaoDistribuidor>
+     *     <motivoCancelamento>Falha de comunicacao</motivoCancelamento>
+     *     <idTransacaoDistribuidorCancelamento>275</idTransacaoDistribuidorCancelamento>
+     * </transacao>
+     *
+     * <!-- RESPOSTA -->
+     * <?xml version="1.0"?>
+     * <Resultado>
+     *     <dataResultado>2018-07-18T11:22:28</dataResultado>
+     *     <codigoDistribuidor>75</codigoDistribuidor>
+     *     <transacaoXml>75, 2018-07-18T11:28:00, 4, 313, Falha de comunicacao, 275</transacaoXml>
+     *     <dataProcessamento>2018-07-18T11:22:28</dataProcessamento>
+     *     <autenticacao>75160633052652701</autenticacao>
+     *     <sucesso>false</sucesso>
+     *     <mensagem>Erro ao tentar efetuar transa&#xE7;&#xE3;o de cancelamento: c&#xF3;digo da transa&#xE7;&#xE3;o duplicado!</mensagem>
+     * </Resultado>
+     */
+    ComunicacaoCentralProvider.prototype.cancelamentoApp = function (idTransacaoDistribuidor, motivoCancelamento, idTransacaoDistribuidorCancelamento, dataEnvio) {
+        var dateStr = this.getDateComunicacao(dataEnvio);
+        var requestBody = "\n    <transacao>\n      <codigoDistribuidor>" + this.COD_CLIENTE + "</codigoDistribuidor>\n      <dataEnvio>" + dateStr + "</dataEnvio>\n      <tipo>4</tipo>\n      <idTransacaoDistribuidor>" + idTransacaoDistribuidorCancelamento + "</idTransacaoDistribuidor>\n      <motivoCancelamento>" + motivoCancelamento + "</motivoCancelamento>\n      <idTransacaoDistribuidorCancelamento>" + idTransacaoDistribuidor + "</idTransacaoDistribuidorCancelamento>\n    </transacao>\n    ";
+        if (__WEBPACK_IMPORTED_MODULE_0__environments_environment__["a" /* environment */].simular_l2) {
+            var resposta = "\n      <?xml version=\"1.0\"?>\n      <Resultado>\n        <dataResultado>" + dateStr + "</dataResultado>\n        <codigoDistribuidor>" + this.COD_CLIENTE + "</codigoDistribuidor>\n        <transacaoXml>75, 2018-07-18T11:28:00, 4, 313, Falha de comunicacao, 275</transacaoXml>\n        <dataProcessamento>" + dateStr + "</dataProcessamento>\n        <autenticacao>75160633052652701</autenticacao>\n        <sucesso>true</sucesso>\n        <mensagem>Erro ao tentar efetuar transa&#xE7;&#xE3;o de cancelamento: c&#xF3;digo da transa&#xE7;&#xE3;o duplicado!</mensagem>\n      </Resultado>\n      ";
+            var respostaJson_4 = __WEBPACK_IMPORTED_MODULE_5__util_xml2json_util__["a" /* XML2JSONUtil */].parseHttpXmlResponse(resposta);
+            return new Promise(function (resolve, reject) { return resolve(respostaJson_4); });
+        }
+        else {
+            return this.genericRequest(this.URL_CENTRAL, requestBody);
+        }
+    };
+    /**
+     * Consulta Transação - APP
+     *
+     * @param idTransacaoDistribuidor
+     *
+     * DOCUMENTACAO
+     *
+     * <!-- PARAMETROS -->
+     * <transacao>
+     *     <codigoDistribuidor>75</codigoDistribuidor>
+     *     <idTransacaoDistribuidor>313</idTransacaoDistribuidor>
+     * </transacao>
+     *
+     * <!-- RESPOSTA -->
+     * <?xml version="1.0"?>
+     * <ResultadoConsultaTransacao>
+     *     <dataResultado>2018-07-18T11:22:28</dataResultado>
+     *     <transacaoXml>75, 313</transacaoXml>
+     *     <dataProcessamento>2018-07-18T11:22:28</dataProcessamento>
+     *     <autenticacao>75160633052652701</autenticacao>
+     *     <estado>1</estado>
+     *     <mensagem>Dados retornados com sucesso!</mensagem>
+     * </ResultadoConsultaTransacao>
+     *
+     * <!-- RESPOSTA DE ERRO -->
+     * <?xml version="1.0"?>
+     * <ResultadoConsultaTransacao>
+     *     <dataResultado>2018-07-18T11:22:28</dataResultado>
+     *     <transacaoXml>75, 232</transacaoXml>
+     *     <mensagem>TRANSACAO INEXISTENTE</mensagem>
+     * </ResultadoConsultaTransacao>
+     */
+    ComunicacaoCentralProvider.prototype.consultaTransacaoApp = function (idTransacaoDistribuidor) {
+        var requestBody = "\n    <transacao>\n      <codigoDistribuidor>" + this.COD_CLIENTE + "</codigoDistribuidor>\n      <idTransacaoDistribuidor>" + idTransacaoDistribuidor + "</idTransacaoDistribuidor>\n    </transacao>\n    ";
+        if (__WEBPACK_IMPORTED_MODULE_0__environments_environment__["a" /* environment */].simular_l2) {
+            var resposta = "\n      <?xml version=\"1.0\"?>\n      <ResultadoConsultaTransacao>\n        <dataResultado>" + this.getDateComunicacao() + "</dataResultado>\n        <transacaoXml>75, 313</transacaoXml>\n        <dataProcessamento>" + this.getDateComunicacao() + "</dataProcessamento>\n        <autenticacao>75160633052652701</autenticacao>\n        <estado>1</estado>\n        <mensagem>Dados retornados com sucesso!</mensagem>\n      </ResultadoConsultaTransacao>\n      ";
+            var respostaJson_5 = __WEBPACK_IMPORTED_MODULE_5__util_xml2json_util__["a" /* XML2JSONUtil */].parseHttpXmlResponse(resposta);
+            return new Promise(function (resolve, reject) { return resolve(respostaJson_5); });
+        }
+        else {
+            return this.genericRequest(this.URL_CENTRAL, requestBody);
+        }
+    };
+    /**
+     * Consulta Saldo - APP
+     *
+     * DOCUMENTACAO
+     *
+     * <!-- PARAMETROS -->
+     * <transacao>
+     *     <codigoDistribuidor>75</codigoDistribuidor>
+     * </transacao>
+     *
+     * <!-- RESPOSTA -->
+     * <?xml version="1.0"?>
+     * <ResultadoConsultaTransacao>
+     *     <codigoDistribuidor>75</codigoDistribuidor>
+     *     <data>2018-07-18T11:25:20</data>
+     *     <saldoBloqueado>4998</saldoBloqueado>
+     *     <saldoDesbloqueado/>
+     *     <totalAtivado>2</totalAtivado>
+     *     <mensagem>Sucesso ao retornar os dados!</mensagem>
+     * </ResultadoConsultaTransacao>
+     */
+    ComunicacaoCentralProvider.prototype.consultaSaldoApp = function () {
+        var requestBody = "\n    <transacao>\n      <codigoDistribuidor>" + this.COD_CLIENTE + "</codigoDistribuidor>\n    </transacao>\n    ";
+        if (__WEBPACK_IMPORTED_MODULE_0__environments_environment__["a" /* environment */].simular_l2) {
+            var resposta = "\n      <?xml version=\"1.0\"?>\n      <ResultadoConsultaTransacao>\n        <codigoDistribuidor>" + this.COD_CLIENTE + "</codigoDistribuidor>\n        <data>" + this.getDateComunicacao() + "</data>\n        <saldoBloqueado>4998</saldoBloqueado>\n        <saldoDesbloqueado/>\n        <totalAtivado>2</totalAtivado>\n        <mensagem>Sucesso ao retornar os dados!</mensagem>\n      </ResultadoConsultaTransacao>\n      ";
+            var respostaJson_6 = __WEBPACK_IMPORTED_MODULE_5__util_xml2json_util__["a" /* XML2JSONUtil */].parseHttpXmlResponse(resposta);
+            return new Promise(function (resolve, reject) { return resolve(respostaJson_6); });
+        }
+        else {
+            return this.genericRequest(this.URL_CENTRAL, requestBody);
+        }
+    };
+    // --------------------------------------------------------------------------------
+    // -- PDV
+    /**
+     * Desbloqueio com Ativação - PDV
+     *
+     * @param idTransacaoDistribuidor
+     * @param imei
+     * @param area
+     * @param setor
+     * @param face
+     * @param latitude
+     * @param longitude
+     * @param placa
+     * @param tempoCartao
+     * @param quantidadeCartoes
+     * @param codigoPDV
+     *
+     * DOCUMENTACAO
+     *
+     * <!-- PARAMETROS -->
+     * <transacao>
+     *  <codigoDistribuidor>75</codigoDistribuidor>
+     *  <codigoPDV>22</codigoPDV>
+     *  <dataEnvio>2018-07-18T11:28:00</dataEnvio>
+     *  <tipo>3</tipo>
+     *  <idTransacaoDistribuidor>260</idTransacaoDistribuidor>
+     *  <cnpj>05591991000148</cnpj>
+     *  <imei>123456789012345</imei>
+     *  <area>01</area>
+     *  <setor>01</setor>
+     *  <face>A</face>
+     *  <latitude>-23.71624</latitude>
+     *  <longitude>-46.778914</longitude>
+     *  <placa>VAC9876</placa>
+     *  <tempoCartao>30</tempoCartao>
+     *  <quantidadeCartoes>1</quantidadeCartoes>
+     * </transacao>
+     *
+     * <!-- RESPOSTA -->
+     * <?xml version="1.0"?>
+     * <ResultadoPDV>
+     *  <codigoDistribuidor>75</codigoDistribuidor>
+     *  <dataResultado>2018-07-18T11:20:42</dataResultado>
+     *  <codigoPDV>22</codigoPDV>
+     *  <idTransacaoDistribuidor>309</idTransacaoDistribuidor>
+     *  <transacaoXml>75, 2018-07-18T11:28:00, 1, 260, 05591991000148, 123456789012345, 01, 01, A, -23.71624, -46.778914, VAC9876, 1, 30, 1</transacaoXml>
+     *  <dataProcessamento>2018-07-18T11:20:42</dataProcessamento>
+     *  <autenticacao>75380275967530906</autenticacao>
+     *  <sucesso>true</sucesso>
+     *  <mensagem>Sucesso ao fazer transa&#xE7;&#xE3;o!</mensagem>
+     * </ResultadoPDV>
+     *
+     * <!-- RESPOSTA ERRO -->
+     * <?xml version="1.0"?>
+     * <ResultadoPDV>
+     *     <dataResultado>2018-07-18T11:26:09</dataResultado>
+     *     <codigoDistribuidor>75</codigoDistribuidor>
+     *     <codigoPDV>22</codigoPDV>
+     *     <idTransacaoDistribuidor>260</idTransacaoDistribuidor>
+     *     <transacaoXml>75, 20, 2018-07-18T07:00:00, 8, 260, 05591991000148, 123456789012345, 01, 01, A, -23.71624, -46.778914, VAC9876, 30, 1</transacaoXml>
+     *     <dataProcessamento>2018-07-18T11:26:09</dataProcessamento>
+     *     <autenticacao>75105797701235860</autenticacao>
+     *     <sucesso>false</sucesso>
+     *     <mensagem>Erro ao tentar efetuar transa&#xE7;&#xE3;o de desbloqueio com ativa&#xE7;&#xE3;o: ponto de venda inv&#xE1;lido!</mensagem>
+     * </ResultadoPDV>
+     */
+    ComunicacaoCentralProvider.prototype.desbloqueioAtivacaoPDV = function (imei, area, setor, face, latitude, longitude, placa, tipoVeiculo, tempoCartao, quantidadeCartoes, codigoPDV, idTransacaoDistribuidor, dataEnvio) {
+        // const idTransacaoDistribuidor = this.gerarIdTransacao();
+        var dateStr = this.getDateComunicacao(dataEnvio);
+        var imeiTitle = (imei.indexOf('-') > 0) ? 'udid' : 'imei';
+        var auth = btoa(this.COD_CLIENTE_PDV + ":" + this.gerarCodigoAcesso(this.COD_CLIENTE_PDV));
+        var requestBody = "\n    <transacao>\n      <codigoDistribuidor>" + this.COD_CLIENTE + "</codigoDistribuidor>\n      <codigoPDV>" + codigoPDV + "</codigoPDV>\n      <dataEnvio>" + dateStr + "</dataEnvio>\n      <tipo>3</tipo>\n      <idTransacaoDistribuidor>" + idTransacaoDistribuidor + "</idTransacaoDistribuidor>\n      <cnpj>" + this.CNPJ_CLIENTE + "</cnpj>\n      <" + imeiTitle + ">" + imei + "</" + imeiTitle + ">\n      <area>" + area + "</area>\n      <setor>" + setor + "</setor>\n      <face>" + face + "</face>\n      <latitude>" + latitude + "</latitude>\n      <longitude>" + longitude + "</longitude>\n      <placa>" + placa + "</placa>\n      <tempoCartao>" + tempoCartao + "</tempoCartao>\n      <quantidadeCartoes>" + quantidadeCartoes + "</quantidadeCartoes>\n    </transacao>\n    ";
+        if (__WEBPACK_IMPORTED_MODULE_0__environments_environment__["a" /* environment */].simular_l2) {
+            var resposta = "\n      <?xml version=\"1.0\"?>\n      <ResultadoPDV>\n           <dataResultado>" + dateStr + "</dataResultado>\n           <codigoDistribuidor>" + this.COD_CLIENTE + "</codigoDistribuidor>\n           <codigoPDV>" + codigoPDV + "</codigoPDV>\n           <idTransacaoDistribuidor>" + idTransacaoDistribuidor + "</idTransacaoDistribuidor>\n           <transacaoXml>75, 20, 2018-07-18T07:00:00, 8, 260, 05591991000148, 123456789012345, 01, 01, A, -23.71624, -46.778914, VAC9876, 30, 1</transacaoXml>\n           <dataProcessamento>" + dateStr + "</dataProcessamento>\n           <autenticacao>75105797701235860</autenticacao>\n           <sucesso>true</sucesso>\n           <mensagem>Erro ao tentar efetuar transa&#xE7;&#xE3;o de desbloqueio com ativa&#xE7;&#xE3;o: ponto de venda inv&#xE1;lido!</mensagem>\n      </ResultadoPDV>\n      ";
+            var respostaJson_7 = __WEBPACK_IMPORTED_MODULE_5__util_xml2json_util__["a" /* XML2JSONUtil */].parseHttpXmlResponse(resposta);
+            return new Promise(function (resolve, reject) { return resolve(respostaJson_7); });
+        }
+        else {
+            return this.genericRequest(this.URL_CENTRAL, requestBody, auth);
+        }
+    };
+    /**
+     * Cancelamento - PDV
+     *
+     * @param idTransacaoDistribuidor
+     * @param motivoCancelamento
+     * @param idTransacaoDistribuidorCancelamento
+     *
+     * DOCUMENTACAO
+     *
+     * <!-- PARAMETROS -->
+     * <transacao>
+     *     <codigoDistribuidor>75</codigoDistribuidor>
+     *     <codigoPDV>22</codigoPDV>
+     *     <dataEnvio>2018-07-18T11:28:00</dataEnvio>
+     *     <tipo>4</tipo>
+     *     <idTransacaoDistribuidor>313</idTransacaoDistribuidor>
+     *     <motivoCancelamento>Falha de comunicacao</motivoCancelamento>
+     *     <idTransacaoDistribuidorCancelamento>275</idTransacaoDistribuidorCancelamento>
+     * </transacao>
+     *
+     * <!-- RESPOSTA -->
+     * <?xml version="1.0"?>
+     * <Resultado>
+     *     <dataResultado>2018-07-18T11:22:28</dataResultado>
+     *     <codigoDistribuidor>75</codigoDistribuidor>
+     *     <transacaoXml>75, 2018-07-18T11:28:00, 4, 313, Falha de comunicacao, 275</transacaoXml>
+     *     <dataProcessamento>2018-07-18T11:22:28</dataProcessamento>
+     *     <autenticacao>75160633052652701</autenticacao>
+     *     <sucesso>false</sucesso>
+     *     <mensagem>Erro ao tentar efetuar transa&#xE7;&#xE3;o de cancelamento: c&#xF3;digo da transa&#xE7;&#xE3;o duplicado!</mensagem>
+     * </Resultado>
+     *
+     * <!-- RESPOSTA ERRO -->
+     * <?xml version="1.0"?>
+     * <Resultado>
+     *     <dataResultado>2018-07-18T11:22:28</dataResultado>
+     *     <codigoDistribuidor>75</codigoDistribuidor>
+     *     <codigoPDV>20</codigoPDV>
+     *     <idTransacaoDistribuidor>276</idTransacaoDistribuidor>
+     *     <transacaoXml>75, 2018-07-18T11:28:00, 4, 313, Falha de comunicacao, 275</transacaoXml>
+     *     <dataProcessamento>2018-07-18T11:22:28</dataProcessamento>
+     *     <autenticacao>75160633052652701</autenticacao>
+     *     <sucesso>false</sucesso>
+     *     <mensagem>Erro ao tentar efetuar transa&#xE7;&#xE3;o de desbloqueio: ponto de venda inv&#xE1;lido!</mensagem>
+     * </Resultado>
+     */
+    ComunicacaoCentralProvider.prototype.cancelamentoPDV = function (idTransacaoDistribuidor, motivoCancelamento, idTransacaoDistribuidorCancelamento, codigoPDV, dataEnvio) {
+        var dateStr = this.getDateComunicacao(dataEnvio);
+        var auth = btoa(this.COD_CLIENTE_PDV + ":" + this.gerarCodigoAcesso(this.COD_CLIENTE_PDV));
+        var requestBody = "\n    <transacao>\n      <codigoDistribuidor>" + this.COD_CLIENTE + "</codigoDistribuidor>\n      <codigoPDV>" + codigoPDV + "</codigoPDV>\n      <dataEnvio>" + dateStr + "</dataEnvio>\n      <tipo>4</tipo>\n      <idTransacaoDistribuidor>" + idTransacaoDistribuidorCancelamento + "</idTransacaoDistribuidor>\n      <motivoCancelamento>" + motivoCancelamento + "</motivoCancelamento>\n      <idTransacaoDistribuidorCancelamento>" + idTransacaoDistribuidor + "</idTransacaoDistribuidorCancelamento>\n    </transacao>\n    ";
+        if (__WEBPACK_IMPORTED_MODULE_0__environments_environment__["a" /* environment */].simular_l2) {
+            var resposta = "\n      <?xml version=\"1.0\"?>\n      <Resultado>\n           <dataResultado>" + dateStr + "</dataResultado>\n           <codigoDistribuidor>" + this.COD_CLIENTE + "</codigoDistribuidor>\n           <transacaoXml>75, 2018-07-18T11:28:00, 4, 313, Falha de comunicacao, 275</transacaoXml>\n           <dataProcessamento>" + dateStr + "</dataProcessamento>\n           <autenticacao>75160633052652701</autenticacao>\n           <sucesso>true</sucesso>\n           <mensagem>Erro ao tentar efetuar transa&#xE7;&#xE3;o de cancelamento: c&#xF3;digo da transa&#xE7;&#xE3;o duplicado!</mensagem>\n      </Resultado>\n      ";
+            var respostaJson_8 = __WEBPACK_IMPORTED_MODULE_5__util_xml2json_util__["a" /* XML2JSONUtil */].parseHttpXmlResponse(resposta);
+            return new Promise(function (resolve, reject) { return resolve(respostaJson_8); });
+        }
+        else {
+            return this.genericRequest(this.URL_CENTRAL, requestBody, auth);
+        }
+    };
+    ComunicacaoCentralProvider.prototype.genericRequest = function (url, requestBody, auth) {
+        if (url === void 0) { url = this.URL_CENTRAL; }
+        if (auth === void 0) { auth = undefined; }
+        if (auth === undefined) {
+            auth = btoa(this.COD_CLIENTE + ":" + this.gerarCodigoAcesso(this.COD_CLIENTE));
+        }
+        // const _headers = new HttpHeaders();
+        // _headers.append('content-type', 'application/xml');
+        // _headers.append('authorization', `Basic ${auth}`);
+        // _headers.append('Authorization', `Basic NzU6NTM4YjUxNzAxNTU4OTUxNTFjYjAyYTkzZmJmNDMwNjk=`);
+        // _headers.append('Access-Control-Allow-Origin' , '*');
+        // _headers.append('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT');
+        var _headers = {
+            'authorization': "Basic " + auth,
+            'content-type': 'application/xml'
+        };
+        // const body = `username=${usuario}&password=${senha}&grant_type=password`;
+        this.logger.info('***************************');
+        this.logger.info('** HTTP POST CENTRAL');
+        this.logger.info('** Basic: ' + auth);
+        this.logger.info('** URL: ' + url);
+        this.logger.info('** headers: ' + JSON.stringify(_headers));
+        this.logger.info('** requestBody: ' + requestBody);
+        return this.genericRequestAngular(url, requestBody, auth, _headers);
+    };
+    ComunicacaoCentralProvider.prototype.genericRequestAngular = function (url, requestBody, auth, _headers) {
+        var _this = this;
+        if (url === void 0) { url = this.URL_CENTRAL; }
+        if (auth === void 0) { auth = undefined; }
+        this.logger.info('** HTTP GET ANGULAR');
+        var _url = __WEBPACK_IMPORTED_MODULE_0__environments_environment__["a" /* environment */].middleware_cors;
+        var _urlFull = (_url + "?url=" + url + "&body=" + encodeURI(requestBody) + "&headers=" + encodeURI(JSON.stringify(_headers)));
+        this.logger.info('** url', _url);
+        this.logger.info('** url2', _urlFull);
+        return new Promise(function (resolve, reject) {
+            _this.http.get(_urlFull, { responseType: 'text' })
+                .timeoutWith(ComunicacaoCentralProvider_1.APP_TIMEOUT, __WEBPACK_IMPORTED_MODULE_4_rxjs_Observable__["Observable"].throw(new Error("N\u00E3o foi poss\u00EDvel estacionar seu ve\u00EDculo. Seu tempo m\u00E1ximo de resposta durou mais de " + ComunicacaoCentralProvider_1.APP_TIMEOUT / 1000 + " segundos")))
+                .take(1)
+                .subscribe(function (response) {
+                console.log('Resposta CC linha 748', response);
+                _this.logger.info('** response: ', response);
+                var respostaJson = __WEBPACK_IMPORTED_MODULE_5__util_xml2json_util__["a" /* XML2JSONUtil */].parseHttpXmlResponse(response);
+                return resolve(respostaJson);
+            }, function (error) {
+                _this.logger.error('** error: ', error);
+                return reject(error);
+            });
+        });
+    };
+    ComunicacaoCentralProvider.prototype.genericRequestAngularNotCORs = function (url, requestBody, auth, _headers) {
+        var _this = this;
+        if (url === void 0) { url = this.URL_CENTRAL; }
+        if (auth === void 0) { auth = undefined; }
+        return this.http.post(url, requestBody, { headers: _headers, responseType: 'text' })
+            .timeoutWith(ComunicacaoCentralProvider_1.APP_TIMEOUT, __WEBPACK_IMPORTED_MODULE_4_rxjs_Observable__["Observable"].throw(new Error("N\u00E3o foi poss\u00EDvel estacionar seu ve\u00EDculo. Seu tempo m\u00E1ximo de resposta durou mais de " + ComunicacaoCentralProvider_1.APP_TIMEOUT / 1000 + " segundos")))
+            .map(function (response) { return __WEBPACK_IMPORTED_MODULE_5__util_xml2json_util__["a" /* XML2JSONUtil */].parseHttpXmlResponse(response); })
+            .toPromise()
+            .then(function (response) {
+            _this.logger.info('** response: ' + response);
+            // response = response.replace('<?xml version="1.0"?>', '').trim();
+            // this.logger.info('** response 2: '+ response);
+            // this.logger.info('** response 2: '+ response);
+            // const toJSON = XML2JSONUtil.parseHttpXmlResponse(response);
+            // this.logger.info('** response 2: '+ response);
+            return Promise.resolve(response);
+        })
+            .catch(function (response) {
+            // this.logger.error('** HTTP POST CENTRAL');
+            _this.logger.info('** HTTP POST CENTRAL');
+            _this.logger.info('** Basic: ' + auth);
+            _this.logger.info('** URL: ' + url);
+            _this.logger.info('** headers: ' + JSON.stringify(_headers));
+            _this.logger.info('** requestBody: ' + requestBody);
+            _this.logger.info('** reject: ', response);
+            _this.firebaseLoggerProvider.enviarFirebase({
+                auth: auth,
+                url: url,
+                headers: _headers,
+                requestBody: requestBody,
+                response: JSON.stringify(response),
+                tipo: 'ERRO',
+                tipoDetalhe: 'Erro na comunicação com a AMC. Link L2.',
+                timestamp: new Date().toISOString(),
+            });
+            // if (response.status === 400) {
+            //   const responseJson = response.json();
+            //   if (responseJson.error === 'invalid_grant') {
+            //     return Promise.reject('Usuário ou senha inválida!');
+            //   }
+            // }
+            return Promise.reject(response);
+        });
+    };
+    ComunicacaoCentralProvider.prototype.getDateComunicacao = function (date) {
+        if (date === void 0) { date = new Date(); }
+        var dateStr = date.getFullYear() + '-' + this.putZero(date.getMonth() + 1) + '-' + this.putZero(date.getDate()) + 'T' + this.putZero(date.getHours()) + ':' + this.putZero(date.getMinutes()) + ':' + this.putZero(date.getSeconds());
+        return dateStr;
+    };
+    /**
+     * tipo inteiro - data atual "dma" (sem barras ou caracteres e sem zeros a esquerda)
+     */
+    ComunicacaoCentralProvider.prototype.getDataAtual = function (dt) {
+        if (dt === void 0) { dt = new Date(); }
+        return parseInt(dt.getDate() + '' + (dt.getMonth() + 1) + dt.getFullYear()); // 1172018
+    };
+    ComunicacaoCentralProvider.prototype.gerarCodigoAcesso = function (COD) {
+        if (COD === void 0) { COD = this.COD_CLIENTE; }
+        return this.gerarMD5(COD, this.CNPJ_CLIENTE, this.DMA, this.TOKEN);
+    };
+    ComunicacaoCentralProvider.prototype.gerarMD5 = function (cod, cnpj, dma, token) {
+        var md5 = __WEBPACK_IMPORTED_MODULE_1__util_md5_util__["a" /* MD5Util */].hashStr(cod + '' + cnpj + '' + dma + '' + token);
+        // const md5 = Md5.hashStr(cod + '' + cnpj + '' + dma + '' + token);
+        this.logger.info('md5: ' + md5);
+        return md5;
+    };
+    ComunicacaoCentralProvider.prototype.putZero = function (val) {
+        return val < 10 ? ('0' + val) : val;
+    };
+    ComunicacaoCentralProvider.APP_TIMEOUT = 15 * 1000; // 15 segundos (Tempo de Resposta)
+    ComunicacaoCentralProvider.APP_ESPERA = 30 * 1000; // 30 segundos (Tempo de Espera)
+    ComunicacaoCentralProvider = ComunicacaoCentralProvider_1 = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_3__angular_core__["Injectable"])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */],
+            __WEBPACK_IMPORTED_MODULE_12_ionic_angular__["o" /* Platform */],
+            __WEBPACK_IMPORTED_MODULE_10__logger_logger__["a" /* LoggerProvider */],
+            __WEBPACK_IMPORTED_MODULE_11__firebase_logger_firebase_logger__["a" /* FirebaseLoggerProvider */],
+            __WEBPACK_IMPORTED_MODULE_9__tempo_estacionado_tempo_estacionado__["a" /* TempoEstacionadoProvider */]])
+    ], ComunicacaoCentralProvider);
+    return ComunicacaoCentralProvider;
+    var ComunicacaoCentralProvider_1;
+}());
+
+//# sourceMappingURL=comunicacao-central.js.map
+
+/***/ }),
+
+/***/ 203:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1336,14 +1295,14 @@ var EmpresaModel = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 223:
+/***/ 204:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TempoEstacionadoProvider; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_angularfire2_database__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_angularfire2_database__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_firebase_app__ = __webpack_require__(136);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_firebase_app__ = __webpack_require__(116);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_firebase_app___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_firebase_app__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1387,14 +1346,14 @@ var TempoEstacionadoProvider = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 226:
+/***/ 207:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BrowserProvider; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_ionic_angular__ = __webpack_require__(36);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_ionic_angular__ = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_in_app_browser__ = __webpack_require__(295);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_in_app_browser__ = __webpack_require__(276);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1451,19 +1410,19 @@ var BrowserProvider = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 228:
+/***/ 209:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NotificationProvider; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_ionic_angular__ = __webpack_require__(36);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_ionic_angular__ = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__user_user__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_push__ = __webpack_require__(297);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_take__ = __webpack_require__(93);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_push__ = __webpack_require__(278);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_take__ = __webpack_require__(85);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_take___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_take__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__environments_constants__ = __webpack_require__(20);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__logger_logger__ = __webpack_require__(40);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__environments_constants__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__logger_logger__ = __webpack_require__(39);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1545,8 +1504,8 @@ var NotificationProvider = /** @class */ (function () {
             pushObject.on('registration').take(1).subscribe(function (registration) {
                 _this.logger.info('Device registered: ' + JSON.stringify(registration));
                 _this.userService.updateUser(idUser, { notificationKey: registration.registrationId });
-                //.then(_ => alert('ok'))
-                //.catch(error => reject('Você precisa habilitar as permissões para utilizar o aplicativo!'));
+                // .then(_ => alert('ok'))
+                // .catch(error => reject('Você precisa habilitar as permissões para utilizar o aplicativo!'));
                 resolve('ok');
             }, function (error) {
                 _this.logger.error('GPS desabilitado. Error: ' + JSON.stringify(error));
@@ -1564,12 +1523,12 @@ var NotificationProvider = /** @class */ (function () {
             if ((_this.platform.is('android') || _this.platform.is('ios')) && __WEBPACK_IMPORTED_MODULE_3__ionic_native_push__["a" /* Push */]['installed']()) {
                 _this.logger.info('[NotificationProvider-inicialize] - phonegap-plugin-push instalado com sucesso!');
                 _this.pushObject = _this.push.init(_this.options);
+                _this.listenNotificacao(_this.pushObject);
                 _this.registrar(_this.pushObject, idUser)
                     .then(function (_data) {
                     resolve(_data);
                 })
                     .catch(function (error) { return reject(error); });
-                _this.listenNotificacao(_this.pushObject);
                 _this.listenNotificacaoErro(_this.pushObject);
             }
             else {
@@ -1602,7 +1561,7 @@ var NotificationProvider = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 237:
+/***/ 218:
 /***/ (function(module, exports) {
 
 function webpackEmptyAsyncContext(req) {
@@ -1615,144 +1574,152 @@ function webpackEmptyAsyncContext(req) {
 webpackEmptyAsyncContext.keys = function() { return []; };
 webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
 module.exports = webpackEmptyAsyncContext;
-webpackEmptyAsyncContext.id = 237;
+webpackEmptyAsyncContext.id = 218;
 
 /***/ }),
 
-/***/ 342:
+/***/ 322:
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
 	"../pages/ajuda/ajuda.module": [
-		801,
+		735,
 		16
 	],
 	"../pages/areas-modal/areas-modal.module": [
-		802,
-		32
+		736,
+		34
 	],
 	"../pages/cancelar-transacao/cancelar-transacao.module": [
-		803,
-		23
+		737,
+		24
 	],
 	"../pages/compartilhar/compartilhar.module": [
-		804,
-		31
+		738,
+		33
 	],
 	"../pages/comprar-creditos-pagamento/comprar-creditos-pagamento.module": [
-		805,
-		1
+		740,
+		2
 	],
 	"../pages/comprar-creditos/comprar-creditos.module": [
-		806,
+		739,
 		15
 	],
 	"../pages/comprovante/comprovante.module": [
-		808,
+		742,
 		3
 	],
 	"../pages/configuracoes/configuracoes.module": [
-		807,
+		741,
 		14
 	],
 	"../pages/confirmar-cpf-modal/confirmar-cpf-modal.module": [
-		809,
-		22
+		744,
+		23
+	],
+	"../pages/estacionados-modal/estacionados-modal.module": [
+		743,
+		32
 	],
 	"../pages/estacionar/estacionar.module": [
-		812,
+		745,
 		4
 	],
 	"../pages/filtro-modal/filtro-modal.module": [
-		810,
-		30
+		747,
+		31
 	],
 	"../pages/filtro-pagamento/filtro-pagamento.module": [
-		811,
-		29
+		746,
+		30
 	],
 	"../pages/historico/historico.module": [
-		816,
-		0
+		748,
+		1
 	],
 	"../pages/home/home.module": [
-		814,
+		749,
 		17
 	],
 	"../pages/login/login.module": [
-		813,
-		21
+		750,
+		22
 	],
 	"../pages/pagamentos-form/pagamentos-form.module": [
-		815,
+		751,
 		13
 	],
 	"../pages/pagamentos/pagamentos.module": [
-		817,
+		752,
 		12
 	],
 	"../pages/pdv-empresa/pdv-empresa.module": [
-		818,
-		20
+		753,
+		21
 	],
 	"../pages/permissions/permissions-screen.module": [
-		819,
-		28
+		754,
+		29
+	],
+	"../pages/principal/principal.module": [
+		755,
+		20
 	],
 	"../pages/profile-edit/profile-edit.module": [
-		820,
+		757,
 		11
 	],
 	"../pages/profile/profile.module": [
-		821,
+		756,
 		10
 	],
 	"../pages/recovery-password/recovery-password.module": [
-		822,
-		27
+		758,
+		28
 	],
 	"../pages/reportar-problema/reportar-problema.module": [
-		825,
-		26
+		759,
+		27
 	],
 	"../pages/root/root.module": [
-		823,
+		760,
 		19
 	],
 	"../pages/setores-modal/setores-modal.module": [
-		824,
+		761,
 		9
 	],
 	"../pages/signup/signup.module": [
-		827,
+		763,
 		18
 	],
 	"../pages/streat-view/streat-view.module": [
-		826,
+		762,
 		8
 	],
 	"../pages/tempo-restante/tempo-restante.module": [
-		828,
-		2
+		765,
+		0
 	],
 	"../pages/terms/terms.module": [
-		829,
-		25
+		764,
+		26
 	],
 	"../pages/veiculo-estacionado/veiculo-estacionado.module": [
-		830,
+		766,
 		7
 	],
 	"../pages/veiculos-form/veiculos-form.module": [
-		831,
+		768,
 		6
 	],
 	"../pages/veiculos-modal/veiculos-modal.module": [
-		832,
-		24
+		767,
+		25
 	],
 	"../pages/veiculos/veiculos.module": [
-		833,
+		769,
 		5
 	]
 };
@@ -1767,20 +1734,20 @@ function webpackAsyncContext(req) {
 webpackAsyncContext.keys = function webpackAsyncContextKeys() {
 	return Object.keys(map);
 };
-webpackAsyncContext.id = 342;
+webpackAsyncContext.id = 322;
 module.exports = webpackAsyncContext;
 
 /***/ }),
 
-/***/ 343:
+/***/ 330:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FirebaseLoggerProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angularfire2_database__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angularfire2_database__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__user_user__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_constants__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_constants__ = __webpack_require__(19);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1816,7 +1783,7 @@ var FirebaseLoggerProvider = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 40:
+/***/ 39:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1824,7 +1791,7 @@ var FirebaseLoggerProvider = /** @class */ (function () {
 /* unused harmony export Logger */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoggerProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__environments_environment__ = __webpack_require__(64);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__environments_environment__ = __webpack_require__(59);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1910,21 +1877,1174 @@ var LoggerProvider = /** @class */ (function () {
 
 /***/ }),
 
+/***/ 411:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyApp; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(275);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(277);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_Subscription__ = __webpack_require__(40);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_Subscription___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_Subscription__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_take__ = __webpack_require__(85);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_take___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_take__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__models_user__ = __webpack_require__(113);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__models_cad__ = __webpack_require__(203);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__providers_notification_notification__ = __webpack_require__(209);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__providers_auth_auth__ = __webpack_require__(199);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__providers_user_user__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__providers_comunicacao_central_comunicacao_central__ = __webpack_require__(202);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__providers_browser_browser__ = __webpack_require__(207);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__providers_logger_logger__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__providers_modal_modal__ = __webpack_require__(198);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__providers_cads_cads__ = __webpack_require__(112);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__environments_constants__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__providers_cads_user_cads_user__ = __webpack_require__(111);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var MyApp = /** @class */ (function () {
+    function MyApp(platform, modalCtrl, statusBar, splashScreen, alertCtrl, notificationProvider, menu, events, comunicacaoCentralProvider, authProvider, browserProvider, logger, userProvider, cadsUserProvider, cadsProvider, modalProvider) {
+        var _this = this;
+        this.platform = platform;
+        this.modalCtrl = modalCtrl;
+        this.statusBar = statusBar;
+        this.splashScreen = splashScreen;
+        this.alertCtrl = alertCtrl;
+        this.notificationProvider = notificationProvider;
+        this.menu = menu;
+        this.events = events;
+        this.comunicacaoCentralProvider = comunicacaoCentralProvider;
+        this.authProvider = authProvider;
+        this.browserProvider = browserProvider;
+        this.logger = logger;
+        this.userProvider = userProvider;
+        this.cadsUserProvider = cadsUserProvider;
+        this.cadsProvider = cadsProvider;
+        this.modalProvider = modalProvider;
+        this.rootPage = __WEBPACK_IMPORTED_MODULE_16__environments_constants__["a" /* Constants */].PRINCIPAL_PAGE.name;
+        this.user = new __WEBPACK_IMPORTED_MODULE_6__models_user__["a" /* User */]();
+        this.cad = new __WEBPACK_IMPORTED_MODULE_7__models_cad__["a" /* CadModel */]();
+        this.cads = 0;
+        this.cadsUsados = 0;
+        this.subscription = new __WEBPACK_IMPORTED_MODULE_4_rxjs_Subscription__["Subscription"]();
+        this.versao = __WEBPACK_IMPORTED_MODULE_16__environments_constants__["a" /* Constants */].VERSAO;
+        this.pdvReg = false;
+        this.isnotPdv = false;
+        this.userProvider.getUserLocal().then(function (userID) {
+            _this.events.subscribe('update_saldo', function (value) {
+                if (userID) {
+                    _this.cadsUserProvider.getCads(userID).take(1).subscribe(function (value) {
+                        _this.cadsUsados = 0;
+                        _this.cads = 0;
+                        value.map(function (value) {
+                            if (value.key == "qtdCadsUsados") {
+                                _this.cadsUsados = value.item;
+                            }
+                            else {
+                                _this.cads += value.item.qtdCads;
+                            }
+                        });
+                    });
+                }
+            });
+            _this.events.subscribe('user', function (value) {
+                if (value) {
+                    _this.pdvReg = false;
+                    _this.isnotPdv = false;
+                    _this.user = value;
+                    if ((value.profile != 'revendedor' && value.pdvReg == undefined) || (value.profile != 'revendedor' && value.pdvReg.cnpj == "")) {
+                        _this.pdvReg = true;
+                    }
+                    if (value.uidPDV == '00000000000') {
+                        _this.isnotPdv = true;
+                    }
+                }
+                else {
+                    _this.logout();
+                    _this.rootPage = __WEBPACK_IMPORTED_MODULE_16__environments_constants__["a" /* Constants */].LOGIN_PAGE.name;
+                }
+            });
+            if (userID) {
+                _this.userProvider.byId(userID).take(1).subscribe(function (user) {
+                    _this.events.publish('user', user);
+                    _this.user = user;
+                    console.log(_this.user);
+                    _this.rootPage = __WEBPACK_IMPORTED_MODULE_16__environments_constants__["a" /* Constants */].PRINCIPAL_PAGE.name;
+                    // }
+                });
+            }
+            else {
+                _this.rootPage = __WEBPACK_IMPORTED_MODULE_16__environments_constants__["a" /* Constants */].LOGIN_PAGE.name;
+            }
+        }).catch(function (error) {
+            _this.logger.info('Info: Usuário não logado. ' + JSON.stringify(error));
+            _this.rootPage = __WEBPACK_IMPORTED_MODULE_16__environments_constants__["a" /* Constants */].LOGIN_PAGE.name;
+        });
+        this.initializeApp();
+    }
+    MyApp.prototype.initializeApp = function () {
+        var _this = this;
+        this.platform.ready().then(function () {
+            _this.statusBar.styleDefault();
+            _this.splashScreen.hide();
+            _this.carregaUsuarioComCADs();
+            _this.comunicacaoCentralProvider.setDMA_NTP();
+            if (_this.platform.is('cordova')) {
+                _this.userProvider.getUserLocal().then(function (_userId) {
+                    if (_userId) {
+                        setTimeout(function (_) {
+                            _this.logger.info('NOTIFICATION APP COMPONENT. User: ' + _userId);
+                            console.log(_userId);
+                            _this.notificationProvider.inicialize(_userId)
+                                .then(function (_data) { })
+                                .catch(function (error) {
+                                _this.logger.error('NOTIFICATION ERROR INIT. Error: ' + JSON.stringify(error));
+                            });
+                            _this.userProvider.updateUuidOrImei(_userId);
+                        }, 1000);
+                    }
+                });
+            }
+            _this.cadsProvider.find().take(1).subscribe(function (value) {
+                value.map(function (item) {
+                    _this.cad = new __WEBPACK_IMPORTED_MODULE_7__models_cad__["a" /* CadModel */](item.cad);
+                    _this.logger.info(_this.cad);
+                });
+            });
+        });
+    };
+    MyApp.prototype.openPage = function (page) {
+        this.nav.setRoot(page.component);
+    };
+    MyApp.prototype.goHome = function () {
+        this.nav.setRoot(__WEBPACK_IMPORTED_MODULE_16__environments_constants__["a" /* Constants */].PRINCIPAL_PAGE.name);
+        this.menu.close();
+    };
+    MyApp.prototype.goEstacionamentosAtivos = function () {
+        this.nav.setRoot(__WEBPACK_IMPORTED_MODULE_16__environments_constants__["a" /* Constants */].TEMPO_RESTANTE_PAGE.name);
+        this.menu.close();
+    };
+    MyApp.prototype.goCreditos = function () {
+        this.nav.setRoot(__WEBPACK_IMPORTED_MODULE_16__environments_constants__["a" /* Constants */].CREDITOS_PAGE.name);
+        this.menu.close();
+    };
+    MyApp.prototype.goPagamentos = function () {
+        this.nav.setRoot(__WEBPACK_IMPORTED_MODULE_16__environments_constants__["a" /* Constants */].PAGAMENTOS_PAGE.name);
+        this.menu.close();
+    };
+    MyApp.prototype.goHistorico = function () {
+        this.nav.setRoot(__WEBPACK_IMPORTED_MODULE_16__environments_constants__["a" /* Constants */].HISTORICO_PAGE.name);
+        this.menu.close();
+    };
+    MyApp.prototype.goVeiculos = function () {
+        this.nav.setRoot(__WEBPACK_IMPORTED_MODULE_16__environments_constants__["a" /* Constants */].VEICULOS_PAGE.name);
+        this.menu.close();
+    };
+    MyApp.prototype.goProfile = function (user) {
+        this.nav.setRoot(__WEBPACK_IMPORTED_MODULE_16__environments_constants__["a" /* Constants */].PROFILE_EDIT_PAGE.name);
+        this.menu.close();
+    };
+    MyApp.prototype.goConfiguracoes = function () {
+        this.nav.setRoot(__WEBPACK_IMPORTED_MODULE_16__environments_constants__["a" /* Constants */].CONFIGURACOES_PAGE.name);
+        this.menu.close();
+    };
+    MyApp.prototype.goAjuda = function () {
+        this.nav.setRoot(__WEBPACK_IMPORTED_MODULE_16__environments_constants__["a" /* Constants */].AJUDA_PAGE.name);
+        this.menu.close();
+    };
+    MyApp.prototype.goCompartilhar = function () {
+        this.nav.setRoot(__WEBPACK_IMPORTED_MODULE_16__environments_constants__["a" /* Constants */].COMPARTILHAR_PAGE.name);
+        this.menu.close();
+    };
+    MyApp.prototype.goProblema = function () {
+        this.nav.setRoot(__WEBPACK_IMPORTED_MODULE_16__environments_constants__["a" /* Constants */].REPORTAR_PROBLEMA_PAGE.name);
+        this.menu.close();
+    };
+    MyApp.prototype.goAvaliar = function () {
+        this.menu.close();
+        var url = !this.platform.is('android') ? this.cad.info.apple_store : this.cad.info.google_store;
+        this.browserProvider.openPage(url);
+    };
+    MyApp.prototype.goPdvCadastro = function () {
+        this.nav.setRoot(__WEBPACK_IMPORTED_MODULE_16__environments_constants__["a" /* Constants */].PDV_EMPRESA_PAGE.name);
+        this.menu.close();
+    };
+    MyApp.prototype.goLogout = function () {
+        var _this = this;
+        this.alertCtrl.create({
+            title: 'Sair',
+            message: 'Tem certeza que deseja sair do aplicativo?',
+            cssClass: 'alert',
+            buttons: [
+                {
+                    text: 'Sim', cssClass: 'btn btn-ok',
+                    handler: function () {
+                        _this.logout();
+                    }
+                },
+                {
+                    text: 'Não', cssClass: 'btn btn-cancel',
+                }
+            ]
+        }).present();
+    };
+    MyApp.prototype.logout = function () {
+        var _this = this;
+        this.menu.close();
+        this.authProvider.logout().then(function () {
+            _this.userProvider.removeUserLocal();
+            _this.nav.setRoot(__WEBPACK_IMPORTED_MODULE_16__environments_constants__["a" /* Constants */].LOGIN_PAGE.name);
+        });
+    };
+    MyApp.prototype.closeMenu = function () {
+        this.menu.close();
+    };
+    MyApp.prototype.destroy = function () {
+        if (this.subscribePush)
+            this.subscribePush.unsubscribe();
+    };
+    MyApp.showLoading = function (loadingCtrl) {
+        return loadingCtrl.create({ content: 'Aguarde...' });
+    };
+    MyApp.showAlert = function (alertCtrl, title, msg, type, callback) {
+        var alert = alertCtrl.create({
+            title: title,
+            message: msg,
+            cssClass: type,
+            buttons: [
+                {
+                    text: 'OK',
+                    cssClass: 'btn-ok',
+                    handler: function (data) {
+                        callback();
+                    }
+                }
+            ]
+        });
+        alert.present();
+    };
+    MyApp.showConfirm = function (alertCtrl, titulo, descricao, callback, callbackNo) {
+        if (titulo === void 0) { titulo = 'Aviso'; }
+        if (descricao === void 0) { descricao = ''; }
+        if (callback === void 0) { callback = undefined; }
+        if (callbackNo === void 0) { callbackNo = undefined; }
+        return alertCtrl.create({
+            title: titulo,
+            subTitle: descricao,
+            cssClass: 'alert',
+            buttons: [
+                {
+                    text: 'Sim',
+                    cssClass: 'btn btn-ok',
+                    handler: function (data) {
+                        if (callback)
+                            callback();
+                    }
+                },
+                {
+                    text: 'Não', cssClass: 'btn btn-cancel',
+                    handler: function (data) {
+                        if (callback)
+                            callbackNo();
+                    }
+                }
+            ]
+        });
+    };
+    MyApp.prototype.namePattern = function (name) {
+        var arr = name.split(' ');
+        var keep = arr[1][0].toUpperCase() != arr[1][0];
+        return arr.slice(0, keep ? 3 : 2).join(' ');
+    };
+    MyApp.prototype.carregaUsuarioComCADs = function () {
+        var _this = this;
+        this.userProvider.getUserLocal().then(function (userID) {
+            _this.userProvider.byId(userID).take(1).subscribe(function (user) {
+                if (user) {
+                    _this.user = new __WEBPACK_IMPORTED_MODULE_6__models_user__["a" /* User */](user);
+                    _this.logger.info('user: ' + JSON.stringify(_this.user));
+                    _this.user = new __WEBPACK_IMPORTED_MODULE_6__models_user__["a" /* User */](user);
+                    _this.name = _this.namePattern(_this.user.name.toString());
+                    console.log(name);
+                    _this.cadsUserProvider.getCads(_this.user.id).take(1).subscribe(function (value) {
+                        _this.cadsUsados = 0;
+                        _this.cads = 0;
+                        value.map(function (value) {
+                            if (value.key == "qtdCadsUsados") {
+                                _this.cadsUsados = value.item;
+                            }
+                            else {
+                                _this.cads += value.item.qtdCads;
+                            }
+                        });
+                    });
+                }
+            });
+        });
+    };
+    MyApp.prototype.ngOnDestroy = function () {
+        this.subscription.add(this.subCadsUser);
+        this.subscription.unsubscribe();
+    };
+    MyApp.prototype.camelize = function (str) {
+        return str.replace(/(?:^\w|[A-Z]|\b\w)/g, function (word, index) {
+            return index === 0 ? word.toLowerCase() : word.toUpperCase();
+        }).replace(/\s+/g, '');
+    };
+    MyApp.MAP_LOAD = true;
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* Nav */]),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* Nav */])
+    ], MyApp.prototype, "nav", void 0);
+    MyApp = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({template:/*ion-inline-start:"/Users/desenvolvedor/Documents/zonaazulfortaleza-develop/src/app/app.html"*/'<ion-split-pane mode="ios">\n  <ion-menu [content]="content">\n    <ion-content class="menu">\n      <ion-list class="list" mode="ios">\n        \n        <ion-item class="user-menu-item" no-lines>\n          <ion-buttons start>\n            <button ion-button clear class="close-button" (click)="closeMenu()" icon-only color="white">\n              <span class="close-menu">X</span>\n            </button>\n          </ion-buttons>\n          <ion-buttons end>\n            <button ion-button clear class="edt-button" (click)="goProfile(user)" icon-only color="white">\n              <img class="ico" src="assets/icones/right-icon.svg"/>\n            </button>\n          </ion-buttons>\n          <div class="top-menu">\n            <!-- <img src="{{user?.photo}}" class="img" /> -->\n            <p class="name">{{name}}</p>\n            <p class="profile" text-lowercase>{{user?.email}}</p>\n            <p *ngIf="user?.profile !== \'user\'">{{user?.profile.toUpperCase()}}</p>\n            <!-- <p *ngIf="cads == null || cadsUsados == null || (cads - cadsUsados) == 0" class="cads-credits">Saldo: 0 CAD(s) | R$ 0,00</p> -->\n            <p class="cads-credits">Saldo: {{cads - cadsUsados}} CAD(s) | R$ {{(cads - cadsUsados) * cad.valor_unitario}},00</p>\n          </div>\n          \n          </ion-item>\n        <!-- <user-info></user-info> -->\n        \n          <button ion-button clear (click)="goHome()" mode="ios" class="menu-item" no-lines>\n            <img class="ico" src="assets/icones/pin-1.svg"/>\n              <ion-label class="text-menu">Início</ion-label>\n            \n          </button>\n\n          <button ion-button clear clear (click)="goVeiculos()" mode="ios" class="menu-item" no-lines>\n            <img class="ico" src="assets/icones/car.svg" />\n            <!--<ion-icon name="ios-car-outline" color="header" item-left></ion-icon>-->\n              <ion-label class="text-menu"> Meus Veículos</ion-label>\n            \n          </button>\n\n          <button ion-button clear clear (click)="goPagamentos()" mode="ios" class="menu-item" no-lines>\n            <img class="ico" src="assets/icones/wallet.svg"/>\n              <ion-label class="text-menu">Pagamento</ion-label>\n            \n          </button>\n\n          <button ion-button clear clear (click)="goHistorico()" mode="ios" class="menu-item" no-lines>\n            <img class="ico" src="assets/icones/history.svg"/>\n              <ion-label class="text-menu">Histórico</ion-label>\n            \n          </button>\n\n          <button ion-button clear clear (click)="goCreditos()" mode="ios" class="menu-item" no-lines>\n            <img class="ico" src="assets/icones/shopping-cart-1.svg"/>\n              <ion-label class="text-menu">Compra de Cads</ion-label>\n           \n          </button>\n\n          <button ion-button clear clear (click)="goConfiguracoes()" mode="ios" class="menu-item" no-lines>\n            <img class="ico" src="assets/icones/alarm.svg"/>\n              <ion-label class="text-menu">Alertas e Lembretes</ion-label>\n           \n          </button>\n        \n        \n         <!--  <button ion-button clear clear (click)="goEstacionamentosAtivos()" class="menu-item" no-lines>\n            <img class="ico" src="assets/icones/estacionamento.svg"/>\n              <ion-label class="text-menu">Estacionamentos Ativos</ion-label>\n            \n          </button>\n          \n          <button ion-button clear clear (click)="goProfile()" class="menu-item" no-lines>\n            <ion-icon name="icon-perfil" item-left>  </ion-icon>\n              <ion-label class="text-menu">Perfil</ion-label>\n          \n          </button>\n         \n\n        \n\n        \n\n        \n          <button ion-button clear clear (click)="goCompartilhar()" class="menu-item" no-lines>\n            <img class="ico" src="assets/icones/share.svg"/>\n              <ion-label class="text-menu">Compartilhe</ion-label>\n            \n          </button>\n        -->\n\n        \n      </ion-list>\n      <ion-list>\n        \n          <button ion-button clear (click)="goPdvCadastro()" *ngIf="pdvReg" mode="ios" class="menu-item">\n            <img class="ico" src="assets/icones/bookmark.svg"/>\n              <ion-label class="text-pdv"> Quero ser PDV </ion-label>\n            \n          </button>\n        \n      </ion-list>\n        <div class="footer">\n          <div class="footer-list">\n         \n            <button ion-button clear (click)="goAjuda()" class="footer-item" mode="ios"  no-lines>\n              <img class="ico" src="assets/icones/help (2).svg" />\n                <ion-label class="text-footer">Ajuda</ion-label>\n              \n            </button>\n          \n              <button ion-button clear (click)="goAvaliar()" class="footer-item" mode="ios"  no-lines>\n                  <img class="ico" src="assets/icones/favorite.svg" />\n                  <ion-label class="text-footer">Avalie o Zona Fácil</ion-label>\n              </button>\n           \n              <button ion-button clear (click)="goProblema()" class="footer-item"  mode="ios"  no-lines>\n                <img class="ico" src="assets/icones/feedback.svg" />\n                  <ion-label class="text-footer">Reportar problema</ion-label>\n                \n              </button>\n\n              <button ion-button clear (click)="goLogout()" class="footer-item" mode="ios"  no-lines>\n                <img class="ico" src="assets/icones/logout.svg" />\n                  <ion-label class="text-footer">Sair</ion-label>\n              </button>\n            </div>\n          \n          \n        \n          <div class="img-logo">\n            <img src="assets/imgs/logo-new.png" />\n            \n          </div>\n        \n    </div> \n    <div class="versao"><label>{{versao}}</label></div> \n    <div class="footer-bottom"></div>\n    </ion-content>\n    \n  </ion-menu>\n\n  <ion-nav [root]="rootPage" main #content swipeBackEnabled="false"></ion-nav>\n  \n\n</ion-split-pane>\n'/*ion-inline-end:"/Users/desenvolvedor/Documents/zonaazulfortaleza-develop/src/app/app.html"*/
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* Platform */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ModalController */],
+            __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */],
+            __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */],
+            __WEBPACK_IMPORTED_MODULE_8__providers_notification_notification__["a" /* NotificationProvider */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* MenuController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* Events */],
+            __WEBPACK_IMPORTED_MODULE_11__providers_comunicacao_central_comunicacao_central__["a" /* ComunicacaoCentralProvider */],
+            __WEBPACK_IMPORTED_MODULE_9__providers_auth_auth__["a" /* AuthProvider */],
+            __WEBPACK_IMPORTED_MODULE_12__providers_browser_browser__["a" /* BrowserProvider */],
+            __WEBPACK_IMPORTED_MODULE_13__providers_logger_logger__["a" /* LoggerProvider */],
+            __WEBPACK_IMPORTED_MODULE_10__providers_user_user__["a" /* UserProvider */],
+            __WEBPACK_IMPORTED_MODULE_17__providers_cads_user_cads_user__["a" /* CadsUserProvider */],
+            __WEBPACK_IMPORTED_MODULE_15__providers_cads_cads__["a" /* CadsProvider */],
+            __WEBPACK_IMPORTED_MODULE_14__providers_modal_modal__["a" /* ModalProvider */]])
+    ], MyApp);
+    return MyApp;
+}());
+
+//# sourceMappingURL=app.component.js.map
+
+/***/ }),
+
+/***/ 412:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return VeiculosProvider; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__models_veiculo__ = __webpack_require__(421);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__environments_constants__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_first__ = __webpack_require__(614);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_first___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_first__);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+var VeiculosProvider = /** @class */ (function () {
+    function VeiculosProvider(afd) {
+        this.afd = afd;
+    }
+    VeiculosProvider.prototype.findByUser = function (userId) {
+        return this.afd.list(__WEBPACK_IMPORTED_MODULE_1__environments_constants__["a" /* Constants */].PATH_DOCUMENTS_VEICULOS + userId, function (ref) { return ref.orderByKey(); }).snapshotChanges()
+            .map(function (changes) { return changes.map(function (c) { return ({ key: c.payload.key, veiculo: new __WEBPACK_IMPORTED_MODULE_0__models_veiculo__["a" /* VeiculoModel */](c.payload.val()) }); }); });
+    };
+    VeiculosProvider.prototype.findByVeiculo = function (veiculoID, userID) {
+        return this.afd.object(__WEBPACK_IMPORTED_MODULE_1__environments_constants__["a" /* Constants */].PATH_DOCUMENTS_VEICULOS + userID + '/' + veiculoID)
+            .valueChanges();
+        // .map(changes => changes.map(c => ({ key: c.payload.key, veiculo: c.payload.val() })));
+    };
+    VeiculosProvider.prototype.remove = function (userId, itemId) {
+        this.afd.object(__WEBPACK_IMPORTED_MODULE_1__environments_constants__["a" /* Constants */].PATH_DOCUMENTS_VEICULOS + '/' + userId + '/' + itemId).remove();
+    };
+    VeiculosProvider.prototype.save = function (userId, entity) {
+        return this.afd.list(__WEBPACK_IMPORTED_MODULE_1__environments_constants__["a" /* Constants */].PATH_DOCUMENTS_VEICULOS + '/' + userId).push(entity);
+    };
+    VeiculosProvider.prototype.update = function (userId, entity) {
+        return this.afd.object(__WEBPACK_IMPORTED_MODULE_1__environments_constants__["a" /* Constants */].PATH_DOCUMENTS_VEICULOS + '/' + userId + '/' + entity.id).set(entity);
+    };
+    VeiculosProvider.prototype.getTiposVeiculo = function () {
+        return this.afd.list(__WEBPACK_IMPORTED_MODULE_1__environments_constants__["a" /* Constants */].PATH_DOCUMENTS_TIPO_VEICULO).snapshotChanges().
+            map(function (snapshot) { return snapshot.map(function (tipo) { return ({ key: tipo.payload.key, tipo: tipo.payload.val() }); }); });
+    };
+    VeiculosProvider = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_3__angular_core__["Injectable"])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_angularfire2_database__["a" /* AngularFireDatabase */]])
+    ], VeiculosProvider);
+    return VeiculosProvider;
+}());
+
+//# sourceMappingURL=veiculos.js.map
+
+/***/ }),
+
+/***/ 413:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SetoresProvider; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angularfire2_database__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__environments_constants__ = __webpack_require__(19);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var SetoresProvider = /** @class */ (function () {
+    function SetoresProvider(afd) {
+        this.afd = afd;
+    }
+    SetoresProvider.prototype.getSetoresByLocation = function () {
+        return this.afd.list(__WEBPACK_IMPORTED_MODULE_2__environments_constants__["a" /* Constants */].PATH_DOCUMENTS_SETORES)
+            .snapshotChanges()
+            .map(function (snapshot) { return snapshot.map(function (setores) { return ({ key: setores.payload.key, setores: setores.payload.val() }); }); });
+    };
+    SetoresProvider.prototype.getSetoresByArea = function (areaCodigo) {
+        return this.afd.list(__WEBPACK_IMPORTED_MODULE_2__environments_constants__["a" /* Constants */].PATH_DOCUMENTS_SETORES + areaCodigo)
+            .snapshotChanges()
+            .map(function (snapshot) { return snapshot.map(function (setor) { return ({ key: setor.payload.key, setor: setor.payload.val() }); }); });
+        ;
+    };
+    SetoresProvider.prototype.byId = function (areaCodigo, setorCodigo) {
+        return this.afd.object(__WEBPACK_IMPORTED_MODULE_2__environments_constants__["a" /* Constants */].PATH_DOCUMENTS_SETORES + areaCodigo + "/" + setorCodigo).valueChanges();
+    };
+    SetoresProvider.prototype.update = function (setor, areaCodigo) {
+        return this.afd.object(__WEBPACK_IMPORTED_MODULE_2__environments_constants__["a" /* Constants */].PATH_DOCUMENTS_SETORES + areaCodigo + "/" + setor.codigo).update(setor);
+    };
+    SetoresProvider.prototype.getConfigQtdCadsSetor = function () {
+        return this.afd.object(__WEBPACK_IMPORTED_MODULE_2__environments_constants__["a" /* Constants */].PATH_DOCUMENTS_CONFIG + "cads_setor").valueChanges();
+    };
+    SetoresProvider = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_angularfire2_database__["a" /* AngularFireDatabase */]])
+    ], SetoresProvider);
+    return SetoresProvider;
+}());
+
+//# sourceMappingURL=setores.js.map
+
+/***/ }),
+
+/***/ 414:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AreaProvider; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angularfire2_database__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__environments_constants__ = __webpack_require__(19);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var AreaProvider = /** @class */ (function () {
+    function AreaProvider(afd) {
+        this.afd = afd;
+    }
+    AreaProvider.prototype.getAreas = function () {
+        return this.afd.list(__WEBPACK_IMPORTED_MODULE_2__environments_constants__["a" /* Constants */].PATH_DOCUMENTS_AREAS)
+            .snapshotChanges()
+            .map(function (snapshot) { return snapshot.map(function (area) { return ({ key: area.payload.key, area: area.payload.val() }); }); });
+    };
+    AreaProvider = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_angularfire2_database__["a" /* AngularFireDatabase */]])
+    ], AreaProvider);
+    return AreaProvider;
+}());
+
+//# sourceMappingURL=area.js.map
+
+/***/ }),
+
+/***/ 418:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoadingSpinnerComponentModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__loading_spinner__ = __webpack_require__(706);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular_module__ = __webpack_require__(371);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+var LoadingSpinnerComponentModule = /** @class */ (function () {
+    function LoadingSpinnerComponentModule() {
+    }
+    LoadingSpinnerComponentModule = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["NgModule"])({
+            declarations: [__WEBPACK_IMPORTED_MODULE_0__loading_spinner__["a" /* LoadingSpinnerComponent */]],
+            imports: [__WEBPACK_IMPORTED_MODULE_2_ionic_angular_module__["a" /* IonicModule */]],
+            exports: [__WEBPACK_IMPORTED_MODULE_0__loading_spinner__["a" /* LoadingSpinnerComponent */]],
+            entryComponents: [__WEBPACK_IMPORTED_MODULE_0__loading_spinner__["a" /* LoadingSpinnerComponent */]]
+        })
+    ], LoadingSpinnerComponentModule);
+    return LoadingSpinnerComponentModule;
+}());
+
+//# sourceMappingURL=loading-spinner.module.js.map
+
+/***/ }),
+
+/***/ 419:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ComponentsModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__user_info_user_info__ = __webpack_require__(720);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__timer_timer__ = __webpack_require__(721);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__progress_bar_progress_bar__ = __webpack_require__(722);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__custom_card_custom_card__ = __webpack_require__(723);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+
+
+
+var ComponentsModule = /** @class */ (function () {
+    function ComponentsModule() {
+    }
+    ComponentsModule = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
+            declarations: [__WEBPACK_IMPORTED_MODULE_2__user_info_user_info__["a" /* UserInfoComponent */], __WEBPACK_IMPORTED_MODULE_3__timer_timer__["a" /* TimerComponent */],
+                __WEBPACK_IMPORTED_MODULE_4__progress_bar_progress_bar__["a" /* ProgressBarComponent */],
+                __WEBPACK_IMPORTED_MODULE_5__custom_card_custom_card__["a" /* CustomCardComponent */]],
+            imports: [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* IonicModule */]],
+            exports: [__WEBPACK_IMPORTED_MODULE_2__user_info_user_info__["a" /* UserInfoComponent */], __WEBPACK_IMPORTED_MODULE_3__timer_timer__["a" /* TimerComponent */],
+                __WEBPACK_IMPORTED_MODULE_4__progress_bar_progress_bar__["a" /* ProgressBarComponent */],
+                __WEBPACK_IMPORTED_MODULE_5__custom_card_custom_card__["a" /* CustomCardComponent */]]
+        })
+    ], ComponentsModule);
+    return ComponentsModule;
+}());
+
+//# sourceMappingURL=components.module.js.map
+
+/***/ }),
+
+/***/ 421:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return VeiculoModel; });
+var VeiculoModel = /** @class */ (function () {
+    function VeiculoModel(obj) {
+        if (obj && obj.id) {
+            this.id = obj && obj.id || '';
+        }
+        else {
+            this.id = obj && obj.$key || '';
+        }
+        this.placa = obj && obj.placa || '';
+        this.tipo_veiculo = obj && obj.tipo_veiculo || 'automovel';
+        this.ano = obj && obj.ano || '';
+        this.marca = obj && obj.marca || 'Sem marca';
+        this.modelo = obj && obj.modelo || 'Sem modelo';
+        this.tipo_placa = obj && obj.tipo_placa || 'Padrão';
+    }
+    VeiculoModel.getImage = function (tipo) {
+        switch (tipo) {
+            // case 'moto':
+            //   return 'assets/imgs/moto.png';
+            case 'caminhao_onibus':
+                return 'assets/imgs/truck.png';
+            default:
+                return 'assets/imgs/car.png';
+        }
+    };
+    VeiculoModel.prototype.getTipoVeiculoID = function () {
+        var tipo = this.tipo_veiculo.toLowerCase();
+        switch (tipo) {
+            // case 'moto':
+            //   return 3;
+            case 'caminhao_onibus':
+                return 2;
+            default:
+                return 1;
+        }
+    };
+    VeiculoModel.prototype.getPlacaNaoFormatada = function () {
+        return this.placa ? this.placa.toUpperCase().replace('-', '') : '';
+    };
+    return VeiculoModel;
+}());
+
+//# sourceMappingURL=veiculo.js.map
+
+/***/ }),
+
+/***/ 422:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return EstacionarModel; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CanceladoModel; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_firebase_app__ = __webpack_require__(116);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_firebase_app___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_firebase_app__);
+
+var EstacionarModel = /** @class */ (function () {
+    function EstacionarModel(obj) {
+        // let date = firebase.database.ServerValue.TIMESTAMP;
+        if (obj && obj.id) {
+            this.id = obj && obj.id || '';
+        }
+        else {
+            this.id = obj && obj.$key || '';
+        }
+        this.area_id = obj && obj.area_id || '';
+        this.setor_id = obj && obj.setor_id || '';
+        this.face_id = obj && obj.face_id || '';
+        this.veiculo_id = obj && obj.veiculo_id || '';
+        this.dataHoraRegistro = obj && obj.dataHoraRegistro || __WEBPACK_IMPORTED_MODULE_0_firebase_app__["database"].ServerValue.TIMESTAMP;
+        this.qtd = obj && obj.qtd || 0;
+        this.status = obj && obj.status || true;
+        this.cancelado = (obj && obj.cancelado) ? obj.cancelado : false;
+        this.cidade = obj && obj.cidade || 'Fortaleza';
+        this.situacao = obj && obj.situacao || 'Ativação';
+        this.categoria = obj && obj.categoria || '';
+        this.codAuth = obj && obj.codAuth || '';
+        this.uidAparelho = obj && obj.uidAparelho || '';
+        this.comprovante = obj && obj.comprovante || {};
+        this.dadosCancelamento = obj && obj.dadosCancelamento || {};
+        this.tempoComprado = obj && obj.tempoComprado || 0;
+        this.idTransacaoDistribuidor = obj && obj.idTransacaoDistribuidor || 1;
+    }
+    EstacionarModel.getHoraEmMilis = function (qtd, tempoCadMinutos) {
+        if (qtd === void 0) { qtd = 1; }
+        // return qtd*1200000;
+        return qtd * tempoCadMinutos * EstacionarModel.UM_MINUTO_EM_MILIS;
+    };
+    EstacionarModel.prototype.resetDataHoraRegistro = function () {
+        this.dataHoraRegistro = __WEBPACK_IMPORTED_MODULE_0_firebase_app__["database"].ServerValue.TIMESTAMP;
+    };
+    EstacionarModel.UM_MINUTO_EM_MILIS = 60000; // 1min = 60000 milisegundos
+    return EstacionarModel;
+}());
+
+var CanceladoModel = /** @class */ (function () {
+    function CanceladoModel(obj) {
+        this.dataHoraRegistro = obj && obj.dataHoraRegistro || __WEBPACK_IMPORTED_MODULE_0_firebase_app__["database"].ServerValue.TIMESTAMP;
+        this.motivoCancelamento = obj && obj.motivoCancelamento || '';
+        this.autenticacao = obj && obj.autenticacao || '';
+        this.idTransacaoDistribuidorCancelamento = obj && obj.idTransacaoDistribuidorCancelamento || 0;
+    }
+    return CanceladoModel;
+}());
+
+//# sourceMappingURL=estacionar.js.map
+
+/***/ }),
+
+/***/ 423:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CreditosProvider; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__environments_constants__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__models_credito__ = __webpack_require__(436);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var CreditosProvider = /** @class */ (function () {
+    function CreditosProvider(afd) {
+        this.afd = afd;
+    }
+    CreditosProvider.prototype.countAll = function () {
+        return this.afd.list(__WEBPACK_IMPORTED_MODULE_1__environments_constants__["a" /* Constants */].PATH_DOCUMENTS_CREDITOS)
+            .snapshotChanges()
+            .map(function (changes) { return changes.map(function (c) { return ({ key: c.payload.key, values: c.payload.val() }); }); })
+            .map(function (changes) {
+            var cont = 1;
+            changes.forEach(function (_item) {
+                cont += Object.keys(_item.values).length;
+            });
+            return cont;
+        });
+    };
+    CreditosProvider.prototype.update = function (creditoId, userID, credito) {
+        return this.afd.object(__WEBPACK_IMPORTED_MODULE_1__environments_constants__["a" /* Constants */].PATH_DOCUMENTS_CREDITOS + userID + "/" + creditoId).update(credito);
+    };
+    CreditosProvider.prototype.findByUser = function (userID) {
+        return this.afd.list(__WEBPACK_IMPORTED_MODULE_1__environments_constants__["a" /* Constants */].PATH_DOCUMENTS_CREDITOS + userID, function (ref) { return ref.orderByChild('dataHoraRegistro'); })
+            .snapshotChanges()
+            .map(function (changes) { return changes.map(function (c) { return ({ key: c.payload.key, values: new __WEBPACK_IMPORTED_MODULE_3__models_credito__["a" /* CreditoModel */](c.payload.val()) }); }); })
+            .map(function (changes) { return changes.reverse(); });
+    };
+    CreditosProvider.prototype.save = function (userID, entity) {
+        return this.afd.object(__WEBPACK_IMPORTED_MODULE_1__environments_constants__["a" /* Constants */].PATH_DOCUMENTS_CREDITOS + userID + '/' + entity.id)
+            .update(entity)
+            .then(function (result) {
+            return true;
+        }).catch(function (result) {
+            return false;
+        });
+    };
+    CreditosProvider = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_angularfire2_database__["a" /* AngularFireDatabase */]])
+    ], CreditosProvider);
+    return CreditosProvider;
+}());
+
+//# sourceMappingURL=creditos.js.map
+
+/***/ }),
+
+/***/ 424:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PagamentosProvider; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__models_pagamento__ = __webpack_require__(437);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__environments_constants__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_core__ = __webpack_require__(0);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var PagamentosProvider = /** @class */ (function () {
+    function PagamentosProvider(afd) {
+        this.afd = afd;
+    }
+    PagamentosProvider.prototype.findByUser = function (userId) {
+        return this.afd.list(__WEBPACK_IMPORTED_MODULE_1__environments_constants__["a" /* Constants */].PATH_DOCUMENTS_PAGAMENTOS + userId, function (ref) { return ref.orderByKey(); }).snapshotChanges()
+            .map(function (changes) { return changes.map(function (c) {
+            var pgto = new __WEBPACK_IMPORTED_MODULE_0__models_pagamento__["a" /* PagamentoModel */](c.payload.val());
+            pgto.id = c.payload.key;
+            return { key: pgto.id, values: pgto };
+        }); });
+    };
+    PagamentosProvider.prototype.findByUserAndCartao = function (userId, cartaoId) {
+        return this.afd.list(__WEBPACK_IMPORTED_MODULE_1__environments_constants__["a" /* Constants */].PATH_DOCUMENTS_PAGAMENTOS + userId + '/' + cartaoId, function (ref) { return ref.orderByKey(); }).snapshotChanges()
+            .map(function (changes) { return changes.map(function (c) { return ({ key: c.payload.key, values: c.payload.val() }); }); });
+    };
+    PagamentosProvider.prototype.remove = function (userId, cartaoId) {
+        return this.afd.object(__WEBPACK_IMPORTED_MODULE_1__environments_constants__["a" /* Constants */].PATH_DOCUMENTS_PAGAMENTOS + userId + '/' + cartaoId).remove();
+    };
+    PagamentosProvider.prototype.save = function (userId, entity) {
+        return this.afd.list(__WEBPACK_IMPORTED_MODULE_1__environments_constants__["a" /* Constants */].PATH_DOCUMENTS_PAGAMENTOS + userId).push(entity);
+    };
+    PagamentosProvider.prototype.update = function (userId, entityID, entity) {
+        return this.afd.object(__WEBPACK_IMPORTED_MODULE_1__environments_constants__["a" /* Constants */].PATH_DOCUMENTS_PAGAMENTOS + userId + '/' + entityID).set(entity);
+    };
+    PagamentosProvider = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_3__angular_core__["Injectable"])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_angularfire2_database__["a" /* AngularFireDatabase */]])
+    ], PagamentosProvider);
+    return PagamentosProvider;
+}());
+
+//# sourceMappingURL=pagamentos.js.map
+
+/***/ }),
+
+/***/ 427:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PagarmeProvider; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angularfire2_database__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_pagarme__ = __webpack_require__(618);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_pagarme___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_pagarme__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__logger_logger__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__environments_environment__ = __webpack_require__(59);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+var PagarmeProvider = /** @class */ (function () {
+    function PagarmeProvider(afd, logger) {
+        this.afd = afd;
+        this.logger = logger;
+        PagarmeProvider_1.PAGARME_API = __WEBPACK_IMPORTED_MODULE_4__environments_environment__["a" /* environment */].production ? PagarmeProvider_1.PAGARME_API_PROD : PagarmeProvider_1.PAGARME_API_DEV;
+    }
+    PagarmeProvider_1 = PagarmeProvider;
+    PagarmeProvider.prototype.pagar = function (card, comprador, venda) {
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            console.log('API Key', PagarmeProvider_1.PAGARME_API);
+            // pega os erros de validação nos campos do form e a bandeira do cartão
+            var cardValidations = __WEBPACK_IMPORTED_MODULE_2_pagarme___default.a.validate({ card: card });
+            if (cardValidations.card.card_number) {
+                _this.logger.debug('número de cartão correto');
+                // console.log('número de cartão correto');
+                var transaction_1 = _this.criaTransaction(card, comprador, venda);
+                _this.logger.debug('transaction' + JSON.stringify(transaction_1));
+                // console.log('transaction', transaction);
+                __WEBPACK_IMPORTED_MODULE_2_pagarme___default.a.client.connect({ api_key: PagarmeProvider_1.PAGARME_API })
+                    .then(function (client) { return client.transactions.create(transaction_1); })
+                    .then(function (transaction) {
+                    _this.logger.debug(JSON.stringify(transaction));
+                    console.log(transaction.id);
+                    //this.processaPgto(comprador.id, transaction, valor, type);
+                    resolve(transaction);
+                })
+                    .catch(function (error) {
+                    // console.log('error', error);
+                    reject('Erro ao processar o pagamento! Verifique se seus dados foram preenchidos de forma correta.');
+                });
+            }
+            else {
+                reject('Número de cartão inválido! Confira se seus dados foram preenchidos de forma correta e tente novamente.');
+            }
+        });
+    };
+    PagarmeProvider.prototype.estorno = function (credito) {
+        return new Promise(function (resolve, reject) {
+            __WEBPACK_IMPORTED_MODULE_2_pagarme___default.a.client.connect({ api_key: PagarmeProvider_1.PAGARME_API })
+                .then(function (client) { return client.transactions.refund({
+                id: credito.idCompra
+            })
+                .then(function (response) {
+                resolve(response);
+            })
+                .catch(function (error) {
+                reject('deu ruim');
+            }); });
+        });
+    };
+    PagarmeProvider.prototype.criaTransaction = function (card, comprador, venda) {
+        return {
+            // criar a transação/assinatura: https://pagarme.readme.io/reference#criar-transacao
+            //Valor a ser cobrado
+            amount: 100 * venda.price,
+            // Informações do cartão do cliente criptografadas
+            //Card Hash
+            card_number: card.card_number,
+            card_cvv: card.card_cvv,
+            card_expiration_date: card.card_expiration_date,
+            card_holder_name: card.card_holder_name,
+            //Forma de Pagamento
+            payment_method: "credit_card",
+            // "installments": "1", // Número de parcelas da transação
+            // dados do comprador
+            customer: {
+                external_id: comprador.id,
+                name: comprador.name,
+                type: "individual",
+                country: "br",
+                email: comprador.email,
+                documents: [{ "type": "cpf", "number": comprador.cpf }],
+                phone_numbers: [comprador.phone]
+                // "birthday": comprador.birthday
+            },
+            // dados de cobrança
+            billing: {
+                name: "Zona Azul Fortaleza",
+                address: {
+                    country: "br",
+                    state: "ce",
+                    city: "Fortaleza",
+                    neighborhood: "Papicu",
+                    street: "R. Joaquim Lima",
+                    street_number: "150",
+                    zipcode: "60175005"
+                }
+            },
+            items: [
+                {
+                    id: venda.id,
+                    title: venda.name,
+                    unit_price: venda.price,
+                    quantity: venda.qtd,
+                    tangible: true,
+                    date: venda.date
+                }
+            ]
+        };
+    };
+    PagarmeProvider.PAGARME_API_PROD = "ak_live_fWyQBJhrvLmRTbQSuESRpBKAOuXL3I";
+    PagarmeProvider.PAGARME_API_DEV = "ak_test_KkXzbnmyssmGQC2Esx6Sq6J5KilA6g";
+    // static PAGARME_API_DEV: string = "ek_test_8umHvRaF2G33u8FDlzuh64kMmUqjUZ";
+    PagarmeProvider.PAGARME_API = PagarmeProvider_1.PAGARME_API_DEV;
+    PagarmeProvider = PagarmeProvider_1 = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_angularfire2_database__["a" /* AngularFireDatabase */], __WEBPACK_IMPORTED_MODULE_3__logger_logger__["a" /* LoggerProvider */]])
+    ], PagarmeProvider);
+    return PagarmeProvider;
+    var PagarmeProvider_1;
+}());
+
+//# sourceMappingURL=pagarme.js.map
+
+/***/ }),
+
+/***/ 428:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PipesModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__replace_replace__ = __webpack_require__(705);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+var PipesModule = /** @class */ (function () {
+    function PipesModule() {
+    }
+    PipesModule = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
+            declarations: [__WEBPACK_IMPORTED_MODULE_1__replace_replace__["a" /* ReplacePipe */]],
+            imports: [],
+            exports: [__WEBPACK_IMPORTED_MODULE_1__replace_replace__["a" /* ReplacePipe */]]
+        })
+    ], PipesModule);
+    return PipesModule;
+}());
+
+//# sourceMappingURL=pipes.module.js.map
+
+/***/ }),
+
+/***/ 429:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CameraProvider; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ionic_native_camera__ = __webpack_require__(206);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__logger_logger__ = __webpack_require__(39);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var CameraProvider = /** @class */ (function () {
+    function CameraProvider(camera, logger) {
+        this.camera = camera;
+        this.logger = logger;
+    }
+    CameraProvider.prototype.openMedia = function (title, actionSheetCtrl, sucessCallback, showCamera, cameraOptions) {
+        var _this = this;
+        if (showCamera === void 0) { showCamera = true; }
+        if (cameraOptions === void 0) { cameraOptions = undefined; }
+        var buttonsArr = [];
+        if (!cameraOptions) {
+            cameraOptions = {
+                quality: 50,
+                allowEdit: true,
+                targetWidth: 350,
+                targetHeight: 350
+            };
+        }
+        if (showCamera) {
+            buttonsArr.push({ text: 'Da Câmera', handler: function () { return _this.getMediaBase64('camera', sucessCallback, cameraOptions); } });
+        }
+        buttonsArr.push({ text: 'Da Galeria', handler: function () { return _this.getMediaBase64('galeria', sucessCallback, cameraOptions); } });
+        buttonsArr.push({ text: 'Cancelar', role: 'cancel', handler: function () { return console.log('Cancel clicked'); } });
+        var action = actionSheetCtrl.create({ title: title, buttons: buttonsArr });
+        action.present();
+        return action;
+    };
+    /**
+     * media: camera, foto (galeria), video (galeria), arquivo (galeria)
+     */
+    CameraProvider.prototype.getMediaBase64 = function (media, sucessCallback, cameraOptions) {
+        var _this = this;
+        this.getMedia(media, cameraOptions).then(function (imageData) {
+            var base64 = 'data:image/jpeg;base64,' + imageData;
+            _this.logger.debug('foto: ' + base64);
+            //this.showAlert('Camera', 'foto: '+ base64, 'error', {});
+            sucessCallback(base64);
+        }, function (erro) {
+            _this.logger.error('Erro ao obter imagem base64: ' + JSON.stringify(erro));
+        });
+    };
+    CameraProvider.prototype.getMedia = function (media, cameraOptionsDef) {
+        var cameraOptions = {};
+        switch (media) {
+            case 'camera':
+                cameraOptions = {
+                    sourceType: this.camera.PictureSourceType.CAMERA,
+                    saveToPhotoAlbum: true,
+                    cameraDirection: this.camera.Direction.FRONT,
+                    correctOrientation: true
+                };
+                break;
+            case 'galeria':
+                cameraOptions = {
+                    mediaType: this.camera.MediaType.PICTURE,
+                    sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
+                    correctOrientation: true
+                };
+                break;
+            case 'video':
+                cameraOptions = {
+                    mediaType: this.camera.MediaType.VIDEO,
+                    sourceType: this.camera.PictureSourceType.PHOTOLIBRARY
+                };
+                break;
+            case 'arquivo':
+                cameraOptions = {
+                    mediaType: this.camera.MediaType.ALLMEDIA,
+                    sourceType: this.camera.PictureSourceType.PHOTOLIBRARY
+                };
+                break;
+        }
+        cameraOptions['quality'] = cameraOptionsDef['quality'];
+        cameraOptions['destinationType'] = this.camera.DestinationType.DATA_URL;
+        //cameraOptions['destinationType'] = Camera.DestinationType.FILE_URI;
+        cameraOptions['encodingType'] = this.camera.EncodingType.JPEG;
+        cameraOptions['allowEdit'] = cameraOptionsDef['allowEdit'];
+        cameraOptions['targetWidth'] = cameraOptionsDef['targetWidth'];
+        cameraOptions['targetHeight'] = cameraOptionsDef['targetHeight'];
+        return this.camera.getPicture(cameraOptions);
+    };
+    CameraProvider.prototype.processWebImage = function (event, sucessCallback) {
+        var reader = new FileReader();
+        reader.onload = function (readerEvent) {
+            console.log('me ...' + readerEvent);
+            var imageData = readerEvent.target.result;
+            var image = new Image();
+            image.src = imageData;
+            console.log('image.data..' + imageData[0]);
+            image.onload = function (data) {
+                console.log('me data ...' + JSON.stringify(data));
+                // const w = data['path'].naturalWidth;
+                // const h = data['path'].naturalHeight;
+                var w = 200;
+                var h = 200;
+                sucessCallback(imageData, w, h);
+            };
+        };
+        // this.showAlert('Camera', 'No success calback...', '', {});
+        reader.readAsDataURL(event.target.files[0]);
+    };
+    CameraProvider = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__ionic_native_camera__["a" /* Camera */], __WEBPACK_IMPORTED_MODULE_2__logger_logger__["a" /* LoggerProvider */]])
+    ], CameraProvider);
+    return CameraProvider;
+}());
+
+//# sourceMappingURL=camera.js.map
+
+/***/ }),
+
 /***/ 43:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UserProvider; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__environments_constants__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__environments_constants__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__ = __webpack_require__(142);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_database__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_storage__ = __webpack_require__(292);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_ionic_angular__ = __webpack_require__(36);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_unique_device_id__ = __webpack_require__(289);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_native_uid__ = __webpack_require__(298);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ionic_native_android_permissions__ = __webpack_require__(219);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__logger_logger__ = __webpack_require__(40);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__ = __webpack_require__(122);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_database__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_storage__ = __webpack_require__(273);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_ionic_angular__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_unique_device_id__ = __webpack_require__(270);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_native_uid__ = __webpack_require__(279);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ionic_native_android_permissions__ = __webpack_require__(200);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__logger_logger__ = __webpack_require__(39);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2098,1053 +3218,7 @@ var UserProvider = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 440:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyApp; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(36);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(294);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(296);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_take__ = __webpack_require__(93);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_take___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_take__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__models_user__ = __webpack_require__(134);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__models_cad__ = __webpack_require__(222);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_notification_notification__ = __webpack_require__(228);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__providers_auth_auth__ = __webpack_require__(217);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__providers_user_user__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__providers_comunicacao_central_comunicacao_central__ = __webpack_require__(220);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__providers_browser_browser__ = __webpack_require__(226);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__providers_logger_logger__ = __webpack_require__(40);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__providers_modal_modal__ = __webpack_require__(216);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__providers_cads_cads__ = __webpack_require__(133);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__environments_constants__ = __webpack_require__(20);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-var MyApp = /** @class */ (function () {
-    function MyApp(platform, modalCtrl, statusBar, splashScreen, alertCtrl, notificationProvider, menu, events, comunicacaoCentralProvider, authProvider, browserProvider, logger, userProvider, cadsProvider, modalProvider) {
-        var _this = this;
-        this.platform = platform;
-        this.modalCtrl = modalCtrl;
-        this.statusBar = statusBar;
-        this.splashScreen = splashScreen;
-        this.alertCtrl = alertCtrl;
-        this.notificationProvider = notificationProvider;
-        this.menu = menu;
-        this.events = events;
-        this.comunicacaoCentralProvider = comunicacaoCentralProvider;
-        this.authProvider = authProvider;
-        this.browserProvider = browserProvider;
-        this.logger = logger;
-        this.userProvider = userProvider;
-        this.cadsProvider = cadsProvider;
-        this.modalProvider = modalProvider;
-        this.user = new __WEBPACK_IMPORTED_MODULE_5__models_user__["a" /* User */]();
-        this.cad = new __WEBPACK_IMPORTED_MODULE_6__models_cad__["a" /* CadModel */]();
-        this.versao = __WEBPACK_IMPORTED_MODULE_15__environments_constants__["a" /* Constants */].VERSAO;
-        this.pdvReg = false;
-        this.isnotPdv = false;
-        this.userProvider.getUserLocal().then(function (userID) {
-            _this.events.subscribe('user', function (value) {
-                _this.pdvReg = false;
-                _this.isnotPdv = false;
-                if ((value.profile != 'revendedor' && value.pdvReg == undefined) || (value.profile != 'revendedor' && value.pdvReg.cnpj == "")) {
-                    _this.pdvReg = true;
-                }
-                if (value.uidPDV == '00000000000') {
-                    _this.isnotPdv = true;
-                }
-            });
-            if (userID) {
-                _this.userProvider.byId(userID).take(1).subscribe(function (user) {
-                    _this.events.publish('user', user);
-                    _this.user = user;
-                    _this.rootPage = __WEBPACK_IMPORTED_MODULE_15__environments_constants__["a" /* Constants */].HOME_PAGE.name;
-                    // }
-                });
-            }
-            else {
-                _this.rootPage = __WEBPACK_IMPORTED_MODULE_15__environments_constants__["a" /* Constants */].LOGIN_PAGE.name;
-            }
-        }).catch(function (error) {
-            _this.logger.info('Info: Usuário não logado. ' + JSON.stringify(error));
-            _this.rootPage = __WEBPACK_IMPORTED_MODULE_15__environments_constants__["a" /* Constants */].LOGIN_PAGE.name;
-        });
-        this.initializeApp();
-    }
-    MyApp.prototype.initializeApp = function () {
-        var _this = this;
-        this.platform.ready().then(function () {
-            _this.statusBar.styleDefault();
-            _this.splashScreen.hide();
-            _this.comunicacaoCentralProvider.setDMA_NTP();
-            if (_this.platform.is('cordova')) {
-                _this.userProvider.getUserLocal().then(function (_userId) {
-                    if (_userId) {
-                        setTimeout(function (_) {
-                            _this.logger.info('NOTIFICATION APP COMPONENT. User: ' + _userId);
-                            console.log(_userId);
-                            _this.notificationProvider.inicialize(_userId)
-                                .then(function (_data) { })
-                                .catch(function (error) {
-                                _this.logger.error('NOTIFICATION ERROR INIT. Error: ' + JSON.stringify(error));
-                            });
-                            _this.userProvider.updateUuidOrImei(_userId);
-                        }, 1000);
-                    }
-                });
-            }
-            _this.cadsProvider.find().take(1).subscribe(function (value) {
-                value.map(function (item) {
-                    _this.cad = new __WEBPACK_IMPORTED_MODULE_6__models_cad__["a" /* CadModel */](item.cad);
-                    _this.logger.info(_this.cad);
-                });
-            });
-        });
-    };
-    MyApp.prototype.openPage = function (page) {
-        this.nav.setRoot(page.component);
-    };
-    MyApp.prototype.goHome = function () {
-        this.nav.setRoot(__WEBPACK_IMPORTED_MODULE_15__environments_constants__["a" /* Constants */].HOME_PAGE.name);
-        this.menu.close();
-    };
-    MyApp.prototype.goEstacionamentosAtivos = function () {
-        this.nav.setRoot(__WEBPACK_IMPORTED_MODULE_15__environments_constants__["a" /* Constants */].TEMPO_RESTANTE_PAGE.name);
-        this.menu.close();
-    };
-    MyApp.prototype.goCreditos = function () {
-        this.nav.setRoot(__WEBPACK_IMPORTED_MODULE_15__environments_constants__["a" /* Constants */].CREDITOS_PAGE.name);
-        this.menu.close();
-    };
-    MyApp.prototype.goPagamentos = function () {
-        this.nav.setRoot(__WEBPACK_IMPORTED_MODULE_15__environments_constants__["a" /* Constants */].PAGAMENTOS_PAGE.name);
-        this.menu.close();
-    };
-    MyApp.prototype.goHistorico = function () {
-        this.nav.setRoot(__WEBPACK_IMPORTED_MODULE_15__environments_constants__["a" /* Constants */].HISTORICO_PAGE.name);
-        this.menu.close();
-    };
-    MyApp.prototype.goVeiculos = function () {
-        this.nav.setRoot(__WEBPACK_IMPORTED_MODULE_15__environments_constants__["a" /* Constants */].VEICULOS_PAGE.name);
-        this.menu.close();
-    };
-    MyApp.prototype.goProfile = function () {
-        this.nav.setRoot(__WEBPACK_IMPORTED_MODULE_15__environments_constants__["a" /* Constants */].PROFILE_PAGE.name);
-        this.menu.close();
-    };
-    MyApp.prototype.goConfiguracoes = function () {
-        this.nav.setRoot(__WEBPACK_IMPORTED_MODULE_15__environments_constants__["a" /* Constants */].CONFIGURACOES_PAGE.name);
-        this.menu.close();
-    };
-    MyApp.prototype.goAjuda = function () {
-        this.nav.setRoot(__WEBPACK_IMPORTED_MODULE_15__environments_constants__["a" /* Constants */].AJUDA_PAGE.name);
-        this.menu.close();
-    };
-    MyApp.prototype.goCompartilhar = function () {
-        this.nav.setRoot(__WEBPACK_IMPORTED_MODULE_15__environments_constants__["a" /* Constants */].COMPARTILHAR_PAGE.name);
-        this.menu.close();
-    };
-    MyApp.prototype.goProblema = function () {
-        this.nav.setRoot(__WEBPACK_IMPORTED_MODULE_15__environments_constants__["a" /* Constants */].REPORTAR_PROBLEMA_PAGE.name);
-        this.menu.close();
-    };
-    MyApp.prototype.goAvaliar = function () {
-        this.menu.close();
-        var url = !this.platform.is('android') ? this.cad.info.apple_store : this.cad.info.google_store;
-        this.browserProvider.openPage(url);
-    };
-    MyApp.prototype.goPdvCadastro = function () {
-        this.nav.setRoot(__WEBPACK_IMPORTED_MODULE_15__environments_constants__["a" /* Constants */].PDV_EMPRESA_PAGE.name);
-        this.menu.close();
-    };
-    MyApp.prototype.goLogout = function () {
-        var _this = this;
-        this.alertCtrl.create({
-            title: 'Sair',
-            message: 'Tem certeza que deseja sair do aplicativo?',
-            cssClass: 'alert',
-            buttons: [
-                {
-                    text: 'Sim', cssClass: 'btn btn-ok',
-                    handler: function () {
-                        _this.menu.close();
-                        _this.authProvider.logout().then(function () {
-                            _this.userProvider.removeUserLocal();
-                            _this.nav.setRoot(__WEBPACK_IMPORTED_MODULE_15__environments_constants__["a" /* Constants */].LOGIN_PAGE.name);
-                        });
-                    }
-                },
-                {
-                    text: 'Não', cssClass: 'btn btn-cancel',
-                }
-            ]
-        }).present();
-    };
-    MyApp.prototype.destroy = function () {
-        if (this.subscribePush)
-            this.subscribePush.unsubscribe();
-    };
-    MyApp.showLoading = function (loadingCtrl) {
-        return loadingCtrl.create({ content: 'Aguarde...' });
-    };
-    MyApp.showAlert = function (alertCtrl, title, msg, type, callback) {
-        var alert = alertCtrl.create({
-            title: title,
-            message: msg,
-            cssClass: type,
-            buttons: [
-                {
-                    text: 'OK',
-                    cssClass: 'btn-ok',
-                    handler: function (data) {
-                        callback();
-                    }
-                }
-            ]
-        });
-        alert.present();
-    };
-    MyApp.showConfirm = function (alertCtrl, titulo, descricao, callback) {
-        if (titulo === void 0) { titulo = 'Aviso'; }
-        if (descricao === void 0) { descricao = ''; }
-        if (callback === void 0) { callback = undefined; }
-        return alertCtrl.create({
-            title: titulo,
-            subTitle: descricao,
-            cssClass: 'alert',
-            buttons: [
-                {
-                    text: 'Sim',
-                    cssClass: 'btn btn-ok',
-                    handler: function (data) {
-                        if (callback)
-                            callback();
-                    }
-                },
-                {
-                    text: 'Não', cssClass: 'btn btn-cancel',
-                }
-            ]
-        });
-    };
-    MyApp.MAP_LOAD = true;
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* Nav */]),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* Nav */])
-    ], MyApp.prototype, "nav", void 0);
-    MyApp = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({template:/*ion-inline-start:"/Users/desenvolvedor/Documents/appzonzazul/src/app/app.html"*/'<ion-split-pane>\n  <ion-menu [content]="content">\n    <ion-content class="menu">\n      <ion-list class="list">\n\n        <user-info></user-info>\n        <ion-item-group>\n          <ion-item (click)="goHome()" class="menu-item" no-lines>\n            <ion-icon name="icon-home" item-left>\n              <ion-label class="text-menu">Início</ion-label>\n            </ion-icon>\n          </ion-item>\n        </ion-item-group>\n        <ion-item-group>\n          <ion-item (click)="goEstacionamentosAtivos()" class="menu-item" no-lines>\n            <ion-icon name="ios-alarm-outline" item-left>\n              <ion-label class="text-menu">Estacionamentos Ativos</ion-label>\n            </ion-icon>\n          </ion-item>\n        </ion-item-group>\n        <ion-item-group>\n          <ion-item (click)="goCreditos()" class="menu-item" no-lines>\n            <ion-icon name="logo-usd" item-left>\n              <ion-label class="text-menu">Comprar Créditos</ion-label>\n            </ion-icon>\n          </ion-item>\n        </ion-item-group>\n\n        <ion-item-group>\n          <ion-item (click)="goHistorico()" class="menu-item" no-lines>\n            <ion-icon name="ios-document-outline" item-left>\n              <ion-label class="text-menu">Histórico</ion-label>\n            </ion-icon>\n          </ion-item>\n        </ion-item-group>\n\n        <ion-item-group>\n          <ion-item (click)="goPagamentos()" class="menu-item" no-lines>\n            <ion-icon name="ios-card" item-left>\n              <ion-label class="text-menu">Meus Cartões</ion-label>\n            </ion-icon>\n          </ion-item>\n        </ion-item-group>\n\n        <ion-item-group *ngIf="user?.profile != \'revendedor\'">\n          <ion-item (click)="goVeiculos()" class="menu-item" no-lines>\n            <ion-icon name="md-car" item-left>\n              <ion-label class="text-menu"> Meus Veículos</ion-label>\n            </ion-icon>\n          </ion-item>\n        </ion-item-group>\n\n        <ion-item-group>\n          <ion-item (click)="goConfiguracoes()" class="menu-item" no-lines>\n            <ion-icon name="md-settings" item-left>\n              <ion-label class="text-menu">Configurações</ion-label>\n            </ion-icon>\n          </ion-item>\n        </ion-item-group>\n\n        <ion-item-group>\n          <ion-item (click)="goProfile()" class="menu-item" no-lines>\n            <ion-icon name="icon-perfil" item-left>\n              <ion-label class="text-menu">Perfil</ion-label>\n            </ion-icon>\n          </ion-item>\n        </ion-item-group>\n\n        <ion-item-group>\n          <ion-item (click)="goAjuda()" class="menu-item" no-lines>\n            <ion-icon name="md-help" item-left>\n              <ion-label class="text-menu">Ajuda</ion-label>\n            </ion-icon>\n          </ion-item>\n        </ion-item-group>\n\n        <ion-item-group>\n          <ion-item (click)="goAvaliar()" class="menu-item" no-lines>\n            <ion-icon name="ios-heart-outline" item-left>\n              <ion-label class="text-menu">Avalie o aplicativo</ion-label>\n            </ion-icon>\n          </ion-item>\n        </ion-item-group>\n\n        <ion-item-group>\n          <ion-item (click)="goCompartilhar()" class="menu-item" no-lines>\n            <ion-icon name="md-share" item-left>\n              <ion-label class="text-menu">Compartilhe</ion-label>\n            </ion-icon>\n          </ion-item>\n        </ion-item-group>\n\n        <ion-item-group>\n          <ion-item (click)="goProblema()" class="menu-item" no-lines>\n            <ion-icon name="ios-alert-outline" item-left>\n              <ion-label class="text-menu">Reportar problema</ion-label>\n            </ion-icon>\n          </ion-item>\n        </ion-item-group>\n\n        <ion-item-group>\n          <ion-item (click)="goPdvCadastro()" *ngIf="pdvReg" class="menu-item">\n            <ion-icon name="icon-perfil" item-left>\n              <ion-label class="text-menu"> Quero ser PDV </ion-label>\n            </ion-icon>\n          </ion-item>\n        </ion-item-group>\n\n        <ion-item-group>\n          <ion-item (click)="goLogout()" class="menu-item" no-lines>\n            <ion-icon name="icon-sair" item-left>\n              <ion-label class="text-menu">Sair</ion-label>\n            </ion-icon>\n          </ion-item>\n        </ion-item-group>\n      </ion-list>\n\n      <ion-grid class="img img-centralize img-logo-menu">\n        <ion-row justify-content-end>\n          <ion-col align-items-center class="img-logo1-menu">\n            <img src="assets/imgs/logo-bg.png" />\n          </ion-col>\n          <ion-col align-items-center class="img-logo2-menu">\n            <img src="assets/imgs/logo-com-fundo.png" />\n          </ion-col>\n        </ion-row>\n      </ion-grid>\n\n      <ion-label class="versao">{{versao}}</ion-label>\n    </ion-content>\n\n  </ion-menu>\n\n  <ion-nav [root]="rootPage" main #content swipeBackEnabled="false"></ion-nav>\n\n</ion-split-pane>'/*ion-inline-end:"/Users/desenvolvedor/Documents/appzonzazul/src/app/app.html"*/
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* Platform */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ModalController */],
-            __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */],
-            __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */],
-            __WEBPACK_IMPORTED_MODULE_7__providers_notification_notification__["a" /* NotificationProvider */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* MenuController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* Events */],
-            __WEBPACK_IMPORTED_MODULE_10__providers_comunicacao_central_comunicacao_central__["a" /* ComunicacaoCentralProvider */],
-            __WEBPACK_IMPORTED_MODULE_8__providers_auth_auth__["a" /* AuthProvider */],
-            __WEBPACK_IMPORTED_MODULE_11__providers_browser_browser__["a" /* BrowserProvider */],
-            __WEBPACK_IMPORTED_MODULE_12__providers_logger_logger__["a" /* LoggerProvider */],
-            __WEBPACK_IMPORTED_MODULE_9__providers_user_user__["a" /* UserProvider */],
-            __WEBPACK_IMPORTED_MODULE_14__providers_cads_cads__["a" /* CadsProvider */],
-            __WEBPACK_IMPORTED_MODULE_13__providers_modal_modal__["a" /* ModalProvider */]])
-    ], MyApp);
-    return MyApp;
-}());
-
-//# sourceMappingURL=app.component.js.map
-
-/***/ }),
-
-/***/ 441:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return VeiculosProvider; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__models_veiculo__ = __webpack_require__(449);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__environments_constants__ = __webpack_require__(20);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_first__ = __webpack_require__(642);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_first___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_first__);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-var VeiculosProvider = /** @class */ (function () {
-    function VeiculosProvider(afd) {
-        this.afd = afd;
-    }
-    VeiculosProvider.prototype.findByUser = function (userId) {
-        return this.afd.list(__WEBPACK_IMPORTED_MODULE_1__environments_constants__["a" /* Constants */].PATH_DOCUMENTS_VEICULOS + userId, function (ref) { return ref.orderByKey(); }).snapshotChanges()
-            .map(function (changes) { return changes.map(function (c) { return ({ key: c.payload.key, veiculo: new __WEBPACK_IMPORTED_MODULE_0__models_veiculo__["a" /* VeiculoModel */](c.payload.val()) }); }); });
-    };
-    VeiculosProvider.prototype.findByVeiculo = function (veiculoID, userID) {
-        return this.afd.object(__WEBPACK_IMPORTED_MODULE_1__environments_constants__["a" /* Constants */].PATH_DOCUMENTS_VEICULOS + userID + '/' + veiculoID)
-            .valueChanges();
-    };
-    VeiculosProvider.prototype.remove = function (userId, itemId) {
-        this.afd.object(__WEBPACK_IMPORTED_MODULE_1__environments_constants__["a" /* Constants */].PATH_DOCUMENTS_VEICULOS + '/' + userId + '/' + itemId).remove();
-    };
-    VeiculosProvider.prototype.save = function (userId, entity) {
-        return this.afd.list(__WEBPACK_IMPORTED_MODULE_1__environments_constants__["a" /* Constants */].PATH_DOCUMENTS_VEICULOS + '/' + userId).push(entity);
-    };
-    VeiculosProvider.prototype.update = function (userId, entity) {
-        return this.afd.object(__WEBPACK_IMPORTED_MODULE_1__environments_constants__["a" /* Constants */].PATH_DOCUMENTS_VEICULOS + '/' + userId + '/' + entity.id).set(entity);
-    };
-    VeiculosProvider.prototype.getTiposVeiculo = function () {
-        return this.afd.list(__WEBPACK_IMPORTED_MODULE_1__environments_constants__["a" /* Constants */].PATH_DOCUMENTS_TIPO_VEICULO).snapshotChanges().
-            map(function (snapshot) { return snapshot.map(function (tipo) { return ({ key: tipo.payload.key, tipo: tipo.payload.val() }); }); });
-    };
-    VeiculosProvider = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_3__angular_core__["Injectable"])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_angularfire2_database__["a" /* AngularFireDatabase */]])
-    ], VeiculosProvider);
-    return VeiculosProvider;
-}());
-
-//# sourceMappingURL=veiculos.js.map
-
-/***/ }),
-
-/***/ 442:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SetoresProvider; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angularfire2_database__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__environments_constants__ = __webpack_require__(20);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-var SetoresProvider = /** @class */ (function () {
-    function SetoresProvider(afd) {
-        this.afd = afd;
-    }
-    SetoresProvider.prototype.getSetoresByLocation = function () {
-        return this.afd.list(__WEBPACK_IMPORTED_MODULE_2__environments_constants__["a" /* Constants */].PATH_DOCUMENTS_SETORES)
-            .snapshotChanges()
-            .map(function (snapshot) { return snapshot.map(function (setores) { return ({ key: setores.payload.key, setores: setores.payload.val() }); }); });
-    };
-    SetoresProvider.prototype.getSetoresByArea = function (areaCodigo) {
-        return this.afd.list(__WEBPACK_IMPORTED_MODULE_2__environments_constants__["a" /* Constants */].PATH_DOCUMENTS_SETORES + areaCodigo)
-            .snapshotChanges()
-            .map(function (snapshot) { return snapshot.map(function (setor) { return ({ key: setor.payload.key, setor: setor.payload.val() }); }); });
-        ;
-    };
-    SetoresProvider.prototype.byId = function (areaCodigo, setorCodigo) {
-        return this.afd.object(__WEBPACK_IMPORTED_MODULE_2__environments_constants__["a" /* Constants */].PATH_DOCUMENTS_SETORES + areaCodigo + "/" + setorCodigo).valueChanges();
-    };
-    SetoresProvider.prototype.update = function (setor, areaCodigo) {
-        return this.afd.object(__WEBPACK_IMPORTED_MODULE_2__environments_constants__["a" /* Constants */].PATH_DOCUMENTS_SETORES + areaCodigo + "/" + setor.codigo).update(setor);
-    };
-    SetoresProvider.prototype.getConfigQtdCadsSetor = function () {
-        return this.afd.object(__WEBPACK_IMPORTED_MODULE_2__environments_constants__["a" /* Constants */].PATH_DOCUMENTS_CONFIG + "cads_setor").valueChanges();
-    };
-    SetoresProvider = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_angularfire2_database__["a" /* AngularFireDatabase */]])
-    ], SetoresProvider);
-    return SetoresProvider;
-}());
-
-//# sourceMappingURL=setores.js.map
-
-/***/ }),
-
-/***/ 444:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AreaProvider; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angularfire2_database__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__environments_constants__ = __webpack_require__(20);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-var AreaProvider = /** @class */ (function () {
-    function AreaProvider(afd) {
-        this.afd = afd;
-    }
-    AreaProvider.prototype.getAreas = function () {
-        return this.afd.list(__WEBPACK_IMPORTED_MODULE_2__environments_constants__["a" /* Constants */].PATH_DOCUMENTS_AREAS)
-            .snapshotChanges()
-            .map(function (snapshot) { return snapshot.map(function (area) { return ({ key: area.payload.key, area: area.payload.val() }); }); });
-    };
-    AreaProvider = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_angularfire2_database__["a" /* AngularFireDatabase */]])
-    ], AreaProvider);
-    return AreaProvider;
-}());
-
-//# sourceMappingURL=area.js.map
-
-/***/ }),
-
-/***/ 448:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoadingSpinnerComponentModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__loading_spinner__ = __webpack_require__(739);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular_module__ = __webpack_require__(392);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-
-
-
-var LoadingSpinnerComponentModule = /** @class */ (function () {
-    function LoadingSpinnerComponentModule() {
-    }
-    LoadingSpinnerComponentModule = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["NgModule"])({
-            declarations: [__WEBPACK_IMPORTED_MODULE_0__loading_spinner__["a" /* LoadingSpinnerComponent */]],
-            imports: [__WEBPACK_IMPORTED_MODULE_2_ionic_angular_module__["a" /* IonicModule */]],
-            exports: [__WEBPACK_IMPORTED_MODULE_0__loading_spinner__["a" /* LoadingSpinnerComponent */]],
-            entryComponents: [__WEBPACK_IMPORTED_MODULE_0__loading_spinner__["a" /* LoadingSpinnerComponent */]]
-        })
-    ], LoadingSpinnerComponentModule);
-    return LoadingSpinnerComponentModule;
-}());
-
-//# sourceMappingURL=loading-spinner.module.js.map
-
-/***/ }),
-
-/***/ 449:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return VeiculoModel; });
-var VeiculoModel = /** @class */ (function () {
-    function VeiculoModel(obj) {
-        if (obj && obj.id) {
-            this.id = obj && obj.id || '';
-        }
-        else {
-            this.id = obj && obj.$key || '';
-        }
-        this.placa = obj && obj.placa || '';
-        this.tipo_veiculo = obj && obj.tipo_veiculo || 'automovel';
-        this.ano = obj && obj.ano || '';
-        this.marca = obj && obj.marca || 'Sem marca';
-        this.modelo = obj && obj.modelo || 'Sem modelo';
-    }
-    VeiculoModel.getImage = function (tipo) {
-        switch (tipo) {
-            case 'caminhao_onibus':
-                return 'assets/imgs/truck.png';
-            default:
-                return 'assets/imgs/car.png';
-        }
-    };
-    VeiculoModel.prototype.getTipoVeiculoID = function () {
-        var tipo = this.tipo_veiculo.toLowerCase();
-        switch (tipo) {
-            case 'caminhao_onibus':
-                return 2;
-            default:
-                return 1;
-        }
-    };
-    VeiculoModel.prototype.getPlacaNaoFormatada = function () {
-        return this.placa ? this.placa.toUpperCase().replace('-', '') : '';
-    };
-    return VeiculoModel;
-}());
-
-//# sourceMappingURL=veiculo.js.map
-
-/***/ }),
-
-/***/ 450:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ComponentsModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(36);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__user_info_user_info__ = __webpack_require__(737);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__timer_timer__ = __webpack_require__(738);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-
-
-
-
-var ComponentsModule = /** @class */ (function () {
-    function ComponentsModule() {
-    }
-    ComponentsModule = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
-            declarations: [__WEBPACK_IMPORTED_MODULE_2__user_info_user_info__["a" /* UserInfoComponent */], __WEBPACK_IMPORTED_MODULE_3__timer_timer__["a" /* TimerComponent */]],
-            imports: [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* IonicModule */]],
-            exports: [__WEBPACK_IMPORTED_MODULE_2__user_info_user_info__["a" /* UserInfoComponent */], __WEBPACK_IMPORTED_MODULE_3__timer_timer__["a" /* TimerComponent */]]
-        })
-    ], ComponentsModule);
-    return ComponentsModule;
-}());
-
-//# sourceMappingURL=components.module.js.map
-
-/***/ }),
-
-/***/ 451:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return EstacionarModel; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CanceladoModel; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_firebase_app__ = __webpack_require__(136);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_firebase_app___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_firebase_app__);
-
-var EstacionarModel = /** @class */ (function () {
-    function EstacionarModel(obj) {
-        // let date = firebase.database.ServerValue.TIMESTAMP;
-        if (obj && obj.id) {
-            this.id = obj && obj.id || '';
-        }
-        else {
-            this.id = obj && obj.$key || '';
-        }
-        this.area_id = obj && obj.area_id || '';
-        this.setor_id = obj && obj.setor_id || '';
-        this.face_id = obj && obj.face_id || '';
-        this.veiculo_id = obj && obj.veiculo_id || '';
-        this.dataHoraRegistro = obj && obj.dataHoraRegistro || __WEBPACK_IMPORTED_MODULE_0_firebase_app__["database"].ServerValue.TIMESTAMP;
-        this.qtd = obj && obj.qtd || 0;
-        this.status = obj && obj.status || true;
-        this.cancelado = (obj && obj.cancelado) ? obj.cancelado : false;
-        this.cidade = obj && obj.cidade || 'Fortaleza';
-        this.situacao = obj && obj.situacao || 'Ativação';
-        this.categoria = obj && obj.categoria || '';
-        this.codAuth = obj && obj.codAuth || '';
-        this.uidAparelho = obj && obj.uidAparelho || '';
-        this.comprovante = obj && obj.comprovante || {};
-        this.dadosCancelamento = obj && obj.dadosCancelamento || {};
-        this.tempoComprado = obj && obj.tempoComprado || 0;
-        this.idTransacaoDistribuidor = obj && obj.idTransacaoDistribuidor || 1;
-    }
-    EstacionarModel.getHoraEmMilis = function (qtd, tempoCadMinutos) {
-        if (qtd === void 0) { qtd = 1; }
-        // return qtd*1200000;
-        return qtd * tempoCadMinutos * EstacionarModel.UM_MINUTO_EM_MILIS;
-    };
-    EstacionarModel.prototype.resetDataHoraRegistro = function () {
-        this.dataHoraRegistro = __WEBPACK_IMPORTED_MODULE_0_firebase_app__["database"].ServerValue.TIMESTAMP;
-    };
-    EstacionarModel.UM_MINUTO_EM_MILIS = 60000; // 1min = 60000 milisegundos
-    return EstacionarModel;
-}());
-
-var CanceladoModel = /** @class */ (function () {
-    function CanceladoModel(obj) {
-        this.dataHoraRegistro = obj && obj.dataHoraRegistro || __WEBPACK_IMPORTED_MODULE_0_firebase_app__["database"].ServerValue.TIMESTAMP;
-        this.motivoCancelamento = obj && obj.motivoCancelamento || '';
-        this.autenticacao = obj && obj.autenticacao || '';
-        this.idTransacaoDistribuidorCancelamento = obj && obj.idTransacaoDistribuidorCancelamento || 0;
-    }
-    return CanceladoModel;
-}());
-
-//# sourceMappingURL=estacionar.js.map
-
-/***/ }),
-
-/***/ 452:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CreditosProvider; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angularfire2_database__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__environments_constants__ = __webpack_require__(20);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__models_credito__ = __webpack_require__(465);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-var CreditosProvider = /** @class */ (function () {
-    function CreditosProvider(afd) {
-        this.afd = afd;
-    }
-    CreditosProvider.prototype.countAll = function () {
-        return this.afd.list(__WEBPACK_IMPORTED_MODULE_2__environments_constants__["a" /* Constants */].PATH_DOCUMENTS_CREDITOS)
-            .snapshotChanges()
-            .map(function (changes) { return changes.map(function (c) { return ({ key: c.payload.key, values: c.payload.val() }); }); })
-            .map(function (changes) {
-            var cont = 1;
-            changes.forEach(function (_item) {
-                cont += Object.keys(_item.values).length;
-            });
-            return cont;
-        });
-    };
-    CreditosProvider.prototype.update = function (creditoId, userID, credito) {
-        return this.afd.object(__WEBPACK_IMPORTED_MODULE_2__environments_constants__["a" /* Constants */].PATH_DOCUMENTS_CREDITOS + userID + "/" + creditoId).update(credito);
-    };
-    CreditosProvider.prototype.findByUser = function (userID) {
-        return this.afd.list(__WEBPACK_IMPORTED_MODULE_2__environments_constants__["a" /* Constants */].PATH_DOCUMENTS_CREDITOS + userID, function (ref) { return ref.orderByChild('dataHoraRegistro'); })
-            .snapshotChanges()
-            .map(function (changes) { return changes.map(function (c) { return ({ key: c.payload.key, values: new __WEBPACK_IMPORTED_MODULE_3__models_credito__["a" /* CreditoModel */](c.payload.val()) }); }); })
-            .map(function (changes) { return changes.reverse(); });
-    };
-    CreditosProvider.prototype.save = function (userID, entity) {
-        return this.afd.object(__WEBPACK_IMPORTED_MODULE_2__environments_constants__["a" /* Constants */].PATH_DOCUMENTS_CREDITOS + userID + '/' + entity.id)
-            .update(entity)
-            .then(function (result) {
-            return true;
-        }).catch(function (result) {
-            return false;
-        });
-    };
-    CreditosProvider = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_angularfire2_database__["a" /* AngularFireDatabase */]])
-    ], CreditosProvider);
-    return CreditosProvider;
-}());
-
-//# sourceMappingURL=creditos.js.map
-
-/***/ }),
-
-/***/ 453:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PagamentosProvider; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__models_pagamento__ = __webpack_require__(466);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__environments_constants__ = __webpack_require__(20);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_core__ = __webpack_require__(0);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-var PagamentosProvider = /** @class */ (function () {
-    function PagamentosProvider(afd) {
-        this.afd = afd;
-    }
-    PagamentosProvider.prototype.findByUser = function (userId) {
-        return this.afd.list(__WEBPACK_IMPORTED_MODULE_1__environments_constants__["a" /* Constants */].PATH_DOCUMENTS_PAGAMENTOS + userId, function (ref) { return ref.orderByKey(); }).snapshotChanges()
-            .map(function (changes) { return changes.map(function (c) { return ({ key: c.payload.key, values: new __WEBPACK_IMPORTED_MODULE_0__models_pagamento__["a" /* PagamentoModel */](c.payload.val()) }); }); });
-    };
-    PagamentosProvider.prototype.findByUserAndCartao = function (userId, cartaoId) {
-        return this.afd.list(__WEBPACK_IMPORTED_MODULE_1__environments_constants__["a" /* Constants */].PATH_DOCUMENTS_PAGAMENTOS + userId + '/' + cartaoId, function (ref) { return ref.orderByKey(); }).snapshotChanges()
-            .map(function (changes) { return changes.map(function (c) { return ({ key: c.payload.key, values: c.payload.val() }); }); });
-    };
-    PagamentosProvider.prototype.remove = function (userId, cartaoId) {
-        this.afd.object(__WEBPACK_IMPORTED_MODULE_1__environments_constants__["a" /* Constants */].PATH_DOCUMENTS_PAGAMENTOS + userId + '/' + cartaoId).remove();
-    };
-    PagamentosProvider.prototype.save = function (userId, entity) {
-        return this.afd.list(__WEBPACK_IMPORTED_MODULE_1__environments_constants__["a" /* Constants */].PATH_DOCUMENTS_PAGAMENTOS + userId).push(entity);
-    };
-    PagamentosProvider.prototype.update = function (userId, entityID, entity) {
-        return this.afd.object(__WEBPACK_IMPORTED_MODULE_1__environments_constants__["a" /* Constants */].PATH_DOCUMENTS_PAGAMENTOS + userId + '/' + entityID).set(entity);
-    };
-    PagamentosProvider = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_3__angular_core__["Injectable"])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_angularfire2_database__["a" /* AngularFireDatabase */]])
-    ], PagamentosProvider);
-    return PagamentosProvider;
-}());
-
-//# sourceMappingURL=pagamentos.js.map
-
-/***/ }),
-
-/***/ 456:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PagarmeProvider; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__environments_environment__ = __webpack_require__(64);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_pagarme__ = __webpack_require__(646);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_pagarme___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_pagarme__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_database__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__logger_logger__ = __webpack_require__(40);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-var PagarmeProvider = /** @class */ (function () {
-    function PagarmeProvider(afd, logger) {
-        this.afd = afd;
-        this.logger = logger;
-        PagarmeProvider_1.PAGARME_API = __WEBPACK_IMPORTED_MODULE_0__environments_environment__["a" /* environment */].production ? PagarmeProvider_1.PAGARME_API_PROD : PagarmeProvider_1.PAGARME_API_DEV;
-    }
-    PagarmeProvider_1 = PagarmeProvider;
-    PagarmeProvider.prototype.pagar = function (card, comprador, venda) {
-        var _this = this;
-        return new Promise(function (resolve, reject) {
-            // pega os erros de validação nos campos do form e a bandeira do cartão
-            var cardValidations = __WEBPACK_IMPORTED_MODULE_2_pagarme___default.a.validate({ card: card });
-            if (cardValidations.card.card_number) {
-                _this.logger.debug('número de cartão correto');
-                // console.log('número de cartão correto');
-                var transaction_1 = _this.criaTransaction(card, comprador, venda);
-                _this.logger.debug('transaction' + JSON.stringify(transaction_1));
-                // console.log('transaction', transaction);
-                __WEBPACK_IMPORTED_MODULE_2_pagarme___default.a.client.connect({ api_key: PagarmeProvider_1.PAGARME_API })
-                    .then(function (client) { return client.transactions.create(transaction_1); })
-                    .then(function (transaction) {
-                    _this.logger.debug(JSON.stringify(transaction));
-                    console.log(transaction.id);
-                    //this.processaPgto(comprador.id, transaction, valor, type);
-                    resolve(transaction);
-                })
-                    .catch(function (error) {
-                    // console.log('error', error);
-                    reject('Erro ao processar o pagamento! Verifique se seus dados foram preenchidos de forma correta.');
-                });
-            }
-            else {
-                reject('Número de cartão inválido! Confira se seus dados foram preenchidos de forma correta e tente novamente.');
-            }
-        });
-    };
-    PagarmeProvider.prototype.estorno = function (credito) {
-        return new Promise(function (resolve, reject) {
-            __WEBPACK_IMPORTED_MODULE_2_pagarme___default.a.client.connect({ api_key: PagarmeProvider_1.PAGARME_API })
-                .then(function (client) { return client.transactions.refund({
-                id: credito.idCompra
-            })
-                .then(function (response) {
-                resolve(response);
-            })
-                .catch(function (error) {
-                reject('deu ruim');
-            }); });
-        });
-    };
-    PagarmeProvider.prototype.criaTransaction = function (card, comprador, venda) {
-        return {
-            // criar a transação/assinatura: https://pagarme.readme.io/reference#criar-transacao
-            //Valor a ser cobrado
-            amount: 100 * venda.price,
-            // Informações do cartão do cliente criptografadas
-            //Card Hash
-            card_number: card.card_number,
-            card_cvv: card.card_cvv,
-            card_expiration_date: card.card_expiration_date,
-            card_holder_name: card.card_holder_name,
-            //Forma de Pagamento
-            payment_method: "credit_card",
-            // "installments": "1", // Número de parcelas da transação
-            // dados do comprador
-            customer: {
-                external_id: comprador.id,
-                name: comprador.name,
-                type: "individual",
-                country: "br",
-                email: comprador.email,
-                documents: [{ "type": "cpf", "number": comprador.cpf }],
-                phone_numbers: [comprador.phone]
-                // "birthday": comprador.birthday
-            },
-            // dados de cobrança
-            billing: {
-                name: "Zona Azul Fortaleza",
-                address: {
-                    country: "br",
-                    state: "ce",
-                    city: "Fortaleza",
-                    neighborhood: "Papicu",
-                    street: "R. Joaquim Lima",
-                    street_number: "150",
-                    zipcode: "60175005"
-                }
-            },
-            items: [
-                {
-                    id: venda.id,
-                    title: venda.name,
-                    unit_price: venda.price,
-                    quantity: venda.qtd,
-                    tangible: true,
-                    date: venda.date
-                }
-            ]
-        };
-    };
-    PagarmeProvider.PAGARME_API_PROD = "ak_live_fWyQBJhrvLmRTbQSuESRpBKAOuXL3I";
-    PagarmeProvider.PAGARME_API_DEV = "ak_test_KkXzbnmyssmGQC2Esx6Sq6J5KilA6g";
-    // static PAGARME_API_DEV: string = "ak_test_wAGrI8wvapRuUkiBHQPrQoQqrGstv9";
-    PagarmeProvider.PAGARME_API = PagarmeProvider_1.PAGARME_API_DEV;
-    PagarmeProvider = PagarmeProvider_1 = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Injectable"])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3_angularfire2_database__["a" /* AngularFireDatabase */], __WEBPACK_IMPORTED_MODULE_4__logger_logger__["a" /* LoggerProvider */]])
-    ], PagarmeProvider);
-    return PagarmeProvider;
-    var PagarmeProvider_1;
-}());
-
-//# sourceMappingURL=pagarme.js.map
-
-/***/ }),
-
-/***/ 457:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PipesModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__replace_replace__ = __webpack_require__(735);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-
-
-var PipesModule = /** @class */ (function () {
-    function PipesModule() {
-    }
-    PipesModule = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
-            declarations: [__WEBPACK_IMPORTED_MODULE_1__replace_replace__["a" /* ReplacePipe */]],
-            imports: [],
-            exports: [__WEBPACK_IMPORTED_MODULE_1__replace_replace__["a" /* ReplacePipe */]]
-        })
-    ], PipesModule);
-    return PipesModule;
-}());
-
-//# sourceMappingURL=pipes.module.js.map
-
-/***/ }),
-
-/***/ 458:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CameraProvider; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ionic_native_camera__ = __webpack_require__(225);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__logger_logger__ = __webpack_require__(40);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-var CameraProvider = /** @class */ (function () {
-    function CameraProvider(camera, logger) {
-        this.camera = camera;
-        this.logger = logger;
-    }
-    CameraProvider.prototype.openMedia = function (title, actionSheetCtrl, sucessCallback, showCamera, cameraOptions) {
-        var _this = this;
-        if (showCamera === void 0) { showCamera = true; }
-        if (cameraOptions === void 0) { cameraOptions = undefined; }
-        var buttonsArr = [];
-        if (!cameraOptions) {
-            cameraOptions = {
-                quality: 50,
-                allowEdit: true,
-                targetWidth: 350,
-                targetHeight: 350
-            };
-        }
-        if (showCamera) {
-            buttonsArr.push({ text: 'Da Câmera', handler: function () { return _this.getMediaBase64('camera', sucessCallback, cameraOptions); } });
-        }
-        buttonsArr.push({ text: 'Da Galeria', handler: function () { return _this.getMediaBase64('galeria', sucessCallback, cameraOptions); } });
-        buttonsArr.push({ text: 'Cancelar', role: 'cancel', handler: function () { return console.log('Cancel clicked'); } });
-        var action = actionSheetCtrl.create({ title: title, buttons: buttonsArr });
-        action.present();
-        return action;
-    };
-    /**
-     * media: camera, foto (galeria), video (galeria), arquivo (galeria)
-     */
-    CameraProvider.prototype.getMediaBase64 = function (media, sucessCallback, cameraOptions) {
-        var _this = this;
-        this.getMedia(media, cameraOptions).then(function (imageData) {
-            var base64 = 'data:image/jpeg;base64,' + imageData;
-            _this.logger.debug('foto: ' + base64);
-            //this.showAlert('Camera', 'foto: '+ base64, 'error', {});
-            sucessCallback(base64);
-        }, function (erro) {
-            _this.logger.error('Erro ao obter imagem base64: ' + JSON.stringify(erro));
-        });
-    };
-    CameraProvider.prototype.getMedia = function (media, cameraOptionsDef) {
-        var cameraOptions = {};
-        switch (media) {
-            case 'camera':
-                cameraOptions = {
-                    sourceType: this.camera.PictureSourceType.CAMERA,
-                    saveToPhotoAlbum: true,
-                    cameraDirection: this.camera.Direction.FRONT,
-                    correctOrientation: true
-                };
-                break;
-            case 'galeria':
-                cameraOptions = {
-                    mediaType: this.camera.MediaType.PICTURE,
-                    sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
-                    correctOrientation: true
-                };
-                break;
-            case 'video':
-                cameraOptions = {
-                    mediaType: this.camera.MediaType.VIDEO,
-                    sourceType: this.camera.PictureSourceType.PHOTOLIBRARY
-                };
-                break;
-            case 'arquivo':
-                cameraOptions = {
-                    mediaType: this.camera.MediaType.ALLMEDIA,
-                    sourceType: this.camera.PictureSourceType.PHOTOLIBRARY
-                };
-                break;
-        }
-        cameraOptions['quality'] = cameraOptionsDef['quality'];
-        cameraOptions['destinationType'] = this.camera.DestinationType.DATA_URL;
-        //cameraOptions['destinationType'] = Camera.DestinationType.FILE_URI;
-        cameraOptions['encodingType'] = this.camera.EncodingType.JPEG;
-        cameraOptions['allowEdit'] = cameraOptionsDef['allowEdit'];
-        cameraOptions['targetWidth'] = cameraOptionsDef['targetWidth'];
-        cameraOptions['targetHeight'] = cameraOptionsDef['targetHeight'];
-        return this.camera.getPicture(cameraOptions);
-    };
-    CameraProvider.prototype.processWebImage = function (event, sucessCallback) {
-        var reader = new FileReader();
-        reader.onload = function (readerEvent) {
-            console.log('me ...' + readerEvent);
-            var imageData = readerEvent.target.result;
-            var image = new Image();
-            image.src = imageData;
-            console.log('image.data..' + imageData[0]);
-            image.onload = function (data) {
-                console.log('me data ...' + JSON.stringify(data));
-                // const w = data['path'].naturalWidth;
-                // const h = data['path'].naturalHeight;
-                var w = 200;
-                var h = 200;
-                sucessCallback(imageData, w, h);
-            };
-        };
-        // this.showAlert('Camera', 'No success calback...', '', {});
-        reader.readAsDataURL(event.target.files[0]);
-    };
-    CameraProvider = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__ionic_native_camera__["a" /* Camera */], __WEBPACK_IMPORTED_MODULE_2__logger_logger__["a" /* LoggerProvider */]])
-    ], CameraProvider);
-    return CameraProvider;
-}());
-
-//# sourceMappingURL=camera.js.map
-
-/***/ }),
-
-/***/ 463:
+/***/ 434:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3166,7 +3240,7 @@ var ConfiguracaoModel = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 464:
+/***/ 435:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3190,12 +3264,12 @@ var Pdv = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 465:
+/***/ 436:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CreditoModel; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_firebase_app__ = __webpack_require__(136);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_firebase_app__ = __webpack_require__(116);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_firebase_app___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_firebase_app__);
 
 var CreditoModel = /** @class */ (function () {
@@ -3227,7 +3301,7 @@ var CreditoModel = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 466:
+/***/ 437:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3255,15 +3329,15 @@ var PagamentoModel = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 467:
+/***/ 438:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CieloProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__(94);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__cielo_helper__ = __webpack_require__(734);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_environment__ = __webpack_require__(64);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__(86);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__environments_environment__ = __webpack_require__(59);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__cielo_helper__ = __webpack_require__(718);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3280,25 +3354,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var CieloProvider = /** @class */ (function () {
     function CieloProvider(http) {
         this.http = http;
-        this.cieloHelper = new __WEBPACK_IMPORTED_MODULE_2__cielo_helper__["a" /* CieloHelper */];
-        if (__WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].production) {
-            this.apiUrl = __WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].cieloProd.apiUrl;
-            this.apiQueryUrl = __WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].cieloProd.apiQueryUrl;
+        this.cieloHelper = new __WEBPACK_IMPORTED_MODULE_3__cielo_helper__["a" /* CieloHelper */];
+        if (__WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].production) {
+            this.apiUrl = __WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].cieloProd.apiUrl;
+            this.apiQueryUrl = __WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].cieloProd.apiQueryUrl;
             this.hearders = new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpHeaders */]({
                 'Content-Type': 'application/json',
                 'Accept': 'application/json',
-                'MerchantId': __WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].cieloProd.merchantId,
-                'MerchantKey': __WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].cieloProd.merchantKey
+                'MerchantId': __WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].cieloProd.merchantId,
+                'MerchantKey': __WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].cieloProd.merchantKey
             });
         }
         else {
-            this.apiUrl = __WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].cieloDev.apiUrl;
-            this.apiQueryUrl = __WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].cieloDev.apiQueryUrl;
+            this.apiUrl = __WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].cieloDev.apiUrl;
+            this.apiQueryUrl = __WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].cieloDev.apiQueryUrl;
             this.hearders = new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpHeaders */]({
                 'Content-Type': 'application/json',
                 'Accept': 'application/json',
-                'MerchantId': __WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].cieloDev.merchantId,
-                'MerchantKey': __WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].cieloDev.merchantKey
+                'MerchantId': __WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].cieloDev.merchantId,
+                'MerchantKey': __WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].cieloDev.merchantKey
             });
         }
     }
@@ -3369,14 +3443,14 @@ var CieloProvider = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 468:
+/***/ 439:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AccordionModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(36);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__accordion__ = __webpack_require__(736);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__accordion__ = __webpack_require__(719);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3403,14 +3477,14 @@ var AccordionModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 469:
+/***/ 440:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HolidaysProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angularfire2_database__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__environments_constants__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angularfire2_database__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__environments_constants__ = __webpack_require__(19);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3449,14 +3523,14 @@ var HolidaysProvider = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 470:
+/***/ 441:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ReportarProblemaProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angularfire2_database__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__environments_constants__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angularfire2_database__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__environments_constants__ = __webpack_require__(19);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3495,13 +3569,13 @@ var ReportarProblemaProvider = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 471:
+/***/ 442:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return InfoProvider; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__environments_constants__ = __webpack_require__(20);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angularfire2_database__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__environments_constants__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angularfire2_database__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(0);
 var __assign = (this && this.__assign) || Object.assign || function(t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -3543,13 +3617,13 @@ var InfoProvider = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 472:
+/***/ 443:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app_module__ = __webpack_require__(473);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__ = __webpack_require__(799);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app_module__ = __webpack_require__(444);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__ = __webpack_require__(733);
 
 
 Object(__WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_0__app_module__["a" /* AppModule */]);
@@ -3557,70 +3631,72 @@ Object(__WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__["a" /* pl
 
 /***/ }),
 
-/***/ 473:
+/***/ 444:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__ = __webpack_require__(55);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__(94);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__ = __webpack_require__(142);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_angular2_text_mask__ = __webpack_require__(459);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__ = __webpack_require__(50);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__(86);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__ = __webpack_require__(122);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_angular2_text_mask__ = __webpack_require__(430);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_angular2_text_mask___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_angular2_text_mask__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angularfire2__ = __webpack_require__(65);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_angularfire2_database__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_native_unique_device_id__ = __webpack_require__(289);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ionic_storage__ = __webpack_require__(292);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__ionic_native_status_bar__ = __webpack_require__(294);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__ionic_native_in_app_browser__ = __webpack_require__(295);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__ionic_native_splash_screen__ = __webpack_require__(296);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__ionic_native_camera__ = __webpack_require__(225);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__ionic_native_push__ = __webpack_require__(297);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__ionic_native_file__ = __webpack_require__(460);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__ionic_native_uid__ = __webpack_require__(298);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__ionic_native_android_permissions__ = __webpack_require__(219);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__ionic_native_geolocation__ = __webpack_require__(445);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__ionic_native_location_accuracy__ = __webpack_require__(443);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__ionic_native_social_sharing__ = __webpack_require__(454);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__ionic_native_http__ = __webpack_require__(299);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__ionic_native_card_io__ = __webpack_require__(461);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__ionic_native_file_opener__ = __webpack_require__(462);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__ionic_native_speech_recognition__ = __webpack_require__(446);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__ionic_native_clipboard__ = __webpack_require__(455);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25_brmasker_ionic_3__ = __webpack_require__(447);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26_ionic_angular__ = __webpack_require__(36);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__providers_pagamentos_pagamentos__ = __webpack_require__(453);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__providers_veiculos_veiculos__ = __webpack_require__(441);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__providers_estacionar_estacionar__ = __webpack_require__(221);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__providers_pagarme_pagarme__ = __webpack_require__(456);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__providers_auth_auth__ = __webpack_require__(217);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__providers_user_user__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__providers_camera_camera__ = __webpack_require__(458);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__providers_setores_setores__ = __webpack_require__(442);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__providers_area_area__ = __webpack_require__(444);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__providers_creditos_creditos__ = __webpack_require__(452);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__providers_cads_user_cads_user__ = __webpack_require__(218);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__providers_cads_cads__ = __webpack_require__(133);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__providers_consultar_placa_consultar_placa__ = __webpack_require__(756);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__providers_holidays_holidays__ = __webpack_require__(469);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_41__providers_browser_browser__ = __webpack_require__(226);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_42__providers_notification_notification__ = __webpack_require__(228);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_43__providers_comunicacao_central_comunicacao_central__ = __webpack_require__(220);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_44__providers_logger_logger__ = __webpack_require__(40);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_45__providers_modal_modal__ = __webpack_require__(216);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_46__providers_cielo_cielo__ = __webpack_require__(467);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_47__providers_info_info__ = __webpack_require__(471);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_48__providers_reportar_problema_reportar_problema__ = __webpack_require__(470);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_49__providers_tempo_estacionado_tempo_estacionado__ = __webpack_require__(223);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_50__providers_firebase_logger_firebase_logger__ = __webpack_require__(343);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_51__pipes_pipes_module__ = __webpack_require__(457);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_52__components_components_module__ = __webpack_require__(450);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_53__components_timer_timer_module__ = __webpack_require__(798);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_54__components_accordion_accordion_module__ = __webpack_require__(468);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_55__components_loading_spinner_loading_spinner_module__ = __webpack_require__(448);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_56__app_component__ = __webpack_require__(440);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_57__environments_environment__ = __webpack_require__(64);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angularfire2__ = __webpack_require__(62);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_angularfire2_database__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_native_unique_device_id__ = __webpack_require__(270);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ionic_storage__ = __webpack_require__(273);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__ionic_native_status_bar__ = __webpack_require__(275);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__ionic_native_in_app_browser__ = __webpack_require__(276);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__ionic_native_splash_screen__ = __webpack_require__(277);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__ionic_native_camera__ = __webpack_require__(206);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__ionic_native_push__ = __webpack_require__(278);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__ionic_native_file__ = __webpack_require__(431);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__ionic_native_uid__ = __webpack_require__(279);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__ionic_native_android_permissions__ = __webpack_require__(200);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__ionic_native_geolocation__ = __webpack_require__(415);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__ionic_native_location_accuracy__ = __webpack_require__(416);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__ionic_native_social_sharing__ = __webpack_require__(425);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__ionic_native_http__ = __webpack_require__(558);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__ionic_native_card_io__ = __webpack_require__(432);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__ionic_native_file_opener__ = __webpack_require__(433);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__ionic_native_speech_recognition__ = __webpack_require__(417);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__ionic_native_clipboard__ = __webpack_require__(426);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25_brmasker_ionic_3__ = __webpack_require__(420);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26_ionic_angular__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__pipes_name_pattern_name_pattern__ = __webpack_require__(729);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__providers_pagamentos_pagamentos__ = __webpack_require__(424);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__providers_veiculos_veiculos__ = __webpack_require__(412);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__providers_estacionar_estacionar__ = __webpack_require__(201);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__providers_pagarme_pagarme__ = __webpack_require__(427);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__providers_auth_auth__ = __webpack_require__(199);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__providers_user_user__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__providers_camera_camera__ = __webpack_require__(429);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__providers_setores_setores__ = __webpack_require__(413);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__providers_area_area__ = __webpack_require__(414);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__providers_creditos_creditos__ = __webpack_require__(423);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__providers_cads_user_cads_user__ = __webpack_require__(111);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__providers_cads_cads__ = __webpack_require__(112);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__providers_consultar_placa_consultar_placa__ = __webpack_require__(730);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_41__providers_holidays_holidays__ = __webpack_require__(440);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_42__providers_browser_browser__ = __webpack_require__(207);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_43__providers_notification_notification__ = __webpack_require__(209);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_44__providers_comunicacao_central_comunicacao_central__ = __webpack_require__(202);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_45__providers_logger_logger__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_46__providers_modal_modal__ = __webpack_require__(198);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_47__providers_cielo_cielo__ = __webpack_require__(438);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_48__providers_info_info__ = __webpack_require__(442);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_49__providers_reportar_problema_reportar_problema__ = __webpack_require__(441);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_50__providers_tempo_estacionado_tempo_estacionado__ = __webpack_require__(204);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_51__providers_firebase_logger_firebase_logger__ = __webpack_require__(330);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_52__pipes_pipes_module__ = __webpack_require__(428);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_53__components_components_module__ = __webpack_require__(419);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_54__components_timer_timer_module__ = __webpack_require__(731);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_55__components_accordion_accordion_module__ = __webpack_require__(439);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_56__components_loading_spinner_loading_spinner_module__ = __webpack_require__(418);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_57__components_progress_bar_progress_bar_module__ = __webpack_require__(732);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_58__app_component__ = __webpack_require__(411);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_59__environments_environment__ = __webpack_require__(59);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3628,6 +3704,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 // ANGULAR AND IONIC 
+
 
 
 
@@ -3688,18 +3765,20 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_56__app_component__["a" /* MyApp */],
+                __WEBPACK_IMPORTED_MODULE_58__app_component__["a" /* MyApp */],
+                __WEBPACK_IMPORTED_MODULE_27__pipes_name_pattern_name_pattern__["a" /* NamePatternPipe */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__["BrowserModule"],
                 __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["b" /* HttpClientModule */],
-                __WEBPACK_IMPORTED_MODULE_26_ionic_angular__["g" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_56__app_component__["a" /* MyApp */], {
+                __WEBPACK_IMPORTED_MODULE_26_ionic_angular__["g" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_58__app_component__["a" /* MyApp */], {
                     // mode: 'ios',
                     backButtonText: '',
                     platforms: {
@@ -3717,59 +3796,62 @@ var AppModule = /** @class */ (function () {
                         { loadChildren: '../pages/areas-modal/areas-modal.module#SetoresModalPageModule', name: 'AreasModalPage', segment: 'areas-modal', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/cancelar-transacao/cancelar-transacao.module#CancelarTransacaoPageModule', name: 'CancelarTransacaoPage', segment: 'cancelar-transacao', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/compartilhar/compartilhar.module#CompartilharPageModule', name: 'CompartilharPage', segment: 'compartilhar', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/comprar-creditos-pagamento/comprar-creditos-pagamento.module#ComprarCreditosPagamentoPageModule', name: 'ComprarCreditosPagamentoPage', segment: 'comprar-creditos-pagamento', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/comprar-creditos/comprar-creditos.module#ComprarCreditosPageModule', name: 'ComprarCreditosPage', segment: 'comprar-creditos', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/comprar-creditos-pagamento/comprar-creditos-pagamento.module#ComprarCreditosPagamentoPageModule', name: 'ComprarCreditosPagamentoPage', segment: 'comprar-creditos-pagamento', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/configuracoes/configuracoes.module#ConfiguracoesPageModule', name: 'ConfiguracoesPage', segment: 'configuracoes', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/comprovante/comprovante.module#ComprovantePageModule', name: 'ComprovantePage', segment: 'comprovante', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/estacionados-modal/estacionados-modal.module#EstacionadosModalPageModule', name: 'EstacionadosModalPage', segment: 'estacionados-modal', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/confirmar-cpf-modal/confirmar-cpf-modal.module#ConfirmarCpfModalPageModule', name: 'ConfirmarCpfModalPage', segment: 'confirmar-cpf-modal', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/filtro-modal/filtro-modal.module#FiltroModalPageModule', name: 'FiltroModalPage', segment: 'filtro-modal', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/filtro-pagamento/filtro-pagamento.module#FiltroPagamentoPageModule', name: 'FiltroPagamentoPage', segment: 'filtro-pagamento', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/estacionar/estacionar.module#EstacionarPageModule', name: 'EstacionarPage', segment: 'estacionar', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/home/home.module#HomePageModule', name: 'HomePage', segment: 'home', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/pagamentos-form/pagamentos-form.module#PagamentosFormPageModule', name: 'PagamentosFormPage', segment: 'pagamentos-form', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/filtro-pagamento/filtro-pagamento.module#FiltroPagamentoPageModule', name: 'FiltroPagamentoPage', segment: 'filtro-pagamento', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/filtro-modal/filtro-modal.module#FiltroModalPageModule', name: 'FiltroModalPage', segment: 'filtro-modal', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/historico/historico.module#HistoricoPageModule', name: 'HistoricoPage', segment: 'historico', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/home/home.module#HomePageModule', name: 'HomePage', segment: 'home', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/pagamentos-form/pagamentos-form.module#PagamentosFormPageModule', name: 'PagamentosFormPage', segment: 'pagamentos-form', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/pagamentos/pagamentos.module#PagamentosPageModule', name: 'PagamentosPage', segment: 'pagamentos', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/pdv-empresa/pdv-empresa.module#PdvEmpresaPageModule', name: 'PdvEmpresaPage', segment: 'pdv-empresa', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/permissions/permissions-screen.module#PermissionsModalPageModule', name: 'PermissionsModalPage', segment: 'permissions-screen', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/profile-edit/profile-edit.module#ProfileEditPageModule', name: 'ProfileEditPage', segment: 'profile-edit', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/principal/principal.module#PrincipalPageModule', name: 'PrincipalPage', segment: 'principal', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/profile/profile.module#ProfilePageModule', name: 'ProfilePage', segment: 'profile', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/profile-edit/profile-edit.module#ProfileEditPageModule', name: 'ProfileEditPage', segment: 'profile-edit', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/recovery-password/recovery-password.module#RecoveryPasswordPageModule', name: 'RecoveryPasswordPage', segment: 'recovery-password', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/reportar-problema/reportar-problema.module#ReportarProblemaPageModule', name: 'ReportarProblemaPage', segment: 'reportar-problema', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/root/root.module#RootPageModule', name: 'RootPage', segment: 'root', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/setores-modal/setores-modal.module#SetoresModalPageModule', name: 'SetoresModalPage', segment: 'setores-modal', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/reportar-problema/reportar-problema.module#ReportarProblemaPageModule', name: 'ReportarProblemaPage', segment: 'reportar-problema', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/streat-view/streat-view.module#StreatViewPageModule', name: 'StreatViewPage', segment: 'streat-view', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/signup/signup.module#SignupPageModule', name: 'SignupPage', segment: 'signup', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/tempo-restante/tempo-restante.module#TempoRestantePageModule', name: 'TempoRestantePage', segment: 'tempo-restante', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/terms/terms.module#TermsPageModule', name: 'TermsPage', segment: 'terms', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/tempo-restante/tempo-restante.module#TempoRestantePageModule', name: 'TempoRestantePage', segment: 'tempo-restante', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/veiculo-estacionado/veiculo-estacionado.module#VeiculoEstacionadoPageModule', name: 'VeiculoEstacionadoPage', segment: 'veiculo-estacionado', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/veiculos-form/veiculos-form.module#VeiculosFormPageModule', name: 'VeiculosFormPage', segment: 'veiculos-form', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/veiculos-modal/veiculos-modal.module#VeiculosModalPageModule', name: 'VeiculosModalPage', segment: 'veiculos-modal', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/veiculos-form/veiculos-form.module#VeiculosFormPageModule', name: 'VeiculosFormPage', segment: 'veiculos-form', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/veiculos/veiculos.module#VeiculosPageModule', name: 'VeiculosPage', segment: 'veiculos', priority: 'low', defaultHistory: [] }
                     ]
                 }),
-                __WEBPACK_IMPORTED_MODULE_5_angularfire2__["a" /* AngularFireModule */].initializeApp(__WEBPACK_IMPORTED_MODULE_57__environments_environment__["a" /* environment */].production ? __WEBPACK_IMPORTED_MODULE_57__environments_environment__["a" /* environment */].prod : __WEBPACK_IMPORTED_MODULE_57__environments_environment__["a" /* environment */].dev),
+                __WEBPACK_IMPORTED_MODULE_5_angularfire2__["a" /* AngularFireModule */].initializeApp(__WEBPACK_IMPORTED_MODULE_59__environments_environment__["a" /* environment */].production ? __WEBPACK_IMPORTED_MODULE_59__environments_environment__["a" /* environment */].prod : __WEBPACK_IMPORTED_MODULE_59__environments_environment__["a" /* environment */].dev),
                 __WEBPACK_IMPORTED_MODULE_6_angularfire2_database__["b" /* AngularFireDatabaseModule */],
                 __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__["b" /* AngularFireAuthModule */],
                 __WEBPACK_IMPORTED_MODULE_4_angular2_text_mask__["TextMaskModule"],
-                __WEBPACK_IMPORTED_MODULE_53__components_timer_timer_module__["a" /* TimerModule */],
-                __WEBPACK_IMPORTED_MODULE_52__components_components_module__["a" /* ComponentsModule */],
-                __WEBPACK_IMPORTED_MODULE_55__components_loading_spinner_loading_spinner_module__["a" /* LoadingSpinnerComponentModule */],
-                __WEBPACK_IMPORTED_MODULE_54__components_accordion_accordion_module__["a" /* AccordionModule */],
+                __WEBPACK_IMPORTED_MODULE_54__components_timer_timer_module__["a" /* TimerModule */],
+                __WEBPACK_IMPORTED_MODULE_57__components_progress_bar_progress_bar_module__["a" /* ProgressBarModule */],
+                __WEBPACK_IMPORTED_MODULE_53__components_components_module__["a" /* ComponentsModule */],
+                __WEBPACK_IMPORTED_MODULE_56__components_loading_spinner_loading_spinner_module__["a" /* LoadingSpinnerComponentModule */],
+                __WEBPACK_IMPORTED_MODULE_55__components_accordion_accordion_module__["a" /* AccordionModule */],
                 __WEBPACK_IMPORTED_MODULE_8__ionic_storage__["a" /* IonicStorageModule */].forRoot(),
                 __WEBPACK_IMPORTED_MODULE_25_brmasker_ionic_3__["a" /* BrMaskerModule */],
-                __WEBPACK_IMPORTED_MODULE_51__pipes_pipes_module__["a" /* PipesModule */],
+                __WEBPACK_IMPORTED_MODULE_52__pipes_pipes_module__["a" /* PipesModule */],
             ],
-            exports: [__WEBPACK_IMPORTED_MODULE_4_angular2_text_mask__["TextMaskModule"]],
+            exports: [__WEBPACK_IMPORTED_MODULE_4_angular2_text_mask__["TextMaskModule"], __WEBPACK_IMPORTED_MODULE_27__pipes_name_pattern_name_pattern__["a" /* NamePatternPipe */]],
             bootstrap: [__WEBPACK_IMPORTED_MODULE_26_ionic_angular__["e" /* IonicApp */]],
             entryComponents: [
-                __WEBPACK_IMPORTED_MODULE_56__app_component__["a" /* MyApp */],
+                __WEBPACK_IMPORTED_MODULE_58__app_component__["a" /* MyApp */],
             ],
             providers: [
                 __WEBPACK_IMPORTED_MODULE_9__ionic_native_status_bar__["a" /* StatusBar */],
                 __WEBPACK_IMPORTED_MODULE_11__ionic_native_splash_screen__["a" /* SplashScreen */],
                 { provide: __WEBPACK_IMPORTED_MODULE_0__angular_core__["ErrorHandler"], useClass: __WEBPACK_IMPORTED_MODULE_26_ionic_angular__["f" /* IonicErrorHandler */] },
-                __WEBPACK_IMPORTED_MODULE_44__providers_logger_logger__["a" /* LoggerProvider */],
+                __WEBPACK_IMPORTED_MODULE_45__providers_logger_logger__["a" /* LoggerProvider */],
                 __WEBPACK_IMPORTED_MODULE_12__ionic_native_camera__["a" /* Camera */],
                 __WEBPACK_IMPORTED_MODULE_13__ionic_native_push__["a" /* Push */],
                 __WEBPACK_IMPORTED_MODULE_20__ionic_native_http__["a" /* HTTP */],
@@ -3781,33 +3863,33 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_17__ionic_native_geolocation__["a" /* Geolocation */],
                 __WEBPACK_IMPORTED_MODULE_18__ionic_native_location_accuracy__["a" /* LocationAccuracy */],
                 __WEBPACK_IMPORTED_MODULE_10__ionic_native_in_app_browser__["a" /* InAppBrowser */],
-                __WEBPACK_IMPORTED_MODULE_31__providers_auth_auth__["a" /* AuthProvider */],
-                __WEBPACK_IMPORTED_MODULE_32__providers_user_user__["a" /* UserProvider */],
-                __WEBPACK_IMPORTED_MODULE_33__providers_camera_camera__["a" /* CameraProvider */],
-                __WEBPACK_IMPORTED_MODULE_27__providers_pagamentos_pagamentos__["a" /* PagamentosProvider */],
-                __WEBPACK_IMPORTED_MODULE_28__providers_veiculos_veiculos__["a" /* VeiculosProvider */],
-                __WEBPACK_IMPORTED_MODULE_34__providers_setores_setores__["a" /* SetoresProvider */],
-                __WEBPACK_IMPORTED_MODULE_35__providers_area_area__["a" /* AreaProvider */],
-                __WEBPACK_IMPORTED_MODULE_29__providers_estacionar_estacionar__["a" /* EstacionarProvider */],
-                __WEBPACK_IMPORTED_MODULE_30__providers_pagarme_pagarme__["a" /* PagarmeProvider */],
-                __WEBPACK_IMPORTED_MODULE_36__providers_creditos_creditos__["a" /* CreditosProvider */],
-                __WEBPACK_IMPORTED_MODULE_37__providers_cads_user_cads_user__["a" /* CadsUserProvider */],
-                __WEBPACK_IMPORTED_MODULE_38__providers_cads_cads__["a" /* CadsProvider */],
-                __WEBPACK_IMPORTED_MODULE_49__providers_tempo_estacionado_tempo_estacionado__["a" /* TempoEstacionadoProvider */],
-                __WEBPACK_IMPORTED_MODULE_41__providers_browser_browser__["a" /* BrowserProvider */],
-                __WEBPACK_IMPORTED_MODULE_42__providers_notification_notification__["a" /* NotificationProvider */],
-                __WEBPACK_IMPORTED_MODULE_47__providers_info_info__["a" /* InfoProvider */],
-                __WEBPACK_IMPORTED_MODULE_43__providers_comunicacao_central_comunicacao_central__["a" /* ComunicacaoCentralProvider */],
+                __WEBPACK_IMPORTED_MODULE_32__providers_auth_auth__["a" /* AuthProvider */],
+                __WEBPACK_IMPORTED_MODULE_33__providers_user_user__["a" /* UserProvider */],
+                __WEBPACK_IMPORTED_MODULE_34__providers_camera_camera__["a" /* CameraProvider */],
+                __WEBPACK_IMPORTED_MODULE_28__providers_pagamentos_pagamentos__["a" /* PagamentosProvider */],
+                __WEBPACK_IMPORTED_MODULE_29__providers_veiculos_veiculos__["a" /* VeiculosProvider */],
+                __WEBPACK_IMPORTED_MODULE_35__providers_setores_setores__["a" /* SetoresProvider */],
+                __WEBPACK_IMPORTED_MODULE_36__providers_area_area__["a" /* AreaProvider */],
+                __WEBPACK_IMPORTED_MODULE_30__providers_estacionar_estacionar__["a" /* EstacionarProvider */],
+                __WEBPACK_IMPORTED_MODULE_31__providers_pagarme_pagarme__["a" /* PagarmeProvider */],
+                __WEBPACK_IMPORTED_MODULE_37__providers_creditos_creditos__["a" /* CreditosProvider */],
+                __WEBPACK_IMPORTED_MODULE_38__providers_cads_user_cads_user__["a" /* CadsUserProvider */],
+                __WEBPACK_IMPORTED_MODULE_39__providers_cads_cads__["a" /* CadsProvider */],
+                __WEBPACK_IMPORTED_MODULE_50__providers_tempo_estacionado_tempo_estacionado__["a" /* TempoEstacionadoProvider */],
+                __WEBPACK_IMPORTED_MODULE_42__providers_browser_browser__["a" /* BrowserProvider */],
+                __WEBPACK_IMPORTED_MODULE_43__providers_notification_notification__["a" /* NotificationProvider */],
+                __WEBPACK_IMPORTED_MODULE_48__providers_info_info__["a" /* InfoProvider */],
+                __WEBPACK_IMPORTED_MODULE_44__providers_comunicacao_central_comunicacao_central__["a" /* ComunicacaoCentralProvider */],
                 __WEBPACK_IMPORTED_MODULE_19__ionic_native_social_sharing__["a" /* SocialSharing */],
-                __WEBPACK_IMPORTED_MODULE_50__providers_firebase_logger_firebase_logger__["a" /* FirebaseLoggerProvider */],
-                __WEBPACK_IMPORTED_MODULE_45__providers_modal_modal__["a" /* ModalProvider */],
-                __WEBPACK_IMPORTED_MODULE_48__providers_reportar_problema_reportar_problema__["a" /* ReportarProblemaProvider */],
+                __WEBPACK_IMPORTED_MODULE_51__providers_firebase_logger_firebase_logger__["a" /* FirebaseLoggerProvider */],
+                __WEBPACK_IMPORTED_MODULE_46__providers_modal_modal__["a" /* ModalProvider */],
+                __WEBPACK_IMPORTED_MODULE_49__providers_reportar_problema_reportar_problema__["a" /* ReportarProblemaProvider */],
                 __WEBPACK_IMPORTED_MODULE_21__ionic_native_card_io__["a" /* CardIO */],
                 __WEBPACK_IMPORTED_MODULE_23__ionic_native_speech_recognition__["a" /* SpeechRecognition */],
-                __WEBPACK_IMPORTED_MODULE_46__providers_cielo_cielo__["a" /* CieloProvider */],
+                __WEBPACK_IMPORTED_MODULE_47__providers_cielo_cielo__["a" /* CieloProvider */],
                 __WEBPACK_IMPORTED_MODULE_24__ionic_native_clipboard__["a" /* Clipboard */],
-                __WEBPACK_IMPORTED_MODULE_39__providers_consultar_placa_consultar_placa__["a" /* ConsultarPlacaProvider */],
-                __WEBPACK_IMPORTED_MODULE_40__providers_holidays_holidays__["a" /* HolidaysProvider */]
+                __WEBPACK_IMPORTED_MODULE_40__providers_consultar_placa_consultar_placa__["a" /* ConsultarPlacaProvider */],
+                __WEBPACK_IMPORTED_MODULE_41__providers_holidays_holidays__["a" /* HolidaysProvider */]
             ]
         })
     ], AppModule);
@@ -3818,7 +3900,7 @@ var AppModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 626:
+/***/ 583:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4034,12 +4116,12 @@ var MD5Util = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 627:
+/***/ 584:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return XML2JSONUtil; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_xml_js__ = __webpack_require__(628);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_xml_js__ = __webpack_require__(585);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_xml_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_xml_js__);
 
 var XML2JSONUtil = /** @class */ (function () {
@@ -4067,7 +4149,7 @@ var XML2JSONUtil = /** @class */ (function () {
         var rawJson = XML2JSONUtil.parse(prettyXml);
         // console.log('RESP JSON RAW', rawJson);
         var prettyJson = XML2JSONUtil.parseResponse(rawJson);
-        // console.log('RESP JSON PRETTY', prettyJson);
+        console.log('RESP JSON PRETTY', prettyJson);
         return prettyJson;
     };
     /**
@@ -4089,6 +4171,7 @@ var XML2JSONUtil = /** @class */ (function () {
      */
     XML2JSONUtil.parseResponse = function (json) {
         var result = {};
+        console.log('Json', json.elements);
         json.elements.forEach(function (_element) {
             // const resultado = _element.name; // Tag Resultado
             // console.log('resultado',resultado);
@@ -4126,21 +4209,14 @@ var XML2JSONUtil = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 631:
+/***/ 589:
 /***/ (function(module, exports) {
 
 /* (ignored) */
 
 /***/ }),
 
-/***/ 633:
-/***/ (function(module, exports) {
-
-/* (ignored) */
-
-/***/ }),
-
-/***/ 64:
+/***/ 59:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4150,7 +4226,7 @@ var environment = {
     production: false,
     simular_l2: false,
     isDebugMode: false,
-    version: "1.3.5",
+    version: "2.0.0",
     middleware_cors: 'https://us-central1-zonaazulfortaleza-prod.cloudfunctions.net/requisicao_amc',
     dev: {
         apiKey: "AIzaSyD0LQ-V04mrcdgPfOzkd01vkUcEAzmgDBA",
@@ -4185,21 +4261,95 @@ var environment = {
 
 /***/ }),
 
-/***/ 691:
+/***/ 591:
 /***/ (function(module, exports) {
 
 /* (ignored) */
 
 /***/ }),
 
-/***/ 692:
+/***/ 666:
 /***/ (function(module, exports) {
 
 /* (ignored) */
 
 /***/ }),
 
-/***/ 734:
+/***/ 667:
+/***/ (function(module, exports) {
+
+/* (ignored) */
+
+/***/ }),
+
+/***/ 705:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ReplacePipe; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+var ReplacePipe = /** @class */ (function () {
+    function ReplacePipe() {
+    }
+    ReplacePipe.prototype.transform = function (item, replace, replacement) {
+        if (item == null)
+            return "";
+        item = item.replace(replace, replacement);
+        return item;
+    };
+    ReplacePipe = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Pipe"])({
+            name: 'replace',
+        })
+    ], ReplacePipe);
+    return ReplacePipe;
+}());
+
+//# sourceMappingURL=replace.js.map
+
+/***/ }),
+
+/***/ 706:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoadingSpinnerComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var LoadingSpinnerComponent = /** @class */ (function () {
+    function LoadingSpinnerComponent() {
+        this.text = 'Hello World';
+    }
+    LoadingSpinnerComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'loading-spinner',template:/*ion-inline-start:"/Users/desenvolvedor/Documents/zonaazulfortaleza-develop/src/components/loading-spinner/loading-spinner.html"*/'<div class="sk-circle">\n  <div class="sk-circle1 sk-child"></div>\n  <div class="sk-circle2 sk-child"></div>\n  <div class="sk-circle3 sk-child"></div>\n  <div class="sk-circle4 sk-child"></div>\n  <div class="sk-circle5 sk-child"></div>\n  <div class="sk-circle6 sk-child"></div>\n  <div class="sk-circle7 sk-child"></div>\n  <div class="sk-circle8 sk-child"></div>\n  <div class="sk-circle9 sk-child"></div>\n  <div class="sk-circle10 sk-child"></div>\n  <div class="sk-circle11 sk-child"></div>\n  <div class="sk-circle12 sk-child"></div>\n</div>'/*ion-inline-end:"/Users/desenvolvedor/Documents/zonaazulfortaleza-develop/src/components/loading-spinner/loading-spinner.html"*/
+        }),
+        __metadata("design:paramtypes", [])
+    ], LoadingSpinnerComponent);
+    return LoadingSpinnerComponent;
+}());
+
+//# sourceMappingURL=loading-spinner.js.map
+
+/***/ }),
+
+/***/ 718:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4269,48 +4419,14 @@ var CieloHelper = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 735:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ReplacePipe; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-
-var ReplacePipe = /** @class */ (function () {
-    function ReplacePipe() {
-    }
-    ReplacePipe.prototype.transform = function (item, replace, replacement) {
-        if (item == null)
-            return "";
-        item = item.replace(replace, replacement);
-        return item;
-    };
-    ReplacePipe = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Pipe"])({
-            name: 'replace',
-        })
-    ], ReplacePipe);
-    return ReplacePipe;
-}());
-
-//# sourceMappingURL=replace.js.map
-
-/***/ }),
-
-/***/ 736:
+/***/ 719:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AccordionComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__providers_user_user__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__environments_constants__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__environments_constants__ = __webpack_require__(19);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -4414,7 +4530,7 @@ var AccordionComponent = /** @class */ (function () {
     ], AccordionComponent.prototype, "checkboxs", void 0);
     AccordionComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'accordion',template:/*ion-inline-start:"/Users/desenvolvedor/Documents/appzonzazul/src/components/accordion/accordion.html"*/'<ion-row class="row-items">\n  <ion-col class="col-items">\n    <ion-item class="item-info" no-lines>\n      <ion-icon name="ios-arrow-down" class="item-icon" (click)="toggleAccordion()"></ion-icon>\n      <h6>{{title}}</h6>\n      <h4>{{optionSelected}}</h4>\n    </ion-item>\n    <div #checkboxs class="checkboxs">\n      <ion-item no-lines class="item-checkboxs">\n        <ion-label>Sim</ion-label>\n        <ion-radio color="blue" [checked]="checkedSim" id="configuracao-sim" (click)="configuracaoSelecionada(\'Sim\')"\n          item-left mode="md"></ion-radio>\n      </ion-item>\n      <ion-item no-lines class="item-checkboxs">\n        <ion-label>Não</ion-label>\n        <ion-radio color="blue" [checked]="checkedNao" id="configuracao-nao" (click)="configuracaoSelecionada(\'Não\')"\n          item-left mode="md"></ion-radio>\n      </ion-item>\n    </div>\n  </ion-col>\n</ion-row>'/*ion-inline-end:"/Users/desenvolvedor/Documents/appzonzazul/src/components/accordion/accordion.html"*/
+            selector: 'accordion',template:/*ion-inline-start:"/Users/desenvolvedor/Documents/zonaazulfortaleza-develop/src/components/accordion/accordion.html"*/'<ion-row class="row-items">\n  <ion-col class="col-items">\n    <ion-item class="item-info" no-lines>\n      <ion-icon name="ios-arrow-down" class="item-icon" (click)="toggleAccordion()"></ion-icon>\n      <h6>{{title}}</h6>\n      <h4>{{optionSelected}}</h4>\n    </ion-item>\n    <div #checkboxs class="checkboxs">\n      <ion-item no-lines class="item-checkboxs">\n        <ion-label>Sim</ion-label>\n        <ion-radio color="blue" [checked]="checkedSim" id="configuracao-sim" (click)="configuracaoSelecionada(\'Sim\')"\n          item-left mode="md"></ion-radio>\n      </ion-item>\n      <ion-item no-lines class="item-checkboxs">\n        <ion-label>Não</ion-label>\n        <ion-radio color="blue" [checked]="checkedNao" id="configuracao-nao" (click)="configuracaoSelecionada(\'Não\')"\n          item-left mode="md"></ion-radio>\n      </ion-item>\n    </div>\n  </ion-col>\n</ion-row>'/*ion-inline-end:"/Users/desenvolvedor/Documents/zonaazulfortaleza-develop/src/components/accordion/accordion.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_core__["Renderer"], __WEBPACK_IMPORTED_MODULE_1__providers_user_user__["a" /* UserProvider */]])
     ], AccordionComponent);
@@ -4425,22 +4541,22 @@ var AccordionComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 737:
+/***/ 720:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UserInfoComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(36);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Subscription__ = __webpack_require__(44);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Subscription__ = __webpack_require__(40);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Subscription___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_Subscription__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__models_cad__ = __webpack_require__(222);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__models_user__ = __webpack_require__(134);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_cads_user_cads_user__ = __webpack_require__(218);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_cads_cads__ = __webpack_require__(133);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__models_cad__ = __webpack_require__(203);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__models_user__ = __webpack_require__(113);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_cads_user_cads_user__ = __webpack_require__(111);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_cads_cads__ = __webpack_require__(112);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_user_user__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__providers_logger_logger__ = __webpack_require__(40);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__environments_constants__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__providers_logger_logger__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__environments_constants__ = __webpack_require__(19);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -4473,6 +4589,7 @@ var UserInfoComponent = /** @class */ (function () {
         this.cads = 0;
         this.cadsUsados = 0;
         this.cad = new __WEBPACK_IMPORTED_MODULE_3__models_cad__["a" /* CadModel */]();
+        this.name = '';
         this.subscription = new __WEBPACK_IMPORTED_MODULE_2_rxjs_Subscription__["Subscription"]();
         this.carregaUsuarioComCADs();
         // listen quando o usuário se logar
@@ -4481,7 +4598,9 @@ var UserInfoComponent = /** @class */ (function () {
             _this.userProvider.byId(userId).take(1).subscribe(function (user) {
                 if (user) {
                     _this.user = new __WEBPACK_IMPORTED_MODULE_4__models_user__["a" /* User */](user);
+                    console.log(_this.user.name);
                     _this.logger.info('user: ' + JSON.stringify(_this.user));
+                    _this.name = JSON.stringify(_this.user);
                     _this.subCadsUser = _this.cadsUserProvider.getCads(_this.user.id).subscribe(function (value) {
                         _this.cadsUsados = 0;
                         _this.cads = 0;
@@ -4503,6 +4622,11 @@ var UserInfoComponent = /** @class */ (function () {
             });
         });
     }
+    UserInfoComponent.prototype.namePattern = function (name) {
+        var arr = name.split(' ');
+        var keep = arr[1][0].toUpperCase() != arr[1][0];
+        return arr.slice(0, keep ? 3 : 2).join(' ');
+    };
     UserInfoComponent.prototype.carregaUsuarioComCADs = function () {
         var _this = this;
         this.userProvider.getUserLocal().then(function (userID) {
@@ -4510,6 +4634,9 @@ var UserInfoComponent = /** @class */ (function () {
                 if (user) {
                     _this.user = new __WEBPACK_IMPORTED_MODULE_4__models_user__["a" /* User */](user);
                     _this.logger.info('user: ' + JSON.stringify(_this.user));
+                    _this.user = new __WEBPACK_IMPORTED_MODULE_4__models_user__["a" /* User */](user);
+                    _this.name = _this.namePattern(_this.user.name.toString());
+                    console.log(name);
                     _this.subCadsUser = _this.cadsUserProvider.getCads(_this.user.id).subscribe(function (value) {
                         _this.cadsUsados = 0;
                         _this.cads = 0;
@@ -4535,9 +4662,13 @@ var UserInfoComponent = /** @class */ (function () {
         page.present();
         this.menu.close();
     };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* Nav */]),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* Nav */])
+    ], UserInfoComponent.prototype, "nav", void 0);
     UserInfoComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'user-info',template:/*ion-inline-start:"/Users/desenvolvedor/Documents/appzonzazul/src/components/user-info/user-info.html"*/'<ion-item class="user-menu-item" no-lines>\n  <img src="{{user?.photo}}" class="img" />\n  <p class="name">{{user?.name}}</p>\n  <p class="profile" text-lowercase>{{user?.email}}</p>\n  <p class="city">Fortaleza</p>\n  <p *ngIf="user?.profile !== \'user\'">{{user?.profile.toUpperCase()}}</p>\n  <p *ngIf="cads == null || cadsUsados == null || (cads - cadsUsados) == 0" class="cads-credits">Saldo: 0 CAD | R$ 0,00\n  </p>\n  <p *ngIf="(cads - cadsUsados) > 0 && (cads - cadsUsados) % 2 == 0" class="cads-credits">Saldo: {{cads - cadsUsados}}\n    CADs | R$ {{(cads - cadsUsados) * cad.valor_unitario}},00</p>\n  <p *ngIf="(cads - cadsUsados) > 0 && (cads - cadsUsados) % 2 == 1" class="cads-credits">Saldo: {{cads - cadsUsados}}\n    CAD | R$ {{(cads - cadsUsados) * cad.valor_unitario}},00</p>\n</ion-item>'/*ion-inline-end:"/Users/desenvolvedor/Documents/appzonzazul/src/components/user-info/user-info.html"*/
+            selector: 'user-info',template:/*ion-inline-start:"/Users/desenvolvedor/Documents/zonaazulfortaleza-develop/src/components/user-info/user-info.html"*/'<ion-item class="user-menu-item" no-lines>\n  <ion-buttons end>\n    <button ion-button clear class="edt-button" (click)="goProfile()" icon-only color="white">\n      <ion-icon ios="ios-create-outline"></ion-icon>\n    </button>\n  </ion-buttons>\n  <img src="{{user?.photo}}" class="img" />\n  <p class="name">{{name}}</p>\n  <p class="profile" text-lowercase>{{user?.email}}</p>\n  <p *ngIf="user?.profile !== \'user\'">{{user?.profile.toUpperCase()}}</p>\n  <p *ngIf="cads == null || cadsUsados == null || (cads - cadsUsados) == 0" class="cads-credits">Saldo: 0 CAD | R$ 0,00\n  </p>\n  <p *ngIf="(cads - cadsUsados) > 0 && (cads - cadsUsados) % 2 == 0" class="cads-credits">Saldo: {{cads - cadsUsados}}\n    CADs | R$ {{(cads - cadsUsados) * cad.valor_unitario}},00</p>\n  <p *ngIf="(cads - cadsUsados) > 0 && (cads - cadsUsados) % 2 == 1" class="cads-credits">Saldo: {{cads - cadsUsados}}\n    CAD | R$ {{(cads - cadsUsados) * cad.valor_unitario}},00</p>\n</ion-item>'/*ion-inline-end:"/Users/desenvolvedor/Documents/zonaazulfortaleza-develop/src/components/user-info/user-info.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_7__providers_user_user__["a" /* UserProvider */],
             __WEBPACK_IMPORTED_MODULE_5__providers_cads_user_cads_user__["a" /* CadsUserProvider */], __WEBPACK_IMPORTED_MODULE_6__providers_cads_cads__["a" /* CadsProvider */],
@@ -4551,17 +4682,17 @@ var UserInfoComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 738:
+/***/ 721:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TimerComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_take__ = __webpack_require__(93);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_take__ = __webpack_require__(85);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_take___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_take__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_estacionar_estacionar__ = __webpack_require__(221);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_estacionar_estacionar__ = __webpack_require__(201);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_user_user__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_logger_logger__ = __webpack_require__(40);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_logger_logger__ = __webpack_require__(39);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -4590,19 +4721,26 @@ var TimerComponent = /** @class */ (function () {
             _this.logger.info('now: ' + _this.now);
             _this.logger.info('user: ' + _this.userID);
             _this.logger.info('placa: ' + _this.placa);
-            if (_this.status && _this.time) {
-                if (_this.time) {
-                    _this.time = (_this.time - _this.now) / 1000;
-                    if (_this.time > 0) {
-                        setInterval(function () {
-                            _this.time--;
-                        }, 1000);
-                    }
-                    else {
-                        _this.estacionarProvider.atualizaStatusPeloTempoExpirado(_this.userID, _this.placa, function () {
-                            _this.status = false;
-                        });
-                    }
+            console.log(_this.userID + ' ' + _this.placa);
+            if (_this.time) {
+                _this.time = (_this.time - _this.now) / 1000;
+                if (_this.time > 0.0) {
+                    var interval_1 = setInterval(function () {
+                        _this.time--;
+                        //console.log(this.time)
+                        if (_this.time <= 0.0) {
+                            // TODO: break no setinterval! (pesquisar na internet)
+                            _this.estacionarProvider.atualizaStatusPeloTempoExpirado(_this.userID, _this.placa, function () {
+                                _this.status = false;
+                            });
+                            clearInterval(interval_1);
+                        }
+                    }, 1000);
+                }
+                else {
+                    _this.estacionarProvider.atualizaStatusPeloTempoExpirado(_this.userID, _this.placa, function () {
+                        _this.status = false;
+                    });
                 }
             }
             else if (_this.status && _this.decorrido) {
@@ -4637,7 +4775,7 @@ var TimerComponent = /** @class */ (function () {
     ], TimerComponent.prototype, "status", void 0);
     TimerComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'timer',template:/*ion-inline-start:"/Users/desenvolvedor/Documents/appzonzazul/src/components/timer/timer.html"*/'<ion-label *ngIf="time > 0" class="time">\n    <p>\n        Restante\n    </p>\n    {{time * 1000 | date: \'HH:mm:ss\' : \'+0000\'}}\n</ion-label>\n\n<ion-label *ngIf="time === 0 || time < 0" class="time">\n    00:00:00\n</ion-label>\n\n<ion-label class="time" *ngIf="decorrido > 0">\n    <p>\n        Decorrido\n    </p>\n    {{decorrido * 1000 | date: \'HH:mm:ss\' : \'+0000\'}}\n</ion-label>'/*ion-inline-end:"/Users/desenvolvedor/Documents/appzonzazul/src/components/timer/timer.html"*/,
+            selector: 'timer',template:/*ion-inline-start:"/Users/desenvolvedor/Documents/zonaazulfortaleza-develop/src/components/timer/timer.html"*/'<ion-label *ngIf="time > 0" class="time">\n    <!--<p>\n        Restante\n    </p>-->\n    {{time * 1000 | date: \'HH:mm:ss\' : \'+0000\'}}\n</ion-label>\n\n<ion-label *ngIf="time === 0 || time < 0" class="time">\n    00:00:00\n</ion-label>\n\n<ion-label class="time" *ngIf="decorrido > 0">\n   <!-- <p>\n        Decorrido\n    </p>-->\n    {{decorrido * 1000 | date: \'HH:mm:ss\' : \'+0000\'}}\n</ion-label>'/*ion-inline-end:"/Users/desenvolvedor/Documents/zonaazulfortaleza-develop/src/components/timer/timer.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__providers_estacionar_estacionar__["a" /* EstacionarProvider */],
             __WEBPACK_IMPORTED_MODULE_3__providers_user_user__["a" /* UserProvider */], __WEBPACK_IMPORTED_MODULE_4__providers_logger_logger__["a" /* LoggerProvider */]])
@@ -4649,11 +4787,11 @@ var TimerComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 739:
+/***/ 722:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoadingSpinnerComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ProgressBarComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -4665,32 +4803,140 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
-var LoadingSpinnerComponent = /** @class */ (function () {
-    function LoadingSpinnerComponent() {
-        this.text = 'Hello World';
+/**
+ * Generated class for the ProgressBarComponent component.
+ *
+ * See https://angular.io/api/core/Component for more info on Angular
+ * Components.
+ */
+var ProgressBarComponent = /** @class */ (function () {
+    function ProgressBarComponent() {
     }
-    LoadingSpinnerComponent = __decorate([
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])('progress'),
+        __metadata("design:type", Object)
+    ], ProgressBarComponent.prototype, "progress", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])('value'),
+        __metadata("design:type", Object)
+    ], ProgressBarComponent.prototype, "value", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])('percent'),
+        __metadata("design:type", Object)
+    ], ProgressBarComponent.prototype, "percent", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])('color'),
+        __metadata("design:type", Object)
+    ], ProgressBarComponent.prototype, "color", void 0);
+    ProgressBarComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'loading-spinner',template:/*ion-inline-start:"/Users/desenvolvedor/Documents/appzonzazul/src/components/loading-spinner/loading-spinner.html"*/'<div class="sk-circle">\n  <div class="sk-circle1 sk-child"></div>\n  <div class="sk-circle2 sk-child"></div>\n  <div class="sk-circle3 sk-child"></div>\n  <div class="sk-circle4 sk-child"></div>\n  <div class="sk-circle5 sk-child"></div>\n  <div class="sk-circle6 sk-child"></div>\n  <div class="sk-circle7 sk-child"></div>\n  <div class="sk-circle8 sk-child"></div>\n  <div class="sk-circle9 sk-child"></div>\n  <div class="sk-circle10 sk-child"></div>\n  <div class="sk-circle11 sk-child"></div>\n  <div class="sk-circle12 sk-child"></div>\n</div>'/*ion-inline-end:"/Users/desenvolvedor/Documents/appzonzazul/src/components/loading-spinner/loading-spinner.html"*/
+            selector: 'progress-bar',template:/*ion-inline-start:"/Users/desenvolvedor/Documents/zonaazulfortaleza-develop/src/components/progress-bar/progress-bar.html"*/'<!-- Generated template for the ProgressBarComponent component -->\n<div class="clock">\n  <svg>\n    <circle cx="60" cy="60" r="60" [style.width]="value + \'%\'"></circle>\n    <circle cx="60" cy="60" r="60" [style.width]="percent + \'%\'" [style.background-color]="color"></circle>\n  </svg>\n  <label class="time">{{progress * 1000 | date: \'HH:mm:ss\' : \'+0000\'}}</label>\n</div>\n'/*ion-inline-end:"/Users/desenvolvedor/Documents/zonaazulfortaleza-develop/src/components/progress-bar/progress-bar.html"*/
         }),
         __metadata("design:paramtypes", [])
-    ], LoadingSpinnerComponent);
-    return LoadingSpinnerComponent;
+    ], ProgressBarComponent);
+    return ProgressBarComponent;
 }());
 
-//# sourceMappingURL=loading-spinner.js.map
+//# sourceMappingURL=progress-bar.js.map
 
 /***/ }),
 
-/***/ 756:
+/***/ 723:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CustomCardComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+/**
+ * Generated class for the CustomCardComponent component.
+ *
+ * See https://angular.io/api/core/Component for more info on Angular
+ * Components.
+ */
+var CustomCardComponent = /** @class */ (function () {
+    function CustomCardComponent() {
+        console.log('Hello CustomCardComponent Component');
+        this.text = 'Hello World';
+    }
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])('color'),
+        __metadata("design:type", Object)
+    ], CustomCardComponent.prototype, "color", void 0);
+    CustomCardComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'custom-card',template:/*ion-inline-start:"/Users/desenvolvedor/Documents/zonaazulfortaleza-develop/src/components/custom-card/custom-card.html"*/'<!-- Generated template for the CustomCardComponent component -->\n<div class="card" [style.border-left-color]="color">\n  \n</div>\n'/*ion-inline-end:"/Users/desenvolvedor/Documents/zonaazulfortaleza-develop/src/components/custom-card/custom-card.html"*/
+        }),
+        __metadata("design:paramtypes", [])
+    ], CustomCardComponent);
+    return CustomCardComponent;
+}());
+
+//# sourceMappingURL=custom-card.js.map
+
+/***/ }),
+
+/***/ 729:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NamePatternPipe; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+/**
+ * Generated class for the NamePatternPipe pipe.
+ *
+ * See https://angular.io/api/core/Pipe for more info on Angular Pipes.
+ */
+var NamePatternPipe = /** @class */ (function () {
+    function NamePatternPipe() {
+    }
+    /**
+     * Takes a value and makes it lowercase.
+     */
+    NamePatternPipe.prototype.transform = function (value) {
+        var args = [];
+        for (var _i = 1; _i < arguments.length; _i++) {
+            args[_i - 1] = arguments[_i];
+        }
+        var arr = value.split(' ');
+        var keep = arr[1][0].toUpperCase() != arr[1][0];
+        return arr.slice(0, keep ? 3 : 2).join(' ');
+    };
+    NamePatternPipe = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Pipe"])({
+            name: 'namePattern',
+        })
+    ], NamePatternPipe);
+    return NamePatternPipe;
+}());
+
+//# sourceMappingURL=name-pattern.js.map
+
+/***/ }),
+
+/***/ 730:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ConsultarPlacaProvider; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(94);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(86);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_sinesp_nodejs__ = __webpack_require__(757);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_sinesp_nodejs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_sinesp_nodejs__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -4702,7 +4948,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-
+// import *  as sinesp from "sinesp-nodejs" ;
 /**
  * https://github.com/bbarreto/sinesp-nodejs
  * https://github.com/wgenial/consulta-placa-nodejs
@@ -4712,17 +4958,6 @@ var ConsultarPlacaProvider = /** @class */ (function () {
         this.http = http;
         console.log('ConsultarPlacaProvider Provider');
     }
-    ConsultarPlacaProvider.prototype.getByPlaca = function (placa) {
-        var plate = placa.replace(/\W/g, "");
-        return new Promise(function (resolve, reject) {
-            __WEBPACK_IMPORTED_MODULE_2_sinesp_nodejs__["consultaPlaca"](plate, function (dados) {
-                // console.log('placa', dados);
-                resolve(dados);
-            }).catch(function (err) {
-                reject(err);
-            });
-        });
-    };
     ConsultarPlacaProvider = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Injectable"])(),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */]])
@@ -4734,27 +4969,13 @@ var ConsultarPlacaProvider = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 776:
-/***/ (function(module, exports) {
-
-/* (ignored) */
-
-/***/ }),
-
-/***/ 777:
-/***/ (function(module, exports) {
-
-/* (ignored) */
-
-/***/ }),
-
-/***/ 798:
+/***/ 731:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TimerModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__(56);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__(44);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -4770,7 +4991,7 @@ var TimerModule = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             declarations: [],
             exports: [],
-            imports: [__WEBPACK_IMPORTED_MODULE_1__angular_common__["b" /* CommonModule */]]
+            imports: [__WEBPACK_IMPORTED_MODULE_1__angular_common__["CommonModule"]]
         })
     ], TimerModule);
     return TimerModule;
@@ -4778,7 +4999,39 @@ var TimerModule = /** @class */ (function () {
 
 //# sourceMappingURL=timer.module.js.map
 
+/***/ }),
+
+/***/ 732:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ProgressBarModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__(44);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+var ProgressBarModule = /** @class */ (function () {
+    function ProgressBarModule() {
+    }
+    ProgressBarModule = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
+            declarations: [],
+            exports: [],
+            imports: [__WEBPACK_IMPORTED_MODULE_1__angular_common__["CommonModule"]]
+        })
+    ], ProgressBarModule);
+    return ProgressBarModule;
+}());
+
+//# sourceMappingURL=progress-bar.module.js.map
+
 /***/ })
 
-},[472]);
+},[443]);
 //# sourceMappingURL=main.js.map

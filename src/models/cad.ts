@@ -14,9 +14,9 @@ export class CadModel {
     constructor()
     constructor(obj: any)
     constructor(obj?: any) {
-        if (obj && obj.id) {
+        if(obj && obj.id){
             this.id = obj && obj.id || '';
-        } else {
+        } else{
             this.id = obj && obj.$key || '';
         }
 

@@ -1,16 +1,16 @@
 webpackJsonp([5],{
 
-/***/ 833:
+/***/ 769:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "VeiculosPageModule", function() { return VeiculosPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(36);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__veiculos__ = __webpack_require__(886);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_components_module__ = __webpack_require__(450);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_loading_spinner_loading_spinner_module__ = __webpack_require__(448);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__veiculos__ = __webpack_require__(829);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_components_module__ = __webpack_require__(419);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_loading_spinner_loading_spinner_module__ = __webpack_require__(418);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -44,13 +44,13 @@ var VeiculosPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 834:
+/***/ 770:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MapUtil; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pages_home_home__ = __webpack_require__(836);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__environments_constants__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pages_home_home__ = __webpack_require__(772);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__environments_constants__ = __webpack_require__(19);
 
 
 var MapUtil = /** @class */ (function () {
@@ -63,7 +63,7 @@ var MapUtil = /** @class */ (function () {
             mapTypeControl: false,
             clickableIcons: false,
             fullscreenControl: false,
-            zoomControl: true,
+            zoomControl: false,
             zoomControlOptions: {
                 position: google.maps.ControlPosition.RIGHT_BOTTOM
             },
@@ -134,47 +134,54 @@ var MapUtil = /** @class */ (function () {
     MapUtil.prototype.addPolyline = function (item, map) {
         if (item != null && item.setor != null) {
             var polyline = void 0;
-            var marker = void 0;
-            var iconUrlGrenn = "assets/imgs/map-marker-green-4.png";
-            var iconUrlRed = "assets/imgs/map-marker-red-4.png";
+            var marker_1;
+            var iconUrlGrenn = "assets/imgs/map-marker-blue-4.svg";
+            var iconUrlRed = "assets/imgs/map-marker-red-4.svg";
             var totalVagasUtilizadas = item.setor.qtd_deficiente_estacionados + item.setor.qtd_idoso_estacionados + item.setor.qtd_normal_estacionados;
-            polyline = new google.maps.Polyline(this.createPolylineOptions(item.setor, totalVagasUtilizadas));
-            polyline.setMap(map);
-            MapUtil.polylines.push(polyline);
-            marker = new google.maps.Marker({
+            //polyline = new google.maps.Polyline(this.createPolylineOptions(item.setor, totalVagasUtilizadas));
+            //polyline.setMap(map);
+            //MapUtil.polylines.push(polyline);
+            marker_1 = new google.maps.Marker({
                 position: { lat: item.setor.latInicio, lng: item.setor.lngInicio },
                 icon: {
                     url: (item.setor.total_vagas - totalVagasUtilizadas > 0) ? iconUrlGrenn : iconUrlRed,
-                    scaledSize: new google.maps.Size(32, 32)
+                    scaledSize: new google.maps.Size(122, 122)
                 }
             });
             // marker.
-            marker.setMap(map);
+            marker_1.setMap(map);
             var infowindow_1 = new google.maps.InfoWindow({
                 content: this.createInfoPolylines(item.setor, item.area, totalVagasUtilizadas),
             });
             /**
              * Abre as opções do estacionamento
              * polyline  item pressionado onde vai abrir o evento ( linha do inicio e final do Simbolo do carro)
-             */
-            google.maps.event.addListener(polyline, 'click', function (event) {
-                infowindow_1.setPosition(event.latLng);
-                infowindow_1.open(__WEBPACK_IMPORTED_MODULE_0__pages_home_home__["a" /* HomePage */].map);
-                MapUtil.infoWindows.push(infowindow_1);
+             
+            google.maps.event.addListener(polyline, 'click', event => {
+
+                infowindow.setPosition(event.latLng);
+                infowindow.open(HomePage.map);
+                MapUtil.infoWindows.push(infowindow);
+
                 if (MapUtil.infoWindows.length > 1) {
-                    MapUtil.infoWindows.forEach(function (value) {
-                        if (value != infowindow_1) {
+                    MapUtil.infoWindows.forEach(value => {
+                        if (value != infowindow) {
                             value.close();
                         }
-                    });
+                    })
                 }
             });
-            /**
+
+            
              * Abre as opções do estacionamento
              * marker  item pressionado onde vai abrir o evento ( Simbolo do carro verde)
              */
-            google.maps.event.addListener(marker, 'click', function (event) {
-                infowindow_1.setPosition(event.latLng);
+            google.maps.event.addListener(marker_1, 'click', function (event) {
+                // let latLng = event.latLng;
+                var latLng = marker_1.position;
+                console.log('marker', marker_1);
+                console.log('event', event);
+                infowindow_1.setPosition(latLng);
                 infowindow_1.open(__WEBPACK_IMPORTED_MODULE_0__pages_home_home__["a" /* HomePage */].map);
                 MapUtil.infoWindows.push(infowindow_1);
                 if (MapUtil.infoWindows.length > 1) {
@@ -188,8 +195,8 @@ var MapUtil = /** @class */ (function () {
         }
     };
     MapUtil.prototype.findSetor = function (map, setor, area) {
-        var iconUrlGrenn = "assets/imgs/map-marker-green-4.png";
-        var iconUrlRed = "assets/imgs/map-marker-red-4.png";
+        var iconUrlGrenn = "assets/imgs/map-marker-blue-4.svg";
+        var iconUrlRed = "assets/imgs/map-marker-red-4.svg";
         var marker;
         var latlng = new google.maps.LatLng(setor.latInicio, setor.lngInicio);
         map.setCenter(latlng);
@@ -197,6 +204,19 @@ var MapUtil = /** @class */ (function () {
         var totalVagasUtilizadas = setor.qtd_deficiente_estacionados + setor.qtd_idoso_estacionados + setor.qtd_normal_estacionados;
         var infowindow = new google.maps.InfoWindow({
             content: this.createInfoPolylines(setor, area, totalVagasUtilizadas),
+        });
+        google.maps.event.addListener(infowindow, 'domready', function () {
+            // Referência ao DIV que recebe o conteúdo da infowindow recorrendo ao jQuery
+            //var iwOuter = this.getElementByClassName('.gm-style-iw');
+            /* Uma vez que o div pretendido está numa posição anterior ao div .gm-style-iw.
+             * Recorremos ao jQuery e criamos uma variável iwBackground,
+             * e aproveitamos a referência já existente do .gm-style-iw para obter o div anterior com .prev().
+             */
+            //var iwBackground = iwOuter.prev();
+            // Remover o div da sombra do fundo
+            //iwBackground.children(':nth-child(2)').css({'display' : 'none'});
+            // Remover o div de fundo branco
+            //iwBackground.children(':nth-child(4)').css({'display' : 'none'});
         });
         marker = new google.maps.Marker({
             position: { lat: setor.latInicio, lng: setor.lngInicio },
@@ -251,31 +271,42 @@ var MapUtil = /** @class */ (function () {
     MapUtil.prototype.createInfoPolylines = function (setor, area, totalVagasUtilizadas) {
         var div = document.createElement('div');
         div.className = "gm-style gm-style-iw";
-        var setorNome = (setor.nome.length < 3) ? ('Setor ' + setor.nome) : setor.nome;
+        var divl = document.createElement('div');
+        divl.className = "style-left";
+        var divr = document.createElement('div');
+        divr.className = "style-right";
+        //const setorNome = (setor?.nome.toString().length < 3) ? ('Setor ' + setor.nome) : setor.nome;
+        var setorNome = setor.nome;
         // console.log('ST', setorNome + " | " + setor.codigo);
         // console.log('AR', area);
         var h3 = document.createElement('h3');
         h3.className = "setor-codigo";
-        h3.innerText = setorNome + " (" + setor.codigo + ")" + " | Área: " + area.endereco + " (" + area.codigo + ")";
-        var h5vt = document.createElement('h4');
+        //h3.innerText = setorNome + " (" + setor.codigo + ")" + " | Área: " + area.endereco + " (" + area.codigo + ")";
+        // h3.innerText = area.endereco + " (" + area.codigo + ")" + " - " +setorNome;
+        h3.innerText = setorNome + " - " + area.endereco;
+        var h5vt = document.createElement('p');
         h5vt.className = "setor-vagas";
         h5vt.innerText = "Vagas: " + setor.total_vagas;
-        var h5vn = document.createElement('h4');
+        var h5vn = document.createElement('p');
         h5vn.className = "setor-vagas-normal";
         // h5vn.innerText = "Vagas convencionais disponíveis: " + ((setor.total_vagas - (setor.vagas_idoso + setor.vagas_deficiente)) - setor.qtd_normal_estacionados);
         h5vn.innerText = "Vagas convencionais: " + (setor.total_vagas - setor.qtd_normal_estacionados);
-        var h5vd = document.createElement('h4');
-        h5vd.className = "setor-vagas-normal";
-        h5vd.innerText = "Vagas de deficiente: " + (setor.vagas_deficiente - setor.qtd_deficiente_estacionados);
-        var h5vi = document.createElement('h4');
-        h5vi.className = "setor-vagas-normal";
+        var h5vd = document.createElement('p');
+        h5vd.className = "setor-vagas-pcd";
+        h5vd.innerText = "Vagas de PCD: " + (setor.vagas_deficiente - setor.qtd_deficiente_estacionados);
+        var h5vi = document.createElement('p');
+        h5vi.className = "setor-vagas-i";
         h5vi.innerText = "Vagas de idoso: " + (setor.vagas_idoso - setor.qtd_idoso_estacionados);
-        var h5vc = document.createElement('h4');
-        h5vc.className = "setor-vagas-normal";
+        var h5vc = document.createElement('p');
+        h5vc.className = "setor-vagas-cd";
         h5vc.innerText = "Vagas Carga/Descarga: " + (setor.vagas_carga_descarga - setor.qtd_carga_descarga_estacionados);
         var button = document.createElement('button');
         button.className = "btn-estacionar";
-        button.innerText = "Estacionar";
+        button.innerText = "ESTACIONAR";
+        var ico = document.createElement('img');
+        ico.setAttribute("src", "assets/icones/estacionamento-white.svg");
+        ico.className = "pin-view";
+        button.appendChild(ico);
         button.addEventListener('click', function () {
             document.getElementById('btn-show-estacionar-page').setAttribute("setor", setor.codigo);
             document.getElementById('btn-show-estacionar-page').setAttribute("area", area.codigo);
@@ -286,11 +317,18 @@ var MapUtil = /** @class */ (function () {
         if ((setor.total_vagas - totalVagasUtilizadas) <= 0) {
             button.disabled = true;
         }
+        var divpin = document.createElement('div');
+        divpin.className = "btn-pin";
+        // buttonView.innerText = "Ver";
+        var iconpin = document.createElement('img');
+        iconpin.setAttribute("src", "assets/icones/pin-dark.svg");
+        iconpin.className = "pin-btn";
+        divpin.appendChild(iconpin);
         var buttonView = document.createElement('button');
         buttonView.className = "btn-ver";
         // buttonView.innerText = "Ver";
         var icon = document.createElement('img');
-        icon.setAttribute("src", "assets/icon/streat_view.png");
+        icon.setAttribute("src", "assets/icones/shopping-cart-white.svg");
         icon.className = "streat-view";
         buttonView.appendChild(icon);
         buttonView.addEventListener('click', function () {
@@ -298,14 +336,17 @@ var MapUtil = /** @class */ (function () {
             document.getElementById('btn-show-streat-view').setAttribute("area", area.codigo);
             document.getElementById('btn-show-streat-view').click();
         });
-        div.appendChild(h3);
+        divl.appendChild(h3);
         // div.appendChild(h5vt);
-        div.appendChild(h5vn);
-        div.appendChild(h5vd);
-        div.appendChild(h5vi);
-        div.appendChild(h5vc);
-        div.appendChild(button);
-        div.appendChild(buttonView);
+        divr.appendChild(h5vn);
+        divr.appendChild(h5vi);
+        divr.appendChild(h5vd);
+        divr.appendChild(h5vc);
+        divr.appendChild(button);
+        divl.appendChild(buttonView);
+        div.appendChild(divl);
+        div.appendChild(divr);
+        div.appendChild(divpin);
         return div;
     };
     MapUtil.prototype.determineColor = function (vagas) {
@@ -481,7 +522,7 @@ var MapUtil = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 835:
+/***/ 771:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -638,33 +679,33 @@ var FunctionsUtil = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 836:
+/***/ 772:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomePage; });
 /* unused harmony export LatLng */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(36);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_android_permissions__ = __webpack_require__(219);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_location_accuracy__ = __webpack_require__(443);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_speech_recognition__ = __webpack_require__(446);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_geolocation__ = __webpack_require__(445);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_take__ = __webpack_require__(93);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_android_permissions__ = __webpack_require__(200);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_location_accuracy__ = __webpack_require__(416);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_speech_recognition__ = __webpack_require__(417);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_geolocation__ = __webpack_require__(415);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_take__ = __webpack_require__(85);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_take___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_take__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_setores_setores__ = __webpack_require__(442);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__providers_veiculos_veiculos__ = __webpack_require__(441);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__providers_auth_auth__ = __webpack_require__(217);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_setores_setores__ = __webpack_require__(413);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__providers_veiculos_veiculos__ = __webpack_require__(412);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__providers_auth_auth__ = __webpack_require__(199);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__providers_user_user__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__providers_cads_user_cads_user__ = __webpack_require__(218);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__providers_comunicacao_central_comunicacao_central__ = __webpack_require__(220);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__providers_modal_modal__ = __webpack_require__(216);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__providers_area_area__ = __webpack_require__(444);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__environments_constants__ = __webpack_require__(20);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__util_map_util__ = __webpack_require__(834);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__util_functions_util__ = __webpack_require__(835);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__app_app_component__ = __webpack_require__(440);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__providers_estacionar_estacionar__ = __webpack_require__(221);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__providers_cads_user_cads_user__ = __webpack_require__(111);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__providers_comunicacao_central_comunicacao_central__ = __webpack_require__(202);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__providers_modal_modal__ = __webpack_require__(198);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__providers_area_area__ = __webpack_require__(414);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__environments_constants__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__util_map_util__ = __webpack_require__(770);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__util_functions_util__ = __webpack_require__(771);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__app_app_component__ = __webpack_require__(411);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__providers_estacionar_estacionar__ = __webpack_require__(201);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -718,12 +759,18 @@ var HomePage = /** @class */ (function () {
         this.areaProvider = areaProvider;
         this.events = events;
         this.estacionarProvider = estacionarProvider;
+        this.city = 'Fortaleza';
         this.estacionar = [];
         this.setores = [];
         this.qtdCadsUser = 0;
         this.qtdCadsUSados = 0;
         this.mapUtil = new __WEBPACK_IMPORTED_MODULE_16__util_map_util__["a" /* MapUtil */]();
         this.allSetores = [];
+        this.selectOptions = {
+            title: 'Cidade',
+            subTitle: 'Escolha sua cidade',
+            mode: 'ios'
+        };
         this.getAllSetores();
         platform.registerBackButtonAction(function () {
             if (_this.navCtrl.getActive().name == 'HomePage') {
@@ -757,7 +804,7 @@ var HomePage = /** @class */ (function () {
                 console.log(userID);
                 _this.estacionarProvider.countCadsById(userID)
                     .subscribe(function (val) {
-                    console.log(val);
+                    // console.log(val)
                 });
                 _this.cadsUserProvider.findQtdCads(userID).take(1).subscribe(function (value) {
                     value.map(function (cads) {
@@ -997,6 +1044,7 @@ var HomePage = /** @class */ (function () {
                     loading.dismiss();
                     if (_item.length > 0) {
                         _this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_15__environments_constants__["a" /* Constants */].ESTACIONAR_PAGE.name, {
+                            fromPage: 'mapa',
                             setor: codigoSetor,
                             area: codigoArea,
                             'setor-nome': nomeSetor,
@@ -1016,7 +1064,8 @@ var HomePage = /** @class */ (function () {
                                     area: codigoArea,
                                     setor: codigoSetor,
                                     cad: _this.cad,
-                                    qtdCads: (_this.qtdCadsUser - _this.qtdCadsUSados)
+                                    qtdCads: (_this.qtdCadsUser - _this.qtdCadsUSados),
+                                    veiculoAllArr: _item
                                 });
                             });
                         }
@@ -1028,7 +1077,8 @@ var HomePage = /** @class */ (function () {
                                 area: codigoArea,
                                 setor: codigoSetor,
                                 cad: _this.cad,
-                                qtdCads: (_this.qtdCadsUser - _this.qtdCadsUSados)
+                                qtdCads: (_this.qtdCadsUser - _this.qtdCadsUSados),
+                                veiculoAllArr: _item
                             });
                         }
                     }
@@ -1176,23 +1226,25 @@ var HomePage = /** @class */ (function () {
         }, function (error) {
         });
     };
-    HomePage.prototype.showStreatView = function (event) {
-        var _this = this;
-        var wait = this.loadingCtrl.create({ content: 'Aguarde...' });
+    HomePage.prototype.showStreatView = function () {
+        /*let wait = this.loadingCtrl.create({ content: 'Aguarde...' });
         wait.present();
-        var button = document.getElementById('btn-show-streat-view');
-        var codigoSetor = button.getAttribute("setor");
-        var codigoArea = button.getAttribute("area");
+        let button = document.getElementById('btn-show-streat-view');
+        let codigoSetor = button.getAttribute("setor");
+        let codigoArea = button.getAttribute("area");
+
         this.setoresProvider.byId(codigoArea, codigoSetor)
-            .subscribe(function (data) {
-            var streatViewPage = _this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_15__environments_constants__["a" /* Constants */].STREAT_VIEW_PAGE.name, { map: HomePage_1.map, data: data, wait: wait });
-            streatViewPage.present().then(function () {
-                _this.modalProvider.setActive();
-            });
-        }, function (error) {
-            console.log(error);
-            wait.dismiss();
-        });
+            .subscribe(data => {
+                const streatViewPage = this.modalCtrl.create(Constants.STREAT_VIEW_PAGE.name, { map: HomePage.map, data: data, wait: wait });
+                streatViewPage.present().then(() => {
+                    this.modalProvider.setActive();
+                });
+            },
+                (error) => {
+                    console.log(error);
+                    wait.dismiss();
+                })*/
+        this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_15__environments_constants__["a" /* Constants */].PAGAMENTOS_PAGE.name);
     };
     HomePage.prototype.showToast = function (msg, time) {
         var toast = this.toastCtrl.create({
@@ -1262,13 +1314,13 @@ var HomePage = /** @class */ (function () {
     ], HomePage.prototype, "iconElement", void 0);
     HomePage = HomePage_1 = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-home',template:/*ion-inline-start:"/Users/desenvolvedor/Documents/appzonzazul/src/pages/home/home.html"*/'<ion-header no-border>\n    <ion-navbar color="header">\n        <button ion-button icon-only menuToggle>\n            <ion-icon class="header-icon" name="menu"></ion-icon>\n        </button>\n        <ion-title>\n            <ion-label>Início</ion-label>\n        </ion-title>\n\n        <ion-buttons end>\n            <button ion-button icon-only (click)="openTempoRestantePage()">\n                <img src="assets/imgs/time.png" width="30px" height="30px" />\n            </button>\n        </ion-buttons>\n    </ion-navbar>\n</ion-header>\n\n<ion-content class="content">\n    <div #map id="map"></div>\n    <input #search id="search" class="controls" type="text" placeholder="Buscar Local">\n\n    <button ion-button icon-only type="button" item-right clear (click)="listen()" id="mic" [style.display]="\'none\'">\n        <ion-icon name="mic" class="icon"></ion-icon>\n    </button>\n    <ion-fab id="help">\n        <button ion-fab icon-only (click)="openHelp()">\n            <ion-icon name="help"></ion-icon>\n        </button>\n    </ion-fab>\n\n    <ion-fab id="close" (click)="showCloseSetor()">\n        <button ion-fab>\n        </button>\n    </ion-fab>\n\n    <ion-fab>\n        <button ion-fab icon-only color="default" (click)="buscarSetores()" id="locate">\n            <ion-icon name="search" class="icon"></ion-icon>\n        </button>\n    </ion-fab>\n\n    <ion-icon #icon name="close" class="icon-clear" style="display: none" id="icon"></ion-icon>\n    <button ion-button id="btn-show-estacionar-page" (click)="openEstacionarPage($event)"\n        [style.display]="\'none\'"></button>\n    <button ion-button id="btn-show-streat-view" (click)="showStreatView($event)" [style.display]="\'none\'"></button>\n</ion-content>'/*ion-inline-end:"/Users/desenvolvedor/Documents/appzonzazul/src/pages/home/home.html"*/
+            selector: 'page-home',template:/*ion-inline-start:"/Users/desenvolvedor/Documents/zonaazulfortaleza-develop/src/pages/home/home.html"*/'<ion-header no-border>\n    <ion-navbar color="header">\n        <button ion-button icon-only menuToggle>\n            <ion-icon class="header-icon" name="menu"></ion-icon>\n        </button>\n        <ion-title class="title-header">\n            <ion-select [(ngModel)]="city" class="select-city" cancelText="Cancelar" okText="Ok" [selectOptions]="selectOptions">\n                <ion-option value="Fortaleza">Fortaleza</ion-option>\n              </ion-select>\n        </ion-title>\n\n        <ion-buttons end>\n            <button ion-button icon-only (click)="openTempoRestantePage()">\n                <img src="assets/icones/car-white.svg"  />\n            </button>\n        </ion-buttons>\n    </ion-navbar>\n</ion-header>\n\n<ion-content class="content">\n    <div #map id="map"></div>\n    <input #search id="search" class="controls" type="text" placeholder="Buscar">\n\n    <button ion-button icon-only type="button" item-right clear id="mic" >\n        <ion-icon color="gray" name="search" class="icon"></ion-icon>\n    </button>\n    <!--<ion-fab id="help">\n        <button ion-fab icon-only (click)="openHelp()">\n            <ion-icon name="help"></ion-icon>\n        </button>\n    </ion-fab> -->\n\n    <ion-fab id="close" (click)="showCloseSetor()">\n        <button ion-fab>\n        </button>\n    </ion-fab>\n\n   <!-- <ion-fab>\n        <button ion-fab icon-only color="default" (click)="buscarSetores()" id="locate">\n            <ion-icon name="search" class="icon"></ion-icon>\n        </button>\n    </ion-fab> -->\n\n    <ion-icon #icon name="close" class="icon-clear" style="display: none" id="icon"></ion-icon>\n    <button ion-button id="btn-show-estacionar-page" (click)="openEstacionarPage($event)"\n        [style.display]="\'none\'"></button>\n    <button ion-button id="btn-show-streat-view" (click)="showStreatView()" [style.display]="\'none\'"></button>\n</ion-content>'/*ion-inline-end:"/Users/desenvolvedor/Documents/zonaazulfortaleza-develop/src/pages/home/home.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* Platform */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ModalController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* ToastController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* ToastController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* LoadingController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavParams */],
             __WEBPACK_IMPORTED_MODULE_5__ionic_native_geolocation__["a" /* Geolocation */],
@@ -1302,18 +1354,19 @@ var LatLng = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 886:
+/***/ 829:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return VeiculosPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(36);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_veiculo__ = __webpack_require__(449);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_veiculos_veiculos__ = __webpack_require__(441);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_veiculo__ = __webpack_require__(421);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_veiculos_veiculos__ = __webpack_require__(412);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_user_user__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_app_component__ = __webpack_require__(440);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__util_map_util__ = __webpack_require__(834);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_app_component__ = __webpack_require__(411);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__util_map_util__ = __webpack_require__(770);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__environments_constants__ = __webpack_require__(19);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1330,12 +1383,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var VeiculosPage = /** @class */ (function () {
-    function VeiculosPage(navCtrl, navParams, alertCtrl, userProvider, veiculosProvider) {
+    function VeiculosPage(navCtrl, navParams, alertCtrl, userProvider, loadingCtrl, veiculosProvider) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.alertCtrl = alertCtrl;
         this.userProvider = userProvider;
+        this.loadingCtrl = loadingCtrl;
         this.veiculosProvider = veiculosProvider;
         this.showSpinner = true;
         __WEBPACK_IMPORTED_MODULE_5__app_app_component__["a" /* MyApp */].MAP_LOAD = false;
@@ -1354,16 +1409,22 @@ var VeiculosPage = /** @class */ (function () {
             if (userID != null) {
                 _this.userProvider.byId(userID).subscribe(function (user) {
                     _this.user = user;
-                    _this.list = _this.veiculosProvider.findByUser(user.id);
+                    _this.veiculosProvider.findByUser(user.id).take(1).subscribe(function (_data) {
+                        _this.list = _data;
+                    });
                     _this.showSpinner = false;
                 });
+            }
+            else {
+                _this.showSpinner = false;
             }
         });
     };
     VeiculosPage.prototype.ionViewWillLeave = function () { };
     VeiculosPage.prototype.openPage = function (event, item) {
         if (item === void 0) { item = undefined; }
-        this.navCtrl.push('VeiculosFormPage', { 'item': item, 'userId': this.user.id });
+        console.log('item', item);
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_7__environments_constants__["a" /* Constants */].VEICULOS_FORM_PAGE.name, { 'item': item, 'userId': this.user.id, 'veiculoAllArr': this.list });
     };
     VeiculosPage.prototype.getImage = function (tipo) {
         return __WEBPACK_IMPORTED_MODULE_2__models_veiculo__["a" /* VeiculoModel */].getImage(tipo);
@@ -1373,6 +1434,9 @@ var VeiculosPage = /** @class */ (function () {
         event.stopPropagation();
         this.onConfirm(function () {
             _this.veiculosProvider.remove(_this.user.id, veiculoId);
+            _this.veiculosProvider.findByUser(_this.user.id).take(1).subscribe(function (_data) {
+                _this.list = _data;
+            });
         });
     };
     VeiculosPage.prototype.onConfirm = function (success) {
@@ -1416,12 +1480,13 @@ var VeiculosPage = /** @class */ (function () {
     };
     VeiculosPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-veiculos',template:/*ion-inline-start:"/Users/desenvolvedor/Documents/appzonzazul/src/pages/veiculos/veiculos.html"*/'<ion-header no-border>\n  <ion-navbar color="header">\n    <button ion-button icon-only menuToggle>\n      <ion-icon class="header-icon" name="menu"></ion-icon>\n    </button>\n\n    <ion-title>\n      <ion-label>Meus Veículos</ion-label>\n    </ion-title>\n\n    <ion-buttons end>\n      <button icon-only ion-button (click)="openHelp()">\n        <ion-icon name="help-circle" class="header-icon"></ion-icon>\n      </button>\n    </ion-buttons>\n\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding class="content">\n  <button ion-button (click)="openPage($event)" class="btn" block>+ Adicionar</button>\n  <loading-spinner *ngIf="showSpinner"></loading-spinner>\n  <ion-list *ngIf="!showSpinner">\n    <button ion-item detail-none *ngFor="let current of list | async" (click)="openPage($event,current)"\n      class="route-item">\n      <ion-thumbnail item-start class="thumbnail-icon">\n        <img src="{{getImage(current?.veiculo?.tipo_veiculo)}}" />\n      </ion-thumbnail>\n      <h2 class="information-date">{{current?.veiculo?.placa}}</h2>\n      <p class="information-hour">{{current?.veiculo?.marca}}</p>\n      <button ion-button color="grey" outline item-end (click)="excluir($event,current?.key)">Excluir</button>\n    </button>\n  </ion-list>\n</ion-content>'/*ion-inline-end:"/Users/desenvolvedor/Documents/appzonzazul/src/pages/veiculos/veiculos.html"*/,
+            selector: 'page-veiculos',template:/*ion-inline-start:"/Users/desenvolvedor/Documents/zonaazulfortaleza-develop/src/pages/veiculos/veiculos.html"*/'<ion-header no-border>\n  <ion-navbar color="header">\n    <button ion-button icon-only menuToggle>\n      <ion-icon class="header-icon" name="menu"></ion-icon>\n    </button>\n\n    <ion-title class="header-title">Meus Veículos</ion-title>\n\n    <ion-buttons end>\n      <button icon-only ion-button (click)="openHelp()">\n        <ion-icon name="help-circle" class="header-icon"></ion-icon>\n      </button>\n    </ion-buttons>\n\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding class="content">\n  <button ion-button (click)="openPage($event)" class="btn" block>+ Adicionar veículo</button>\n  <loading-spinner *ngIf="showSpinner"></loading-spinner> \n \n    <div class="{{\'class\'+i}}" *ngFor="let current of list; let i = index">\n        <ion-item no-lines mode="md" class="list-item"  (click)="openPage($event,current)">\n          <ion-label text-left class="title-select" mode="md">{{current?.veiculo?.placa || placa}}\n            <button ion-button small icon-end class="btn-estacionar" (click)="excluir($event,current?.key)">Excluir\n            </button>\n            <p>{{current?.veiculo?.marca || current?.veiculo?.nodelo | uppercase}}</p>\n          </ion-label>\n          \n      </ion-item>\n    </div>\n    <!--<button ion-item detail-none *ngFor="let current of list | async" (click)="openPage($event,current)"\n      class="route-item">\n      <ion-thumbnail item-start class="thumbnail-icon">\n        <img src="{{getImage(current?.veiculo?.tipo_veiculo)}}" />\n      </ion-thumbnail>\n      <h2 class="information-date">{{current?.veiculo?.placa}}</h2>\n      <p class="information-hour">{{current?.veiculo?.marca}}</p>\n      <button ion-button class="grey" outline item-end (click)="excluir($event,current?.key)">Excluir</button>\n    </button> -->\n  \n  \n</ion-content>'/*ion-inline-end:"/Users/desenvolvedor/Documents/zonaazulfortaleza-develop/src/pages/veiculos/veiculos.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavParams */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */],
             __WEBPACK_IMPORTED_MODULE_4__providers_user_user__["a" /* UserProvider */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* LoadingController */],
             __WEBPACK_IMPORTED_MODULE_3__providers_veiculos_veiculos__["a" /* VeiculosProvider */]])
     ], VeiculosPage);
     return VeiculosPage;

@@ -1,5 +1,5 @@
 // ANGULAR AND IONIC 
-import { ErrorHandler, NgModule } from "@angular/core";
+import { CUSTOM_ELEMENTS_SCHEMA, ErrorHandler, NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { HttpClientModule } from "@angular/common/http";
 import { AngularFireAuthModule } from "angularfire2/auth";
@@ -26,6 +26,7 @@ import { SpeechRecognition } from '@ionic-native/speech-recognition';
 import { Clipboard } from '@ionic-native/clipboard';
 import { BrMaskerModule } from 'brmasker-ionic-3';
 import { IonicApp, IonicErrorHandler, IonicModule } from "ionic-angular";
+import { NamePatternPipe } from "../pipes/name-pattern/name-pattern";
 
 // PROVIDERS
 import { PagamentosProvider } from '../providers/pagamentos/pagamentos';
@@ -53,20 +54,28 @@ import { ReportarProblemaProvider } from '../providers/reportar-problema/reporta
 import { TempoEstacionadoProvider } from '../providers/tempo-estacionado/tempo-estacionado';
 import { FirebaseLoggerProvider } from '../providers/firebase-logger/firebase-logger';
 
+
+
 // MODULES 
 import { PipesModule } from './../pipes/pipes.module';
 import { ComponentsModule } from "../components/components.module";
 import { TimerModule } from "../components/timer/timer.module";
 import { AccordionModule } from "../components/accordion/accordion.module";
 import { LoadingSpinnerComponentModule } from '../components/loading-spinner/loading-spinner.module';
+import { ProgressBarModule } from "../components/progress-bar/progress-bar.module";
+
 
 import { MyApp } from './app.component';
 import { environment } from '../environments/environment';
 
 
+
+
 @NgModule({
     declarations: [
         MyApp,
+        NamePatternPipe
+        
     ],
     imports: [
         BrowserModule,
@@ -89,17 +98,22 @@ import { environment } from '../environments/environment';
         AngularFireAuthModule,
         TextMaskModule,
         TimerModule,
+        ProgressBarModule,
         ComponentsModule,
         LoadingSpinnerComponentModule,
         AccordionModule,
         IonicStorageModule.forRoot(),
         BrMaskerModule,
         PipesModule,
+        
+        
     ],
-    exports: [TextMaskModule],
+    
+    exports: [TextMaskModule,NamePatternPipe],
     bootstrap: [IonicApp],
     entryComponents: [
         MyApp,
+        
     ],
     providers: [
         StatusBar,

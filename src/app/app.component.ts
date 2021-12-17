@@ -18,6 +18,7 @@ import { ModalProvider } from '../providers/modal/modal';
 import { CadsProvider } from '../providers/cads/cads';
 
 import { Constants } from "../environments/constants";
+import { CadsUserProvider } from "../providers/cads-user/cads-user";
 
 
 @Component({
@@ -27,17 +28,22 @@ export class MyApp {
 
     @ViewChild(Nav) nav: Nav;
     public static MAP_LOAD = true;
-    rootPage: any;
+    rootPage: any = Constants.PRINCIPAL_PAGE.name;
     user = new User();
-    cads: number;
     cad = new CadModel();
-
+    cads: number = 0;
+    cadsUsados: number = 0;
+    name: any;
     subscribePush: Subscription;
+
+    subCadsUser: any;
+    subscription: Subscription = new Subscription();
 
     versao = Constants.VERSAO;
     pdvReg: boolean = false;
     isnotPdv: boolean = false;
-    constructor(public platform: Platform,
+    constructor(
+        public platform: Platform,
         public modalCtrl: ModalController,
         public statusBar: StatusBar,
         public splashScreen: SplashScreen,
@@ -50,21 +56,45 @@ export class MyApp {
         private browserProvider: BrowserProvider,
         private logger: LoggerProvider,
         public userProvider: UserProvider,
+        private cadsUserProvider: CadsUserProvider, 
         private cadsProvider: CadsProvider,
         public modalProvider: ModalProvider,
     ) {
 
         this.userProvider.getUserLocal().then(userID => {
 
-            this.events.subscribe('user', (value) => {
-                this.pdvReg = false
-                this.isnotPdv = false
+            this.events.subscribe('update_saldo', (value) => {
+                if (userID) {
+                    this.cadsUserProvider.getCads(userID).take(1).subscribe(value => {
+                        this.cadsUsados = 0;
+                        this.cads = 0;
 
-                if ((value.profile != 'revendedor' && value.pdvReg == undefined) || (value.profile != 'revendedor' && value.pdvReg.cnpj == "")) {
-                    this.pdvReg = true
+                        value.map(value => {
+                            if (value.key == "qtdCadsUsados") {
+                                this.cadsUsados = value.item;
+                            } else {
+                                this.cads += value.item.qtdCads;
+                            }
+                        });
+                    });
                 }
-                if (value.uidPDV == '00000000000') {
-                    this.isnotPdv = true
+            });
+
+            this.events.subscribe('user', (value) => {
+                if(value) {
+                    this.pdvReg = false
+                    this.isnotPdv = false
+                    this.user = value
+
+                    if ((value.profile != 'revendedor' && value.pdvReg == undefined) || (value.profile != 'revendedor' && value.pdvReg.cnpj == "")) {
+                        this.pdvReg = true
+                    }
+                    if (value.uidPDV == '00000000000') {
+                        this.isnotPdv = true
+                    }
+                } else {
+                    this.logout();
+                    this.rootPage = Constants.LOGIN_PAGE.name;
                 }
             })
             if (userID) {
@@ -72,7 +102,8 @@ export class MyApp {
 
                     this.events.publish('user', user)
                     this.user = user
-                    this.rootPage = Constants.HOME_PAGE.name;
+                    console.log(this.user)
+                    this.rootPage = Constants.PRINCIPAL_PAGE.name;
                     // }
                 });
             } else {
@@ -91,7 +122,7 @@ export class MyApp {
         this.platform.ready().then(() => {
             this.statusBar.styleDefault();
             this.splashScreen.hide();
-
+            this.carregaUsuarioComCADs();
             this.comunicacaoCentralProvider.setDMA_NTP();
 
             if (this.platform.is('cordova')) {
@@ -130,7 +161,7 @@ export class MyApp {
     }
 
     goHome() {
-        this.nav.setRoot(Constants.HOME_PAGE.name);
+        this.nav.setRoot(Constants.PRINCIPAL_PAGE.name);
         this.menu.close();
     }
 
@@ -159,8 +190,8 @@ export class MyApp {
         this.menu.close();
     }
 
-    goProfile() {
-        this.nav.setRoot(Constants.PROFILE_PAGE.name);
+    goProfile(user) {
+        this.nav.setRoot(Constants.PROFILE_EDIT_PAGE.name);
         this.menu.close();
     }
 
@@ -208,11 +239,7 @@ export class MyApp {
                 {
                     text: 'Sim', cssClass: 'btn btn-ok',
                     handler: () => {
-                        this.menu.close();
-                        this.authProvider.logout().then(() => {
-                            this.userProvider.removeUserLocal();
-                            this.nav.setRoot(Constants.LOGIN_PAGE.name);
-                        });
+                        this.logout();
                     }
                 },
                 {
@@ -220,6 +247,18 @@ export class MyApp {
                 }
             ]
         }).present();
+    }
+
+    logout() {
+        this.menu.close();
+        this.authProvider.logout().then(() => {
+            this.userProvider.removeUserLocal();
+            this.nav.setRoot(Constants.LOGIN_PAGE.name);
+        });
+    }
+
+    closeMenu(){
+        this.menu.close();
     }
 
     destroy() {
@@ -249,7 +288,7 @@ export class MyApp {
         alert.present();
     }
 
-    static showConfirm(alertCtrl, titulo = 'Aviso', descricao = '', callback = undefined) {
+    static showConfirm(alertCtrl, titulo = 'Aviso', descricao = '', callback = undefined, callbackNo = undefined) {
         return alertCtrl.create({
             title: titulo,
             subTitle: descricao,
@@ -265,9 +304,58 @@ export class MyApp {
                 },
                 {
                     text: 'Não', cssClass: 'btn btn-cancel',
+                    handler: data => {
+                        if (callback)
+                        callbackNo();
+                    }
                 }
             ]
         });
     }
+
+    namePattern(name){
+        var arr = name.split(' ');
+        var keep = arr[1][0].toUpperCase() != arr[1][0];
+        return arr.slice(0, keep ? 3 : 2).join(' ');
+    }
+
+    
+
+    carregaUsuarioComCADs() {
+        this.userProvider.getUserLocal().then(userID => {
+            this.userProvider.byId(userID).take(1).subscribe((user: User) => {
+                if (user) {
+                    this.user = new User(user);
+                    this.logger.info('user: ' + JSON.stringify(this.user));
+                    this.user = new User(user);
+                    this.name = this.namePattern(this.user.name.toString())
+                    console.log(name)
+                    this.cadsUserProvider.getCads(this.user.id).take(1).subscribe(value => {
+                        this.cadsUsados = 0;
+                        this.cads = 0;
+
+                        value.map(value => {
+                            if (value.key == "qtdCadsUsados") {
+                                this.cadsUsados = value.item;
+                            } else {
+                                this.cads += value.item.qtdCads;
+                            }
+                        });
+                    });
+                }
+            });
+        });
+    }
+
+    ngOnDestroy(): void {
+        this.subscription.add(this.subCadsUser);
+        this.subscription.unsubscribe();
+    }
+
+    camelize(str) {
+        return str.replace(/(?:^\w|[A-Z]|\b\w)/g, function(word, index) {
+          return index === 0 ? word.toLowerCase() : word.toUpperCase();
+        }).replace(/\s+/g, '');
+      }
 
 }

@@ -1,4 +1,4 @@
-**Zona Azul Fortaleza**
+**Zona Fácil**
 
 Construção e gestão do desenvolvimento do aplicativo de estacionamento zona azul.
 
@@ -8,7 +8,8 @@ Construção e gestão do desenvolvimento do aplicativo de estacionamento zona a
 ## Conta do GMail
 ```
 **email**: zonaazulfortaleza@gmail.com
-**senha**: Nec4va#2018@3p5
+**senha antiga**: Nec4va#2018@3p5
+**nova senha**: ZonaAzulfrtl@123
 ```
 ---
 
@@ -63,7 +64,7 @@ $ skd install gradle 4.6
 ```bash
 $ ionic cordova platform add ios
 $ ionic cordova platform add android@6
-$ ionic cordova run android --target=ce061716ddf844400d7e --prod
+$ ionic cordova run android --target=RQ8N307V5ZD --prod
 $ ionic cordova run ios --target=87ca7435cb02ea2ffeff6d10b44b9f3132642ac6
 $ ionic cordova run browser
 ```
@@ -181,39 +182,14 @@ platforms/android/project.properties
 #cordova.system.library.3=com.google.android.gms:play-services-location:11.8.0
 #Tem que ser a mesma versao
 
-# configuração padrão para o build no android platform/android/project.properties
-# Remover os plugins: 
-# cordova-android-play-services-gradle-relaease
-# cordova-android-firebase-gradle-relaease
-# cordova-androidx
-# cordova-androidx-adapter
-# ionic vrsão 5.16.1
-# ionic cordova platform add android@7.1.0
-# Project target.
-target=android-27
-android.library.reference.1=CordovaLib
-android.library.reference.2=app
-cordova.gradle.include.1=card.io.cordova.mobilesdk/zonaazul-build.gradle
-cordova.gradle.include.2=cordova-android-support-gradle-release/zonaazul-cordova-android-support-gradle-release.gradle
-cordova.system.library.1=com.squareup.okhttp3:okhttp-urlconnection:3.10.0
-cordova.system.library.2=com.android.support:support-v4:27.1.0
-cordova.system.library.3=com.android.support:support-v4:27.1.0
-cordova.system.library.4=com.google.android.gms:play-services-location:11.8.0
-cordova.system.library.5=com.android.support:support-v4:24.1.1+
-cordova.gradle.include.3=cordova-support-google-services/zonaazul-build.gradle
-cordova.gradle.include.4=phonegap-plugin-multidex/zonaazul-multidex.gradle
-cordova.system.library.6=com.android.support:support-v13:26.+
-cordova.system.library.7=me.leolin:ShortcutBadger:1.1.17@aar
-cordova.system.library.8=com.google.firebase:firebase-messaging:11.8.0
-cordova.gradle.include.5=phonegap-plugin-push/zonaazul-push.gradle
-# -----------------------------------------------------------------
 <!-- <string name="google_api_key">@string/google_api_key</string> -->
 <!-- <string name="google_app_id">@string/google_app_id</string> -->
 
 AppleID 
 6D75KDGD6T.br.com.zonafacil.for
 
-[PUSHNotification](pushtry.com/iostutorial.aspx)
-
 
 https://firebase.google.com/docs/reference/ios/firebasemessaging/api/reference/Protocols/FIRMessagingDelegate#/c:objc(pl)FIRMessagingDelegate(im)messaging:didReceiveMessage:
+
+##  pdv's cadastrados
+    35 77

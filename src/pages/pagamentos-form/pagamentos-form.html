@@ -1,9 +1,7 @@
 <ion-header no-border>
 
     <ion-navbar color="header">
-        <ion-title>
-            <ion-label>{{titulo}}</ion-label>
-        </ion-title>
+        <ion-title class="header-title">{{titulo}}</ion-title>
 
         <ion-buttons end>
             <button ion-button icon-only (click)="openHelp()">
@@ -20,41 +18,47 @@
     <ion-grid class="grid-profile">
 
         <ion-row class="informacoes-body">
-            <ion-item class="informacoes-body-header">
-                <ion-label class="title-header-body">INFORMAÇÕES DO CARTÃO</ion-label>
-            </ion-item>
+            <ion-col col-12>
+                <div class="info"><p>ATENÇÃO</p><p>Você deve adicionar um cartão do tipo CRÉDITO.</p></div>
+            </ion-col>
+
             <form [formGroup]="formGroup" (ngSubmit)="submit()" class="informacoes-body-list">
                 <ion-item class="informacoes-body-list-item" no-lines>
+                    <ion-label ><ion-icon name="ios-contact-outline"></ion-icon></ion-label>
+                    <ion-input type="text" #nome id="nome" formControlName="nome"  class="{{item.nome?'blue-component':'grey-component'}}" [(ngModel)]="item.nome" placeholder="Nome do Titular"
+                        (input)="nome.value=$event.target.value.toUpperCase()"></ion-input><button class="menu-btn" ion-button clear  type="button" item-right> <ion-icon ios="ios-checkmark-circle-outline" class="{{item.nome?'icon-blue icon icon-ios ion-ios-checkmark-circle-outline':'icon-grey icon icon-ios ion-ios-checkmark-circle-outline'}}"></ion-icon> </button>
+                </ion-item>
+                <ion-item class="informacoes-body-list-item" no-lines>
 
-                    <ion-label stacked>
-                        Número do Cartão
+                    <ion-label >
+                        <ion-icon name="ios-card-outline"></ion-icon>
                     </ion-label>
-                    <ion-input type="tel" #numero formControlName="numero" [(ngModel)]="item.numero" id="numero">
+                    <ion-input type="tel" #numero formControlName="numero" placeholder="Número do Cartão" [(ngModel)]="item.numero" id="numero" class="{{item.numero?'blue-component':'grey-component'}}">
                     </ion-input>
-                    <button ion-button icon-only type="button" item-right clear (click)="scan()" class="scan">
+                    <!-- <button ion-button icon-only type="button" item-right clear (click)="scan()" class="scan">
                         <ion-icon name="camera" class="icon"></ion-icon>
-                    </button>
+                    </button>  -->
+                    <button class="menu-btn" ion-button clear  type="button" item-right> <ion-icon ios="ios-checkmark-circle-outline" class="{{item.numero?'icon-blue icon icon-ios ion-ios-checkmark-circle-outline':'icon-grey icon icon-ios ion-ios-checkmark-circle-outline'}}"></ion-icon> </button>
                 </ion-item>
                 <ion-item class="informacoes-body-list-item" no-lines>
-                    <ion-label stacked>Data de Expiração</ion-label>
-                    <ion-datetime #data id="data" [(min)]="dataMin" [(max)]="dataMax" displayFormat="MM/YYYY"
+                    <ion-label ><ion-icon name="ios-calendar-outline"></ion-icon></ion-label>
+                    <ion-input type="tel" formControlName="data" [(ngModel)]="item.data" [brmasker]="{mask:'00/0000', len:7, type:'num'}" #data id="data" class="{{item.data?'blue-component':'grey-component'}}" placeholder="Validade: MM/AAAA">
+                    </ion-input><button class="menu-btn" ion-button clear  type="button" item-right> <ion-icon ios="ios-checkmark-circle-outline" class="{{item.data?'icon-blue icon icon-ios ion-ios-checkmark-circle-outline':'icon-grey icon icon-ios ion-ios-checkmark-circle-outline'}}"></ion-icon> </button>
+                    <!--<ion-datetime #data id="data" [(min)]="dataMin" [(max)]="dataMax" displayFormat="MM/YYYY"
                         pickerFormat="MM YYYY" formControlName="data" [(ngModel)]="item.data" cancelText="Cancelar"
-                        doneText="Definir"></ion-datetime>
+                        doneText="Definir"></ion-datetime> -->
                 </ion-item>
-                <ion-item class="informacoes-body-list-item" no-lines>
-                    <ion-label stacked>Código de Segurança</ion-label>
-                    <ion-input type="tel" #ccv id="ccv" formControlName="ccv" [(ngModel)]="item.ccv"></ion-input>
-                </ion-item>
-                <ion-item class="informacoes-body-list-item" no-lines>
-                    <ion-label stacked>Nome (Escrito no Cartão)</ion-label>
-                    <ion-input type="text" #nome id="nome" formControlName="nome" [(ngModel)]="item.nome"
-                        (input)="nome.value=$event.target.value.toUpperCase()"></ion-input>
-                </ion-item>
+                <!-- <ion-item class="informacoes-body-list-item" no-lines>
+                    <ion-label ><ion-icon name="ios-lock-outline"></ion-icon></ion-label>
+                    <ion-input type="text" #ccv id="ccv" formControlName="ccv" placeholder="Código CCV" class="{{item.ccv?'blue-component':'grey-component'}}" [(ngModel)]="item.ccv">
+                    </ion-input><button class="menu-btn" ion-button clear  type="button" item-right> <ion-icon ios="ios-checkmark-circle-outline" class="{{item.ccv?'icon-blue icon icon-ios ion-ios-checkmark-circle-outline':'icon-grey icon icon-ios ion-ios-checkmark-circle-outline'}}"></ion-icon> </button>
+                </ion-item> -->
+                
 
                 <ion-item class="informacoes-body-list-item" no-lines>
-                    <ion-label stacked>CPF (Títular do Cartão)</ion-label>
-                    <ion-input type="tel" #cpf id="cpf" formControlName="cpf" [(ngModel)]="item.cpf"
-                        [brmasker]="{mask:'000.000.000-00', len:14, type:'num'}"></ion-input>
+                    <ion-label ><ion-icon name="ios-person-outline"></ion-icon></ion-label>
+                    <ion-input type="tel" #cpf id="cpf" formControlName="cpf" placeholder="CPF do titular"  class="{{item.numero?'blue-component':'grey-component'}}" [(ngModel)]="item.cpf"
+                        [brmasker]="{mask:'000.000.000-00', len:14, type:'num'}"></ion-input><button class="menu-btn" ion-button clear  type="button" item-right> <ion-icon ios="ios-checkmark-circle-outline" class="{{item.cpf?'icon-blue icon icon-ios ion-ios-checkmark-circle-outline':'icon-grey icon icon-ios ion-ios-checkmark-circle-outline'}}"></ion-icon> </button>
                 </ion-item>
 
 

@@ -1,12 +1,61 @@
 page-comprar-creditos {
+  font-family: "kanit";
   .header-icon {
     color: #fff;
   }
 
-  .content {
-    background: #2d324f;
-    font-family: "Roboto";
+  .scroll-content{
+    background-color: #f2f2f2;
+  }
 
+  .content {
+    background: #f2f2f2;
+    font-family: "kanit";
+    font-style: normal;
+    font-weight: normal;
+    .info{
+      text-align: center;
+      color: white;
+      background-color: #283E81;
+      padding: 5px;
+      p{
+        margin: 0px;
+      }
+    }
+    .list{
+      
+      margin-top: 0%;
+      ion-item{
+        width: 100%;
+        // background: #4f4f4f;
+        .qtd{
+          font-size: 16px;
+          text-align: left;
+          margin-left: 10px;
+          text-align: justify;
+          white-space: normal; 
+          color: #3F65FF;
+        }
+        .promo{
+          font-size: 16px;
+          text-align: center;
+          margin-left: 10px;
+          text-align: justify;
+          white-space: normal; 
+          color: #3F65FF;
+        }
+        .price{
+          font-size: 16px;
+          float: right;
+          text-align: right;
+          margin-right: -5px;
+          text-align: right;
+          white-space: normal; 
+          color: #27AE60;
+        }
+      }
+      
+    }
     .grid {
       @include respond-to(xs) {
         margin-top: 10%;

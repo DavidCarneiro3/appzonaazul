@@ -1,14 +1,14 @@
 webpackJsonp([31],{
 
-/***/ 804:
+/***/ 747:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CompartilharPageModule", function() { return CompartilharPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FiltroModalPageModule", function() { return FiltroModalPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(36);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__compartilhar__ = __webpack_require__(845);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__filtro_modal__ = __webpack_require__(804);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,37 +18,33 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var CompartilharPageModule = /** @class */ (function () {
-    function CompartilharPageModule() {
+var FiltroModalPageModule = /** @class */ (function () {
+    function FiltroModalPageModule() {
     }
-    CompartilharPageModule = __decorate([
+    FiltroModalPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__compartilhar__["a" /* CompartilharPage */],
+                __WEBPACK_IMPORTED_MODULE_2__filtro_modal__["a" /* FiltroModalPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__compartilhar__["a" /* CompartilharPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__filtro_modal__["a" /* FiltroModalPage */]),
             ],
         })
-    ], CompartilharPageModule);
-    return CompartilharPageModule;
+    ], FiltroModalPageModule);
+    return FiltroModalPageModule;
 }());
 
-//# sourceMappingURL=compartilhar.module.js.map
+//# sourceMappingURL=filtro-modal.module.js.map
 
 /***/ }),
 
-/***/ 845:
+/***/ 804:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CompartilharPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FiltroModalPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(36);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_social_sharing__ = __webpack_require__(454);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_cads_cads__ = __webpack_require__(133);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__models_cad__ = __webpack_require__(222);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_browser_browser__ = __webpack_require__(226);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(35);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -60,84 +56,57 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-
-
-
-
-var CompartilharPage = /** @class */ (function () {
-    function CompartilharPage(navCtrl, navParams, socialSharing, cadsProvider, browserProvider, loadingCtrl) {
+var FiltroModalPage = /** @class */ (function () {
+    function FiltroModalPage(navCtrl, navParams, modalCtrl, viewCtlr, event) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
-        this.socialSharing = socialSharing;
-        this.cadsProvider = cadsProvider;
-        this.browserProvider = browserProvider;
-        this.loadingCtrl = loadingCtrl;
-        this.cad = new __WEBPACK_IMPORTED_MODULE_4__models_cad__["a" /* CadModel */]();
+        this.modalCtrl = modalCtrl;
+        this.viewCtlr = viewCtlr;
+        this.event = event;
+        this.selectOption = {
+            title: 'Tipo',
+            subtitle: 'Escolha o tipo do Filtro',
+            mode: 'ios'
+        };
+        this.filter = {
+            placa: "",
+            numberAuth: "",
+            data: "",
+            situacao: "",
+            qtdCads: "",
+            valor: "",
+        };
+        this.data = navParams.get('data');
     }
-    CompartilharPage.prototype.ionViewDidLoad = function () {
-        var _this = this;
-        this.cadsProvider.find().take(1).subscribe(function (value) {
-            value.map(function (item) {
-                _this.cad = new __WEBPACK_IMPORTED_MODULE_4__models_cad__["a" /* CadModel */](item.cad);
-            });
-        });
+    FiltroModalPage.prototype.ionViewDidLoad = function () {
     };
-    CompartilharPage.prototype.shareLink = function () {
-        var url = 'http://www.zonafacil.com.br';
-        this.browserProvider.openPage(url);
+    FiltroModalPage.prototype.Filtro = function () {
+        if (this.filter.data !== "") {
+            this.formatDate();
+        }
+        this.filter.placa = this.filter.placa.toUpperCase();
+        this.event.publish('f_event', this.filter);
+        this.navCtrl.pop();
     };
-    CompartilharPage.prototype.shareFacebook = function () {
-        var loading = this.loadingCtrl.create({ content: 'Aguarde...' });
-        loading.present();
-        var message = 'O Zona Fácil é meu aplicativo Zona Azul preferido. Indico!';
-        var img = 'http://www.zonafacil.com.br/site/images/mockups/banner-1.jpg';
-        var url = 'http://www.zonafacil.com.br';
-        this.socialSharing.shareViaFacebook(message, img, url)
-            .then(function () {
-            loading.dismiss();
-        })
-            .catch(function () { });
+    FiltroModalPage.prototype.formatDate = function () {
+        var format = this.filter.data.split("-");
+        return this.filter.data = format[2] + '/' + format[1] + '/' + format[0];
     };
-    CompartilharPage.prototype.shareWhatsapp = function () {
-        var loading = this.loadingCtrl.create({ content: 'Aguarde...' });
-        loading.present();
-        var message = 'O Zona Fácil é meu aplicativo Zona Azul preferido. Indico!';
-        var img = 'http://www.zonafacil.com.br/site/images/mockups/banner-1.jpg';
-        var url = 'http://www.zonafacil.com.br';
-        this.socialSharing.shareViaWhatsApp(message, img, url)
-            .then(function () {
-            loading.dismiss();
-        })
-            .catch(function () { });
+    FiltroModalPage.prototype.closeModal = function () {
+        this.event.publish('f_event', this.filter);
+        this.navCtrl.pop();
     };
-    CompartilharPage.prototype.share = function () {
-        var loading = this.loadingCtrl.create({ content: 'Aguarde...' });
-        loading.present();
-        var subject = 'Zona Azul!';
-        var message = 'O Zona Fácil é meu aplicativo Zona Azul preferido. Indico!';
-        var img = 'http://www.zonafacil.com.br/site/images/mockups/banner-1.jpg';
-        var url = 'http://www.zonafacil.com.br';
-        this.socialSharing.share(message, subject, img, url)
-            .then(function () {
-            loading.dismiss();
-        })
-            .catch(function () { });
-    };
-    CompartilharPage = __decorate([
+    FiltroModalPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-compartilhar',template:/*ion-inline-start:"/Users/desenvolvedor/Documents/appzonzazul/src/pages/compartilhar/compartilhar.html"*/'<ion-header no-border>\n    <ion-navbar color="header">\n        <button ion-button icon-only menuToggle>\n            <ion-icon class="header-icon" name="menu"></ion-icon>\n        </button>\n\n        <ion-title>\n            <ion-label>Compartilhe</ion-label>\n        </ion-title>\n\n    </ion-navbar>\n</ion-header>\n\n<ion-content class="content">\n    <ion-grid>\n        <ion-row class="row-header">\n            <ion-col col-12 class="col-header">\n                <ion-label class="title">COMPARTILHE NAS REDES SOCIAIS</ion-label>\n            </ion-col>\n        </ion-row>\n        <ion-row class="row-items">\n            <ion-item no-lines>\n                <h6>Site</h6>\n                <h4 (click)="shareLink()">{{cad.info.site}}</h4>\n            </ion-item>\n        </ion-row>\n        <ion-row class="row-social">\n            <ion-col col-12 class="col-more">\n                <button ion-button icon-start block (click)="shareFacebook()">\n                    <img class="img" src="assets/icon/facebook.svg">\n                    <p>Compartilhar no facebook</p>\n                </button>\n            </ion-col>\n            <ion-col col-12 class="col-more">\n                <button ion-button icon-start block (click)="shareWhatsapp()">\n                    <img class="img" src="assets/icon/whatsapp.png">\n                    <p class="wp">Compartilhar no whatsapp</p>\n                </button>\n            </ion-col>\n            <ion-col col-12 class="col-more">\n                <button ion-button icon-start block (click)="share()">\n                    <img class="img" src="assets/icon/share.png">\n                    <p class="more">Mais opções de compartilhamento</p>\n                </button>\n            </ion-col>\n        </ion-row>\n    </ion-grid>\n</ion-content>'/*ion-inline-end:"/Users/desenvolvedor/Documents/appzonzazul/src/pages/compartilhar/compartilhar.html"*/,
+            selector: 'page-filtro-modal',template:/*ion-inline-start:"/Users/desenvolvedor/Documents/zonaazulfortaleza-develop/src/pages/filtro-modal/filtro-modal.html"*/'<ion-header no-border>\n    <ion-navbar color="header" no-margin no-padding>\n        <ion-buttons left>\n            <button ion-button icon-only (click)="closeModal()">\n                <span color="light" class="header-icon" showWhen="ios">Fechar</span>\n                <ion-icon name="md-arrow-back" class="header-icon" showWhen="android,windows"></ion-icon>\n            </button>\n        </ion-buttons>\n\n        <ion-title class="header-title">Filtros</ion-title>\n    </ion-navbar>\n</ion-header>\n\n\n<ion-content class="content">\n    <div class="informacoes-body">\n\n    <div class="informacoes-body-list">\n       \n            \n            <ion-item class="informacoes-body-list-item" no-lines>\n                <ion-label class="btn-icon"><ion-icon name="ios-car-outline"></ion-icon></ion-label>\n                \n                <ion-input type="text" placeholder="AAA0000" [(ngModel)]="filter.placa" name="placa" class="{{filter.placa?\'blue-component\':\'grey-component\'}}"> \n\n                </ion-input><button class="menu-btn" ion-button clear  type="button" item-right> <ion-icon ios="ios-checkmark-circle-outline" class="{{filter.placa?\'icon-blue icon icon-ios ion-ios-checkmark-circle-outline\':\'icon-grey icon icon-ios ion-ios-checkmark-circle-outline\'}}"></ion-icon> </button>\n            </ion-item>\n        \n\n       \n            \n            <ion-item class="informacoes-body-list-item" no-lines>\n                <ion-label style="max-width:10%;"><ion-icon name="ios-checkbox-outline"></ion-icon></ion-label>\n                <ion-select style="max-width: 100%;" placeholder=\'Ativação/Renovacão\' [selectOptions]="selectOption"\n                    [(ngModel)]="filter.situacao" >\n                    <ion-option value="Ativação"> Ativação </ion-option>\n                    <ion-option value="Renovação"> Renovacão </ion-option>\n                </ion-select><button class="menu-btn" ion-button clear  type="button" item-right> <ion-icon ios="ios-checkmark-circle-outline" class="{{filter.situacao?\'icon-blue icon icon-ios ion-ios-checkmark-circle-outline\':\'icon-grey icon icon-ios ion-ios-checkmark-circle-outline\'}}"></ion-icon> </button>\n            </ion-item>\n        \n\n       \n            <ion-item class="informacoes-body-list-item" no-lines>\n                <ion-label  style="max-width:10%;"><ion-icon name="ios-calendar-outline"></ion-icon></ion-label>\n                <ion-datetime displayFormat="DD/MM/YYYY" placeholder="DD/MM/YYYY" [min]="data.min" [max]="data.today"\n                    cancelText="Cancelar" doneText="Selecionar" [(ngModel)]=\'filter.data\' name=\'data\' >\n                </ion-datetime><button class="menu-btn" ion-button clear  type="button" item-right> <ion-icon ios="ios-checkmark-circle-outline" class="{{filter.data?\'icon-blue icon icon-ios ion-ios-checkmark-circle-outline\':\'icon-grey icon icon-ios ion-ios-checkmark-circle-outline\'}}"></ion-icon> </button>\n            </ion-item>\n        \n\n\n       \n           \n            <ion-item class="informacoes-body-list-item" no-lines>\n                <ion-label class="btn-icon"><ion-icon name="ios-basket-outline"></ion-icon></ion-label>\n                <ion-input type="text" placeholder="Quantidade de CADs" [(ngModel)]="filter.qtdCads" name="qtdCads" class="{{filter.qtdCads?\'blue-component\':\'grey-component\'}}"> \n\n                </ion-input><button class="menu-btn" ion-button clear  type="button" item-right> <ion-icon ios="ios-checkmark-circle-outline" class="{{filter.qtdCads?\'icon-blue icon icon-ios ion-ios-checkmark-circle-outline\':\'icon-grey icon icon-ios ion-ios-checkmark-circle-outline\'}}"></ion-icon> </button>\n            </ion-item>\n        \n\n\n       \n            \n            <ion-item class="informacoes-body-list-item" no-lines>\n                <ion-label class="btn-icon"><ion-icon name="ios-pricetags-outline"></ion-icon></ion-label>\n                <ion-input type="text" placeholder="R$ 10,00" [(ngModel)]="filter.valor" name="valor" class="{{filter.valor?\'blue-component\':\'grey-component\'}}"> \n\n                </ion-input><button class="menu-btn" ion-button clear  type="button" item-right> <ion-icon ios="ios-checkmark-circle-outline" class="{{filter.valor?\'icon-blue icon icon-ios ion-ios-checkmark-circle-outline\':\'icon-grey icon icon-ios ion-ios-checkmark-circle-outline\'}}"></ion-icon> </button>\n            </ion-item>\n        \n\n\n       \n            \n            <ion-item class="informacoes-body-list-item" no-lines>\n                <ion-label class="btn-icon"><ion-icon name="ios-card-outline"></ion-icon></ion-label>\n                <ion-input type="text" placeholder="123454564" [(ngModel)]=\'filter.numberAuth\' name="numberAuth" class="{{filter.numberAuth?\'blue-component\':\'grey-component\'}}">\n                </ion-input><button class="menu-btn" ion-button clear  type="button" item-right> <ion-icon ios="ios-checkmark-circle-outline" class="{{filter.numberAuth?\'icon-blue icon icon-ios ion-ios-checkmark-circle-outline\':\'icon-grey icon icon-ios ion-ios-checkmark-circle-outline\'}}"></ion-icon> </button>\n            </ion-item>\n        \n\n        <ion-item class="btn-row" no-lines>\n            <button ion-button style="height:40px" class="btn" block (click)="Filtro()"> Filtrar </button>\n        </ion-item>\n    </div>\n</div>\n\n</ion-content>'/*ion-inline-end:"/Users/desenvolvedor/Documents/zonaazulfortaleza-develop/src/pages/filtro-modal/filtro-modal.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_2__ionic_native_social_sharing__["a" /* SocialSharing */],
-            __WEBPACK_IMPORTED_MODULE_3__providers_cads_cads__["a" /* CadsProvider */],
-            __WEBPACK_IMPORTED_MODULE_5__providers_browser_browser__["a" /* BrowserProvider */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* LoadingController */]])
-    ], CompartilharPage);
-    return CompartilharPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ModalController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* ViewController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* Events */]])
+    ], FiltroModalPage);
+    return FiltroModalPage;
 }());
 
-//# sourceMappingURL=compartilhar.js.map
+//# sourceMappingURL=filtro-modal.js.map
 
 /***/ })
 

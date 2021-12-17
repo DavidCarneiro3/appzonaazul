@@ -1,15 +1,15 @@
 webpackJsonp([13],{
 
-/***/ 815:
+/***/ 751:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PagamentosFormPageModule", function() { return PagamentosFormPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(36);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__pagamentos_form__ = __webpack_require__(865);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_brmasker_ionic_3__ = __webpack_require__(447);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__pagamentos_form__ = __webpack_require__(810);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_brmasker_ionic_3__ = __webpack_require__(420);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -41,13 +41,13 @@ var PagamentosFormPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 834:
+/***/ 770:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MapUtil; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pages_home_home__ = __webpack_require__(836);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__environments_constants__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pages_home_home__ = __webpack_require__(772);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__environments_constants__ = __webpack_require__(19);
 
 
 var MapUtil = /** @class */ (function () {
@@ -60,7 +60,7 @@ var MapUtil = /** @class */ (function () {
             mapTypeControl: false,
             clickableIcons: false,
             fullscreenControl: false,
-            zoomControl: true,
+            zoomControl: false,
             zoomControlOptions: {
                 position: google.maps.ControlPosition.RIGHT_BOTTOM
             },
@@ -131,47 +131,54 @@ var MapUtil = /** @class */ (function () {
     MapUtil.prototype.addPolyline = function (item, map) {
         if (item != null && item.setor != null) {
             var polyline = void 0;
-            var marker = void 0;
-            var iconUrlGrenn = "assets/imgs/map-marker-green-4.png";
-            var iconUrlRed = "assets/imgs/map-marker-red-4.png";
+            var marker_1;
+            var iconUrlGrenn = "assets/imgs/map-marker-blue-4.svg";
+            var iconUrlRed = "assets/imgs/map-marker-red-4.svg";
             var totalVagasUtilizadas = item.setor.qtd_deficiente_estacionados + item.setor.qtd_idoso_estacionados + item.setor.qtd_normal_estacionados;
-            polyline = new google.maps.Polyline(this.createPolylineOptions(item.setor, totalVagasUtilizadas));
-            polyline.setMap(map);
-            MapUtil.polylines.push(polyline);
-            marker = new google.maps.Marker({
+            //polyline = new google.maps.Polyline(this.createPolylineOptions(item.setor, totalVagasUtilizadas));
+            //polyline.setMap(map);
+            //MapUtil.polylines.push(polyline);
+            marker_1 = new google.maps.Marker({
                 position: { lat: item.setor.latInicio, lng: item.setor.lngInicio },
                 icon: {
                     url: (item.setor.total_vagas - totalVagasUtilizadas > 0) ? iconUrlGrenn : iconUrlRed,
-                    scaledSize: new google.maps.Size(32, 32)
+                    scaledSize: new google.maps.Size(122, 122)
                 }
             });
             // marker.
-            marker.setMap(map);
+            marker_1.setMap(map);
             var infowindow_1 = new google.maps.InfoWindow({
                 content: this.createInfoPolylines(item.setor, item.area, totalVagasUtilizadas),
             });
             /**
              * Abre as opções do estacionamento
              * polyline  item pressionado onde vai abrir o evento ( linha do inicio e final do Simbolo do carro)
-             */
-            google.maps.event.addListener(polyline, 'click', function (event) {
-                infowindow_1.setPosition(event.latLng);
-                infowindow_1.open(__WEBPACK_IMPORTED_MODULE_0__pages_home_home__["a" /* HomePage */].map);
-                MapUtil.infoWindows.push(infowindow_1);
+             
+            google.maps.event.addListener(polyline, 'click', event => {
+
+                infowindow.setPosition(event.latLng);
+                infowindow.open(HomePage.map);
+                MapUtil.infoWindows.push(infowindow);
+
                 if (MapUtil.infoWindows.length > 1) {
-                    MapUtil.infoWindows.forEach(function (value) {
-                        if (value != infowindow_1) {
+                    MapUtil.infoWindows.forEach(value => {
+                        if (value != infowindow) {
                             value.close();
                         }
-                    });
+                    })
                 }
             });
-            /**
+
+            
              * Abre as opções do estacionamento
              * marker  item pressionado onde vai abrir o evento ( Simbolo do carro verde)
              */
-            google.maps.event.addListener(marker, 'click', function (event) {
-                infowindow_1.setPosition(event.latLng);
+            google.maps.event.addListener(marker_1, 'click', function (event) {
+                // let latLng = event.latLng;
+                var latLng = marker_1.position;
+                console.log('marker', marker_1);
+                console.log('event', event);
+                infowindow_1.setPosition(latLng);
                 infowindow_1.open(__WEBPACK_IMPORTED_MODULE_0__pages_home_home__["a" /* HomePage */].map);
                 MapUtil.infoWindows.push(infowindow_1);
                 if (MapUtil.infoWindows.length > 1) {
@@ -185,8 +192,8 @@ var MapUtil = /** @class */ (function () {
         }
     };
     MapUtil.prototype.findSetor = function (map, setor, area) {
-        var iconUrlGrenn = "assets/imgs/map-marker-green-4.png";
-        var iconUrlRed = "assets/imgs/map-marker-red-4.png";
+        var iconUrlGrenn = "assets/imgs/map-marker-blue-4.svg";
+        var iconUrlRed = "assets/imgs/map-marker-red-4.svg";
         var marker;
         var latlng = new google.maps.LatLng(setor.latInicio, setor.lngInicio);
         map.setCenter(latlng);
@@ -194,6 +201,19 @@ var MapUtil = /** @class */ (function () {
         var totalVagasUtilizadas = setor.qtd_deficiente_estacionados + setor.qtd_idoso_estacionados + setor.qtd_normal_estacionados;
         var infowindow = new google.maps.InfoWindow({
             content: this.createInfoPolylines(setor, area, totalVagasUtilizadas),
+        });
+        google.maps.event.addListener(infowindow, 'domready', function () {
+            // Referência ao DIV que recebe o conteúdo da infowindow recorrendo ao jQuery
+            //var iwOuter = this.getElementByClassName('.gm-style-iw');
+            /* Uma vez que o div pretendido está numa posição anterior ao div .gm-style-iw.
+             * Recorremos ao jQuery e criamos uma variável iwBackground,
+             * e aproveitamos a referência já existente do .gm-style-iw para obter o div anterior com .prev().
+             */
+            //var iwBackground = iwOuter.prev();
+            // Remover o div da sombra do fundo
+            //iwBackground.children(':nth-child(2)').css({'display' : 'none'});
+            // Remover o div de fundo branco
+            //iwBackground.children(':nth-child(4)').css({'display' : 'none'});
         });
         marker = new google.maps.Marker({
             position: { lat: setor.latInicio, lng: setor.lngInicio },
@@ -248,31 +268,42 @@ var MapUtil = /** @class */ (function () {
     MapUtil.prototype.createInfoPolylines = function (setor, area, totalVagasUtilizadas) {
         var div = document.createElement('div');
         div.className = "gm-style gm-style-iw";
-        var setorNome = (setor.nome.length < 3) ? ('Setor ' + setor.nome) : setor.nome;
+        var divl = document.createElement('div');
+        divl.className = "style-left";
+        var divr = document.createElement('div');
+        divr.className = "style-right";
+        //const setorNome = (setor?.nome.toString().length < 3) ? ('Setor ' + setor.nome) : setor.nome;
+        var setorNome = setor.nome;
         // console.log('ST', setorNome + " | " + setor.codigo);
         // console.log('AR', area);
         var h3 = document.createElement('h3');
         h3.className = "setor-codigo";
-        h3.innerText = setorNome + " (" + setor.codigo + ")" + " | Área: " + area.endereco + " (" + area.codigo + ")";
-        var h5vt = document.createElement('h4');
+        //h3.innerText = setorNome + " (" + setor.codigo + ")" + " | Área: " + area.endereco + " (" + area.codigo + ")";
+        // h3.innerText = area.endereco + " (" + area.codigo + ")" + " - " +setorNome;
+        h3.innerText = setorNome + " - " + area.endereco;
+        var h5vt = document.createElement('p');
         h5vt.className = "setor-vagas";
         h5vt.innerText = "Vagas: " + setor.total_vagas;
-        var h5vn = document.createElement('h4');
+        var h5vn = document.createElement('p');
         h5vn.className = "setor-vagas-normal";
         // h5vn.innerText = "Vagas convencionais disponíveis: " + ((setor.total_vagas - (setor.vagas_idoso + setor.vagas_deficiente)) - setor.qtd_normal_estacionados);
         h5vn.innerText = "Vagas convencionais: " + (setor.total_vagas - setor.qtd_normal_estacionados);
-        var h5vd = document.createElement('h4');
-        h5vd.className = "setor-vagas-normal";
-        h5vd.innerText = "Vagas de deficiente: " + (setor.vagas_deficiente - setor.qtd_deficiente_estacionados);
-        var h5vi = document.createElement('h4');
-        h5vi.className = "setor-vagas-normal";
+        var h5vd = document.createElement('p');
+        h5vd.className = "setor-vagas-pcd";
+        h5vd.innerText = "Vagas de PCD: " + (setor.vagas_deficiente - setor.qtd_deficiente_estacionados);
+        var h5vi = document.createElement('p');
+        h5vi.className = "setor-vagas-i";
         h5vi.innerText = "Vagas de idoso: " + (setor.vagas_idoso - setor.qtd_idoso_estacionados);
-        var h5vc = document.createElement('h4');
-        h5vc.className = "setor-vagas-normal";
+        var h5vc = document.createElement('p');
+        h5vc.className = "setor-vagas-cd";
         h5vc.innerText = "Vagas Carga/Descarga: " + (setor.vagas_carga_descarga - setor.qtd_carga_descarga_estacionados);
         var button = document.createElement('button');
         button.className = "btn-estacionar";
-        button.innerText = "Estacionar";
+        button.innerText = "ESTACIONAR";
+        var ico = document.createElement('img');
+        ico.setAttribute("src", "assets/icones/estacionamento-white.svg");
+        ico.className = "pin-view";
+        button.appendChild(ico);
         button.addEventListener('click', function () {
             document.getElementById('btn-show-estacionar-page').setAttribute("setor", setor.codigo);
             document.getElementById('btn-show-estacionar-page').setAttribute("area", area.codigo);
@@ -283,11 +314,18 @@ var MapUtil = /** @class */ (function () {
         if ((setor.total_vagas - totalVagasUtilizadas) <= 0) {
             button.disabled = true;
         }
+        var divpin = document.createElement('div');
+        divpin.className = "btn-pin";
+        // buttonView.innerText = "Ver";
+        var iconpin = document.createElement('img');
+        iconpin.setAttribute("src", "assets/icones/pin-dark.svg");
+        iconpin.className = "pin-btn";
+        divpin.appendChild(iconpin);
         var buttonView = document.createElement('button');
         buttonView.className = "btn-ver";
         // buttonView.innerText = "Ver";
         var icon = document.createElement('img');
-        icon.setAttribute("src", "assets/icon/streat_view.png");
+        icon.setAttribute("src", "assets/icones/shopping-cart-white.svg");
         icon.className = "streat-view";
         buttonView.appendChild(icon);
         buttonView.addEventListener('click', function () {
@@ -295,14 +333,17 @@ var MapUtil = /** @class */ (function () {
             document.getElementById('btn-show-streat-view').setAttribute("area", area.codigo);
             document.getElementById('btn-show-streat-view').click();
         });
-        div.appendChild(h3);
+        divl.appendChild(h3);
         // div.appendChild(h5vt);
-        div.appendChild(h5vn);
-        div.appendChild(h5vd);
-        div.appendChild(h5vi);
-        div.appendChild(h5vc);
-        div.appendChild(button);
-        div.appendChild(buttonView);
+        divr.appendChild(h5vn);
+        divr.appendChild(h5vi);
+        divr.appendChild(h5vd);
+        divr.appendChild(h5vc);
+        divr.appendChild(button);
+        divl.appendChild(buttonView);
+        div.appendChild(divl);
+        div.appendChild(divr);
+        div.appendChild(divpin);
         return div;
     };
     MapUtil.prototype.determineColor = function (vagas) {
@@ -478,7 +519,7 @@ var MapUtil = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 835:
+/***/ 771:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -635,33 +676,33 @@ var FunctionsUtil = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 836:
+/***/ 772:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomePage; });
 /* unused harmony export LatLng */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(36);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_android_permissions__ = __webpack_require__(219);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_location_accuracy__ = __webpack_require__(443);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_speech_recognition__ = __webpack_require__(446);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_geolocation__ = __webpack_require__(445);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_take__ = __webpack_require__(93);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_android_permissions__ = __webpack_require__(200);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_location_accuracy__ = __webpack_require__(416);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_speech_recognition__ = __webpack_require__(417);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_geolocation__ = __webpack_require__(415);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_take__ = __webpack_require__(85);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_take___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_take__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_setores_setores__ = __webpack_require__(442);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__providers_veiculos_veiculos__ = __webpack_require__(441);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__providers_auth_auth__ = __webpack_require__(217);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_setores_setores__ = __webpack_require__(413);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__providers_veiculos_veiculos__ = __webpack_require__(412);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__providers_auth_auth__ = __webpack_require__(199);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__providers_user_user__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__providers_cads_user_cads_user__ = __webpack_require__(218);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__providers_comunicacao_central_comunicacao_central__ = __webpack_require__(220);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__providers_modal_modal__ = __webpack_require__(216);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__providers_area_area__ = __webpack_require__(444);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__environments_constants__ = __webpack_require__(20);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__util_map_util__ = __webpack_require__(834);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__util_functions_util__ = __webpack_require__(835);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__app_app_component__ = __webpack_require__(440);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__providers_estacionar_estacionar__ = __webpack_require__(221);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__providers_cads_user_cads_user__ = __webpack_require__(111);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__providers_comunicacao_central_comunicacao_central__ = __webpack_require__(202);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__providers_modal_modal__ = __webpack_require__(198);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__providers_area_area__ = __webpack_require__(414);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__environments_constants__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__util_map_util__ = __webpack_require__(770);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__util_functions_util__ = __webpack_require__(771);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__app_app_component__ = __webpack_require__(411);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__providers_estacionar_estacionar__ = __webpack_require__(201);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -715,12 +756,18 @@ var HomePage = /** @class */ (function () {
         this.areaProvider = areaProvider;
         this.events = events;
         this.estacionarProvider = estacionarProvider;
+        this.city = 'Fortaleza';
         this.estacionar = [];
         this.setores = [];
         this.qtdCadsUser = 0;
         this.qtdCadsUSados = 0;
         this.mapUtil = new __WEBPACK_IMPORTED_MODULE_16__util_map_util__["a" /* MapUtil */]();
         this.allSetores = [];
+        this.selectOptions = {
+            title: 'Cidade',
+            subTitle: 'Escolha sua cidade',
+            mode: 'ios'
+        };
         this.getAllSetores();
         platform.registerBackButtonAction(function () {
             if (_this.navCtrl.getActive().name == 'HomePage') {
@@ -754,7 +801,7 @@ var HomePage = /** @class */ (function () {
                 console.log(userID);
                 _this.estacionarProvider.countCadsById(userID)
                     .subscribe(function (val) {
-                    console.log(val);
+                    // console.log(val)
                 });
                 _this.cadsUserProvider.findQtdCads(userID).take(1).subscribe(function (value) {
                     value.map(function (cads) {
@@ -994,6 +1041,7 @@ var HomePage = /** @class */ (function () {
                     loading.dismiss();
                     if (_item.length > 0) {
                         _this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_15__environments_constants__["a" /* Constants */].ESTACIONAR_PAGE.name, {
+                            fromPage: 'mapa',
                             setor: codigoSetor,
                             area: codigoArea,
                             'setor-nome': nomeSetor,
@@ -1013,7 +1061,8 @@ var HomePage = /** @class */ (function () {
                                     area: codigoArea,
                                     setor: codigoSetor,
                                     cad: _this.cad,
-                                    qtdCads: (_this.qtdCadsUser - _this.qtdCadsUSados)
+                                    qtdCads: (_this.qtdCadsUser - _this.qtdCadsUSados),
+                                    veiculoAllArr: _item
                                 });
                             });
                         }
@@ -1025,7 +1074,8 @@ var HomePage = /** @class */ (function () {
                                 area: codigoArea,
                                 setor: codigoSetor,
                                 cad: _this.cad,
-                                qtdCads: (_this.qtdCadsUser - _this.qtdCadsUSados)
+                                qtdCads: (_this.qtdCadsUser - _this.qtdCadsUSados),
+                                veiculoAllArr: _item
                             });
                         }
                     }
@@ -1173,23 +1223,25 @@ var HomePage = /** @class */ (function () {
         }, function (error) {
         });
     };
-    HomePage.prototype.showStreatView = function (event) {
-        var _this = this;
-        var wait = this.loadingCtrl.create({ content: 'Aguarde...' });
+    HomePage.prototype.showStreatView = function () {
+        /*let wait = this.loadingCtrl.create({ content: 'Aguarde...' });
         wait.present();
-        var button = document.getElementById('btn-show-streat-view');
-        var codigoSetor = button.getAttribute("setor");
-        var codigoArea = button.getAttribute("area");
+        let button = document.getElementById('btn-show-streat-view');
+        let codigoSetor = button.getAttribute("setor");
+        let codigoArea = button.getAttribute("area");
+
         this.setoresProvider.byId(codigoArea, codigoSetor)
-            .subscribe(function (data) {
-            var streatViewPage = _this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_15__environments_constants__["a" /* Constants */].STREAT_VIEW_PAGE.name, { map: HomePage_1.map, data: data, wait: wait });
-            streatViewPage.present().then(function () {
-                _this.modalProvider.setActive();
-            });
-        }, function (error) {
-            console.log(error);
-            wait.dismiss();
-        });
+            .subscribe(data => {
+                const streatViewPage = this.modalCtrl.create(Constants.STREAT_VIEW_PAGE.name, { map: HomePage.map, data: data, wait: wait });
+                streatViewPage.present().then(() => {
+                    this.modalProvider.setActive();
+                });
+            },
+                (error) => {
+                    console.log(error);
+                    wait.dismiss();
+                })*/
+        this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_15__environments_constants__["a" /* Constants */].PAGAMENTOS_PAGE.name);
     };
     HomePage.prototype.showToast = function (msg, time) {
         var toast = this.toastCtrl.create({
@@ -1259,13 +1311,13 @@ var HomePage = /** @class */ (function () {
     ], HomePage.prototype, "iconElement", void 0);
     HomePage = HomePage_1 = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-home',template:/*ion-inline-start:"/Users/desenvolvedor/Documents/appzonzazul/src/pages/home/home.html"*/'<ion-header no-border>\n    <ion-navbar color="header">\n        <button ion-button icon-only menuToggle>\n            <ion-icon class="header-icon" name="menu"></ion-icon>\n        </button>\n        <ion-title>\n            <ion-label>Início</ion-label>\n        </ion-title>\n\n        <ion-buttons end>\n            <button ion-button icon-only (click)="openTempoRestantePage()">\n                <img src="assets/imgs/time.png" width="30px" height="30px" />\n            </button>\n        </ion-buttons>\n    </ion-navbar>\n</ion-header>\n\n<ion-content class="content">\n    <div #map id="map"></div>\n    <input #search id="search" class="controls" type="text" placeholder="Buscar Local">\n\n    <button ion-button icon-only type="button" item-right clear (click)="listen()" id="mic" [style.display]="\'none\'">\n        <ion-icon name="mic" class="icon"></ion-icon>\n    </button>\n    <ion-fab id="help">\n        <button ion-fab icon-only (click)="openHelp()">\n            <ion-icon name="help"></ion-icon>\n        </button>\n    </ion-fab>\n\n    <ion-fab id="close" (click)="showCloseSetor()">\n        <button ion-fab>\n        </button>\n    </ion-fab>\n\n    <ion-fab>\n        <button ion-fab icon-only color="default" (click)="buscarSetores()" id="locate">\n            <ion-icon name="search" class="icon"></ion-icon>\n        </button>\n    </ion-fab>\n\n    <ion-icon #icon name="close" class="icon-clear" style="display: none" id="icon"></ion-icon>\n    <button ion-button id="btn-show-estacionar-page" (click)="openEstacionarPage($event)"\n        [style.display]="\'none\'"></button>\n    <button ion-button id="btn-show-streat-view" (click)="showStreatView($event)" [style.display]="\'none\'"></button>\n</ion-content>'/*ion-inline-end:"/Users/desenvolvedor/Documents/appzonzazul/src/pages/home/home.html"*/
+            selector: 'page-home',template:/*ion-inline-start:"/Users/desenvolvedor/Documents/zonaazulfortaleza-develop/src/pages/home/home.html"*/'<ion-header no-border>\n    <ion-navbar color="header">\n        <button ion-button icon-only menuToggle>\n            <ion-icon class="header-icon" name="menu"></ion-icon>\n        </button>\n        <ion-title class="title-header">\n            <ion-select [(ngModel)]="city" class="select-city" cancelText="Cancelar" okText="Ok" [selectOptions]="selectOptions">\n                <ion-option value="Fortaleza">Fortaleza</ion-option>\n              </ion-select>\n        </ion-title>\n\n        <ion-buttons end>\n            <button ion-button icon-only (click)="openTempoRestantePage()">\n                <img src="assets/icones/car-white.svg"  />\n            </button>\n        </ion-buttons>\n    </ion-navbar>\n</ion-header>\n\n<ion-content class="content">\n    <div #map id="map"></div>\n    <input #search id="search" class="controls" type="text" placeholder="Buscar">\n\n    <button ion-button icon-only type="button" item-right clear id="mic" >\n        <ion-icon color="gray" name="search" class="icon"></ion-icon>\n    </button>\n    <!--<ion-fab id="help">\n        <button ion-fab icon-only (click)="openHelp()">\n            <ion-icon name="help"></ion-icon>\n        </button>\n    </ion-fab> -->\n\n    <ion-fab id="close" (click)="showCloseSetor()">\n        <button ion-fab>\n        </button>\n    </ion-fab>\n\n   <!-- <ion-fab>\n        <button ion-fab icon-only color="default" (click)="buscarSetores()" id="locate">\n            <ion-icon name="search" class="icon"></ion-icon>\n        </button>\n    </ion-fab> -->\n\n    <ion-icon #icon name="close" class="icon-clear" style="display: none" id="icon"></ion-icon>\n    <button ion-button id="btn-show-estacionar-page" (click)="openEstacionarPage($event)"\n        [style.display]="\'none\'"></button>\n    <button ion-button id="btn-show-streat-view" (click)="showStreatView()" [style.display]="\'none\'"></button>\n</ion-content>'/*ion-inline-end:"/Users/desenvolvedor/Documents/zonaazulfortaleza-develop/src/pages/home/home.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* Platform */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ModalController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* ToastController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* ToastController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* LoadingController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavParams */],
             __WEBPACK_IMPORTED_MODULE_5__ionic_native_geolocation__["a" /* Geolocation */],
@@ -1299,21 +1351,21 @@ var LatLng = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 865:
+/***/ 810:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PagamentosFormPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(36);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_card_io__ = __webpack_require__(461);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__models_pagamento__ = __webpack_require__(466);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_pagamentos_pagamentos__ = __webpack_require__(453);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_card_io__ = __webpack_require__(432);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__models_pagamento__ = __webpack_require__(437);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_pagamentos_pagamentos__ = __webpack_require__(424);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_user_user__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__app_app_component__ = __webpack_require__(440);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__util_functions_util__ = __webpack_require__(835);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__util_map_util__ = __webpack_require__(834);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__app_app_component__ = __webpack_require__(411);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__util_functions_util__ = __webpack_require__(771);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__util_map_util__ = __webpack_require__(770);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1334,7 +1386,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var PagamentosFormPage = /** @class */ (function () {
-    function PagamentosFormPage(navCtrl, navParams, loadingCtrl, alertCtrl, formBuilder, cardIO, userProvider, pagamentosProvider) {
+    function PagamentosFormPage(navCtrl, navParams, loadingCtrl, alertCtrl, formBuilder, cardIO, userProvider, pagamentosProvider, viewCtrl, modalCtrl, events) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.loadingCtrl = loadingCtrl;
@@ -1343,6 +1395,10 @@ var PagamentosFormPage = /** @class */ (function () {
         this.cardIO = cardIO;
         this.userProvider = userProvider;
         this.pagamentosProvider = pagamentosProvider;
+        this.viewCtrl = viewCtrl;
+        this.modalCtrl = modalCtrl;
+        this.events = events;
+        this.pgtoAllArr = [];
         this.item = new __WEBPACK_IMPORTED_MODULE_4__models_pagamento__["a" /* PagamentoModel */]();
         this.titulo = 'Adicionar';
         __WEBPACK_IMPORTED_MODULE_7__app_app_component__["a" /* MyApp */].MAP_LOAD = false;
@@ -1350,7 +1406,7 @@ var PagamentosFormPage = /** @class */ (function () {
         this.formGroup = formBuilder.group({
             numero: ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].compose([__WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required])],
             data: ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required],
-            ccv: ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required],
+            //ccv: ['', Validators.required],
             nome: ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required],
             cpf: ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].compose([__WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].minLength(14), __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required])],
         });
@@ -1372,11 +1428,17 @@ var PagamentosFormPage = /** @class */ (function () {
     PagamentosFormPage.prototype.ionViewDidEnter = function () {
     };
     PagamentosFormPage.prototype.ionViewDidLoad = function () {
-        var itemTmp = this.navParams.get('item');
-        this.userId = this.navParams.get('userId');
-        if (itemTmp) {
+        this.item.data = '';
+        this.fromPage = this.navParams.get('fromPage');
+        this.pgtoAllArr = this.navParams.get('pgtoAllArr');
+        this.itemTmp = this.navParams.get('item');
+        this.user = this.navParams.get('user');
+        this.userId = this.user.id;
+        console.log('itemtmp', this.itemTmp);
+        if (this.itemTmp) {
             this.titulo = 'Detalhes';
-            var parseTmp = (typeof itemTmp === "string") ? JSON.parse(itemTmp) : itemTmp;
+            var parseTmp = (typeof this.itemTmp === "string") ? JSON.parse(this.itemTmp) : this.itemTmp;
+            console.log('parsetmp', parseTmp);
             this.item = new __WEBPACK_IMPORTED_MODULE_4__models_pagamento__["a" /* PagamentoModel */](parseTmp.values);
             this.item.id = parseTmp.key;
             this.item.ccv = '';
@@ -1429,35 +1491,71 @@ var PagamentosFormPage = /** @class */ (function () {
     };
     PagamentosFormPage.prototype.submit = function () {
         var _this = this;
-        var itemTmp = this.navParams.get('item');
         if (!this.formGroup.valid) {
-            this.showAlert('Aviso!', 'Você precisa inserir dados válidos para cadastrar seu cartão!', '', function () {
+            this.showAlert('Aviso!', 'Preencha todos os campos do formulário para cadastrar seu cartão.', '', function () {
             });
             return;
         }
         var loading = this.showLoading();
         if (__WEBPACK_IMPORTED_MODULE_8__util_functions_util__["a" /* FunctionsUtil */].checkCPF(this.formGroup.value.cpf)) {
-            this.formGroup.value.cpf = __WEBPACK_IMPORTED_MODULE_8__util_functions_util__["a" /* FunctionsUtil */].cleanBRMask(this.formGroup.value.cpf), this.formGroup.value.numero = __WEBPACK_IMPORTED_MODULE_8__util_functions_util__["a" /* FunctionsUtil */].cleanBRMask(this.formGroup.value.numero);
-            if (itemTmp == undefined || itemTmp.key == '') {
-                this.pagamentosProvider.save(this.userId, this.formGroup.value).then(function () {
-                    console.log('valor do form ', _this.formGroup.value);
-                    loading.dismiss();
-                    _this.navCtrl.pop();
-                }, function (error) {
-                    alert('Algo deu errado!');
-                });
+            this.formGroup.value.cpf = __WEBPACK_IMPORTED_MODULE_8__util_functions_util__["a" /* FunctionsUtil */].cleanBRMask(this.formGroup.value.cpf);
+            this.formGroup.value.numero = __WEBPACK_IMPORTED_MODULE_8__util_functions_util__["a" /* FunctionsUtil */].cleanBRMask(this.formGroup.value.numero);
+            var _filterArr_1 = this.pgtoAllArr.filter(function (_item) { return _item.values.numero === _this.formGroup.value.numero; });
+            if (_filterArr_1 && _filterArr_1.length > 0) {
+                __WEBPACK_IMPORTED_MODULE_7__app_app_component__["a" /* MyApp */].showConfirm(this.alertCtrl, 'Ops', 'Seu cartão de crédito já foi inserido, deseja sobrescrevê-lo?', function () {
+                    _this.itemTmp = _filterArr_1[0];
+                    _this.saveOrUpdate(loading);
+                }, function () { loading.dismiss(); }).present();
             }
             else {
-                this.pagamentosProvider.update(this.userId, itemTmp.key, this.formGroup.value).then(function () {
-                    loading.dismiss();
-                    _this.navCtrl.pop();
-                }, function (error) {
-                    alert('Algo deu errado!');
-                });
+                this.saveOrUpdate(loading);
             }
         }
         else {
             this.showAlert('Aviso!', 'Você precisa inserir um CPF válido!', '', function () { return loading.dismiss(); });
+        }
+    };
+    PagamentosFormPage.prototype.saveOrUpdate = function (loading) {
+        var _this = this;
+        if (this.itemTmp == undefined || this.itemTmp.key == '') {
+            var entity_1 = this.formGroup.value;
+            var dataFormat = entity_1.data;
+            var split = dataFormat.split('/');
+            var _data = new Date();
+            _data.setMonth(parseInt(split[0]) - 1);
+            _data.setFullYear(parseInt(split[1]));
+            entity_1.data = _data.toISOString();
+            this.pagamentosProvider.save(this.userId, entity_1).then(function () {
+                if (_this.user && ((_this.user.cpf === undefined) || (_this.user.cpf !== undefined && _this.user.cpf === ""))) {
+                    _this.userProvider.updateUser(_this.userId, { cpf: _this.formGroup.value.cpf });
+                }
+                console.log('valor do form ', entity_1);
+                loading.dismiss();
+                if (_this.fromPage === 'principal' || _this.fromPage === 'estacionar') {
+                    _this.navCtrl.getPrevious().data.gotoPage = 'pagamento';
+                }
+                _this.navCtrl.pop();
+            }, function (error) {
+                _this.showAlert('Ops', 'Não foi possível salvar seu cartão! Verifique se os dados estão corretos.', '', function () { return loading.dismiss(); });
+            });
+        }
+        else {
+            var entity_2 = this.formGroup.value;
+            var dataFormat = entity_2.data;
+            var split = dataFormat.split('/');
+            var _data = new Date();
+            _data.setMonth(parseInt(split[0]) - 1);
+            _data.setFullYear(parseInt(split[1]));
+            entity_2.data = _data.toISOString();
+            this.pagamentosProvider.update(this.userId, this.itemTmp.key, entity_2).then(function () {
+                if (_this.user && ((_this.user.cpf === undefined) || (_this.user.cpf !== undefined && _this.user.cpf === ""))) {
+                    _this.userProvider.updateUser(_this.userId, { cpf: entity_2.cpf });
+                }
+                loading.dismiss();
+                _this.navCtrl.pop();
+            }, function (error) {
+                _this.showAlert('Ops', 'Não foi possível salvar seu cartão! Verifique se os dados estão corretos.', '', function () { return loading.dismiss(); });
+            });
         }
     };
     PagamentosFormPage.prototype.showLoading = function () {
@@ -1480,7 +1578,7 @@ var PagamentosFormPage = /** @class */ (function () {
         }).present();
     };
     PagamentosFormPage.prototype.openHelp = function () {
-        this.showAlert('Ajuda', 'Para cadastrar uma forma de pagamento, preencha o formulário conforme os campos solicitados.', '', function () { });
+        this.showAlert('Ajuda', 'Para cadastrar uma forma de pagamento, preencha todos os campos do formulário.', '', function () { });
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])('numero'),
@@ -1488,7 +1586,7 @@ var PagamentosFormPage = /** @class */ (function () {
     ], PagamentosFormPage.prototype, "numero", void 0);
     PagamentosFormPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-pagamentos-form',template:/*ion-inline-start:"/Users/desenvolvedor/Documents/appzonzazul/src/pages/pagamentos-form/pagamentos-form.html"*/'<ion-header no-border>\n\n    <ion-navbar color="header">\n        <ion-title>\n            <ion-label>{{titulo}}</ion-label>\n        </ion-title>\n\n        <ion-buttons end>\n            <button ion-button icon-only (click)="openHelp()">\n                <ion-icon name="help-circle"></ion-icon>\n            </button>\n        </ion-buttons>\n\n    </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n    <ion-grid class="grid-profile">\n\n        <ion-row class="informacoes-body">\n            <ion-item class="informacoes-body-header">\n                <ion-label class="title-header-body">INFORMAÇÕES DO CARTÃO</ion-label>\n            </ion-item>\n            <form [formGroup]="formGroup" (ngSubmit)="submit()" class="informacoes-body-list">\n                <ion-item class="informacoes-body-list-item" no-lines>\n\n                    <ion-label stacked>\n                        Número do Cartão\n                    </ion-label>\n                    <ion-input type="tel" #numero formControlName="numero" [(ngModel)]="item.numero" id="numero">\n                    </ion-input>\n                    <button ion-button icon-only type="button" item-right clear (click)="scan()" class="scan">\n                        <ion-icon name="camera" class="icon"></ion-icon>\n                    </button>\n                </ion-item>\n                <ion-item class="informacoes-body-list-item" no-lines>\n                    <ion-label stacked>Data de Expiração</ion-label>\n                    <ion-datetime #data id="data" [(min)]="dataMin" [(max)]="dataMax" displayFormat="MM/YYYY"\n                        pickerFormat="MM YYYY" formControlName="data" [(ngModel)]="item.data" cancelText="Cancelar"\n                        doneText="Definir"></ion-datetime>\n                </ion-item>\n                <ion-item class="informacoes-body-list-item" no-lines>\n                    <ion-label stacked>Código de Segurança</ion-label>\n                    <ion-input type="tel" #ccv id="ccv" formControlName="ccv" [(ngModel)]="item.ccv"></ion-input>\n                </ion-item>\n                <ion-item class="informacoes-body-list-item" no-lines>\n                    <ion-label stacked>Nome (Escrito no Cartão)</ion-label>\n                    <ion-input type="text" #nome id="nome" formControlName="nome" [(ngModel)]="item.nome"\n                        (input)="nome.value=$event.target.value.toUpperCase()"></ion-input>\n                </ion-item>\n\n                <ion-item class="informacoes-body-list-item" no-lines>\n                    <ion-label stacked>CPF (Títular do Cartão)</ion-label>\n                    <ion-input type="tel" #cpf id="cpf" formControlName="cpf" [(ngModel)]="item.cpf"\n                        [brmasker]="{mask:\'000.000.000-00\', len:14, type:\'num\'}"></ion-input>\n                </ion-item>\n\n\n                <div class="btn-margin">\n                    <ion-item class="btn-row" no-lines>\n                        <button ion-button type="submit" class="btn" block>Salvar</button>\n                    </ion-item>\n                </div>\n            </form>\n\n        </ion-row>\n    </ion-grid>\n\n</ion-content>'/*ion-inline-end:"/Users/desenvolvedor/Documents/appzonzazul/src/pages/pagamentos-form/pagamentos-form.html"*/,
+            selector: 'page-pagamentos-form',template:/*ion-inline-start:"/Users/desenvolvedor/Documents/zonaazulfortaleza-develop/src/pages/pagamentos-form/pagamentos-form.html"*/'<ion-header no-border>\n\n    <ion-navbar color="header">\n        <ion-title class="header-title">{{titulo}}</ion-title>\n\n        <ion-buttons end>\n            <button ion-button icon-only (click)="openHelp()">\n                <ion-icon name="help-circle"></ion-icon>\n            </button>\n        </ion-buttons>\n\n    </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n    <ion-grid class="grid-profile">\n\n        <ion-row class="informacoes-body">\n            <ion-col col-12>\n                <div class="info"><p>ATENÇÃO</p><p>Você deve adicionar um cartão do tipo CRÉDITO.</p></div>\n            </ion-col>\n\n            <form [formGroup]="formGroup" (ngSubmit)="submit()" class="informacoes-body-list">\n                <ion-item class="informacoes-body-list-item" no-lines>\n                    <ion-label ><ion-icon name="ios-contact-outline"></ion-icon></ion-label>\n                    <ion-input type="text" #nome id="nome" formControlName="nome"  class="{{item.nome?\'blue-component\':\'grey-component\'}}" [(ngModel)]="item.nome" placeholder="Nome do Titular"\n                        (input)="nome.value=$event.target.value.toUpperCase()"></ion-input><button class="menu-btn" ion-button clear  type="button" item-right> <ion-icon ios="ios-checkmark-circle-outline" class="{{item.nome?\'icon-blue icon icon-ios ion-ios-checkmark-circle-outline\':\'icon-grey icon icon-ios ion-ios-checkmark-circle-outline\'}}"></ion-icon> </button>\n                </ion-item>\n                <ion-item class="informacoes-body-list-item" no-lines>\n\n                    <ion-label >\n                        <ion-icon name="ios-card-outline"></ion-icon>\n                    </ion-label>\n                    <ion-input type="tel" #numero formControlName="numero" placeholder="Número do Cartão" [(ngModel)]="item.numero" id="numero" class="{{item.numero?\'blue-component\':\'grey-component\'}}">\n                    </ion-input>\n                    <!-- <button ion-button icon-only type="button" item-right clear (click)="scan()" class="scan">\n                        <ion-icon name="camera" class="icon"></ion-icon>\n                    </button>  -->\n                    <button class="menu-btn" ion-button clear  type="button" item-right> <ion-icon ios="ios-checkmark-circle-outline" class="{{item.numero?\'icon-blue icon icon-ios ion-ios-checkmark-circle-outline\':\'icon-grey icon icon-ios ion-ios-checkmark-circle-outline\'}}"></ion-icon> </button>\n                </ion-item>\n                <ion-item class="informacoes-body-list-item" no-lines>\n                    <ion-label ><ion-icon name="ios-calendar-outline"></ion-icon></ion-label>\n                    <ion-input type="tel" formControlName="data" [(ngModel)]="item.data" [brmasker]="{mask:\'00/0000\', len:7, type:\'num\'}" #data id="data" class="{{item.data?\'blue-component\':\'grey-component\'}}" placeholder="Validade: MM/AAAA">\n                    </ion-input><button class="menu-btn" ion-button clear  type="button" item-right> <ion-icon ios="ios-checkmark-circle-outline" class="{{item.data?\'icon-blue icon icon-ios ion-ios-checkmark-circle-outline\':\'icon-grey icon icon-ios ion-ios-checkmark-circle-outline\'}}"></ion-icon> </button>\n                    <!--<ion-datetime #data id="data" [(min)]="dataMin" [(max)]="dataMax" displayFormat="MM/YYYY"\n                        pickerFormat="MM YYYY" formControlName="data" [(ngModel)]="item.data" cancelText="Cancelar"\n                        doneText="Definir"></ion-datetime> -->\n                </ion-item>\n                <!-- <ion-item class="informacoes-body-list-item" no-lines>\n                    <ion-label ><ion-icon name="ios-lock-outline"></ion-icon></ion-label>\n                    <ion-input type="text" #ccv id="ccv" formControlName="ccv" placeholder="Código CCV" class="{{item.ccv?\'blue-component\':\'grey-component\'}}" [(ngModel)]="item.ccv">\n                    </ion-input><button class="menu-btn" ion-button clear  type="button" item-right> <ion-icon ios="ios-checkmark-circle-outline" class="{{item.ccv?\'icon-blue icon icon-ios ion-ios-checkmark-circle-outline\':\'icon-grey icon icon-ios ion-ios-checkmark-circle-outline\'}}"></ion-icon> </button>\n                </ion-item> -->\n                \n\n                <ion-item class="informacoes-body-list-item" no-lines>\n                    <ion-label ><ion-icon name="ios-person-outline"></ion-icon></ion-label>\n                    <ion-input type="tel" #cpf id="cpf" formControlName="cpf" placeholder="CPF do titular"  class="{{item.numero?\'blue-component\':\'grey-component\'}}" [(ngModel)]="item.cpf"\n                        [brmasker]="{mask:\'000.000.000-00\', len:14, type:\'num\'}"></ion-input><button class="menu-btn" ion-button clear  type="button" item-right> <ion-icon ios="ios-checkmark-circle-outline" class="{{item.cpf?\'icon-blue icon icon-ios ion-ios-checkmark-circle-outline\':\'icon-grey icon icon-ios ion-ios-checkmark-circle-outline\'}}"></ion-icon> </button>\n                </ion-item>\n\n\n                <div class="btn-margin">\n                    <ion-item class="btn-row" no-lines>\n                        <button ion-button type="submit" class="btn" block>Salvar</button>\n                    </ion-item>\n                </div>\n            </form>\n\n        </ion-row>\n    </ion-grid>\n\n</ion-content>'/*ion-inline-end:"/Users/desenvolvedor/Documents/zonaazulfortaleza-develop/src/pages/pagamentos-form/pagamentos-form.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["m" /* NavController */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["n" /* NavParams */],
             __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["i" /* LoadingController */],
@@ -1496,7 +1594,10 @@ var PagamentosFormPage = /** @class */ (function () {
             __WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormBuilder"],
             __WEBPACK_IMPORTED_MODULE_3__ionic_native_card_io__["a" /* CardIO */],
             __WEBPACK_IMPORTED_MODULE_6__providers_user_user__["a" /* UserProvider */],
-            __WEBPACK_IMPORTED_MODULE_5__providers_pagamentos_pagamentos__["a" /* PagamentosProvider */]])
+            __WEBPACK_IMPORTED_MODULE_5__providers_pagamentos_pagamentos__["a" /* PagamentosProvider */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["r" /* ViewController */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["k" /* ModalController */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["d" /* Events */]])
     ], PagamentosFormPage);
     return PagamentosFormPage;
 }());

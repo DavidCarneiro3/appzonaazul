@@ -1,5 +1,9 @@
 page-compartilhar {
-  font-family: "Roboto";
+  .scroll-content{
+    font-family: "kanit";
+    background-color: #f7f7f7;
+  }
+  
 
   .header-icon {
     color: #fff;
@@ -21,9 +25,24 @@ page-compartilhar {
       }
     }
   }
+  .info{
+    text-align: center;
+    color: white;
+    background-color: #3F53A7;
+    padding: 5px;
+    p{
+      margin: 0px;
+    }
+  }
 
   .row-items {
+    
     ion-item {
+      background-color: #f4f4f4;
+      h4{
+        color: #3F53A7;
+      }
+      
       border-bottom: 1px solid #f4f4f4 !important;
     }
 
@@ -62,34 +81,50 @@ page-compartilhar {
     margin-left: 10px;
     margin-right: 10px;
 
-    .col-facebook {
+    .col-more {
       .item-facebook {
-        background-color: #0690ce;
-        width: 40px;
-        height: 40px;
-        border-radius: 100%;
-        margin-left: 70%;
-        cursor: pointer;
+        border: 2px solid #828282 !important;
+          background: transparent;
+          color: #fff;
+          border-radius: 26px;
+          width: 80%;
+          height: 35px;
+          margin-top: 0px;
+          margin-left: 40px;
       }
     }
 
-    .col-twitter {
-      .item-twitter {
-        background-color: #0690ce;
-        width: 40px;
-        height: 40px;
-        border-radius: 100%;
-        margin-left: 35%;
-        cursor: pointer;
-
-        .img {
-          width: 20px;
-          height: 20px;
-          position: absolute;
-          top: 15px;
-          margin-left: 10px;
-        }
+    .col-more {
+      .item-whats {
+        border: 2px solid #828282 !important;
+          background: transparent;
+          color: #fff;
+          border-radius: 26px;
+          width: 80%;
+          height: 35px;
+          margin-top: 0px;
+          margin-left: 40px;
       }
+      
+    }
+
+    .col-more {
+      .item-default {
+        // border: 2px solid #828282 !important;
+          // background: transparent;
+          // color: #fff;
+          border-radius: 26px;
+          width: 80%;
+          height: 35px;
+          margin-top: 0px;
+          margin-left: 45px;
+
+          .button-inner {
+            margin-left: 25px;
+            justify-content: flex-start;
+          }
+      }
+      
     }
 
     .col-google {

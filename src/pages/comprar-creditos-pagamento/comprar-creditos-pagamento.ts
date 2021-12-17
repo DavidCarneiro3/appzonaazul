@@ -53,7 +53,7 @@ export class ComprarCreditosPagamentoPage {
     user: User;
     list;
     cads: number;
-    price: number;
+    price: number = 0;
     cad: CadModel;
     fromPage;
     payMethod: string = '';
@@ -63,6 +63,9 @@ export class ComprarCreditosPagamentoPage {
     desconto;
     descontoPercent;
     priceNormal;
+    card: any;
+    showSpinner: boolean = true;
+    hasCard: number = 0;
 
     constructor(
         public navCtrl: NavController,
@@ -95,24 +98,34 @@ export class ComprarCreditosPagamentoPage {
     ionViewCanEnter() {
         this.userProvider.getUserLocal().then(userID => {
             if (userID) {
+                console.log(userID)
                 return true;
             }
         });
     }
 
-
-
     ionViewDidEnter() {
         let loading = this.loadingCtrl.create({ content: 'Aguarde...' });
-        loading.present();
+        //loading.present();
 
         this.userProvider.getUserLocal().then(userID => {
             if (userID) {
                 this.userProvider.byId(userID).take(1).subscribe((user: User) => {
-                    // loading.dismiss();
+                    // this.showSpinner = false;
+                    this.showSpinner = false;
 
                     this.user = user;
-                    this.list = this.pagamentosProvider.findByUser(this.user.id);
+                    this.pagamentosProvider.findByUser(this.user.id).take(1).subscribe(_data => {
+                        this.list = _data;
+                        if(this.list['length'] > 0){
+                            this.hasCard = 1;
+                            this.card = this.list[0].key;
+                        } else {
+                            this.hasCard = 2;
+                        }
+                        
+                        console.log('List',this.list);
+                    });
                     this.cadsProvider.find().take(1).subscribe(value => {
                         value.map(item => this.cad = new CadModel(item.cad));
                     });
@@ -134,31 +147,34 @@ export class ComprarCreditosPagamentoPage {
 
                         this.cieloProvider.resolver('ticket', data)
                             .then(data => {
-                                loading.dismiss();
+                                this.showSpinner = false;
                                 this.showBoletoOptions(data.Payment.BarCodeNumber, data.Payment.Url)
                             })
                             .catch(error => {
                                 this.showAlert('Ops!', error, 'error', () => {
-                                    loading.dismiss();
+                                    this.showSpinner = false;
                                 })
                             })
                     } else {
-                        loading.dismiss();
+                        this.showSpinner = false;
                     }
                 }, error => loading.dismiss());
             } else {
-                // loading.dismiss();
+                // this.showSpinner = false;
             }
         });
 
-        this.price = this.navParams.get('price');
+        this.price = (this.navParams.get('priceNormal'));
+        //console.log(this.price)
         this.cads = this.navParams.get('cads');
+        //console.log(this.cads)
+        this.price = Number(this.cads)*2;
         this.fromPage = this.navParams.get('fromPage');
         this.payMethod = this.navParams.get('paymentMethod');
         this.desconto = this.navParams.get('desconto');
         this.descontoPercent = this.navParams.get('descontoPercent');
         this.priceNormal = this.navParams.get('priceNormal');
-
+        console.log('FromPage',this.fromPage)
         if (this.fromPage == 'estacionar') {
             this.area = this.navParams.get('area');
             this.setor = this.navParams.get('setor');
@@ -171,12 +187,25 @@ export class ComprarCreditosPagamentoPage {
     }
 
     getCartaoNumeroFormat(numero: string) {
-        const quatro1 = '****'; //numero.substr(0,4);
-        const quatro2 = '****'; //numero.substr(4,4);
-        const quatro3 = '****'; //numero.substr(5,4);
+        const quatro1 = 'xxxx'; //numero.substr(0,4);
+        const quatro2 = 'xxxx'; //numero.substr(4,4);
+        const quatro3 = 'xxxx'; //numero.substr(5,4);
         const quatro4 = numero.substr(12);
 
         return quatro1 + ' ' + quatro2 + ' ' + quatro3 + ' ' + quatro4;
+    }
+
+    getCard(pagtoID){
+        if(pagtoID){
+            console.log('CARD ID', pagtoID);
+            const cardObj = this.list.find(item => item.key === pagtoID);
+            const cardModel = cardObj.values;
+            console.log('CARD', cardModel);
+
+            this.openSenhaSeguranca(pagtoID, cardModel);        
+        }else{
+            this.showAlert('AVISO', `É preciso selecionar um cartão!.`, '', () => { });
+        }
     }
 
     openSenhaSeguranca(key: string, pagamento: PagamentoModel) {
@@ -218,6 +247,7 @@ export class ComprarCreditosPagamentoPage {
 
                         const _qtd = DateUtil.uniqueID();
                         const idTransacaoDistribuidor = _qtd;
+                        console.log('UniqId',_qtd)
                         this.logger.info('creditos_qtd: ' + _qtd);
 
                         if (now - start > ComunicacaoCentralProvider.APP_ESPERA) {
@@ -233,7 +263,7 @@ export class ComprarCreditosPagamentoPage {
 
                                 if (environment.simular_l2) {
                                     const now = DateUtil.getCurrenteDateFormated()
-
+                                    console.log('Simular_l2',environment.simular_l2)
                                     const response = { dataProcessamento: now, autenticacao: '8903907809', sucesso: 'true' }
                                     this.logger.info('AMC - OK. Response: ' + JSON.stringify(response));
 
@@ -245,6 +275,7 @@ export class ComprarCreditosPagamentoPage {
 
                                     if (response['sucesso'] || response['sucesso'] === 'true') {
                                         pagamento.id = key;
+                                        console.log('Pagamento ',pagamento.id)
 
                                         if (environment.cielo) {
 
@@ -281,13 +312,15 @@ export class ComprarCreditosPagamentoPage {
                                         }
                                     } else {
                                         loading.dismiss();
-                                        this.showAlert("Ops", "Não foi possível estacionar seu veículo. Para mais informações entre em contato com nosso canal de atendimento.", "success", () => { });
+                                        this.showAlert("Ops", "Não foi possível finalizar operação. Para mais informações entre em contato com nosso canal de atendimento.", "success", () => { });
                                     }
 
                                 } else {
-
+                                    
                                     this.verificaLinkL2(this.cads, idTransacaoDistribuidor, _data.dateNow)
                                         .then(response => {
+                                            console.log('Resposta VerificaLink2 sem formato',response)
+                                            console.log('Resposta VerificaLink2',JSON.stringify(response))
                                             this.logger.info('AMC - OK. Response: ' + JSON.stringify(response));
 
                                             const dataProcessamentoStr = response['dataProcessamento'];
@@ -298,7 +331,7 @@ export class ComprarCreditosPagamentoPage {
 
                                             if (response['sucesso'] || response['sucesso'] === 'true') {
                                                 pagamento.id = key;
-
+                                                console.log('pagamento ',pagamento.id)
                                                 if (environment.cielo) {
 
                                                     this.cieloProvider.resolver(this.payMethod, dataOp, pagamento)
@@ -336,10 +369,11 @@ export class ComprarCreditosPagamentoPage {
                                             } else {
                                                 loading.dismiss();
                                                 // this.showAlert('Ops', 'Não foi possível estacionar seu veículo. Para mais informações entre em contato com nosso canal de atendimento.', '', () => {}, () => {}, '','OK');
-                                                this.showAlert("Ops", "Não foi possível estacionar seu veículo. Para mais informações entre em contato com nosso canal de atendimento.", "success", () => { });
+                                                this.showAlert("Ops", "Não foi possível finalizar operação. Para mais informações entre em contato com nosso canal de atendimento.", "success", () => { });
                                             }
 
                                         }).catch(error => {
+                                            console.log('Erro',error)
                                             loading.dismiss();
                                             this.logger.info('AMC - ERROR. Response: ' + JSON.stringify(error));
                                             this.showAlert('Indisponível', 'Não foi possível estabelecer uma comunicação com o serviço da AMC. Para mais informações entre em contato com nosso canal de atendimento.', "info", () => {
@@ -369,7 +403,36 @@ export class ComprarCreditosPagamentoPage {
         }, 100);
     }
 
+    getFlag(cardnumber){
+        var cardnumber = cardnumber.replace(/[^0-9]+/g, '');
+
+        var cards = {
+            visa      : /^4[0-9]{12}(?:[0-9]{3})/,
+            mastercard : /^5[1-5][0-9]{14}/,
+            diners    : /^3(?:0[0-5]|[68][0-9])[0-9]{11}/,
+            amex      : /^3[47][0-9]{13}/,
+            discover  : /^6(?:011|5[0-9]{2})[0-9]{12}/,
+            hipercard  : /^(606282\d{10}(\d{3})?)|(3841\d{15})/,
+            elo        : /^((((636368)|(438935)|(504175)|(451416)|(636297))\d{0,10})|((5067)|(4576)|(4011))\d{0,12})/,
+            jcb        : /^(?:2131|1800|35\d{3})\d{11}/,     
+        };
+
+        for (var flag in cards) {
+            if(cards[flag].test(cardnumber)) {
+                console.log(flag)
+                return flag;
+            }
+        }       
+
+        return false;
+    
+    }
+
     verificaLinkL2(cads: number, idTransacaoDistribuidor: number, dataEnvio: Date) {
+        console.log('Cards',cads)
+        console.log('Id',idTransacaoDistribuidor)
+        console.log('Data',dataEnvio)
+        //console.log('Verificalink2',this.comunicacaoCentralProvider.desbloqueioApp(cads, idTransacaoDistribuidor, dataEnvio))
         return this.comunicacaoCentralProvider.desbloqueioApp(cads, idTransacaoDistribuidor, dataEnvio);
     }
 
@@ -377,7 +440,7 @@ export class ComprarCreditosPagamentoPage {
         let loading: Loading = this.loadingCtrl.create({ content: 'Aguarde...' });
         loading.present();
 
-
+        console.log('Pagamento Model ',pagamento)
         pagamento.ccv = ccv;
         this.user.cpf = pagamento.cpf;
         let comprador = UserPagarmeModel.fromUserModel(this.user);
@@ -388,6 +451,7 @@ export class ComprarCreditosPagamentoPage {
         venda.price = this.price;
         venda.date = this.transformingDate(date);
         let card = CardPagarmeModel.fromCardModel(pagamento);
+        console.log('Cartão Model',card)
 
         const comprovante = {
             "from": "credito",
@@ -401,6 +465,7 @@ export class ComprarCreditosPagamentoPage {
         }
 
         this.pagarmeProvider.pagar(card, comprador, venda).then(value => {
+            console.log(value)
             if (value.status != 'refused') {
                 this.http.get(`https://us-central1-zonaazulfortaleza-prod.cloudfunctions.net/sendEmail?data=${JSON.stringify(comprovante)}`).subscribe(data => console.log("sera?", data))
                 this.saveCredito(pagamento, this.price, this.user.id, date, autenticacao, valorSemDesconto, desconto, descontoPercent, idTransacaoDistribuidor, value.id);
@@ -409,7 +474,7 @@ export class ComprarCreditosPagamentoPage {
                 this.goHome();
             } else {
                 loading.dismiss();
-                this.showAlert("Aviso!", "Código de segurança incorreto. Tente novamente.", "info", () => {
+                this.showAlert("Aviso!", "A operadora não autorizou a compra, tente novamente utilizando outro cartão de crédito.", "info", () => {
                 });
             }
         }).catch(_error => {
@@ -421,7 +486,7 @@ export class ComprarCreditosPagamentoPage {
     }
 
     closeComprarCreditosPagamento() {
-        this.navCtrl.setRoot(Constants.CREDITOS_PAGE.name);
+        this.navCtrl.pop();
     }
 
     loadImageCartao(numero: string) {
@@ -432,7 +497,7 @@ export class ComprarCreditosPagamentoPage {
             case "5":
                 return "assets/imgs/mastercard.png";
             default:
-                return "assets/imgs/creditcard.png";
+                return "assets/imgs/creditcard.ico";
         }
 
     }
@@ -536,34 +601,13 @@ export class ComprarCreditosPagamentoPage {
     }
 
     private goHome() {
-        if (this.fromPage == 'estacionar') {
-            this.veiculosProvider.findByUser(this.user.id).take(1).subscribe(_item => {
-                if (_item.length > 0) {
-                    this.navCtrl.setRoot(Constants.ESTACIONAR_PAGE.name, {
-                        setor: this.setor,
-                        area: this.area,
-                        cad: this.cad,
-                        qtdCads: this.qtdCads
-                    });
-                } else {
-                    this.navCtrl.setRoot(Constants.VEICULOS_FORM_PAGE.name, {
-                        withMenu: true,
-                        userId: this.user.id,
-                        fromPage: 'estacionar',
-                        area: this.area,
-                        setor: this.setor,
-                        cad: this.cad,
-                        qtdCads: this.qtdCads
-                    });
-                }
-            });
-        } else {
-            this.navCtrl.setRoot(Constants.HISTORICO_PAGE.name, { tab: 'historico-creditos' }).then(() => {
-                this.showAlert("Sucesso!", "Transação realizada com sucesso!", "success", () => {
-                    this.viewCtrl.dismiss();
-                });
-            });
-        }
+        
+            if(this.fromPage == 'estacionar'){
+                this.viewCtrl.dismiss({'gotopage': 'estacionar','qtdCads':this.cads});
+            }else{
+                this.viewCtrl.dismiss({'gotopage': 'historico'});
+            }
+        
         this.menuCtrl.close();
     }
 
@@ -592,6 +636,10 @@ export class ComprarCreditosPagamentoPage {
                 }
             ]
         }).present();
+    }
+
+    goPagamentos(){
+        this.navCtrl.push(Constants.PAGAMENTOS_PAGE.name, {'fromPage': this.fromPage})
     }
 
 }

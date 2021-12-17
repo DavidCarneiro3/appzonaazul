@@ -5,17 +5,17 @@ export class ModalProvider {
 
 	public active: boolean;
 
-	constructor(){ this.active = false}
+	constructor() { this.active = false }
 
-	public setActive(){
+	public setActive() {
 		this.active = true;
 	}
 
-	public desactivate(){
+	public desactivate() {
 		this.active = false;
 	}
 
-	public isActive(): boolean{
+	public isActive(): boolean {
 		return this.active;
 	}
 }

@@ -1,15 +1,16 @@
 webpackJsonp([20],{
 
-/***/ 818:
+/***/ 755:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PdvEmpresaPageModule", function() { return PdvEmpresaPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PrincipalPageModule", function() { return PrincipalPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(36);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__pdv_empresa__ = __webpack_require__(871);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_brmasker_ionic_3__ = __webpack_require__(447);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_components_module__ = __webpack_require__(419);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_loading_spinner_loading_spinner_module__ = __webpack_require__(418);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__principal__ = __webpack_require__(814);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -20,28 +21,30 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var PdvEmpresaPageModule = /** @class */ (function () {
-    function PdvEmpresaPageModule() {
+
+var PrincipalPageModule = /** @class */ (function () {
+    function PrincipalPageModule() {
     }
-    PdvEmpresaPageModule = __decorate([
+    PrincipalPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__pdv_empresa__["a" /* PdvEmpresaPage */],
+                __WEBPACK_IMPORTED_MODULE_4__principal__["a" /* PrincipalPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_3_brmasker_ionic_3__["a" /* BrMaskerModule */],
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__pdv_empresa__["a" /* PdvEmpresaPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_4__principal__["a" /* PrincipalPage */]),
+                __WEBPACK_IMPORTED_MODULE_3__components_loading_spinner_loading_spinner_module__["a" /* LoadingSpinnerComponentModule */],
+                __WEBPACK_IMPORTED_MODULE_2__components_components_module__["a" /* ComponentsModule */]
             ],
         })
-    ], PdvEmpresaPageModule);
-    return PdvEmpresaPageModule;
+    ], PrincipalPageModule);
+    return PrincipalPageModule;
 }());
 
-//# sourceMappingURL=pdv-empresa.module.js.map
+//# sourceMappingURL=principal.module.js.map
 
 /***/ }),
 
-/***/ 835:
+/***/ 771:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -198,25 +201,29 @@ var FunctionsUtil = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 871:
+/***/ 814:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PdvEmpresaPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PrincipalPage; });
+/* unused harmony export LatLng */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_camera__ = __webpack_require__(225);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_android_permissions__ = __webpack_require__(219);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ionic_angular__ = __webpack_require__(36);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_Subscription__ = __webpack_require__(44);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_Subscription___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_rxjs_Subscription__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__models_pdv__ = __webpack_require__(464);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__models_user__ = __webpack_require__(134);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__providers_camera_camera__ = __webpack_require__(458);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__providers_user_user__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__providers_modal_modal__ = __webpack_require__(216);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__util_functions_util__ = __webpack_require__(835);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__environments_constants__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_cad__ = __webpack_require__(203);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__models_user__ = __webpack_require__(113);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_cads_user_cads_user__ = __webpack_require__(111);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_cads_cads__ = __webpack_require__(112);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_logger_logger__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_user_user__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__providers_veiculos_veiculos__ = __webpack_require__(412);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__ionic_native_geolocation__ = __webpack_require__(415);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__providers_setores_setores__ = __webpack_require__(413);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__providers_area_area__ = __webpack_require__(414);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__util_functions_util__ = __webpack_require__(771);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__environments_constants__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__providers_tempo_estacionado_tempo_estacionado__ = __webpack_require__(204);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__providers_estacionar_estacionar__ = __webpack_require__(201);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__ionic_native_android_permissions__ = __webpack_require__(200);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -239,209 +246,392 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var PdvEmpresaPage = /** @class */ (function () {
-    function PdvEmpresaPage(navCtrl, navParams, FormBuilder, alertCtrl, cameraProvider, androidPermissions, modalCtrl, loadingCtrl, events, userProvider, modalProvider, actionSheetCtrl) {
+
+
+
+
+/**
+ * Generated class for the PrincipalPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var PrincipalPage = /** @class */ (function () {
+    function PrincipalPage(navCtrl, navParams, alertCtrl, loadingCtrl, estacionarProvider, androidPermission, tempoEstacionadoProvider, userProvider, cadsUserProvider, cadProvider, veiculoProvider, logger, veiculosProvider, setoresProvider, areaProvider, geolocation, menu, modalCtrl, events) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
-        this.FormBuilder = FormBuilder;
         this.alertCtrl = alertCtrl;
-        this.cameraProvider = cameraProvider;
-        this.androidPermissions = androidPermissions;
-        this.modalCtrl = modalCtrl;
         this.loadingCtrl = loadingCtrl;
-        this.events = events;
+        this.estacionarProvider = estacionarProvider;
+        this.androidPermission = androidPermission;
+        this.tempoEstacionadoProvider = tempoEstacionadoProvider;
         this.userProvider = userProvider;
-        this.modalProvider = modalProvider;
-        this.actionSheetCtrl = actionSheetCtrl;
+        this.cadsUserProvider = cadsUserProvider;
+        this.cadProvider = cadProvider;
+        this.veiculoProvider = veiculoProvider;
+        this.logger = logger;
+        this.veiculosProvider = veiculosProvider;
+        this.setoresProvider = setoresProvider;
+        this.areaProvider = areaProvider;
+        this.geolocation = geolocation;
+        this.menu = menu;
+        this.modalCtrl = modalCtrl;
+        this.events = events;
+        this.tempoCurrent = Date.now();
+        this._estacionados = [];
+        this.loadObj = true;
+        this.city = 'Fortaleza';
+        this.price = 0;
+        this.cads = 0;
+        this.cad = new __WEBPACK_IMPORTED_MODULE_2__models_cad__["a" /* CadModel */]();
+        this.qtdCadsUser = 0;
+        this.qtdCadsUsados = 0;
+        this.user = new __WEBPACK_IMPORTED_MODULE_3__models_user__["a" /* User */]();
+        this.desconto = 0;
+        this.cielo = true;
+        this.classes = [{ class1: 'class1', class2: 'class2', class3: 'class3', class4: 'class4', class5: 'class5' }];
+        this.allSetores = [];
+        this.cadsUsados = 0;
+        this.showSpinner = true;
         this.selectOptions = {
-            title: 'Modalidade',
-            subTitle: 'Escolha sua modalidade de revendedor',
+            title: 'Cidade',
+            subTitle: 'Escolha sua cidade',
             mode: 'ios'
         };
-        this.user = new __WEBPACK_IMPORTED_MODULE_7__models_user__["a" /* User */]();
-        this.pdv = new __WEBPACK_IMPORTED_MODULE_6__models_pdv__["a" /* Pdv */]();
-        this.subscription = new __WEBPACK_IMPORTED_MODULE_5_rxjs_Subscription__["Subscription"]();
-        var emailRegex = /^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/i;
-        this.empresaForm = FormBuilder.group({
-            Modalidade: ['', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required]],
-            Rsocial: ['', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].minLength(5)]],
-            CNPJ: ['', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required]],
-            InsMun: ['', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required]],
-            Endereco: ['', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].minLength(3)]],
-            Cep: ['', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required]],
-            phone: ['', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].minLength(10)]],
-            email: ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].pattern(emailRegex)],
-            document: ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required]
-        });
     }
-    PdvEmpresaPage.prototype.ionViewCanEnter = function () {
+    PrincipalPage.prototype.ionViewDidLoad = function () {
+        var _this = this;
+        this.geolocation.getCurrentPosition().then(function (resp) {
+            _this.lat = resp.coords.latitude;
+            _this.long = resp.coords.longitude;
+            _this.showSpinner = false;
+            //console.log(resp.coords)
+            //console.log(nearSetor)
+            //this.navCtrl.setRoot(Constants.ESTACIONAR_PAGE.name,{area: nearSetor[0].area, codigo: nearSetor[0].codigo});
+        });
+        this.getAllSetores();
+        this.carregaUsuarioComCADs();
+        this.events.publish('update_saldo', 'update');
+        this.horaRegistro = Date.now();
+        this.tempoEstacionadoProvider.getHoraAtualFromFirebase().then(function (data) {
+            // console.log('now firebase: ' + JSON.stringify(data));
+            // console.log('now local: ' + this.tempoCurrent);
+            if (data && data.now) {
+                _this.tempoCurrent = data.now;
+            }
+            _this.userProvider.getUserLocal().then(function (userID) {
+                if (userID) {
+                    _this.cadsUserProvider.findQtdCads(userID).take(1).subscribe(function (value) {
+                        value.map(function (cads) {
+                            if (cads.key == "qtdCadsUsados") {
+                                _this.qtdCadsUsados = cads.item;
+                            }
+                            else {
+                                _this.qtdCadsUser += cads.item.qtdCads;
+                            }
+                        });
+                    });
+                    _this.estacionarProvider.findByUser(userID).subscribe(function (_values) {
+                        console.log(_values);
+                        _this._estacionados = [];
+                        if (_values.length > 0) {
+                            console.log('aqui entrou');
+                            _values.map(function (_item) {
+                                console.log(_item);
+                                _this.logger.info('estacionado: ' + _item.estacionar.tempoEstacionado + ' | ' + new Date(_item.estacionar.tempoEstacionado));
+                                _this.validaRenovar(_item.estacionar);
+                                if (_item.estacionar.tempoEstacionado - _this.tempoCurrent >= 0) {
+                                    console.log('entrou');
+                                    _this._estacionados = [];
+                                    _this.getVeiculo(_item.estacionar.veiculo_id, userID)
+                                        .take(1).subscribe(function (_veiculo) {
+                                        _this.loadObj = false;
+                                        _this.showSpinner = false;
+                                        _item.estacionar.veiculo = _veiculo;
+                                        _this.estacionar = _item.estacionar;
+                                        /*this.veiculoSelecionado = _item.estacionar.veiculo;
+                                        this.veiculo_id = _item.estacionar.veiculo.id;
+                                        this.placa = _item.estacionar.veiculo.placa;
+                                        this.veiculo_tipo = _item.estacionar.veiculo.tipo_veiculo;
+                                        this.veiculo_marca = _item.estacionar.veiculo.marca;
+                                        this.veiculo_modelo = _item.estacionar.veiculo.modelo;
+                                        this.dataHoraRegistro = _item.estacionar.dataHoraRegistro;
+                                        this.horario = _item.estacionar.comprovante.horario;
+                                        this.tempoComprado = _item.estacionar.tempoComprado;
+                                        this.qtd = _item.estacionar.qtd;
+                                        this.valor = _item.estacionar.comprovante.valor;
+                                        this.amc = _item.estacionar.comprovante.numberAuth;*/
+                                        _this.logger.info(_item);
+                                        console.log(_this.estacionar);
+                                        _this._estacionados.push(_item);
+                                    });
+                                }
+                                else {
+                                    _this.loadObj = false;
+                                    _this.showSpinner = false;
+                                }
+                            });
+                            // this.loadObj = false;
+                            //  this.showSpinner1 = false;
+                            console.log(_this._estacionados);
+                        }
+                        else {
+                            _this.loadObj = false;
+                            _this.showSpinner = false;
+                        }
+                    }, function (error) {
+                        _this.showSpinner = false;
+                        _this.loadObj = false;
+                    });
+                }
+            });
+        });
+    };
+    PrincipalPage.prototype.checaEstacionado = function (item) {
+        //console.log(this._estacionados)
+        return this._estacionados.find(function (x) {
+            if (x.estacionar.veiculo.placa == item) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        });
+    };
+    PrincipalPage.prototype.validaRenovar = function (estacionar) {
+        estacionar.renovar = true;
+        if (estacionar.qtd === 2) {
+            estacionar.renovar = false;
+        }
+        else if (estacionar.tempoComprado === 300) {
+            estacionar.renovar = false;
+        }
+    };
+    PrincipalPage.prototype.getVeiculo = function (veiculo_id, userID) {
+        return this.veiculoProvider.findByVeiculo(veiculo_id, userID);
+    };
+    PrincipalPage.prototype.ionViewCanEnter = function () {
+        var _this = this;
+        this.showSpinner = true;
         this.userProvider.getUserLocal().then(function (userID) {
             if (userID) {
+                _this.userProvider.byId(userID).take(1).subscribe(function (_user) {
+                    _this.user = new __WEBPACK_IMPORTED_MODULE_3__models_user__["a" /* User */](_user);
+                    _this.veiculosProvider.findByUser(_this.user.id).take(1).subscribe(function (_data) {
+                        _this.list = _data;
+                    });
+                    // console.log(this.list)
+                    _this.showSpinner = false;
+                    _this.checkPermission();
+                    _this.showPopupCpf();
+                });
                 return true;
             }
         });
     };
-    PdvEmpresaPage.prototype.ionViewDidLoad = function () {
+    PrincipalPage.prototype.ionViewDidEnter = function () {
         var _this = this;
-        this.userProvider.getUserLocal().then(function (userID) {
-            if (userID != null) {
-                _this.subCurrentUser = _this.userProvider.byId(userID).subscribe(function (user) {
-                    _this.user = new __WEBPACK_IMPORTED_MODULE_7__models_user__["a" /* User */](user);
+        // console.log('ionViewDidEnter - principal')
+        // this.events.publish('update_saldo', 'update');
+        this.tempoCurrent = Date.now();
+        this.tempoEstacionadoProvider.getHoraAtualFromFirebase().then(function (data) {
+            // console.log('now firebase: ' + JSON.stringify(data));
+            // console.log('now local: ' + this.tempoCurrent);
+            if (data && data.now) {
+                _this.tempoCurrent = data.now;
+            }
+        });
+    };
+    // VERIFICA SE O APP POSSUI AUTORIZAÇÃO PARA A LEITURA DO TELEFONE E PEGA O IMEI DO CELULAR
+    PrincipalPage.prototype.checkPermission = function () {
+        var _this = this;
+        this.androidPermission.checkPermission(this.androidPermission.PERMISSION.READ_PHONE_STATE)
+            .then(function (result) {
+            if (!result.hasPermission) {
+                var modalPermission_1 = _this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_13__environments_constants__["a" /* Constants */].PERMISSIONS_MODAL_PAGE.name, { fromPage: 'phone' });
+                modalPermission_1.present().then(function () {
+                    modalPermission_1.onWillDismiss(function () {
+                        _this.androidPermission.checkPermission(_this.androidPermission.PERMISSION.ACESS_COARSE_LOCATION
+                            && _this.androidPermission.PERMISSION.ACCESS_FINE_LOCATION)
+                            .then(function (result) {
+                            if (!(result.hasPermission)) {
+                                var modal = _this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_13__environments_constants__["a" /* Constants */].PERMISSIONS_MODAL_PAGE.name, { fromPage: 'home-page' });
+                                modal.present();
+                            }
+                        });
+                    });
                 });
             }
-        });
-    };
-    PdvEmpresaPage.prototype.ionViewDidEnter = function () { };
-    PdvEmpresaPage.prototype.ionViewWillLeave = function () {
-        this.subscription.add(this.subCurrentUser);
-        this.subscription.unsubscribe();
-    };
-    PdvEmpresaPage.prototype.createPDV = function () {
-        var empresa = this.empresaForm.value;
-        var PDV = {
-            empresa: {
-                modalidade: empresa.Modalidade,
-                rSocial: empresa.Rsocial,
-                cnpj: empresa.CNPJ,
-                insMun: empresa.InsMun,
-                endereco: empresa.Endereco,
-                cep: empresa.Cep,
-                empPhone: empresa.phone,
-                empEmail: empresa.email,
-                documento: empresa.document,
-            }
-        };
-        return PDV;
-    };
-    PdvEmpresaPage.prototype.showAlert = function (title, msg, type) {
-        this.alertCtrl.create({
-            title: title,
-            message: msg,
-            cssClass: type,
-            buttons: [{
-                    text: 'Ok',
-                    cssClass: 'btn-ok',
-                }]
-        }).present();
-    };
-    PdvEmpresaPage.prototype.selectPicture = function () {
-        var _this = this;
-        this.checkPermission();
-        if (__WEBPACK_IMPORTED_MODULE_2__ionic_native_camera__["a" /* Camera */]['installed']()) {
-            this.cameraProvider.openMedia('Abrir', this.actionSheetCtrl, function (imageBase64) {
-                _this.empresaForm.controls['document'].setValue(imageBase64);
-            });
-        }
-        else {
-            this.fileUserPhoto.nativeElement.click();
-        }
-    };
-    PdvEmpresaPage.prototype.processWebImageUserPhoto = function ($event) {
-        var _this = this;
-        this.cameraProvider.processWebImage($event, function (imageBase64, w, h) {
-            _this.empresaForm.controls['document'].setValue(imageBase64);
-        });
-    };
-    PdvEmpresaPage.prototype.checkPermission = function () {
-        var _this = this;
-        this.androidPermissions.checkPermission(this.androidPermissions.PERMISSION.CAMERA && this.androidPermissions.PERMISSION.WRITE_EXTERNAL_STORAGE)
-            .then(function (result) {
-            result.hasPermission ? '' : _this.requestCameraPermission();
-        })
-            .catch(function () {
-        });
-    };
-    PdvEmpresaPage.prototype.requestCameraPermission = function () {
-        var _this = this;
-        var permissionModal = this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_12__environments_constants__["a" /* Constants */].PERMISSIONS_MODAL_PAGE.name, { fromPage: 'pdv-empresa' });
-        permissionModal.present()
-            .then(function () {
-            _this.modalProvider.setActive();
-        })
-            .catch(function (error) {
-            alert(error);
-        });
-    };
-    PdvEmpresaPage.prototype.continue = function () {
-        var _this = this;
-        var unmaskCnpj = __WEBPACK_IMPORTED_MODULE_11__util_functions_util__["a" /* FunctionsUtil */].cleanBRMask(this.empresaForm.value.CNPJ);
-        if (this.empresaForm.controls.Modalidade.invalid) {
-            this.showAlert("Modalidade não selecionada", "Selecione um tipo de Modalidade", "");
-        }
-        else if (this.empresaForm.controls.Rsocial.invalid) {
-            this.showAlert("Razao Social invalida", "Digite uma valor válido", "");
-        }
-        else if (!__WEBPACK_IMPORTED_MODULE_11__util_functions_util__["a" /* FunctionsUtil */].checkCNPJ(unmaskCnpj)) {
-            this.showAlert("CNPJ invalido", "Digite um CNPJ Valido", "");
-        }
-        else if (this.empresaForm.controls.InsMun.invalid) {
-            this.showAlert("Inscricao Municipal Invalida", "Digite um valor valido", "");
-        }
-        else if (this.empresaForm.controls.Endereco.invalid) {
-            this.showAlert("Endereco invalido", "Digite um valor valido", "");
-        }
-        else if (this.empresaForm.controls.Cep.invalid) {
-            this.showAlert("Cep invalido", "Digite um valor valido", "");
-        }
-        else if (this.empresaForm.controls.phone.invalid) {
-            this.showAlert("Cep telefone", "Digite um valor valido", "");
-        }
-        else if (this.empresaForm.controls.email.invalid) {
-            this.showAlert("email invalido", "Digite um valor valido", "");
-        }
-        else if (this.empresaForm.controls.document.invalid) {
-            this.showAlert("arquivo invalido", "Selecione um arquivo", "");
-        }
-        else {
-            var form = this.createPDV();
-            this.pdv = new __WEBPACK_IMPORTED_MODULE_6__models_pdv__["a" /* Pdv */](form.empresa);
-            //this.user.name = form.re.name
-            this.user.pdvReg = this.pdv;
-            //this.loadingCtrl.create({content:"Enviando Solicitacao"}).present()
-            this.alertCtrl.create({
-                title: "Envio de Cadastro",
-                message: "A função Quero ser PDV será desabilitada até o resultado sobre esta solicitação seja analisado. deseja continuar?",
-                buttons: [
-                    {
-                        text: 'Ok',
-                        handler: function () {
-                            _this.userProvider.saveUser(_this.user);
-                            _this.events.publish('user', _this.user);
-                            _this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_12__environments_constants__["a" /* Constants */].HOME_PAGE.name);
-                        }
-                    },
-                    {
-                        text: 'Cancelar',
+            else {
+                _this.userProvider.updateUuidOrImei(_this.useID, function (uuid) {
+                });
+                _this.androidPermission.checkPermission(_this.androidPermission.PERMISSION.ACCESS_FINE_LOCATION)
+                    .then(function (location) {
+                    if (!location.hasPermission) {
+                        var modal = _this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_13__environments_constants__["a" /* Constants */].PERMISSIONS_MODAL_PAGE.name, { fromPage: 'home-page' });
+                        modal.present();
                     }
-                ]
-            }).present();
+                });
+            }
+        })
+            .catch(function (err) { return console.log(err); });
+    };
+    PrincipalPage.prototype.askPermission = function () {
+        var permissionModal = this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_13__environments_constants__["a" /* Constants */].PERMISSIONS_MODAL_PAGE.name, { fromPage: 'phone' });
+        permissionModal.present()
+            .then(function () { })
+            .catch(function (err) { });
+    };
+    PrincipalPage.prototype.showPopupCpf = function () {
+        //   console.log('cpf', this.user);
+        if (this.user && ((this.user.cpf === undefined) || (this.user.cpf !== undefined && this.user.cpf === ""))) {
+            this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_13__environments_constants__["a" /* Constants */].CONFIRMA_CPF_PAGE.name, { 'user': this.user }, { cssClass: 'modal-alert' })
+                .present();
         }
     };
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])('fileUserPhoto'),
-        __metadata("design:type", Object)
-    ], PdvEmpresaPage.prototype, "fileUserPhoto", void 0);
-    PdvEmpresaPage = __decorate([
+    PrincipalPage.prototype.carregaUsuarioComCADs = function () {
+        var _this = this;
+        this.userProvider.getUserLocal().then(function (userID) {
+            _this.userProvider.byId(userID).take(1).subscribe(function (user) {
+                if (user) {
+                    _this.user = new __WEBPACK_IMPORTED_MODULE_3__models_user__["a" /* User */](user);
+                    _this.logger.info('user: ' + JSON.stringify(_this.user));
+                    _this.user = new __WEBPACK_IMPORTED_MODULE_3__models_user__["a" /* User */](user);
+                    //this.name = this.namePattern(this.user.name.toString())
+                    console.log(name);
+                    _this.subCadsUser = _this.cadsUserProvider.getCads(_this.user.id).subscribe(function (value) {
+                        _this.cadsUsados = 0;
+                        _this.cads = 0;
+                        value.map(function (value) {
+                            if (value.key == "qtdCadsUsados") {
+                                _this.cadsUsados = value.item;
+                            }
+                            else {
+                                _this.cads += value.item.qtdCads;
+                                //this.price += (value.item.qtdCads*2);
+                            }
+                        });
+                        _this.price = (_this.cads - _this.cadsUsados) * 2;
+                    });
+                }
+            });
+        });
+    };
+    PrincipalPage.prototype.showCloseSetor = function (item) {
+        console.log('Item', item);
+        var nearSetor = this.calculaDistancia(this.lat, this.long);
+        nearSetor.sort(function (a, b) { return a.distance - b.distance; });
+        this.showSetor(nearSetor[0].area, nearSetor[0].codigo, item);
+        //console.log(item)
+    };
+    /**
+         * Adiciona todos os setores em uma lista , de modo a ter a coordenadas para abrir o mais próximo
+         */
+    PrincipalPage.prototype.getAllSetores = function () {
+        var _this = this;
+        this.areaProvider.getAreas().take(1).subscribe(function (_areas) {
+            _this.setoresProvider.getSetoresByLocation().subscribe(function (_setores) {
+                _setores.forEach(function (setor) {
+                    for (var _setor in setor.setores) {
+                        var area = _areas.find(function (item) { return item.area.codigo == setor.key; });
+                        //console.log(area.area)
+                        if (area.area) { }
+                        var set = {
+                            "area": area.area,
+                            "setor": setor.setores[_setor]
+                        };
+                        _this.allSetores.push(set);
+                    }
+                });
+            });
+        });
+    };
+    /**
+         * Calcula a distancia de um ponto indicado com todos os setores
+         * @param lat latitude do ponto a ser calculado a distancia  do setor
+         * @param long  longitude do ponto a ser calculado a distancia do setor
+         * @returns lista de objectos contendo a distancia , area e o codigo do setor
+         */
+    PrincipalPage.prototype.calculaDistancia = function (lat, long) {
+        var myPosition = new LatLng(lat, long);
+        var setores = [];
+        this.allSetores.forEach(function (setor) {
+            var _setor = new LatLng(setor.setor.latInicio, setor.setor.lngInicio);
+            var distance = __WEBPACK_IMPORTED_MODULE_12__util_functions_util__["a" /* FunctionsUtil */].getDistanceBetweenPoints(myPosition, _setor, 'km').toFixed(3);
+            var open = {
+                "distance": "" + distance,
+                "area": setor.area,
+                "codigo": setor.setor.codigo
+            };
+            setores.push(open);
+        });
+        return setores;
+    };
+    PrincipalPage.prototype.showSetor = function (area, setor, veiculo) {
+        var _this = this;
+        this.setoresProvider.byId(area.codigo, setor)
+            .subscribe(function (data) {
+            //this.mapUtil.findSetor(HomePage.map, data, area);
+            _this.setorNome = data;
+            console.log(data);
+            console.log('Area código: ' + area.codigo);
+            console.log('Area nome: ' + area.endereco);
+            console.log('Setor código: ' + setor);
+            console.log('Setor nome: ' + _this.setorNome.nome);
+            console.log(veiculo);
+            _this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_13__environments_constants__["a" /* Constants */].ESTACIONAR_PAGE.name, { 'area': area.codigo, 'setor': setor, 'area-nome': area.codigo, 'setor-nome': _this.setorNome.nome, 'fromPage': 'principal', 'veiculo': veiculo, qtdCads: (_this.cads - _this.cadsUsados) });
+        }, function (error) {
+        });
+        //this.navCtrl.setRoot(Constants.ESTACIONAR_PAGE.name,{area};
+    };
+    PrincipalPage.prototype.goHome = function () {
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_13__environments_constants__["a" /* Constants */].HOME_PAGE.name);
+    };
+    PrincipalPage.prototype.goTempoRest = function () {
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_13__environments_constants__["a" /* Constants */].TEMPO_RESTANTE_PAGE.name);
+    };
+    PrincipalPage.prototype.goVeiculos = function () {
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_13__environments_constants__["a" /* Constants */].VEICULOS_FORM_PAGE.name, { userId: this.user.id, 'veiculoAllArr': this.list });
+    };
+    PrincipalPage.prototype.goComprar = function () {
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_13__environments_constants__["a" /* Constants */].CREDITOS_PAGE.name, { 'fromPage': 'principal' });
+    };
+    PrincipalPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-pdv-empresa',template:/*ion-inline-start:"/Users/desenvolvedor/Documents/appzonzazul/src/pages/pdv-empresa/pdv-empresa.html"*/'<ion-header no-border>\n  <ion-navbar color="header">\n\n    <button ion-button icon-only menuToggle>\n      <ion-icon class="header-icon" name="menu"></ion-icon>\n    </button>\n\n    <ion-title>\n      <ion-label> Quero ser PDV </ion-label>\n    </ion-title>\n\n  </ion-navbar>\n</ion-header>\n\n\n<ion-content padding>\n  <ion-grid class="grid-profile">\n\n    <ion-row class="informacoes-body">\n      <ion-item class="informacoes-body-header">\n        <ion-label class="title-header-body">DADOS DA EMPRESA</ion-label>\n      </ion-item>\n\n      <form class="informacoes-body-list" [formGroup]="empresaForm">\n        <ion-item class="informacoes-body-list-item" no-lines>\n          <ion-label stacked> Modalidade </ion-label>\n          <ion-select [selectOptions]="selectOptions" formControlName="Modalidade">\n            <ion-option value="PDV"> PDV </ion-option>\n          </ion-select>\n        </ion-item>\n\n        <ion-item class="informacoes-body-list-item" no-lines>\n          <ion-label stacked>Razão Social</ion-label>\n          <ion-input type="text" mode="ios" formControlName="Rsocial"></ion-input>\n        </ion-item>\n\n        <ion-item class="informacoes-body-list-item" no-lines>\n          <ion-label stacked>CNPJ</ion-label>\n          <ion-input type="tel" mode="ios" formControlName="CNPJ" [brmasker]="{person: true}"></ion-input>\n        </ion-item>\n\n        <ion-item class="informacoes-body-list-item" no-lines>\n          <ion-label stacked>Inscrição Municipal </ion-label>\n          <ion-input type="text" mode="ios" formControlName="InsMun"></ion-input>\n        </ion-item>\n\n        <ion-item class="informacoes-body-list-item" no-lines>\n          <ion-label stacked>Endereço Empresarial</ion-label>\n          <ion-input type="text" mode="ios" formControlName="Endereco"></ion-input>\n        </ion-item>\n\n        <ion-item class="informacoes-body-list-item" no-lines>\n          <ion-label stacked>CEP</ion-label>\n          <ion-input type="tel" mode="ios" formControlName="Cep"></ion-input>\n        </ion-item>\n\n        <ion-item class="informacoes-body-list-item" no-lines>\n          <ion-label stacked>Telefone Empresarial</ion-label>\n          <ion-input type="tel" mode="ios" formControlName="phone" [brmasker]="{phone: true}"></ion-input>\n        </ion-item>\n\n        <ion-item class="informacoes-body-list-item" no-lines>\n          <ion-label stacked>Email Empresarial</ion-label>\n          <ion-input type="email" mode="ios" formControlName="email"></ion-input>\n        </ion-item>\n\n        <ion-item class="informacoes-body-list-item" no-lines>\n          <header> Enviar Documentos da Empresa </header>\n          <input type="file" #fileUserPhoto style="visibility: hidden; height: 0px "\n            (change)="processWebImageUserPhoto($event)" />\n          <button ion-button (click)="selectPicture()" class="btn" style="height:35px;" block> Foto/Arquivo </button>\n        </ion-item>\n\n        <ion-item class="informacoes-body-list-item" no-lines>\n          <button ion-button (click)="continue()" class="btn" style="height:35px;" block> Cadastrar </button>\n          <input type="file" #fileUserPhoto style="visibility: hidden; height: 0px "\n            (change)="processWebImageUserPhoto($event)" />\n        </ion-item>\n\n\n      </form>\n    </ion-row>\n  </ion-grid>\n\n</ion-content>'/*ion-inline-end:"/Users/desenvolvedor/Documents/appzonzazul/src/pages/pdv-empresa/pdv-empresa.html"*/,
+            selector: 'page-principal',template:/*ion-inline-start:"/Users/desenvolvedor/Documents/zonaazulfortaleza-develop/src/pages/principal/principal.html"*/'<ion-header no-border>\n  <ion-navbar color="header" no-border>\n      \n      <button ion-button icon-only menuToggle>\n          <ion-icon class="header-icon" name="menu"></ion-icon>\n      </button>\n      <ion-title class="title-header">\n       \n        <ion-select [(ngModel)]="city" class="select-city" cancelText="Cancelar" okText="Ok" [selectOptions]="selectOptions">\n          <ion-option value="Fortaleza">Fortaleza</ion-option>\n        </ion-select>\n      </ion-title>\n\n      <ion-buttons end>\n          <button class="pin-icon" ion-button icon-only (click)="goHome()">\n              <img src="assets/icones/pin-white.svg" alt="">\n          </button>\n      </ion-buttons>\n  </ion-navbar>\n</ion-header>\n\n\n<ion-content padding>\n  <loading-spinner *ngIf="showSpinner"></loading-spinner> \n  <div class="img-top"  *ngIf="!showSpinner">\n    <img src="assets/imgs/default.png" alt="" class="nav-img">\n    <h2 class="title">{{(cads-cadsUsados)}} CADS</h2>\n    <p class="price">R${{(cads-cadsUsados)*2}},00</p>\n    <button ion-button class="btn-comprar" (click)="goComprar()"><img src="assets/icones/shopping-cart-white.svg"></button>\n  </div>\n  <div class="content">\n    <div></div>\n    <div class="{{\'class\'+i}}" *ngFor="let item of list; let i = index">\n      \n      <ion-item no-lines mode="md" class="list-item">\n        <loading-spinner *ngIf="showSpinner"></loading-spinner> \n          <ion-label text-left class="title-select" mode="md">{{item?.veiculo.placa || placa}}\n            <button ion-button small icon-end *ngIf="!checaEstacionado(item?.veiculo.placa)" class="btn-estacionar" (click)="showCloseSetor(item)">Estacionar <img src="assets/icones/estacionamento-white.svg" alt="">\n            </button>\n            <button ion-button small style="background-color: #27AE60;" icon-end *ngIf="checaEstacionado(item?.veiculo.placa)" class="btn-estacionar" (click)="goTempoRest()">\n              <div class="timer"> \n                <!-- <timer [decorrido]="estacionar?.dataHoraRegistro" \n                [now]="tempoCurrent"\n                [placa]="estacionar?.veiculo_id" \n                [status]="estacionar?.status"></timer>  -->\n                Estacionado\n              </div>\n              <img style="margin-top: 3px; left: -2px; width: 14px; height: 14px;" src="assets/icones/arrow-fwd-white.svg" alt="">\n            </button>\n            <p>{{item.veiculo.marca || item.veiculo.nodelo | uppercase}}</p>\n          </ion-label>\n          \n      </ion-item>\n      <!--\n          <ion-select [(ngModel)]="placa" mode="md" cancelText="Cancelar" okText="Ok" (ionChange)="selecionarVeiculo($event)" [disabled]="fromRenovar">\n          <ion-option *ngFor="let item of veiculos" value="{{item.veiculo.placa}}" (click)="selecionarVeiculo($event)">{{item?.veiculo?.placa}}</ion-option>\n      </ion-select> \n      -->\n    </div>\n    <button ion-button clear class="btn-add" (click)="goVeiculos()">Adicionar Veiculos <ion-icon name="add"></ion-icon></button>\n  </div>\n\n\n</ion-content>\n'/*ion-inline-end:"/Users/desenvolvedor/Documents/zonaazulfortaleza-develop/src/pages/principal/principal.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4_ionic_angular__["m" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["n" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormBuilder"],
-            __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["b" /* AlertController */],
-            __WEBPACK_IMPORTED_MODULE_8__providers_camera_camera__["a" /* CameraProvider */],
-            __WEBPACK_IMPORTED_MODULE_3__ionic_native_android_permissions__["a" /* AndroidPermissions */],
-            __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["k" /* ModalController */],
-            __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["i" /* LoadingController */],
-            __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["d" /* Events */],
-            __WEBPACK_IMPORTED_MODULE_9__providers_user_user__["a" /* UserProvider */],
-            __WEBPACK_IMPORTED_MODULE_10__providers_modal_modal__["a" /* ModalProvider */],
-            __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["a" /* ActionSheetController */]])
-    ], PdvEmpresaPage);
-    return PdvEmpresaPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* LoadingController */],
+            __WEBPACK_IMPORTED_MODULE_15__providers_estacionar_estacionar__["a" /* EstacionarProvider */],
+            __WEBPACK_IMPORTED_MODULE_16__ionic_native_android_permissions__["a" /* AndroidPermissions */],
+            __WEBPACK_IMPORTED_MODULE_14__providers_tempo_estacionado_tempo_estacionado__["a" /* TempoEstacionadoProvider */],
+            __WEBPACK_IMPORTED_MODULE_7__providers_user_user__["a" /* UserProvider */],
+            __WEBPACK_IMPORTED_MODULE_4__providers_cads_user_cads_user__["a" /* CadsUserProvider */],
+            __WEBPACK_IMPORTED_MODULE_5__providers_cads_cads__["a" /* CadsProvider */],
+            __WEBPACK_IMPORTED_MODULE_8__providers_veiculos_veiculos__["a" /* VeiculosProvider */],
+            __WEBPACK_IMPORTED_MODULE_6__providers_logger_logger__["a" /* LoggerProvider */],
+            __WEBPACK_IMPORTED_MODULE_8__providers_veiculos_veiculos__["a" /* VeiculosProvider */],
+            __WEBPACK_IMPORTED_MODULE_10__providers_setores_setores__["a" /* SetoresProvider */],
+            __WEBPACK_IMPORTED_MODULE_11__providers_area_area__["a" /* AreaProvider */],
+            __WEBPACK_IMPORTED_MODULE_9__ionic_native_geolocation__["a" /* Geolocation */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* MenuController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ModalController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* Events */]])
+    ], PrincipalPage);
+    return PrincipalPage;
 }());
 
-//# sourceMappingURL=pdv-empresa.js.map
+var LatLng = /** @class */ (function () {
+    function LatLng(lat, lng) {
+        this.lat = lat;
+        this.lng = lng;
+    }
+    return LatLng;
+}());
+
+//# sourceMappingURL=principal.js.map
 
 /***/ })
 

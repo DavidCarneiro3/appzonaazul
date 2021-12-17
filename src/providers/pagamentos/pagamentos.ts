@@ -11,7 +11,14 @@ export class PagamentosProvider {
 
   findByUser(userId) {
     return this.afd.list(Constants.PATH_DOCUMENTS_PAGAMENTOS + userId, ref => ref.orderByKey()).snapshotChanges()
-      .map(changes => changes.map(c => ({ key: c.payload.key, values: new PagamentoModel(c.payload.val()) })));
+      .map(changes => changes.map(c => {
+
+          let pgto = new PagamentoModel(c.payload.val());
+          pgto.id = c.payload.key;
+
+          return { key: pgto.id, values: pgto };
+        }
+      ));
   }
 
   findByUserAndCartao(userId, cartaoId) {
@@ -20,7 +27,7 @@ export class PagamentosProvider {
   }
 
   remove(userId, cartaoId) {
-    this.afd.object(Constants.PATH_DOCUMENTS_PAGAMENTOS + userId + '/' + cartaoId).remove();
+    return this.afd.object(Constants.PATH_DOCUMENTS_PAGAMENTOS + userId + '/' + cartaoId).remove();
   }
   
   save(userId, entity) {
@@ -30,5 +37,5 @@ export class PagamentosProvider {
   update(userId, entityID, entity) {
     return this.afd.object(Constants.PATH_DOCUMENTS_PAGAMENTOS + userId + '/' + entityID).set(entity);
   }
-  
+
 }

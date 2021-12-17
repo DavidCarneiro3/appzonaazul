@@ -51,14 +51,20 @@ export class PermissionsModalPage {
     getPage() {
         const IMEI = `O Zona Fácil precisará do seu IMEI para prosseguir. O IMEI é o identificador único do seu smartphone e ele garantirá a segurança das suas transações.`;
         const localização = `O Zona Fácil está à sua disposição em muitos bairros, e para melhor atendê-lo, gostaríamos da sua permissão para acessar a sua localização para selecionar automaticamente o bairro onde você está localizado e para informar vagas disponíveis, nos bairros onde há este serviço.`;
+        const camera = `O Zona Fácil precisará acessar sua câmera ou arquivos de mídia para prosseguir. Isso porque será necessário enviar uma foto do documento.`;
+
         return new Promise(resolve => {
             this.fromPage = this.navParams.get('fromPage');
+
             if (this.fromPage == 'profile-edit') {
-                this.title = 'Acesso a Camera e galeria!'
-                this.reason = 'O Zona Fácil precisa de acesso a camera  e a galeria para alterar a foto de perfil!'
+                this.title = 'Acesso a Câmera e Galeria!'
+                this.reason = 'O Zona Fácil precisa de acesso a camera e a galeria para alterar a foto de perfil!'
             } else if (this.fromPage === 'phone') {
                 this.title = 'Acesso ao Telefone';
                 this.reason = IMEI;
+            } else if (this.fromPage === 'pdv-empresa') {
+                this.title = 'Acesso a Câmera e Galeria!'
+                this.reason = camera;
             } else {
                 this.title = 'Acesso a Localização!';
                 this.reason = localização;
@@ -69,7 +75,7 @@ export class PermissionsModalPage {
     }
 
     askPermissions() {
-        if (this.fromPage == 'profile-edit') {
+        if (this.fromPage == 'profile-edit' || this.fromPage == 'pdv-empresa') {
             this.askCameraPermission()
         } else if (this.fromPage == 'phone') {
             this.askPhonePermision()

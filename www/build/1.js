@@ -1,14 +1,17 @@
 webpackJsonp([1],{
 
-/***/ 805:
+/***/ 748:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ComprarCreditosPagamentoPageModule", function() { return ComprarCreditosPagamentoPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HistoricoPageModule", function() { return HistoricoPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(36);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__comprar_creditos_pagamento__ = __webpack_require__(846);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__historico__ = __webpack_require__(805);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_loading_spinner_loading_spinner_module__ = __webpack_require__(418);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pipes_pipes_module__ = __webpack_require__(428);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_components_module__ = __webpack_require__(419);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,33 +21,39 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var ComprarCreditosPagamentoPageModule = /** @class */ (function () {
-    function ComprarCreditosPagamentoPageModule() {
+
+
+
+var HistoricoPageModule = /** @class */ (function () {
+    function HistoricoPageModule() {
     }
-    ComprarCreditosPagamentoPageModule = __decorate([
+    HistoricoPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__comprar_creditos_pagamento__["a" /* ComprarCreditosPagamentoPage */],
+                __WEBPACK_IMPORTED_MODULE_2__historico__["a" /* HistoricoPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__comprar_creditos_pagamento__["a" /* ComprarCreditosPagamentoPage */]),
+                __WEBPACK_IMPORTED_MODULE_4__pipes_pipes_module__["a" /* PipesModule */],
+                __WEBPACK_IMPORTED_MODULE_3__components_loading_spinner_loading_spinner_module__["a" /* LoadingSpinnerComponentModule */],
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__historico__["a" /* HistoricoPage */]),
+                __WEBPACK_IMPORTED_MODULE_5__components_components_module__["a" /* ComponentsModule */]
             ],
         })
-    ], ComprarCreditosPagamentoPageModule);
-    return ComprarCreditosPagamentoPageModule;
+    ], HistoricoPageModule);
+    return HistoricoPageModule;
 }());
 
-//# sourceMappingURL=comprar-creditos-pagamento.module.js.map
+//# sourceMappingURL=historico.module.js.map
 
 /***/ }),
 
-/***/ 834:
+/***/ 770:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MapUtil; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pages_home_home__ = __webpack_require__(836);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__environments_constants__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pages_home_home__ = __webpack_require__(772);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__environments_constants__ = __webpack_require__(19);
 
 
 var MapUtil = /** @class */ (function () {
@@ -57,7 +66,7 @@ var MapUtil = /** @class */ (function () {
             mapTypeControl: false,
             clickableIcons: false,
             fullscreenControl: false,
-            zoomControl: true,
+            zoomControl: false,
             zoomControlOptions: {
                 position: google.maps.ControlPosition.RIGHT_BOTTOM
             },
@@ -128,47 +137,54 @@ var MapUtil = /** @class */ (function () {
     MapUtil.prototype.addPolyline = function (item, map) {
         if (item != null && item.setor != null) {
             var polyline = void 0;
-            var marker = void 0;
-            var iconUrlGrenn = "assets/imgs/map-marker-green-4.png";
-            var iconUrlRed = "assets/imgs/map-marker-red-4.png";
+            var marker_1;
+            var iconUrlGrenn = "assets/imgs/map-marker-blue-4.svg";
+            var iconUrlRed = "assets/imgs/map-marker-red-4.svg";
             var totalVagasUtilizadas = item.setor.qtd_deficiente_estacionados + item.setor.qtd_idoso_estacionados + item.setor.qtd_normal_estacionados;
-            polyline = new google.maps.Polyline(this.createPolylineOptions(item.setor, totalVagasUtilizadas));
-            polyline.setMap(map);
-            MapUtil.polylines.push(polyline);
-            marker = new google.maps.Marker({
+            //polyline = new google.maps.Polyline(this.createPolylineOptions(item.setor, totalVagasUtilizadas));
+            //polyline.setMap(map);
+            //MapUtil.polylines.push(polyline);
+            marker_1 = new google.maps.Marker({
                 position: { lat: item.setor.latInicio, lng: item.setor.lngInicio },
                 icon: {
                     url: (item.setor.total_vagas - totalVagasUtilizadas > 0) ? iconUrlGrenn : iconUrlRed,
-                    scaledSize: new google.maps.Size(32, 32)
+                    scaledSize: new google.maps.Size(122, 122)
                 }
             });
             // marker.
-            marker.setMap(map);
+            marker_1.setMap(map);
             var infowindow_1 = new google.maps.InfoWindow({
                 content: this.createInfoPolylines(item.setor, item.area, totalVagasUtilizadas),
             });
             /**
              * Abre as opções do estacionamento
              * polyline  item pressionado onde vai abrir o evento ( linha do inicio e final do Simbolo do carro)
-             */
-            google.maps.event.addListener(polyline, 'click', function (event) {
-                infowindow_1.setPosition(event.latLng);
-                infowindow_1.open(__WEBPACK_IMPORTED_MODULE_0__pages_home_home__["a" /* HomePage */].map);
-                MapUtil.infoWindows.push(infowindow_1);
+             
+            google.maps.event.addListener(polyline, 'click', event => {
+
+                infowindow.setPosition(event.latLng);
+                infowindow.open(HomePage.map);
+                MapUtil.infoWindows.push(infowindow);
+
                 if (MapUtil.infoWindows.length > 1) {
-                    MapUtil.infoWindows.forEach(function (value) {
-                        if (value != infowindow_1) {
+                    MapUtil.infoWindows.forEach(value => {
+                        if (value != infowindow) {
                             value.close();
                         }
-                    });
+                    })
                 }
             });
-            /**
+
+            
              * Abre as opções do estacionamento
              * marker  item pressionado onde vai abrir o evento ( Simbolo do carro verde)
              */
-            google.maps.event.addListener(marker, 'click', function (event) {
-                infowindow_1.setPosition(event.latLng);
+            google.maps.event.addListener(marker_1, 'click', function (event) {
+                // let latLng = event.latLng;
+                var latLng = marker_1.position;
+                console.log('marker', marker_1);
+                console.log('event', event);
+                infowindow_1.setPosition(latLng);
                 infowindow_1.open(__WEBPACK_IMPORTED_MODULE_0__pages_home_home__["a" /* HomePage */].map);
                 MapUtil.infoWindows.push(infowindow_1);
                 if (MapUtil.infoWindows.length > 1) {
@@ -182,8 +198,8 @@ var MapUtil = /** @class */ (function () {
         }
     };
     MapUtil.prototype.findSetor = function (map, setor, area) {
-        var iconUrlGrenn = "assets/imgs/map-marker-green-4.png";
-        var iconUrlRed = "assets/imgs/map-marker-red-4.png";
+        var iconUrlGrenn = "assets/imgs/map-marker-blue-4.svg";
+        var iconUrlRed = "assets/imgs/map-marker-red-4.svg";
         var marker;
         var latlng = new google.maps.LatLng(setor.latInicio, setor.lngInicio);
         map.setCenter(latlng);
@@ -191,6 +207,19 @@ var MapUtil = /** @class */ (function () {
         var totalVagasUtilizadas = setor.qtd_deficiente_estacionados + setor.qtd_idoso_estacionados + setor.qtd_normal_estacionados;
         var infowindow = new google.maps.InfoWindow({
             content: this.createInfoPolylines(setor, area, totalVagasUtilizadas),
+        });
+        google.maps.event.addListener(infowindow, 'domready', function () {
+            // Referência ao DIV que recebe o conteúdo da infowindow recorrendo ao jQuery
+            //var iwOuter = this.getElementByClassName('.gm-style-iw');
+            /* Uma vez que o div pretendido está numa posição anterior ao div .gm-style-iw.
+             * Recorremos ao jQuery e criamos uma variável iwBackground,
+             * e aproveitamos a referência já existente do .gm-style-iw para obter o div anterior com .prev().
+             */
+            //var iwBackground = iwOuter.prev();
+            // Remover o div da sombra do fundo
+            //iwBackground.children(':nth-child(2)').css({'display' : 'none'});
+            // Remover o div de fundo branco
+            //iwBackground.children(':nth-child(4)').css({'display' : 'none'});
         });
         marker = new google.maps.Marker({
             position: { lat: setor.latInicio, lng: setor.lngInicio },
@@ -245,31 +274,42 @@ var MapUtil = /** @class */ (function () {
     MapUtil.prototype.createInfoPolylines = function (setor, area, totalVagasUtilizadas) {
         var div = document.createElement('div');
         div.className = "gm-style gm-style-iw";
-        var setorNome = (setor.nome.length < 3) ? ('Setor ' + setor.nome) : setor.nome;
+        var divl = document.createElement('div');
+        divl.className = "style-left";
+        var divr = document.createElement('div');
+        divr.className = "style-right";
+        //const setorNome = (setor?.nome.toString().length < 3) ? ('Setor ' + setor.nome) : setor.nome;
+        var setorNome = setor.nome;
         // console.log('ST', setorNome + " | " + setor.codigo);
         // console.log('AR', area);
         var h3 = document.createElement('h3');
         h3.className = "setor-codigo";
-        h3.innerText = setorNome + " (" + setor.codigo + ")" + " | Área: " + area.endereco + " (" + area.codigo + ")";
-        var h5vt = document.createElement('h4');
+        //h3.innerText = setorNome + " (" + setor.codigo + ")" + " | Área: " + area.endereco + " (" + area.codigo + ")";
+        // h3.innerText = area.endereco + " (" + area.codigo + ")" + " - " +setorNome;
+        h3.innerText = setorNome + " - " + area.endereco;
+        var h5vt = document.createElement('p');
         h5vt.className = "setor-vagas";
         h5vt.innerText = "Vagas: " + setor.total_vagas;
-        var h5vn = document.createElement('h4');
+        var h5vn = document.createElement('p');
         h5vn.className = "setor-vagas-normal";
         // h5vn.innerText = "Vagas convencionais disponíveis: " + ((setor.total_vagas - (setor.vagas_idoso + setor.vagas_deficiente)) - setor.qtd_normal_estacionados);
         h5vn.innerText = "Vagas convencionais: " + (setor.total_vagas - setor.qtd_normal_estacionados);
-        var h5vd = document.createElement('h4');
-        h5vd.className = "setor-vagas-normal";
-        h5vd.innerText = "Vagas de deficiente: " + (setor.vagas_deficiente - setor.qtd_deficiente_estacionados);
-        var h5vi = document.createElement('h4');
-        h5vi.className = "setor-vagas-normal";
+        var h5vd = document.createElement('p');
+        h5vd.className = "setor-vagas-pcd";
+        h5vd.innerText = "Vagas de PCD: " + (setor.vagas_deficiente - setor.qtd_deficiente_estacionados);
+        var h5vi = document.createElement('p');
+        h5vi.className = "setor-vagas-i";
         h5vi.innerText = "Vagas de idoso: " + (setor.vagas_idoso - setor.qtd_idoso_estacionados);
-        var h5vc = document.createElement('h4');
-        h5vc.className = "setor-vagas-normal";
+        var h5vc = document.createElement('p');
+        h5vc.className = "setor-vagas-cd";
         h5vc.innerText = "Vagas Carga/Descarga: " + (setor.vagas_carga_descarga - setor.qtd_carga_descarga_estacionados);
         var button = document.createElement('button');
         button.className = "btn-estacionar";
-        button.innerText = "Estacionar";
+        button.innerText = "ESTACIONAR";
+        var ico = document.createElement('img');
+        ico.setAttribute("src", "assets/icones/estacionamento-white.svg");
+        ico.className = "pin-view";
+        button.appendChild(ico);
         button.addEventListener('click', function () {
             document.getElementById('btn-show-estacionar-page').setAttribute("setor", setor.codigo);
             document.getElementById('btn-show-estacionar-page').setAttribute("area", area.codigo);
@@ -280,11 +320,18 @@ var MapUtil = /** @class */ (function () {
         if ((setor.total_vagas - totalVagasUtilizadas) <= 0) {
             button.disabled = true;
         }
+        var divpin = document.createElement('div');
+        divpin.className = "btn-pin";
+        // buttonView.innerText = "Ver";
+        var iconpin = document.createElement('img');
+        iconpin.setAttribute("src", "assets/icones/pin-dark.svg");
+        iconpin.className = "pin-btn";
+        divpin.appendChild(iconpin);
         var buttonView = document.createElement('button');
         buttonView.className = "btn-ver";
         // buttonView.innerText = "Ver";
         var icon = document.createElement('img');
-        icon.setAttribute("src", "assets/icon/streat_view.png");
+        icon.setAttribute("src", "assets/icones/shopping-cart-white.svg");
         icon.className = "streat-view";
         buttonView.appendChild(icon);
         buttonView.addEventListener('click', function () {
@@ -292,14 +339,17 @@ var MapUtil = /** @class */ (function () {
             document.getElementById('btn-show-streat-view').setAttribute("area", area.codigo);
             document.getElementById('btn-show-streat-view').click();
         });
-        div.appendChild(h3);
+        divl.appendChild(h3);
         // div.appendChild(h5vt);
-        div.appendChild(h5vn);
-        div.appendChild(h5vd);
-        div.appendChild(h5vi);
-        div.appendChild(h5vc);
-        div.appendChild(button);
-        div.appendChild(buttonView);
+        divr.appendChild(h5vn);
+        divr.appendChild(h5vi);
+        divr.appendChild(h5vd);
+        divr.appendChild(h5vc);
+        divr.appendChild(button);
+        divl.appendChild(buttonView);
+        div.appendChild(divl);
+        div.appendChild(divr);
+        div.appendChild(divpin);
         return div;
     };
     MapUtil.prototype.determineColor = function (vagas) {
@@ -475,7 +525,7 @@ var MapUtil = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 835:
+/***/ 771:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -632,33 +682,33 @@ var FunctionsUtil = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 836:
+/***/ 772:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomePage; });
 /* unused harmony export LatLng */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(36);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_android_permissions__ = __webpack_require__(219);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_location_accuracy__ = __webpack_require__(443);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_speech_recognition__ = __webpack_require__(446);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_geolocation__ = __webpack_require__(445);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_take__ = __webpack_require__(93);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_android_permissions__ = __webpack_require__(200);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_location_accuracy__ = __webpack_require__(416);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_speech_recognition__ = __webpack_require__(417);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_geolocation__ = __webpack_require__(415);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_take__ = __webpack_require__(85);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_take___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_take__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_setores_setores__ = __webpack_require__(442);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__providers_veiculos_veiculos__ = __webpack_require__(441);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__providers_auth_auth__ = __webpack_require__(217);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_setores_setores__ = __webpack_require__(413);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__providers_veiculos_veiculos__ = __webpack_require__(412);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__providers_auth_auth__ = __webpack_require__(199);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__providers_user_user__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__providers_cads_user_cads_user__ = __webpack_require__(218);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__providers_comunicacao_central_comunicacao_central__ = __webpack_require__(220);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__providers_modal_modal__ = __webpack_require__(216);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__providers_area_area__ = __webpack_require__(444);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__environments_constants__ = __webpack_require__(20);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__util_map_util__ = __webpack_require__(834);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__util_functions_util__ = __webpack_require__(835);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__app_app_component__ = __webpack_require__(440);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__providers_estacionar_estacionar__ = __webpack_require__(221);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__providers_cads_user_cads_user__ = __webpack_require__(111);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__providers_comunicacao_central_comunicacao_central__ = __webpack_require__(202);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__providers_modal_modal__ = __webpack_require__(198);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__providers_area_area__ = __webpack_require__(414);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__environments_constants__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__util_map_util__ = __webpack_require__(770);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__util_functions_util__ = __webpack_require__(771);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__app_app_component__ = __webpack_require__(411);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__providers_estacionar_estacionar__ = __webpack_require__(201);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -712,12 +762,18 @@ var HomePage = /** @class */ (function () {
         this.areaProvider = areaProvider;
         this.events = events;
         this.estacionarProvider = estacionarProvider;
+        this.city = 'Fortaleza';
         this.estacionar = [];
         this.setores = [];
         this.qtdCadsUser = 0;
         this.qtdCadsUSados = 0;
         this.mapUtil = new __WEBPACK_IMPORTED_MODULE_16__util_map_util__["a" /* MapUtil */]();
         this.allSetores = [];
+        this.selectOptions = {
+            title: 'Cidade',
+            subTitle: 'Escolha sua cidade',
+            mode: 'ios'
+        };
         this.getAllSetores();
         platform.registerBackButtonAction(function () {
             if (_this.navCtrl.getActive().name == 'HomePage') {
@@ -751,7 +807,7 @@ var HomePage = /** @class */ (function () {
                 console.log(userID);
                 _this.estacionarProvider.countCadsById(userID)
                     .subscribe(function (val) {
-                    console.log(val);
+                    // console.log(val)
                 });
                 _this.cadsUserProvider.findQtdCads(userID).take(1).subscribe(function (value) {
                     value.map(function (cads) {
@@ -991,6 +1047,7 @@ var HomePage = /** @class */ (function () {
                     loading.dismiss();
                     if (_item.length > 0) {
                         _this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_15__environments_constants__["a" /* Constants */].ESTACIONAR_PAGE.name, {
+                            fromPage: 'mapa',
                             setor: codigoSetor,
                             area: codigoArea,
                             'setor-nome': nomeSetor,
@@ -1010,7 +1067,8 @@ var HomePage = /** @class */ (function () {
                                     area: codigoArea,
                                     setor: codigoSetor,
                                     cad: _this.cad,
-                                    qtdCads: (_this.qtdCadsUser - _this.qtdCadsUSados)
+                                    qtdCads: (_this.qtdCadsUser - _this.qtdCadsUSados),
+                                    veiculoAllArr: _item
                                 });
                             });
                         }
@@ -1022,7 +1080,8 @@ var HomePage = /** @class */ (function () {
                                 area: codigoArea,
                                 setor: codigoSetor,
                                 cad: _this.cad,
-                                qtdCads: (_this.qtdCadsUser - _this.qtdCadsUSados)
+                                qtdCads: (_this.qtdCadsUser - _this.qtdCadsUSados),
+                                veiculoAllArr: _item
                             });
                         }
                     }
@@ -1170,23 +1229,25 @@ var HomePage = /** @class */ (function () {
         }, function (error) {
         });
     };
-    HomePage.prototype.showStreatView = function (event) {
-        var _this = this;
-        var wait = this.loadingCtrl.create({ content: 'Aguarde...' });
+    HomePage.prototype.showStreatView = function () {
+        /*let wait = this.loadingCtrl.create({ content: 'Aguarde...' });
         wait.present();
-        var button = document.getElementById('btn-show-streat-view');
-        var codigoSetor = button.getAttribute("setor");
-        var codigoArea = button.getAttribute("area");
+        let button = document.getElementById('btn-show-streat-view');
+        let codigoSetor = button.getAttribute("setor");
+        let codigoArea = button.getAttribute("area");
+
         this.setoresProvider.byId(codigoArea, codigoSetor)
-            .subscribe(function (data) {
-            var streatViewPage = _this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_15__environments_constants__["a" /* Constants */].STREAT_VIEW_PAGE.name, { map: HomePage_1.map, data: data, wait: wait });
-            streatViewPage.present().then(function () {
-                _this.modalProvider.setActive();
-            });
-        }, function (error) {
-            console.log(error);
-            wait.dismiss();
-        });
+            .subscribe(data => {
+                const streatViewPage = this.modalCtrl.create(Constants.STREAT_VIEW_PAGE.name, { map: HomePage.map, data: data, wait: wait });
+                streatViewPage.present().then(() => {
+                    this.modalProvider.setActive();
+                });
+            },
+                (error) => {
+                    console.log(error);
+                    wait.dismiss();
+                })*/
+        this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_15__environments_constants__["a" /* Constants */].PAGAMENTOS_PAGE.name);
     };
     HomePage.prototype.showToast = function (msg, time) {
         var toast = this.toastCtrl.create({
@@ -1256,13 +1317,13 @@ var HomePage = /** @class */ (function () {
     ], HomePage.prototype, "iconElement", void 0);
     HomePage = HomePage_1 = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-home',template:/*ion-inline-start:"/Users/desenvolvedor/Documents/appzonzazul/src/pages/home/home.html"*/'<ion-header no-border>\n    <ion-navbar color="header">\n        <button ion-button icon-only menuToggle>\n            <ion-icon class="header-icon" name="menu"></ion-icon>\n        </button>\n        <ion-title>\n            <ion-label>Início</ion-label>\n        </ion-title>\n\n        <ion-buttons end>\n            <button ion-button icon-only (click)="openTempoRestantePage()">\n                <img src="assets/imgs/time.png" width="30px" height="30px" />\n            </button>\n        </ion-buttons>\n    </ion-navbar>\n</ion-header>\n\n<ion-content class="content">\n    <div #map id="map"></div>\n    <input #search id="search" class="controls" type="text" placeholder="Buscar Local">\n\n    <button ion-button icon-only type="button" item-right clear (click)="listen()" id="mic" [style.display]="\'none\'">\n        <ion-icon name="mic" class="icon"></ion-icon>\n    </button>\n    <ion-fab id="help">\n        <button ion-fab icon-only (click)="openHelp()">\n            <ion-icon name="help"></ion-icon>\n        </button>\n    </ion-fab>\n\n    <ion-fab id="close" (click)="showCloseSetor()">\n        <button ion-fab>\n        </button>\n    </ion-fab>\n\n    <ion-fab>\n        <button ion-fab icon-only color="default" (click)="buscarSetores()" id="locate">\n            <ion-icon name="search" class="icon"></ion-icon>\n        </button>\n    </ion-fab>\n\n    <ion-icon #icon name="close" class="icon-clear" style="display: none" id="icon"></ion-icon>\n    <button ion-button id="btn-show-estacionar-page" (click)="openEstacionarPage($event)"\n        [style.display]="\'none\'"></button>\n    <button ion-button id="btn-show-streat-view" (click)="showStreatView($event)" [style.display]="\'none\'"></button>\n</ion-content>'/*ion-inline-end:"/Users/desenvolvedor/Documents/appzonzazul/src/pages/home/home.html"*/
+            selector: 'page-home',template:/*ion-inline-start:"/Users/desenvolvedor/Documents/zonaazulfortaleza-develop/src/pages/home/home.html"*/'<ion-header no-border>\n    <ion-navbar color="header">\n        <button ion-button icon-only menuToggle>\n            <ion-icon class="header-icon" name="menu"></ion-icon>\n        </button>\n        <ion-title class="title-header">\n            <ion-select [(ngModel)]="city" class="select-city" cancelText="Cancelar" okText="Ok" [selectOptions]="selectOptions">\n                <ion-option value="Fortaleza">Fortaleza</ion-option>\n              </ion-select>\n        </ion-title>\n\n        <ion-buttons end>\n            <button ion-button icon-only (click)="openTempoRestantePage()">\n                <img src="assets/icones/car-white.svg"  />\n            </button>\n        </ion-buttons>\n    </ion-navbar>\n</ion-header>\n\n<ion-content class="content">\n    <div #map id="map"></div>\n    <input #search id="search" class="controls" type="text" placeholder="Buscar">\n\n    <button ion-button icon-only type="button" item-right clear id="mic" >\n        <ion-icon color="gray" name="search" class="icon"></ion-icon>\n    </button>\n    <!--<ion-fab id="help">\n        <button ion-fab icon-only (click)="openHelp()">\n            <ion-icon name="help"></ion-icon>\n        </button>\n    </ion-fab> -->\n\n    <ion-fab id="close" (click)="showCloseSetor()">\n        <button ion-fab>\n        </button>\n    </ion-fab>\n\n   <!-- <ion-fab>\n        <button ion-fab icon-only color="default" (click)="buscarSetores()" id="locate">\n            <ion-icon name="search" class="icon"></ion-icon>\n        </button>\n    </ion-fab> -->\n\n    <ion-icon #icon name="close" class="icon-clear" style="display: none" id="icon"></ion-icon>\n    <button ion-button id="btn-show-estacionar-page" (click)="openEstacionarPage($event)"\n        [style.display]="\'none\'"></button>\n    <button ion-button id="btn-show-streat-view" (click)="showStreatView()" [style.display]="\'none\'"></button>\n</ion-content>'/*ion-inline-end:"/Users/desenvolvedor/Documents/zonaazulfortaleza-develop/src/pages/home/home.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* Platform */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ModalController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* ToastController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* ToastController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* LoadingController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavParams */],
             __WEBPACK_IMPORTED_MODULE_5__ionic_native_geolocation__["a" /* Geolocation */],
@@ -1296,139 +1357,167 @@ var LatLng = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 837:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ 774:
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DateUtil; });
-var DateUtil = /** @class */ (function () {
-    function DateUtil() {
-    }
-    DateUtil.formatDate = function (date) {
-        var dateRoute = date.substring(0, date.indexOf('_'));
-        dateRoute = dateRoute.replace('-', '.').replace('-', '.');
-        var year = dateRoute.substring(0, 4);
-        var month = dateRoute.substring(5, 6);
-        var day = dateRoute.substring(7, 8);
-        return day + "." + month + "." + year;
-    };
-    DateUtil.formatHour = function (date) {
-        var hourRoute = date.substring(date.indexOf('_') + 1, date.length);
-        return hourRoute.replace('-', ':').replace('-', ':').substring(0, 5);
-    };
-    DateUtil.formatDateWithHour = function (date) {
-        return this.formatDate(date) + " " + this.formatHour(date);
-    };
-    DateUtil.formatDateForID = function (date) {
-        var day, month, year, hours, minutes, seconds;
-        if (date.getMonth() < 9) {
-            month = "0" + (date.getMonth() + 1);
-        }
-        else {
-            month = "" + (date.getMonth() + 1);
-        }
-        if (date.getDate() < 10) {
-            day = "0" + date.getDate();
-        }
-        else {
-            day = date.getDate();
-        }
-        if (date.getHours() < 10) {
-            hours = "0" + date.getHours();
-        }
-        else {
-            hours = date.getHours();
-        }
-        if (date.getMinutes() < 10) {
-            minutes = "0" + date.getMinutes();
-        }
-        else {
-            minutes = date.getMinutes();
-        }
-        if (date.getSeconds() < 10) {
-            seconds = "0" + date.getSeconds();
-        }
-        else {
-            seconds = date.getSeconds();
-        }
-        year = date.getFullYear();
-        return day + "" + month + "" + year + "_" + hours + "" + minutes + "" + seconds;
-    };
-    DateUtil.convertDate = function (isoDateStr) {
-        // 2018-06-22T11:11:54
-        var split = isoDateStr.split('T');
-        var dateStr = split[0];
-        var hourStr = split[1];
-        var dateArr = dateStr.split('-');
-        var hourArr = hourStr.split(':');
-        var dt = new Date();
-        dt.setFullYear(parseInt(dateArr[0]));
-        dt.setMonth(parseInt(dateArr[1]) - 1);
-        dt.setDate(parseInt(dateArr[2]));
-        dt.setHours(parseInt(hourArr[0]));
-        dt.setMinutes(parseInt(hourArr[1]));
-        dt.setSeconds(parseInt(hourArr[2]));
-        return dt;
-    };
-    /**
-     * Pega a Data atual e formata YY-MM-DDTHH:MM:SS
-     * Usado nas simulações da AMC
-     */
-    DateUtil.getCurrenteDateFormated = function () {
-        var currentDate = new Date().toISOString().slice(0, 10);
-        var currentTime = new Date().toLocaleTimeString();
-        return currentDate + 'T' + currentTime;
-    };
-    /**
-     * Gera um número único para utilização no ID da Transação
-     * https://stackoverflow.com/questions/16176757/generate-unique-id-with-javascript-not-exceeding-an-integer
-     */
-    DateUtil.uniqueID = function () {
-        var timeinmilis = new Date().getTime();
-        var unique = timeinmilis & 0xffffffff;
-        return unique < 0 ? (unique * -1) : unique;
-    };
-    return DateUtil;
-}());
 
-//# sourceMappingURL=date.util.js.map
+var isArray_1 = __webpack_require__(205);
+function isNumeric(val) {
+    // parseFloat NaNs numeric-cast false positives (null|true|false|"")
+    // ...but misinterprets leading-number strings, particularly hex literals ("0x...")
+    // subtraction forces infinities to NaN
+    // adding 1 corrects loss of precision from parseFloat (#15100)
+    return !isArray_1.isArray(val) && (val - parseFloat(val) + 1) >= 0;
+}
+exports.isNumeric = isNumeric;
+;
+//# sourceMappingURL=isNumeric.js.map
 
 /***/ }),
 
-/***/ 846:
+/***/ 775:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var Observable_1 = __webpack_require__(4);
+var interval_1 = __webpack_require__(776);
+Observable_1.Observable.interval = interval_1.interval;
+//# sourceMappingURL=interval.js.map
+
+/***/ }),
+
+/***/ 776:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var IntervalObservable_1 = __webpack_require__(777);
+exports.interval = IntervalObservable_1.IntervalObservable.create;
+//# sourceMappingURL=interval.js.map
+
+/***/ }),
+
+/***/ 777:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
+var isNumeric_1 = __webpack_require__(774);
+var Observable_1 = __webpack_require__(4);
+var async_1 = __webpack_require__(58);
+/**
+ * We need this JSDoc comment for affecting ESDoc.
+ * @extends {Ignored}
+ * @hide true
+ */
+var IntervalObservable = (function (_super) {
+    __extends(IntervalObservable, _super);
+    function IntervalObservable(period, scheduler) {
+        if (period === void 0) { period = 0; }
+        if (scheduler === void 0) { scheduler = async_1.async; }
+        _super.call(this);
+        this.period = period;
+        this.scheduler = scheduler;
+        if (!isNumeric_1.isNumeric(period) || period < 0) {
+            this.period = 0;
+        }
+        if (!scheduler || typeof scheduler.schedule !== 'function') {
+            this.scheduler = async_1.async;
+        }
+    }
+    /**
+     * Creates an Observable that emits sequential numbers every specified
+     * interval of time, on a specified IScheduler.
+     *
+     * <span class="informal">Emits incremental numbers periodically in time.
+     * </span>
+     *
+     * <img src="./img/interval.png" width="100%">
+     *
+     * `interval` returns an Observable that emits an infinite sequence of
+     * ascending integers, with a constant interval of time of your choosing
+     * between those emissions. The first emission is not sent immediately, but
+     * only after the first period has passed. By default, this operator uses the
+     * `async` IScheduler to provide a notion of time, but you may pass any
+     * IScheduler to it.
+     *
+     * @example <caption>Emits ascending numbers, one every second (1000ms)</caption>
+     * var numbers = Rx.Observable.interval(1000);
+     * numbers.subscribe(x => console.log(x));
+     *
+     * @see {@link timer}
+     * @see {@link delay}
+     *
+     * @param {number} [period=0] The interval size in milliseconds (by default)
+     * or the time unit determined by the scheduler's clock.
+     * @param {Scheduler} [scheduler=async] The IScheduler to use for scheduling
+     * the emission of values, and providing a notion of "time".
+     * @return {Observable} An Observable that emits a sequential number each time
+     * interval.
+     * @static true
+     * @name interval
+     * @owner Observable
+     */
+    IntervalObservable.create = function (period, scheduler) {
+        if (period === void 0) { period = 0; }
+        if (scheduler === void 0) { scheduler = async_1.async; }
+        return new IntervalObservable(period, scheduler);
+    };
+    IntervalObservable.dispatch = function (state) {
+        var index = state.index, subscriber = state.subscriber, period = state.period;
+        subscriber.next(index);
+        if (subscriber.closed) {
+            return;
+        }
+        state.index += 1;
+        this.schedule(state, period);
+    };
+    IntervalObservable.prototype._subscribe = function (subscriber) {
+        var index = 0;
+        var period = this.period;
+        var scheduler = this.scheduler;
+        subscriber.add(scheduler.schedule(IntervalObservable.dispatch, period, {
+            index: index, subscriber: subscriber, period: period
+        }));
+    };
+    return IntervalObservable;
+}(Observable_1.Observable));
+exports.IntervalObservable = IntervalObservable;
+//# sourceMappingURL=IntervalObservable.js.map
+
+/***/ }),
+
+/***/ 805:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ComprarCreditosPagamentoPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HistoricoPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(36);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__(94);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_clipboard__ = __webpack_require__(455);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_take__ = __webpack_require__(93);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_take___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_take__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__models_pagarme_user_pagarme__ = __webpack_require__(847);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__models_pagarme_venda_pagarme__ = __webpack_require__(848);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__models_pagarme_card_pagarme__ = __webpack_require__(849);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__models_credito__ = __webpack_require__(465);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__models_cad__ = __webpack_require__(222);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__models_cad_user__ = __webpack_require__(850);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__models_cielo_boleto__ = __webpack_require__(851);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__providers_pagamentos_pagamentos__ = __webpack_require__(453);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__providers_user_user__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__providers_veiculos_veiculos__ = __webpack_require__(441);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__providers_pagarme_pagarme__ = __webpack_require__(456);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__providers_creditos_creditos__ = __webpack_require__(452);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__providers_cads_user_cads_user__ = __webpack_require__(218);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__util_date_util__ = __webpack_require__(837);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__providers_cads_cads__ = __webpack_require__(133);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__environments_constants__ = __webpack_require__(20);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__environments_environment__ = __webpack_require__(64);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__providers_comunicacao_central_comunicacao_central__ = __webpack_require__(220);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__providers_tempo_estacionado_tempo_estacionado__ = __webpack_require__(223);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__providers_logger_logger__ = __webpack_require__(40);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__providers_cielo_cielo__ = __webpack_require__(467);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__app_app_component__ = __webpack_require__(440);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__util_map_util__ = __webpack_require__(834);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_observable_interval__ = __webpack_require__(775);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_observable_interval___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_observable_interval__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_observable_timer__ = __webpack_require__(806);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_observable_timer___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_observable_timer__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__models_cad__ = __webpack_require__(203);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_cads_cads__ = __webpack_require__(112);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_user_user__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__providers_creditos_creditos__ = __webpack_require__(423);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__providers_estacionar_estacionar__ = __webpack_require__(201);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__providers_veiculos_veiculos__ = __webpack_require__(412);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__providers_setores_setores__ = __webpack_require__(413);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__providers_tempo_estacionado_tempo_estacionado__ = __webpack_require__(204);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__app_app_component__ = __webpack_require__(411);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__util_map_util__ = __webpack_require__(770);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__environments_constants__ = __webpack_require__(19);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1454,383 +1543,503 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-var ComprarCreditosPagamentoPage = /** @class */ (function () {
-    function ComprarCreditosPagamentoPage(navCtrl, navParams, viewCtrl, alertCtrl, loadingCtrl, menuCtrl, comunicacaoCentralProvider, userProvider, veiculosProvider, pagamentosProvider, pagarmeProvider, tempoEstacionadoProvider, creditosProvider, cadsUserProvider, logger, cadsProvider, cieloProvider, http, clipboard, toastCtrl) {
+var HistoricoPage = /** @class */ (function () {
+    function HistoricoPage(navCtrl, navParams, modalCtrl, actionSheetCtrl, userProvider, estacionarProvider, loadingCtrl, creditosProvider, cadsProvider, veiculosProvider, tempoEstacionadoProvider, alertCtrl, setorProvider, event) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
-        this.viewCtrl = viewCtrl;
-        this.alertCtrl = alertCtrl;
-        this.loadingCtrl = loadingCtrl;
-        this.menuCtrl = menuCtrl;
-        this.comunicacaoCentralProvider = comunicacaoCentralProvider;
+        this.modalCtrl = modalCtrl;
+        this.actionSheetCtrl = actionSheetCtrl;
         this.userProvider = userProvider;
-        this.veiculosProvider = veiculosProvider;
-        this.pagamentosProvider = pagamentosProvider;
-        this.pagarmeProvider = pagarmeProvider;
-        this.tempoEstacionadoProvider = tempoEstacionadoProvider;
+        this.estacionarProvider = estacionarProvider;
+        this.loadingCtrl = loadingCtrl;
         this.creditosProvider = creditosProvider;
-        this.cadsUserProvider = cadsUserProvider;
-        this.logger = logger;
         this.cadsProvider = cadsProvider;
-        this.cieloProvider = cieloProvider;
-        this.http = http;
-        this.clipboard = clipboard;
-        this.toastCtrl = toastCtrl;
-        this.payMethod = '';
-        __WEBPACK_IMPORTED_MODULE_26__app_app_component__["a" /* MyApp */].MAP_LOAD = false;
-        __WEBPACK_IMPORTED_MODULE_27__util_map_util__["a" /* MapUtil */].circles.pop();
-        this.comunicacaoCentralProvider.setDMA_NTP();
+        this.veiculosProvider = veiculosProvider;
+        this.tempoEstacionadoProvider = tempoEstacionadoProvider;
+        this.alertCtrl = alertCtrl;
+        this.setorProvider = setorProvider;
+        this.event = event;
+        this.showSpinner1 = true;
+        this.showSpinner2 = true;
+        this.time15min = 900000;
+        this.time60min = 3600000;
+        this.placa = '';
+        this.historico = "historico-estacionamentos";
+        this.listEstacionamentos = [];
+        this.listEstacionamentosView = [];
+        this.listCreditos = [];
+        this.listCreditosView = [];
+        this.listVeiculos = [];
+        this.cancelAttempt = false;
+        this.timer = 0;
+        this.timer_vetor = [];
+        this.qtdCads = 0;
+        this.valorTotal = 0;
+        this.cad = new __WEBPACK_IMPORTED_MODULE_5__models_cad__["a" /* CadModel */]();
+        this.itensPage = [];
+        this.offset = 10;
+        this.index = 0;
+        this.cores = [
+            '#000033',
+            '#000066',
+            '#000099',
+            '#0000CC',
+            '#0000FF',
+            '#003300',
+            '#003333',
+            '#003366',
+            '#003399',
+            '#0033CC',
+            '#0033FF',
+            ' #006600',
+            '#006633',
+            ' #006666',
+            '#006699',
+            '#0066CC',
+            '#0066FF',
+            ' #009900',
+            '#009933',
+            '#009966',
+            '#009999',
+            '#0099CC',
+            '#0099FF',
+            '#00CC00',
+            '#00CC33',
+            '#00CC66',
+            '#00CC99',
+            '#00CCCC',
+            '#00CCFF',
+            '#00FF00',
+            '#00FF33',
+            '#00FF66',
+            '#00FF99',
+            '#00FFCC',
+            '#00FFFF',
+            '#330000',
+            '#330033',
+            '#330066',
+            '#330099',
+            '#3300CC',
+            '#3300FF',
+            '#333300',
+            '#333333',
+            '#333366',
+            '#333399',
+            '#3333CC',
+            '#3333FF',
+            '#336600',
+            '#336633',
+            '#336666',
+            '#336699',
+            '#3366CC',
+            '#3366FF',
+            '#339900',
+            '#339933',
+            '#339966',
+            '#339999',
+            '#3399CC',
+            '#3399FF',
+            '#33CC00',
+            '#33CC33',
+            '#33CC66',
+            '#33CC99',
+            '#33CCCC',
+            '#33CCFF',
+            '#33FF00',
+            '#33FF33',
+            '#33FF66',
+            '#33FF99',
+            '#33FFCC',
+            '#33FFFF',
+            '#660000',
+            '#660033',
+            '#660066',
+            '#660099',
+            '#6600CC',
+            '#6600FF',
+            '#663300',
+            '#663333',
+            '#663366',
+            '#663399',
+            '#6633CC',
+            '#6633FF',
+            '#666600',
+            '#666633',
+            '#666666',
+            '#666699',
+            '#6666CC',
+            '#6666FF',
+            '#669900',
+            '#669933',
+            '#669966',
+            '#669999',
+            '#6699CC',
+            '#6699FF',
+            '#66CC00',
+            '#66CC33',
+            '#66CC66',
+            '#66CC99',
+            '#66CCCC',
+            '#66CCFF',
+            '#66FF00',
+            '#66FF33',
+            '#66FF66',
+            '#66FF99',
+            '#66FFCC',
+            '#66FFFF',
+            '#990000',
+            '#990033',
+            '#990066',
+            '#990099',
+            '#9900CC',
+            '#9900FF',
+            '#993300',
+            '#993333',
+            '#993366',
+            '#993399',
+            '#9933CC',
+            '#9933FF',
+            '#996600',
+            '#996633',
+            '#996666',
+            '#996699',
+            '#9966CC',
+            '#9966FF',
+            '#999900',
+            '#999933',
+            '#999966',
+            '#999999',
+            '#9999CC',
+            '#9999FF',
+            '#99CC00',
+            '#99CC33',
+            '#99CC66',
+            '#99CC99',
+            '#99CCCC',
+            '#99CCFF',
+            '#99FF00',
+            '#99FF33',
+            '#99FF66',
+            '#99FF99',
+            '#99FFCC',
+            '#99FFFF',
+            '#CC0000',
+            '#CC0033',
+            '#CC0066',
+            '#CC0099',
+            '#CC00CC',
+            '#CC00FF',
+            '#CC3300',
+            '#CC3333',
+            '#CC3366',
+            '#CC3399',
+            '#CC33CC',
+            '#CC33FF',
+            '#CC6600',
+            '#CC6633',
+            '#CC6666',
+            '#CC6699',
+            '#CC66CC',
+            '#CC66FF',
+            '#CC9900',
+            '#CC9933',
+            '#CC9966',
+            '#CC9999',
+            '#CC99CC',
+            '#CC99FF',
+            '#CCCC00',
+            '#CCCC33',
+            '#CCCC66',
+            '#CCCC99',
+            '#CCCCCC',
+            '#CCCCFF',
+            '#CCFF00',
+            '#CCFF33',
+            '#CCFF66',
+            '#CCFF99',
+            '#CCFFCC',
+            '#CCFFFF',
+            '#FF0000',
+            '#FF0033',
+            '#FF0066',
+            '#FF0099',
+            '#FF00CC',
+            '#FF00FF',
+            '#FF3300',
+            '#FF3333',
+            '#FF3366',
+            '#FF3399',
+            '#FF33CC',
+            '#FF33FF',
+            '#FF6600',
+            '#FF6633',
+            '#FF6666',
+            '#FF6699',
+            '#FF66CC',
+            '#FF66FF',
+            '#FF9900',
+            '#FF9933',
+            '#FF9966',
+            '#FF9999',
+            '#FF99CC',
+            '#FF99FF',
+            '#FFCC00',
+            '#FFCC33',
+            '#FFCC66',
+            '#FFCC99',
+            '#FFCCCC',
+            '#FFCCFF',
+            '#FFFF00',
+            '#FFFF33',
+            '#FFFF66',
+            '#FFFF99',
+            '#FFFFCC'
+        ];
+        __WEBPACK_IMPORTED_MODULE_13__app_app_component__["a" /* MyApp */].MAP_LOAD = false;
+        __WEBPACK_IMPORTED_MODULE_14__util_map_util__["a" /* MapUtil */].circles.pop();
+        var tab = this.navParams.get('tab');
+        if (tab) {
+            this.historico = tab;
+        }
     }
-    ComprarCreditosPagamentoPage.prototype.ionViewCanEnter = function () {
+    HistoricoPage.prototype.ionViewDidLoad = function () {
+        var _this = this;
+        this.horaRegistro = Date.now();
+        this.event.subscribe('cancel_list', function (value) {
+            if (value.length > 0) {
+                _this.cancelAttempt = true;
+            }
+            else {
+                _this.cancelAttempt = false;
+            }
+        });
+        this.event.subscribe('f_event', function (value) {
+            var aux = value;
+            _this.listEstacionamentosView = _this.listEstacionamentos;
+            Object.keys(value).map(function (key) {
+                if (value[key] == '') {
+                    delete aux[key];
+                }
+            });
+            var result = _this.listEstacionamentosView.filter(function (item) {
+                return (Object.keys(aux)).every(function (key) {
+                    if (key == 'qtdCads') {
+                        return item.qtd.toString() == aux[key];
+                    }
+                    else if (key == 'valor') {
+                        return item.comprovante.valor == aux[key];
+                    }
+                    return item.comprovante[key] == aux[key] || item[key] == aux[key];
+                });
+            });
+            if (Object.keys(aux).length == 0) {
+                _this.listEstacionamentosView = _this.listEstacionamentos;
+            }
+            else {
+                _this.listEstacionamentosView = result;
+            }
+        });
+        this.event.subscribe('pay_filter_event', function (value) {
+            var aux = value;
+            Object.keys(value).map(function (key) {
+                if (value[key] == '') {
+                    delete aux[key];
+                }
+            });
+            var result = _this.listCreditos.filter(function (item) {
+                var date = new Date(item.dataHoraRegistro).toDateString();
+                return (Object.keys(aux).every(function (key) {
+                    if (key == 'data') {
+                        return new Date(item.dataHoraRegistro).toDateString() == aux[key];
+                    }
+                    else if (key == 'qtdCads') {
+                        return (_this.getValor(item) / _this.cad.valor_unitario).toString() == aux[key];
+                    }
+                    return item[key] == aux[key];
+                }));
+            });
+            if (Object.keys(aux).length == 0) {
+                _this.listCreditosView = _this.listCreditos;
+            }
+            else {
+                _this.listCreditosView = result;
+            }
+        });
+    };
+    HistoricoPage.prototype.ionViewCanEnter = function () {
+        var _this = this;
         this.userProvider.getUserLocal().then(function (userID) {
             if (userID) {
+                _this.userProvider.byId(userID).subscribe(function (user) {
+                    _this.user = user;
+                    console.log('User', _this.user);
+                });
+                _this.veiculosProvider.findByUser(userID).subscribe(function (value) {
+                    _this.listVeiculos.push(value);
+                });
                 return true;
             }
         });
     };
-    ComprarCreditosPagamentoPage.prototype.ionViewDidEnter = function () {
+    HistoricoPage.prototype.defineMaxAndMinDate = function (data) {
+        this.minDate = data.getTime() - 1000 * 60 * 60 * 24 * 365;
+        this.maxDate = data.getTime();
+        this.today = new Date(this.maxDate - (data.getTimezoneOffset() * 3 * 60000)).toISOString().substring(0, 10);
+        this.limit = new Date(this.maxDate - 1000 * 60 * 60 * 24 * 4).toISOString().substring(0, 10);
+        this.minlimit = new Date(this.minDate - 1000 * 60 * 60 * 24 * 1).toISOString().substring(0, 10);
+    };
+    HistoricoPage.prototype.getEstacionamentosByPlaca = function () {
         var _this = this;
-        var loading = this.loadingCtrl.create({ content: 'Aguarde...' });
-        loading.present();
-        this.userProvider.getUserLocal().then(function (userID) {
-            if (userID) {
-                _this.userProvider.byId(userID).take(1).subscribe(function (user) {
-                    // loading.dismiss();
-                    _this.user = user;
-                    _this.list = _this.pagamentosProvider.findByUser(_this.user.id);
-                    _this.cadsProvider.find().take(1).subscribe(function (value) {
-                        value.map(function (item) { return _this.cad = new __WEBPACK_IMPORTED_MODULE_9__models_cad__["a" /* CadModel */](item.cad); });
-                    });
-                    if (_this.payMethod == 'ticket') {
-                        var payment = new __WEBPACK_IMPORTED_MODULE_11__models_cielo_boleto__["b" /* Payment */];
-                        payment.Amount = _this.price;
-                        payment.Provider = 'Simulado';
-                        var data = {
-                            MerchantOrderId: __WEBPACK_IMPORTED_MODULE_18__util_date_util__["a" /* DateUtil */].uniqueID(),
-                            Customer: {
-                                Name: _this.user.name,
-                                Identity: _this.user.cpf,
-                                Address: new __WEBPACK_IMPORTED_MODULE_11__models_cielo_boleto__["a" /* Address */]
-                            },
-                            Payment: payment,
-                        };
-                        _this.cieloProvider.resolver('ticket', data)
-                            .then(function (data) {
-                            loading.dismiss();
-                            _this.showBoletoOptions(data.Payment.BarCodeNumber, data.Payment.Url);
-                        })
-                            .catch(function (error) {
-                            _this.showAlert('Ops!', error, 'error', function () {
-                                loading.dismiss();
-                            });
-                        });
-                    }
-                    else {
-                        loading.dismiss();
-                    }
-                }, function (error) { return loading.dismiss(); });
-            }
-            else {
-                // loading.dismiss();
-            }
-        });
-        this.price = this.navParams.get('price');
-        this.cads = this.navParams.get('cads');
-        this.fromPage = this.navParams.get('fromPage');
-        this.payMethod = this.navParams.get('paymentMethod');
-        this.desconto = this.navParams.get('desconto');
-        this.descontoPercent = this.navParams.get('descontoPercent');
-        this.priceNormal = this.navParams.get('priceNormal');
-        if (this.fromPage == 'estacionar') {
-            this.area = this.navParams.get('area');
-            this.setor = this.navParams.get('setor');
-            this.qtdCads = this.navParams.get('qtdCads');
+        if (!this.placa || (this.placa && this.placa !== '')) {
+            this.listEstacionamentosView = this.listEstacionamentos.filter(function (_item) { return _item.comprovante.placa.includes(_this.placa.toUpperCase()); });
+        }
+        else {
+            this.listEstacionamentosView = this.listEstacionamentos;
         }
     };
-    ComprarCreditosPagamentoPage.prototype.ionViewWillLeave = function () {
+    HistoricoPage.prototype.getEstacionamentos = function (userID) {
+        var _this = this;
+        this.estacionarProvider.find(userID).take(1).subscribe(function (items) {
+            var dataConsulta = new Date(_this.today.split("-")[0], _this.today.split("-")[1] - 1, _this.today.split("-")[2]);
+            dataConsulta.setHours(23);
+            dataConsulta.setMinutes(0);
+            dataConsulta.setSeconds(0);
+            _this.defineMaxAndMinDate(dataConsulta);
+            _this.showSpinner1 = false;
+            _this.listEstacionamentos = items.map(function (item) {
+                _this.qtdCads += Number(item.estacionar.qtd);
+                if (item.estacionar.dataHoraRegistro > _this.minDate &&
+                    item.estacionar.dataHoraRegistro <= _this.maxDate) {
+                    return item.estacionar;
+                }
+            });
+            _this.valorTotal = _this.qtdCads * 2;
+            _this.qtdEstacionados = _this.listEstacionamentos.length;
+            _this.listEstacionamentosView = [];
+            (_a = _this.listEstacionamentosView).push.apply(_a, _this.listEstacionamentos);
+            console.log('Estacionamentos', _this.listEstacionamentosView);
+            var _a;
+        });
     };
-    ComprarCreditosPagamentoPage.prototype.getCartaoNumeroFormat = function (numero) {
+    HistoricoPage.prototype.ionViewDidEnter = function () {
+        var _this = this;
+        this.tempoEstacionadoProvider.getHoraAtualFromFirebase().then(function (data) {
+            _this.defineMaxAndMinDate(data.dateNow);
+        });
+        this.userProvider.getUserLocal().then(function (userID) {
+            console.log('userID', userID);
+            if (userID != null && _this.listEstacionamentosView.length == 0) {
+                _this.userLocal = userID;
+                _this.getEstacionamentos(_this.userLocal);
+                _this.creditosProvider.findByUser(userID).take(1).subscribe(function (items) {
+                    _this.showSpinner2 = false;
+                    _this.listCreditos = items.map(function (item) {
+                        if (_this.horaRegistro - item.values.dataHoraRegistro < 120000) {
+                            var tempo = void 0;
+                            _this.timer_vetor.push(_this.startTimer((_this.horaRegistro - item.values.dataHoraRegistro), tempo));
+                        }
+                        return item.values;
+                    });
+                    _this.listCreditosView = [];
+                    (_a = _this.listCreditosView).push.apply(_a, _this.listCreditos);
+                    _this.itensPage = _this.listEstacionamentosView.slice(_this.index, _this.offset + _this.index);
+                    _this.index += _this.offset;
+                    console.log('ItensPage', _this.itensPage);
+                    var _a;
+                });
+                _this.cadsProvider.find().take(1).subscribe(function (value) {
+                    value.map(function (item) {
+                        _this.cad = new __WEBPACK_IMPORTED_MODULE_5__models_cad__["a" /* CadModel */](item.cad);
+                    });
+                });
+            }
+        });
+    };
+    HistoricoPage.prototype.ionViewWillLeave = function () {
+        this.timer_vetor.map(function (item) {
+            item.unsubscribe();
+        });
+    };
+    HistoricoPage.prototype.segmentChanged = function (event) {
+        switch (event.value) {
+            case 'historico-estacionamentos':
+                this.historico = "historico-estacionamentos";
+                break;
+            case 'historico-creditos':
+                this.historico = "historico-creditos";
+                break;
+        }
+    };
+    HistoricoPage.prototype.getCartaoNumeroFormat = function (numero) {
         var quatro1 = '****'; //numero.substr(0,4);
         var quatro2 = '****'; //numero.substr(4,4);
         var quatro3 = '****'; //numero.substr(5,4);
         var quatro4 = numero.substr(12);
         return quatro1 + ' ' + quatro2 + ' ' + quatro3 + ' ' + quatro4;
     };
-    ComprarCreditosPagamentoPage.prototype.openSenhaSeguranca = function (key, pagamento) {
+    HistoricoPage.prototype.getPlaca = function (veiculoID) {
+        var placa = '';
+        this.listVeiculos.forEach(function (value) {
+            if (value[0].key === veiculoID) {
+                placa = value[0].veiculo.placa;
+            }
+        });
+        return placa;
+    };
+    HistoricoPage.prototype.openOpcoes = function (estacionar) {
         var _this = this;
-        var start = new Date().getTime();
-        var alerts = this.alertCtrl.create({
-            title: 'Digite os 3 números da parte de trás do seu cartão.',
-            inputs: [
-                {
-                    name: 'ccv',
-                    id: 'ccv',
-                    type: 'number'
-                },
-            ],
+        var opcoes = this.actionSheetCtrl.create({
+            title: 'Escolha uma opção...',
             buttons: [
                 {
-                    text: 'CANCELAR',
-                    cssClass: 'btn-cancelar'
-                },
-                {
-                    text: 'OK',
-                    cssClass: 'btn-ok',
-                    handler: function (data) {
-                        var dataOp = {
-                            MerchantOrderId: __WEBPACK_IMPORTED_MODULE_18__util_date_util__["a" /* DateUtil */].uniqueID(),
-                            Customer: {
-                                Name: _this.user.name
-                            },
-                            Payment: {
-                                Type: '',
-                                Amount: _this.price,
-                                Installments: 1,
-                                DebitCard: {},
-                                CreditCard: {},
-                                Provider: 'Simulado'
-                            }
-                        };
-                        pagamento.ccv = data.ccv;
-                        var now = new Date().getTime();
-                        var _qtd = __WEBPACK_IMPORTED_MODULE_18__util_date_util__["a" /* DateUtil */].uniqueID();
-                        var idTransacaoDistribuidor = _qtd;
-                        _this.logger.info('creditos_qtd: ' + _qtd);
-                        if (now - start > __WEBPACK_IMPORTED_MODULE_22__providers_comunicacao_central_comunicacao_central__["a" /* ComunicacaoCentralProvider */].APP_ESPERA) {
-                            _this.showAlert('Ops', "N\u00E3o foi poss\u00EDvel estacionar seu ve\u00EDculo. Seu tempo de espera durou mais de " + __WEBPACK_IMPORTED_MODULE_22__providers_comunicacao_central_comunicacao_central__["a" /* ComunicacaoCentralProvider */].APP_ESPERA / 1000 + " segundos. Fa\u00E7a o processo novamente.", '', function () { });
-                        }
-                        else {
-                            _this.tempoEstacionadoProvider.getHoraAtualFromFirebase().then(function (_data) {
-                                var loading = _this.loadingCtrl.create({ content: 'Aguarde...' });
-                                loading.present();
-                                if (__WEBPACK_IMPORTED_MODULE_21__environments_environment__["a" /* environment */].simular_l2) {
-                                    var now_1 = __WEBPACK_IMPORTED_MODULE_18__util_date_util__["a" /* DateUtil */].getCurrenteDateFormated();
-                                    var response = { dataProcessamento: now_1, autenticacao: '8903907809', sucesso: 'true' };
-                                    _this.logger.info('AMC - OK. Response: ' + JSON.stringify(response));
-                                    var dataProcessamentoStr = response['dataProcessamento'];
-                                    var dataProcessamento_1 = __WEBPACK_IMPORTED_MODULE_18__util_date_util__["a" /* DateUtil */].convertDate(dataProcessamentoStr);
-                                    var autenticacao_1 = response['autenticacao'];
-                                    _this.logger.info('dt: ' + dataProcessamento_1);
-                                    if (response['sucesso'] || response['sucesso'] === 'true') {
-                                        pagamento.id = key;
-                                        if (__WEBPACK_IMPORTED_MODULE_21__environments_environment__["a" /* environment */].cielo) {
-                                            _this.cieloProvider.resolver(_this.payMethod, dataOp, pagamento)
-                                                .then(function (data) {
-                                                if (data.Payment.Status === 1) {
-                                                    console.log(data);
-                                                    _this.saveCredito(pagamento, _this.price, _this.user.id, dataProcessamento_1, autenticacao_1, _this.priceNormal, _this.desconto, _this.descontoPercent, idTransacaoDistribuidor, 0);
-                                                    _this.saveCadsUser(_this.cads, _this.user.id, _this.cad.id);
-                                                    _this.goHome();
-                                                    loading.dismiss();
-                                                    // OK --- GOOD
-                                                }
-                                                else {
-                                                    var status_1 = __WEBPACK_IMPORTED_MODULE_21__environments_environment__["a" /* environment */].production ? __WEBPACK_IMPORTED_MODULE_20__environments_constants__["a" /* Constants */].CieloProductionCodes[data.Payment.ReturnCode] : __WEBPACK_IMPORTED_MODULE_20__environments_constants__["a" /* Constants */].CieloSandboxCodes[data.Payment.ReturnCode];
-                                                    _this.showAlert('Ops', status_1, 'error', function () {
-                                                        loading.dismiss();
-                                                    });
-                                                }
-                                                // alert(data);
-                                            }).catch(function (error) {
-                                                _this.showAlert('Ops!', JSON.stringify(error), 'error', function () {
-                                                    loading.dismiss();
-                                                });
-                                            });
-                                        }
-                                        else {
-                                            loading.dismiss();
-                                            _this.efetuarPagamento(pagamento, data.ccv, dataProcessamento_1, autenticacao_1, _this.priceNormal, _this.desconto, _this.descontoPercent, idTransacaoDistribuidor);
-                                        }
-                                    }
-                                    else {
-                                        loading.dismiss();
-                                        _this.showAlert("Ops", "Não foi possível estacionar seu veículo. Para mais informações entre em contato com nosso canal de atendimento.", "success", function () { });
-                                    }
-                                }
-                                else {
-                                    _this.verificaLinkL2(_this.cads, idTransacaoDistribuidor, _data.dateNow)
-                                        .then(function (response) {
-                                        _this.logger.info('AMC - OK. Response: ' + JSON.stringify(response));
-                                        var dataProcessamentoStr = response['dataProcessamento'];
-                                        var dataProcessamento = __WEBPACK_IMPORTED_MODULE_18__util_date_util__["a" /* DateUtil */].convertDate(dataProcessamentoStr);
-                                        var autenticacao = response['autenticacao'];
-                                        _this.logger.info('dt: ' + dataProcessamento);
-                                        if (response['sucesso'] || response['sucesso'] === 'true') {
-                                            pagamento.id = key;
-                                            if (__WEBPACK_IMPORTED_MODULE_21__environments_environment__["a" /* environment */].cielo) {
-                                                _this.cieloProvider.resolver(_this.payMethod, dataOp, pagamento)
-                                                    .then(function (data) {
-                                                    if (data.Payment.Status === 1) {
-                                                        console.log(data);
-                                                        _this.saveCredito(pagamento, _this.price, _this.user.id, dataProcessamento, autenticacao, _this.priceNormal, _this.desconto, _this.descontoPercent, idTransacaoDistribuidor, 0);
-                                                        _this.saveCadsUser(_this.cads, _this.user.id, _this.cad.id);
-                                                        _this.goHome();
-                                                        loading.dismiss();
-                                                        // OK --- GOOD
-                                                    }
-                                                    else {
-                                                        var status_2 = __WEBPACK_IMPORTED_MODULE_21__environments_environment__["a" /* environment */].production ? __WEBPACK_IMPORTED_MODULE_20__environments_constants__["a" /* Constants */].CieloProductionCodes[data.Payment.ReturnCode] : __WEBPACK_IMPORTED_MODULE_20__environments_constants__["a" /* Constants */].CieloSandboxCodes[data.Payment.ReturnCode];
-                                                        _this.showAlert('Ops', status_2, 'error', function () {
-                                                            loading.dismiss();
-                                                        });
-                                                    }
-                                                    // alert(data);
-                                                }).catch(function (error) {
-                                                    _this.showAlert('Ops', JSON.stringify(error), 'error', function () {
-                                                        loading.dismiss();
-                                                    });
-                                                });
-                                            }
-                                            else {
-                                                loading.dismiss();
-                                                _this.efetuarPagamento(pagamento, data.ccv, dataProcessamento, autenticacao, _this.priceNormal, _this.desconto, _this.descontoPercent, idTransacaoDistribuidor);
-                                            }
-                                        }
-                                        else {
-                                            loading.dismiss();
-                                            // this.showAlert('Ops', 'Não foi possível estacionar seu veículo. Para mais informações entre em contato com nosso canal de atendimento.', '', () => {}, () => {}, '','OK');
-                                            _this.showAlert("Ops", "Não foi possível estacionar seu veículo. Para mais informações entre em contato com nosso canal de atendimento.", "success", function () { });
-                                        }
-                                    }).catch(function (error) {
-                                        loading.dismiss();
-                                        _this.logger.info('AMC - ERROR. Response: ' + JSON.stringify(error));
-                                        _this.showAlert('Indisponível', 'Não foi possível estabelecer uma comunicação com o serviço da AMC. Para mais informações entre em contato com nosso canal de atendimento.', "info", function () {
-                                        });
-                                    });
-                                }
-                            });
-                        }
-                    }
+                    text: 'Ver Recibo',
+                    role: '',
+                    handler: function () { return _this.openComprovante(estacionar); }
+                }, {
+                    text: 'Ver Local Estacionado',
+                    role: '',
+                    handler: function () { return _this.openVeiculoEstacionado(estacionar); }
                 }
-            ],
-            cssClass: 'alert-custom'
+            ]
         });
-        alerts.present();
-        this.addImage();
+        opcoes.present();
     };
-    ComprarCreditosPagamentoPage.prototype.addImage = function () {
-        setTimeout(function () {
-            var alert = document.querySelector('div.alert-button-group');
-            var img = document.createElement("img");
-            img.src = "assets/imgs/ccv.png";
-            img.className = 'img-ccv';
-            alert.appendChild(img);
-        }, 100);
-    };
-    ComprarCreditosPagamentoPage.prototype.verificaLinkL2 = function (cads, idTransacaoDistribuidor, dataEnvio) {
-        return this.comunicacaoCentralProvider.desbloqueioApp(cads, idTransacaoDistribuidor, dataEnvio);
-    };
-    ComprarCreditosPagamentoPage.prototype.efetuarPagamento = function (pagamento, ccv, date, autenticacao, valorSemDesconto, desconto, descontoPercent, idTransacaoDistribuidor) {
+    HistoricoPage.prototype.openOpcoesCred = function (credito) {
         var _this = this;
-        var loading = this.loadingCtrl.create({ content: 'Aguarde...' });
-        loading.present();
-        pagamento.ccv = ccv;
-        this.user.cpf = pagamento.cpf;
-        var comprador = __WEBPACK_IMPORTED_MODULE_5__models_pagarme_user_pagarme__["a" /* UserPagarmeModel */].fromUserModel(this.user);
-        var venda = new __WEBPACK_IMPORTED_MODULE_6__models_pagarme_venda_pagarme__["a" /* VendaPagarmeModel */]();
-        venda.id = "1";
-        venda.name = "Compra de " + this.cads + " CADs";
-        venda.qtd = this.cads;
-        venda.price = this.price;
-        venda.date = this.transformingDate(date);
-        var card = __WEBPACK_IMPORTED_MODULE_7__models_pagarme_card_pagarme__["a" /* CardPagarmeModel */].fromCardModel(pagamento);
-        var comprovante = {
-            "from": "credito",
-            "email": this.user.email,
-            "numberAuth": "AUTENTICA\u00C7\u00C3O n\u00BA " + autenticacao,
-            "value": "CART\u00C3O: **** **** **** " + card.card_number.substr(-4) + " - VALOR: R$" + this.price + ",00",
-            "cads": "QUANTIDADE: " + this.cads + " CAD(s)",
-            "datehour": "HOR\u00C1RIO: " + new Date(date).toLocaleDateString('pt-BR') + " \u00E0s " + new Date(date).toLocaleTimeString('pt-BR'),
-            "formaPagamento": " FORMA DE PAGAMENTO: " + (card.card_number ? 'CARTÃO DE CRÉDITO' : 'DÉBITO')
-        };
-        this.pagarmeProvider.pagar(card, comprador, venda).then(function (value) {
-            if (value.status != 'refused') {
-                _this.http.get("https://us-central1-zonaazulfortaleza-prod.cloudfunctions.net/sendEmail?data=" + JSON.stringify(comprovante)).subscribe(function (data) { return console.log("sera?", data); });
-                _this.saveCredito(pagamento, _this.price, _this.user.id, date, autenticacao, valorSemDesconto, desconto, descontoPercent, idTransacaoDistribuidor, value.id);
-                _this.saveCadsUser(_this.cads, _this.user.id, _this.cad.id);
-                loading.dismiss();
-                _this.goHome();
-            }
-            else {
-                loading.dismiss();
-                _this.showAlert("Aviso!", "Código de segurança incorreto. Tente novamente.", "info", function () {
-                });
-            }
-        }).catch(function (_error) {
-            console.log(JSON.stringify(_error));
-            loading.dismiss();
-            _this.showAlert("Ops", _error, "error", function () {
-            });
+        var opcoes = this.actionSheetCtrl.create({
+            title: 'Escolha uma opção...',
+            buttons: [
+                {
+                    text: 'Cancelar Compra',
+                    role: '',
+                    handler: function () { return _this.cancelarTransacao(credito); }
+                }
+            ]
+        });
+        opcoes.present();
+    };
+    HistoricoPage.prototype.openVeiculoEstacionado = function (estacionar) {
+        var _this = this;
+        this.setorProvider.byId(estacionar.area_id, estacionar.setor_id).take(1).subscribe(function (value) {
+            _this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_15__environments_constants__["a" /* Constants */].VEICULO_ESTACIONADO_PAGE.name, { lat: value.latInicio, lng: value.lngInicio, estacionar: estacionar });
         });
     };
-    ComprarCreditosPagamentoPage.prototype.closeComprarCreditosPagamento = function () {
-        this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_20__environments_constants__["a" /* Constants */].CREDITOS_PAGE.name);
+    HistoricoPage.prototype.getValor = function (credito) {
+        if (!credito)
+            return 0;
+        return credito.valorSemDesconto ? credito.valorSemDesconto : credito.valor;
     };
-    ComprarCreditosPagamentoPage.prototype.loadImageCartao = function (numero) {
-        switch (numero.substring(0, 1)) {
-            case "4":
-                return "assets/imgs/visa.png";
-            case "5":
-                return "assets/imgs/mastercard.png";
-            default:
-                return "assets/imgs/creditcard.png";
-        }
+    HistoricoPage.prototype.openComprovante = function (estacionamento) {
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_15__environments_constants__["a" /* Constants */].COMPROVANTE_PAGE.name, {
+            estacionar: estacionamento,
+            forceDownload: false,
+            from: 'historico',
+            user: this.user
+        }).then(function () {
+            //this.showSpinner1 = false
+        });
     };
-    ComprarCreditosPagamentoPage.prototype.openPage = function (event, item) {
-        if (item === void 0) { item = undefined; }
-        event.preventDefault();
-        this.navCtrl.push('PagamentosFormPage', { 'item': item, 'userId': this.user.id });
-    };
-    ComprarCreditosPagamentoPage.prototype.saveCredito = function (pagamento, valor, userID, date, autenticacao, valorSemDesconto, desconto, descontoPercent, idTransacaoDistribuidor, idCompra) {
-        var credito = new __WEBPACK_IMPORTED_MODULE_8__models_credito__["a" /* CreditoModel */]();
-        credito.id = __WEBPACK_IMPORTED_MODULE_18__util_date_util__["a" /* DateUtil */].formatDateForID(date);
-        credito.pagamento_id = pagamento.id;
-        credito.valor = valor;
-        credito.valorSemDesconto = valorSemDesconto;
-        credito.desconto = desconto;
-        credito.descontoPercent = descontoPercent;
-        credito.numero = pagamento.numero;
-        credito.status = 'Aquisição';
-        credito.autenticacao = autenticacao;
-        credito.idTransacao = idTransacaoDistribuidor;
-        credito.idCompra = idCompra;
-        this.creditosProvider.save(userID, credito);
-    };
-    ComprarCreditosPagamentoPage.prototype.saveCadsUser = function (qtdCads, userID, cadID) {
-        var cadUser = new __WEBPACK_IMPORTED_MODULE_10__models_cad_user__["a" /* CadUserModel */]();
-        cadUser.qtdCads = qtdCads;
-        this.cadsUserProvider.save(userID, cadID, cadUser);
-    };
-    ComprarCreditosPagamentoPage.prototype.transformingDate = function (date) {
-        var day;
-        var month;
-        if (date.getMonth() < 9) {
-            month = "0" + (date.getMonth() + 1);
-        }
-        else {
-            month = "" + (date.getMonth() + 1);
-        }
-        if (date.getDate() < 10) {
-            day = "0" + date.getDate();
-        }
-        else {
-            day = date.getDate();
-        }
-        return date.getFullYear() + "-" + month + "-" + day;
-    };
-    ComprarCreditosPagamentoPage.prototype.showAlert = function (title, msg, type, callback) {
+    HistoricoPage.prototype.showAlertHelp = function (title, msg, type, callback) {
         var alert = this.alertCtrl.create({
             title: title,
             message: msg,
@@ -1847,277 +2056,242 @@ var ComprarCreditosPagamentoPage = /** @class */ (function () {
         });
         alert.present();
     };
-    ComprarCreditosPagamentoPage.prototype.showBoletoOptions = function (number, url) {
+    HistoricoPage.prototype.startTimer = function (credito, tempo) {
         var _this = this;
-        var alert = this.alertCtrl.create({
-            title: 'Boleto gerado com sucesso!',
-            message: number,
-            cssClass: 'default',
-            buttons: [
-                {
-                    text: 'Copiar',
-                    cssClass: 'btn-ok',
-                    handler: function (data) {
-                        _this.clipboard.copy(number);
-                        _this.showToast('Código de barras copiado para área de transferência');
-                    }
-                },
-                {
-                    text: 'Ver Boleto',
-                    cssClass: 'btn-ok',
-                    handler: function (data) {
-                        window.open(url, '_system');
-                    }
-                }
-            ]
+        return tempo = __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__["Observable"].interval(1000).subscribe(function (x) {
+            if ((credito + (x * 1000)) > _this.time15min) {
+                _this.horaRegistro = Date.now();
+                tempo.unsubscribe();
+            }
+            else {
+            }
         });
-        alert.present();
     };
-    ComprarCreditosPagamentoPage.prototype.showToast = function (msg) {
-        var toast = this.toastCtrl.create({
-            message: msg,
-            duration: 5000,
-            position: 'bottom'
-        });
-        toast.present();
+    HistoricoPage.prototype.openHelp = function () {
+        this.historico == 'historico-creditos' ? this.showAlertHelp('Ajuda', 'Histórico de compras de CADs efetuados, especificando forma de pagamento, data de cada compra e a quantidade de CADs comprado!', '', function () { }) :
+            this.showAlertHelp('Ajuda', 'Histórico dos estacionamentos efetuados e quantidades de CADs utilizado em cada estacionamento.', '', function () { });
     };
-    ComprarCreditosPagamentoPage.prototype.goHome = function () {
+    HistoricoPage.prototype.openModal = function () {
+        this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_15__environments_constants__["a" /* Constants */].FILTER_MODAL_PAGE.name, { data: { today: this.today, min: this.minlimit, max: this.limit } }).present();
+    };
+    HistoricoPage.prototype.openFilterModal = function () {
+        this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_15__environments_constants__["a" /* Constants */].FILTER_PAGAMENTO_PAGE.name, { data: { today: this.today, min: this.minlimit, max: this.limit } }).present();
+    };
+    HistoricoPage.prototype.limparFiltro = function () {
+        this.listEstacionamentosView = this.listEstacionamentos;
+    };
+    HistoricoPage.prototype.limparFiltroPagamento = function () {
+        this.listCreditosView = this.listCreditos;
+    };
+    HistoricoPage.prototype.cancelarTransacao = function (credito) {
         var _this = this;
-        if (this.fromPage == 'estacionar') {
-            this.veiculosProvider.findByUser(this.user.id).take(1).subscribe(function (_item) {
-                if (_item.length > 0) {
-                    _this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_20__environments_constants__["a" /* Constants */].ESTACIONAR_PAGE.name, {
-                        setor: _this.setor,
-                        area: _this.area,
-                        cad: _this.cad,
-                        qtdCads: _this.qtdCads
-                    });
-                }
-                else {
-                    _this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_20__environments_constants__["a" /* Constants */].VEICULOS_FORM_PAGE.name, {
-                        withMenu: true,
-                        userId: _this.user.id,
-                        fromPage: 'estacionar',
-                        area: _this.area,
-                        setor: _this.setor,
-                        cad: _this.cad,
-                        qtdCads: _this.qtdCads
-                    });
-                }
-            });
+        if (this.user.profile == 'revendedor') {
+            this.showAlertHelp("Atenção", "Para realizar o cancelamento o PDV deve entrar em contato conosco por meio dos nossos canais de atendimento", '', function () { });
         }
         else {
-            this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_20__environments_constants__["a" /* Constants */].HISTORICO_PAGE.name, { tab: 'historico-creditos' }).then(function () {
-                _this.showAlert("Sucesso!", "Transação realizada com sucesso!", "success", function () {
-                    _this.viewCtrl.dismiss();
-                });
-            });
-        }
-        this.menuCtrl.close();
-    };
-    ComprarCreditosPagamentoPage.prototype.excluir = function (event, cartaoId) {
-        var _this = this;
-        event.stopPropagation();
-        this.onConfirm(function () {
-            _this.pagamentosProvider.remove(_this.user.id, cartaoId);
-        });
-    };
-    ComprarCreditosPagamentoPage.prototype.onConfirm = function (success) {
-        this.alertCtrl.create({
-            message: 'Tem certeza que deseja remover este cartão?',
-            cssClass: '',
-            buttons: [
-                {
-                    text: 'Sim',
-                    cssClass: 'btn-ok',
-                    handler: function () {
-                        success();
+            var cancel_list = this.listCreditosView.filter(function (item) {
+                if (item.status == 'cancelado') {
+                    _this.timer = Date.now();
+                    if (_this.timer - new Date(item.dadoCancelamento.dataHoraRegistro).getTime() < _this.time60min) {
+                        return new Date(item.dadoCancelamento.dataHoraRegistro).getTime();
                     }
-                },
-                {
-                    text: 'Não',
-                    cssClass: 'btn btn-cancel',
                 }
-            ]
-        }).present();
+            });
+            this.event.publish('cancel_list', cancel_list);
+            if (this.cancelAttempt) {
+                var update_timer = Math.trunc((this.timer - new Date(cancel_list[0].dadoCancelamento.dataHoraRegistro).getTime()) / (1000 * 60));
+                if (update_timer >= 59) {
+                    this.showAlertHelp("Atenção", "Uma solicitação de cancelamento ja foi realizada,Tente novamente em " + (60 - update_timer) + ' minuto', '', function () { });
+                }
+                else {
+                    this.showAlertHelp("Atenção", "Uma solicitação de cancelamento ja foi realizada,Tente novamente em " + (60 - update_timer) + ' minutos', '', function () { });
+                }
+            }
+            else {
+                this.showAlertHelp("Atenção", "Ao realizar solicitação de cancelamento, só poderá realizar outra após 1 hora", '', function () {
+                    _this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_15__environments_constants__["a" /* Constants */].CANCELAR_TRANSACAO_PAGE.name, { credito: JSON.stringify(credito), cad: _this.cad });
+                });
+            }
+        }
     };
-    ComprarCreditosPagamentoPage = __decorate([
+    HistoricoPage.prototype.loadData = function (event) {
+        var _this = this;
+        setTimeout(function () {
+            var news = _this.listEstacionamentosView.slice(_this.index, _this.offset + _this.index);
+            _this.index += _this.offset;
+            for (var i = 0; i < news.length; i++) {
+                _this.itensPage.push(news[i]);
+            }
+            event.complete();
+            if (_this.itensPage.length === _this.listEstacionamentosView.length) {
+                event.disabled = true;
+            }
+            console.log(_this.listEstacionamentosView);
+        }, 1200);
+    };
+    HistoricoPage.prototype.picColor = function () {
+        return this.cores[0];
+    };
+    HistoricoPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-comprar-creditos-pagamento',template:/*ion-inline-start:"/Users/desenvolvedor/Documents/appzonzazul/src/pages/comprar-creditos-pagamento/comprar-creditos-pagamento.html"*/'<ion-header no-border>\n    <ion-navbar color="header">\n        <ion-buttons left>\n            <button ion-button icon-only (click)="closeComprarCreditosPagamento()">\n                <span color="light" class="header-text" showWhen="ios">Fechar</span>\n                <ion-icon name="md-arrow-back" class="header-icon" showWhen="android,windows"></ion-icon>\n            </button>\n        </ion-buttons>\n        <ion-title>\n            <ion-label>Pagamentos</ion-label>\n        </ion-title>\n    </ion-navbar>\n</ion-header>\n\n<ion-content padding class="content">\n    <button ion-button (click)="openPage($event)" class="btn" block>+ Adicionar Cartão</button>\n\n    <ion-list>\n        <ion-item detail-none *ngFor="let pagamento of list | async"\n            (click)="openSenhaSeguranca(pagamento?.key, pagamento?.values)" class="route-item">\n            <ion-thumbnail item-start class="thumbnail-icon">\n                <img src="{{loadImageCartao(pagamento?.values?.numero)}}" />\n            </ion-thumbnail>\n            <h2 class="information-date">{{getCartaoNumeroFormat(pagamento?.values?.numero)}}</h2>\n            <p class="information-hour">{{pagamento?.values?.data | date: \'MM/yyyy\'}} </p>\n            <button ion-button color="grey" outline item-end (click)="excluir($event,pagamento?.key)">Excluir</button>\n        </ion-item>\n    </ion-list>\n</ion-content>'/*ion-inline-end:"/Users/desenvolvedor/Documents/appzonzazul/src/pages/comprar-creditos-pagamento/comprar-creditos-pagamento.html"*/,
+            selector: 'page-historico',template:/*ion-inline-start:"/Users/desenvolvedor/Documents/zonaazulfortaleza-develop/src/pages/historico/historico.html"*/'<ion-header no-border>\n    <ion-navbar color="header" no-margin no-padding>\n        <button ion-button icon-only menuToggle>\n            <ion-icon class="header-icon" name="menu"></ion-icon>\n        </button>\n\n        <ion-title class="header-title">Histórico</ion-title>\n\n        <ion-buttons end>\n            <button ion-button icon-only (click)="openHelp()">\n                <ion-icon name="help-circle" class="header-icon"></ion-icon>\n            </button>\n        </ion-buttons>\n\n    </ion-navbar>\n    <ion-toolbar no-padding mode="ios">\n        <ion-segment no-padding no-lines no-border class="segments" [(ngModel)]="historico" mode="ios">\n            <ion-segment-button value="historico-estacionamentos" (ionSelect)="segmentChanged($event)">\n                <ion-label style="color: #333">Estacionamento</ion-label>\n            </ion-segment-button>\n            <ion-segment-button value="historico-creditos" (ionSelect)="segmentChanged($event)">\n                <ion-label style="color: #333">Pagamento</ion-label>\n            </ion-segment-button>\n        </ion-segment>\n    </ion-toolbar>\n</ion-header>\n\n<ion-content padding class="content">\n    <ion-grid class="grid-historico-estacionamento"\n        [style.display]="historico == \'historico-estacionamentos\' ? \'block\' : \'none\'">\n        <loading-spinner *ngIf="showSpinner1"></loading-spinner>\n\n        <div *ngIf="!showSpinner1 && listEstacionamentos.length > 0">\n            <ion-item no-lines class="sum">\n\n                <p>CADS usados - {{ qtdCads }}</p>\n                <p>Valor Total - R$ {{valorTotal | number:\'1.2-2\' | replace:\'.\':\',\'}}</p>\n            </ion-item>\n\n            <ion-item no-lines class="placa-item">\n                <button ion-button (click)="openModal()" class="btn" style="height:35px;" block> Filtros </button>\n            </ion-item>\n        \n        <ion-row  *ngFor="let estacionamento of itensPage" [hidden]="estacionamento === false"\n                class="row" style="border-left: 6px solid #cccccc">\n                <div class="item-info">\n                    <button ion-button icon-only clear class="btn-options" (click)="openOpcoes(estacionamento)"><ion-icon name="ios-more"></ion-icon></button>\n                    <p>Placa: {{estacionamento?.comprovante?.placa}}</p>\n                    <p>CADs Usados: {{estacionamento?.qtd}}</p>\n                    <p>Tempo de {{estacionamento?.qtd}} CAD: {{estacionamento?.tempoComprado/60}} Hora(s)</p>\n                    <p>Valor: <span class="price-text"> R${{estacionamento?.comprovante?.valor}},00</span></p>\n                    <p>Data/Hora da ativação: {{estacionamento?.comprovante?.data+\' \'+  estacionamento?.comprovante?.horario}}</p>\n                    <p>Registro AMC: {{estacionamento?.comprovante?.numberAuth}}</p>\n                    <ion-badge class="status" item-end\n                        [style.background]="estacionamento?.situacao == \'Ativação\' ? \'#4cda64\' : \'#0690ce\'">\n                        {{estacionamento?.situacao}}</ion-badge>\n                </div>\n                <!--<ion-col col-7 class="col-info" >\n                    <h2 class="placa">{{estacionamento?.comprovante.placa}}</h2>\n                    <h6 class="data">{{estacionamento?.dataHoraRegistro | date: "dd/MM/yyyy \'às\' HH:mm"}}</h6>\n                    <h2 class="data">AMC: {{estacionamento?.comprovante.numberAuth}}</h2>\n                    <h4 class="cidade">{{estacionamento?.cidade}}</h4>\n                </ion-col>\n                <ion-col col-4 class="col-status">\n                    <ion-badge class="status" item-end\n                        [style.background]="estacionamento?.situacao == \'Ativação\' ? \'#4cda64\' : \'#0690ce\'">\n                        {{estacionamento?.situacao}}</ion-badge>\n                </ion-col>\n                <ion-col col-1></ion-col>\n\n                <ion-col col-12 class="line"></ion-col>\n                <ion-col col-9 class="col-rodape">\n                    <ion-label *ngIf="estacionamento?.qtd == 1" class="cads">{{estacionamento?.qtd}} CAD,\n                        {{estacionamento?.tempoComprado}} Minutos</ion-label>\n                    <ion-label *ngIf="estacionamento?.qtd > 1" class="cads">{{estacionamento?.qtd}} CADs,\n                        {{estacionamento?.tempoComprado}} Minutos</ion-label>\n                    <ion-label class="cads">R$\n                        {{(estacionamento?.comprovante.valor) | number:\'1.2-2\' | replace:\'.\':\',\'}}</ion-label>\n                </ion-col>\n\n                <ion-col col-3 class="col-rodape col-rodape-btn">\n                    <button ion-button small block class="recibo" (click)="openOpcoes(estacionamento)">Opções</button>\n                </ion-col> -->\n\n            </ion-row>\n            <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">\n                <ion-infinite-scroll-content\n                  loadingSpinner="bubbles"\n                  loadingText="Buscando itens...">\n                </ion-infinite-scroll-content>\n              </ion-infinite-scroll>\n\n            <ion-item no-lines class="placa-item"\n                *ngIf="this.listEstacionamentosView.length !== this.listEstacionamentos.length ">\n                <button ion-button (click)="limparFiltro()" style="height:35px;" block> Remover Filtro </button>\n            </ion-item>\n\n        </div>\n    </ion-grid>\n    <ion-grid [style.display]="historico == \'historico-estacionamentos\' ? \'block\' : \'none\'">\n        <div *ngIf="!showSpinner1 && (listEstacionamentos.length == 0 || !listEstacionamentos[0])">\n            <ion-row class="row-message">\n                <ion-col col-12 class="col-message">\n                    <ion-item no-lines class="item-message">\n                        <h2 class="message">Você não possui histórico de estacionamentos</h2>\n                    </ion-item>\n                </ion-col>\n            </ion-row>\n        </div>\n    </ion-grid>\n    <ion-grid [style.display]="historico == \'historico-creditos\' ? \'block\' : \'none\'" class="grid-historico-creditos">\n        <loading-spinner *ngIf="showSpinner2"></loading-spinner>\n\n        <div *ngIf="!showSpinner2 && listCreditos.length > 0">\n            <ion-item no-lines class="placa-item">\n                <button ion-button (click)="openFilterModal()" class="btn-cred" style="height:35px;" block> Filtros </button>\n            </ion-item>\n            <ion-row class="row" style=" border-left: 6px solid #27AE60" *ngFor="let credito of listCreditosView">\n                <div class="item-info">\n                    <button ion-button icon-only clear class="btn-options" *ngIf="(horaRegistro - credito.dataHoraRegistro < 900000) && (credito.status !== \'cancelado\')" (click)="openOpcoesCred(credito)"><ion-icon name="ios-more"></ion-icon></button>\n                    <p>Forma de Pagamento: <b>{{credito.numero.length > 0? \'Cartão de Crédito\': \'Boleto\'}}</b></p>\n                    <p *ngIf="credito.numero.length > 0">Numero Cartão: {{getCartaoNumeroFormat(credito.numero)}}</p>\n                    <p>CADs Comprados: {{getValor(credito) / cad?.valor_unitario}} CAD(s)</p>\n                    <p >Valor: <span class="desconto"\n                        *ngIf="(credito?.valorSemDesconto > 0) && (credito?.valorSemDesconto !== credito?.valor)">R$\n                        {{credito?.valorSemDesconto | number:\'1.2-2\' | replace:\'.\':\',\'}}</span>R$\n                    {{credito?.valor | number:\'1.2-2\' | replace:\'.\':\',\'}}</p>\n                    <p>Data/Hora da ativação: {{credito?.dataHoraRegistro | date: "dd/MM/yyyy \'às\' HH:mm"}}</p>\n                    <ion-badge class="status" item-end\n                        [style.background]="credito?.status == \'cancelado\' ? \'red\' : \'#4cda64\'">{{credito?.status}}\n                    </ion-badge>\n                </div>\n                <!--<ion-col col-6 class="col-info">\n                    <h2 class="numero-cartao" *ngIf="credito.numero.length > 0">\n                        {{getCartaoNumeroFormat(credito.numero)}}</h2>\n                    <h4 class="tipo-cartao" *ngIf="credito.numero.length > 0">Cartão de Crédito</h4>\n                    <h4 class="tipo-cartao" *ngIf="!(credito.numero.length > 0)">Boleto</h4>\n                    <h6 class="data">{{credito?.dataHoraRegistro | date: "dd/MM/yyyy \'às\' HH:mm"}}</h6>\n                </ion-col>\n                <ion-col col-5 class="col-status">\n                    <ion-badge class="status" item-end\n                        [style.background]="credito?.status == \'cancelado\' ? \'red\' : \'#4cda64\'">{{credito?.status}}\n                    </ion-badge>\n                </ion-col>\n                <ion-col col-1></ion-col>\n                <ion-col col-12 class="col-rodape">\n                    <ion-label *ngIf="getValor(credito) / cad?.valor_unitario == 1" class="cads">\n                        {{getValor(credito) / cad?.valor_unitario}} CAD</ion-label>\n                    <ion-label *ngIf="getValor(credito) / cad?.valor_unitario > 1" class="cads">\n                        {{getValor(credito) / cad?.valor_unitario}} CADs</ion-label>\n                    <ion-label class="price"><span class="desconto"\n                            *ngIf="(credito?.valorSemDesconto > 0) && (credito?.valorSemDesconto !== credito?.valor)">R$\n                            {{credito?.valorSemDesconto | number:\'1.2-2\' | replace:\'.\':\',\'}}</span>R$\n                        {{credito?.valor | number:\'1.2-2\' | replace:\'.\':\',\'}}</ion-label>\n                </ion-col>\n                <ion-col col-12 class="line"></ion-col>\n                <ion-col col-12>\n                    <ion-item class=\'placa-item\' no-padding no-lines>\n                        <button small clear ion-button style="height: 35px;"\n                            *ngIf="(horaRegistro - credito.dataHoraRegistro < 900000) && (credito.status !== \'cancelado\')"\n                            (click)=\'cancelarTransacao(credito)\' class="btn-cancel">\n                            <ion-icon style="margin-right: 5px;" name="ios-close-circle-outline"></ion-icon>\n                            Cancelar\n                        </button>\n                    </ion-item>\n                </ion-col> -->\n            </ion-row>\n            <ion-item no-lines class="placa-item" *ngIf="this.listCreditosView.length !== this.listCreditos.length ">\n\n                <button ion-button (click)="limparFiltroPagamento()" style="height:35px;" block> Remover Filtro\n                </button>\n            </ion-item>\n        </div>\n\n    </ion-grid>\n\n    <ion-grid [style.display]="historico == \'historico-creditos\' ? \'block\' : \'none\'">\n        <div *ngIf="!showSpinner2 && listCreditos.length == 0">\n            <ion-row class="row-message">\n                <ion-col col-12 class="col-message">\n                    <ion-item no-lines class="item-message">\n                        <h2 class="message">Você não possui histórico de créditos</h2>\n                    </ion-item>\n                </ion-col>\n            </ion-row>\n        </div>\n    </ion-grid>\n</ion-content>'/*ion-inline-end:"/Users/desenvolvedor/Documents/zonaazulfortaleza-develop/src/pages/historico/historico.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* ViewController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ModalController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* ActionSheetController */],
+            __WEBPACK_IMPORTED_MODULE_7__providers_user_user__["a" /* UserProvider */],
+            __WEBPACK_IMPORTED_MODULE_9__providers_estacionar_estacionar__["a" /* EstacionarProvider */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* LoadingController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* MenuController */],
-            __WEBPACK_IMPORTED_MODULE_22__providers_comunicacao_central_comunicacao_central__["a" /* ComunicacaoCentralProvider */],
-            __WEBPACK_IMPORTED_MODULE_13__providers_user_user__["a" /* UserProvider */],
-            __WEBPACK_IMPORTED_MODULE_14__providers_veiculos_veiculos__["a" /* VeiculosProvider */],
-            __WEBPACK_IMPORTED_MODULE_12__providers_pagamentos_pagamentos__["a" /* PagamentosProvider */],
-            __WEBPACK_IMPORTED_MODULE_15__providers_pagarme_pagarme__["a" /* PagarmeProvider */],
-            __WEBPACK_IMPORTED_MODULE_23__providers_tempo_estacionado_tempo_estacionado__["a" /* TempoEstacionadoProvider */],
-            __WEBPACK_IMPORTED_MODULE_16__providers_creditos_creditos__["a" /* CreditosProvider */],
-            __WEBPACK_IMPORTED_MODULE_17__providers_cads_user_cads_user__["a" /* CadsUserProvider */],
-            __WEBPACK_IMPORTED_MODULE_24__providers_logger_logger__["a" /* LoggerProvider */],
-            __WEBPACK_IMPORTED_MODULE_19__providers_cads_cads__["a" /* CadsProvider */],
-            __WEBPACK_IMPORTED_MODULE_25__providers_cielo_cielo__["a" /* CieloProvider */],
-            __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */],
-            __WEBPACK_IMPORTED_MODULE_3__ionic_native_clipboard__["a" /* Clipboard */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* ToastController */]])
-    ], ComprarCreditosPagamentoPage);
-    return ComprarCreditosPagamentoPage;
+            __WEBPACK_IMPORTED_MODULE_8__providers_creditos_creditos__["a" /* CreditosProvider */],
+            __WEBPACK_IMPORTED_MODULE_6__providers_cads_cads__["a" /* CadsProvider */],
+            __WEBPACK_IMPORTED_MODULE_10__providers_veiculos_veiculos__["a" /* VeiculosProvider */],
+            __WEBPACK_IMPORTED_MODULE_12__providers_tempo_estacionado_tempo_estacionado__["a" /* TempoEstacionadoProvider */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */],
+            __WEBPACK_IMPORTED_MODULE_11__providers_setores_setores__["a" /* SetoresProvider */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* Events */]])
+    ], HistoricoPage);
+    return HistoricoPage;
 }());
 
-//# sourceMappingURL=comprar-creditos-pagamento.js.map
+//# sourceMappingURL=historico.js.map
 
 /***/ }),
 
-/***/ 847:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ 806:
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UserPagarmeModel; });
-var UserPagarmeModel = /** @class */ (function () {
-    function UserPagarmeModel() {
-    }
-    UserPagarmeModel.getPhone = function (phone) {
-        return phone.startsWith('+55') ? phone : ('+55' + phone);
-    };
-    UserPagarmeModel.fromUserModel = function (user) {
-        var comprador = new UserPagarmeModel();
-        comprador.id = user.id;
-        comprador.name = user.name;
-        comprador.email = user.email;
-        comprador.phone = user.phone ? UserPagarmeModel.getPhone(user.phone) : "";
-        comprador.cpf = user.cpf;
-        return comprador;
-    };
-    return UserPagarmeModel;
-}());
 
-//# sourceMappingURL=user-pagarme.js.map
+var Observable_1 = __webpack_require__(4);
+var timer_1 = __webpack_require__(807);
+Observable_1.Observable.timer = timer_1.timer;
+//# sourceMappingURL=timer.js.map
 
 /***/ }),
 
-/***/ 848:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ 807:
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return VendaPagarmeModel; });
-var VendaPagarmeModel = /** @class */ (function () {
-    function VendaPagarmeModel() {
-        this.qtd = 1;
-        this.category = '';
-        this.date = '';
-    }
-    VendaPagarmeModel.validateCardNumber = function (card_number) {
-        var regex = new RegExp("^[0-9]{16}$");
-        if (!regex.test(card_number))
-            return false;
-        return this.luhnCheck(card_number);
-    };
-    /**
-     * Luhn algorithm in JavaScript: validate credit card number supplied as string of numbers
-     * @author ShirtlessKirk. Copyright (c) 2012.
-     * @license WTFPL (http://www.wtfpl.net/txt/copying)
-     */
-    VendaPagarmeModel.luhnCheck = function (val) {
-        var sum = 0;
-        for (var i = 0; i < val.length; i++) {
-            var intVal = parseInt(val.substr(i, 1));
-            if (i % 2 == 0) {
-                intVal *= 2;
-                if (intVal > 9) {
-                    intVal = 1 + (intVal % 10);
-                }
-            }
-            sum += intVal;
+
+var TimerObservable_1 = __webpack_require__(808);
+exports.timer = TimerObservable_1.TimerObservable.create;
+//# sourceMappingURL=timer.js.map
+
+/***/ }),
+
+/***/ 808:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
+var isNumeric_1 = __webpack_require__(774);
+var Observable_1 = __webpack_require__(4);
+var async_1 = __webpack_require__(58);
+var isScheduler_1 = __webpack_require__(208);
+var isDate_1 = __webpack_require__(114);
+/**
+ * We need this JSDoc comment for affecting ESDoc.
+ * @extends {Ignored}
+ * @hide true
+ */
+var TimerObservable = (function (_super) {
+    __extends(TimerObservable, _super);
+    function TimerObservable(dueTime, period, scheduler) {
+        if (dueTime === void 0) { dueTime = 0; }
+        _super.call(this);
+        this.period = -1;
+        this.dueTime = 0;
+        if (isNumeric_1.isNumeric(period)) {
+            this.period = Number(period) < 1 && 1 || Number(period);
         }
-        return (sum % 10) === 0;
+        else if (isScheduler_1.isScheduler(period)) {
+            scheduler = period;
+        }
+        if (!isScheduler_1.isScheduler(scheduler)) {
+            scheduler = async_1.async;
+        }
+        this.scheduler = scheduler;
+        this.dueTime = isDate_1.isDate(dueTime) ?
+            (+dueTime - this.scheduler.now()) :
+            dueTime;
+    }
+    /**
+     * Creates an Observable that starts emitting after an `initialDelay` and
+     * emits ever increasing numbers after each `period` of time thereafter.
+     *
+     * <span class="informal">Its like {@link interval}, but you can specify when
+     * should the emissions start.</span>
+     *
+     * <img src="./img/timer.png" width="100%">
+     *
+     * `timer` returns an Observable that emits an infinite sequence of ascending
+     * integers, with a constant interval of time, `period` of your choosing
+     * between those emissions. The first emission happens after the specified
+     * `initialDelay`. The initial delay may be a {@link Date}. By default, this
+     * operator uses the `async` IScheduler to provide a notion of time, but you
+     * may pass any IScheduler to it. If `period` is not specified, the output
+     * Observable emits only one value, `0`. Otherwise, it emits an infinite
+     * sequence.
+     *
+     * @example <caption>Emits ascending numbers, one every second (1000ms), starting after 3 seconds</caption>
+     * var numbers = Rx.Observable.timer(3000, 1000);
+     * numbers.subscribe(x => console.log(x));
+     *
+     * @example <caption>Emits one number after five seconds</caption>
+     * var numbers = Rx.Observable.timer(5000);
+     * numbers.subscribe(x => console.log(x));
+     *
+     * @see {@link interval}
+     * @see {@link delay}
+     *
+     * @param {number|Date} initialDelay The initial delay time to wait before
+     * emitting the first value of `0`.
+     * @param {number} [period] The period of time between emissions of the
+     * subsequent numbers.
+     * @param {Scheduler} [scheduler=async] The IScheduler to use for scheduling
+     * the emission of values, and providing a notion of "time".
+     * @return {Observable} An Observable that emits a `0` after the
+     * `initialDelay` and ever increasing numbers after each `period` of time
+     * thereafter.
+     * @static true
+     * @name timer
+     * @owner Observable
+     */
+    TimerObservable.create = function (initialDelay, period, scheduler) {
+        if (initialDelay === void 0) { initialDelay = 0; }
+        return new TimerObservable(initialDelay, period, scheduler);
     };
-    return VendaPagarmeModel;
-}());
-
-//# sourceMappingURL=venda-pagarme.js.map
-
-/***/ }),
-
-/***/ 849:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CardPagarmeModel; });
-var CardPagarmeModel = /** @class */ (function () {
-    function CardPagarmeModel() {
-    }
-    CardPagarmeModel.fromCardModel = function (pagamento) {
-        var card = new CardPagarmeModel();
-        card.card_number = pagamento.numero;
-        card.card_expiration_date = this.putZero(new Date(pagamento.data).getMonth()) + '' + new Date(pagamento.data).getFullYear();
-        card.card_cvv = pagamento.ccv;
-        card.card_holder_name = pagamento.nome;
-        card.cpf = pagamento.cpf;
-        return card;
+    TimerObservable.dispatch = function (state) {
+        var index = state.index, period = state.period, subscriber = state.subscriber;
+        var action = this;
+        subscriber.next(index);
+        if (subscriber.closed) {
+            return;
+        }
+        else if (period === -1) {
+            return subscriber.complete();
+        }
+        state.index = index + 1;
+        action.schedule(state, period);
     };
-    CardPagarmeModel.putZero = function (mes) {
-        mes += 1;
-        if (mes < 10)
-            return '0' + mes;
-        return '' + mes;
+    TimerObservable.prototype._subscribe = function (subscriber) {
+        var index = 0;
+        var _a = this, period = _a.period, dueTime = _a.dueTime, scheduler = _a.scheduler;
+        return scheduler.schedule(TimerObservable.dispatch, dueTime, {
+            index: index, period: period, subscriber: subscriber
+        });
     };
-    return CardPagarmeModel;
-}());
-
-//# sourceMappingURL=card-pagarme.js.map
-
-/***/ }),
-
-/***/ 850:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CadUserModel; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_firebase_app__ = __webpack_require__(136);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_firebase_app___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_firebase_app__);
-
-var CadUserModel = /** @class */ (function () {
-    function CadUserModel(obj) {
-        this.dataHoraCompra = obj && obj.dataHoraCompra || __WEBPACK_IMPORTED_MODULE_0_firebase_app__["database"].ServerValue.TIMESTAMP;
-        this.qtdCads = obj && obj.qtdCads || 0;
-    }
-    return CadUserModel;
-}());
-
-//# sourceMappingURL=cad-user.js.map
-
-/***/ }),
-
-/***/ 851:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Address; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return Payment; });
-// import { DateUtil } from "../../util/date.util";
-var Address = /** @class */ (function () {
-    function Address() {
-        this.Country = 'BRA';
-    }
-    return Address;
-}());
-
-var Payment = /** @class */ (function () {
-    function Payment() {
-        this.Type = "Boleto";
-        this.Instructions = "Qualquer instrução";
-        this.Identification = '11884926754';
-        this.Demonstrative = 'Demonstrative';
-    }
-    return Payment;
-}());
-
-//# sourceMappingURL=boleto.js.map
+    return TimerObservable;
+}(Observable_1.Observable));
+exports.TimerObservable = TimerObservable;
+//# sourceMappingURL=TimerObservable.js.map
 
 /***/ })
 

@@ -1,6 +1,6 @@
 // import { DateUtil } from "../../util/date.util";
 
-export class Address {
+export class Address{
 	Streat: string
 	Number: string
 	Complement: string
@@ -10,13 +10,13 @@ export class Address {
 	State: string
 	Country: string
 
-	constructor() {
+	constructor(){
 		this.Country = 'BRA'
 	}
 
 }
 
-export class Payment {
+export class Payment{
 	Type: string
 	Amount: number
 	Provider: string
@@ -27,7 +27,7 @@ export class Payment {
 	Identification: string
 	Instructions: string
 
-	constructor() {
+	constructor(){
 		this.Type = "Boleto"
 		this.Instructions = "Qualquer instrução"
 		this.Identification = '11884926754'

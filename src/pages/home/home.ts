@@ -53,6 +53,7 @@ export class HomePage {
     @ViewChild('search') searcElement: ElementRef;
     @ViewChild('icon') iconElement: ElementRef;
 
+    city: any = 'Fortaleza';
     // user: User;
     cad: CadModel;
     estacionar: EstacionarModel[] = [];
@@ -70,6 +71,12 @@ export class HomePage {
 
     useID: any;
 
+    selectOptions = {
+        title: 'Cidade',
+        subTitle: 'Escolha sua cidade',
+        mode: 'ios'
+      };
+      
     constructor(
         public navCtrl: NavController,
         public platform: Platform,
@@ -129,7 +136,7 @@ export class HomePage {
                 console.log(userID)
                 this.estacionarProvider.countCadsById(userID)
                 .subscribe(val => {
-                    console.log(val)
+                   // console.log(val)
                 })
                 this.cadsUserProvider.findQtdCads(userID).take(1).subscribe(value => {
                     value.map(cads => {
@@ -412,6 +419,7 @@ export class HomePage {
 
                     if (_item.length > 0) {
                         this.navCtrl.setRoot(Constants.ESTACIONAR_PAGE.name, {
+                            fromPage: 'mapa',
                             setor: codigoSetor,
                             area: codigoArea,
                             'setor-nome': nomeSetor,
@@ -431,7 +439,8 @@ export class HomePage {
                                         area: codigoArea,
                                         setor: codigoSetor,
                                         cad: this.cad,
-                                        qtdCads: (this.qtdCadsUser - this.qtdCadsUSados)
+                                        qtdCads: (this.qtdCadsUser - this.qtdCadsUSados),
+                                        veiculoAllArr: _item
                                     });
                                 });
                         } else {
@@ -442,7 +451,8 @@ export class HomePage {
                                 area: codigoArea,
                                 setor: codigoSetor,
                                 cad: this.cad,
-                                qtdCads: (this.qtdCadsUser - this.qtdCadsUSados)
+                                qtdCads: (this.qtdCadsUser - this.qtdCadsUSados),
+                                veiculoAllArr: _item
                             });
                         }
                     }
@@ -606,8 +616,8 @@ export class HomePage {
                 })
     }
 
-    showStreatView(event) {
-        let wait = this.loadingCtrl.create({ content: 'Aguarde...' });
+    showStreatView() {
+        /*let wait = this.loadingCtrl.create({ content: 'Aguarde...' });
         wait.present();
         let button = document.getElementById('btn-show-streat-view');
         let codigoSetor = button.getAttribute("setor");
@@ -623,7 +633,8 @@ export class HomePage {
                 (error) => {
                     console.log(error);
                     wait.dismiss();
-                })
+                })*/
+                this.navCtrl.setRoot(Constants.PAGAMENTOS_PAGE.name)
     }
 
     showToast(msg: string, time?: number) {

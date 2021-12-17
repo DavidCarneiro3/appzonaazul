@@ -1,5 +1,4 @@
 import { environment } from './environment';
-
 export class Constants {
 
     public static VERSAO_LB = "Versão: ";
@@ -10,6 +9,8 @@ export class Constants {
 
     //Constants used to display pages
     public static HOME_PAGE = { id: 'home', name: 'HomePage' };
+    public static PRINCIPAL_PAGE = { id: 'principal', name: 'PrincipalPage' };
+    public static ESTACIONADOS_MODAL_PAGE = { id: 'estacionados-modal', name: 'EstacionadosModalPage' };
     public static LOGIN_PAGE = { id: 'login', name: 'LoginPage' };
     public static PAGAMENTOS_PAGE = { id: 'pagamentos', name: 'PagamentosPage' };
     public static PAGAMENTOS_FORM_PAGE = { id: 'pagamentos_form', name: 'PagamentosFormPage' };
@@ -41,8 +42,8 @@ export class Constants {
     public static CANCELAR_TRANSACAO_PAGE = { id: 'cancelar-transacao', name: 'CancelarTransacaoPage' };
     public static PERMISSIONS_MODAL_PAGE = { id: 'permissions-screen', name: 'PermissionsModalPage' };
     public static FILTER_MODAL_PAGE = { id: 'filtro-modal', name: 'FiltroModalPage' }
-    public static FILTER_PAGAMENTO_PAGE = { id: 'filtro-pagamento', name: 'FiltroPagamentoPage' }
-    public static CONFIRMA_CPF_PAGE = { id: 'confirmar-cpf-modal', name: 'ConfirmarCpfModalPage' }
+    public static FILTER_PAGAMENTO_PAGE = {id:'filtro-pagamento',name:'FiltroPagamentoPage'}
+    public static CONFIRMA_CPF_PAGE = {id:'confirmar-cpf-modal',name:'ConfirmarCpfModalPage'}
 
 
     // PROVIDERS

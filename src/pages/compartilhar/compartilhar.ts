@@ -41,13 +41,17 @@ export class CompartilharPage {
     loading.present();
 
     const message = 'O Zona Fácil é meu aplicativo Zona Azul preferido. Indico!';
-    const img = 'http://www.zonafacil.com.br/site/images/mockups/banner-1.jpg';
-    const url = 'http://www.zonafacil.com.br';
+    const img = 'https://www.zonafacil.com.br/site/images/mockups/banner-1.jpg';
+    const url = 'https://www.zonafacil.com.br';
+
     this.socialSharing.shareViaFacebook(message, img, url)
       .then(() => {
         loading.dismiss();
       })
-      .catch(() => { });
+      .catch(e => {
+        console.error('error', e)
+        loading.dismiss();
+       });
   }
 
   shareWhatsapp() {
@@ -55,13 +59,16 @@ export class CompartilharPage {
     loading.present();
 
     const message = 'O Zona Fácil é meu aplicativo Zona Azul preferido. Indico!';
-    const img = 'http://www.zonafacil.com.br/site/images/mockups/banner-1.jpg';
-    const url = 'http://www.zonafacil.com.br';
+    const img = 'https://www.zonafacil.com.br/site/images/mockups/banner-1.jpg';
+    const url = 'https://www.zonafacil.com.br';
     this.socialSharing.shareViaWhatsApp(message, img, url)
       .then(() => {
         loading.dismiss();
       })
-      .catch(() => { });
+      .catch(e => {
+        console.error('error', e)
+        loading.dismiss();
+      });
   }
 
   share() {
@@ -70,14 +77,17 @@ export class CompartilharPage {
 
     const subject = 'Zona Azul!';
     const message = 'O Zona Fácil é meu aplicativo Zona Azul preferido. Indico!';
-    const img = 'http://www.zonafacil.com.br/site/images/mockups/banner-1.jpg';
-    const url = 'http://www.zonafacil.com.br';
+    const img = 'https://www.zonafacil.com.br/site/images/mockups/banner-1.jpg';
+    const url = 'https://www.zonafacil.com.br';
 
     this.socialSharing.share(message, subject, img, url)
       .then(() => {
         loading.dismiss();
       })
-      .catch(() => { });
+      .catch(e => {
+        console.error('error', e);
+        loading.dismiss(); 
+      });
   }
 
 }

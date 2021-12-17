@@ -1,0 +1,62 @@
+{
+  "ce" : {
+    "fortaleza" : {
+      "2018" : {
+        "ABY1x0M2qQgUhhXze1fqQ937JbG22" : {
+          "bounds" : {
+            "neLat" : -3.692025,
+            "neLng" : -38.4013209,
+            "swLat" : -3.8881764,
+            "swLng" : -38.6365725
+          },
+          "empresa" : {
+            "bairro" : "MARAPONGA",
+            "cep" : "60710-001",
+            "cnae" : "7120100: TESTES E ANÁLISES TÉCNICAS",
+            "cnpj" : "05.591.991/0001-48",
+            "logradouro" : "AV GODOFREDO MACIEL",
+            "logradouro_numero" : 2841,
+            "municipio" : "Fortaleza",
+            "natureza_juridica" : "2: SOCIEDADE EMPRESÁRIA LIMITADA",
+            "nome_fantasia" : "CIPETRAN-CE",
+            "porte" : "MICROEMPRESA",
+            "ramo_negocio" : "74: OUTRAS ATIVIDADES PROFISSIONAIS, CIENTÍFICAS E TÉCNICAS",
+            "razao_social" : "NECAVA INSPECAO E PESQUISA EM TRANSPORTES LTDA - ME",
+            "site" : "http://compras.dados.gov.br/fornecedores/doc/fornecedor_pj/05591991000148",
+            "unidade_cadastradora" : "170038: SUPERINTENDÊNCIA DE ADMINISTRAÇÃO DO MF - CE"
+          },
+          "gateway" : "pagarme",
+          "gateway_web" : "cielo",
+          "info" : {
+            "apple_store" : "https://itunes.apple.com/us/app/zona-f%C3%A1cil/id1444817658?l=pt&ls=1&mt=8",
+            "email" : "suporte@zonafacil.com.br",
+            "email_comprovante" : "suporte@zonaazulfortaleza.com.br",
+            "facebook_url" : "https://www.facebook.com/Zona-F%C3%A1cil-2086383534949439",
+            "fone" : "(85) 3296.7000",
+            "google_store" : "https://play.google.com/store/apps/details?id=br.gov.ce.fortaleza.zonaazul",
+            "google_url" : "https://www.instagram.com/zonafacilapp",
+            "info_page" : "http://www.amc.com.br",
+            "site" : "http://www.zonafacil.com.br",
+            "twitter_url" : "twitter.com"
+          },
+          "qtd_por_usuario" : 3,
+          "regras" : "As normas de estacionamento rotativo serão reformuladas e estarão indicadas na sinalização vertical. O tempo de permanência nas vagas está identificado na sinalização. As faixas de horário padrão de operação da Zona Azul classificadas pela AMC serão de 7 às 19 horas, podendo ser ampliadas de acordo com o perfil do local e dias da semana, podendo ser visualizadas nas placas indicativas de sinalização.",
+          "regras_comprovante" : "O usuário deve sempre observar a placa de sinalização para verificar o horário de funcionamento e o tempo de validade do Cartão. Como regra geral 1 Cartão é válido para estacionar o veículo por 1 hora, no entanto, em alguns locais o tempo de validade do Cartão é diferenciado. É permitido usar no máximo 2 Cartões na mesma vaga, sendo obrigatória a retirada do veículo ao término do período. Para os casos em que o horário do comprovante for anterior ao horário que consta da placa de sinalização, prevalecerá a informação constante da sinalização. Este comprovante de pagamento não precisa ser deixado no painel do veículo.",
+          "tempo_caminhao" : {
+            "10" : 10,
+            "30" : 30
+          },
+          "tempo_veiculo" : {
+            "60" : 60,
+            "120" : 120,
+            "180" : 180,
+            "240" : 240,
+            "300" : 300
+          },
+          "total" : 200,
+          "valor_unitario" : 2
+        }
+      }
+    }
+  }
+}

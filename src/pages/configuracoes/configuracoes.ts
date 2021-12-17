@@ -25,7 +25,7 @@ export class ConfiguracoesPage {
 
     user: User;
     userId: string;
-
+    showSpinner: boolean = true;
     constructor(
         public navCtrl: NavController,
         public navParams: NavParams,
@@ -41,6 +41,7 @@ export class ConfiguracoesPage {
                 this.userProvider.byId(userID).subscribe((user: User) => {
                     this.user = user;
                     this.userId = user.id;
+                    this.showSpinner = false;
                 });
                 return true;
             }
@@ -49,12 +50,12 @@ export class ConfiguracoesPage {
 
     ionViewDidLoad() {
         this.title1 = "Ativação Expirada";
-        this.title2 = "Faltando 5 minutos para encerrar a ativação";
-        this.title3 = "Faltando 10 minutos para encerrar a ativação";
-        this.title4 = "Faltando 15 minutos para encerrar a ativação";
-        this.title5 = "Faltando 20 minutos para encerrar a ativação";
-        this.title6 = "Faltando 25 minutos para encerrar a ativação";
-        this.title7 = "Faltando 30 minutos para encerrar a ativação";
+        this.title2 = "5 minutos antes de expirar";
+        this.title3 = "10 minutos antes de expirar";
+        this.title4 = "15 minutos antes de expirar";
+        this.title5 = "20 minutos antes de expirar";
+        this.title6 = "25 minutos antes de expirar";
+        this.title7 = "30 minutos antes de expirar";
     }
 
     ionViewWillLeave() {

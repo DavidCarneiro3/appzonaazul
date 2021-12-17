@@ -1,8 +1,12 @@
 <ion-item class="user-menu-item" no-lines>
+  <ion-buttons end>
+    <button ion-button clear class="edt-button" (click)="goProfile()" icon-only color="white">
+      <ion-icon ios="ios-create-outline"></ion-icon>
+    </button>
+  </ion-buttons>
   <img src="{{user?.photo}}" class="img" />
-  <p class="name">{{user?.name}}</p>
+  <p class="name">{{name}}</p>
   <p class="profile" text-lowercase>{{user?.email}}</p>
-  <p class="city">Fortaleza</p>
   <p *ngIf="user?.profile !== 'user'">{{user?.profile.toUpperCase()}}</p>
   <p *ngIf="cads == null || cadsUsados == null || (cads - cadsUsados) == 0" class="cads-credits">Saldo: 0 CAD | R$ 0,00
   </p>

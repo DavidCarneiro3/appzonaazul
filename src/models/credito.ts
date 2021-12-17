@@ -15,7 +15,7 @@ export class CreditoModel {
     autenticacao: string;
     idTransacao: number;
     dadoCancelamento: CanceladoModel;
-    idCompra: number;
+    idCompra:number;
     constructor()
     constructor(obj: any)
     constructor(obj?: any) {

@@ -1,36 +1,94 @@
 page-veiculos-form {
 
-  font-family: 'Roboto';
+  font-family: 'kanit';
+  .scroll-content{
+    background-color: #e5e5e5;
+  }
 
   .bar-button-default {
       color: #fff !important;
+  }
+  .block-true{
+      display: block;
   }
 
   .content {
   
       .grid-profile {
           width: 100%;
-      
+          
           .informacoes-body {
+            
               position: absolute;
-              top: 0;
+              top: 15px;
               left: 0;
               right: 0;
       
               .informacoes-body-header {
-                  background-color: #f1f1f1;
+              
                   padding-top: 30px;
           
                   .title-header-body {
+                    
                       text-align: left;
                       color: #8c8c8c;
                       margin-left: 10px;
                       font-weight: 500;
                   }
               }
+
+              
+
+              .radio-row{
+                align-items: stretch
+              }
+              .carro{
+                  margin-left: 15%;
+                  margin-top: 6%;
+              }
+              .grey{
+                  color: #828282;
+              }
+              .blue{
+                  color: #4c43f4;
+              }
               div > span{
                   padding: -5px;
                   align-self:center;
+              }
+              .ppadrao{
+                  margin-left: 15%;
+              }
+              .controls {
+                margin-top: 10px;
+                margin-left: 16%;
+                width: 68%;
+                background-color: #fff;
+                // color: #FFD400;
+              }
+
+              #mic {
+                position: absolute;
+                //top: 20px;
+                font-weight: bold;
+                color: #fff;
+                margin: 0;
+                right: 10%;
+                width: 25px;
+                height: 25px;
+                background: transparent;
+              }
+              .info-placa{
+                  background-color: #fff;
+                  width: 68%;
+                  height: 50px;
+                  margin-left: 75px;
+                  margin-top: 5px;
+                  ion-input{
+                      font-size: 16px;
+                      border-bottom: 1px solid #ccc;
+                    //   color: #FFD400;
+                  }
               }
               .mercosul {
                   font-size: 10px;
@@ -42,9 +100,15 @@ page-veiculos-form {
                   }
       
               .informacoes-body-list {
-                  
+          
                   width: 100%;
 
+                  .title{
+                    margin-left: 13%;
+                    margin-top: 20%;
+                    font-size: 12px;
+                    color: #000;
+                }
                   .tipo-veiculo-text {
                       color: #0093d4;
                       display: flex;
@@ -105,6 +169,7 @@ page-veiculos-form {
                   }
 
                   .informacoes-body-list-item {
+                    background-color: #e5e5e5;
                       margin-left: 10px;
                       padding-right: 29px;
 
@@ -118,6 +183,7 @@ page-veiculos-form {
                       }
                       
                       ion-input, ion-select, ion-datetime {
+                        //   background-color: #fff;
                           padding-left: 9px;
                           color: #747474;
                           font-size: 13px;
@@ -136,21 +202,23 @@ page-veiculos-form {
           .btn-row {
               margin-top: 3%;
               margin-bottom: 5%;
-      
+              background-color: #e5e5e5;
               .btn {
-                  border: none !important;
-                  background: color($colors, primary);
-                  height: 35px;
-                  width: 90%;
-                  position: fixed;
-                  left: 5%;
-                  bottom: 0;
+                border: none !important;
+                background: #27ae60;
+                border-radius: 26px;
+                height: 35px;
+                width: 90%;
+                margin-left: 15px;
+                margin-bottom: 20px;
+                // color: #000000;
               }
           }
       }
   }
 
   .success {
+
       .alert-wrapper {
           background-color: #00CC99;
           color: #fff;
@@ -168,6 +236,7 @@ page-veiculos-form {
   }
 
   .error {
+ 
       .alert-wrapper {
           background-color: #CC0033;
           color: #fff;
@@ -185,6 +254,7 @@ page-veiculos-form {
   }
 
   .info {
+    
       .alert-wrapper {
           background-color: #4d90fe;
           color: #fff;

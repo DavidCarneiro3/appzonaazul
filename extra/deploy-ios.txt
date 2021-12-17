@@ -6,6 +6,7 @@ $ ionic plugin add cordova-custom-config --fetch
 
 Passo 3: (Versao Release)
 ionic cordova build ios --prod
+ionic cordova build ios --verbose --minifyjs --minifycss
 
 Passo 4: (Abrir o projeto XCode)
 platforms/ios/
@@ -30,9 +31,6 @@ br.com.zonafacil.for
 
 Ao rodar no iOS desisntalar o plugin:
 ionic cordova plugin rm cordova-plugin-dreamover-uid
-
-abrir xcode.workspace 
-ir em build settings e trocar o signin identydi
 
 
 marcosnv@icloud.com

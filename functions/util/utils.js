@@ -137,7 +137,7 @@ module.exports = {
 
         const xml = `
     <transacao>
-    <codigoDistribuidor>${75}</codigoDistribuidor>
+    <codigoDistribuidor>${62}</codigoDistribuidor>
       <dataEnvio>${agenda.dataEnvio}</dataEnvio>
       <tipo>${tipo}</tipo>
       <idTransacaoDistribuidor>${agenda.idTransacaoDistribuidor}</idTransacaoDistribuidor>
@@ -186,7 +186,6 @@ module.exports = {
         * Converte de XML para JSON nao legivel
         */
     parse: (xml) => {
-        // console.log('RESP JSON', xml);
         return XMLJSON.xml2js(xml);
     },
 

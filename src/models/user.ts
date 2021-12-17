@@ -1,5 +1,5 @@
-import { ConfiguracaoModel } from "./configuracao";
-import { Pdv } from "./pdv"
+import {ConfiguracaoModel} from "./configuracao";
+import {Pdv} from "./pdv"
 export class User {
   id: string;
   dateOfBirth: Date;
@@ -12,7 +12,7 @@ export class User {
   cpf: string;
   status: boolean;
   configuracao: ConfiguracaoModel;
-  pdvReg: Pdv;
+  pdvReg:Pdv;
   uidPDV: string;
   uidAparelho: string;
   endereco: string;
@@ -24,15 +24,15 @@ export class User {
   constructor()
   constructor(obj: any)
   constructor(obj?: any) {
-    if (obj && obj.id) {
+    if(obj && obj.id){
       this.id = obj && obj.id || '';
-    } else {
+    } else{
       this.id = obj && obj.$key || '';
     }
 
-    if (obj && obj.photo && obj.photo !== '') {
+    if(obj && obj.photo && obj.photo !== ''){
       this.photo = obj.photo;
-    } else {
+    } else{
       this.photo = 'assets/imgs/user.svg';
     }
 
@@ -45,7 +45,7 @@ export class User {
     this.profile = obj && obj.profile || 'user';
     this.cpf = obj && obj.cpf || '';
     this.configuracao = obj && obj.configuracao || new ConfiguracaoModel();
-    this.pdvReg = obj && obj.pdvReg || new Pdv();
+    this.pdvReg = obj && obj.pdvReg || new Pdv() ;
     this.uidPDV = obj && obj.uidPDV || '00000000000';
     this.uidAparelho = obj && obj.uidAparelho || '';
     this.endereco = obj && obj.endereco || '';
