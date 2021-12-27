@@ -1,14 +1,14 @@
 webpackJsonp([32],{
 
-/***/ 743:
+/***/ 744:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EstacionadosModalPageModule", function() { return EstacionadosModalPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FiltroModalPageModule", function() { return FiltroModalPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(35);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__estacionados_modal__ = __webpack_require__(799);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__filtro_modal__ = __webpack_require__(796);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,31 +18,31 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var EstacionadosModalPageModule = /** @class */ (function () {
-    function EstacionadosModalPageModule() {
+var FiltroModalPageModule = /** @class */ (function () {
+    function FiltroModalPageModule() {
     }
-    EstacionadosModalPageModule = __decorate([
+    FiltroModalPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__estacionados_modal__["a" /* EstacionadosModalPage */],
+                __WEBPACK_IMPORTED_MODULE_2__filtro_modal__["a" /* FiltroModalPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__estacionados_modal__["a" /* EstacionadosModalPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__filtro_modal__["a" /* FiltroModalPage */]),
             ],
         })
-    ], EstacionadosModalPageModule);
-    return EstacionadosModalPageModule;
+    ], FiltroModalPageModule);
+    return FiltroModalPageModule;
 }());
 
-//# sourceMappingURL=estacionados-modal.module.js.map
+//# sourceMappingURL=filtro-modal.module.js.map
 
 /***/ }),
 
-/***/ 799:
+/***/ 796:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EstacionadosModalPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FiltroModalPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(35);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -56,66 +56,57 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-var EstacionadosModalPage = /** @class */ (function () {
-    function EstacionadosModalPage(navCtrl, navParams, viewCtrl) {
+var FiltroModalPage = /** @class */ (function () {
+    function FiltroModalPage(navCtrl, navParams, modalCtrl, viewCtlr, event) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
-        this.viewCtrl = viewCtrl;
-        this.todosVeiculos = [];
-        this.copiaVeiculos = [];
-        this.veiculos = [];
-        this.veiculoSelecionado = [];
-        this.getVeiculos();
+        this.modalCtrl = modalCtrl;
+        this.viewCtlr = viewCtlr;
+        this.event = event;
+        this.selectOption = {
+            title: 'Tipo',
+            subtitle: 'Escolha o tipo do Filtro',
+            mode: 'ios'
+        };
+        this.filter = {
+            placa: "",
+            numberAuth: "",
+            data: "",
+            situacao: "",
+            qtdCads: "",
+            valor: "",
+        };
+        this.data = navParams.get('data');
     }
-    EstacionadosModalPage.prototype.ionViewWillLoad = function () {
+    FiltroModalPage.prototype.ionViewDidLoad = function () {
     };
-    EstacionadosModalPage.prototype.dismiss = function () {
-        this.viewCtrl.dismiss();
-    };
-    EstacionadosModalPage.prototype.getVeiculos = function () {
-        var _this = this;
-        return new Promise(function (resolve) {
-            var veiculos = _this.navParams.get('veiculos');
-            console.log(veiculos);
-            _this.copiaVeiculos = veiculos ? veiculos : [];
-            _this.veiculos = veiculos ? veiculos : [];
-            console.log(_this.veiculos);
-            resolve(true);
-        });
-    };
-    EstacionadosModalPage.prototype.select = function (veiculo) {
-        this.veiculoSelecionado = veiculo;
-    };
-    EstacionadosModalPage.prototype.procurarVeiculos = function (event) {
-        var placa = event.target.value;
-        if (placa) {
-            if (placa.trim == '') {
-                this.veiculos = this.copiaVeiculos;
-            }
-            else {
-                this.veiculos = this.copiaVeiculos.filter(function (veiculos) {
-                    console.log(veiculos);
-                    return (veiculos && veiculos.veiculo.placa.toUpperCase().indexOf(placa.toUpperCase()) > -1);
-                });
-            }
+    FiltroModalPage.prototype.Filtro = function () {
+        if (this.filter.data !== "") {
+            this.formatDate();
         }
-        else {
-            this.veiculos = this.copiaVeiculos;
-        }
+        this.filter.placa = this.filter.placa.toUpperCase();
+        this.event.publish('f_event', this.filter);
+        this.navCtrl.pop();
     };
-    EstacionadosModalPage.prototype.selectVeiculo = function () {
-        this.viewCtrl.dismiss(this.veiculoSelecionado);
+    FiltroModalPage.prototype.formatDate = function () {
+        var format = this.filter.data.split("-");
+        return this.filter.data = format[2] + '/' + format[1] + '/' + format[0];
     };
-    EstacionadosModalPage = __decorate([
+    FiltroModalPage.prototype.closeModal = function () {
+        this.event.publish('f_event', this.filter);
+        this.navCtrl.pop();
+    };
+    FiltroModalPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-estacionados-modal',template:/*ion-inline-start:"/Users/desenvolvedor/Documents/zonaazulfortaleza-develop/src/pages/estacionados-modal/estacionados-modal.html"*/'<ion-header>\n    <ion-navbar color="header" text-center>\n        <ion-title>\n            <ion-label>\n                Selecione seu veículo\n            </ion-label>\n        </ion-title>\n\n        <ion-buttons left>\n            <button ion-button icon-only (click)="dismiss()">\n                <span color="light" class="header-icon" showWhen="ios">Fechar</span>\n                <ion-icon name="md-arrow-back" class="header-icon" showWhen="android,windows"></ion-icon>\n            </button>\n        </ion-buttons>\n    </ion-navbar>\n</ion-header>\n\n<ion-content>\n    <ion-searchbar class="search" placeholder="Buscar por placa" color="primary" (ionInput)="procurarVeiculos($event)"></ion-searchbar>\n    <!-- <ion-list radio-group>\n        <ion-item *ngFor="let veiculo of veiculos" text-wrap>\n            <ion-label>\n                <p class="titulo">{{veiculo.veiculo.placa}}</p>\n                <p class="subtitulo">{{veiculo.veiculo.marca}} {{veiculo.veiculo.modelo}}</p>\n            </ion-label>\n            <ion-radio item-left slot="start" (ionSelect)="select(veiculo)" mode="md"></ion-radio>\n        </ion-item>\n    </ion-list> -->\n</ion-content>\n\n<ion-footer class="footer">\n    <ion-toolbar class="toolbar">\n        <ion-title>\n            <ion-row class="btn-rows">\n                <ion-col>\n                    <button ion-button block class="btn-cancelar" (click)="dismiss()" mode="md">Cancelar</button>\n                </ion-col>\n\n                <ion-col>\n                    <button ion-button block class="btn" (click)="selectVeiculo()"\n                        [disabled]="this.veiculoSelecionado.length <= 0" mode="md">OK</button>\n                </ion-col>\n            </ion-row>\n        </ion-title>\n    </ion-toolbar>\n</ion-footer>'/*ion-inline-end:"/Users/desenvolvedor/Documents/zonaazulfortaleza-develop/src/pages/estacionados-modal/estacionados-modal.html"*/,
+            selector: 'page-filtro-modal',template:/*ion-inline-start:"C:\Users\ELIAS\Desktop\ZAD\src\pages\filtro-modal\filtro-modal.html"*/'<ion-header no-border>\n\n    <ion-navbar color="header" no-margin no-padding>\n\n        <ion-buttons left>\n\n            <button ion-button icon-only (click)="closeModal()">\n\n                <span color="light" class="header-icon" showWhen="ios">Fechar</span>\n\n                <ion-icon name="md-arrow-back" class="header-icon" showWhen="android,windows"></ion-icon>\n\n            </button>\n\n        </ion-buttons>\n\n\n\n        <ion-title class="header-title">Filtros</ion-title>\n\n    </ion-navbar>\n\n</ion-header>\n\n\n\n\n\n<ion-content class="content">\n\n    <div class="informacoes-body">\n\n\n\n    <div class="informacoes-body-list">\n\n       \n\n            \n\n            <ion-item class="informacoes-body-list-item" no-lines>\n\n                <ion-label class="btn-icon"><ion-icon name="ios-car-outline"></ion-icon></ion-label>\n\n                \n\n                <ion-input type="text" placeholder="AAA0000" [(ngModel)]="filter.placa" name="placa" class="{{filter.placa?\'blue-component\':\'grey-component\'}}"> \n\n\n\n                </ion-input><button class="menu-btn" ion-button clear  type="button" item-right> <ion-icon ios="ios-checkmark-circle-outline" class="{{filter.placa?\'icon-blue icon icon-ios ion-ios-checkmark-circle-outline\':\'icon-grey icon icon-ios ion-ios-checkmark-circle-outline\'}}"></ion-icon> </button>\n\n            </ion-item>\n\n        \n\n\n\n       \n\n            \n\n            <ion-item class="informacoes-body-list-item" no-lines>\n\n                <ion-label style="max-width:10%;"><ion-icon name="ios-checkbox-outline"></ion-icon></ion-label>\n\n                <ion-select style="max-width: 100%;" placeholder=\'Ativação/Renovacão\' [selectOptions]="selectOption"\n\n                    [(ngModel)]="filter.situacao" >\n\n                    <ion-option value="Ativação"> Ativação </ion-option>\n\n                    <ion-option value="Renovação"> Renovacão </ion-option>\n\n                </ion-select><button class="menu-btn" ion-button clear  type="button" item-right> <ion-icon ios="ios-checkmark-circle-outline" class="{{filter.situacao?\'icon-blue icon icon-ios ion-ios-checkmark-circle-outline\':\'icon-grey icon icon-ios ion-ios-checkmark-circle-outline\'}}"></ion-icon> </button>\n\n            </ion-item>\n\n        \n\n\n\n       \n\n            <ion-item class="informacoes-body-list-item" no-lines>\n\n                <ion-label  style="max-width:10%;"><ion-icon name="ios-calendar-outline"></ion-icon></ion-label>\n\n                <ion-datetime displayFormat="DD/MM/YYYY" placeholder="DD/MM/YYYY" [min]="data.min" [max]="data.today"\n\n                    cancelText="Cancelar" doneText="Selecionar" [(ngModel)]=\'filter.data\' name=\'data\' >\n\n                </ion-datetime><button class="menu-btn" ion-button clear  type="button" item-right> <ion-icon ios="ios-checkmark-circle-outline" class="{{filter.data?\'icon-blue icon icon-ios ion-ios-checkmark-circle-outline\':\'icon-grey icon icon-ios ion-ios-checkmark-circle-outline\'}}"></ion-icon> </button>\n\n            </ion-item>\n\n        \n\n\n\n\n\n       \n\n           \n\n            <ion-item class="informacoes-body-list-item" no-lines>\n\n                <ion-label class="btn-icon"><ion-icon name="ios-basket-outline"></ion-icon></ion-label>\n\n                <ion-input type="text" placeholder="Quantidade de CADs" [(ngModel)]="filter.qtdCads" name="qtdCads" class="{{filter.qtdCads?\'blue-component\':\'grey-component\'}}"> \n\n\n\n                </ion-input><button class="menu-btn" ion-button clear  type="button" item-right> <ion-icon ios="ios-checkmark-circle-outline" class="{{filter.qtdCads?\'icon-blue icon icon-ios ion-ios-checkmark-circle-outline\':\'icon-grey icon icon-ios ion-ios-checkmark-circle-outline\'}}"></ion-icon> </button>\n\n            </ion-item>\n\n        \n\n\n\n\n\n       \n\n            \n\n            <ion-item class="informacoes-body-list-item" no-lines>\n\n                <ion-label class="btn-icon"><ion-icon name="ios-pricetags-outline"></ion-icon></ion-label>\n\n                <ion-input type="text" placeholder="R$ 10,00" [(ngModel)]="filter.valor" name="valor" class="{{filter.valor?\'blue-component\':\'grey-component\'}}"> \n\n\n\n                </ion-input><button class="menu-btn" ion-button clear  type="button" item-right> <ion-icon ios="ios-checkmark-circle-outline" class="{{filter.valor?\'icon-blue icon icon-ios ion-ios-checkmark-circle-outline\':\'icon-grey icon icon-ios ion-ios-checkmark-circle-outline\'}}"></ion-icon> </button>\n\n            </ion-item>\n\n        \n\n\n\n\n\n       \n\n            \n\n            <ion-item class="informacoes-body-list-item" no-lines>\n\n                <ion-label class="btn-icon"><ion-icon name="ios-card-outline"></ion-icon></ion-label>\n\n                <ion-input type="text" placeholder="123454564" [(ngModel)]=\'filter.numberAuth\' name="numberAuth" class="{{filter.numberAuth?\'blue-component\':\'grey-component\'}}">\n\n                </ion-input><button class="menu-btn" ion-button clear  type="button" item-right> <ion-icon ios="ios-checkmark-circle-outline" class="{{filter.numberAuth?\'icon-blue icon icon-ios ion-ios-checkmark-circle-outline\':\'icon-grey icon icon-ios ion-ios-checkmark-circle-outline\'}}"></ion-icon> </button>\n\n            </ion-item>\n\n        \n\n\n\n        <ion-item class="btn-row" no-lines>\n\n            <button ion-button style="height:40px" class="btn" block (click)="Filtro()"> Filtrar </button>\n\n        </ion-item>\n\n    </div>\n\n</div>\n\n\n\n</ion-content>'/*ion-inline-end:"C:\Users\ELIAS\Desktop\ZAD\src\pages\filtro-modal\filtro-modal.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* ViewController */]])
-    ], EstacionadosModalPage);
-    return EstacionadosModalPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ModalController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* ViewController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* Events */]])
+    ], FiltroModalPage);
+    return FiltroModalPage;
 }());
 
-//# sourceMappingURL=estacionados-modal.js.map
+//# sourceMappingURL=filtro-modal.js.map
 
 /***/ })
 

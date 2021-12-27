@@ -1,6 +1,6 @@
 webpackJsonp([3],{
 
-/***/ 742:
+/***/ 739:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -10,7 +10,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_components_module__ = __webpack_require__(419);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_loading_spinner_loading_spinner_module__ = __webpack_require__(418);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__comprovante__ = __webpack_require__(794);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__comprovante__ = __webpack_require__(787);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -44,12 +44,12 @@ var ComprovantePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 770:
+/***/ 771:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MapUtil; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pages_home_home__ = __webpack_require__(772);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pages_home_home__ = __webpack_require__(773);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__environments_constants__ = __webpack_require__(19);
 
 
@@ -522,7 +522,7 @@ var MapUtil = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 771:
+/***/ 772:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -679,7 +679,7 @@ var FunctionsUtil = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 772:
+/***/ 773:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -702,8 +702,8 @@ var FunctionsUtil = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__providers_modal_modal__ = __webpack_require__(198);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__providers_area_area__ = __webpack_require__(414);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__environments_constants__ = __webpack_require__(19);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__util_map_util__ = __webpack_require__(770);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__util_functions_util__ = __webpack_require__(771);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__util_map_util__ = __webpack_require__(771);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__util_functions_util__ = __webpack_require__(772);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__app_app_component__ = __webpack_require__(411);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__providers_estacionar_estacionar__ = __webpack_require__(201);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -1314,7 +1314,7 @@ var HomePage = /** @class */ (function () {
     ], HomePage.prototype, "iconElement", void 0);
     HomePage = HomePage_1 = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-home',template:/*ion-inline-start:"/Users/desenvolvedor/Documents/zonaazulfortaleza-develop/src/pages/home/home.html"*/'<ion-header no-border>\n    <ion-navbar color="header">\n        <button ion-button icon-only menuToggle>\n            <ion-icon class="header-icon" name="menu"></ion-icon>\n        </button>\n        <ion-title class="title-header">\n            <ion-select [(ngModel)]="city" class="select-city" cancelText="Cancelar" okText="Ok" [selectOptions]="selectOptions">\n                <ion-option value="Fortaleza">Fortaleza</ion-option>\n              </ion-select>\n        </ion-title>\n\n        <ion-buttons end>\n            <button ion-button icon-only (click)="openTempoRestantePage()">\n                <img src="assets/icones/car-white.svg"  />\n            </button>\n        </ion-buttons>\n    </ion-navbar>\n</ion-header>\n\n<ion-content class="content">\n    <div #map id="map"></div>\n    <input #search id="search" class="controls" type="text" placeholder="Buscar">\n\n    <button ion-button icon-only type="button" item-right clear id="mic" >\n        <ion-icon color="gray" name="search" class="icon"></ion-icon>\n    </button>\n    <!--<ion-fab id="help">\n        <button ion-fab icon-only (click)="openHelp()">\n            <ion-icon name="help"></ion-icon>\n        </button>\n    </ion-fab> -->\n\n    <ion-fab id="close" (click)="showCloseSetor()">\n        <button ion-fab>\n        </button>\n    </ion-fab>\n\n   <!-- <ion-fab>\n        <button ion-fab icon-only color="default" (click)="buscarSetores()" id="locate">\n            <ion-icon name="search" class="icon"></ion-icon>\n        </button>\n    </ion-fab> -->\n\n    <ion-icon #icon name="close" class="icon-clear" style="display: none" id="icon"></ion-icon>\n    <button ion-button id="btn-show-estacionar-page" (click)="openEstacionarPage($event)"\n        [style.display]="\'none\'"></button>\n    <button ion-button id="btn-show-streat-view" (click)="showStreatView()" [style.display]="\'none\'"></button>\n</ion-content>'/*ion-inline-end:"/Users/desenvolvedor/Documents/zonaazulfortaleza-develop/src/pages/home/home.html"*/
+            selector: 'page-home',template:/*ion-inline-start:"C:\Users\ELIAS\Desktop\ZAD\src\pages\home\home.html"*/'<ion-header no-border>\n\n    <ion-navbar color="header">\n\n        <button ion-button icon-only menuToggle>\n\n            <ion-icon class="header-icon" name="menu"></ion-icon>\n\n        </button>\n\n        <ion-title class="title-header">\n\n            <ion-select [(ngModel)]="city" class="select-city" cancelText="Cancelar" okText="Ok" [selectOptions]="selectOptions">\n\n                <ion-option value="Fortaleza">Fortaleza</ion-option>\n\n              </ion-select>\n\n        </ion-title>\n\n\n\n        <ion-buttons end>\n\n            <button ion-button icon-only (click)="openTempoRestantePage()">\n\n                <img src="assets/icones/car-white.svg"  />\n\n            </button>\n\n        </ion-buttons>\n\n    </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content class="content">\n\n    <div #map id="map"></div>\n\n    <input #search id="search" class="controls" type="text" placeholder="Buscar">\n\n\n\n    <button ion-button icon-only type="button" item-right clear id="mic" >\n\n        <ion-icon color="gray" name="search" class="icon"></ion-icon>\n\n    </button>\n\n    <!--<ion-fab id="help">\n\n        <button ion-fab icon-only (click)="openHelp()">\n\n            <ion-icon name="help"></ion-icon>\n\n        </button>\n\n    </ion-fab> -->\n\n\n\n    <ion-fab id="close" (click)="showCloseSetor()">\n\n        <button ion-fab>\n\n        </button>\n\n    </ion-fab>\n\n\n\n   <!-- <ion-fab>\n\n        <button ion-fab icon-only color="default" (click)="buscarSetores()" id="locate">\n\n            <ion-icon name="search" class="icon"></ion-icon>\n\n        </button>\n\n    </ion-fab> -->\n\n\n\n    <ion-icon #icon name="close" class="icon-clear" style="display: none" id="icon"></ion-icon>\n\n    <button ion-button id="btn-show-estacionar-page" (click)="openEstacionarPage($event)"\n\n        [style.display]="\'none\'"></button>\n\n    <button ion-button id="btn-show-streat-view" (click)="showStreatView()" [style.display]="\'none\'"></button>\n\n</ion-content>'/*ion-inline-end:"C:\Users\ELIAS\Desktop\ZAD\src\pages\home\home.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* Platform */],
@@ -1354,7 +1354,7 @@ var LatLng = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 794:
+/***/ 787:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1365,15 +1365,15 @@ var LatLng = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_clipboard__ = __webpack_require__(426);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_social_sharing__ = __webpack_require__(425);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_pdfmake_build_vfs_fonts__ = __webpack_require__(795);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_pdfmake_build_vfs_fonts__ = __webpack_require__(788);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_pdfmake_build_vfs_fonts___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_pdfmake_build_vfs_fonts__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_pdfmake_build_pdfmake__ = __webpack_require__(796);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_pdfmake_build_pdfmake__ = __webpack_require__(789);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_pdfmake_build_pdfmake___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_pdfmake_build_pdfmake__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__models_estacionar__ = __webpack_require__(422);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__providers_user_user__ = __webpack_require__(43);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__app_app_component__ = __webpack_require__(411);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__util_pdf_util__ = __webpack_require__(797);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__util_map_util__ = __webpack_require__(770);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__util_pdf_util__ = __webpack_require__(790);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__util_map_util__ = __webpack_require__(771);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__environments_constants__ = __webpack_require__(19);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1528,7 +1528,7 @@ var ComprovantePage = /** @class */ (function () {
     };
     ComprovantePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-comprovante',template:/*ion-inline-start:"/Users/desenvolvedor/Documents/zonaazulfortaleza-develop/src/pages/comprovante/comprovante.html"*/'<ion-header no-border>\n\n  <ion-navbar color="header">\n    <ion-title class="header-title">Comprovante</ion-title>\n    <ion-buttons end>\n      <button ion-button icon-only (click)="compartilhar()">\n        <ion-icon name="share" class="header-icon"></ion-icon>\n      </button>\n    </ion-buttons>\n\n  </ion-navbar>\n</ion-header>\n\n\n<ion-content class="content">\n\n  <div class="logo">\n    <ion-grid class="img img-centralize img-logo">\n      <img src="assets/imgs/logo.png" />\n    </ion-grid>\n  </div>\n\n  <ion-grid>\n    <loading-spinner *ngIf="showSpinner1"></loading-spinner>\n    <ion-row class="informacoes-body">\n      <ion-item class="informacoes-body-header">\n        <ion-label class="title-header-body">COMPROVANTE DE ESTACIONAMENTO</ion-label>\n      </ion-item>\n      <ion-list class="informacoes-body-list">\n        <ion-item class="informacoes-body-list-item">\n          <h6>Placa</h6>\n          <h2>{{placa}}</h2>\n        </ion-item>\n        <ion-item class="informacoes-body-list-item">\n          <h6>CADs</h6>\n          <h2>{{cad}}</h2>\n        </ion-item>\n        <ion-item class="informacoes-body-list-item">\n          <h6>Autenticação</h6>\n          <h2>{{estacionar?.comprovante.numberAuth}}</h2>\n        </ion-item>\n        <ion-item class="informacoes-body-list-item">\n          <h6>Tempo de {{estacionar?.qtd}} CAD(s)</h6>\n          <h2>{{estacionar?.tempoComprado}} Minutos</h2>\n        </ion-item>\n        <ion-item class="informacoes-body-list-item">\n          <h6>Valor</h6>\n          <h2>R$ {{cad * valor_unitario}},00</h2>\n        </ion-item>\n        <ion-item class="informacoes-body-list-item">\n          <h6>Data/Hora da Solicitação</h6>\n          <h2>{{date | date: "dd/MM/yyyy \'às\' HH:mm"}}</h2>\n        </ion-item>\n        <ion-item class="informacoes-body-list-item">\n          <h6>Cidade</h6>\n          <h2>{{estacionar?.cidade}}</h2>\n        </ion-item>\n\n        <ion-item class="btn-control">\n          <button ion-button block class="btn" (click)="baixarPDF()">Baixar PDF</button>\n        </ion-item>\n\n        <ion-item *ngIf="showCloseButton" class="btn-control">\n          <button ion-button block class="btn" (click)="closePageComprovante()">Fechar</button>\n        </ion-item>\n      </ion-list>\n    </ion-row>\n  </ion-grid>\n\n</ion-content>'/*ion-inline-end:"/Users/desenvolvedor/Documents/zonaazulfortaleza-develop/src/pages/comprovante/comprovante.html"*/,
+            selector: 'page-comprovante',template:/*ion-inline-start:"C:\Users\ELIAS\Desktop\ZAD\src\pages\comprovante\comprovante.html"*/'<ion-header no-border>\n\n\n\n  <ion-navbar color="header">\n\n    <ion-title class="header-title">Comprovante</ion-title>\n\n    <ion-buttons end>\n\n      <button ion-button icon-only (click)="compartilhar()">\n\n        <ion-icon name="share" class="header-icon"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n\n\n<ion-content class="content">\n\n\n\n  <div class="logo">\n\n    <ion-grid class="img img-centralize img-logo">\n\n      <img src="assets/imgs/logo.png" />\n\n    </ion-grid>\n\n  </div>\n\n\n\n  <ion-grid>\n\n    <loading-spinner *ngIf="showSpinner1"></loading-spinner>\n\n    <ion-row class="informacoes-body">\n\n      <ion-item class="informacoes-body-header">\n\n        <ion-label class="title-header-body">COMPROVANTE DE ESTACIONAMENTO</ion-label>\n\n      </ion-item>\n\n      <ion-list class="informacoes-body-list">\n\n        <ion-item class="informacoes-body-list-item">\n\n          <h6>Placa</h6>\n\n          <h2>{{placa}}</h2>\n\n        </ion-item>\n\n        <ion-item class="informacoes-body-list-item">\n\n          <h6>CADs</h6>\n\n          <h2>{{cad}}</h2>\n\n        </ion-item>\n\n        <ion-item class="informacoes-body-list-item">\n\n          <h6>Autenticação</h6>\n\n          <h2>{{estacionar?.comprovante.numberAuth}}</h2>\n\n        </ion-item>\n\n        <ion-item class="informacoes-body-list-item">\n\n          <h6>Tempo de {{estacionar?.qtd}} CAD(s)</h6>\n\n          <h2>{{estacionar?.tempoComprado}} Minutos</h2>\n\n        </ion-item>\n\n        <ion-item class="informacoes-body-list-item">\n\n          <h6>Valor</h6>\n\n          <h2>R$ {{cad * valor_unitario}},00</h2>\n\n        </ion-item>\n\n        <ion-item class="informacoes-body-list-item">\n\n          <h6>Data/Hora da Solicitação</h6>\n\n          <h2>{{date | date: "dd/MM/yyyy \'às\' HH:mm"}}</h2>\n\n        </ion-item>\n\n        <ion-item class="informacoes-body-list-item">\n\n          <h6>Cidade</h6>\n\n          <h2>{{estacionar?.cidade}}</h2>\n\n        </ion-item>\n\n\n\n        <ion-item class="btn-control">\n\n          <button ion-button block class="btn" (click)="baixarPDF()">Baixar PDF</button>\n\n        </ion-item>\n\n\n\n        <ion-item *ngIf="showCloseButton" class="btn-control">\n\n          <button ion-button block class="btn" (click)="closePageComprovante()">Fechar</button>\n\n        </ion-item>\n\n      </ion-list>\n\n    </ion-row>\n\n  </ion-grid>\n\n\n\n</ion-content>'/*ion-inline-end:"C:\Users\ELIAS\Desktop\ZAD\src\pages\comprovante\comprovante.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3_ionic_angular__["m" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["n" /* NavParams */],
@@ -1547,7 +1547,7 @@ var ComprovantePage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 795:
+/***/ 788:
 /***/ (function(module, exports) {
 
 this.pdfMake = this.pdfMake || {}; this.pdfMake.vfs = {
@@ -1559,7 +1559,7 @@ this.pdfMake = this.pdfMake || {}; this.pdfMake.vfs = {
 
 /***/ }),
 
-/***/ 796:
+/***/ 789:
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(setImmediate) {/*! pdfmake v0.1.68, @license MIT, @link http://pdfmake.org */
@@ -77650,12 +77650,12 @@ module.exports = function () {
 
 /***/ }),
 
-/***/ 797:
+/***/ 790:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PDFUtil; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__logobase64_util__ = __webpack_require__(798);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__logobase64_util__ = __webpack_require__(791);
 
 var PDFUtil = /** @class */ (function () {
     function PDFUtil() {
@@ -77726,7 +77726,7 @@ var PDFUtil = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 798:
+/***/ 791:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

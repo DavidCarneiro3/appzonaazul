@@ -1,6 +1,6 @@
 webpackJsonp([15],{
 
-/***/ 739:
+/***/ 743:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -9,7 +9,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pipes_pipes_module__ = __webpack_require__(428);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(35);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__comprar_creditos__ = __webpack_require__(786);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__comprar_creditos__ = __webpack_require__(795);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_loading_spinner_loading_spinner_module__ = __webpack_require__(418);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -44,12 +44,12 @@ var ComprarCreditosPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 770:
+/***/ 771:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MapUtil; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pages_home_home__ = __webpack_require__(772);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pages_home_home__ = __webpack_require__(773);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__environments_constants__ = __webpack_require__(19);
 
 
@@ -522,7 +522,7 @@ var MapUtil = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 771:
+/***/ 772:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -679,7 +679,7 @@ var FunctionsUtil = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 772:
+/***/ 773:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -702,8 +702,8 @@ var FunctionsUtil = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__providers_modal_modal__ = __webpack_require__(198);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__providers_area_area__ = __webpack_require__(414);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__environments_constants__ = __webpack_require__(19);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__util_map_util__ = __webpack_require__(770);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__util_functions_util__ = __webpack_require__(771);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__util_map_util__ = __webpack_require__(771);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__util_functions_util__ = __webpack_require__(772);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__app_app_component__ = __webpack_require__(411);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__providers_estacionar_estacionar__ = __webpack_require__(201);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -1314,7 +1314,7 @@ var HomePage = /** @class */ (function () {
     ], HomePage.prototype, "iconElement", void 0);
     HomePage = HomePage_1 = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-home',template:/*ion-inline-start:"/Users/desenvolvedor/Documents/zonaazulfortaleza-develop/src/pages/home/home.html"*/'<ion-header no-border>\n    <ion-navbar color="header">\n        <button ion-button icon-only menuToggle>\n            <ion-icon class="header-icon" name="menu"></ion-icon>\n        </button>\n        <ion-title class="title-header">\n            <ion-select [(ngModel)]="city" class="select-city" cancelText="Cancelar" okText="Ok" [selectOptions]="selectOptions">\n                <ion-option value="Fortaleza">Fortaleza</ion-option>\n              </ion-select>\n        </ion-title>\n\n        <ion-buttons end>\n            <button ion-button icon-only (click)="openTempoRestantePage()">\n                <img src="assets/icones/car-white.svg"  />\n            </button>\n        </ion-buttons>\n    </ion-navbar>\n</ion-header>\n\n<ion-content class="content">\n    <div #map id="map"></div>\n    <input #search id="search" class="controls" type="text" placeholder="Buscar">\n\n    <button ion-button icon-only type="button" item-right clear id="mic" >\n        <ion-icon color="gray" name="search" class="icon"></ion-icon>\n    </button>\n    <!--<ion-fab id="help">\n        <button ion-fab icon-only (click)="openHelp()">\n            <ion-icon name="help"></ion-icon>\n        </button>\n    </ion-fab> -->\n\n    <ion-fab id="close" (click)="showCloseSetor()">\n        <button ion-fab>\n        </button>\n    </ion-fab>\n\n   <!-- <ion-fab>\n        <button ion-fab icon-only color="default" (click)="buscarSetores()" id="locate">\n            <ion-icon name="search" class="icon"></ion-icon>\n        </button>\n    </ion-fab> -->\n\n    <ion-icon #icon name="close" class="icon-clear" style="display: none" id="icon"></ion-icon>\n    <button ion-button id="btn-show-estacionar-page" (click)="openEstacionarPage($event)"\n        [style.display]="\'none\'"></button>\n    <button ion-button id="btn-show-streat-view" (click)="showStreatView()" [style.display]="\'none\'"></button>\n</ion-content>'/*ion-inline-end:"/Users/desenvolvedor/Documents/zonaazulfortaleza-develop/src/pages/home/home.html"*/
+            selector: 'page-home',template:/*ion-inline-start:"C:\Users\ELIAS\Desktop\ZAD\src\pages\home\home.html"*/'<ion-header no-border>\n\n    <ion-navbar color="header">\n\n        <button ion-button icon-only menuToggle>\n\n            <ion-icon class="header-icon" name="menu"></ion-icon>\n\n        </button>\n\n        <ion-title class="title-header">\n\n            <ion-select [(ngModel)]="city" class="select-city" cancelText="Cancelar" okText="Ok" [selectOptions]="selectOptions">\n\n                <ion-option value="Fortaleza">Fortaleza</ion-option>\n\n              </ion-select>\n\n        </ion-title>\n\n\n\n        <ion-buttons end>\n\n            <button ion-button icon-only (click)="openTempoRestantePage()">\n\n                <img src="assets/icones/car-white.svg"  />\n\n            </button>\n\n        </ion-buttons>\n\n    </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content class="content">\n\n    <div #map id="map"></div>\n\n    <input #search id="search" class="controls" type="text" placeholder="Buscar">\n\n\n\n    <button ion-button icon-only type="button" item-right clear id="mic" >\n\n        <ion-icon color="gray" name="search" class="icon"></ion-icon>\n\n    </button>\n\n    <!--<ion-fab id="help">\n\n        <button ion-fab icon-only (click)="openHelp()">\n\n            <ion-icon name="help"></ion-icon>\n\n        </button>\n\n    </ion-fab> -->\n\n\n\n    <ion-fab id="close" (click)="showCloseSetor()">\n\n        <button ion-fab>\n\n        </button>\n\n    </ion-fab>\n\n\n\n   <!-- <ion-fab>\n\n        <button ion-fab icon-only color="default" (click)="buscarSetores()" id="locate">\n\n            <ion-icon name="search" class="icon"></ion-icon>\n\n        </button>\n\n    </ion-fab> -->\n\n\n\n    <ion-icon #icon name="close" class="icon-clear" style="display: none" id="icon"></ion-icon>\n\n    <button ion-button id="btn-show-estacionar-page" (click)="openEstacionarPage($event)"\n\n        [style.display]="\'none\'"></button>\n\n    <button ion-button id="btn-show-streat-view" (click)="showStreatView()" [style.display]="\'none\'"></button>\n\n</ion-content>'/*ion-inline-end:"C:\Users\ELIAS\Desktop\ZAD\src\pages\home\home.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* Platform */],
@@ -1354,7 +1354,7 @@ var LatLng = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 786:
+/***/ 795:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1366,7 +1366,7 @@ var LatLng = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_user_user__ = __webpack_require__(43);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_cads_cads__ = __webpack_require__(112);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_app_component__ = __webpack_require__(411);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__util_map_util__ = __webpack_require__(770);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__util_map_util__ = __webpack_require__(771);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__environments_constants__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__environments_environment__ = __webpack_require__(59);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -1574,7 +1574,7 @@ var ComprarCreditosPage = /** @class */ (function () {
     };
     ComprarCreditosPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-comprar-creditos',template:/*ion-inline-start:"/Users/desenvolvedor/Documents/zonaazulfortaleza-develop/src/pages/comprar-creditos/comprar-creditos.html"*/'<ion-header no-border>\n    <ion-navbar color="header">\n        <button ion-button icon-only menuToggle *ngIf="fromPage !== \'estacionar\'">\n            <ion-icon  class="header-icon" name="menu"></ion-icon>\n        </button>\n        <button ion-button icon-only menuToggle *ngIf="fromPage == \'estacionar\'">\n            <ion-icon  class="header-icon" name="arrow-back"></ion-icon>\n        </button>\n        \n        <ion-title class="qtd-creditos">Comprar Créditos (CADs)</ion-title>\n\n        <ion-buttons end>\n            <button ion-button icon-only (click)="openHelp()">\n                <ion-icon name="help-circle" class="header-icon"></ion-icon>\n            </button>\n        </ion-buttons>\n\n    </ion-navbar>\n</ion-header>\n\n<ion-content>\n    <div class="info"><p>Atenção este aplicativo é válido somente</p><p>para a cidade de Fortaleza Ceará</p></div>\n    <loading-spinner *ngIf="showSpinner"></loading-spinner>\n    <ion-list class="list" *ngIf="!showSpinner">\n        <ion-item-group>\n            <ion-item (click)="goPag(1,2.00)"> \n                <ion-label class="qtd">1 CAD</ion-label>\n                <ion-label class="price">R$ 2,00</ion-label>\n            </ion-item>\n            <ion-item (click)="goPag(2,4.00)">\n                <ion-label class="qtd">2 CADs</ion-label>\n                <ion-label class="price">R$ 4,00</ion-label>\n            </ion-item>\n            <ion-item (click)="goPag(5,10.00)">\n                <ion-label class="qtd">5 CADs</ion-label>\n                <ion-label class="price">R$ 10,00</ion-label>\n            </ion-item>\n            <ion-item (click)="goPag(10,20.00)">\n                <ion-label class="qtd">10 CADs</ion-label>\n                <ion-label class="price">R$ 20,00</ion-label>\n            </ion-item>\n            <ion-item (click)="goPag(100,200.00)">\n                <ion-label class="qtd">100 CADs</ion-label>\n                <ion-label class="price">R$ 200,00</ion-label>\n            </ion-item>\n        <!-- <ion-item><ion-label class="promo">Resgatar código promocional</ion-label></ion-item> -->\n    </ion-item-group>\n    </ion-list>\n    <!--\n    <ion-grid class="grid">\n        <ion-row class="row-header" col-10>\n            <ion-col class="col-price" col-12>\n                <ion-label>R$ {{(price-desconto) | number:\'1.2-2\' | replace:\'.\':\',\'}}</ion-label>\n            </ion-col>\n            <ion-col class="col-qtd" col-12>\n                <ion-label>{{cads}} CAD(s)</ion-label>\n            </ion-col>\n            <ion-col class="col-info" col-12>\n                <ion-label>Subtotal R$ {{price | number:\'1.2-2\' | replace:\'.\':\',\'}}</ion-label>\n            </ion-col>\n            <ion-col class="col-desconto" col-12 *ngIf="user.percent > 0">\n                <ion-label>Desconto R$ {{desconto | number:\'1.2-2\' | replace:\'.\':\',\'}} ({{user.percent}}%)</ion-label>\n            </ion-col>\n        </ion-row>\n        <ion-row class="row-body" col-10>\n            <ion-col class="col-description" col-12>\n                <ion-label>Selecione a quantidade de CADs que deseja comprar</ion-label>\n            </ion-col>\n            <ion-col class="col-cad-qtd" col-12>\n                <button ion-button type="button" (click)="selecionarQtd(1)" class="btn-qtd">+1</button>\n                <button ion-button type="button" (click)="selecionarQtd(5)" class="btn-qtd">+5</button>\n                <button ion-button type="button" (click)="selecionarQtd(10)" class="btn-qtd">+10</button>\n            </ion-col>\n            <ion-col class="col-clean-btn" col-12>\n                <button type="button" (click)="clean()" no-border class="btn-clean">Limpar</button>\n            </ion-col>\n            <ion-col class="col-subdescription" col-12 *ngIf="cielo === false">\n                <ion-label>Forma de Pagamento: Cartão de Crédito</ion-label>\n            </ion-col>\n        </ion-row>\n        <ion-row class="row-btn" col-12>\n            <ion-col class="col-btn-comprar">\n                <button type="button" (click)="formaPagamento()"\n                    class="btn-comprar">{{ cielo ? \'FORMA DE PAGAMENTO\' : \'COMPRAR\' }}</button>\n            </ion-col>\n        </ion-row>\n    </ion-grid> \n-->\n</ion-content>'/*ion-inline-end:"/Users/desenvolvedor/Documents/zonaazulfortaleza-develop/src/pages/comprar-creditos/comprar-creditos.html"*/
+            selector: 'page-comprar-creditos',template:/*ion-inline-start:"C:\Users\ELIAS\Desktop\ZAD\src\pages\comprar-creditos\comprar-creditos.html"*/'<ion-header no-border>\n\n    <ion-navbar color="header">\n\n        <button ion-button icon-only menuToggle *ngIf="fromPage !== \'estacionar\'">\n\n            <ion-icon  class="header-icon" name="menu"></ion-icon>\n\n        </button>\n\n        <button ion-button icon-only menuToggle *ngIf="fromPage == \'estacionar\'">\n\n            <ion-icon  class="header-icon" name="arrow-back"></ion-icon>\n\n        </button>\n\n        \n\n        <ion-title class="qtd-creditos">Comprar Créditos (CADs)</ion-title>\n\n\n\n        <ion-buttons end>\n\n            <button ion-button icon-only (click)="openHelp()">\n\n                <ion-icon name="help-circle" class="header-icon"></ion-icon>\n\n            </button>\n\n        </ion-buttons>\n\n\n\n    </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content>\n\n    <div class="info"><p>Atenção este aplicativo é válido somente</p><p>para a cidade de Fortaleza Ceará</p></div>\n\n    <loading-spinner *ngIf="showSpinner"></loading-spinner>\n\n    <ion-list class="list" *ngIf="!showSpinner">\n\n        <ion-item-group>\n\n            <ion-item (click)="goPag(1,2.00)"> \n\n                <ion-label class="qtd">1 CAD</ion-label>\n\n                <ion-label class="price">R$ 2,00</ion-label>\n\n            </ion-item>\n\n            <ion-item (click)="goPag(2,4.00)">\n\n                <ion-label class="qtd">2 CADs</ion-label>\n\n                <ion-label class="price">R$ 4,00</ion-label>\n\n            </ion-item>\n\n            <ion-item (click)="goPag(5,10.00)">\n\n                <ion-label class="qtd">5 CADs</ion-label>\n\n                <ion-label class="price">R$ 10,00</ion-label>\n\n            </ion-item>\n\n            <ion-item (click)="goPag(10,20.00)">\n\n                <ion-label class="qtd">10 CADs</ion-label>\n\n                <ion-label class="price">R$ 20,00</ion-label>\n\n            </ion-item>\n\n            <ion-item (click)="goPag(100,200.00)">\n\n                <ion-label class="qtd">100 CADs</ion-label>\n\n                <ion-label class="price">R$ 200,00</ion-label>\n\n            </ion-item>\n\n        <!-- <ion-item><ion-label class="promo">Resgatar código promocional</ion-label></ion-item> -->\n\n    </ion-item-group>\n\n    </ion-list>\n\n    <!--\n\n    <ion-grid class="grid">\n\n        <ion-row class="row-header" col-10>\n\n            <ion-col class="col-price" col-12>\n\n                <ion-label>R$ {{(price-desconto) | number:\'1.2-2\' | replace:\'.\':\',\'}}</ion-label>\n\n            </ion-col>\n\n            <ion-col class="col-qtd" col-12>\n\n                <ion-label>{{cads}} CAD(s)</ion-label>\n\n            </ion-col>\n\n            <ion-col class="col-info" col-12>\n\n                <ion-label>Subtotal R$ {{price | number:\'1.2-2\' | replace:\'.\':\',\'}}</ion-label>\n\n            </ion-col>\n\n            <ion-col class="col-desconto" col-12 *ngIf="user.percent > 0">\n\n                <ion-label>Desconto R$ {{desconto | number:\'1.2-2\' | replace:\'.\':\',\'}} ({{user.percent}}%)</ion-label>\n\n            </ion-col>\n\n        </ion-row>\n\n        <ion-row class="row-body" col-10>\n\n            <ion-col class="col-description" col-12>\n\n                <ion-label>Selecione a quantidade de CADs que deseja comprar</ion-label>\n\n            </ion-col>\n\n            <ion-col class="col-cad-qtd" col-12>\n\n                <button ion-button type="button" (click)="selecionarQtd(1)" class="btn-qtd">+1</button>\n\n                <button ion-button type="button" (click)="selecionarQtd(5)" class="btn-qtd">+5</button>\n\n                <button ion-button type="button" (click)="selecionarQtd(10)" class="btn-qtd">+10</button>\n\n            </ion-col>\n\n            <ion-col class="col-clean-btn" col-12>\n\n                <button type="button" (click)="clean()" no-border class="btn-clean">Limpar</button>\n\n            </ion-col>\n\n            <ion-col class="col-subdescription" col-12 *ngIf="cielo === false">\n\n                <ion-label>Forma de Pagamento: Cartão de Crédito</ion-label>\n\n            </ion-col>\n\n        </ion-row>\n\n        <ion-row class="row-btn" col-12>\n\n            <ion-col class="col-btn-comprar">\n\n                <button type="button" (click)="formaPagamento()"\n\n                    class="btn-comprar">{{ cielo ? \'FORMA DE PAGAMENTO\' : \'COMPRAR\' }}</button>\n\n            </ion-col>\n\n        </ion-row>\n\n    </ion-grid> \n\n-->\n\n</ion-content>'/*ion-inline-end:"C:\Users\ELIAS\Desktop\ZAD\src\pages\comprar-creditos\comprar-creditos.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavParams */],

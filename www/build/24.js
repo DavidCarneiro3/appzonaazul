@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CancelarTransacaoPageModule", function() { return CancelarTransacaoPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(35);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__cancelar_transacao__ = __webpack_require__(784);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__cancelar_transacao__ = __webpack_require__(785);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -38,7 +38,7 @@ var CancelarTransacaoPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 773:
+/***/ 774:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -137,7 +137,7 @@ var DateUtil = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 784:
+/***/ 785:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -151,7 +151,7 @@ var DateUtil = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_pagarme_pagarme__ = __webpack_require__(427);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_cads_user_cads_user__ = __webpack_require__(111);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__providers_tempo_estacionado_tempo_estacionado__ = __webpack_require__(204);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__util_date_util__ = __webpack_require__(773);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__util_date_util__ = __webpack_require__(774);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__environments_constants__ = __webpack_require__(19);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -330,7 +330,7 @@ var CancelarTransacaoPage = /** @class */ (function () {
     };
     CancelarTransacaoPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-cancelar-transacao',template:/*ion-inline-start:"/Users/desenvolvedor/Documents/zonaazulfortaleza-develop/src/pages/cancelar-transacao/cancelar-transacao.html"*/'<ion-header no-border>\n  <ion-navbar color="header">\n\n    <ion-title>\n      <ion-label>Cancelamento de Transação</ion-label>\n    </ion-title>\n\n    <ion-buttons left>\n      <button ion-button (click)="close()">\n        <span color="light" class="header-text" showWhen="ios">Fechar</span>\n        <ion-icon name="md-arrow-back" class="header-icon" showWhen="android,windows"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n</ion-header>\n\n<ion-content class="content">\n\n  <!-- <ion-grid class="grid-profile">\n\n    <ion-row class="informacoes-body">\n      <ion-item class="informacoes-body-header">\n        <ion-label class="title-header-body">CANCELAMENTO DE TRANSAÇÃO</ion-label>\n      </ion-item>\n      <form class="informacoes-body-list">\n        <ion-item class="informacoes-body-list-item" no-lines>\n          <ion-label stacked>Motivo do Cancelamento:</ion-label>\n          <ion-textarea placeholder="Digite aqui o motivo do cancelamento..." [(ngModel)]="motivo"\n            [ngModelOptions]="{standalone: true}"></ion-textarea>\n        </ion-item>\n        <ion-item class="btn-row" no-lines>\n          <button ion-button (click)="updateData()" class="btn" block>Enviar</button>\n        </ion-item>\n      </form>\n    </ion-row>\n\n  </ion-grid> -->\n\n  <ion-grid>\n    <ion-row class="row-header">\n        <ion-col col-12 class="col-header">\n            <ion-label class="title"></ion-label>\n        </ion-col>\n    </ion-row>\n\n    <ion-row>\n      <form class="informacoes-body-list">\n        <ion-item class="informacoes-body-list-item" no-lines>\n          <ion-label><ion-icon name="ios-mail-outline"></ion-icon></ion-label>\n          <ion-textarea type="text" mode="ios" rows="4" placeholder="Motivo do Cancelamento" [(ngModel)]="motivo"\n            [ngModelOptions]="{standalone: true}" class="blue-component"></ion-textarea>\n\n          <button class="menu-btn" ion-button clear  type="button" item-right> <ion-icon ios="ios-checkmark-circle-outline" class="icon-blue icon icon-ios ion-ios-checkmark-circle-outline"></ion-icon> </button>\n        </ion-item>\n        <ion-item class="btn-row" no-lines>\n          <button ion-button (click)="updateData()" class="btn" block>Enviar</button>\n        </ion-item>\n      </form>\n    </ion-row>\n\n  </ion-grid>\n\n</ion-content>'/*ion-inline-end:"/Users/desenvolvedor/Documents/zonaazulfortaleza-develop/src/pages/cancelar-transacao/cancelar-transacao.html"*/,
+            selector: 'page-cancelar-transacao',template:/*ion-inline-start:"C:\Users\ELIAS\Desktop\ZAD\src\pages\cancelar-transacao\cancelar-transacao.html"*/'<ion-header no-border>\n\n  <ion-navbar color="header">\n\n\n\n    <ion-title>\n\n      <ion-label>Cancelamento de Transação</ion-label>\n\n    </ion-title>\n\n\n\n    <ion-buttons left>\n\n      <button ion-button (click)="close()">\n\n        <span color="light" class="header-text" showWhen="ios">Fechar</span>\n\n        <ion-icon name="md-arrow-back" class="header-icon" showWhen="android,windows"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content class="content">\n\n\n\n  <!-- <ion-grid class="grid-profile">\n\n\n\n    <ion-row class="informacoes-body">\n\n      <ion-item class="informacoes-body-header">\n\n        <ion-label class="title-header-body">CANCELAMENTO DE TRANSAÇÃO</ion-label>\n\n      </ion-item>\n\n      <form class="informacoes-body-list">\n\n        <ion-item class="informacoes-body-list-item" no-lines>\n\n          <ion-label stacked>Motivo do Cancelamento:</ion-label>\n\n          <ion-textarea placeholder="Digite aqui o motivo do cancelamento..." [(ngModel)]="motivo"\n\n            [ngModelOptions]="{standalone: true}"></ion-textarea>\n\n        </ion-item>\n\n        <ion-item class="btn-row" no-lines>\n\n          <button ion-button (click)="updateData()" class="btn" block>Enviar</button>\n\n        </ion-item>\n\n      </form>\n\n    </ion-row>\n\n\n\n  </ion-grid> -->\n\n\n\n  <ion-grid>\n\n    <ion-row class="row-header">\n\n        <ion-col col-12 class="col-header">\n\n            <ion-label class="title"></ion-label>\n\n        </ion-col>\n\n    </ion-row>\n\n\n\n    <ion-row>\n\n      <form class="informacoes-body-list">\n\n        <ion-item class="informacoes-body-list-item" no-lines>\n\n          <ion-label><ion-icon name="ios-mail-outline"></ion-icon></ion-label>\n\n          <ion-textarea type="text" mode="ios" rows="4" placeholder="Motivo do Cancelamento" [(ngModel)]="motivo"\n\n            [ngModelOptions]="{standalone: true}" class="blue-component"></ion-textarea>\n\n\n\n          <button class="menu-btn" ion-button clear  type="button" item-right> <ion-icon ios="ios-checkmark-circle-outline" class="icon-blue icon icon-ios ion-ios-checkmark-circle-outline"></ion-icon> </button>\n\n        </ion-item>\n\n        <ion-item class="btn-row" no-lines>\n\n          <button ion-button (click)="updateData()" class="btn" block>Enviar</button>\n\n        </ion-item>\n\n      </form>\n\n    </ion-row>\n\n\n\n  </ion-grid>\n\n\n\n</ion-content>'/*ion-inline-end:"C:\Users\ELIAS\Desktop\ZAD\src\pages\cancelar-transacao\cancelar-transacao.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavParams */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* ViewController */],

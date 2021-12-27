@@ -1,6 +1,6 @@
 webpackJsonp([29],{
 
-/***/ 754:
+/***/ 750:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PermissionsModalPageModule", function() { return PermissionsModalPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(35);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__permissions_screen__ = __webpack_require__(813);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__permissions_screen__ = __webpack_require__(802);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -38,7 +38,7 @@ var PermissionsModalPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 813:
+/***/ 802:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -210,7 +210,7 @@ var PermissionsModalPage = /** @class */ (function () {
     };
     PermissionsModalPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'permissions-screen',template:/*ion-inline-start:"/Users/desenvolvedor/Documents/zonaazulfortaleza-develop/src/pages/permissions/permissions-screen.html"*/'<ion-header no-border text-center>\n    <ion-navbar color="header" text-center>\n        <ion-title>\n            <ion-label>\n                Permissão Requerida\n            </ion-label>\n        </ion-title>\n    </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n    <p class="conteudo-titulo">\n        {{title}}\n    </p>\n    <p class="conteudo-texto">\n        {{reason}}\n    </p>\n</ion-content>\n\n<ion-footer class="footer">\n    <ion-toolbar>\n        <button ion-button block (click)="askPermissions()" mode="md">Continuar</button>\n    </ion-toolbar>\n</ion-footer>'/*ion-inline-end:"/Users/desenvolvedor/Documents/zonaazulfortaleza-develop/src/pages/permissions/permissions-screen.html"*/
+            selector: 'permissions-screen',template:/*ion-inline-start:"C:\Users\ELIAS\Desktop\ZAD\src\pages\permissions\permissions-screen.html"*/'<ion-header no-border text-center>\n\n    <ion-navbar color="header" text-center>\n\n        <ion-title>\n\n            <ion-label>\n\n                Permissão Requerida\n\n            </ion-label>\n\n        </ion-title>\n\n    </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding>\n\n    <p class="conteudo-titulo">\n\n        {{title}}\n\n    </p>\n\n    <p class="conteudo-texto">\n\n        {{reason}}\n\n    </p>\n\n</ion-content>\n\n\n\n<ion-footer class="footer">\n\n    <ion-toolbar>\n\n        <button ion-button block (click)="askPermissions()" mode="md">Continuar</button>\n\n    </ion-toolbar>\n\n</ion-footer>'/*ion-inline-end:"C:\Users\ELIAS\Desktop\ZAD\src\pages\permissions\permissions-screen.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["n" /* NavParams */],
             __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* AlertController */],

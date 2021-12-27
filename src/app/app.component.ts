@@ -28,7 +28,7 @@ export class MyApp {
 
     @ViewChild(Nav) nav: Nav;
     public static MAP_LOAD = true;
-    rootPage: any = Constants.PRINCIPAL_PAGE.name;
+    rootPage: any = Constants.INITIAL_PAGE.name;
     user = new User();
     cad = new CadModel();
     cads: number = 0;
@@ -103,7 +103,8 @@ export class MyApp {
                     this.events.publish('user', user)
                     this.user = user
                     console.log(this.user)
-                    this.rootPage = Constants.PRINCIPAL_PAGE.name;
+                    this.rootPage = Constants.INITIAL_PAGE.name;
+                    //this.setVisibleMenu(false);
                     // }
                 });
             } else {
@@ -116,7 +117,10 @@ export class MyApp {
 
         this.initializeApp();
     }
-
+    setVisibleMenu(status = false) {
+        this.menu.enable(status);
+        this.menu.swipeEnable(status);
+    }
 
     initializeApp() {
         this.platform.ready().then(() => {
@@ -124,7 +128,6 @@ export class MyApp {
             this.splashScreen.hide();
             this.carregaUsuarioComCADs();
             this.comunicacaoCentralProvider.setDMA_NTP();
-
             if (this.platform.is('cordova')) {
                 this.userProvider.getUserLocal().then(_userId => {
 

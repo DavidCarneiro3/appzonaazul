@@ -102,8 +102,10 @@ export class LoginPage {
                     else {
                         this.events.publish('user:load', res.logged.id);
                         this.events.publish('user', res.logged)
-                        this.navCtrl.setRoot(Constants.PRINCIPAL_PAGE.name);
-                        this.setVisibleMenu(true);
+                        //this.navCtrl.setRoot(Constants.PRINCIPAL_PAGE.name);
+                        this.navCtrl.setRoot(Constants.INITIAL_PAGE.name);
+                        //this.setVisibleMenu(true);
+                        this.setVisibleMenu(false);
                     }
                     loading.dismiss();
                 })

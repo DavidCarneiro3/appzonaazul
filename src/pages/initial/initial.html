@@ -1,0 +1,33 @@
+<ion-header no-border>
+  <ion-navbar color="header" no-border>
+      <ion-title class="title-header">
+        <ion-select [(ngModel)]="city" class="select-city" cancelText="Cancelar" okText="Ok" [selectOptions]="selectOptions">
+          <ion-option value="Fortaleza">Fortaleza</ion-option>
+        </ion-select>
+      </ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <div class="img-top"  *ngIf="!showSpinner">
+    <img src="assets/imgs/default.png" alt="" class="nav-img">
+    <h2 class="title">{{(cads-cadsUsados)}} CADS</h2>
+    <p class="price">R${{(cads-cadsUsados)*2}},00</p>
+    <button ion-button class="btn-comprar" (click)="goComprar()"><img src="assets/icones/shopping-cart-white.svg"></button>
+  </div>
+  <div class="content">
+    <div>
+      <button ion-button clear class="btn-add" (click)="goPrincipal()">
+        <div>
+          Zona Azul<br><img height="50" src="assets/icones/carro01.png">
+        </div>
+      </button>
+      <button ion-button clear class="btn-add">
+        <div>
+          Pagar Ticket<br><img height="50" src="assets/icones/share.svg">
+        </div>
+      </button>
+    </div>
+  </div>
+</ion-content>

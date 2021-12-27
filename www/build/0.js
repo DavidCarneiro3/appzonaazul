@@ -1,6 +1,6 @@
 webpackJsonp([0],{
 
-/***/ 765:
+/***/ 767:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,10 +8,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TempoRestantePageModule", function() { return TempoRestantePageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(35);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__tempo_restante__ = __webpack_require__(824);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__tempo_restante__ = __webpack_require__(822);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_components_module__ = __webpack_require__(419);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_loading_spinner_loading_spinner_module__ = __webpack_require__(418);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angular_svg_round_progressbar__ = __webpack_require__(825);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angular_svg_round_progressbar__ = __webpack_require__(823);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angular_svg_round_progressbar___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_angular_svg_round_progressbar__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -49,12 +49,12 @@ var TempoRestantePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 770:
+/***/ 771:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MapUtil; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pages_home_home__ = __webpack_require__(772);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pages_home_home__ = __webpack_require__(773);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__environments_constants__ = __webpack_require__(19);
 
 
@@ -527,7 +527,7 @@ var MapUtil = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 771:
+/***/ 772:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -684,7 +684,7 @@ var FunctionsUtil = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 772:
+/***/ 773:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -707,8 +707,8 @@ var FunctionsUtil = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__providers_modal_modal__ = __webpack_require__(198);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__providers_area_area__ = __webpack_require__(414);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__environments_constants__ = __webpack_require__(19);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__util_map_util__ = __webpack_require__(770);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__util_functions_util__ = __webpack_require__(771);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__util_map_util__ = __webpack_require__(771);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__util_functions_util__ = __webpack_require__(772);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__app_app_component__ = __webpack_require__(411);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__providers_estacionar_estacionar__ = __webpack_require__(201);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -1319,7 +1319,7 @@ var HomePage = /** @class */ (function () {
     ], HomePage.prototype, "iconElement", void 0);
     HomePage = HomePage_1 = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-home',template:/*ion-inline-start:"/Users/desenvolvedor/Documents/zonaazulfortaleza-develop/src/pages/home/home.html"*/'<ion-header no-border>\n    <ion-navbar color="header">\n        <button ion-button icon-only menuToggle>\n            <ion-icon class="header-icon" name="menu"></ion-icon>\n        </button>\n        <ion-title class="title-header">\n            <ion-select [(ngModel)]="city" class="select-city" cancelText="Cancelar" okText="Ok" [selectOptions]="selectOptions">\n                <ion-option value="Fortaleza">Fortaleza</ion-option>\n              </ion-select>\n        </ion-title>\n\n        <ion-buttons end>\n            <button ion-button icon-only (click)="openTempoRestantePage()">\n                <img src="assets/icones/car-white.svg"  />\n            </button>\n        </ion-buttons>\n    </ion-navbar>\n</ion-header>\n\n<ion-content class="content">\n    <div #map id="map"></div>\n    <input #search id="search" class="controls" type="text" placeholder="Buscar">\n\n    <button ion-button icon-only type="button" item-right clear id="mic" >\n        <ion-icon color="gray" name="search" class="icon"></ion-icon>\n    </button>\n    <!--<ion-fab id="help">\n        <button ion-fab icon-only (click)="openHelp()">\n            <ion-icon name="help"></ion-icon>\n        </button>\n    </ion-fab> -->\n\n    <ion-fab id="close" (click)="showCloseSetor()">\n        <button ion-fab>\n        </button>\n    </ion-fab>\n\n   <!-- <ion-fab>\n        <button ion-fab icon-only color="default" (click)="buscarSetores()" id="locate">\n            <ion-icon name="search" class="icon"></ion-icon>\n        </button>\n    </ion-fab> -->\n\n    <ion-icon #icon name="close" class="icon-clear" style="display: none" id="icon"></ion-icon>\n    <button ion-button id="btn-show-estacionar-page" (click)="openEstacionarPage($event)"\n        [style.display]="\'none\'"></button>\n    <button ion-button id="btn-show-streat-view" (click)="showStreatView()" [style.display]="\'none\'"></button>\n</ion-content>'/*ion-inline-end:"/Users/desenvolvedor/Documents/zonaazulfortaleza-develop/src/pages/home/home.html"*/
+            selector: 'page-home',template:/*ion-inline-start:"C:\Users\ELIAS\Desktop\ZAD\src\pages\home\home.html"*/'<ion-header no-border>\n\n    <ion-navbar color="header">\n\n        <button ion-button icon-only menuToggle>\n\n            <ion-icon class="header-icon" name="menu"></ion-icon>\n\n        </button>\n\n        <ion-title class="title-header">\n\n            <ion-select [(ngModel)]="city" class="select-city" cancelText="Cancelar" okText="Ok" [selectOptions]="selectOptions">\n\n                <ion-option value="Fortaleza">Fortaleza</ion-option>\n\n              </ion-select>\n\n        </ion-title>\n\n\n\n        <ion-buttons end>\n\n            <button ion-button icon-only (click)="openTempoRestantePage()">\n\n                <img src="assets/icones/car-white.svg"  />\n\n            </button>\n\n        </ion-buttons>\n\n    </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content class="content">\n\n    <div #map id="map"></div>\n\n    <input #search id="search" class="controls" type="text" placeholder="Buscar">\n\n\n\n    <button ion-button icon-only type="button" item-right clear id="mic" >\n\n        <ion-icon color="gray" name="search" class="icon"></ion-icon>\n\n    </button>\n\n    <!--<ion-fab id="help">\n\n        <button ion-fab icon-only (click)="openHelp()">\n\n            <ion-icon name="help"></ion-icon>\n\n        </button>\n\n    </ion-fab> -->\n\n\n\n    <ion-fab id="close" (click)="showCloseSetor()">\n\n        <button ion-fab>\n\n        </button>\n\n    </ion-fab>\n\n\n\n   <!-- <ion-fab>\n\n        <button ion-fab icon-only color="default" (click)="buscarSetores()" id="locate">\n\n            <ion-icon name="search" class="icon"></ion-icon>\n\n        </button>\n\n    </ion-fab> -->\n\n\n\n    <ion-icon #icon name="close" class="icon-clear" style="display: none" id="icon"></ion-icon>\n\n    <button ion-button id="btn-show-estacionar-page" (click)="openEstacionarPage($event)"\n\n        [style.display]="\'none\'"></button>\n\n    <button ion-button id="btn-show-streat-view" (click)="showStreatView()" [style.display]="\'none\'"></button>\n\n</ion-content>'/*ion-inline-end:"C:\Users\ELIAS\Desktop\ZAD\src\pages\home\home.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* Platform */],
@@ -1359,7 +1359,7 @@ var LatLng = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 774:
+/***/ 775:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1378,25 +1378,14 @@ exports.isNumeric = isNumeric;
 
 /***/ }),
 
-/***/ 775:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var Observable_1 = __webpack_require__(4);
-var interval_1 = __webpack_require__(776);
-Observable_1.Observable.interval = interval_1.interval;
-//# sourceMappingURL=interval.js.map
-
-/***/ }),
-
 /***/ 776:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var IntervalObservable_1 = __webpack_require__(777);
-exports.interval = IntervalObservable_1.IntervalObservable.create;
+var Observable_1 = __webpack_require__(4);
+var interval_1 = __webpack_require__(777);
+Observable_1.Observable.interval = interval_1.interval;
 //# sourceMappingURL=interval.js.map
 
 /***/ }),
@@ -1406,12 +1395,23 @@ exports.interval = IntervalObservable_1.IntervalObservable.create;
 
 "use strict";
 
+var IntervalObservable_1 = __webpack_require__(778);
+exports.interval = IntervalObservable_1.IntervalObservable.create;
+//# sourceMappingURL=interval.js.map
+
+/***/ }),
+
+/***/ 778:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var isNumeric_1 = __webpack_require__(774);
+var isNumeric_1 = __webpack_require__(775);
 var Observable_1 = __webpack_require__(4);
 var async_1 = __webpack_require__(58);
 /**
@@ -1496,7 +1496,7 @@ exports.IntervalObservable = IntervalObservable;
 
 /***/ }),
 
-/***/ 778:
+/***/ 779:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1590,7 +1590,7 @@ exports.RoundProgressService = RoundProgressService;
 
 /***/ }),
 
-/***/ 779:
+/***/ 780:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1637,7 +1637,7 @@ exports.RoundProgressConfig = RoundProgressConfig;
 
 /***/ }),
 
-/***/ 780:
+/***/ 781:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1916,7 +1916,7 @@ exports.RoundProgressEase = RoundProgressEase;
 
 /***/ }),
 
-/***/ 781:
+/***/ 782:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1932,9 +1932,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(0);
-var round_progress_service_1 = __webpack_require__(778);
-var round_progress_config_1 = __webpack_require__(779);
-var round_progress_ease_1 = __webpack_require__(780);
+var round_progress_service_1 = __webpack_require__(779);
+var round_progress_config_1 = __webpack_require__(780);
+var round_progress_ease_1 = __webpack_require__(781);
 var RoundProgressComponent = (function () {
     function RoundProgressComponent(_service, _easing, _defaults, _ngZone, _renderer) {
         this._service = _service;
@@ -2154,7 +2154,7 @@ exports.RoundProgressComponent = RoundProgressComponent;
 
 /***/ }),
 
-/***/ 824:
+/***/ 822:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2167,14 +2167,14 @@ exports.RoundProgressComponent = RoundProgressComponent;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_tempo_estacionado_tempo_estacionado__ = __webpack_require__(204);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_cads_user_cads_user__ = __webpack_require__(111);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__models_veiculo__ = __webpack_require__(421);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_rxjs_add_observable_interval__ = __webpack_require__(775);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_rxjs_add_observable_interval__ = __webpack_require__(776);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_rxjs_add_observable_interval___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_rxjs_add_observable_interval__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_rxjs_add_operator_take__ = __webpack_require__(85);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_rxjs_add_operator_take___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_rxjs_add_operator_take__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__providers_setores_setores__ = __webpack_require__(413);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__environments_constants__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__app_app_component__ = __webpack_require__(411);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__util_map_util__ = __webpack_require__(770);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__util_map_util__ = __webpack_require__(771);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__providers_logger_logger__ = __webpack_require__(39);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__providers_modal_modal__ = __webpack_require__(198);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -2534,7 +2534,7 @@ var TempoRestantePage = /** @class */ (function () {
     };
     TempoRestantePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-tempo-restante',template:/*ion-inline-start:"/Users/desenvolvedor/Documents/zonaazulfortaleza-develop/src/pages/tempo-restante/tempo-restante.html"*/'<ion-header no-border>\n    <ion-navbar color="header">\n\n        <ion-title style="width: 26em;">\n            <ion-label class="header-title">Saldo: {{qtdCadsUser - qtdCadsUsados}} CADs</ion-label>\n        </ion-title>\n\n        <button ion-button icon-only menuToggle *ngIf="!(fromPage === \'comprovante\')">\n            <ion-icon class="header-icon" name="menu"></ion-icon>\n        </button>\n\n        <ion-buttons left *ngIf="fromPage == \'comprovante\' ">\n            <button ion-button (click)="closeTempoRestantePage()">\n                <span color="light" class="header-text" showWhen="ios">Fechar</span>\n                <ion-icon name="md-arrow-back" class="header-icon" showWhen="android,windows,core"></ion-icon>\n            </button>\n        </ion-buttons>\n\n        <ion-buttons end>\n            <button ion-button icon-only (click)="goComprar()">\n                <img src="assets/icones/shopping-cart-white.svg" alt="" class="header-img">\n            </button>\n        </ion-buttons>\n\n    </ion-navbar>\n</ion-header>\n\n<ion-content padding class="content">\n    \n\n    <div *ngIf="!showSpinner1">\n        <div class=\'time-master\' *ngIf="estacionar">\n            <div class="{{estacionar?.veiculo?.tipo_veiculo == \'caminhao\'? \'info-content-green\':\'info-content-pink\'}}">\n                <loading-spinner *ngIf="showSpinner"></loading-spinner>\n                <ion-item class="item-select" no-lines mode="md" *ngIf="!showSpinner">\n                    <ion-label text-left class="title-select" mode="md">{{estacionar?.veiculo?.placa}}<p>{{estacionar?.veiculo?.marca || estacionar?.veiculo.modelo | uppercase}}</p></ion-label>\n                    <ion-label text-center mode="md"><img class="thumb" src="assets/icones/{{estacionar?.veiculo.tipo_veiculo == \'caminhao\'? \'caminhao-blue-dark.svg\': \'carro-white.svg\'}}" alt=""></ion-label>\n                </ion-item>\n              \n            </div>\n            \n            <div>\n                <div class="time">\n                    <timer [decorrido]="estacionar?.dataHoraRegistro" \n                           [now]="tempoCurrent"\n                           [placa]="estacionar?.veiculo_id" \n                           [status]="estacionar?.status"></timer>\n                    <p><ion-label class="clock-text">Até {{somaHora(estacionar?.comprovante?.horario,estacionar?.tempoComprado)}} </ion-label></p>\n                </div>        \n                        \n                <round-progress\n                    [current]="percent(estacionar?.dataHoraRegistro)"\n                    [max]="estacionar?.tempoComprado"\n                    [color]="\'#3F65FF\'"\n                    [background]="\'#E0E0E0\'"\n                    [radius]="65"\n                    [stroke]="10"\n                    [semicircle]="false"\n                    [rounded]="true"\n                    [clockwise]="true"\n                    [responsive]="false"\n                    [duration]="800"\n                    [animation]="\'easeInOutQuart\'"\n                    [animationDelay]="0">\n                        <timer [time]="estacionar?.tempoEstacionado" \n                               [now]="tempoCurrent"\n                               [placa]="estacionar?.veiculo_id" \n                               [status]="estacionar?.status"></timer>\n                </round-progress>   \n            </div>\n            <div class="item-info">\n                <p>Placa: {{estacionar?.veiculo?.placa}}</p>\n                <p>CADs Usados: {{estacionar?.qtd}}</p>\n                <p>Tempo de {{estacionar?.qtd}} CAD: {{estacionar?.tempoComprado/60}} Hora(s)</p>\n                <p>Valor: <span class="price-text"> R${{estacionar?.comprovante?.valor}},00</span></p>\n                <p>Data/Hora da ativação: {{estacionar?.comprovante?.data+\' \'+  estacionar?.comprovante?.horario}}</p>\n                <p>Registro AMC: {{estacionar?.comprovante?.numberAuth}}</p>\n            </div>\n            <button ion-button small  mode="ios" type="button" (click)="renovarEstacionar(estacionar)"\n                    class="btn-renovar" icon-end>ESTENDER <ion-icon name="md-time"></ion-icon></button>\n            <button ion-button small clear mode="ios" type="button" (click)="closeTempoRestantePage()"\n                    class="btn-plus" icon-end>ESTACIONAR EM OUTRO LOCAL <ion-icon name="ios-add-outline"></ion-icon></button>       \n                     \n        </div>\n        \n         <!--<ion-row *ngFor="let _estacionados[0] of _estacionados;">\n            \n           <ion-col col-3 class="col-img">\n                <ion-item class="item-img" no-lines no-padding>\n                    <ion-thumbnail item-start class="thumbnail-icon">\n                        <img src="{{getImage(comprovante?.tipo_veiculo)}}" />\n                    </ion-thumbnail>\n                </ion-item>\n            </ion-col>-->\n           <!-- <ion-col col-4 class="col-details">\n                <p class="item-details-board">{{ comprovante?.placa }}</p>\n                <p *ngIf="veiculo" class="item-details-mark">{{veiculo?.marca}}\n                    {{veiculo?.modelo}}</p>\n                <p *ngIf="!veiculo" class="item-details-mark">Setor {{setor_id}}</p>\n                <p class="item-details-city">{{ cidade }}</p>\n                <ion-row>\n                    \n                    <ion-col col-5 class="item-info" >\n                        \n                           \n                        \n                    </ion-col>\n                </ion-row>\n                    <ion-col>\n                        \n                    </ion-col>\n            </ion-col>\n            <ion-col col-1 class="col-details renovar" *ngIf="renovar">\n                <ion-row></ion-row>\n                <button ion-button small mode="ios" type="button" (click)="renovarEstacionar(_estacionados[0].estacionar)"\n                    class="btn-renovar">Renovar</button>\n            </ion-col>\n            <ion-col col-12 class="col-message">\n                <ion-item class="item-messagem" no-lines no-padding>\n\n                    <ion-label *ngIf="qtd == 1" class="message">* Esta ativação possui\n                        {{qtd}} CAD ativo</ion-label>\n                    <ion-label *ngIf="qtd > 1" class="message">* Esta ativação possui\n                        {{qtd}} CADs ativos</ion-label>\n                </ion-item>\n            </ion-col>\n            <ion-col col-12 class="col-message">\n                <ion-item class="item-btn-rodape" no-lines no-padding>\n                    <button ion-button clear small color="blue2" icon-start (click)="openVeiculoEstacionado(_estacionados[0])">\n                        <ion-icon name=\'ios-pin-outline\'></ion-icon>Ver Localização\n                    </button>\n                </ion-item>\n            </ion-col>\n        </ion-row>-->\n        <div *ngIf="!estacionar" class="row-info">\n            <ion-col col-12>\n                <ion-item no-lines>\n                    <h2>Não há nenhum veículo estacionado</h2>\n                </ion-item>\n                \n            </ion-col>\n        </div>\n    </div>\n\n</ion-content>'/*ion-inline-end:"/Users/desenvolvedor/Documents/zonaazulfortaleza-develop/src/pages/tempo-restante/tempo-restante.html"*/,
+            selector: 'page-tempo-restante',template:/*ion-inline-start:"C:\Users\ELIAS\Desktop\ZAD\src\pages\tempo-restante\tempo-restante.html"*/'<ion-header no-border>\n\n    <ion-navbar color="header">\n\n\n\n        <ion-title style="width: 26em;">\n\n            <ion-label class="header-title">Saldo: {{qtdCadsUser - qtdCadsUsados}} CADs</ion-label>\n\n        </ion-title>\n\n\n\n        <button ion-button icon-only menuToggle *ngIf="!(fromPage === \'comprovante\')">\n\n            <ion-icon class="header-icon" name="menu"></ion-icon>\n\n        </button>\n\n\n\n        <ion-buttons left *ngIf="fromPage == \'comprovante\' ">\n\n            <button ion-button (click)="closeTempoRestantePage()">\n\n                <span color="light" class="header-text" showWhen="ios">Fechar</span>\n\n                <ion-icon name="md-arrow-back" class="header-icon" showWhen="android,windows,core"></ion-icon>\n\n            </button>\n\n        </ion-buttons>\n\n\n\n        <ion-buttons end>\n\n            <button ion-button icon-only (click)="goComprar()">\n\n                <img src="assets/icones/shopping-cart-white.svg" alt="" class="header-img">\n\n            </button>\n\n        </ion-buttons>\n\n\n\n    </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding class="content">\n\n    \n\n\n\n    <div *ngIf="!showSpinner1">\n\n        <div class=\'time-master\' *ngIf="estacionar">\n\n            <div class="{{estacionar?.veiculo?.tipo_veiculo == \'caminhao\'? \'info-content-green\':\'info-content-pink\'}}">\n\n                <loading-spinner *ngIf="showSpinner"></loading-spinner>\n\n                <ion-item class="item-select" no-lines mode="md" *ngIf="!showSpinner">\n\n                    <ion-label text-left class="title-select" mode="md">{{estacionar?.veiculo?.placa}}<p>{{estacionar?.veiculo?.marca || estacionar?.veiculo.modelo | uppercase}}</p></ion-label>\n\n                    <ion-label text-center mode="md"><img class="thumb" src="assets/icones/{{estacionar?.veiculo.tipo_veiculo == \'caminhao\'? \'caminhao-blue-dark.svg\': \'carro-white.svg\'}}" alt=""></ion-label>\n\n                </ion-item>\n\n              \n\n            </div>\n\n            \n\n            <div>\n\n                <div class="time">\n\n                    <timer [decorrido]="estacionar?.dataHoraRegistro" \n\n                           [now]="tempoCurrent"\n\n                           [placa]="estacionar?.veiculo_id" \n\n                           [status]="estacionar?.status"></timer>\n\n                    <p><ion-label class="clock-text">Até {{somaHora(estacionar?.comprovante?.horario,estacionar?.tempoComprado)}} </ion-label></p>\n\n                </div>        \n\n                        \n\n                <round-progress\n\n                    [current]="percent(estacionar?.dataHoraRegistro)"\n\n                    [max]="estacionar?.tempoComprado"\n\n                    [color]="\'#3F65FF\'"\n\n                    [background]="\'#E0E0E0\'"\n\n                    [radius]="65"\n\n                    [stroke]="10"\n\n                    [semicircle]="false"\n\n                    [rounded]="true"\n\n                    [clockwise]="true"\n\n                    [responsive]="false"\n\n                    [duration]="800"\n\n                    [animation]="\'easeInOutQuart\'"\n\n                    [animationDelay]="0">\n\n                        <timer [time]="estacionar?.tempoEstacionado" \n\n                               [now]="tempoCurrent"\n\n                               [placa]="estacionar?.veiculo_id" \n\n                               [status]="estacionar?.status"></timer>\n\n                </round-progress>   \n\n            </div>\n\n            <div class="item-info">\n\n                <p>Placa: {{estacionar?.veiculo?.placa}}</p>\n\n                <p>CADs Usados: {{estacionar?.qtd}}</p>\n\n                <p>Tempo de {{estacionar?.qtd}} CAD: {{estacionar?.tempoComprado/60}} Hora(s)</p>\n\n                <p>Valor: <span class="price-text"> R${{estacionar?.comprovante?.valor}},00</span></p>\n\n                <p>Data/Hora da ativação: {{estacionar?.comprovante?.data+\' \'+  estacionar?.comprovante?.horario}}</p>\n\n                <p>Registro AMC: {{estacionar?.comprovante?.numberAuth}}</p>\n\n            </div>\n\n            <button ion-button small  mode="ios" type="button" (click)="renovarEstacionar(estacionar)"\n\n                    class="btn-renovar" icon-end>ESTENDER <ion-icon name="md-time"></ion-icon></button>\n\n            <button ion-button small clear mode="ios" type="button" (click)="closeTempoRestantePage()"\n\n                    class="btn-plus" icon-end>ESTACIONAR EM OUTRO LOCAL <ion-icon name="ios-add-outline"></ion-icon></button>       \n\n                     \n\n        </div>\n\n        \n\n         <!--<ion-row *ngFor="let _estacionados[0] of _estacionados;">\n\n            \n\n           <ion-col col-3 class="col-img">\n\n                <ion-item class="item-img" no-lines no-padding>\n\n                    <ion-thumbnail item-start class="thumbnail-icon">\n\n                        <img src="{{getImage(comprovante?.tipo_veiculo)}}" />\n\n                    </ion-thumbnail>\n\n                </ion-item>\n\n            </ion-col>-->\n\n           <!-- <ion-col col-4 class="col-details">\n\n                <p class="item-details-board">{{ comprovante?.placa }}</p>\n\n                <p *ngIf="veiculo" class="item-details-mark">{{veiculo?.marca}}\n\n                    {{veiculo?.modelo}}</p>\n\n                <p *ngIf="!veiculo" class="item-details-mark">Setor {{setor_id}}</p>\n\n                <p class="item-details-city">{{ cidade }}</p>\n\n                <ion-row>\n\n                    \n\n                    <ion-col col-5 class="item-info" >\n\n                        \n\n                           \n\n                        \n\n                    </ion-col>\n\n                </ion-row>\n\n                    <ion-col>\n\n                        \n\n                    </ion-col>\n\n            </ion-col>\n\n            <ion-col col-1 class="col-details renovar" *ngIf="renovar">\n\n                <ion-row></ion-row>\n\n                <button ion-button small mode="ios" type="button" (click)="renovarEstacionar(_estacionados[0].estacionar)"\n\n                    class="btn-renovar">Renovar</button>\n\n            </ion-col>\n\n            <ion-col col-12 class="col-message">\n\n                <ion-item class="item-messagem" no-lines no-padding>\n\n\n\n                    <ion-label *ngIf="qtd == 1" class="message">* Esta ativação possui\n\n                        {{qtd}} CAD ativo</ion-label>\n\n                    <ion-label *ngIf="qtd > 1" class="message">* Esta ativação possui\n\n                        {{qtd}} CADs ativos</ion-label>\n\n                </ion-item>\n\n            </ion-col>\n\n            <ion-col col-12 class="col-message">\n\n                <ion-item class="item-btn-rodape" no-lines no-padding>\n\n                    <button ion-button clear small color="blue2" icon-start (click)="openVeiculoEstacionado(_estacionados[0])">\n\n                        <ion-icon name=\'ios-pin-outline\'></ion-icon>Ver Localização\n\n                    </button>\n\n                </ion-item>\n\n            </ion-col>\n\n        </ion-row>-->\n\n        <div *ngIf="!estacionar" class="row-info">\n\n            <ion-col col-12>\n\n                <ion-item no-lines>\n\n                    <h2>Não há nenhum veículo estacionado</h2>\n\n                </ion-item>\n\n                \n\n            </ion-col>\n\n        </div>\n\n    </div>\n\n\n\n</ion-content>'/*ion-inline-end:"C:\Users\ELIAS\Desktop\ZAD\src\pages\tempo-restante\tempo-restante.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavParams */],
@@ -2558,7 +2558,7 @@ var TempoRestantePage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 825:
+/***/ 823:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2575,10 +2575,10 @@ function __export(m) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(0);
 var common_1 = __webpack_require__(44);
-var round_progress_component_1 = __webpack_require__(781);
-var round_progress_service_1 = __webpack_require__(778);
-var round_progress_ease_1 = __webpack_require__(780);
-var round_progress_config_1 = __webpack_require__(779);
+var round_progress_component_1 = __webpack_require__(782);
+var round_progress_service_1 = __webpack_require__(779);
+var round_progress_ease_1 = __webpack_require__(781);
+var round_progress_config_1 = __webpack_require__(780);
 var RoundProgressModule = (function () {
     function RoundProgressModule() {
     }
@@ -2594,10 +2594,10 @@ RoundProgressModule = __decorate([
 ], RoundProgressModule);
 exports.RoundProgressModule = RoundProgressModule;
 ;
-__export(__webpack_require__(781));
-__export(__webpack_require__(778));
-__export(__webpack_require__(780));
+__export(__webpack_require__(782));
 __export(__webpack_require__(779));
+__export(__webpack_require__(781));
+__export(__webpack_require__(780));
 //# sourceMappingURL=index.js.map
 
 /***/ })
