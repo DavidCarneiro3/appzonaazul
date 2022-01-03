@@ -1,6 +1,6 @@
 webpackJsonp([1],{
 
-/***/ 748:
+/***/ 765:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HistoricoPageModule", function() { return HistoricoPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(35);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__historico__ = __webpack_require__(805);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__historico__ = __webpack_require__(817);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_loading_spinner_loading_spinner_module__ = __webpack_require__(418);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pipes_pipes_module__ = __webpack_require__(428);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_components_module__ = __webpack_require__(419);
@@ -47,12 +47,12 @@ var HistoricoPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 770:
+/***/ 771:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MapUtil; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pages_home_home__ = __webpack_require__(772);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pages_home_home__ = __webpack_require__(773);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__environments_constants__ = __webpack_require__(19);
 
 
@@ -525,7 +525,7 @@ var MapUtil = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 771:
+/***/ 772:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -682,7 +682,7 @@ var FunctionsUtil = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 772:
+/***/ 773:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -705,8 +705,8 @@ var FunctionsUtil = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__providers_modal_modal__ = __webpack_require__(198);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__providers_area_area__ = __webpack_require__(414);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__environments_constants__ = __webpack_require__(19);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__util_map_util__ = __webpack_require__(770);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__util_functions_util__ = __webpack_require__(771);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__util_map_util__ = __webpack_require__(771);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__util_functions_util__ = __webpack_require__(772);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__app_app_component__ = __webpack_require__(411);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__providers_estacionar_estacionar__ = __webpack_require__(201);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -1317,7 +1317,7 @@ var HomePage = /** @class */ (function () {
     ], HomePage.prototype, "iconElement", void 0);
     HomePage = HomePage_1 = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-home',template:/*ion-inline-start:"/Users/desenvolvedor/Documents/zonaazulfortaleza-develop/src/pages/home/home.html"*/'<ion-header no-border>\n    <ion-navbar color="header">\n        <button ion-button icon-only menuToggle>\n            <ion-icon class="header-icon" name="menu"></ion-icon>\n        </button>\n        <ion-title class="title-header">\n            <ion-select [(ngModel)]="city" class="select-city" cancelText="Cancelar" okText="Ok" [selectOptions]="selectOptions">\n                <ion-option value="Fortaleza">Fortaleza</ion-option>\n              </ion-select>\n        </ion-title>\n\n        <ion-buttons end>\n            <button ion-button icon-only (click)="openTempoRestantePage()">\n                <img src="assets/icones/car-white.svg"  />\n            </button>\n        </ion-buttons>\n    </ion-navbar>\n</ion-header>\n\n<ion-content class="content">\n    <div #map id="map"></div>\n    <input #search id="search" class="controls" type="text" placeholder="Buscar">\n\n    <button ion-button icon-only type="button" item-right clear id="mic" >\n        <ion-icon color="gray" name="search" class="icon"></ion-icon>\n    </button>\n    <!--<ion-fab id="help">\n        <button ion-fab icon-only (click)="openHelp()">\n            <ion-icon name="help"></ion-icon>\n        </button>\n    </ion-fab> -->\n\n    <ion-fab id="close" (click)="showCloseSetor()">\n        <button ion-fab>\n        </button>\n    </ion-fab>\n\n   <!-- <ion-fab>\n        <button ion-fab icon-only color="default" (click)="buscarSetores()" id="locate">\n            <ion-icon name="search" class="icon"></ion-icon>\n        </button>\n    </ion-fab> -->\n\n    <ion-icon #icon name="close" class="icon-clear" style="display: none" id="icon"></ion-icon>\n    <button ion-button id="btn-show-estacionar-page" (click)="openEstacionarPage($event)"\n        [style.display]="\'none\'"></button>\n    <button ion-button id="btn-show-streat-view" (click)="showStreatView()" [style.display]="\'none\'"></button>\n</ion-content>'/*ion-inline-end:"/Users/desenvolvedor/Documents/zonaazulfortaleza-develop/src/pages/home/home.html"*/
+            selector: 'page-home',template:/*ion-inline-start:"C:\Users\ELIAS\Desktop\ZAD\src\pages\home\home.html"*/'<ion-header no-border>\n\n    <ion-navbar color="header">\n\n        <button ion-button icon-only menuToggle>\n\n            <ion-icon class="header-icon" name="menu"></ion-icon>\n\n        </button>\n\n        <ion-title class="title-header">\n\n            <ion-select [(ngModel)]="city" class="select-city" cancelText="Cancelar" okText="Ok" [selectOptions]="selectOptions">\n\n                <ion-option value="Fortaleza">Fortaleza</ion-option>\n\n              </ion-select>\n\n        </ion-title>\n\n\n\n        <ion-buttons end>\n\n            <button ion-button icon-only (click)="openTempoRestantePage()">\n\n                <img src="assets/icones/car-white.svg"  />\n\n            </button>\n\n        </ion-buttons>\n\n    </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content class="content">\n\n    <div #map id="map"></div>\n\n    <input #search id="search" class="controls" type="text" placeholder="Buscar">\n\n\n\n    <button ion-button icon-only type="button" item-right clear id="mic" >\n\n        <ion-icon color="gray" name="search" class="icon"></ion-icon>\n\n    </button>\n\n    <!--<ion-fab id="help">\n\n        <button ion-fab icon-only (click)="openHelp()">\n\n            <ion-icon name="help"></ion-icon>\n\n        </button>\n\n    </ion-fab> -->\n\n\n\n    <ion-fab id="close" (click)="showCloseSetor()">\n\n        <button ion-fab>\n\n        </button>\n\n    </ion-fab>\n\n\n\n   <!-- <ion-fab>\n\n        <button ion-fab icon-only color="default" (click)="buscarSetores()" id="locate">\n\n            <ion-icon name="search" class="icon"></ion-icon>\n\n        </button>\n\n    </ion-fab> -->\n\n\n\n    <ion-icon #icon name="close" class="icon-clear" style="display: none" id="icon"></ion-icon>\n\n    <button ion-button id="btn-show-estacionar-page" (click)="openEstacionarPage($event)"\n\n        [style.display]="\'none\'"></button>\n\n    <button ion-button id="btn-show-streat-view" (click)="showStreatView()" [style.display]="\'none\'"></button>\n\n</ion-content>'/*ion-inline-end:"C:\Users\ELIAS\Desktop\ZAD\src\pages\home\home.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* Platform */],
@@ -1357,7 +1357,7 @@ var LatLng = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 774:
+/***/ 775:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1376,25 +1376,14 @@ exports.isNumeric = isNumeric;
 
 /***/ }),
 
-/***/ 775:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var Observable_1 = __webpack_require__(4);
-var interval_1 = __webpack_require__(776);
-Observable_1.Observable.interval = interval_1.interval;
-//# sourceMappingURL=interval.js.map
-
-/***/ }),
-
 /***/ 776:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var IntervalObservable_1 = __webpack_require__(777);
-exports.interval = IntervalObservable_1.IntervalObservable.create;
+var Observable_1 = __webpack_require__(4);
+var interval_1 = __webpack_require__(777);
+Observable_1.Observable.interval = interval_1.interval;
 //# sourceMappingURL=interval.js.map
 
 /***/ }),
@@ -1404,12 +1393,23 @@ exports.interval = IntervalObservable_1.IntervalObservable.create;
 
 "use strict";
 
+var IntervalObservable_1 = __webpack_require__(778);
+exports.interval = IntervalObservable_1.IntervalObservable.create;
+//# sourceMappingURL=interval.js.map
+
+/***/ }),
+
+/***/ 778:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var isNumeric_1 = __webpack_require__(774);
+var isNumeric_1 = __webpack_require__(775);
 var Observable_1 = __webpack_require__(4);
 var async_1 = __webpack_require__(58);
 /**
@@ -1494,7 +1494,7 @@ exports.IntervalObservable = IntervalObservable;
 
 /***/ }),
 
-/***/ 805:
+/***/ 817:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1503,9 +1503,9 @@ exports.IntervalObservable = IntervalObservable;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_observable_interval__ = __webpack_require__(775);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_observable_interval__ = __webpack_require__(776);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_observable_interval___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_observable_interval__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_observable_timer__ = __webpack_require__(806);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_observable_timer__ = __webpack_require__(818);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_observable_timer___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_observable_timer__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__models_cad__ = __webpack_require__(203);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_cads_cads__ = __webpack_require__(112);
@@ -1516,7 +1516,7 @@ exports.IntervalObservable = IntervalObservable;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__providers_setores_setores__ = __webpack_require__(413);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__providers_tempo_estacionado_tempo_estacionado__ = __webpack_require__(204);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__app_app_component__ = __webpack_require__(411);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__util_map_util__ = __webpack_require__(770);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__util_map_util__ = __webpack_require__(771);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__environments_constants__ = __webpack_require__(19);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -2134,7 +2134,7 @@ var HistoricoPage = /** @class */ (function () {
     };
     HistoricoPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-historico',template:/*ion-inline-start:"/Users/desenvolvedor/Documents/zonaazulfortaleza-develop/src/pages/historico/historico.html"*/'<ion-header no-border>\n    <ion-navbar color="header" no-margin no-padding>\n        <button ion-button icon-only menuToggle>\n            <ion-icon class="header-icon" name="menu"></ion-icon>\n        </button>\n\n        <ion-title class="header-title">Histórico</ion-title>\n\n        <ion-buttons end>\n            <button ion-button icon-only (click)="openHelp()">\n                <ion-icon name="help-circle" class="header-icon"></ion-icon>\n            </button>\n        </ion-buttons>\n\n    </ion-navbar>\n    <ion-toolbar no-padding mode="ios">\n        <ion-segment no-padding no-lines no-border class="segments" [(ngModel)]="historico" mode="ios">\n            <ion-segment-button value="historico-estacionamentos" (ionSelect)="segmentChanged($event)">\n                <ion-label style="color: #333">Estacionamento</ion-label>\n            </ion-segment-button>\n            <ion-segment-button value="historico-creditos" (ionSelect)="segmentChanged($event)">\n                <ion-label style="color: #333">Pagamento</ion-label>\n            </ion-segment-button>\n        </ion-segment>\n    </ion-toolbar>\n</ion-header>\n\n<ion-content padding class="content">\n    <ion-grid class="grid-historico-estacionamento"\n        [style.display]="historico == \'historico-estacionamentos\' ? \'block\' : \'none\'">\n        <loading-spinner *ngIf="showSpinner1"></loading-spinner>\n\n        <div *ngIf="!showSpinner1 && listEstacionamentos.length > 0">\n            <ion-item no-lines class="sum">\n\n                <p>CADS usados - {{ qtdCads }}</p>\n                <p>Valor Total - R$ {{valorTotal | number:\'1.2-2\' | replace:\'.\':\',\'}}</p>\n            </ion-item>\n\n            <ion-item no-lines class="placa-item">\n                <button ion-button (click)="openModal()" class="btn" style="height:35px;" block> Filtros </button>\n            </ion-item>\n        \n        <ion-row  *ngFor="let estacionamento of itensPage" [hidden]="estacionamento === false"\n                class="row" style="border-left: 6px solid #cccccc">\n                <div class="item-info">\n                    <button ion-button icon-only clear class="btn-options" (click)="openOpcoes(estacionamento)"><ion-icon name="ios-more"></ion-icon></button>\n                    <p>Placa: {{estacionamento?.comprovante?.placa}}</p>\n                    <p>CADs Usados: {{estacionamento?.qtd}}</p>\n                    <p>Tempo de {{estacionamento?.qtd}} CAD: {{estacionamento?.tempoComprado/60}} Hora(s)</p>\n                    <p>Valor: <span class="price-text"> R${{estacionamento?.comprovante?.valor}},00</span></p>\n                    <p>Data/Hora da ativação: {{estacionamento?.comprovante?.data+\' \'+  estacionamento?.comprovante?.horario}}</p>\n                    <p>Registro AMC: {{estacionamento?.comprovante?.numberAuth}}</p>\n                    <ion-badge class="status" item-end\n                        [style.background]="estacionamento?.situacao == \'Ativação\' ? \'#4cda64\' : \'#0690ce\'">\n                        {{estacionamento?.situacao}}</ion-badge>\n                </div>\n                <!--<ion-col col-7 class="col-info" >\n                    <h2 class="placa">{{estacionamento?.comprovante.placa}}</h2>\n                    <h6 class="data">{{estacionamento?.dataHoraRegistro | date: "dd/MM/yyyy \'às\' HH:mm"}}</h6>\n                    <h2 class="data">AMC: {{estacionamento?.comprovante.numberAuth}}</h2>\n                    <h4 class="cidade">{{estacionamento?.cidade}}</h4>\n                </ion-col>\n                <ion-col col-4 class="col-status">\n                    <ion-badge class="status" item-end\n                        [style.background]="estacionamento?.situacao == \'Ativação\' ? \'#4cda64\' : \'#0690ce\'">\n                        {{estacionamento?.situacao}}</ion-badge>\n                </ion-col>\n                <ion-col col-1></ion-col>\n\n                <ion-col col-12 class="line"></ion-col>\n                <ion-col col-9 class="col-rodape">\n                    <ion-label *ngIf="estacionamento?.qtd == 1" class="cads">{{estacionamento?.qtd}} CAD,\n                        {{estacionamento?.tempoComprado}} Minutos</ion-label>\n                    <ion-label *ngIf="estacionamento?.qtd > 1" class="cads">{{estacionamento?.qtd}} CADs,\n                        {{estacionamento?.tempoComprado}} Minutos</ion-label>\n                    <ion-label class="cads">R$\n                        {{(estacionamento?.comprovante.valor) | number:\'1.2-2\' | replace:\'.\':\',\'}}</ion-label>\n                </ion-col>\n\n                <ion-col col-3 class="col-rodape col-rodape-btn">\n                    <button ion-button small block class="recibo" (click)="openOpcoes(estacionamento)">Opções</button>\n                </ion-col> -->\n\n            </ion-row>\n            <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">\n                <ion-infinite-scroll-content\n                  loadingSpinner="bubbles"\n                  loadingText="Buscando itens...">\n                </ion-infinite-scroll-content>\n              </ion-infinite-scroll>\n\n            <ion-item no-lines class="placa-item"\n                *ngIf="this.listEstacionamentosView.length !== this.listEstacionamentos.length ">\n                <button ion-button (click)="limparFiltro()" style="height:35px;" block> Remover Filtro </button>\n            </ion-item>\n\n        </div>\n    </ion-grid>\n    <ion-grid [style.display]="historico == \'historico-estacionamentos\' ? \'block\' : \'none\'">\n        <div *ngIf="!showSpinner1 && (listEstacionamentos.length == 0 || !listEstacionamentos[0])">\n            <ion-row class="row-message">\n                <ion-col col-12 class="col-message">\n                    <ion-item no-lines class="item-message">\n                        <h2 class="message">Você não possui histórico de estacionamentos</h2>\n                    </ion-item>\n                </ion-col>\n            </ion-row>\n        </div>\n    </ion-grid>\n    <ion-grid [style.display]="historico == \'historico-creditos\' ? \'block\' : \'none\'" class="grid-historico-creditos">\n        <loading-spinner *ngIf="showSpinner2"></loading-spinner>\n\n        <div *ngIf="!showSpinner2 && listCreditos.length > 0">\n            <ion-item no-lines class="placa-item">\n                <button ion-button (click)="openFilterModal()" class="btn-cred" style="height:35px;" block> Filtros </button>\n            </ion-item>\n            <ion-row class="row" style=" border-left: 6px solid #27AE60" *ngFor="let credito of listCreditosView">\n                <div class="item-info">\n                    <button ion-button icon-only clear class="btn-options" *ngIf="(horaRegistro - credito.dataHoraRegistro < 900000) && (credito.status !== \'cancelado\')" (click)="openOpcoesCred(credito)"><ion-icon name="ios-more"></ion-icon></button>\n                    <p>Forma de Pagamento: <b>{{credito.numero.length > 0? \'Cartão de Crédito\': \'Boleto\'}}</b></p>\n                    <p *ngIf="credito.numero.length > 0">Numero Cartão: {{getCartaoNumeroFormat(credito.numero)}}</p>\n                    <p>CADs Comprados: {{getValor(credito) / cad?.valor_unitario}} CAD(s)</p>\n                    <p >Valor: <span class="desconto"\n                        *ngIf="(credito?.valorSemDesconto > 0) && (credito?.valorSemDesconto !== credito?.valor)">R$\n                        {{credito?.valorSemDesconto | number:\'1.2-2\' | replace:\'.\':\',\'}}</span>R$\n                    {{credito?.valor | number:\'1.2-2\' | replace:\'.\':\',\'}}</p>\n                    <p>Data/Hora da ativação: {{credito?.dataHoraRegistro | date: "dd/MM/yyyy \'às\' HH:mm"}}</p>\n                    <ion-badge class="status" item-end\n                        [style.background]="credito?.status == \'cancelado\' ? \'red\' : \'#4cda64\'">{{credito?.status}}\n                    </ion-badge>\n                </div>\n                <!--<ion-col col-6 class="col-info">\n                    <h2 class="numero-cartao" *ngIf="credito.numero.length > 0">\n                        {{getCartaoNumeroFormat(credito.numero)}}</h2>\n                    <h4 class="tipo-cartao" *ngIf="credito.numero.length > 0">Cartão de Crédito</h4>\n                    <h4 class="tipo-cartao" *ngIf="!(credito.numero.length > 0)">Boleto</h4>\n                    <h6 class="data">{{credito?.dataHoraRegistro | date: "dd/MM/yyyy \'às\' HH:mm"}}</h6>\n                </ion-col>\n                <ion-col col-5 class="col-status">\n                    <ion-badge class="status" item-end\n                        [style.background]="credito?.status == \'cancelado\' ? \'red\' : \'#4cda64\'">{{credito?.status}}\n                    </ion-badge>\n                </ion-col>\n                <ion-col col-1></ion-col>\n                <ion-col col-12 class="col-rodape">\n                    <ion-label *ngIf="getValor(credito) / cad?.valor_unitario == 1" class="cads">\n                        {{getValor(credito) / cad?.valor_unitario}} CAD</ion-label>\n                    <ion-label *ngIf="getValor(credito) / cad?.valor_unitario > 1" class="cads">\n                        {{getValor(credito) / cad?.valor_unitario}} CADs</ion-label>\n                    <ion-label class="price"><span class="desconto"\n                            *ngIf="(credito?.valorSemDesconto > 0) && (credito?.valorSemDesconto !== credito?.valor)">R$\n                            {{credito?.valorSemDesconto | number:\'1.2-2\' | replace:\'.\':\',\'}}</span>R$\n                        {{credito?.valor | number:\'1.2-2\' | replace:\'.\':\',\'}}</ion-label>\n                </ion-col>\n                <ion-col col-12 class="line"></ion-col>\n                <ion-col col-12>\n                    <ion-item class=\'placa-item\' no-padding no-lines>\n                        <button small clear ion-button style="height: 35px;"\n                            *ngIf="(horaRegistro - credito.dataHoraRegistro < 900000) && (credito.status !== \'cancelado\')"\n                            (click)=\'cancelarTransacao(credito)\' class="btn-cancel">\n                            <ion-icon style="margin-right: 5px;" name="ios-close-circle-outline"></ion-icon>\n                            Cancelar\n                        </button>\n                    </ion-item>\n                </ion-col> -->\n            </ion-row>\n            <ion-item no-lines class="placa-item" *ngIf="this.listCreditosView.length !== this.listCreditos.length ">\n\n                <button ion-button (click)="limparFiltroPagamento()" style="height:35px;" block> Remover Filtro\n                </button>\n            </ion-item>\n        </div>\n\n    </ion-grid>\n\n    <ion-grid [style.display]="historico == \'historico-creditos\' ? \'block\' : \'none\'">\n        <div *ngIf="!showSpinner2 && listCreditos.length == 0">\n            <ion-row class="row-message">\n                <ion-col col-12 class="col-message">\n                    <ion-item no-lines class="item-message">\n                        <h2 class="message">Você não possui histórico de créditos</h2>\n                    </ion-item>\n                </ion-col>\n            </ion-row>\n        </div>\n    </ion-grid>\n</ion-content>'/*ion-inline-end:"/Users/desenvolvedor/Documents/zonaazulfortaleza-develop/src/pages/historico/historico.html"*/,
+            selector: 'page-historico',template:/*ion-inline-start:"C:\Users\ELIAS\Desktop\ZAD\src\pages\historico\historico.html"*/'<ion-header no-border>\n\n    <ion-navbar color="header" no-margin no-padding>\n\n        <button ion-button icon-only menuToggle>\n\n            <ion-icon class="header-icon" name="menu"></ion-icon>\n\n        </button>\n\n\n\n        <ion-title class="header-title">Histórico</ion-title>\n\n\n\n        <ion-buttons end>\n\n            <button ion-button icon-only (click)="openHelp()">\n\n                <ion-icon name="help-circle" class="header-icon"></ion-icon>\n\n            </button>\n\n        </ion-buttons>\n\n\n\n    </ion-navbar>\n\n    <ion-toolbar no-padding mode="ios">\n\n        <ion-segment no-padding no-lines no-border class="segments" [(ngModel)]="historico" mode="ios">\n\n            <ion-segment-button value="historico-estacionamentos" (ionSelect)="segmentChanged($event)">\n\n                <ion-label style="color: #333">Estacionamento</ion-label>\n\n            </ion-segment-button>\n\n            <ion-segment-button value="historico-creditos" (ionSelect)="segmentChanged($event)">\n\n                <ion-label style="color: #333">Pagamento</ion-label>\n\n            </ion-segment-button>\n\n        </ion-segment>\n\n    </ion-toolbar>\n\n</ion-header>\n\n\n\n<ion-content padding class="content">\n\n    <ion-grid class="grid-historico-estacionamento"\n\n        [style.display]="historico == \'historico-estacionamentos\' ? \'block\' : \'none\'">\n\n        <loading-spinner *ngIf="showSpinner1"></loading-spinner>\n\n\n\n        <div *ngIf="!showSpinner1 && listEstacionamentos.length > 0">\n\n            <ion-item no-lines class="sum">\n\n\n\n                <p>CADS usados - {{ qtdCads }}</p>\n\n                <p>Valor Total - R$ {{valorTotal | number:\'1.2-2\' | replace:\'.\':\',\'}}</p>\n\n            </ion-item>\n\n\n\n            <ion-item no-lines class="placa-item">\n\n                <button ion-button (click)="openModal()" class="btn" style="height:35px;" block> Filtros </button>\n\n            </ion-item>\n\n        \n\n        <ion-row  *ngFor="let estacionamento of itensPage" [hidden]="estacionamento === false"\n\n                class="row" style="border-left: 6px solid #cccccc">\n\n                <div class="item-info">\n\n                    <button ion-button icon-only clear class="btn-options" (click)="openOpcoes(estacionamento)"><ion-icon name="ios-more"></ion-icon></button>\n\n                    <p>Placa: {{estacionamento?.comprovante?.placa}}</p>\n\n                    <p>CADs Usados: {{estacionamento?.qtd}}</p>\n\n                    <p>Tempo de {{estacionamento?.qtd}} CAD: {{estacionamento?.tempoComprado/60}} Hora(s)</p>\n\n                    <p>Valor: <span class="price-text"> R${{estacionamento?.comprovante?.valor}},00</span></p>\n\n                    <p>Data/Hora da ativação: {{estacionamento?.comprovante?.data+\' \'+  estacionamento?.comprovante?.horario}}</p>\n\n                    <p>Registro AMC: {{estacionamento?.comprovante?.numberAuth}}</p>\n\n                    <ion-badge class="status" item-end\n\n                        [style.background]="estacionamento?.situacao == \'Ativação\' ? \'#4cda64\' : \'#0690ce\'">\n\n                        {{estacionamento?.situacao}}</ion-badge>\n\n                </div>\n\n                <!--<ion-col col-7 class="col-info" >\n\n                    <h2 class="placa">{{estacionamento?.comprovante.placa}}</h2>\n\n                    <h6 class="data">{{estacionamento?.dataHoraRegistro | date: "dd/MM/yyyy \'às\' HH:mm"}}</h6>\n\n                    <h2 class="data">AMC: {{estacionamento?.comprovante.numberAuth}}</h2>\n\n                    <h4 class="cidade">{{estacionamento?.cidade}}</h4>\n\n                </ion-col>\n\n                <ion-col col-4 class="col-status">\n\n                    <ion-badge class="status" item-end\n\n                        [style.background]="estacionamento?.situacao == \'Ativação\' ? \'#4cda64\' : \'#0690ce\'">\n\n                        {{estacionamento?.situacao}}</ion-badge>\n\n                </ion-col>\n\n                <ion-col col-1></ion-col>\n\n\n\n                <ion-col col-12 class="line"></ion-col>\n\n                <ion-col col-9 class="col-rodape">\n\n                    <ion-label *ngIf="estacionamento?.qtd == 1" class="cads">{{estacionamento?.qtd}} CAD,\n\n                        {{estacionamento?.tempoComprado}} Minutos</ion-label>\n\n                    <ion-label *ngIf="estacionamento?.qtd > 1" class="cads">{{estacionamento?.qtd}} CADs,\n\n                        {{estacionamento?.tempoComprado}} Minutos</ion-label>\n\n                    <ion-label class="cads">R$\n\n                        {{(estacionamento?.comprovante.valor) | number:\'1.2-2\' | replace:\'.\':\',\'}}</ion-label>\n\n                </ion-col>\n\n\n\n                <ion-col col-3 class="col-rodape col-rodape-btn">\n\n                    <button ion-button small block class="recibo" (click)="openOpcoes(estacionamento)">Opções</button>\n\n                </ion-col> -->\n\n\n\n            </ion-row>\n\n            <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">\n\n                <ion-infinite-scroll-content\n\n                  loadingSpinner="bubbles"\n\n                  loadingText="Buscando itens...">\n\n                </ion-infinite-scroll-content>\n\n              </ion-infinite-scroll>\n\n\n\n            <ion-item no-lines class="placa-item"\n\n                *ngIf="this.listEstacionamentosView.length !== this.listEstacionamentos.length ">\n\n                <button ion-button (click)="limparFiltro()" style="height:35px;" block> Remover Filtro </button>\n\n            </ion-item>\n\n\n\n        </div>\n\n    </ion-grid>\n\n    <ion-grid [style.display]="historico == \'historico-estacionamentos\' ? \'block\' : \'none\'">\n\n        <div *ngIf="!showSpinner1 && (listEstacionamentos.length == 0 || !listEstacionamentos[0])">\n\n            <ion-row class="row-message">\n\n                <ion-col col-12 class="col-message">\n\n                    <ion-item no-lines class="item-message">\n\n                        <h2 class="message">Você não possui histórico de estacionamentos</h2>\n\n                    </ion-item>\n\n                </ion-col>\n\n            </ion-row>\n\n        </div>\n\n    </ion-grid>\n\n    <ion-grid [style.display]="historico == \'historico-creditos\' ? \'block\' : \'none\'" class="grid-historico-creditos">\n\n        <loading-spinner *ngIf="showSpinner2"></loading-spinner>\n\n\n\n        <div *ngIf="!showSpinner2 && listCreditos.length > 0">\n\n            <ion-item no-lines class="placa-item">\n\n                <button ion-button (click)="openFilterModal()" class="btn-cred" style="height:35px;" block> Filtros </button>\n\n            </ion-item>\n\n            <ion-row class="row" style=" border-left: 6px solid #27AE60" *ngFor="let credito of listCreditosView">\n\n                <div class="item-info">\n\n                    <button ion-button icon-only clear class="btn-options" *ngIf="(horaRegistro - credito.dataHoraRegistro < 900000) && (credito.status !== \'cancelado\')" (click)="openOpcoesCred(credito)"><ion-icon name="ios-more"></ion-icon></button>\n\n                    <p>Forma de Pagamento: <b>{{credito.numero.length > 0? \'Cartão de Crédito\': \'Boleto\'}}</b></p>\n\n                    <p *ngIf="credito.numero.length > 0">Numero Cartão: {{getCartaoNumeroFormat(credito.numero)}}</p>\n\n                    <p>CADs Comprados: {{getValor(credito) / cad?.valor_unitario}} CAD(s)</p>\n\n                    <p >Valor: <span class="desconto"\n\n                        *ngIf="(credito?.valorSemDesconto > 0) && (credito?.valorSemDesconto !== credito?.valor)">R$\n\n                        {{credito?.valorSemDesconto | number:\'1.2-2\' | replace:\'.\':\',\'}}</span>R$\n\n                    {{credito?.valor | number:\'1.2-2\' | replace:\'.\':\',\'}}</p>\n\n                    <p>Data/Hora da ativação: {{credito?.dataHoraRegistro | date: "dd/MM/yyyy \'às\' HH:mm"}}</p>\n\n                    <ion-badge class="status" item-end\n\n                        [style.background]="credito?.status == \'cancelado\' ? \'red\' : \'#4cda64\'">{{credito?.status}}\n\n                    </ion-badge>\n\n                </div>\n\n                <!--<ion-col col-6 class="col-info">\n\n                    <h2 class="numero-cartao" *ngIf="credito.numero.length > 0">\n\n                        {{getCartaoNumeroFormat(credito.numero)}}</h2>\n\n                    <h4 class="tipo-cartao" *ngIf="credito.numero.length > 0">Cartão de Crédito</h4>\n\n                    <h4 class="tipo-cartao" *ngIf="!(credito.numero.length > 0)">Boleto</h4>\n\n                    <h6 class="data">{{credito?.dataHoraRegistro | date: "dd/MM/yyyy \'às\' HH:mm"}}</h6>\n\n                </ion-col>\n\n                <ion-col col-5 class="col-status">\n\n                    <ion-badge class="status" item-end\n\n                        [style.background]="credito?.status == \'cancelado\' ? \'red\' : \'#4cda64\'">{{credito?.status}}\n\n                    </ion-badge>\n\n                </ion-col>\n\n                <ion-col col-1></ion-col>\n\n                <ion-col col-12 class="col-rodape">\n\n                    <ion-label *ngIf="getValor(credito) / cad?.valor_unitario == 1" class="cads">\n\n                        {{getValor(credito) / cad?.valor_unitario}} CAD</ion-label>\n\n                    <ion-label *ngIf="getValor(credito) / cad?.valor_unitario > 1" class="cads">\n\n                        {{getValor(credito) / cad?.valor_unitario}} CADs</ion-label>\n\n                    <ion-label class="price"><span class="desconto"\n\n                            *ngIf="(credito?.valorSemDesconto > 0) && (credito?.valorSemDesconto !== credito?.valor)">R$\n\n                            {{credito?.valorSemDesconto | number:\'1.2-2\' | replace:\'.\':\',\'}}</span>R$\n\n                        {{credito?.valor | number:\'1.2-2\' | replace:\'.\':\',\'}}</ion-label>\n\n                </ion-col>\n\n                <ion-col col-12 class="line"></ion-col>\n\n                <ion-col col-12>\n\n                    <ion-item class=\'placa-item\' no-padding no-lines>\n\n                        <button small clear ion-button style="height: 35px;"\n\n                            *ngIf="(horaRegistro - credito.dataHoraRegistro < 900000) && (credito.status !== \'cancelado\')"\n\n                            (click)=\'cancelarTransacao(credito)\' class="btn-cancel">\n\n                            <ion-icon style="margin-right: 5px;" name="ios-close-circle-outline"></ion-icon>\n\n                            Cancelar\n\n                        </button>\n\n                    </ion-item>\n\n                </ion-col> -->\n\n            </ion-row>\n\n            <ion-item no-lines class="placa-item" *ngIf="this.listCreditosView.length !== this.listCreditos.length ">\n\n\n\n                <button ion-button (click)="limparFiltroPagamento()" style="height:35px;" block> Remover Filtro\n\n                </button>\n\n            </ion-item>\n\n        </div>\n\n\n\n    </ion-grid>\n\n\n\n    <ion-grid [style.display]="historico == \'historico-creditos\' ? \'block\' : \'none\'">\n\n        <div *ngIf="!showSpinner2 && listCreditos.length == 0">\n\n            <ion-row class="row-message">\n\n                <ion-col col-12 class="col-message">\n\n                    <ion-item no-lines class="item-message">\n\n                        <h2 class="message">Você não possui histórico de créditos</h2>\n\n                    </ion-item>\n\n                </ion-col>\n\n            </ion-row>\n\n        </div>\n\n    </ion-grid>\n\n</ion-content>'/*ion-inline-end:"C:\Users\ELIAS\Desktop\ZAD\src\pages\historico\historico.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavParams */],
@@ -2158,30 +2158,30 @@ var HistoricoPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 806:
+/***/ 818:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 var Observable_1 = __webpack_require__(4);
-var timer_1 = __webpack_require__(807);
+var timer_1 = __webpack_require__(819);
 Observable_1.Observable.timer = timer_1.timer;
 //# sourceMappingURL=timer.js.map
 
 /***/ }),
 
-/***/ 807:
+/***/ 819:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var TimerObservable_1 = __webpack_require__(808);
+var TimerObservable_1 = __webpack_require__(820);
 exports.timer = TimerObservable_1.TimerObservable.create;
 //# sourceMappingURL=timer.js.map
 
 /***/ }),
 
-/***/ 808:
+/***/ 820:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2191,7 +2191,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var isNumeric_1 = __webpack_require__(774);
+var isNumeric_1 = __webpack_require__(775);
 var Observable_1 = __webpack_require__(4);
 var async_1 = __webpack_require__(58);
 var isScheduler_1 = __webpack_require__(208);

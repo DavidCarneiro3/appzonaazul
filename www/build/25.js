@@ -1,6 +1,6 @@
 webpackJsonp([25],{
 
-/***/ 767:
+/***/ 760:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "VeiculosModalPageModule", function() { return VeiculosModalPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(35);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__veiculos_modal__ = __webpack_require__(827);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__veiculos_modal__ = __webpack_require__(812);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -38,7 +38,7 @@ var VeiculosModalPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 827:
+/***/ 812:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -116,7 +116,7 @@ var VeiculosModalPage = /** @class */ (function () {
     };
     VeiculosModalPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'veiculos-modal',template:/*ion-inline-start:"/Users/desenvolvedor/Documents/zonaazulfortaleza-develop/src/pages/veiculos-modal/veiculos-modal.html"*/'<ion-header>\n    <ion-navbar color="header" text-center>\n        <ion-title>\n            <ion-label>\n                Selecione seu veículo\n            </ion-label>\n        </ion-title>\n\n        <ion-buttons left>\n            <button ion-button icon-only (click)="dismiss()">\n                <span color="light" class="header-icon" showWhen="ios">Fechar</span>\n                <ion-icon name="md-arrow-back" class="header-icon" showWhen="android,windows"></ion-icon>\n            </button>\n        </ion-buttons>\n    </ion-navbar>\n</ion-header>\n\n<ion-content>\n    <ion-searchbar class="search" placeholder="Buscar por placa" color="primary" (ionInput)="procurarVeiculos($event)"></ion-searchbar>\n    <ion-list radio-group>\n        <ion-item *ngFor="let veiculo of veiculos" text-wrap>\n            <ion-label>\n                <p class="titulo">{{veiculo.veiculo.placa}}</p>\n                <p class="subtitulo">{{veiculo.veiculo.marca}} {{veiculo.veiculo.modelo}}</p>\n            </ion-label>\n            <ion-radio item-left slot="start" (ionSelect)="select(veiculo)" mode="md"></ion-radio>\n        </ion-item>\n    </ion-list>\n</ion-content>\n\n<ion-footer class="footer" mode="md">\n    <ion-toolbar class="toolbar" mode="md">\n        <ion-title mode="md">\n            <ion-row class="btn-rows">\n                <ion-col>\n                    <button ion-button block class="btn-cancelar" (click)="dismiss()" mode="md">Cancelar</button>\n                </ion-col>\n\n                <ion-col>\n                    <button ion-button block class="btn" (click)="selectVeiculo()"\n                        [disabled]="this.veiculoSelecionado.length <= 0" mode="md">OK</button>\n                </ion-col>\n            </ion-row>\n        </ion-title>\n    </ion-toolbar>\n</ion-footer>'/*ion-inline-end:"/Users/desenvolvedor/Documents/zonaazulfortaleza-develop/src/pages/veiculos-modal/veiculos-modal.html"*/
+            selector: 'veiculos-modal',template:/*ion-inline-start:"C:\Users\ELIAS\Desktop\ZAD\src\pages\veiculos-modal\veiculos-modal.html"*/'<ion-header>\n\n    <ion-navbar color="header" text-center>\n\n        <ion-title>\n\n            <ion-label>\n\n                Selecione seu veículo\n\n            </ion-label>\n\n        </ion-title>\n\n\n\n        <ion-buttons left>\n\n            <button ion-button icon-only (click)="dismiss()">\n\n                <span color="light" class="header-icon" showWhen="ios">Fechar</span>\n\n                <ion-icon name="md-arrow-back" class="header-icon" showWhen="android,windows"></ion-icon>\n\n            </button>\n\n        </ion-buttons>\n\n    </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content>\n\n    <ion-searchbar class="search" placeholder="Buscar por placa" color="primary" (ionInput)="procurarVeiculos($event)"></ion-searchbar>\n\n    <ion-list radio-group>\n\n        <ion-item *ngFor="let veiculo of veiculos" text-wrap>\n\n            <ion-label>\n\n                <p class="titulo">{{veiculo.veiculo.placa}}</p>\n\n                <p class="subtitulo">{{veiculo.veiculo.marca}} {{veiculo.veiculo.modelo}}</p>\n\n            </ion-label>\n\n            <ion-radio item-left slot="start" (ionSelect)="select(veiculo)" mode="md"></ion-radio>\n\n        </ion-item>\n\n    </ion-list>\n\n</ion-content>\n\n\n\n<ion-footer class="footer" mode="md">\n\n    <ion-toolbar class="toolbar" mode="md">\n\n        <ion-title mode="md">\n\n            <ion-row class="btn-rows">\n\n                <ion-col>\n\n                    <button ion-button block class="btn-cancelar" (click)="dismiss()" mode="md">Cancelar</button>\n\n                </ion-col>\n\n\n\n                <ion-col>\n\n                    <button ion-button block class="btn" (click)="selectVeiculo()"\n\n                        [disabled]="this.veiculoSelecionado.length <= 0" mode="md">OK</button>\n\n                </ion-col>\n\n            </ion-row>\n\n        </ion-title>\n\n    </ion-toolbar>\n\n</ion-footer>'/*ion-inline-end:"C:\Users\ELIAS\Desktop\ZAD\src\pages\veiculos-modal\veiculos-modal.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* ViewController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavParams */]])
     ], VeiculosModalPage);

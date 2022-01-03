@@ -1,6 +1,6 @@
 webpackJsonp([27],{
 
-/***/ 759:
+/***/ 753:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ReportarProblemaPageModule", function() { return ReportarProblemaPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(35);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__reportar_problema__ = __webpack_require__(818);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__reportar_problema__ = __webpack_require__(805);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -38,7 +38,7 @@ var ReportarProblemaPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 818:
+/***/ 805:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -47,7 +47,7 @@ var ReportarProblemaPageModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(28);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_user_user__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_reportar_problema_reportar_problema__ = __webpack_require__(441);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_reportar_problema_reportar_problema__ = __webpack_require__(439);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__environments_constants__ = __webpack_require__(19);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -123,7 +123,7 @@ var ReportarProblemaPage = /** @class */ (function () {
     };
     ReportarProblemaPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-reportar-problema',template:/*ion-inline-start:"/Users/desenvolvedor/Documents/zonaazulfortaleza-develop/src/pages/reportar-problema/reportar-problema.html"*/'<ion-header no-border>\n    <ion-navbar color="header">\n        <button ion-button icon-only menuToggle>\n            <ion-icon class="header-icon" name="menu"></ion-icon>\n        </button>\n\n        <ion-title class="header-title">Reportar Problema</ion-title>\n        \n    </ion-navbar>\n</ion-header>\n\n<ion-content class="content">\n    <ion-grid>\n        <ion-row class="row-header">\n            <ion-col col-12 class="col-header">\n                <ion-label class="title"></ion-label>\n            </ion-col>\n        </ion-row>\n        <ion-row>\n            <form [formGroup]="formGroup" (ngSubmit)="sendData()" class="informacoes-body-list">\n                <ion-item class="informacoes-body-list-item" no-lines>\n                    <ion-label ><ion-icon name="ios-help-circle-outline"></ion-icon></ion-label>\n                    <ion-input type="text" mode="ios" formControlName="subject" placeholder="Assunto" class="{{formGroup.controls.subject.valid?\'blue-component\':\'grey-component\'}}">\n\n                    </ion-input><button class="menu-btn" ion-button clear  type="button" item-right> <ion-icon ios="ios-checkmark-circle-outline" class="{{formGroup.controls.subject.valid?\'icon-blue icon icon-ios ion-ios-checkmark-circle-outline\':\'icon-grey icon icon-ios ion-ios-checkmark-circle-outline\'}}"></ion-icon> </button>\n                </ion-item>\n                <ion-item class="informacoes-body-list-item" no-lines>\n                    <ion-label><ion-icon name="ios-mail-outline"></ion-icon></ion-label>\n                    <ion-textarea type="text" mode="ios" rows="4" formControlName="message" placeholder="Mensagem" class="{{formGroup.controls.message.valid?\'blue-component\':\'grey-component\'}}"></ion-textarea>\n                    <button class="menu-btn" ion-button clear  type="button" item-right> <ion-icon ios="ios-checkmark-circle-outline" class="{{formGroup.controls.message.valid?\'icon-blue icon icon-ios ion-ios-checkmark-circle-outline\':\'icon-grey icon icon-ios ion-ios-checkmark-circle-outline\'}}"></ion-icon> </button>\n                </ion-item>\n                <ion-item class="btn-row" no-lines>\n                    <button ion-button type="submit" class="btn" block>Enviar</button>\n                </ion-item>\n            </form>\n        </ion-row>\n    </ion-grid>\n</ion-content>'/*ion-inline-end:"/Users/desenvolvedor/Documents/zonaazulfortaleza-develop/src/pages/reportar-problema/reportar-problema.html"*/,
+            selector: 'page-reportar-problema',template:/*ion-inline-start:"C:\Users\ELIAS\Desktop\ZAD\src\pages\reportar-problema\reportar-problema.html"*/'<ion-header no-border>\n\n    <ion-navbar color="header">\n\n        <button ion-button icon-only menuToggle>\n\n            <ion-icon class="header-icon" name="menu"></ion-icon>\n\n        </button>\n\n\n\n        <ion-title class="header-title">Reportar Problema</ion-title>\n\n        \n\n    </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content class="content">\n\n    <ion-grid>\n\n        <ion-row class="row-header">\n\n            <ion-col col-12 class="col-header">\n\n                <ion-label class="title"></ion-label>\n\n            </ion-col>\n\n        </ion-row>\n\n        <ion-row>\n\n            <form [formGroup]="formGroup" (ngSubmit)="sendData()" class="informacoes-body-list">\n\n                <ion-item class="informacoes-body-list-item" no-lines>\n\n                    <ion-label ><ion-icon name="ios-help-circle-outline"></ion-icon></ion-label>\n\n                    <ion-input type="text" mode="ios" formControlName="subject" placeholder="Assunto" class="{{formGroup.controls.subject.valid?\'blue-component\':\'grey-component\'}}">\n\n\n\n                    </ion-input><button class="menu-btn" ion-button clear  type="button" item-right> <ion-icon ios="ios-checkmark-circle-outline" class="{{formGroup.controls.subject.valid?\'icon-blue icon icon-ios ion-ios-checkmark-circle-outline\':\'icon-grey icon icon-ios ion-ios-checkmark-circle-outline\'}}"></ion-icon> </button>\n\n                </ion-item>\n\n                <ion-item class="informacoes-body-list-item" no-lines>\n\n                    <ion-label><ion-icon name="ios-mail-outline"></ion-icon></ion-label>\n\n                    <ion-textarea type="text" mode="ios" rows="4" formControlName="message" placeholder="Mensagem" class="{{formGroup.controls.message.valid?\'blue-component\':\'grey-component\'}}"></ion-textarea>\n\n                    <button class="menu-btn" ion-button clear  type="button" item-right> <ion-icon ios="ios-checkmark-circle-outline" class="{{formGroup.controls.message.valid?\'icon-blue icon icon-ios ion-ios-checkmark-circle-outline\':\'icon-grey icon icon-ios ion-ios-checkmark-circle-outline\'}}"></ion-icon> </button>\n\n                </ion-item>\n\n                <ion-item class="btn-row" no-lines>\n\n                    <button ion-button type="submit" class="btn" block>Enviar</button>\n\n                </ion-item>\n\n            </form>\n\n        </ion-row>\n\n    </ion-grid>\n\n</ion-content>'/*ion-inline-end:"C:\Users\ELIAS\Desktop\ZAD\src\pages\reportar-problema\reportar-problema.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_3__providers_user_user__["a" /* UserProvider */],

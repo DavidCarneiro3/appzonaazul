@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AjudaPageModule", function() { return AjudaPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(35);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ajuda__ = __webpack_require__(782);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ajuda__ = __webpack_require__(783);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -38,12 +38,12 @@ var AjudaPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 770:
+/***/ 771:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MapUtil; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pages_home_home__ = __webpack_require__(772);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pages_home_home__ = __webpack_require__(773);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__environments_constants__ = __webpack_require__(19);
 
 
@@ -516,7 +516,7 @@ var MapUtil = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 771:
+/***/ 772:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -673,7 +673,7 @@ var FunctionsUtil = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 772:
+/***/ 773:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -696,8 +696,8 @@ var FunctionsUtil = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__providers_modal_modal__ = __webpack_require__(198);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__providers_area_area__ = __webpack_require__(414);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__environments_constants__ = __webpack_require__(19);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__util_map_util__ = __webpack_require__(770);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__util_functions_util__ = __webpack_require__(771);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__util_map_util__ = __webpack_require__(771);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__util_functions_util__ = __webpack_require__(772);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__app_app_component__ = __webpack_require__(411);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__providers_estacionar_estacionar__ = __webpack_require__(201);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -1308,7 +1308,7 @@ var HomePage = /** @class */ (function () {
     ], HomePage.prototype, "iconElement", void 0);
     HomePage = HomePage_1 = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-home',template:/*ion-inline-start:"/Users/desenvolvedor/Documents/zonaazulfortaleza-develop/src/pages/home/home.html"*/'<ion-header no-border>\n    <ion-navbar color="header">\n        <button ion-button icon-only menuToggle>\n            <ion-icon class="header-icon" name="menu"></ion-icon>\n        </button>\n        <ion-title class="title-header">\n            <ion-select [(ngModel)]="city" class="select-city" cancelText="Cancelar" okText="Ok" [selectOptions]="selectOptions">\n                <ion-option value="Fortaleza">Fortaleza</ion-option>\n              </ion-select>\n        </ion-title>\n\n        <ion-buttons end>\n            <button ion-button icon-only (click)="openTempoRestantePage()">\n                <img src="assets/icones/car-white.svg"  />\n            </button>\n        </ion-buttons>\n    </ion-navbar>\n</ion-header>\n\n<ion-content class="content">\n    <div #map id="map"></div>\n    <input #search id="search" class="controls" type="text" placeholder="Buscar">\n\n    <button ion-button icon-only type="button" item-right clear id="mic" >\n        <ion-icon color="gray" name="search" class="icon"></ion-icon>\n    </button>\n    <!--<ion-fab id="help">\n        <button ion-fab icon-only (click)="openHelp()">\n            <ion-icon name="help"></ion-icon>\n        </button>\n    </ion-fab> -->\n\n    <ion-fab id="close" (click)="showCloseSetor()">\n        <button ion-fab>\n        </button>\n    </ion-fab>\n\n   <!-- <ion-fab>\n        <button ion-fab icon-only color="default" (click)="buscarSetores()" id="locate">\n            <ion-icon name="search" class="icon"></ion-icon>\n        </button>\n    </ion-fab> -->\n\n    <ion-icon #icon name="close" class="icon-clear" style="display: none" id="icon"></ion-icon>\n    <button ion-button id="btn-show-estacionar-page" (click)="openEstacionarPage($event)"\n        [style.display]="\'none\'"></button>\n    <button ion-button id="btn-show-streat-view" (click)="showStreatView()" [style.display]="\'none\'"></button>\n</ion-content>'/*ion-inline-end:"/Users/desenvolvedor/Documents/zonaazulfortaleza-develop/src/pages/home/home.html"*/
+            selector: 'page-home',template:/*ion-inline-start:"C:\Users\ELIAS\Desktop\ZAD\src\pages\home\home.html"*/'<ion-header no-border>\n\n    <ion-navbar color="header">\n\n        <button ion-button icon-only menuToggle>\n\n            <ion-icon class="header-icon" name="menu"></ion-icon>\n\n        </button>\n\n        <ion-title class="title-header">\n\n            <ion-select [(ngModel)]="city" class="select-city" cancelText="Cancelar" okText="Ok" [selectOptions]="selectOptions">\n\n                <ion-option value="Fortaleza">Fortaleza</ion-option>\n\n              </ion-select>\n\n        </ion-title>\n\n\n\n        <ion-buttons end>\n\n            <button ion-button icon-only (click)="openTempoRestantePage()">\n\n                <img src="assets/icones/car-white.svg"  />\n\n            </button>\n\n        </ion-buttons>\n\n    </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content class="content">\n\n    <div #map id="map"></div>\n\n    <input #search id="search" class="controls" type="text" placeholder="Buscar">\n\n\n\n    <button ion-button icon-only type="button" item-right clear id="mic" >\n\n        <ion-icon color="gray" name="search" class="icon"></ion-icon>\n\n    </button>\n\n    <!--<ion-fab id="help">\n\n        <button ion-fab icon-only (click)="openHelp()">\n\n            <ion-icon name="help"></ion-icon>\n\n        </button>\n\n    </ion-fab> -->\n\n\n\n    <ion-fab id="close" (click)="showCloseSetor()">\n\n        <button ion-fab>\n\n        </button>\n\n    </ion-fab>\n\n\n\n   <!-- <ion-fab>\n\n        <button ion-fab icon-only color="default" (click)="buscarSetores()" id="locate">\n\n            <ion-icon name="search" class="icon"></ion-icon>\n\n        </button>\n\n    </ion-fab> -->\n\n\n\n    <ion-icon #icon name="close" class="icon-clear" style="display: none" id="icon"></ion-icon>\n\n    <button ion-button id="btn-show-estacionar-page" (click)="openEstacionarPage($event)"\n\n        [style.display]="\'none\'"></button>\n\n    <button ion-button id="btn-show-streat-view" (click)="showStreatView()" [style.display]="\'none\'"></button>\n\n</ion-content>'/*ion-inline-end:"C:\Users\ELIAS\Desktop\ZAD\src\pages\home\home.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* Platform */],
@@ -1348,7 +1348,7 @@ var LatLng = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 782:
+/***/ 783:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1362,7 +1362,7 @@ var LatLng = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_logger_logger__ = __webpack_require__(39);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__environments_constants__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__app_app_component__ = __webpack_require__(411);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__util_map_util__ = __webpack_require__(770);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__util_map_util__ = __webpack_require__(771);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1432,7 +1432,7 @@ var AjudaPage = /** @class */ (function () {
     };
     AjudaPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-ajuda',template:/*ion-inline-start:"/Users/desenvolvedor/Documents/zonaazulfortaleza-develop/src/pages/ajuda/ajuda.html"*/'<ion-header no-border>\n    <ion-navbar color="header">\n        <button ion-button icon-only menuToggle>\n            <ion-icon class="header-icon" name="menu"></ion-icon>\n        </button>\n\n        <ion-title class="header-title">Ajuda</ion-title>\n\n    </ion-navbar>\n</ion-header>\n\n<ion-content class="content">\n    <ion-grid>\n       \n        <ion-row class="row-items">\n            <ion-item no-lines>\n                <h6>E-mail</h6>\n                <h4>{{cad.info.email}}</h4>\n            </ion-item>\n            <ion-item no-lines>\n                <h6>Telefone</h6>\n                <h4>{{cad.info.fone}}</h4>\n            </ion-item>\n            <ion-item no-lines>\n                <h6>Site</h6>\n                <h4 (click)="openPage(cad.info.site)">{{cad.info.site}}</h4>\n            </ion-item>\n            <ion-item no-lines>\n                <h6>Versão</h6>\n                <h4>{{versao}}</h4>\n            </ion-item>\n        </ion-row>\n        <ion-row class="row-social">\n            <ion-col class="col-facebook">\n                <div class="item-facebook" (click)="openPage(cad.info.facebook_url)">\n                    <img class="img" src="assets/icon/facebook.png">\n                </div>\n            </ion-col>\n            <ion-col class="col-google">\n                <div class="item-google" (click)="openPage(cad.info.google_url)">\n                    <img class="img" src="assets/icon/instagram.png">\n                </div>\n            </ion-col>\n        </ion-row>\n        <ion-row class="row-informacoes">\n            <ion-col class="col-informacoes" col-12>\n                <button ion-button round outline class="btn"\n                    (click)="openPage(cad.info.info_page)">INFORMAÇÕES</button>\n            \n                <button ion-button round outline class="btn" (click)="openTerms()">TERMOS</button>\n           \n                <button ion-button round outline class="btn" (click)="goCompartilhar()">COMPARTILHAR</button>\n            </ion-col>\n        </ion-row>\n        <ion-row class="row-logo">\n            <ion-col class="col-logo">\n                <div class="item-logo">\n                    <img class="img" src="assets/imgs/logo-new.png">\n                </div>\n            </ion-col>\n            <ion-col class="col-logo">\n                <div class="item-logo">\n                    <img class="img" src="assets/imgs/logo-com-fundo.png">\n                </div>\n            </ion-col>\n        </ion-row>\n    </ion-grid>\n</ion-content>'/*ion-inline-end:"/Users/desenvolvedor/Documents/zonaazulfortaleza-develop/src/pages/ajuda/ajuda.html"*/,
+            selector: 'page-ajuda',template:/*ion-inline-start:"C:\Users\ELIAS\Desktop\ZAD\src\pages\ajuda\ajuda.html"*/'<ion-header no-border>\n\n    <ion-navbar color="header">\n\n        <button ion-button icon-only menuToggle>\n\n            <ion-icon class="header-icon" name="menu"></ion-icon>\n\n        </button>\n\n\n\n        <ion-title class="header-title">Ajuda</ion-title>\n\n\n\n    </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content class="content">\n\n    <ion-grid>\n\n       \n\n        <ion-row class="row-items">\n\n            <ion-item no-lines>\n\n                <h6>E-mail</h6>\n\n                <h4>{{cad.info.email}}</h4>\n\n            </ion-item>\n\n            <ion-item no-lines>\n\n                <h6>Telefone</h6>\n\n                <h4>{{cad.info.fone}}</h4>\n\n            </ion-item>\n\n            <ion-item no-lines>\n\n                <h6>Site</h6>\n\n                <h4 (click)="openPage(cad.info.site)">{{cad.info.site}}</h4>\n\n            </ion-item>\n\n            <ion-item no-lines>\n\n                <h6>Versão</h6>\n\n                <h4>{{versao}}</h4>\n\n            </ion-item>\n\n        </ion-row>\n\n        <ion-row class="row-social">\n\n            <ion-col class="col-facebook">\n\n                <div class="item-facebook" (click)="openPage(cad.info.facebook_url)">\n\n                    <img class="img" src="assets/icon/facebook.png">\n\n                </div>\n\n            </ion-col>\n\n            <ion-col class="col-google">\n\n                <div class="item-google" (click)="openPage(cad.info.google_url)">\n\n                    <img class="img" src="assets/icon/instagram.png">\n\n                </div>\n\n            </ion-col>\n\n        </ion-row>\n\n        <ion-row class="row-informacoes">\n\n            <ion-col class="col-informacoes" col-12>\n\n                <button ion-button round outline class="btn"\n\n                    (click)="openPage(cad.info.info_page)">INFORMAÇÕES</button>\n\n            \n\n                <button ion-button round outline class="btn" (click)="openTerms()">TERMOS</button>\n\n           \n\n                <button ion-button round outline class="btn" (click)="goCompartilhar()">COMPARTILHAR</button>\n\n            </ion-col>\n\n        </ion-row>\n\n        <ion-row class="row-logo">\n\n            <ion-col class="col-logo">\n\n                <div class="item-logo">\n\n                    <img class="img" src="assets/imgs/logo-new.png">\n\n                </div>\n\n            </ion-col>\n\n            <ion-col class="col-logo">\n\n                <div class="item-logo">\n\n                    <img class="img" src="assets/imgs/logo-com-fundo.png">\n\n                </div>\n\n            </ion-col>\n\n        </ion-row>\n\n    </ion-grid>\n\n</ion-content>'/*ion-inline-end:"C:\Users\ELIAS\Desktop\ZAD\src\pages\ajuda\ajuda.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavParams */],

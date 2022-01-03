@@ -1,14 +1,14 @@
 webpackJsonp([33],{
 
-/***/ 738:
+/***/ 742:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CompartilharPageModule", function() { return CompartilharPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EstacionadosModalPageModule", function() { return EstacionadosModalPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(35);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__compartilhar__ = __webpack_require__(785);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__estacionados_modal__ = __webpack_require__(794);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,37 +18,33 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var CompartilharPageModule = /** @class */ (function () {
-    function CompartilharPageModule() {
+var EstacionadosModalPageModule = /** @class */ (function () {
+    function EstacionadosModalPageModule() {
     }
-    CompartilharPageModule = __decorate([
+    EstacionadosModalPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__compartilhar__["a" /* CompartilharPage */],
+                __WEBPACK_IMPORTED_MODULE_2__estacionados_modal__["a" /* EstacionadosModalPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__compartilhar__["a" /* CompartilharPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__estacionados_modal__["a" /* EstacionadosModalPage */]),
             ],
         })
-    ], CompartilharPageModule);
-    return CompartilharPageModule;
+    ], EstacionadosModalPageModule);
+    return EstacionadosModalPageModule;
 }());
 
-//# sourceMappingURL=compartilhar.module.js.map
+//# sourceMappingURL=estacionados-modal.module.js.map
 
 /***/ }),
 
-/***/ 785:
+/***/ 794:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CompartilharPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EstacionadosModalPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(35);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_social_sharing__ = __webpack_require__(425);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_cads_cads__ = __webpack_require__(112);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__models_cad__ = __webpack_require__(203);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_browser_browser__ = __webpack_require__(207);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -60,93 +56,66 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-
-
-
-
-var CompartilharPage = /** @class */ (function () {
-    function CompartilharPage(navCtrl, navParams, socialSharing, cadsProvider, browserProvider, loadingCtrl) {
+var EstacionadosModalPage = /** @class */ (function () {
+    function EstacionadosModalPage(navCtrl, navParams, viewCtrl) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
-        this.socialSharing = socialSharing;
-        this.cadsProvider = cadsProvider;
-        this.browserProvider = browserProvider;
-        this.loadingCtrl = loadingCtrl;
-        this.cad = new __WEBPACK_IMPORTED_MODULE_4__models_cad__["a" /* CadModel */]();
+        this.viewCtrl = viewCtrl;
+        this.todosVeiculos = [];
+        this.copiaVeiculos = [];
+        this.veiculos = [];
+        this.veiculoSelecionado = [];
+        this.getVeiculos();
     }
-    CompartilharPage.prototype.ionViewDidLoad = function () {
+    EstacionadosModalPage.prototype.ionViewWillLoad = function () {
+    };
+    EstacionadosModalPage.prototype.dismiss = function () {
+        this.viewCtrl.dismiss();
+    };
+    EstacionadosModalPage.prototype.getVeiculos = function () {
         var _this = this;
-        this.cadsProvider.find().take(1).subscribe(function (value) {
-            value.map(function (item) {
-                _this.cad = new __WEBPACK_IMPORTED_MODULE_4__models_cad__["a" /* CadModel */](item.cad);
-            });
+        return new Promise(function (resolve) {
+            var veiculos = _this.navParams.get('veiculos');
+            console.log(veiculos);
+            _this.copiaVeiculos = veiculos ? veiculos : [];
+            _this.veiculos = veiculos ? veiculos : [];
+            console.log(_this.veiculos);
+            resolve(true);
         });
     };
-    CompartilharPage.prototype.shareLink = function () {
-        var url = 'http://www.zonafacil.com.br';
-        this.browserProvider.openPage(url);
+    EstacionadosModalPage.prototype.select = function (veiculo) {
+        this.veiculoSelecionado = veiculo;
     };
-    CompartilharPage.prototype.shareFacebook = function () {
-        var loading = this.loadingCtrl.create({ content: 'Aguarde...' });
-        loading.present();
-        var message = 'O Zona Fácil é meu aplicativo Zona Azul preferido. Indico!';
-        var img = 'https://www.zonafacil.com.br/site/images/mockups/banner-1.jpg';
-        var url = 'https://www.zonafacil.com.br';
-        this.socialSharing.shareViaFacebook(message, img, url)
-            .then(function () {
-            loading.dismiss();
-        })
-            .catch(function (e) {
-            console.error('error', e);
-            loading.dismiss();
-        });
+    EstacionadosModalPage.prototype.procurarVeiculos = function (event) {
+        var placa = event.target.value;
+        if (placa) {
+            if (placa.trim == '') {
+                this.veiculos = this.copiaVeiculos;
+            }
+            else {
+                this.veiculos = this.copiaVeiculos.filter(function (veiculos) {
+                    console.log(veiculos);
+                    return (veiculos && veiculos.veiculo.placa.toUpperCase().indexOf(placa.toUpperCase()) > -1);
+                });
+            }
+        }
+        else {
+            this.veiculos = this.copiaVeiculos;
+        }
     };
-    CompartilharPage.prototype.shareWhatsapp = function () {
-        var loading = this.loadingCtrl.create({ content: 'Aguarde...' });
-        loading.present();
-        var message = 'O Zona Fácil é meu aplicativo Zona Azul preferido. Indico!';
-        var img = 'https://www.zonafacil.com.br/site/images/mockups/banner-1.jpg';
-        var url = 'https://www.zonafacil.com.br';
-        this.socialSharing.shareViaWhatsApp(message, img, url)
-            .then(function () {
-            loading.dismiss();
-        })
-            .catch(function (e) {
-            console.error('error', e);
-            loading.dismiss();
-        });
+    EstacionadosModalPage.prototype.selectVeiculo = function () {
+        this.viewCtrl.dismiss(this.veiculoSelecionado);
     };
-    CompartilharPage.prototype.share = function () {
-        var loading = this.loadingCtrl.create({ content: 'Aguarde...' });
-        loading.present();
-        var subject = 'Zona Azul!';
-        var message = 'O Zona Fácil é meu aplicativo Zona Azul preferido. Indico!';
-        var img = 'https://www.zonafacil.com.br/site/images/mockups/banner-1.jpg';
-        var url = 'https://www.zonafacil.com.br';
-        this.socialSharing.share(message, subject, img, url)
-            .then(function () {
-            loading.dismiss();
-        })
-            .catch(function (e) {
-            console.error('error', e);
-            loading.dismiss();
-        });
-    };
-    CompartilharPage = __decorate([
+    EstacionadosModalPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-compartilhar',template:/*ion-inline-start:"/Users/desenvolvedor/Documents/zonaazulfortaleza-develop/src/pages/compartilhar/compartilhar.html"*/'<ion-header no-border>\n    <ion-navbar color="header">\n        <button ion-button icon-only menuToggle>\n            <ion-icon class="header-icon" name="menu"></ion-icon>\n        </button>\n\n        <ion-title class="header-title">Compartilhe</ion-title>\n\n    </ion-navbar>\n</ion-header>\n\n<ion-content class="content">\n    <ion-grid>\n        <ion-row class="row-header">\n            <ion-col col-12 class="info">\n                <p>COMPARTILHE NAS REDES SOCIAIS</p>\n            </ion-col>\n        </ion-row>\n        <ion-row class="row-items">\n            <ion-item no-lines>\n                <h6>Site</h6>\n                <h4 (click)="shareLink()">{{cad.info.site}}</h4>\n            </ion-item>\n        </ion-row>\n        <ion-row class="row-social">\n            <!-- <ion-col col-12 class="col-more">\n                <button class="item-facebook" ion-button icon-start block (click)="shareFacebook()">\n                    <ion-icon name="logo-facebook"></ion-icon>\n                    <p>Compartilhar no facebook</p>\n                </button>\n            </ion-col>\n            <ion-col col-12 class="col-more">\n                <button class="item-whats" ion-button icon-start block (click)="shareWhatsapp()">\n                    <ion-icon name="logo-whatsapp"></ion-icon>\n                    <p class="wp">Compartilhar no whatsapp</p>\n                </button>\n            </ion-col> -->\n            <ion-col col-12 class="col-more">\n                <button class="item-default" ion-button icon-start block (click)="share()">\n                    <ion-icon name="share"></ion-icon>\n                    <p>Compartilhar</p>\n                </button>\n            </ion-col>\n        </ion-row>\n    </ion-grid>\n</ion-content>'/*ion-inline-end:"/Users/desenvolvedor/Documents/zonaazulfortaleza-develop/src/pages/compartilhar/compartilhar.html"*/,
+            selector: 'page-estacionados-modal',template:/*ion-inline-start:"C:\Users\ELIAS\Desktop\ZAD\src\pages\estacionados-modal\estacionados-modal.html"*/'<ion-header>\n\n    <ion-navbar color="header" text-center>\n\n        <ion-title>\n\n            <ion-label>\n\n                Selecione seu veículo\n\n            </ion-label>\n\n        </ion-title>\n\n\n\n        <ion-buttons left>\n\n            <button ion-button icon-only (click)="dismiss()">\n\n                <span color="light" class="header-icon" showWhen="ios">Fechar</span>\n\n                <ion-icon name="md-arrow-back" class="header-icon" showWhen="android,windows"></ion-icon>\n\n            </button>\n\n        </ion-buttons>\n\n    </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content>\n\n    <ion-searchbar class="search" placeholder="Buscar por placa" color="primary" (ionInput)="procurarVeiculos($event)"></ion-searchbar>\n\n    <!-- <ion-list radio-group>\n\n        <ion-item *ngFor="let veiculo of veiculos" text-wrap>\n\n            <ion-label>\n\n                <p class="titulo">{{veiculo.veiculo.placa}}</p>\n\n                <p class="subtitulo">{{veiculo.veiculo.marca}} {{veiculo.veiculo.modelo}}</p>\n\n            </ion-label>\n\n            <ion-radio item-left slot="start" (ionSelect)="select(veiculo)" mode="md"></ion-radio>\n\n        </ion-item>\n\n    </ion-list> -->\n\n</ion-content>\n\n\n\n<ion-footer class="footer">\n\n    <ion-toolbar class="toolbar">\n\n        <ion-title>\n\n            <ion-row class="btn-rows">\n\n                <ion-col>\n\n                    <button ion-button block class="btn-cancelar" (click)="dismiss()" mode="md">Cancelar</button>\n\n                </ion-col>\n\n\n\n                <ion-col>\n\n                    <button ion-button block class="btn" (click)="selectVeiculo()"\n\n                        [disabled]="this.veiculoSelecionado.length <= 0" mode="md">OK</button>\n\n                </ion-col>\n\n            </ion-row>\n\n        </ion-title>\n\n    </ion-toolbar>\n\n</ion-footer>'/*ion-inline-end:"C:\Users\ELIAS\Desktop\ZAD\src\pages\estacionados-modal\estacionados-modal.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_2__ionic_native_social_sharing__["a" /* SocialSharing */],
-            __WEBPACK_IMPORTED_MODULE_3__providers_cads_cads__["a" /* CadsProvider */],
-            __WEBPACK_IMPORTED_MODULE_5__providers_browser_browser__["a" /* BrowserProvider */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* LoadingController */]])
-    ], CompartilharPage);
-    return CompartilharPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* ViewController */]])
+    ], EstacionadosModalPage);
+    return EstacionadosModalPage;
 }());
 
-//# sourceMappingURL=compartilhar.js.map
+//# sourceMappingURL=estacionados-modal.js.map
 
 /***/ })
 

@@ -1,6 +1,6 @@
 webpackJsonp([18],{
 
-/***/ 763:
+/***/ 756:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SignupPageModule", function() { return SignupPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(35);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__signup__ = __webpack_require__(822);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__signup__ = __webpack_require__(808);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_brmasker_ionic_3__ = __webpack_require__(420);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -41,7 +41,7 @@ var SignupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 771:
+/***/ 772:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -198,7 +198,7 @@ var FunctionsUtil = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 822:
+/***/ 808:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -211,7 +211,7 @@ var FunctionsUtil = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_auth_auth__ = __webpack_require__(199);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_user_user__ = __webpack_require__(43);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__environments_constants__ = __webpack_require__(19);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__util_functions_util__ = __webpack_require__(771);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__util_functions_util__ = __webpack_require__(772);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -354,7 +354,7 @@ var SignupPage = /** @class */ (function () {
     };
     SignupPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Component"])({
-            selector: 'page-signup',template:/*ion-inline-start:"/Users/desenvolvedor/Documents/zonaazulfortaleza-develop/src/pages/signup/signup.html"*/'<ion-header no-border>\n  <ion-navbar transparent class="navbar only-mobile">\n\n    <ion-title>\n      <ion-label>Cadastro</ion-label>\n    </ion-title>\n\n  </ion-navbar>\n</ion-header>\n<ion-content class="signup">\n\n  <div class="logo">\n    <ion-grid class="img img-centralize img-logo">\n      <img src="assets/imgs/logo.png" />\n    </ion-grid>\n  </div>\n\n  <ion-grid class="grid-form">\n    <ion-row justify-content-center>\n      <div class="form-margin">\n        <form class="form" [formGroup]="signupForm" novalidate>\n          <div text-center>\n            <ion-input type="text" #name formControlName="name" id="name" placeholder="Nome"\n              (keyup.enter)="focusInput(email)"></ion-input>\n            <ion-label class="error-message" *ngIf="signupForm.controls.name.invalid  && (submitAttempt)">Insira um nome\n              válido</ion-label>\n          </div>\n          <div text-center>\n            <ion-input type="tel" #phone formControlName="phone" id="telephone" placeholder="Telefone"\n              (keyup.enter)="focusInput(phone)" [brmasker]="{phone: true}"></ion-input>\n            <ion-label class="error-message" *ngIf="signupForm.controls.phone.invalid  && (submitAttempt)">Insira um\n              telefone válido</ion-label>\n          </div>\n          <div text-center>\n            <ion-input type="email" #email formControlName="email" id="email" placeholder="Email"\n              (keyup.enter)="focusInput(password)"></ion-input>\n            <ion-label class="error-message" *ngIf="signupForm.controls.email.invalid  && (submitAttempt)">Insira um\n              email válido</ion-label>\n          </div>\n          <div text-center>\n            <ion-input #password type="password" formControlName="password" id="password"\n              placeholder="Senha: mínimo 6 digitos" (keyup.enter)="register()"></ion-input>\n            <ion-label class="error-message" *ngIf="signupForm.controls.password.invalid  && (submitAttempt)">Insira uma\n              senha válida</ion-label>\n          </div>\n          <ion-row>\n            <ion-col col-12 class="checkbox">\n              <ion-checkbox #terms formControlName="terms" [(ngModel)]="checked" class="check"></ion-checkbox>\n              <ion-label class="text">Eu concordo com os <span class="info-link" (click)="showTerms()">Termos e\n                  Condições</span></ion-label>\n            </ion-col>\n          </ion-row>\n        </form>\n\n        <button ion-button (click)="register()" class="btn" block>Criar Minha Conta</button>\n\n      </div>\n    </ion-row>\n  </ion-grid>\n\n  <div class="logo">\n    <ion-grid class="img img-centralize img-logo logo-amc">\n      <ion-row align-items-center justify-content-center>\n        <ion-col align-items-center class="img-logo1-menu">\n          <img src="assets/imgs/logo-backwhite-cipetran.png" />\n        </ion-col>\n      </ion-row>\n    </ion-grid>\n  </div>\n\n</ion-content>'/*ion-inline-end:"/Users/desenvolvedor/Documents/zonaazulfortaleza-develop/src/pages/signup/signup.html"*/,
+            selector: 'page-signup',template:/*ion-inline-start:"C:\Users\ELIAS\Desktop\ZAD\src\pages\signup\signup.html"*/'<ion-header no-border>\n\n  <ion-navbar transparent class="navbar only-mobile">\n\n\n\n    <ion-title>\n\n      <ion-label>Cadastro</ion-label>\n\n    </ion-title>\n\n\n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content class="signup">\n\n\n\n  <div class="logo">\n\n    <ion-grid class="img img-centralize img-logo">\n\n      <img src="assets/imgs/logo.png" />\n\n    </ion-grid>\n\n  </div>\n\n\n\n  <ion-grid class="grid-form">\n\n    <ion-row justify-content-center>\n\n      <div class="form-margin">\n\n        <form class="form" [formGroup]="signupForm" novalidate>\n\n          <div text-center>\n\n            <ion-input type="text" #name formControlName="name" id="name" placeholder="Nome"\n\n              (keyup.enter)="focusInput(email)"></ion-input>\n\n            <ion-label class="error-message" *ngIf="signupForm.controls.name.invalid  && (submitAttempt)">Insira um nome\n\n              válido</ion-label>\n\n          </div>\n\n          <div text-center>\n\n            <ion-input type="tel" #phone formControlName="phone" id="telephone" placeholder="Telefone"\n\n              (keyup.enter)="focusInput(phone)" [brmasker]="{phone: true}"></ion-input>\n\n            <ion-label class="error-message" *ngIf="signupForm.controls.phone.invalid  && (submitAttempt)">Insira um\n\n              telefone válido</ion-label>\n\n          </div>\n\n          <div text-center>\n\n            <ion-input type="email" #email formControlName="email" id="email" placeholder="Email"\n\n              (keyup.enter)="focusInput(password)"></ion-input>\n\n            <ion-label class="error-message" *ngIf="signupForm.controls.email.invalid  && (submitAttempt)">Insira um\n\n              email válido</ion-label>\n\n          </div>\n\n          <div text-center>\n\n            <ion-input #password type="password" formControlName="password" id="password"\n\n              placeholder="Senha: mínimo 6 digitos" (keyup.enter)="register()"></ion-input>\n\n            <ion-label class="error-message" *ngIf="signupForm.controls.password.invalid  && (submitAttempt)">Insira uma\n\n              senha válida</ion-label>\n\n          </div>\n\n          <ion-row>\n\n            <ion-col col-12 class="checkbox">\n\n              <ion-checkbox #terms formControlName="terms" [(ngModel)]="checked" class="check"></ion-checkbox>\n\n              <ion-label class="text">Eu concordo com os <span class="info-link" (click)="showTerms()">Termos e\n\n                  Condições</span></ion-label>\n\n            </ion-col>\n\n          </ion-row>\n\n        </form>\n\n\n\n        <button ion-button (click)="register()" class="btn" block>Criar Minha Conta</button>\n\n\n\n      </div>\n\n    </ion-row>\n\n  </ion-grid>\n\n\n\n  <div class="logo">\n\n    <ion-grid class="img img-centralize img-logo logo-amc">\n\n      <ion-row align-items-center justify-content-center>\n\n        <ion-col align-items-center class="img-logo1-menu">\n\n          <img src="assets/imgs/logo-backwhite-cipetran.png" />\n\n        </ion-col>\n\n      </ion-row>\n\n    </ion-grid>\n\n  </div>\n\n\n\n</ion-content>'/*ion-inline-end:"C:\Users\ELIAS\Desktop\ZAD\src\pages\signup\signup.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0_ionic_angular__["d" /* Events */],
             __WEBPACK_IMPORTED_MODULE_0_ionic_angular__["m" /* NavController */],

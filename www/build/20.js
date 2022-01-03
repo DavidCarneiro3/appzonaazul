@@ -1,6 +1,6 @@
 webpackJsonp([20],{
 
-/***/ 755:
+/***/ 766:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -10,7 +10,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_components_module__ = __webpack_require__(419);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_loading_spinner_loading_spinner_module__ = __webpack_require__(418);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__principal__ = __webpack_require__(814);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__principal__ = __webpack_require__(821);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -44,7 +44,7 @@ var PrincipalPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 771:
+/***/ 772:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -201,7 +201,7 @@ var FunctionsUtil = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 814:
+/***/ 821:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -219,7 +219,7 @@ var FunctionsUtil = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__ionic_native_geolocation__ = __webpack_require__(415);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__providers_setores_setores__ = __webpack_require__(413);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__providers_area_area__ = __webpack_require__(414);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__util_functions_util__ = __webpack_require__(771);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__util_functions_util__ = __webpack_require__(772);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__environments_constants__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__providers_tempo_estacionado_tempo_estacionado__ = __webpack_require__(204);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__providers_estacionar_estacionar__ = __webpack_require__(201);
@@ -598,7 +598,7 @@ var PrincipalPage = /** @class */ (function () {
     };
     PrincipalPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-principal',template:/*ion-inline-start:"/Users/desenvolvedor/Documents/zonaazulfortaleza-develop/src/pages/principal/principal.html"*/'<ion-header no-border>\n  <ion-navbar color="header" no-border>\n      \n      <button ion-button icon-only menuToggle>\n          <ion-icon class="header-icon" name="menu"></ion-icon>\n      </button>\n      <ion-title class="title-header">\n       \n        <ion-select [(ngModel)]="city" class="select-city" cancelText="Cancelar" okText="Ok" [selectOptions]="selectOptions">\n          <ion-option value="Fortaleza">Fortaleza</ion-option>\n        </ion-select>\n      </ion-title>\n\n      <ion-buttons end>\n          <button class="pin-icon" ion-button icon-only (click)="goHome()">\n              <img src="assets/icones/pin-white.svg" alt="">\n          </button>\n      </ion-buttons>\n  </ion-navbar>\n</ion-header>\n\n\n<ion-content padding>\n  <loading-spinner *ngIf="showSpinner"></loading-spinner> \n  <div class="img-top"  *ngIf="!showSpinner">\n    <img src="assets/imgs/default.png" alt="" class="nav-img">\n    <h2 class="title">{{(cads-cadsUsados)}} CADS</h2>\n    <p class="price">R${{(cads-cadsUsados)*2}},00</p>\n    <button ion-button class="btn-comprar" (click)="goComprar()"><img src="assets/icones/shopping-cart-white.svg"></button>\n  </div>\n  <div class="content">\n    <div></div>\n    <div class="{{\'class\'+i}}" *ngFor="let item of list; let i = index">\n      \n      <ion-item no-lines mode="md" class="list-item">\n        <loading-spinner *ngIf="showSpinner"></loading-spinner> \n          <ion-label text-left class="title-select" mode="md">{{item?.veiculo.placa || placa}}\n            <button ion-button small icon-end *ngIf="!checaEstacionado(item?.veiculo.placa)" class="btn-estacionar" (click)="showCloseSetor(item)">Estacionar <img src="assets/icones/estacionamento-white.svg" alt="">\n            </button>\n            <button ion-button small style="background-color: #27AE60;" icon-end *ngIf="checaEstacionado(item?.veiculo.placa)" class="btn-estacionar" (click)="goTempoRest()">\n              <div class="timer"> \n                <!-- <timer [decorrido]="estacionar?.dataHoraRegistro" \n                [now]="tempoCurrent"\n                [placa]="estacionar?.veiculo_id" \n                [status]="estacionar?.status"></timer>  -->\n                Estacionado\n              </div>\n              <img style="margin-top: 3px; left: -2px; width: 14px; height: 14px;" src="assets/icones/arrow-fwd-white.svg" alt="">\n            </button>\n            <p>{{item.veiculo.marca || item.veiculo.nodelo | uppercase}}</p>\n          </ion-label>\n          \n      </ion-item>\n      <!--\n          <ion-select [(ngModel)]="placa" mode="md" cancelText="Cancelar" okText="Ok" (ionChange)="selecionarVeiculo($event)" [disabled]="fromRenovar">\n          <ion-option *ngFor="let item of veiculos" value="{{item.veiculo.placa}}" (click)="selecionarVeiculo($event)">{{item?.veiculo?.placa}}</ion-option>\n      </ion-select> \n      -->\n    </div>\n    <button ion-button clear class="btn-add" (click)="goVeiculos()">Adicionar Veiculos <ion-icon name="add"></ion-icon></button>\n  </div>\n\n\n</ion-content>\n'/*ion-inline-end:"/Users/desenvolvedor/Documents/zonaazulfortaleza-develop/src/pages/principal/principal.html"*/,
+            selector: 'page-principal',template:/*ion-inline-start:"C:\Users\ELIAS\Desktop\ZAD\src\pages\principal\principal.html"*/'<ion-header no-border>\n\n  <ion-navbar color="header" no-border>\n\n      \n\n      <button ion-button icon-only menuToggle>\n\n          <ion-icon class="header-icon" name="menu"></ion-icon>\n\n      </button>\n\n      <ion-title class="title-header">\n\n       \n\n        <ion-select [(ngModel)]="city" class="select-city" cancelText="Cancelar" okText="Ok" [selectOptions]="selectOptions">\n\n          <ion-option value="Fortaleza">Fortaleza</ion-option>\n\n        </ion-select>\n\n      </ion-title>\n\n\n\n      <ion-buttons end>\n\n          <button class="pin-icon" ion-button icon-only (click)="goHome()">\n\n              <img src="assets/icones/pin-white.svg" alt="">\n\n          </button>\n\n      </ion-buttons>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n  <loading-spinner *ngIf="showSpinner"></loading-spinner> \n\n  <div class="img-top"  *ngIf="!showSpinner">\n\n    <img src="assets/imgs/default.png" alt="" class="nav-img">\n\n    <h2 class="title">{{(cads-cadsUsados)}} CADS</h2>\n\n    <p class="price">R${{(cads-cadsUsados)*2}},00</p>\n\n    <button ion-button class="btn-comprar" (click)="goComprar()"><img src="assets/icones/shopping-cart-white.svg"></button>\n\n  </div>\n\n  <div class="content">\n\n    <div></div>\n\n    <div class="{{\'class\'+i}}" *ngFor="let item of list; let i = index">\n\n      \n\n      <ion-item no-lines mode="md" class="list-item">\n\n        <loading-spinner *ngIf="showSpinner"></loading-spinner> \n\n          <ion-label text-left class="title-select" mode="md">{{item?.veiculo.placa}}\n\n            <button ion-button small icon-end *ngIf="!checaEstacionado(item?.veiculo.placa)" class="btn-estacionar" (click)="showCloseSetor(item)">Estacionar <img src="assets/icones/estacionamento-white.svg" alt="">\n\n            </button>\n\n            <button ion-button small style="background-color: #27AE60;" icon-end *ngIf="checaEstacionado(item?.veiculo.placa)" class="btn-estacionar" (click)="goTempoRest()">\n\n              <div class="timer"> \n\n                <!-- <timer [decorrido]="estacionar?.dataHoraRegistro" \n\n                [now]="tempoCurrent"\n\n                [placa]="estacionar?.veiculo_id" \n\n                [status]="estacionar?.status"></timer>  -->\n\n                Estacionado\n\n              </div>\n\n              <img style="margin-top: 3px; left: -2px; width: 14px; height: 14px;" src="assets/icones/arrow-fwd-white.svg" alt="">\n\n            </button>\n\n            <p>{{item.veiculo.marca || item.veiculo.nodelo | uppercase}}</p>\n\n          </ion-label>\n\n          \n\n      </ion-item>\n\n      <!--\n\n          <ion-select [(ngModel)]="placa" mode="md" cancelText="Cancelar" okText="Ok" (ionChange)="selecionarVeiculo($event)" [disabled]="fromRenovar">\n\n          <ion-option *ngFor="let item of veiculos" value="{{item.veiculo.placa}}" (click)="selecionarVeiculo($event)">{{item?.veiculo?.placa}}</ion-option>\n\n      </ion-select> \n\n      -->\n\n    </div>\n\n    <button ion-button clear class="btn-add" (click)="goVeiculos()">Adicionar Veiculos <ion-icon name="add"></ion-icon></button>\n\n  </div>\n\n\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\ELIAS\Desktop\ZAD\src\pages\principal\principal.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavParams */],

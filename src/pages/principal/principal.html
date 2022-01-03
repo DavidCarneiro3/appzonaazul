@@ -34,7 +34,7 @@
       
       <ion-item no-lines mode="md" class="list-item">
         <loading-spinner *ngIf="showSpinner"></loading-spinner> 
-          <ion-label text-left class="title-select" mode="md">{{item?.veiculo.placa || placa}}
+          <ion-label text-left class="title-select" mode="md">{{item?.veiculo.placa}}
             <button ion-button small icon-end *ngIf="!checaEstacionado(item?.veiculo.placa)" class="btn-estacionar" (click)="showCloseSetor(item)">Estacionar <img src="assets/icones/estacionamento-white.svg" alt="">
             </button>
             <button ion-button small style="background-color: #27AE60;" icon-end *ngIf="checaEstacionado(item?.veiculo.placa)" class="btn-estacionar" (click)="goTempoRest()">

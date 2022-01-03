@@ -1,6 +1,6 @@
 webpackJsonp([2],{
 
-/***/ 740:
+/***/ 768:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -9,7 +9,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_loading_spinner_loading_spinner_module__ = __webpack_require__(418);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__comprar_creditos_pagamento__ = __webpack_require__(787);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__comprar_creditos_pagamento__ = __webpack_require__(824);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -41,12 +41,12 @@ var ComprarCreditosPagamentoPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 770:
+/***/ 771:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MapUtil; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pages_home_home__ = __webpack_require__(772);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pages_home_home__ = __webpack_require__(773);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__environments_constants__ = __webpack_require__(19);
 
 
@@ -519,7 +519,7 @@ var MapUtil = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 771:
+/***/ 772:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -676,7 +676,7 @@ var FunctionsUtil = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 772:
+/***/ 773:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -699,8 +699,8 @@ var FunctionsUtil = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__providers_modal_modal__ = __webpack_require__(198);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__providers_area_area__ = __webpack_require__(414);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__environments_constants__ = __webpack_require__(19);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__util_map_util__ = __webpack_require__(770);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__util_functions_util__ = __webpack_require__(771);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__util_map_util__ = __webpack_require__(771);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__util_functions_util__ = __webpack_require__(772);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__app_app_component__ = __webpack_require__(411);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__providers_estacionar_estacionar__ = __webpack_require__(201);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -1311,7 +1311,7 @@ var HomePage = /** @class */ (function () {
     ], HomePage.prototype, "iconElement", void 0);
     HomePage = HomePage_1 = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-home',template:/*ion-inline-start:"/Users/desenvolvedor/Documents/zonaazulfortaleza-develop/src/pages/home/home.html"*/'<ion-header no-border>\n    <ion-navbar color="header">\n        <button ion-button icon-only menuToggle>\n            <ion-icon class="header-icon" name="menu"></ion-icon>\n        </button>\n        <ion-title class="title-header">\n            <ion-select [(ngModel)]="city" class="select-city" cancelText="Cancelar" okText="Ok" [selectOptions]="selectOptions">\n                <ion-option value="Fortaleza">Fortaleza</ion-option>\n              </ion-select>\n        </ion-title>\n\n        <ion-buttons end>\n            <button ion-button icon-only (click)="openTempoRestantePage()">\n                <img src="assets/icones/car-white.svg"  />\n            </button>\n        </ion-buttons>\n    </ion-navbar>\n</ion-header>\n\n<ion-content class="content">\n    <div #map id="map"></div>\n    <input #search id="search" class="controls" type="text" placeholder="Buscar">\n\n    <button ion-button icon-only type="button" item-right clear id="mic" >\n        <ion-icon color="gray" name="search" class="icon"></ion-icon>\n    </button>\n    <!--<ion-fab id="help">\n        <button ion-fab icon-only (click)="openHelp()">\n            <ion-icon name="help"></ion-icon>\n        </button>\n    </ion-fab> -->\n\n    <ion-fab id="close" (click)="showCloseSetor()">\n        <button ion-fab>\n        </button>\n    </ion-fab>\n\n   <!-- <ion-fab>\n        <button ion-fab icon-only color="default" (click)="buscarSetores()" id="locate">\n            <ion-icon name="search" class="icon"></ion-icon>\n        </button>\n    </ion-fab> -->\n\n    <ion-icon #icon name="close" class="icon-clear" style="display: none" id="icon"></ion-icon>\n    <button ion-button id="btn-show-estacionar-page" (click)="openEstacionarPage($event)"\n        [style.display]="\'none\'"></button>\n    <button ion-button id="btn-show-streat-view" (click)="showStreatView()" [style.display]="\'none\'"></button>\n</ion-content>'/*ion-inline-end:"/Users/desenvolvedor/Documents/zonaazulfortaleza-develop/src/pages/home/home.html"*/
+            selector: 'page-home',template:/*ion-inline-start:"C:\Users\ELIAS\Desktop\ZAD\src\pages\home\home.html"*/'<ion-header no-border>\n\n    <ion-navbar color="header">\n\n        <button ion-button icon-only menuToggle>\n\n            <ion-icon class="header-icon" name="menu"></ion-icon>\n\n        </button>\n\n        <ion-title class="title-header">\n\n            <ion-select [(ngModel)]="city" class="select-city" cancelText="Cancelar" okText="Ok" [selectOptions]="selectOptions">\n\n                <ion-option value="Fortaleza">Fortaleza</ion-option>\n\n              </ion-select>\n\n        </ion-title>\n\n\n\n        <ion-buttons end>\n\n            <button ion-button icon-only (click)="openTempoRestantePage()">\n\n                <img src="assets/icones/car-white.svg"  />\n\n            </button>\n\n        </ion-buttons>\n\n    </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content class="content">\n\n    <div #map id="map"></div>\n\n    <input #search id="search" class="controls" type="text" placeholder="Buscar">\n\n\n\n    <button ion-button icon-only type="button" item-right clear id="mic" >\n\n        <ion-icon color="gray" name="search" class="icon"></ion-icon>\n\n    </button>\n\n    <!--<ion-fab id="help">\n\n        <button ion-fab icon-only (click)="openHelp()">\n\n            <ion-icon name="help"></ion-icon>\n\n        </button>\n\n    </ion-fab> -->\n\n\n\n    <ion-fab id="close" (click)="showCloseSetor()">\n\n        <button ion-fab>\n\n        </button>\n\n    </ion-fab>\n\n\n\n   <!-- <ion-fab>\n\n        <button ion-fab icon-only color="default" (click)="buscarSetores()" id="locate">\n\n            <ion-icon name="search" class="icon"></ion-icon>\n\n        </button>\n\n    </ion-fab> -->\n\n\n\n    <ion-icon #icon name="close" class="icon-clear" style="display: none" id="icon"></ion-icon>\n\n    <button ion-button id="btn-show-estacionar-page" (click)="openEstacionarPage($event)"\n\n        [style.display]="\'none\'"></button>\n\n    <button ion-button id="btn-show-streat-view" (click)="showStreatView()" [style.display]="\'none\'"></button>\n\n</ion-content>'/*ion-inline-end:"C:\Users\ELIAS\Desktop\ZAD\src\pages\home\home.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* Platform */],
@@ -1351,7 +1351,7 @@ var LatLng = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 773:
+/***/ 774:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1450,7 +1450,7 @@ var DateUtil = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 787:
+/***/ 824:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1461,29 +1461,29 @@ var DateUtil = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_clipboard__ = __webpack_require__(426);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_take__ = __webpack_require__(85);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_take___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_take__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__models_pagarme_user_pagarme__ = __webpack_require__(788);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__models_pagarme_venda_pagarme__ = __webpack_require__(789);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__models_pagarme_card_pagarme__ = __webpack_require__(790);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__models_pagarme_user_pagarme__ = __webpack_require__(825);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__models_pagarme_venda_pagarme__ = __webpack_require__(826);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__models_pagarme_card_pagarme__ = __webpack_require__(827);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__models_credito__ = __webpack_require__(436);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__models_cad__ = __webpack_require__(203);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__models_cad_user__ = __webpack_require__(791);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__models_cielo_boleto__ = __webpack_require__(792);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__models_cad_user__ = __webpack_require__(828);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__models_cielo_boleto__ = __webpack_require__(829);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__providers_pagamentos_pagamentos__ = __webpack_require__(424);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__providers_user_user__ = __webpack_require__(43);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__providers_veiculos_veiculos__ = __webpack_require__(412);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__providers_pagarme_pagarme__ = __webpack_require__(427);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__providers_creditos_creditos__ = __webpack_require__(423);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__providers_cads_user_cads_user__ = __webpack_require__(111);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__util_date_util__ = __webpack_require__(773);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__util_date_util__ = __webpack_require__(774);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__providers_cads_cads__ = __webpack_require__(112);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__environments_constants__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__environments_environment__ = __webpack_require__(59);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__providers_comunicacao_central_comunicacao_central__ = __webpack_require__(202);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__providers_tempo_estacionado_tempo_estacionado__ = __webpack_require__(204);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__providers_logger_logger__ = __webpack_require__(39);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__providers_cielo_cielo__ = __webpack_require__(438);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__providers_cielo_cielo__ = __webpack_require__(441);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__app_app_component__ = __webpack_require__(411);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__util_map_util__ = __webpack_require__(770);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__util_map_util__ = __webpack_require__(771);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2041,7 +2041,7 @@ var ComprarCreditosPagamentoPage = /** @class */ (function () {
     };
     ComprarCreditosPagamentoPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-comprar-creditos-pagamento',template:/*ion-inline-start:"/Users/desenvolvedor/Documents/zonaazulfortaleza-develop/src/pages/comprar-creditos-pagamento/comprar-creditos-pagamento.html"*/'<!--<ion-header no-border>\n    <ion-navbar color="header">\n        <ion-buttons left>\n            <button ion-button icon-only (click)="closeComprarCreditosPagamento()">\n                <span color="light" class="header-text" showWhen="ios">Fechar</span>\n                <ion-icon name="md-arrow-back" class="header-icon" showWhen="android,windows"></ion-icon>\n            </button>\n        </ion-buttons>\n        <ion-title>\n            <ion-label>Pagamentos</ion-label>\n        </ion-title>\n    </ion-navbar>\n</ion-header>-->\n\n<ion-content padding class="content">\n    <div class="info" *ngIf="hasCard === 1">\n        <h2 class="title">ATENÇÃO</h2>\n        <p class="desc">Você está comprando R${{price}},00 que equivale à {{cads}} CAD(s). Confirme para realizar sua compra.</p>\n        <loading-spinner *ngIf="showSpinner"></loading-spinner>\n        <ion-list *ngIf="!showSpinner" radio-group [(ngModel)]="card">\n            <ion-item class="route-item" *ngFor="let pagamento of list">\n                <ion-radio value="{{pagamento.key}}" item-start mode="md"></ion-radio>\n                <ion-label class="information-date">{{getCartaoNumeroFormat(pagamento?.values?.numero)}}</ion-label>\n                <ion-thumbnail item-start class="thumbnail-icon">\n                    <img src="{{loadImageCartao(pagamento?.values?.numero)}}" />\n                </ion-thumbnail>   \n            </ion-item>\n        </ion-list>\n        <button class="btn-confirma" (click)="getCard(card)" ion-button small>CONFIRMAR</button>\n        <button ion-button clear class="btn-add" (click)="closeComprarCreditosPagamento()">Cancelar</button>\n    </div>\n    <div class="info" *ngIf="hasCard === 2">\n        <loading-spinner *ngIf="showSpinner"></loading-spinner>\n        <div *ngIf="!showSpinner">\n            <p class="title">Olá</p>\n            <p class="information-date-2">Insira seu cartão para comprar seus créditos de estacionamento.</p>\n            <button class="btn-confirma" (click)="goPagamentos()" ion-button small>INSERIR</button>\n            <button ion-button clear class="btn-add" (click)="closeComprarCreditosPagamento()">Cancelar</button>\n        </div>\n        \n    </div>\n    <!--<button ion-button (click)="openPage($event)" class="btn" block>+ Adicionar Cartão</button>\n\n    <ion-list>\n        <ion-item detail-none *ngFor="let pagamento of list | async"\n            (click)="openSenhaSeguranca(pagamento?.key, pagamento?.values)" class="route-item">\n            <ion-thumbnail item-start class="thumbnail-icon">\n                <img src="{{loadImageCartao(pagamento?.values?.numero)}}" />\n            </ion-thumbnail>\n            <h2 class="information-date">{{getCartaoNumeroFormat(pagamento?.values?.numero)}}</h2>\n            <p class="information-hour">{{pagamento?.values?.data | date: \'MM/yyyy\'}} </p>\n            <button ion-button color="grey" outline item-end (click)="excluir($event,pagamento?.key)">Excluir</button>\n        </ion-item>\n    </ion-list> -->\n</ion-content>'/*ion-inline-end:"/Users/desenvolvedor/Documents/zonaazulfortaleza-develop/src/pages/comprar-creditos-pagamento/comprar-creditos-pagamento.html"*/,
+            selector: 'page-comprar-creditos-pagamento',template:/*ion-inline-start:"C:\Users\ELIAS\Desktop\ZAD\src\pages\comprar-creditos-pagamento\comprar-creditos-pagamento.html"*/'<!--<ion-header no-border>\n\n    <ion-navbar color="header">\n\n        <ion-buttons left>\n\n            <button ion-button icon-only (click)="closeComprarCreditosPagamento()">\n\n                <span color="light" class="header-text" showWhen="ios">Fechar</span>\n\n                <ion-icon name="md-arrow-back" class="header-icon" showWhen="android,windows"></ion-icon>\n\n            </button>\n\n        </ion-buttons>\n\n        <ion-title>\n\n            <ion-label>Pagamentos</ion-label>\n\n        </ion-title>\n\n    </ion-navbar>\n\n</ion-header>-->\n\n\n\n<ion-content padding class="content">\n\n    <div class="info" *ngIf="hasCard === 1">\n\n        <h2 class="title">ATENÇÃO</h2>\n\n        <p class="desc">Você está comprando R${{price}},00 que equivale à {{cads}} CAD(s). Confirme para realizar sua compra.</p>\n\n        <loading-spinner *ngIf="showSpinner"></loading-spinner>\n\n        <ion-list *ngIf="!showSpinner" radio-group [(ngModel)]="card">\n\n            <ion-item class="route-item" *ngFor="let pagamento of list">\n\n                <ion-radio value="{{pagamento.key}}" item-start mode="md"></ion-radio>\n\n                <ion-label class="information-date">{{getCartaoNumeroFormat(pagamento?.values?.numero)}}</ion-label>\n\n                <ion-thumbnail item-start class="thumbnail-icon">\n\n                    <img src="{{loadImageCartao(pagamento?.values?.numero)}}" />\n\n                </ion-thumbnail>   \n\n            </ion-item>\n\n        </ion-list>\n\n        <button class="btn-confirma" (click)="getCard(card)" ion-button small>CONFIRMAR</button>\n\n        <button ion-button clear class="btn-add" (click)="closeComprarCreditosPagamento()">Cancelar</button>\n\n    </div>\n\n    <div class="info" *ngIf="hasCard === 2">\n\n        <loading-spinner *ngIf="showSpinner"></loading-spinner>\n\n        <div *ngIf="!showSpinner">\n\n            <p class="title">Olá</p>\n\n            <p class="information-date-2">Insira seu cartão para comprar seus créditos de estacionamento.</p>\n\n            <button class="btn-confirma" (click)="goPagamentos()" ion-button small>INSERIR</button>\n\n            <button ion-button clear class="btn-add" (click)="closeComprarCreditosPagamento()">Cancelar</button>\n\n        </div>\n\n        \n\n    </div>\n\n    <!--<button ion-button (click)="openPage($event)" class="btn" block>+ Adicionar Cartão</button>\n\n\n\n    <ion-list>\n\n        <ion-item detail-none *ngFor="let pagamento of list | async"\n\n            (click)="openSenhaSeguranca(pagamento?.key, pagamento?.values)" class="route-item">\n\n            <ion-thumbnail item-start class="thumbnail-icon">\n\n                <img src="{{loadImageCartao(pagamento?.values?.numero)}}" />\n\n            </ion-thumbnail>\n\n            <h2 class="information-date">{{getCartaoNumeroFormat(pagamento?.values?.numero)}}</h2>\n\n            <p class="information-hour">{{pagamento?.values?.data | date: \'MM/yyyy\'}} </p>\n\n            <button ion-button color="grey" outline item-end (click)="excluir($event,pagamento?.key)">Excluir</button>\n\n        </ion-item>\n\n    </ion-list> -->\n\n</ion-content>'/*ion-inline-end:"C:\Users\ELIAS\Desktop\ZAD\src\pages\comprar-creditos-pagamento\comprar-creditos-pagamento.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavParams */],
@@ -2071,7 +2071,7 @@ var ComprarCreditosPagamentoPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 788:
+/***/ 825:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2098,7 +2098,7 @@ var UserPagarmeModel = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 789:
+/***/ 826:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2141,7 +2141,7 @@ var VendaPagarmeModel = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 790:
+/***/ 827:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2176,7 +2176,7 @@ var CardPagarmeModel = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 791:
+/***/ 828:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2196,7 +2196,7 @@ var CadUserModel = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 792:
+/***/ 829:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

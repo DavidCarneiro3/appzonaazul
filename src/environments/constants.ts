@@ -9,6 +9,7 @@ export class Constants {
 
     //Constants used to display pages
     public static HOME_PAGE = { id: 'home', name: 'HomePage' };
+    public static INITIAL_PAGE = { id: 'initial', name: 'InitialPage' };
     public static PRINCIPAL_PAGE = { id: 'principal', name: 'PrincipalPage' };
     public static ESTACIONADOS_MODAL_PAGE = { id: 'estacionados-modal', name: 'EstacionadosModalPage' };
     public static LOGIN_PAGE = { id: 'login', name: 'LoginPage' };

@@ -1,6 +1,6 @@
 webpackJsonp([23],{
 
-/***/ 744:
+/***/ 741:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ConfirmarCpfModalPageModule", function() { return ConfirmarCpfModalPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(35);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__confirmar_cpf_modal__ = __webpack_require__(800);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__confirmar_cpf_modal__ = __webpack_require__(793);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_brmasker_ionic_3__ = __webpack_require__(420);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -41,7 +41,7 @@ var ConfirmarCpfModalPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 771:
+/***/ 772:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -198,7 +198,7 @@ var FunctionsUtil = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 800:
+/***/ 793:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -206,7 +206,7 @@ var FunctionsUtil = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_user_user__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__util_functions_util__ = __webpack_require__(771);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__util_functions_util__ = __webpack_require__(772);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -277,7 +277,7 @@ var ConfirmarCpfModalPage = /** @class */ (function () {
     };
     ConfirmarCpfModalPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-confirmar-cpf-modal',template:/*ion-inline-start:"/Users/desenvolvedor/Documents/zonaazulfortaleza-develop/src/pages/confirmar-cpf-modal/confirmar-cpf-modal.html"*/'<ion-header no-border>\n    <ion-navbar color="header" no-margin no-padding>\n        <ion-buttons right style="margin-right: 15px;">\n            <button ion-button icon-only (click)="closeModal()">\n                <span color="light" class="header-icon">X</span>\n                <!-- <ion-icon name="md-arrow-back" class="header-icon" showWhen="android,windows"></ion-icon> -->\n            </button>\n        </ion-buttons>\n\n        <ion-title center>\n            <ion-label style="color: white;">Bem vindo ao Zona Fácil</ion-label>\n        </ion-title>\n    </ion-navbar>\n</ion-header>\n\n\n<ion-content padding class="content">\n\n    <ion-grid class="grid-historico-estacionamento">\n\n        <ion-row class="row">\n            <ion-col width-100 no-lines style="margin-top:9px; ">\n                <p style="color: #6c6c6c; font-size:10pt; text-align:center;">Para realizar as transações de compra de \n                    CADs e estacionamento no Zona Fácil é necessário completar seu cadastro. Insira seu CPF no \n                    campo abaixo.</p>\n                <ion-input type="tel" placeholder="CPF ou CNPJ" [(ngModel)]="input" [brmasker]="{person: true}"> </ion-input>\n            </ion-col>\n        </ion-row>\n\n        <!-- <ion-item class="btn-row" no-lines>\n            <button ion-button style="height:40px" class="btn" block (click)="save()">Enviar</button>\n        </ion-item> -->\n    </ion-grid>\n\n</ion-content>\n<ion-footer class="rodape">\n    <ion-toolbar mode="md">\n        <ion-title>\n            <ion-row class="btn-row">\n                <ion-col>\n                    <button ion-button style="height:40px" class="btn" block (click)="save()">Enviar</button>\n                </ion-col>\n            </ion-row>\n        </ion-title>\n    </ion-toolbar>\n</ion-footer>'/*ion-inline-end:"/Users/desenvolvedor/Documents/zonaazulfortaleza-develop/src/pages/confirmar-cpf-modal/confirmar-cpf-modal.html"*/,
+            selector: 'page-confirmar-cpf-modal',template:/*ion-inline-start:"C:\Users\ELIAS\Desktop\ZAD\src\pages\confirmar-cpf-modal\confirmar-cpf-modal.html"*/'<ion-header no-border>\n\n    <ion-navbar color="header" no-margin no-padding>\n\n        <ion-buttons right style="margin-right: 15px;">\n\n            <button ion-button icon-only (click)="closeModal()">\n\n                <span color="light" class="header-icon">X</span>\n\n                <!-- <ion-icon name="md-arrow-back" class="header-icon" showWhen="android,windows"></ion-icon> -->\n\n            </button>\n\n        </ion-buttons>\n\n\n\n        <ion-title center>\n\n            <ion-label style="color: white;">Bem vindo ao Zona Fácil</ion-label>\n\n        </ion-title>\n\n    </ion-navbar>\n\n</ion-header>\n\n\n\n\n\n<ion-content padding class="content">\n\n\n\n    <ion-grid class="grid-historico-estacionamento">\n\n\n\n        <ion-row class="row">\n\n            <ion-col width-100 no-lines style="margin-top:9px; ">\n\n                <p style="color: #6c6c6c; font-size:10pt; text-align:center;">Para realizar as transações de compra de \n\n                    CADs e estacionamento no Zona Fácil é necessário completar seu cadastro. Insira seu CPF no \n\n                    campo abaixo.</p>\n\n                <ion-input type="tel" placeholder="CPF ou CNPJ" [(ngModel)]="input" [brmasker]="{person: true}"> </ion-input>\n\n            </ion-col>\n\n        </ion-row>\n\n\n\n        <!-- <ion-item class="btn-row" no-lines>\n\n            <button ion-button style="height:40px" class="btn" block (click)="save()">Enviar</button>\n\n        </ion-item> -->\n\n    </ion-grid>\n\n\n\n</ion-content>\n\n<ion-footer class="rodape">\n\n    <ion-toolbar mode="md">\n\n        <ion-title>\n\n            <ion-row class="btn-row">\n\n                <ion-col>\n\n                    <button ion-button style="height:40px" class="btn" block (click)="save()">Enviar</button>\n\n                </ion-col>\n\n            </ion-row>\n\n        </ion-title>\n\n    </ion-toolbar>\n\n</ion-footer>'/*ion-inline-end:"C:\Users\ELIAS\Desktop\ZAD\src\pages\confirmar-cpf-modal\confirmar-cpf-modal.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* ViewController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* Events */],

@@ -1,6 +1,6 @@
 webpackJsonp([22],{
 
-/***/ 750:
+/***/ 747:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoginPageModule", function() { return LoginPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(35);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__login__ = __webpack_require__(809);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__login__ = __webpack_require__(799);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -38,7 +38,7 @@ var LoginPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 771:
+/***/ 772:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -195,7 +195,7 @@ var FunctionsUtil = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 809:
+/***/ 799:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -206,7 +206,7 @@ var FunctionsUtil = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__models_configuracao__ = __webpack_require__(434);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_auth_auth__ = __webpack_require__(199);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_user_user__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__util_functions_util__ = __webpack_require__(771);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__util_functions_util__ = __webpack_require__(772);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_notification_notification__ = __webpack_require__(209);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__providers_logger_logger__ = __webpack_require__(39);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__environments_constants__ = __webpack_require__(19);
@@ -286,8 +286,10 @@ var LoginPage = /** @class */ (function () {
                 else {
                     _this.events.publish('user:load', res.logged.id);
                     _this.events.publish('user', res.logged);
-                    _this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_9__environments_constants__["a" /* Constants */].PRINCIPAL_PAGE.name);
-                    _this.setVisibleMenu(true);
+                    //this.navCtrl.setRoot(Constants.PRINCIPAL_PAGE.name);
+                    _this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_9__environments_constants__["a" /* Constants */].INITIAL_PAGE.name);
+                    //this.setVisibleMenu(true);
+                    _this.setVisibleMenu(false);
                 }
                 loading_1.dismiss();
             })
@@ -343,7 +345,7 @@ var LoginPage = /** @class */ (function () {
     };
     LoginPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-login',template:/*ion-inline-start:"/Users/desenvolvedor/Documents/zonaazulfortaleza-develop/src/pages/login/login.html"*/'<ion-header no-border>\n  <ion-navbar transparent class="navbar only-mobile">\n    <ion-title>\n      <!-- <ion-label>Login</ion-label> -->\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n<ion-content class="login">\n\n  <div class="logo">\n    <ion-grid class="img img-centralize img-logo">\n      <img src="assets/imgs/logo.png" />\n    </ion-grid>\n  </div>\n\n  <ion-grid class="grid-form">\n    <ion-row justify-content-center>\n      <div class="form-margin">\n\n        <form class="form" [formGroup]="loginForm" novalidate>\n\n          <div text-center>\n            <ion-input type="email" #email formControlName="email" id="email" placeholder="Email"\n              (keyup.enter)="focusInput(password)"></ion-input>\n            <ion-label class="error-message" *ngIf="loginForm.controls.email.invalid  && (submitAttempt)">Insira um\n              email válido</ion-label>\n          </div>\n          <div text-center>\n            <ion-input #password type="password" formControlName="password" id="password" placeholder="Senha"\n              (keyup.enter)="login()"></ion-input>\n            <ion-label class="error-message" *ngIf="loginForm.controls.password.invalid  && (submitAttempt)">Insira uma\n              senha válida</ion-label>\n          </div>\n\n        </form>\n\n        <button ion-button (click)="login()" class="btn" block>Entrar</button>\n\n      </div>\n\n    </ion-row>\n    <ion-row>\n      <ion-label>Não possui uma conta?\n        <span class="btn-link" (click)="showSignUp()">Cadastre-se</span>\n      </ion-label>\n    </ion-row>\n    <ion-row>\n      <ion-label>Esqueceu sua senha?\n        <span class="btn-link" (click)="showRecoverPassword()">Recuperar senha</span>\n      </ion-label>\n    </ion-row>\n  </ion-grid>\n\n  <div class="logo">\n    <ion-grid class="img img-centralize img-logo logo-amc">\n      <ion-row align-items-center justify-content-center>\n        <ion-col align-items-center class="img-logo1-menu">\n          <img src="assets/imgs/logo-backwhite-cipetran.png" />\n        </ion-col>\n      </ion-row>\n    </ion-grid>\n  </div>\n\n\n</ion-content>\n\n<ion-footer mode="ios" class="footer-versao">\n  <ion-toolbar mode="ios" class="custom-toolbar">\n    <ion-title mode="ios" class="toolbar-title"><span (click)="openHelp()">Precisando de ajuda?</span><br />{{versao}}\n    </ion-title>\n  </ion-toolbar>\n</ion-footer>'/*ion-inline-end:"/Users/desenvolvedor/Documents/zonaazulfortaleza-develop/src/pages/login/login.html"*/,
+            selector: 'page-login',template:/*ion-inline-start:"C:\Users\ELIAS\Desktop\ZAD\src\pages\login\login.html"*/'<ion-header no-border>\n\n  <ion-navbar transparent class="navbar only-mobile">\n\n    <ion-title>\n\n      <!-- <ion-label>Login</ion-label> -->\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content class="login">\n\n\n\n  <div class="logo">\n\n    <ion-grid class="img img-centralize img-logo">\n\n      <img src="assets/imgs/logo.png" />\n\n    </ion-grid>\n\n  </div>\n\n\n\n  <ion-grid class="grid-form">\n\n    <ion-row justify-content-center>\n\n      <div class="form-margin">\n\n\n\n        <form class="form" [formGroup]="loginForm" novalidate>\n\n\n\n          <div text-center>\n\n            <ion-input type="email" #email formControlName="email" id="email" placeholder="Email"\n\n              (keyup.enter)="focusInput(password)"></ion-input>\n\n            <ion-label class="error-message" *ngIf="loginForm.controls.email.invalid  && (submitAttempt)">Insira um\n\n              email válido</ion-label>\n\n          </div>\n\n          <div text-center>\n\n            <ion-input #password type="password" formControlName="password" id="password" placeholder="Senha"\n\n              (keyup.enter)="login()"></ion-input>\n\n            <ion-label class="error-message" *ngIf="loginForm.controls.password.invalid  && (submitAttempt)">Insira uma\n\n              senha válida</ion-label>\n\n          </div>\n\n\n\n        </form>\n\n\n\n        <button ion-button (click)="login()" class="btn" block>Entrar</button>\n\n\n\n      </div>\n\n\n\n    </ion-row>\n\n    <ion-row>\n\n      <ion-label>Não possui uma conta?\n\n        <span class="btn-link" (click)="showSignUp()">Cadastre-se</span>\n\n      </ion-label>\n\n    </ion-row>\n\n    <ion-row>\n\n      <ion-label>Esqueceu sua senha?\n\n        <span class="btn-link" (click)="showRecoverPassword()">Recuperar senha</span>\n\n      </ion-label>\n\n    </ion-row>\n\n  </ion-grid>\n\n\n\n  <div class="logo">\n\n    <ion-grid class="img img-centralize img-logo logo-amc">\n\n      <ion-row align-items-center justify-content-center>\n\n        <ion-col align-items-center class="img-logo1-menu">\n\n          <img src="assets/imgs/logo-backwhite-cipetran.png" />\n\n        </ion-col>\n\n      </ion-row>\n\n    </ion-grid>\n\n  </div>\n\n\n\n\n\n</ion-content>\n\n\n\n<ion-footer mode="ios" class="footer-versao">\n\n  <ion-toolbar mode="ios" class="custom-toolbar">\n\n    <ion-title mode="ios" class="toolbar-title"><span (click)="openHelp()">Precisando de ajuda?</span><br />{{versao}}\n\n    </ion-title>\n\n  </ion-toolbar>\n\n</ion-footer>'/*ion-inline-end:"C:\Users\ELIAS\Desktop\ZAD\src\pages\login\login.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["d" /* Events */],
             __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["m" /* NavController */],
