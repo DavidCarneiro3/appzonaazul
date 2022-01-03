@@ -1604,23 +1604,23 @@ var map = {
 		2
 	],
 	"../pages/comprar-creditos/comprar-creditos.module": [
-		743,
+		739,
 		15
 	],
 	"../pages/comprovante/comprovante.module": [
-		739,
+		740,
 		3
 	],
 	"../pages/configuracoes/configuracoes.module": [
-		740,
+		741,
 		14
 	],
 	"../pages/confirmar-cpf-modal/confirmar-cpf-modal.module": [
-		741,
+		742,
 		23
 	],
 	"../pages/estacionados-modal/estacionados-modal.module": [
-		742,
+		743,
 		33
 	],
 	"../pages/estacionar/estacionar.module": [
@@ -1668,11 +1668,11 @@ var map = {
 		29
 	],
 	"../pages/principal/principal.module": [
-		766,
+		767,
 		20
 	],
 	"../pages/profile-edit/profile-edit.module": [
-		764,
+		763,
 		11
 	],
 	"../pages/profile/profile.module": [
@@ -1688,11 +1688,11 @@ var map = {
 		27
 	],
 	"../pages/root/root.module": [
-		755,
+		754,
 		19
 	],
 	"../pages/setores-modal/setores-modal.module": [
-		754,
+		755,
 		9
 	],
 	"../pages/signup/signup.module": [
@@ -1704,7 +1704,7 @@ var map = {
 		8
 	],
 	"../pages/tempo-restante/tempo-restante.module": [
-		767,
+		766,
 		0
 	],
 	"../pages/terms/terms.module": [
@@ -1716,15 +1716,15 @@ var map = {
 		7
 	],
 	"../pages/veiculos-form/veiculos-form.module": [
-		763,
+		764,
 		6
 	],
 	"../pages/veiculos-modal/veiculos-modal.module": [
-		760,
+		761,
 		25
 	],
 	"../pages/veiculos/veiculos.module": [
-		761,
+		760,
 		5
 	]
 };
@@ -2423,7 +2423,7 @@ var AreaProvider = /** @class */ (function () {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoadingSpinnerComponentModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__loading_spinner__ = __webpack_require__(709);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__loading_spinner__ = __webpack_require__(706);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular_module__ = __webpack_require__(371);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -2460,10 +2460,10 @@ var LoadingSpinnerComponentModule = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ComponentsModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(35);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__user_info_user_info__ = __webpack_require__(705);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__timer_timer__ = __webpack_require__(706);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__progress_bar_progress_bar__ = __webpack_require__(707);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__custom_card_custom_card__ = __webpack_require__(708);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__user_info_user_info__ = __webpack_require__(718);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__timer_timer__ = __webpack_require__(719);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__progress_bar_progress_bar__ = __webpack_require__(720);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__custom_card_custom_card__ = __webpack_require__(721);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2883,7 +2883,7 @@ var PagarmeProvider = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PipesModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__replace_replace__ = __webpack_require__(722);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__replace_replace__ = __webpack_require__(705);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3319,7 +3319,7 @@ var CreditoModel = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AccordionModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(35);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__accordion__ = __webpack_require__(721);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__accordion__ = __webpack_require__(722);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3807,11 +3807,11 @@ var AppModule = /** @class */ (function () {
                         { loadChildren: '../pages/areas-modal/areas-modal.module#SetoresModalPageModule', name: 'AreasModalPage', segment: 'areas-modal', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/cancelar-transacao/cancelar-transacao.module#CancelarTransacaoPageModule', name: 'CancelarTransacaoPage', segment: 'cancelar-transacao', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/compartilhar/compartilhar.module#CompartilharPageModule', name: 'CompartilharPage', segment: 'compartilhar', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/comprar-creditos/comprar-creditos.module#ComprarCreditosPageModule', name: 'ComprarCreditosPage', segment: 'comprar-creditos', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/comprovante/comprovante.module#ComprovantePageModule', name: 'ComprovantePage', segment: 'comprovante', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/configuracoes/configuracoes.module#ConfiguracoesPageModule', name: 'ConfiguracoesPage', segment: 'configuracoes', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/confirmar-cpf-modal/confirmar-cpf-modal.module#ConfirmarCpfModalPageModule', name: 'ConfirmarCpfModalPage', segment: 'confirmar-cpf-modal', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/estacionados-modal/estacionados-modal.module#EstacionadosModalPageModule', name: 'EstacionadosModalPage', segment: 'estacionados-modal', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/comprar-creditos/comprar-creditos.module#ComprarCreditosPageModule', name: 'ComprarCreditosPage', segment: 'comprar-creditos', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/filtro-modal/filtro-modal.module#FiltroModalPageModule', name: 'FiltroModalPage', segment: 'filtro-modal', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/filtro-pagamento/filtro-pagamento.module#FiltroPagamentoPageModule', name: 'FiltroPagamentoPage', segment: 'filtro-pagamento', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/initial/initial.module#InitialPageModule', name: 'InitialPage', segment: 'initial', priority: 'low', defaultHistory: [] },
@@ -3822,20 +3822,20 @@ var AppModule = /** @class */ (function () {
                         { loadChildren: '../pages/profile/profile.module#ProfilePageModule', name: 'ProfilePage', segment: 'profile', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/recovery-password/recovery-password.module#RecoveryPasswordPageModule', name: 'RecoveryPasswordPage', segment: 'recovery-password', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/reportar-problema/reportar-problema.module#ReportarProblemaPageModule', name: 'ReportarProblemaPage', segment: 'reportar-problema', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/setores-modal/setores-modal.module#SetoresModalPageModule', name: 'SetoresModalPage', segment: 'setores-modal', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/root/root.module#RootPageModule', name: 'RootPage', segment: 'root', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/setores-modal/setores-modal.module#SetoresModalPageModule', name: 'SetoresModalPage', segment: 'setores-modal', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/signup/signup.module#SignupPageModule', name: 'SignupPage', segment: 'signup', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/streat-view/streat-view.module#StreatViewPageModule', name: 'StreatViewPage', segment: 'streat-view', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/terms/terms.module#TermsPageModule', name: 'TermsPage', segment: 'terms', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/veiculo-estacionado/veiculo-estacionado.module#VeiculoEstacionadoPageModule', name: 'VeiculoEstacionadoPage', segment: 'veiculo-estacionado', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/veiculos-modal/veiculos-modal.module#VeiculosModalPageModule', name: 'VeiculosModalPage', segment: 'veiculos-modal', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/veiculos/veiculos.module#VeiculosPageModule', name: 'VeiculosPage', segment: 'veiculos', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/veiculos-modal/veiculos-modal.module#VeiculosModalPageModule', name: 'VeiculosModalPage', segment: 'veiculos-modal', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/pagamentos-form/pagamentos-form.module#PagamentosFormPageModule', name: 'PagamentosFormPage', segment: 'pagamentos-form', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/veiculos-form/veiculos-form.module#VeiculosFormPageModule', name: 'VeiculosFormPage', segment: 'veiculos-form', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/profile-edit/profile-edit.module#ProfileEditPageModule', name: 'ProfileEditPage', segment: 'profile-edit', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/veiculos-form/veiculos-form.module#VeiculosFormPageModule', name: 'VeiculosFormPage', segment: 'veiculos-form', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/historico/historico.module#HistoricoPageModule', name: 'HistoricoPage', segment: 'historico', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/principal/principal.module#PrincipalPageModule', name: 'PrincipalPage', segment: 'principal', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/tempo-restante/tempo-restante.module#TempoRestantePageModule', name: 'TempoRestantePage', segment: 'tempo-restante', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/principal/principal.module#PrincipalPageModule', name: 'PrincipalPage', segment: 'principal', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/comprar-creditos-pagamento/comprar-creditos-pagamento.module#ComprarCreditosPagamentoPageModule', name: 'ComprarCreditosPagamentoPage', segment: 'comprar-creditos-pagamento', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/home/home.module#HomePageModule', name: 'HomePage', segment: 'home', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/estacionar/estacionar.module#EstacionarPageModule', name: 'EstacionarPage', segment: 'estacionar', priority: 'low', defaultHistory: [] }
@@ -4298,6 +4298,73 @@ var environment = {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ReplacePipe; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+var ReplacePipe = /** @class */ (function () {
+    function ReplacePipe() {
+    }
+    ReplacePipe.prototype.transform = function (item, replace, replacement) {
+        if (item == null)
+            return "";
+        item = item.replace(replace, replacement);
+        return item;
+    };
+    ReplacePipe = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Pipe"])({
+            name: 'replace',
+        })
+    ], ReplacePipe);
+    return ReplacePipe;
+}());
+
+//# sourceMappingURL=replace.js.map
+
+/***/ }),
+
+/***/ 706:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoadingSpinnerComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var LoadingSpinnerComponent = /** @class */ (function () {
+    function LoadingSpinnerComponent() {
+        this.text = 'Hello World';
+    }
+    LoadingSpinnerComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'loading-spinner',template:/*ion-inline-start:"C:\Users\ELIAS\Desktop\ZAD\src\components\loading-spinner\loading-spinner.html"*/'<div class="sk-circle">\n\n  <div class="sk-circle1 sk-child"></div>\n\n  <div class="sk-circle2 sk-child"></div>\n\n  <div class="sk-circle3 sk-child"></div>\n\n  <div class="sk-circle4 sk-child"></div>\n\n  <div class="sk-circle5 sk-child"></div>\n\n  <div class="sk-circle6 sk-child"></div>\n\n  <div class="sk-circle7 sk-child"></div>\n\n  <div class="sk-circle8 sk-child"></div>\n\n  <div class="sk-circle9 sk-child"></div>\n\n  <div class="sk-circle10 sk-child"></div>\n\n  <div class="sk-circle11 sk-child"></div>\n\n  <div class="sk-circle12 sk-child"></div>\n\n</div>'/*ion-inline-end:"C:\Users\ELIAS\Desktop\ZAD\src\components\loading-spinner\loading-spinner.html"*/
+        }),
+        __metadata("design:paramtypes", [])
+    ], LoadingSpinnerComponent);
+    return LoadingSpinnerComponent;
+}());
+
+//# sourceMappingURL=loading-spinner.js.map
+
+/***/ }),
+
+/***/ 718:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UserInfoComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(35);
@@ -4435,7 +4502,7 @@ var UserInfoComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 706:
+/***/ 719:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4540,7 +4607,7 @@ var TimerComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 707:
+/***/ 720:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4594,7 +4661,7 @@ var ProgressBarComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 708:
+/***/ 721:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4638,40 +4705,7 @@ var CustomCardComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 709:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoadingSpinnerComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-var LoadingSpinnerComponent = /** @class */ (function () {
-    function LoadingSpinnerComponent() {
-        this.text = 'Hello World';
-    }
-    LoadingSpinnerComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'loading-spinner',template:/*ion-inline-start:"C:\Users\ELIAS\Desktop\ZAD\src\components\loading-spinner\loading-spinner.html"*/'<div class="sk-circle">\n\n  <div class="sk-circle1 sk-child"></div>\n\n  <div class="sk-circle2 sk-child"></div>\n\n  <div class="sk-circle3 sk-child"></div>\n\n  <div class="sk-circle4 sk-child"></div>\n\n  <div class="sk-circle5 sk-child"></div>\n\n  <div class="sk-circle6 sk-child"></div>\n\n  <div class="sk-circle7 sk-child"></div>\n\n  <div class="sk-circle8 sk-child"></div>\n\n  <div class="sk-circle9 sk-child"></div>\n\n  <div class="sk-circle10 sk-child"></div>\n\n  <div class="sk-circle11 sk-child"></div>\n\n  <div class="sk-circle12 sk-child"></div>\n\n</div>'/*ion-inline-end:"C:\Users\ELIAS\Desktop\ZAD\src\components\loading-spinner\loading-spinner.html"*/
-        }),
-        __metadata("design:paramtypes", [])
-    ], LoadingSpinnerComponent);
-    return LoadingSpinnerComponent;
-}());
-
-//# sourceMappingURL=loading-spinner.js.map
-
-/***/ }),
-
-/***/ 721:
+/***/ 722:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4790,40 +4824,6 @@ var AccordionComponent = /** @class */ (function () {
 }());
 
 //# sourceMappingURL=accordion.js.map
-
-/***/ }),
-
-/***/ 722:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ReplacePipe; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-
-var ReplacePipe = /** @class */ (function () {
-    function ReplacePipe() {
-    }
-    ReplacePipe.prototype.transform = function (item, replace, replacement) {
-        if (item == null)
-            return "";
-        item = item.replace(replace, replacement);
-        return item;
-    };
-    ReplacePipe = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Pipe"])({
-            name: 'replace',
-        })
-    ], ReplacePipe);
-    return ReplacePipe;
-}());
-
-//# sourceMappingURL=replace.js.map
 
 /***/ }),
 

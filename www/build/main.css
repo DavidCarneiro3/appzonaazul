@@ -98251,6 +98251,7 @@ page-initial .content .btn-add {
   margin-top: 35px;
   color: #2342cc;
   border: 2px solid #a8a7a7;
+  border-radius: 10px;
 }
 
 page-initial .content .btn-add ion-img {
