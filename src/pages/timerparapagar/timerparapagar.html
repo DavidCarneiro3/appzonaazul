@@ -1,0 +1,41 @@
+<ion-header no-border>
+  <ion-navbar color="header" no-border>
+      
+      <button ion-button icon-only menuToggle>
+          <ion-icon class="header-icon" name="menu"></ion-icon>
+      </button>
+      <ion-title class="title-header">
+       
+        <ion-select [(ngModel)]="city" class="select-city" cancelText="Cancelar" okText="Ok" [selectOptions]="selectOptions">
+          <ion-option value="Fortaleza">Fortaleza</ion-option>
+        </ion-select>
+      </ion-title>
+
+      <ion-buttons end>
+          <button class="pin-icon" ion-button icon-only (click)="goHome()">
+              <img src="assets/icones/pin-white.svg" alt="">
+          </button>
+      </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+
+<ion-content padding>
+  <ion-list>
+    <ion-item>
+      <ion-col>
+        Valor a ser pago
+      </ion-col>
+      <ion-col class="custo">
+        R$ {{custo}}
+      </ion-col>
+    </ion-item>
+    <ion-item>Tempo restante para pagamento</ion-item>
+  </ion-list>
+  <ion-label class="timer">{{tempoNoDisplay}}</ion-label>
+  <!--<button ion-button clear id="botao" class="botaopagar" (click)="go2()">Realizar Pagamento</button>-->
+
+  <button ion-button clear id="botao" *ngIf="!tempofim" class="botaopagar" (click)="go2()">Realizar Pagamento</button>
+  <button ion-button clear id="botao" *ngIf="tempofim" class="danger" (click)="go2()">Refazer Calculo</button>
+</ion-content>

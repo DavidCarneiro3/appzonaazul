@@ -1,16 +1,14 @@
 webpackJsonp([30],{
 
-/***/ 746:
+/***/ 758:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "InitialPageModule", function() { return InitialPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TermsPageModule", function() { return TermsPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(35);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_components_module__ = __webpack_require__(419);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_loading_spinner_loading_spinner_module__ = __webpack_require__(418);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__initial__ = __webpack_require__(798);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__terms__ = __webpack_require__(815);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -20,38 +18,34 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-
-
-var InitialPageModule = /** @class */ (function () {
-    function InitialPageModule() {
+var TermsPageModule = /** @class */ (function () {
+    function TermsPageModule() {
     }
-    InitialPageModule = __decorate([
+    TermsPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_4__initial__["a" /* InitialPage */],
+                __WEBPACK_IMPORTED_MODULE_2__terms__["a" /* TermsPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_4__initial__["a" /* InitialPage */]),
-                __WEBPACK_IMPORTED_MODULE_3__components_loading_spinner_loading_spinner_module__["a" /* LoadingSpinnerComponentModule */],
-                __WEBPACK_IMPORTED_MODULE_2__components_components_module__["a" /* ComponentsModule */]
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__terms__["a" /* TermsPage */]),
             ],
         })
-    ], InitialPageModule);
-    return InitialPageModule;
+    ], TermsPageModule);
+    return TermsPageModule;
 }());
 
-//# sourceMappingURL=initial.module.js.map
+//# sourceMappingURL=terms.module.js.map
 
 /***/ }),
 
-/***/ 798:
+/***/ 815:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return InitialPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TermsPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(35);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__environments_constants__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_info_info__ = __webpack_require__(440);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -64,40 +58,40 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var InitialPage = /** @class */ (function () {
-    function InitialPage(navCtrl, navParams, menu) {
+var TermsPage = /** @class */ (function () {
+    function TermsPage(provider, params, navCtrl, navEvents) {
+        this.provider = provider;
+        this.params = params;
         this.navCtrl = navCtrl;
-        this.navParams = navParams;
-        this.menu = menu;
-        this.city = 'Fortaleza';
-        this.showSpinner = false;
-        this.cadsUsados = 0;
-        this.cads = 0;
-        this.selectOptions = {
-            title: 'Cidade',
-            subTitle: 'Escolha sua cidade',
-            mode: 'ios'
-        };
+        this.navEvents = navEvents;
+        this.isToggle = true;
+        this.show = false;
+        var isToggleTmp = params.get('isToggle');
+        if (!isToggleTmp) {
+            this.isToggle = isToggleTmp;
+        }
     }
-    InitialPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad InitialPage');
+    TermsPage.prototype.ionViewDidLoad = function () {
+        this.termos = this.provider.getTermos();
     };
-    InitialPage.prototype.goComprar = function () {
-        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__environments_constants__["a" /* Constants */].CREDITOS_PAGE.name, { 'fromPage': 'inicial' });
+    TermsPage.prototype.continuar = function () {
+        this.navCtrl.pop();
+        this.navEvents.publish('checked', true);
     };
-    InitialPage.prototype.goPrincipal = function () {
-        this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_2__environments_constants__["a" /* Constants */].PRINCIPAL_PAGE.name);
+    TermsPage.prototype.closeTermsPage = function () {
+        this.navCtrl.pop();
     };
-    InitialPage = __decorate([
+    TermsPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-initial',template:/*ion-inline-start:"C:\Users\ELIAS\Desktop\ZAD\src\pages\initial\initial.html"*/'<ion-header no-border>\n  <ion-navbar color="header" no-border>\n      <ion-title class="title-header">\n        <ion-select [(ngModel)]="city" class="select-city" cancelText="Cancelar" okText="Ok" [selectOptions]="selectOptions">\n          <ion-option value="Fortaleza">Fortaleza</ion-option>\n        </ion-select>\n      </ion-title>\n  </ion-navbar>\n</ion-header>\n\n\n<ion-content padding>\n  <div class="img-top"  *ngIf="!showSpinner">\n    <img src="assets/imgs/default.png" alt="" class="nav-img">\n    <h2 class="title">{{(cads-cadsUsados)}} CADS</h2>\n    <p class="price">R${{(cads-cadsUsados)*2}},00</p>\n    <button ion-button class="btn-comprar" (click)="goComprar()"><img src="assets/icones/shopping-cart-white.svg"></button>\n  </div>\n  <div class="content">\n    <div>\n      <button ion-button clear class="btn-add" (click)="goPrincipal()">\n        <div>\n          <br>\n          Zona Azul<br><br>\n          <p><img height="40" src="assets/icones/carro01.png"></p>\n        </div>\n      </button>\n      <button ion-button clear class="btn-add">\n        <div>\n          <br>\n          Pagar Ticket<br><br>\n          <p><img height="40" src="assets/icones/share.svg"></p>          \n        </div>\n      </button>\n    </div>\n  </div>\n</ion-content>\n'/*ion-inline-end:"C:\Users\ELIAS\Desktop\ZAD\src\pages\initial\initial.html"*/,
+            selector: 'page-terms',template:/*ion-inline-start:"C:\Users\ELIAS\Desktop\ZAD\src\pages\terms\terms.html"*/'<ion-header no-border>\n\n  <ion-navbar color="header">\n\n    <button ion-button icon-only menuToggle *ngIf="isToggle">\n\n      <ion-icon class="header-icon" name="menu"></ion-icon>\n\n    </button>\n\n\n\n    <ion-title class="header-title">Termos de Serviços</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content class="content">\n\n\n\n  <ion-item padding class="bg0 item-text" no-lines *ngFor="let item of termos | async">\n\n    <h2 class="titulo">{{item.titulo}}</h2>\n\n    <p class="text" *ngFor="let item2 of item.desc">{{item2}}</p>\n\n  </ion-item>\n\n\n\n</ion-content>\n\n\n\n<ion-footer *ngIf="isToggle === false">\n\n  <ion-toolbar>\n\n    <ion-item class="btn-row" no-lines>\n\n      <button ion-button (click)="continuar()" class="btn" block>Aceitar e Continuar</button>\n\n    </ion-item>\n\n  </ion-toolbar>\n\n</ion-footer>'/*ion-inline-end:"C:\Users\ELIAS\Desktop\ZAD\src\pages\terms\terms.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* MenuController */]])
-    ], InitialPage);
-    return InitialPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__providers_info_info__["a" /* InfoProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* Events */]])
+    ], TermsPage);
+    return TermsPage;
 }());
 
-//# sourceMappingURL=initial.js.map
+//# sourceMappingURL=terms.js.map
 
 /***/ })
 

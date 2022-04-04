@@ -30,4 +30,8 @@ export class InitialPage {
   goPrincipal(){
     this.navCtrl.setRoot(Constants.PRINCIPAL_PAGE.name);
   }
+
+  goVagas(){
+    this.navCtrl.setRoot(Constants.VAGAS_PAGE.name);
+  }
 }

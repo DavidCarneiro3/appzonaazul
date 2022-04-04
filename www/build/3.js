@@ -1,6 +1,6 @@
 webpackJsonp([3],{
 
-/***/ 740:
+/***/ 741:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -10,7 +10,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_components_module__ = __webpack_require__(419);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_loading_spinner_loading_spinner_module__ = __webpack_require__(418);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__comprovante__ = __webpack_require__(788);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__comprovante__ = __webpack_require__(794);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -44,12 +44,12 @@ var ComprovantePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 771:
+/***/ 775:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MapUtil; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pages_home_home__ = __webpack_require__(773);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pages_home_home__ = __webpack_require__(777);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__environments_constants__ = __webpack_require__(19);
 
 
@@ -522,7 +522,7 @@ var MapUtil = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 772:
+/***/ 776:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -679,7 +679,7 @@ var FunctionsUtil = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 773:
+/***/ 777:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -702,8 +702,8 @@ var FunctionsUtil = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__providers_modal_modal__ = __webpack_require__(198);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__providers_area_area__ = __webpack_require__(414);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__environments_constants__ = __webpack_require__(19);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__util_map_util__ = __webpack_require__(771);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__util_functions_util__ = __webpack_require__(772);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__util_map_util__ = __webpack_require__(775);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__util_functions_util__ = __webpack_require__(776);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__app_app_component__ = __webpack_require__(411);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__providers_estacionar_estacionar__ = __webpack_require__(201);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -1354,7 +1354,7 @@ var LatLng = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 788:
+/***/ 794:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1365,15 +1365,15 @@ var LatLng = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_clipboard__ = __webpack_require__(426);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_social_sharing__ = __webpack_require__(425);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_pdfmake_build_vfs_fonts__ = __webpack_require__(789);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_pdfmake_build_vfs_fonts__ = __webpack_require__(795);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_pdfmake_build_vfs_fonts___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_pdfmake_build_vfs_fonts__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_pdfmake_build_pdfmake__ = __webpack_require__(790);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_pdfmake_build_pdfmake__ = __webpack_require__(796);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_pdfmake_build_pdfmake___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_pdfmake_build_pdfmake__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__models_estacionar__ = __webpack_require__(422);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__providers_user_user__ = __webpack_require__(43);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__app_app_component__ = __webpack_require__(411);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__util_pdf_util__ = __webpack_require__(791);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__util_map_util__ = __webpack_require__(771);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__util_pdf_util__ = __webpack_require__(797);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__util_map_util__ = __webpack_require__(775);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__environments_constants__ = __webpack_require__(19);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1528,7 +1528,7 @@ var ComprovantePage = /** @class */ (function () {
     };
     ComprovantePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-comprovante',template:/*ion-inline-start:"C:\Users\ELIAS\Desktop\ZAD\src\pages\comprovante\comprovante.html"*/'<ion-header no-border>\n\n\n\n  <ion-navbar color="header">\n\n    <ion-title class="header-title">Comprovante</ion-title>\n\n    <ion-buttons end>\n\n      <button ion-button icon-only (click)="compartilhar()">\n\n        <ion-icon name="share" class="header-icon"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n\n\n<ion-content class="content">\n\n\n\n  <div class="logo">\n\n    <ion-grid class="img img-centralize img-logo">\n\n      <img src="assets/imgs/logo.png" />\n\n    </ion-grid>\n\n  </div>\n\n\n\n  <ion-grid>\n\n    <loading-spinner *ngIf="showSpinner1"></loading-spinner>\n\n    <ion-row class="informacoes-body">\n\n      <ion-item class="informacoes-body-header">\n\n        <ion-label class="title-header-body">COMPROVANTE DE ESTACIONAMENTO</ion-label>\n\n      </ion-item>\n\n      <ion-list class="informacoes-body-list">\n\n        <ion-item class="informacoes-body-list-item">\n\n          <h6>Placa</h6>\n\n          <h2>{{placa}}</h2>\n\n        </ion-item>\n\n        <ion-item class="informacoes-body-list-item">\n\n          <h6>CADs</h6>\n\n          <h2>{{cad}}</h2>\n\n        </ion-item>\n\n        <ion-item class="informacoes-body-list-item">\n\n          <h6>Autenticação</h6>\n\n          <h2>{{estacionar?.comprovante.numberAuth}}</h2>\n\n        </ion-item>\n\n        <ion-item class="informacoes-body-list-item">\n\n          <h6>Tempo de {{estacionar?.qtd}} CAD(s)</h6>\n\n          <h2>{{estacionar?.tempoComprado}} Minutos</h2>\n\n        </ion-item>\n\n        <ion-item class="informacoes-body-list-item">\n\n          <h6>Valor</h6>\n\n          <h2>R$ {{cad * valor_unitario}},00</h2>\n\n        </ion-item>\n\n        <ion-item class="informacoes-body-list-item">\n\n          <h6>Data/Hora da Solicitação</h6>\n\n          <h2>{{date | date: "dd/MM/yyyy \'às\' HH:mm"}}</h2>\n\n        </ion-item>\n\n        <ion-item class="informacoes-body-list-item">\n\n          <h6>Cidade</h6>\n\n          <h2>{{estacionar?.cidade}}</h2>\n\n        </ion-item>\n\n\n\n        <ion-item class="btn-control">\n\n          <button ion-button block class="btn" (click)="baixarPDF()">Baixar PDF</button>\n\n        </ion-item>\n\n\n\n        <ion-item *ngIf="showCloseButton" class="btn-control">\n\n          <button ion-button block class="btn" (click)="closePageComprovante()">Fechar</button>\n\n        </ion-item>\n\n      </ion-list>\n\n    </ion-row>\n\n  </ion-grid>\n\n\n\n</ion-content>'/*ion-inline-end:"C:\Users\ELIAS\Desktop\ZAD\src\pages\comprovante\comprovante.html"*/,
+            selector: 'page-comprovante',template:/*ion-inline-start:"C:\Users\ELIAS\Desktop\ZAD\src\pages\comprovante\comprovante.html"*/'<ion-header no-border>\n\n\n\n  <ion-navbar color="header">\n\n    <ion-title class="header-title">Comprovante</ion-title>\n\n    <ion-buttons end>\n\n      <button ion-button icon-only (click)="compartilhar()">\n\n        <ion-icon name="share" class="header-icon"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n\n\n<ion-content class="content">\n\n\n\n  <div class="logo">\n\n    <ion-grid class="img img-centralize img-logo">\n\n      <img src="assets/imgs/logo.png" />\n\n    </ion-grid>\n\n  </div>\n\n\n\n  <ion-grid>\n\n    <ion-row class="informacoes-body">\n\n      <ion-item class="informacoes-body-header">\n\n        <ion-label class="title-header-body">COMPROVANTE DE ESTACIONAMENTO</ion-label>\n\n      </ion-item>\n\n      <ion-list class="informacoes-body-list">\n\n        <ion-item class="informacoes-body-list-item">\n\n          <h6>Placa</h6>\n\n          <h2>{{placa}}</h2>\n\n        </ion-item>\n\n        <ion-item class="informacoes-body-list-item">\n\n          <h6>CADs</h6>\n\n          <h2>{{cad}}</h2>\n\n        </ion-item>\n\n        <ion-item class="informacoes-body-list-item">\n\n          <h6>Autenticação</h6>\n\n          <h2>{{estacionar?.comprovante.numberAuth}}</h2>\n\n        </ion-item>\n\n        <ion-item class="informacoes-body-list-item">\n\n          <h6>Tempo de {{estacionar?.qtd}} CAD(s)</h6>\n\n          <h2>{{estacionar?.tempoComprado}} Minutos</h2>\n\n        </ion-item>\n\n        <ion-item class="informacoes-body-list-item">\n\n          <h6>Valor</h6>\n\n          <h2>R$ {{cad * valor_unitario}},00</h2>\n\n        </ion-item>\n\n        <ion-item class="informacoes-body-list-item">\n\n          <h6>Data/Hora da Solicitação</h6>\n\n          <h2>{{date | date: "dd/MM/yyyy \'às\' HH:mm"}}</h2>\n\n        </ion-item>\n\n        <ion-item class="informacoes-body-list-item">\n\n          <h6>Cidade</h6>\n\n          <h2>{{estacionar?.cidade}}</h2>\n\n        </ion-item>\n\n\n\n        <ion-item class="btn-control">\n\n          <button ion-button block class="btn" (click)="baixarPDF()">Baixar PDF</button>\n\n        </ion-item>\n\n\n\n        <ion-item *ngIf="showCloseButton" class="btn-control">\n\n          <button ion-button block class="btn" (click)="closePageComprovante()">Fechar</button>\n\n        </ion-item>\n\n      </ion-list>\n\n    </ion-row>\n\n  </ion-grid>\n\n\n\n</ion-content>'/*ion-inline-end:"C:\Users\ELIAS\Desktop\ZAD\src\pages\comprovante\comprovante.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3_ionic_angular__["m" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["n" /* NavParams */],
@@ -1547,7 +1547,7 @@ var ComprovantePage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 789:
+/***/ 795:
 /***/ (function(module, exports) {
 
 this.pdfMake = this.pdfMake || {}; this.pdfMake.vfs = {
@@ -1559,7 +1559,7 @@ this.pdfMake = this.pdfMake || {}; this.pdfMake.vfs = {
 
 /***/ }),
 
-/***/ 790:
+/***/ 796:
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(setImmediate) {/*! pdfmake v0.1.68, @license MIT, @link http://pdfmake.org */
@@ -77650,12 +77650,12 @@ module.exports = function () {
 
 /***/ }),
 
-/***/ 791:
+/***/ 797:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PDFUtil; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__logobase64_util__ = __webpack_require__(792);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__logobase64_util__ = __webpack_require__(798);
 
 var PDFUtil = /** @class */ (function () {
     function PDFUtil() {
@@ -77726,7 +77726,7 @@ var PDFUtil = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 792:
+/***/ 798:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

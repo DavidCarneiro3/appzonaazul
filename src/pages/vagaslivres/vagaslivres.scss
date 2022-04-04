@@ -1,0 +1,509 @@
+page-vagaslivres {
+  font-family: "kanit";
+  .title-header {
+    font-family: "kanit";
+    width: 300px;
+    margin-left: 30px;
+  }
+  .select-city {
+    .select-icon {
+      color: #f2f2f2;
+      position: relative;
+      width: 14px;
+      height: 20px;
+      margin-top: 5px;
+    }
+  }
+  .select-ios {
+    max-width: 65%;
+    .select-text {
+      margin-left: 5px;
+    }
+  }
+  .select-md .select-icon .select-icon-inner {
+    color: #fff;
+  }
+  .time {
+    font-size: 1pc;
+    color: #fff;
+    background-color: transparent;
+  }
+
+  .header-icon {
+    color: #fff;
+    margin-right: 5px;
+  }
+
+  .pin-icon {
+    color: #fff;
+    margin-right: 15px;
+  }
+
+  .vaga-icon {
+    width: 30px;
+    width: 30px;
+  }
+
+  .img-top {
+    background-color: #4a83d4;
+    width: 111%;
+    margin-top: -40px;
+    margin-left: -16px;
+    img {
+      width: 110%;
+    }
+    .title {
+      text-align: left;
+      margin-left: 20px;
+      font-size: 32px;
+      font-weight: bold;
+      color: #fff;
+      margin-top: -80px;
+    }
+    .price {
+      margin-top: -10px;
+      margin-left: 20px;
+      color: #6fcf97;
+    }
+  }
+  .btn-comprar {
+    width: 50px;
+    height: 40px;
+    margin-top: -55px;
+    margin-bottom: 15px;
+    border-radius: 50px !important;
+    background-color: #27ae60;
+    color: #fff;
+    font-size: 11pt;
+    margin-right: 5%;
+    float: right;
+  }
+  .content {
+    background: #f2f2f2;
+    .select {
+      color: #3f65ff;
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+    }
+    .btn-add {
+      width: 129px;
+      margin-left: 4%;
+      margin-top: 35px;
+      border-radius: 26px;
+      color: #828282;
+      border: 2px solid #828282;
+      ion-icon {
+        margin-left: 5px;
+        margin-top: -1px;
+      }
+    }
+    .list-item {
+      height: 80px;
+      border-radius: 5px;
+      // background-color: #4f4f4f;
+    }
+    .class0 {
+      box-shadow: 1px 1px 1px 1px rgb(210, 210, 210);
+      border-left: 6px solid #c511ed;
+      color: #fff;
+      border-radius: 5px;
+      width: 100%;
+      height: 80px;
+      margin-left: 0%;
+      margin-top: 10%;
+      background-color: #fff;
+      .btn-estacionar {
+        width: 160px;
+        height: 40px;
+        margin-top: 4px;
+        margin-right: -10px;
+        margin-bottom: 0px;
+        border-radius: 20px;
+        // background-color: #3F65FF;
+        // color: #FFF;
+        font-weight: bold;
+        font-size: 9pt;
+        float: right;
+        img {
+          width: 25px;
+          height: 20px;
+          margin-top: -4px;
+          margin-right: 2px;
+          float: right;
+        }
+      }
+      ion-select {
+        width: 50%;
+      }
+      .title-select {
+        color: #243060;
+        font-size: 18px;
+      }
+      p {
+        margin-top: 5px;
+        color: #ccc;
+      }
+    }
+
+    .class1 {
+      box-shadow: 1px 1px 1px 1px rgb(210, 210, 210);
+      border-left: 6px solid #11c1ed;
+      color: #243060;
+      border-radius: 5px;
+      width: 100%;
+      height: 80px;
+      margin-left: 0%;
+      margin-top: 3%;
+      background-color: #fff;
+      .btn-estacionar {
+        width: 130px;
+        height: 40px;
+        margin-top: 4px;
+        margin-right: -10px;
+        margin-bottom: 0px;
+        border-radius: 20px;
+        // background-color: #3F65FF;
+        // color: #FFF;
+        font-weight: bold;
+        font-size: 9pt;
+        float: right;
+        img {
+          width: 25px;
+          height: 20px;
+          margin-top: -4px;
+          margin-right: 2px;
+          float: right;
+        }
+      }
+      ion-select {
+        width: 50%;
+      }
+      .title-select {
+        color: #243060;
+        font-size: 18px;
+      }
+      p {
+        margin-top: 5px;
+        color: #ccc;
+      }
+    }
+    .class2 {
+      box-shadow: 1px 1px 1px 1px rgb(210, 210, 210);
+      border-left: 6px solid #11ed86;
+      color: #243060;
+      border-radius: 5px;
+      width: 100%;
+      height: 80px;
+      margin-left: 0%;
+      margin-top: 3%;
+      background-color: #fff;
+      .btn-estacionar {
+        width: 130px;
+        height: 40px;
+        margin-top: 4px;
+        margin-right: -10px;
+        margin-bottom: 0px;
+        border-radius: 20px;
+        // background-color: #3F65FF;
+        // color: #FFF;
+        font-weight: bold;
+        font-size: 9pt;
+        float: right;
+        img {
+          width: 25px;
+          height: 20px;
+          margin-top: -4px;
+          margin-right: 2px;
+          float: right;
+        }
+      }
+      ion-select {
+        width: 50%;
+      }
+      .title-select {
+        color: #243060;
+        font-size: 18px;
+      }
+      p {
+        margin-top: 5px;
+        color: #ccc;
+      }
+    }
+
+    .class3 {
+      box-shadow: 1px 1px 1px 1px rgb(210, 210, 210);
+      border-left: 6px solid #2711ed;
+      color: #fff;
+      border-radius: 5px;
+      width: 100%;
+      height: 80px;
+      margin-left: 0%;
+      margin-top: 3%;
+      background-color: #fff;
+      .btn-estacionar {
+        width: 130px;
+        height: 40px;
+        margin-top: 4px;
+        margin-right: -10px;
+        margin-bottom: 0px;
+        border-radius: 20px;
+        // background-color: #3F65FF;
+        // color: #fff;
+        font-weight: bold;
+        font-size: 9pt;
+        float: right;
+        img {
+          width: 25px;
+          height: 20px;
+          margin-top: -4px;
+          margin-right: 2px;
+          float: right;
+        }
+      }
+      ion-select {
+        width: 50%;
+      }
+      .title-select {
+        color: #243060;
+        font-size: 18px;
+      }
+      p {
+        margin-top: 5px;
+        color: #ccc;
+      }
+    }
+
+    .class4 {
+      box-shadow: 1px 1px 1px 1px rgb(210, 210, 210);
+      border-left: 6px solid #ed1111;
+      color: #243060;
+      border-radius: 5px;
+      width: 100%;
+      height: 80px;
+      margin-left: 0%;
+      margin-top: 3%;
+      background-color: #fff;
+      .btn-estacionar {
+        width: 130px;
+        height: 40px;
+        margin-top: 4px;
+        margin-right: -10px;
+        margin-bottom: 0px;
+        border-radius: 20px;
+        // background-color: #3F65FF;
+        // color: #fff;
+        font-weight: bold;
+        font-size: 9pt;
+        float: right;
+        img {
+          width: 25px;
+          height: 20px;
+          margin-top: -4px;
+          margin-right: 2px;
+          float: right;
+        }
+      }
+      ion-select {
+        width: 50%;
+      }
+      .title-select {
+        color: #243060;
+        font-size: 18px;
+      }
+      p {
+        margin-top: 5px;
+        color: #ccc;
+      }
+    }
+
+    .class5 {
+      box-shadow: 1px 1px 1px 1px rgb(210, 210, 210);
+      border-left: 6px solid #e6ed11;
+      color: #243060;
+      border-radius: 5px;
+      width: 100%;
+      height: 80px;
+      margin-left: 0%;
+      margin-top: 3%;
+      background-color: #fff;
+      .btn-estacionar {
+        width: 130px;
+        height: 40px;
+        margin-top: 0px;
+        margin-right: 5px;
+        margin-bottom: 0px;
+        border-radius: 20px;
+        // background-color: #3F65FF;
+        // color: #fff;
+        font-weight: bold;
+        font-size: 9pt;
+        float: right;
+        img {
+          width: 25px;
+          height: 20px;
+          margin-top: -4px;
+          margin-right: 2px;
+          float: right;
+        }
+      }
+      ion-item {
+        background-color: #fff;
+      }
+      .title-select {
+        color: #243060;
+        font-size: 18px;
+      }
+      p {
+        margin-top: 5px;
+        color: #ccc;
+      }
+    }
+
+    .btn-estacionar {
+      width: 123px;
+      height: 40px;
+      margin-top: 87px;
+      margin-left: 8px;
+      margin-right: 5px;
+      margin-bottom: 0px;
+      border-radius: 20px;
+      // background-color: #3F65FF;
+      // color: #fff;
+      font-weight: bold;
+      font-size: 10pt;
+      float: right;
+      .pin-view {
+        width: 25px;
+        height: 20px;
+        margin-top: -6px;
+        margin-right: 13px;
+        float: right;
+      }
+    }
+  }
+  .card-background-page {
+    ion-card {
+      position: relative;
+      text-align: center;
+    }
+
+    .card-title {
+      position: absolute;
+      top: 36%;
+      font-size: 2em;
+      width: 100%;
+      font-weight: bold;
+      color: #fff;
+    }
+
+    .card-subtitle {
+      font-size: 1em;
+      position: absolute;
+      top: 52%;
+      width: 100%;
+      color: #fff;
+    }
+  }
+  .btn-add {
+    width: 129px;
+    margin-left: 4%;
+    margin-top: 35px;
+    border-radius: 26px;
+    color: #828282;
+    border: 2px solid #828282;
+    ion-icon {
+      margin-left: 5px;
+      margin-top: -1px;
+    }
+  }
+  .btn-estacionamento {
+    width: 140px;
+    position: relative;
+    color: #3f65ff;
+    border: 2px solid #3f65ff;
+    ion-icon {
+      margin-left: 5px;
+      margin-top: -1px;
+    }
+    height: 40px;
+    margin-left: 8px;
+    margin-bottom: 0px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 10pt;
+    float: right;
+    .pin-view {
+      width: 25px;
+      height: 20px;
+      margin-top: -6px;
+      margin-right: 13px;
+      float: right;
+    }
+  }
+  .btn-ticket {
+    width: 140px;
+    font-size: 12px;
+    height: 40px;
+    float: right;
+    position: relative;
+    color: #6fcf97;
+    border: 2px solid #6fcf97;
+    ion-icon {
+      margin-left: 5px;
+      margin-top: -1px;
+    }
+  }
+  .item-md .item-button {
+    font-size: 10pt;
+  }
+  .info {
+    margin-top: -2.9%;
+    text-align: center;
+    color: white;
+    background-color: #283e81;
+    padding: 5px;
+    p {
+      margin: 0px;
+    }
+    .alert-wrapper {
+      background-color: #4d90fe;
+      color: #fff;
+    }
+  }
+  .conteudo {
+    width: 90%;
+    align-items: center;
+  }
+  .item {
+    margin-top: 5%;
+    margin-left: 5%;
+    display: block;
+  }
+  .item-md ion-thumbnail[item-start] {
+    margin: 0px 0px 0px 0;
+  }
+  .item-md ion-thumbnail img {
+    width: 32px;
+    height: 37px;
+  }
+  .text-endereco {
+    margin-top: 37px;
+    margin-bottom: 23px;
+  }
+  .text-vaga{
+    margin-top: 37px;
+    margin-bottom: 23px;
+    text-align: left;
+    p{
+      font-size: 11px;
+    }
+  }
+  .item-md.item-block .item-inner {
+    margin-top: -35px;
+  }
+  .imag {
+    width: 32px;
+    height: 37px;
+  }
+}

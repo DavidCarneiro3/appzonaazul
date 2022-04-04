@@ -1,14 +1,15 @@
 webpackJsonp([25],{
 
-/***/ 761:
+/***/ 737:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "VeiculosModalPageModule", function() { return VeiculosModalPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CamerascanPageModule", function() { return CamerascanPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(35);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__veiculos_modal__ = __webpack_require__(813);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__camerascan__ = __webpack_require__(790);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_barcode_scanner__ = __webpack_require__(786);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,33 +19,47 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var VeiculosModalPageModule = /** @class */ (function () {
-    function VeiculosModalPageModule() {
+
+var CamerascanPageModule = /** @class */ (function () {
+    function CamerascanPageModule() {
     }
-    VeiculosModalPageModule = __decorate([
+    CamerascanPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__veiculos_modal__["a" /* VeiculosModalPage */],
+                __WEBPACK_IMPORTED_MODULE_2__camerascan__["a" /* CamerascanPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__veiculos_modal__["a" /* VeiculosModalPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__camerascan__["a" /* CamerascanPage */]),
             ],
+            providers: [
+                __WEBPACK_IMPORTED_MODULE_3__ionic_native_barcode_scanner__["a" /* BarcodeScanner */],
+            ]
         })
-    ], VeiculosModalPageModule);
-    return VeiculosModalPageModule;
+    ], CamerascanPageModule);
+    return CamerascanPageModule;
 }());
 
-//# sourceMappingURL=veiculos-modal.module.js.map
+//# sourceMappingURL=camerascan.module.js.map
 
 /***/ }),
 
-/***/ 813:
+/***/ 786:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return VeiculosModalPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BarcodeScanner; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ionic_native_core__ = __webpack_require__(20);
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -56,74 +71,198 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-var VeiculosModalPage = /** @class */ (function () {
-    function VeiculosModalPage(viewCtrl, navParams) {
-        this.viewCtrl = viewCtrl;
-        this.navParams = navParams;
-        this.todosVeiculos = [];
-        this.copiaVeiculos = [];
-        this.veiculos = [];
-        this.veiculoSelecionado = [];
+/**
+ * @name Barcode Scanner
+ * @description
+ * The Barcode Scanner Plugin opens a camera view and automatically scans a barcode, returning the data back to you.
+ *
+ * Requires Cordova plugin: `phonegap-plugin-barcodescanner`. For more info, please see the [BarcodeScanner plugin docs](https://github.com/phonegap/phonegap-plugin-barcodescanner).
+ *
+ * @usage
+ * ```typescript
+ * import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+ *
+ * constructor(private barcodeScanner: BarcodeScanner) { }
+ *
+ * ...
+ *
+ *
+ * this.barcodeScanner.scan().then(barcodeData => {
+ *  console.log('Barcode data', barcodeData);
+ * }).catch(err => {
+ * 	console.log('Error', err);
+ * });
+ * ```
+ * @interfaces
+ * BarcodeScannerOptions
+ * BarcodeScanResult
+ */
+var BarcodeScanner = (function (_super) {
+    __extends(BarcodeScanner, _super);
+    function BarcodeScanner() {
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.Encode = {
+            TEXT_TYPE: 'TEXT_TYPE',
+            EMAIL_TYPE: 'EMAIL_TYPE',
+            PHONE_TYPE: 'PHONE_TYPE',
+            SMS_TYPE: 'SMS_TYPE'
+        };
+        return _this;
     }
-    VeiculosModalPage.prototype.ionViewWillLoad = function () {
-        this.getVeiculos();
+    /**
+     * Open the barcode scanner.
+     * @param {BarcodeScannerOptions} [options] Optional options to pass to the scanner
+     * @returns {Promise<any>} Returns a Promise that resolves with scanner data, or rejects with an error.
+     */
+    /**
+       * Open the barcode scanner.
+       * @param {BarcodeScannerOptions} [options] Optional options to pass to the scanner
+       * @returns {Promise<any>} Returns a Promise that resolves with scanner data, or rejects with an error.
+       */
+    BarcodeScanner.prototype.scan = /**
+       * Open the barcode scanner.
+       * @param {BarcodeScannerOptions} [options] Optional options to pass to the scanner
+       * @returns {Promise<any>} Returns a Promise that resolves with scanner data, or rejects with an error.
+       */
+    function (options) {
+        return;
     };
-    VeiculosModalPage.prototype.dismiss = function () {
-        this.viewCtrl.dismiss();
+    /**
+     * Encodes data into a barcode.
+     * NOTE: not well supported on Android
+     * @param {string} type Type of encoding
+     * @param {any} data Data to encode
+     * @returns {Promise<any>}
+     */
+    /**
+       * Encodes data into a barcode.
+       * NOTE: not well supported on Android
+       * @param {string} type Type of encoding
+       * @param {any} data Data to encode
+       * @returns {Promise<any>}
+       */
+    BarcodeScanner.prototype.encode = /**
+       * Encodes data into a barcode.
+       * NOTE: not well supported on Android
+       * @param {string} type Type of encoding
+       * @param {any} data Data to encode
+       * @returns {Promise<any>}
+       */
+    function (type, data) {
+        return;
     };
-    VeiculosModalPage.prototype.getVeiculos = function () {
+    BarcodeScanner.decorators = [
+        { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"] },
+    ];
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1__ionic_native_core__["a" /* Cordova */])({
+            callbackOrder: 'reverse'
+        }),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", [Object]),
+        __metadata("design:returntype", Promise)
+    ], BarcodeScanner.prototype, "scan", null);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1__ionic_native_core__["a" /* Cordova */])(),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", [String, Object]),
+        __metadata("design:returntype", Promise)
+    ], BarcodeScanner.prototype, "encode", null);
+    /**
+     * @name Barcode Scanner
+     * @description
+     * The Barcode Scanner Plugin opens a camera view and automatically scans a barcode, returning the data back to you.
+     *
+     * Requires Cordova plugin: `phonegap-plugin-barcodescanner`. For more info, please see the [BarcodeScanner plugin docs](https://github.com/phonegap/phonegap-plugin-barcodescanner).
+     *
+     * @usage
+     * ```typescript
+     * import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+     *
+     * constructor(private barcodeScanner: BarcodeScanner) { }
+     *
+     * ...
+     *
+     *
+     * this.barcodeScanner.scan().then(barcodeData => {
+     *  console.log('Barcode data', barcodeData);
+     * }).catch(err => {
+     * 	console.log('Error', err);
+     * });
+     * ```
+     * @interfaces
+     * BarcodeScannerOptions
+     * BarcodeScanResult
+     */
+    BarcodeScanner = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1__ionic_native_core__["g" /* Plugin */])({
+            pluginName: 'BarcodeScanner',
+            plugin: 'phonegap-plugin-barcodescanner',
+            pluginRef: 'cordova.plugins.barcodeScanner',
+            repo: 'https://github.com/phonegap/phonegap-plugin-barcodescanner',
+            platforms: ['Android', 'BlackBerry 10', 'Browser', 'iOS', 'Windows']
+        })
+    ], BarcodeScanner);
+    return BarcodeScanner;
+}(__WEBPACK_IMPORTED_MODULE_1__ionic_native_core__["f" /* IonicNativePlugin */]));
+
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+
+/***/ 790:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CamerascanPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ionic_native_barcode_scanner__ = __webpack_require__(786);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(35);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var CamerascanPage = /** @class */ (function () {
+    function CamerascanPage(navCtrl, navParams, scanner) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.scanner = scanner;
+        this.textoFinal = '';
+        this.scannedData = {};
+    }
+    CamerascanPage.prototype.scan = function () {
         var _this = this;
-        return new Promise(function (resolve) {
-            var fromPage = _this.navParams.get('fromPage');
-            var veicTmp = _this.navParams.get('veiculos');
-            console.log(fromPage);
-            var veiculos;
-            if (fromPage == "tempo_restante") {
-                veiculos = veicTmp[0].estacionar;
-                console.log(veiculos);
-            }
-            else {
-                veiculos = veicTmp;
-            }
-            console.log(veiculos);
-            _this.copiaVeiculos = veiculos ? veiculos : [];
-            _this.veiculos = veiculos ? veiculos : [];
-            resolve(true);
+        this.options = {
+            prompt: 'Escaneie o seu código de barras ou QR.'
+        };
+        this.scanner.scan().then(function (data) {
+            _this.scannedData = data;
+            console.log(_this.scannedData);
+        }, function (err) {
+            console.log('Erro :', err);
         });
     };
-    VeiculosModalPage.prototype.select = function (veiculo) {
-        this.veiculoSelecionado = veiculo;
+    CamerascanPage.prototype.ionViewDidEnter = function () {
+        this.scan();
     };
-    VeiculosModalPage.prototype.procurarVeiculos = function (event) {
-        var placa = event.target.value;
-        if (placa) {
-            if (placa.trim == '') {
-                this.veiculos = this.copiaVeiculos;
-            }
-            else {
-                this.veiculos = this.copiaVeiculos.filter(function (veiculos) {
-                    console.log(veiculos);
-                    return (veiculos && veiculos.veiculo.placa.toUpperCase().indexOf(placa.toUpperCase()) > -1);
-                });
-            }
-        }
-        else {
-            this.veiculos = this.copiaVeiculos;
-        }
-    };
-    VeiculosModalPage.prototype.selectVeiculo = function () {
-        this.viewCtrl.dismiss(this.veiculoSelecionado);
-    };
-    VeiculosModalPage = __decorate([
+    CamerascanPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'veiculos-modal',template:/*ion-inline-start:"C:\Users\ELIAS\Desktop\ZAD\src\pages\veiculos-modal\veiculos-modal.html"*/'<ion-header>\n\n    <ion-navbar color="header" text-center>\n\n        <ion-title>\n\n            <ion-label>\n\n                Selecione seu veículo\n\n            </ion-label>\n\n        </ion-title>\n\n\n\n        <ion-buttons left>\n\n            <button ion-button icon-only (click)="dismiss()">\n\n                <span color="light" class="header-icon" showWhen="ios">Fechar</span>\n\n                <ion-icon name="md-arrow-back" class="header-icon" showWhen="android,windows"></ion-icon>\n\n            </button>\n\n        </ion-buttons>\n\n    </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content>\n\n    <ion-searchbar class="search" placeholder="Buscar por placa" color="primary" (ionInput)="procurarVeiculos($event)"></ion-searchbar>\n\n    <ion-list radio-group>\n\n        <ion-item *ngFor="let veiculo of veiculos" text-wrap>\n\n            <ion-label>\n\n                <p class="titulo">{{veiculo.veiculo.placa}}</p>\n\n                <p class="subtitulo">{{veiculo.veiculo.marca}} {{veiculo.veiculo.modelo}}</p>\n\n            </ion-label>\n\n            <ion-radio item-left slot="start" (ionSelect)="select(veiculo)" mode="md"></ion-radio>\n\n        </ion-item>\n\n    </ion-list>\n\n</ion-content>\n\n\n\n<ion-footer class="footer" mode="md">\n\n    <ion-toolbar class="toolbar" mode="md">\n\n        <ion-title mode="md">\n\n            <ion-row class="btn-rows">\n\n                <ion-col>\n\n                    <button ion-button block class="btn-cancelar" (click)="dismiss()" mode="md">Cancelar</button>\n\n                </ion-col>\n\n\n\n                <ion-col>\n\n                    <button ion-button block class="btn" (click)="selectVeiculo()"\n\n                        [disabled]="this.veiculoSelecionado.length <= 0" mode="md">OK</button>\n\n                </ion-col>\n\n            </ion-row>\n\n        </ion-title>\n\n    </ion-toolbar>\n\n</ion-footer>'/*ion-inline-end:"C:\Users\ELIAS\Desktop\ZAD\src\pages\veiculos-modal\veiculos-modal.html"*/
+            selector: 'page-camerascan',template:/*ion-inline-start:"C:\Users\ELIAS\Desktop\ZAD\src\pages\camerascan\camerascan.html"*/'<ion-content class="backg" padding></ion-content>'/*ion-inline-end:"C:\Users\ELIAS\Desktop\ZAD\src\pages\camerascan\camerascan.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* ViewController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavParams */]])
-    ], VeiculosModalPage);
-    return VeiculosModalPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["m" /* NavController */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["n" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1__ionic_native_barcode_scanner__["a" /* BarcodeScanner */]])
+    ], CamerascanPage);
+    return CamerascanPage;
 }());
 
-//# sourceMappingURL=veiculos-modal.js.map
+//# sourceMappingURL=camerascan.js.map
 
 /***/ })
 

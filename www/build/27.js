@@ -1,14 +1,14 @@
 webpackJsonp([27],{
 
-/***/ 753:
+/***/ 764:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ReportarProblemaPageModule", function() { return ReportarProblemaPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "VagaslivresPageModule", function() { return VagaslivresPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(35);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__reportar_problema__ = __webpack_require__(805);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__vagaslivres__ = __webpack_require__(821);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,37 +18,34 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var ReportarProblemaPageModule = /** @class */ (function () {
-    function ReportarProblemaPageModule() {
+var VagaslivresPageModule = /** @class */ (function () {
+    function VagaslivresPageModule() {
     }
-    ReportarProblemaPageModule = __decorate([
+    VagaslivresPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__reportar_problema__["a" /* ReportarProblemaPage */],
+                __WEBPACK_IMPORTED_MODULE_2__vagaslivres__["a" /* VagaslivresPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__reportar_problema__["a" /* ReportarProblemaPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__vagaslivres__["a" /* VagaslivresPage */]),
             ],
         })
-    ], ReportarProblemaPageModule);
-    return ReportarProblemaPageModule;
+    ], VagaslivresPageModule);
+    return VagaslivresPageModule;
 }());
 
-//# sourceMappingURL=reportar-problema.module.js.map
+//# sourceMappingURL=vagaslivres.module.js.map
 
 /***/ }),
 
-/***/ 805:
+/***/ 821:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ReportarProblemaPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return VagaslivresPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(35);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(28);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_user_user__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_reportar_problema_reportar_problema__ = __webpack_require__(439);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__environments_constants__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__environments_constants__ = __webpack_require__(19);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -61,81 +58,47 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
-
-
-var ReportarProblemaPage = /** @class */ (function () {
-    function ReportarProblemaPage(navCtrl, userProvider, formBuilder, alertCtrl, loadingCtrl, reProbProvider) {
+/**
+ * Generated class for the VagaslivresPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var VagaslivresPage = /** @class */ (function () {
+    function VagaslivresPage(navCtrl, navParams) {
         this.navCtrl = navCtrl;
-        this.userProvider = userProvider;
-        this.formBuilder = formBuilder;
-        this.alertCtrl = alertCtrl;
-        this.loadingCtrl = loadingCtrl;
-        this.reProbProvider = reProbProvider;
-        this.formGroup = this.formBuilder.group({
-            subject: ['', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required],
-            message: ['', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required],
-        });
+        this.navParams = navParams;
+        this.selectOptions = {
+            title: 'Cidade',
+            subTitle: 'Escolha sua cidade',
+            mode: 'ios'
+        };
+        this.city = 'Fortaleza';
+        this.cads = 0;
+        this.cadsUsados = 0;
     }
-    ReportarProblemaPage.prototype.ionViewDidLoad = function () {
-        var _this = this;
-        this.userProvider.getUserLocal().then(function (userID) {
-            if (userID != null) {
-                _this.userId = userID;
-            }
-        });
+    VagaslivresPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad VagaslivresPage');
     };
-    ReportarProblemaPage.prototype.sendData = function () {
-        var _this = this;
-        var loading = this.loadingCtrl.create({ content: 'Aguarde...' });
-        loading.present();
-        if (!this.formGroup.valid) {
-            this.showAlert('Aviso!', 'Todos os campos são obrigatórios', '', function () {
-                loading.dismiss();
-            });
-        }
-        else {
-            this.reProbProvider.save(this.userId, this.formGroup.value).then(function (data) {
-                console.log(data);
-                _this.showAlert('Obrigado', 'Recebemos sua mensagem, em breve entraremos em contato com você.', '', function () {
-                    loading.dismiss();
-                    _this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_5__environments_constants__["a" /* Constants */].PRINCIPAL_PAGE.name);
-                });
-            });
-        }
+    VagaslivresPage.prototype.goHome = function () {
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__environments_constants__["a" /* Constants */].HOME_PAGE.name);
     };
-    ReportarProblemaPage.prototype.showAlert = function (title, message, type, callback) {
-        this.alertCtrl.create({
-            title: title,
-            message: message,
-            cssClass: type,
-            buttons: [
-                {
-                    text: 'OK',
-                    cssClass: 'btn-ok',
-                    handler: function (data) { return callback(); }
-                }
-            ]
-        }).present();
+    VagaslivresPage.prototype.goComprar = function () {
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__environments_constants__["a" /* Constants */].CREDITOS_PAGE.name, { 'fromPage': 'principal' });
     };
-    ReportarProblemaPage.prototype.openHelp = function () {
-        this.showAlert('Ajuda', 'Envie-nos sugestões, críticas e melhorias preenchendo o formulário conforme os campos solicitados.', '', function () { });
+    VagaslivresPage.prototype.go1 = function () {
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__environments_constants__["a" /* Constants */].TIMER_PAGE.name);
     };
-    ReportarProblemaPage = __decorate([
+    VagaslivresPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-reportar-problema',template:/*ion-inline-start:"C:\Users\ELIAS\Desktop\ZAD\src\pages\reportar-problema\reportar-problema.html"*/'<ion-header no-border>\n\n    <ion-navbar color="header">\n\n        <button ion-button icon-only menuToggle>\n\n            <ion-icon class="header-icon" name="menu"></ion-icon>\n\n        </button>\n\n\n\n        <ion-title class="header-title">Reportar Problema</ion-title>\n\n        \n\n    </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content class="content">\n\n    <ion-grid>\n\n        <ion-row class="row-header">\n\n            <ion-col col-12 class="col-header">\n\n                <ion-label class="title"></ion-label>\n\n            </ion-col>\n\n        </ion-row>\n\n        <ion-row>\n\n            <form [formGroup]="formGroup" (ngSubmit)="sendData()" class="informacoes-body-list">\n\n                <ion-item class="informacoes-body-list-item" no-lines>\n\n                    <ion-label ><ion-icon name="ios-help-circle-outline"></ion-icon></ion-label>\n\n                    <ion-input type="text" mode="ios" formControlName="subject" placeholder="Assunto" class="{{formGroup.controls.subject.valid?\'blue-component\':\'grey-component\'}}">\n\n\n\n                    </ion-input><button class="menu-btn" ion-button clear  type="button" item-right> <ion-icon ios="ios-checkmark-circle-outline" class="{{formGroup.controls.subject.valid?\'icon-blue icon icon-ios ion-ios-checkmark-circle-outline\':\'icon-grey icon icon-ios ion-ios-checkmark-circle-outline\'}}"></ion-icon> </button>\n\n                </ion-item>\n\n                <ion-item class="informacoes-body-list-item" no-lines>\n\n                    <ion-label><ion-icon name="ios-mail-outline"></ion-icon></ion-label>\n\n                    <ion-textarea type="text" mode="ios" rows="4" formControlName="message" placeholder="Mensagem" class="{{formGroup.controls.message.valid?\'blue-component\':\'grey-component\'}}"></ion-textarea>\n\n                    <button class="menu-btn" ion-button clear  type="button" item-right> <ion-icon ios="ios-checkmark-circle-outline" class="{{formGroup.controls.message.valid?\'icon-blue icon icon-ios ion-ios-checkmark-circle-outline\':\'icon-grey icon icon-ios ion-ios-checkmark-circle-outline\'}}"></ion-icon> </button>\n\n                </ion-item>\n\n                <ion-item class="btn-row" no-lines>\n\n                    <button ion-button type="submit" class="btn" block>Enviar</button>\n\n                </ion-item>\n\n            </form>\n\n        </ion-row>\n\n    </ion-grid>\n\n</ion-content>'/*ion-inline-end:"C:\Users\ELIAS\Desktop\ZAD\src\pages\reportar-problema\reportar-problema.html"*/,
+            selector: 'page-vagaslivres',template:/*ion-inline-start:"C:\Users\ELIAS\Desktop\ZAD\src\pages\vagaslivres\vagaslivres.html"*/'<ion-header no-border>\n  <ion-navbar color="header" no-border>\n      \n      <button ion-button icon-only menuToggle>\n          <ion-icon class="header-icon" name="menu"></ion-icon>\n      </button>\n      <ion-title class="title-header">\n       \n        <ion-select [(ngModel)]="city" class="select-city" cancelText="Cancelar" okText="Ok" [selectOptions]="selectOptions">\n          <ion-option value="Fortaleza">Fortaleza</ion-option>\n        </ion-select>\n      </ion-title>\n\n      <ion-buttons end>\n          <button class="pin-icon" ion-button icon-only (click)="goHome()">\n              <img src="assets/icones/pin-white.svg" alt="">\n          </button>\n      </ion-buttons>\n  </ion-navbar>\n</ion-header>\n\n\n\n<ion-content>\n  <div class="img-top">\n    <img src="assets/imgs/default.png" alt="" class="nav-img">\n    <h2 class="title">{{(cads-cadsUsados)}} CADS</h2>\n    <p class="price">R${{(cads-cadsUsados)*2}},00</p>\n    <button ion-button class="btn-comprar" (click)="goComprar()"><img src="assets/icones/shopping-cart-white.svg"></button>\n  </div>\n  <br>\n  <div class="info"><p>Escolha um estacionamento</p></div>\n  <div class="conteudo">\n    <ion-list class="item">\n      <ion-item>\n        <ion-row>\n          <ion-col>\n            <div class="text-endereco" text-wrap>\n              <p>Avenida Lins de Vasconcelos, 234</p>\n            </div>    \n          </ion-col>\n          <ion-col>\n            <div class="text-vaga">\n              <p>Vagas Convencionais: 35</p>\n              <p>Vagas para Idosos: 08</p>\n              <p>Vagas para PCD: 05</p>\n              <p>Vagas Carga/Descarga: 02</p>\n            </div>\n          </ion-col>\n        </ion-row>\n        <ion-row float-center>\n          <button ion-button round clear class="btn-estacionamento">Estacionar<ion-icon name="car"></ion-icon></button>\n          <button ion-button round clear class="btn-ticket" (click)="go1()">Pagar Ticket<ion-icon name="cart"></ion-icon></button>\n        </ion-row>\n      </ion-item>\n    </ion-list>\n  </div>\n</ion-content>\n'/*ion-inline-end:"C:\Users\ELIAS\Desktop\ZAD\src\pages\vagaslivres\vagaslivres.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_3__providers_user_user__["a" /* UserProvider */],
-            __WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormBuilder"],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* LoadingController */],
-            __WEBPACK_IMPORTED_MODULE_4__providers_reportar_problema_reportar_problema__["a" /* ReportarProblemaProvider */]])
-    ], ReportarProblemaPage);
-    return ReportarProblemaPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavParams */]])
+    ], VagaslivresPage);
+    return VagaslivresPage;
 }());
 
-//# sourceMappingURL=reportar-problema.js.map
+//# sourceMappingURL=vagaslivres.js.map
 
 /***/ })
 

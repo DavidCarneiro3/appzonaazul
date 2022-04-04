@@ -1,14 +1,14 @@
 webpackJsonp([29],{
 
-/***/ 750:
+/***/ 759:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PermissionsModalPageModule", function() { return PermissionsModalPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TicketcomprovantePageModule", function() { return TicketcomprovantePageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(35);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__permissions_screen__ = __webpack_require__(802);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ticketcomprovante__ = __webpack_require__(816);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,35 +18,34 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var PermissionsModalPageModule = /** @class */ (function () {
-    function PermissionsModalPageModule() {
+var TicketcomprovantePageModule = /** @class */ (function () {
+    function TicketcomprovantePageModule() {
     }
-    PermissionsModalPageModule = __decorate([
+    TicketcomprovantePageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__permissions_screen__["a" /* PermissionsModalPage */],
+                __WEBPACK_IMPORTED_MODULE_2__ticketcomprovante__["a" /* TicketcomprovantePage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__permissions_screen__["a" /* PermissionsModalPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__ticketcomprovante__["a" /* TicketcomprovantePage */]),
             ],
         })
-    ], PermissionsModalPageModule);
-    return PermissionsModalPageModule;
+    ], TicketcomprovantePageModule);
+    return TicketcomprovantePageModule;
 }());
 
-//# sourceMappingURL=permissions-screen.module.js.map
+//# sourceMappingURL=ticketcomprovante.module.js.map
 
 /***/ }),
 
-/***/ 802:
+/***/ 816:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PermissionsModalPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TicketcomprovantePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ionic_native_android_permissions__ = __webpack_require__(200);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(35);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_user_user__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__environments_constants__ = __webpack_require__(19);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -59,169 +58,39 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
-var PermissionsModalPage = /** @class */ (function () {
-    function PermissionsModalPage(navParams, alertCtrl, userProvider, androidPermissions, viewCtrl) {
+var TicketcomprovantePage = /** @class */ (function () {
+    function TicketcomprovantePage(navCtrl, navParams) {
+        this.navCtrl = navCtrl;
         this.navParams = navParams;
-        this.alertCtrl = alertCtrl;
-        this.userProvider = userProvider;
-        this.androidPermissions = androidPermissions;
-        this.viewCtrl = viewCtrl;
-        this.fromPage = '';
-        this.title = '';
-        this.reason = '';
+        this.selectOptions = {
+            title: 'Cidade',
+            subTitle: 'Escolha sua cidade',
+            mode: 'ios'
+        };
+        this.placa = 'ABC1234';
+        this.cadsUsados = 2;
+        this.valor = 10;
+        this.data = '09/02/2022';
+        this.hora = '05:02';
+        this.city = 'Fortaleza';
+        this.cads = 0;
     }
-    PermissionsModalPage.prototype.ionViewWillLoad = function () {
-        this.getPage();
+    TicketcomprovantePage.prototype.goHome = function () {
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__environments_constants__["a" /* Constants */].HOME_PAGE.name);
     };
-    PermissionsModalPage.prototype.ionViewCanEnter = function () {
-        var _this = this;
-        this.userProvider.getUserLocal().then(function (userID) {
-            if (userID) {
-                _this.user_id = userID;
-                _this.userProvider.byId(userID)
-                    .subscribe(function (user) {
-                    _this.user = user;
-                });
-                return true;
-            }
-        });
+    TicketcomprovantePage.prototype.goComprar = function () {
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__environments_constants__["a" /* Constants */].CREDITOS_PAGE.name, { 'fromPage': 'principal' });
     };
-    // PROCURAR AQUI PARA DIVIDER CADA PERMISSÃO EM UMA TELA SEPARADA
-    PermissionsModalPage.prototype.getPage = function () {
-        var _this = this;
-        var IMEI = "O Zona F\u00E1cil precisar\u00E1 do seu IMEI para prosseguir. O IMEI \u00E9 o identificador \u00FAnico do seu smartphone e ele garantir\u00E1 a seguran\u00E7a das suas transa\u00E7\u00F5es.";
-        var localização = "O Zona F\u00E1cil est\u00E1 \u00E0 sua disposi\u00E7\u00E3o em muitos bairros, e para melhor atend\u00EA-lo, gostar\u00EDamos da sua permiss\u00E3o para acessar a sua localiza\u00E7\u00E3o para selecionar automaticamente o bairro onde voc\u00EA est\u00E1 localizado e para informar vagas dispon\u00EDveis, nos bairros onde h\u00E1 este servi\u00E7o.";
-        var camera = "O Zona F\u00E1cil precisar\u00E1 acessar sua c\u00E2mera ou arquivos de m\u00EDdia para prosseguir. Isso porque ser\u00E1 necess\u00E1rio enviar uma foto do documento.";
-        return new Promise(function (resolve) {
-            _this.fromPage = _this.navParams.get('fromPage');
-            if (_this.fromPage == 'profile-edit') {
-                _this.title = 'Acesso a Câmera e Galeria!';
-                _this.reason = 'O Zona Fácil precisa de acesso a camera e a galeria para alterar a foto de perfil!';
-            }
-            else if (_this.fromPage === 'phone') {
-                _this.title = 'Acesso ao Telefone';
-                _this.reason = IMEI;
-            }
-            else if (_this.fromPage === 'pdv-empresa') {
-                _this.title = 'Acesso a Câmera e Galeria!';
-                _this.reason = camera;
-            }
-            else {
-                _this.title = 'Acesso a Localização!';
-                _this.reason = localização;
-            }
-            resolve(true);
-        });
-    };
-    PermissionsModalPage.prototype.askPermissions = function () {
-        if (this.fromPage == 'profile-edit' || this.fromPage == 'pdv-empresa') {
-            this.askCameraPermission();
-        }
-        else if (this.fromPage == 'phone') {
-            this.askPhonePermision();
-        }
-        else {
-            this.askLocationPermission();
-        }
-    };
-    PermissionsModalPage.prototype.askCameraPermission = function () {
-        var _this = this;
-        this.androidPermissions.requestPermissions([
-            this.androidPermissions.PERMISSION.CAMERA,
-            this.androidPermissions.PERMISSION.WRITE_EXTERNAL_STORAGE
-        ])
-            .then(function () {
-            _this.closePage();
-        })
-            .catch(function (error) {
-        });
-    };
-    PermissionsModalPage.prototype.askPhonePermision = function () {
-        var _this = this;
-        this.androidPermissions.requestPermission(this.androidPermissions.PERMISSION.READ_PHONE_STATE)
-            .then(function (result) {
-            if (result.hasPermission) {
-                _this.userProvider.updateUuidOrImei(_this.user_id, function (uuid) {
-                    _this.user.uidAparelho = uuid;
-                });
-                _this.closePage();
-            }
-            else {
-                _this.androidPermissions.checkPermission(_this.androidPermissions.PERMISSION.READ_PHONE_STATE)
-                    .then(function (result) {
-                    if (result.hasPermission) {
-                        _this.closePage();
-                    }
-                    else {
-                        _this.showAlert('Permissão Importante!', 'O Zona Fácil precisa de acesso ao Telefone, para obter o IMEI do dispositivo para o funcionamento do sistema.', 'alert-button-group');
-                    }
-                })
-                    .catch(function (error) {
-                });
-            }
-        });
-    };
-    PermissionsModalPage.prototype.askLocationPermission = function () {
-        var _this = this;
-        this.androidPermissions.requestPermission(this.androidPermissions.PERMISSION.ACCESS_FINE_LOCATION)
-            .then(function (result) {
-            _this.closePage();
-        })
-            .catch(function (err) { return console.log(err); });
-    };
-    PermissionsModalPage.prototype.askPhonePermission = function () {
-        var _this = this;
-        this.androidPermissions.requestPermission(this.androidPermissions.PERMISSION.READ_PHONE_STATE)
-            .then(function (result) {
-            if (result.hasPermission) {
-                _this.userProvider.updateUuidOrImei(_this.user_id, function (uuid) {
-                });
-                _this.closePage();
-            }
-        });
-    };
-    PermissionsModalPage.prototype.closePage = function () {
-        this.viewCtrl.dismiss();
-    };
-    PermissionsModalPage.prototype.showAlert = function (title, msg, type) {
-        var _this = this;
-        this.alertCtrl.create({
-            title: title,
-            message: msg,
-            cssClass: type,
-            buttons: [
-                {
-                    text: 'Autorizar',
-                    cssClass: 'btn-ok',
-                    handler: function () {
-                        _this.askPhonePermission();
-                    }
-                },
-                {
-                    text: 'Cancelar',
-                    cssClass: 'btn-warning',
-                    handler: function () {
-                        _this.closePage();
-                    }
-                }
-            ]
-        }).present();
-    };
-    PermissionsModalPage = __decorate([
+    TicketcomprovantePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'permissions-screen',template:/*ion-inline-start:"C:\Users\ELIAS\Desktop\ZAD\src\pages\permissions\permissions-screen.html"*/'<ion-header no-border text-center>\n\n    <ion-navbar color="header" text-center>\n\n        <ion-title>\n\n            <ion-label>\n\n                Permissão Requerida\n\n            </ion-label>\n\n        </ion-title>\n\n    </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding>\n\n    <p class="conteudo-titulo">\n\n        {{title}}\n\n    </p>\n\n    <p class="conteudo-texto">\n\n        {{reason}}\n\n    </p>\n\n</ion-content>\n\n\n\n<ion-footer class="footer">\n\n    <ion-toolbar>\n\n        <button ion-button block (click)="askPermissions()" mode="md">Continuar</button>\n\n    </ion-toolbar>\n\n</ion-footer>'/*ion-inline-end:"C:\Users\ELIAS\Desktop\ZAD\src\pages\permissions\permissions-screen.html"*/
+            selector: 'page-ticketcomprovante',template:/*ion-inline-start:"C:\Users\ELIAS\Desktop\ZAD\src\pages\ticketcomprovante\ticketcomprovante.html"*/'<ion-header no-border>\n  <ion-navbar color="header" no-border>\n      \n      <button ion-button icon-only menuToggle>\n          <ion-icon class="header-icon" name="menu"></ion-icon>\n      </button>\n      <ion-title class="title-header">\n       \n        <ion-select [(ngModel)]="city" class="select-city" cancelText="Cancelar" okText="Ok" [selectOptions]="selectOptions">\n          <ion-option value="Fortaleza">Fortaleza</ion-option>\n        </ion-select>\n      </ion-title>\n\n      <ion-buttons end>\n          <button class="pin-icon" ion-button icon-only (click)="goHome()">\n              <img src="assets/icones/pin-white.svg" alt="">\n          </button>\n      </ion-buttons>\n  </ion-navbar>\n</ion-header>\n\n\n\n<ion-content padding>\n  <ion-list>\n    <ion-item>\n      <ion-col>Placa</ion-col>\n      <ion-col class="custo">{{placa}}</ion-col>\n    </ion-item>\n    <ion-item>\n      <ion-col>CADs Utilizados</ion-col>\n      <ion-col class="custo">{{cadsUsados}}</ion-col>\n    </ion-item>\n    <ion-item>\n      <ion-col>Valor</ion-col>\n      <ion-col class="custo">R$ {{valor}}</ion-col>\n    </ion-item>\n    <ion-item>\n      <ion-col>Data do pagamento</ion-col>\n      <ion-col class="custo">{{data}}</ion-col>\n    </ion-item>\n    <ion-item>\n      <ion-col>Hora do pagamento</ion-col>\n      <ion-col class="custo">{{hora}}</ion-col>\n    </ion-item>\n  </ion-list>\n  <button ion-button clear id="botao" class="botaobaixar">Baixar PDF</button>\n</ion-content>\n'/*ion-inline-end:"C:\Users\ELIAS\Desktop\ZAD\src\pages\ticketcomprovante\ticketcomprovante.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["n" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* AlertController */],
-            __WEBPACK_IMPORTED_MODULE_3__providers_user_user__["a" /* UserProvider */],
-            __WEBPACK_IMPORTED_MODULE_1__ionic_native_android_permissions__["a" /* AndroidPermissions */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["r" /* ViewController */]])
-    ], PermissionsModalPage);
-    return PermissionsModalPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavParams */]])
+    ], TicketcomprovantePage);
+    return TicketcomprovantePage;
 }());
 
-//# sourceMappingURL=permissions-screen.js.map
+//# sourceMappingURL=ticketcomprovante.js.map
 
 /***/ })
 

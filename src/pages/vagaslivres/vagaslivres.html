@@ -1,0 +1,58 @@
+<ion-header no-border>
+  <ion-navbar color="header" no-border>
+      
+      <button ion-button icon-only menuToggle>
+          <ion-icon class="header-icon" name="menu"></ion-icon>
+      </button>
+      <ion-title class="title-header">
+       
+        <ion-select [(ngModel)]="city" class="select-city" cancelText="Cancelar" okText="Ok" [selectOptions]="selectOptions">
+          <ion-option value="Fortaleza">Fortaleza</ion-option>
+        </ion-select>
+      </ion-title>
+
+      <ion-buttons end>
+          <button class="pin-icon" ion-button icon-only (click)="goHome()">
+              <img src="assets/icones/pin-white.svg" alt="">
+          </button>
+      </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+
+<ion-content>
+  <div class="img-top">
+    <img src="assets/imgs/default.png" alt="" class="nav-img">
+    <h2 class="title">{{(cads-cadsUsados)}} CADS</h2>
+    <p class="price">R${{(cads-cadsUsados)*2}},00</p>
+    <button ion-button class="btn-comprar" (click)="goComprar()"><img src="assets/icones/shopping-cart-white.svg"></button>
+  </div>
+  <br>
+  <div class="info"><p>Escolha um estacionamento</p></div>
+  <div class="conteudo">
+    <ion-list class="item">
+      <ion-item>
+        <ion-row>
+          <ion-col>
+            <div class="text-endereco" text-wrap>
+              <p>Avenida Lins de Vasconcelos, 234</p>
+            </div>    
+          </ion-col>
+          <ion-col>
+            <div class="text-vaga">
+              <p>Vagas Convencionais: 35</p>
+              <p>Vagas para Idosos: 08</p>
+              <p>Vagas para PCD: 05</p>
+              <p>Vagas Carga/Descarga: 02</p>
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row float-center>
+          <button ion-button round clear class="btn-estacionamento">Estacionar<ion-icon name="car"></ion-icon></button>
+          <button ion-button round clear class="btn-ticket" (click)="go1()">Pagar Ticket<ion-icon name="cart"></ion-icon></button>
+        </ion-row>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>

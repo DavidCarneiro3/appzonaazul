@@ -1,14 +1,14 @@
 webpackJsonp([31],{
 
-/***/ 745:
+/***/ 754:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FiltroPagamentoPageModule", function() { return FiltroPagamentoPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ReportarProblemaPageModule", function() { return ReportarProblemaPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(35);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__filtro_pagamento__ = __webpack_require__(797);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__reportar_problema__ = __webpack_require__(811);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,33 +18,37 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var FiltroPagamentoPageModule = /** @class */ (function () {
-    function FiltroPagamentoPageModule() {
+var ReportarProblemaPageModule = /** @class */ (function () {
+    function ReportarProblemaPageModule() {
     }
-    FiltroPagamentoPageModule = __decorate([
+    ReportarProblemaPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__filtro_pagamento__["a" /* FiltroPagamentoPage */],
+                __WEBPACK_IMPORTED_MODULE_2__reportar_problema__["a" /* ReportarProblemaPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__filtro_pagamento__["a" /* FiltroPagamentoPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__reportar_problema__["a" /* ReportarProblemaPage */]),
             ],
         })
-    ], FiltroPagamentoPageModule);
-    return FiltroPagamentoPageModule;
+    ], ReportarProblemaPageModule);
+    return ReportarProblemaPageModule;
 }());
 
-//# sourceMappingURL=filtro-pagamento.module.js.map
+//# sourceMappingURL=reportar-problema.module.js.map
 
 /***/ }),
 
-/***/ 797:
+/***/ 811:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FiltroPagamentoPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ReportarProblemaPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_user_user__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_reportar_problema_reportar_problema__ = __webpack_require__(439);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__environments_constants__ = __webpack_require__(19);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -56,55 +60,82 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-var FiltroPagamentoPage = /** @class */ (function () {
-    function FiltroPagamentoPage(navCtrl, navParams, viewCtlr, event) {
+
+
+
+
+var ReportarProblemaPage = /** @class */ (function () {
+    function ReportarProblemaPage(navCtrl, userProvider, formBuilder, alertCtrl, loadingCtrl, reProbProvider) {
         this.navCtrl = navCtrl;
-        this.navParams = navParams;
-        this.viewCtlr = viewCtlr;
-        this.event = event;
-        this.selectOption = {
-            title: 'Tipo',
-            subtitle: 'Escolha o tipo do Filtro',
-            mode: 'ios'
-        };
-        this.filter = {
-            data: "",
-            qtdCads: "",
-            valor: ""
-        };
-        this.data = navParams.get('data');
+        this.userProvider = userProvider;
+        this.formBuilder = formBuilder;
+        this.alertCtrl = alertCtrl;
+        this.loadingCtrl = loadingCtrl;
+        this.reProbProvider = reProbProvider;
+        this.formGroup = this.formBuilder.group({
+            subject: ['', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required],
+            message: ['', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required],
+        });
     }
-    FiltroPagamentoPage.prototype.ionViewDidLoad = function () {
+    ReportarProblemaPage.prototype.ionViewDidLoad = function () {
+        var _this = this;
+        this.userProvider.getUserLocal().then(function (userID) {
+            if (userID != null) {
+                _this.userId = userID;
+            }
+        });
     };
-    FiltroPagamentoPage.prototype.Filtro = function () {
-        if (this.filter.data !== "") {
-            this.formatDate();
+    ReportarProblemaPage.prototype.sendData = function () {
+        var _this = this;
+        var loading = this.loadingCtrl.create({ content: 'Aguarde...' });
+        loading.present();
+        if (!this.formGroup.valid) {
+            this.showAlert('Aviso!', 'Todos os campos são obrigatórios', '', function () {
+                loading.dismiss();
+            });
         }
-        this.event.publish('pay_filter_event', this.filter);
-        this.navCtrl.pop();
+        else {
+            this.reProbProvider.save(this.userId, this.formGroup.value).then(function (data) {
+                console.log(data);
+                _this.showAlert('Obrigado', 'Recebemos sua mensagem, em breve entraremos em contato com você.', '', function () {
+                    loading.dismiss();
+                    _this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_5__environments_constants__["a" /* Constants */].PRINCIPAL_PAGE.name);
+                });
+            });
+        }
     };
-    FiltroPagamentoPage.prototype.formatDate = function () {
-        var format = this.filter.data.split("-");
-        var result = new Date(parseInt(format[0]), parseInt(format[1]) - 1, parseInt(format[2])).toDateString();
-        return this.filter.data = result;
+    ReportarProblemaPage.prototype.showAlert = function (title, message, type, callback) {
+        this.alertCtrl.create({
+            title: title,
+            message: message,
+            cssClass: type,
+            buttons: [
+                {
+                    text: 'OK',
+                    cssClass: 'btn-ok',
+                    handler: function (data) { return callback(); }
+                }
+            ]
+        }).present();
     };
-    FiltroPagamentoPage.prototype.closeModal = function () {
-        this.event.publish('', this.filter);
-        this.navCtrl.pop();
+    ReportarProblemaPage.prototype.openHelp = function () {
+        this.showAlert('Ajuda', 'Envie-nos sugestões, críticas e melhorias preenchendo o formulário conforme os campos solicitados.', '', function () { });
     };
-    FiltroPagamentoPage = __decorate([
+    ReportarProblemaPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-filtro-pagamento',template:/*ion-inline-start:"C:\Users\ELIAS\Desktop\ZAD\src\pages\filtro-pagamento\filtro-pagamento.html"*/'<ion-header no-border>\n\n    <ion-navbar color="header" no-margin no-padding>\n\n        <ion-buttons left>\n\n            <button ion-button icon-only (click)="closeModal()">\n\n                <span color="light" class="header-icon" showWhen="ios">Fechar</span>\n\n                <ion-icon name="md-arrow-back" class="header-icon" showWhen="android,windows"></ion-icon>\n\n            </button>\n\n        </ion-buttons>\n\n\n\n        <ion-title class="header-title">Filtros</ion-title>\n\n    </ion-navbar>\n\n</ion-header>\n\n\n\n\n\n<ion-content padding class="content">\n\n    <div class="informacoes-body">\n\n\n\n        <div class="informacoes-body-list">\n\n           \n\n            <ion-item class="informacoes-body-list-item" no-lines>\n\n                <ion-label  style="max-width:10%;"><ion-icon name="ios-calendar-outline"></ion-icon></ion-label>\n\n                <ion-datetime displayFormat="DD/MM/YYYY" placeholder="DD/MM/YYYY" [min]="data.min" [max]="data.today"\n\n                    cancelText="Cancelar" doneText="Selecionar" [(ngModel)]=\'filter.data\' name=\'data\' color="yellow-dark">\n\n                </ion-datetime><button class="menu-btn" ion-button clear  type="button" item-right> <ion-icon ios="ios-checkmark-circle-outline" class="{{filter.data?\'icon-blue icon icon-ios ion-ios-checkmark-circle-outline\':\'icon-grey icon icon-ios ion-ios-checkmark-circle-outline\'}}"></ion-icon> </button>\n\n            </ion-item>\n\n        \n\n            <ion-item class="informacoes-body-list-item" no-lines>\n\n                <ion-label class="btn-icon"><ion-icon name="ios-basket-outline"></ion-icon></ion-label>\n\n                <ion-input type="tel" placeholder="Quantidade de CADs" [(ngModel)]="filter.qtdCads" name="qtdCads" class="{{filter.qtdCads?\'blue-component\':\'grey-component\'}}"> \n\n\n\n                </ion-input><button class="menu-btn" ion-button clear  type="button" item-right> <ion-icon ios="ios-checkmark-circle-outline" class="{{filter.qtdCads?\'icon-blue icon icon-ios ion-ios-checkmark-circle-outline\':\'icon-grey icon icon-ios ion-ios-checkmark-circle-outline\'}}"></ion-icon> </button>\n\n            </ion-item>\n\n        \n\n            <ion-item class="informacoes-body-list-item" no-lines>\n\n                <ion-label class="btn-icon"><ion-icon name="ios-pricetags-outline"></ion-icon></ion-label>\n\n                <ion-input type="tel" placeholder="R$ 10,00" [(ngModel)]="filter.valor" name="valor" class="{{filter.valor?\'blue-component\':\'grey-component\'}}"> \n\n\n\n                </ion-input><button class="menu-btn" ion-button clear  type="button" item-right> <ion-icon ios="ios-checkmark-circle-outline" class="{{filter.valor?\'icon-blue icon icon-ios ion-ios-checkmark-circle-outline\':\'icon-grey icon icon-ios ion-ios-checkmark-circle-outline\'}}"></ion-icon> </button>\n\n            </ion-item>\n\n    \n\n            <ion-item class="btn-row" no-lines>\n\n                <button ion-button style="height:40px" class="btn" block (click)="Filtro()"> Filtrar </button>\n\n            </ion-item>\n\n        </div>\n\n    </div>\n\n\n\n    <!-- <ion-grid class="grid-historico-estacionamento">\n\n\n\n        <ion-row>\n\n            <ion-col width-30 style="margin-top:9px; ">\n\n                <ion-label class="label" color="primary">Data</ion-label>\n\n            </ion-col>\n\n            <ion-col>\n\n                <ion-datetime displayFormat="DD/MM/YYYY" placeholder="DD/MM/YYYY" [min]="data.min" [max]="data.today"\n\n                    cancelText="Cancelar" doneText="Selecionar" [(ngModel)]=\'filter.data\' name=\'data\'>\n\n                </ion-datetime>\n\n            </ion-col>\n\n        </ion-row>\n\n\n\n        <ion-row>\n\n            <ion-col width-30 style="margin-top:9px; ">\n\n                <ion-label class="label" color="primary">Quantidade CADS</ion-label>\n\n            </ion-col>\n\n            <ion-col>\n\n                <ion-input type="text" placeholder="1" [(ngModel)]="filter.qtdCads" name="qtdCads"> </ion-input>\n\n            </ion-col>\n\n        </ion-row>\n\n\n\n        <ion-row>\n\n            <ion-col width-30 style="margin-top:9px; ">\n\n                <ion-label class="label" color="primary">Valor gasto</ion-label>\n\n            </ion-col>\n\n            <ion-col>\n\n                <ion-input type="text" placeholder="10,00" [(ngModel)]=\'filter.valor\' name="valor">\n\n                </ion-input>\n\n            </ion-col>\n\n        </ion-row>\n\n\n\n        <ion-item class="btn-row" no-lines>\n\n            <button ion-button style="height:40px" class="btn" block (click)="Filtro()"> Filtrar </button>\n\n        </ion-item>\n\n    </ion-grid> -->\n\n\n\n</ion-content>'/*ion-inline-end:"C:\Users\ELIAS\Desktop\ZAD\src\pages\filtro-pagamento\filtro-pagamento.html"*/,
+            selector: 'page-reportar-problema',template:/*ion-inline-start:"C:\Users\ELIAS\Desktop\ZAD\src\pages\reportar-problema\reportar-problema.html"*/'<ion-header no-border>\n\n    <ion-navbar color="header">\n\n        <button ion-button icon-only menuToggle>\n\n            <ion-icon class="header-icon" name="menu"></ion-icon>\n\n        </button>\n\n\n\n        <ion-title class="header-title">Reportar Problema</ion-title>\n\n        \n\n    </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content class="content">\n\n    <ion-grid>\n\n        <ion-row class="row-header">\n\n            <ion-col col-12 class="col-header">\n\n                <ion-label class="title"></ion-label>\n\n            </ion-col>\n\n        </ion-row>\n\n        <ion-row>\n\n            <form [formGroup]="formGroup" (ngSubmit)="sendData()" class="informacoes-body-list">\n\n                <ion-item class="informacoes-body-list-item" no-lines>\n\n                    <ion-label ><ion-icon name="ios-help-circle-outline"></ion-icon></ion-label>\n\n                    <ion-input type="text" mode="ios" formControlName="subject" placeholder="Assunto" class="{{formGroup.controls.subject.valid?\'blue-component\':\'grey-component\'}}">\n\n\n\n                    </ion-input><button class="menu-btn" ion-button clear  type="button" item-right> <ion-icon ios="ios-checkmark-circle-outline" class="{{formGroup.controls.subject.valid?\'icon-blue icon icon-ios ion-ios-checkmark-circle-outline\':\'icon-grey icon icon-ios ion-ios-checkmark-circle-outline\'}}"></ion-icon> </button>\n\n                </ion-item>\n\n                <ion-item class="informacoes-body-list-item" no-lines>\n\n                    <ion-label><ion-icon name="ios-mail-outline"></ion-icon></ion-label>\n\n                    <ion-textarea type="text" mode="ios" rows="4" formControlName="message" placeholder="Mensagem" class="{{formGroup.controls.message.valid?\'blue-component\':\'grey-component\'}}"></ion-textarea>\n\n                    <button class="menu-btn" ion-button clear  type="button" item-right> <ion-icon ios="ios-checkmark-circle-outline" class="{{formGroup.controls.message.valid?\'icon-blue icon icon-ios ion-ios-checkmark-circle-outline\':\'icon-grey icon icon-ios ion-ios-checkmark-circle-outline\'}}"></ion-icon> </button>\n\n                </ion-item>\n\n                <ion-item class="btn-row" no-lines>\n\n                    <button ion-button type="submit" class="btn" block>Enviar</button>\n\n                </ion-item>\n\n            </form>\n\n        </ion-row>\n\n    </ion-grid>\n\n</ion-content>'/*ion-inline-end:"C:\Users\ELIAS\Desktop\ZAD\src\pages\reportar-problema\reportar-problema.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* ViewController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* Events */]])
-    ], FiltroPagamentoPage);
-    return FiltroPagamentoPage;
+            __WEBPACK_IMPORTED_MODULE_3__providers_user_user__["a" /* UserProvider */],
+            __WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormBuilder"],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* LoadingController */],
+            __WEBPACK_IMPORTED_MODULE_4__providers_reportar_problema_reportar_problema__["a" /* ReportarProblemaProvider */]])
+    ], ReportarProblemaPage);
+    return ReportarProblemaPage;
 }());
 
-//# sourceMappingURL=filtro-pagamento.js.map
+//# sourceMappingURL=reportar-problema.js.map
 
 /***/ })
 

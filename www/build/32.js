@@ -1,14 +1,14 @@
 webpackJsonp([32],{
 
-/***/ 744:
+/***/ 753:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FiltroModalPageModule", function() { return FiltroModalPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RecoveryPasswordPageModule", function() { return RecoveryPasswordPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(35);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__filtro_modal__ = __webpack_require__(796);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__recovery_password__ = __webpack_require__(810);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,33 +18,37 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var FiltroModalPageModule = /** @class */ (function () {
-    function FiltroModalPageModule() {
+var RecoveryPasswordPageModule = /** @class */ (function () {
+    function RecoveryPasswordPageModule() {
     }
-    FiltroModalPageModule = __decorate([
+    RecoveryPasswordPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__filtro_modal__["a" /* FiltroModalPage */],
+                __WEBPACK_IMPORTED_MODULE_2__recovery_password__["a" /* RecoveryPasswordPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__filtro_modal__["a" /* FiltroModalPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__recovery_password__["a" /* RecoveryPasswordPage */]),
             ],
         })
-    ], FiltroModalPageModule);
-    return FiltroModalPageModule;
+    ], RecoveryPasswordPageModule);
+    return RecoveryPasswordPageModule;
 }());
 
-//# sourceMappingURL=filtro-modal.module.js.map
+//# sourceMappingURL=recovery-password.module.js.map
 
 /***/ }),
 
-/***/ 796:
+/***/ 810:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FiltroModalPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RecoveryPasswordPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_auth_auth__ = __webpack_require__(199);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_user_user__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__environments_constants__ = __webpack_require__(19);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -56,57 +60,114 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-var FiltroModalPage = /** @class */ (function () {
-    function FiltroModalPage(navCtrl, navParams, modalCtrl, viewCtlr, event) {
+
+
+
+
+var RecoveryPasswordPage = /** @class */ (function () {
+    function RecoveryPasswordPage(navCtrl, navParams, menu, alertCtrl, loadingCtrl, formBuilder, authProvider, userProvider) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
-        this.modalCtrl = modalCtrl;
-        this.viewCtlr = viewCtlr;
-        this.event = event;
-        this.selectOption = {
-            title: 'Tipo',
-            subtitle: 'Escolha o tipo do Filtro',
-            mode: 'ios'
-        };
-        this.filter = {
-            placa: "",
-            numberAuth: "",
-            data: "",
-            situacao: "",
-            qtdCads: "",
-            valor: "",
-        };
-        this.data = navParams.get('data');
+        this.menu = menu;
+        this.alertCtrl = alertCtrl;
+        this.loadingCtrl = loadingCtrl;
+        this.formBuilder = formBuilder;
+        this.authProvider = authProvider;
+        this.userProvider = userProvider;
+        this.submitAttempt = false;
+        var emailRegex = /^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/i;
+        this.recoveryForm = formBuilder.group({
+            email: ['', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].compose([__WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].pattern(emailRegex)])]
+        });
     }
-    FiltroModalPage.prototype.ionViewDidLoad = function () {
+    RecoveryPasswordPage.prototype.ionViewCanEnter = function () {
+        this.setVisibleMenu(false);
+        this.userProvider.getUserLocal().then(function (userID) {
+            if (!userID) {
+                return true;
+            }
+        });
     };
-    FiltroModalPage.prototype.Filtro = function () {
-        if (this.filter.data !== "") {
-            this.formatDate();
+    RecoveryPasswordPage.prototype.ionViewDidLoad = function () {
+    };
+    RecoveryPasswordPage.prototype.ionViewWillLeave = function () {
+    };
+    RecoveryPasswordPage.prototype.recovery = function () {
+        var _this = this;
+        this.submitAttempt = true;
+        if (this.isValidAttributes()) {
+            var loading_1 = this.showLoading();
+            loading_1.present();
+            this.authProvider.sendPasswordResetEmail(this.recoveryForm.value.email)
+                .then(function () {
+                loading_1.dismiss();
+                _this.showAlert('Sucesso!', 'Você receberá um email com instruções para recuperar sua senha.', '', function () {
+                    _this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_5__environments_constants__["a" /* Constants */].LOGIN_PAGE.name);
+                });
+            }).catch(function (error) {
+                loading_1.dismiss();
+                var errorMessage = 'Não foi possível restaurar sua senha!';
+                if (error['code'] && error['code'] == 'auth/user-not-found') {
+                    errorMessage = 'O usuário não está cadastrado!';
+                }
+                _this.showAlert("Erro!", errorMessage, "error", function () {
+                });
+            });
         }
-        this.filter.placa = this.filter.placa.toUpperCase();
-        this.event.publish('f_event', this.filter);
-        this.navCtrl.pop();
+        else {
+            var warn = 'Insira um email válido para recuperar sua senha!';
+            this.showAlert("Aviso", warn, "info", function () {
+            });
+        }
     };
-    FiltroModalPage.prototype.formatDate = function () {
-        var format = this.filter.data.split("-");
-        return this.filter.data = format[2] + '/' + format[1] + '/' + format[0];
+    RecoveryPasswordPage.prototype.isValidAttributes = function () {
+        return this.recoveryForm.valid;
     };
-    FiltroModalPage.prototype.closeModal = function () {
-        this.event.publish('f_event', this.filter);
-        this.navCtrl.pop();
+    RecoveryPasswordPage.prototype.showAlert = function (title, msg, type, callback) {
+        var alert = this.alertCtrl.create({
+            title: title,
+            message: msg,
+            cssClass: type,
+            buttons: [
+                {
+                    text: 'OK',
+                    cssClass: 'btn-ok',
+                    handler: function (data) {
+                        callback();
+                    }
+                }
+            ]
+        });
+        alert.present();
     };
-    FiltroModalPage = __decorate([
+    RecoveryPasswordPage.prototype.setVisibleMenu = function (status) {
+        if (status === void 0) { status = false; }
+        this.menu.enable(status);
+        this.menu.swipeEnable(status);
+    };
+    RecoveryPasswordPage.prototype.showLogin = function () {
+        this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_5__environments_constants__["a" /* Constants */].LOGIN_PAGE.name);
+    };
+    RecoveryPasswordPage.prototype.showLoading = function () {
+        return this.loadingCtrl.create({ content: 'Aguarde...' });
+    };
+    RecoveryPasswordPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-filtro-modal',template:/*ion-inline-start:"C:\Users\ELIAS\Desktop\ZAD\src\pages\filtro-modal\filtro-modal.html"*/'<ion-header no-border>\n\n    <ion-navbar color="header" no-margin no-padding>\n\n        <ion-buttons left>\n\n            <button ion-button icon-only (click)="closeModal()">\n\n                <span color="light" class="header-icon" showWhen="ios">Fechar</span>\n\n                <ion-icon name="md-arrow-back" class="header-icon" showWhen="android,windows"></ion-icon>\n\n            </button>\n\n        </ion-buttons>\n\n\n\n        <ion-title class="header-title">Filtros</ion-title>\n\n    </ion-navbar>\n\n</ion-header>\n\n\n\n\n\n<ion-content class="content">\n\n    <div class="informacoes-body">\n\n\n\n    <div class="informacoes-body-list">\n\n       \n\n            \n\n            <ion-item class="informacoes-body-list-item" no-lines>\n\n                <ion-label class="btn-icon"><ion-icon name="ios-car-outline"></ion-icon></ion-label>\n\n                \n\n                <ion-input type="text" placeholder="AAA0000" [(ngModel)]="filter.placa" name="placa" class="{{filter.placa?\'blue-component\':\'grey-component\'}}"> \n\n\n\n                </ion-input><button class="menu-btn" ion-button clear  type="button" item-right> <ion-icon ios="ios-checkmark-circle-outline" class="{{filter.placa?\'icon-blue icon icon-ios ion-ios-checkmark-circle-outline\':\'icon-grey icon icon-ios ion-ios-checkmark-circle-outline\'}}"></ion-icon> </button>\n\n            </ion-item>\n\n        \n\n\n\n       \n\n            \n\n            <ion-item class="informacoes-body-list-item" no-lines>\n\n                <ion-label style="max-width:10%;"><ion-icon name="ios-checkbox-outline"></ion-icon></ion-label>\n\n                <ion-select style="max-width: 100%;" placeholder=\'Ativação/Renovacão\' [selectOptions]="selectOption"\n\n                    [(ngModel)]="filter.situacao" >\n\n                    <ion-option value="Ativação"> Ativação </ion-option>\n\n                    <ion-option value="Renovação"> Renovacão </ion-option>\n\n                </ion-select><button class="menu-btn" ion-button clear  type="button" item-right> <ion-icon ios="ios-checkmark-circle-outline" class="{{filter.situacao?\'icon-blue icon icon-ios ion-ios-checkmark-circle-outline\':\'icon-grey icon icon-ios ion-ios-checkmark-circle-outline\'}}"></ion-icon> </button>\n\n            </ion-item>\n\n        \n\n\n\n       \n\n            <ion-item class="informacoes-body-list-item" no-lines>\n\n                <ion-label  style="max-width:10%;"><ion-icon name="ios-calendar-outline"></ion-icon></ion-label>\n\n                <ion-datetime displayFormat="DD/MM/YYYY" placeholder="DD/MM/YYYY" [min]="data.min" [max]="data.today"\n\n                    cancelText="Cancelar" doneText="Selecionar" [(ngModel)]=\'filter.data\' name=\'data\' >\n\n                </ion-datetime><button class="menu-btn" ion-button clear  type="button" item-right> <ion-icon ios="ios-checkmark-circle-outline" class="{{filter.data?\'icon-blue icon icon-ios ion-ios-checkmark-circle-outline\':\'icon-grey icon icon-ios ion-ios-checkmark-circle-outline\'}}"></ion-icon> </button>\n\n            </ion-item>\n\n        \n\n\n\n\n\n       \n\n           \n\n            <ion-item class="informacoes-body-list-item" no-lines>\n\n                <ion-label class="btn-icon"><ion-icon name="ios-basket-outline"></ion-icon></ion-label>\n\n                <ion-input type="text" placeholder="Quantidade de CADs" [(ngModel)]="filter.qtdCads" name="qtdCads" class="{{filter.qtdCads?\'blue-component\':\'grey-component\'}}"> \n\n\n\n                </ion-input><button class="menu-btn" ion-button clear  type="button" item-right> <ion-icon ios="ios-checkmark-circle-outline" class="{{filter.qtdCads?\'icon-blue icon icon-ios ion-ios-checkmark-circle-outline\':\'icon-grey icon icon-ios ion-ios-checkmark-circle-outline\'}}"></ion-icon> </button>\n\n            </ion-item>\n\n        \n\n\n\n\n\n       \n\n            \n\n            <ion-item class="informacoes-body-list-item" no-lines>\n\n                <ion-label class="btn-icon"><ion-icon name="ios-pricetags-outline"></ion-icon></ion-label>\n\n                <ion-input type="text" placeholder="R$ 10,00" [(ngModel)]="filter.valor" name="valor" class="{{filter.valor?\'blue-component\':\'grey-component\'}}"> \n\n\n\n                </ion-input><button class="menu-btn" ion-button clear  type="button" item-right> <ion-icon ios="ios-checkmark-circle-outline" class="{{filter.valor?\'icon-blue icon icon-ios ion-ios-checkmark-circle-outline\':\'icon-grey icon icon-ios ion-ios-checkmark-circle-outline\'}}"></ion-icon> </button>\n\n            </ion-item>\n\n        \n\n\n\n\n\n       \n\n            \n\n            <ion-item class="informacoes-body-list-item" no-lines>\n\n                <ion-label class="btn-icon"><ion-icon name="ios-card-outline"></ion-icon></ion-label>\n\n                <ion-input type="text" placeholder="123454564" [(ngModel)]=\'filter.numberAuth\' name="numberAuth" class="{{filter.numberAuth?\'blue-component\':\'grey-component\'}}">\n\n                </ion-input><button class="menu-btn" ion-button clear  type="button" item-right> <ion-icon ios="ios-checkmark-circle-outline" class="{{filter.numberAuth?\'icon-blue icon icon-ios ion-ios-checkmark-circle-outline\':\'icon-grey icon icon-ios ion-ios-checkmark-circle-outline\'}}"></ion-icon> </button>\n\n            </ion-item>\n\n        \n\n\n\n        <ion-item class="btn-row" no-lines>\n\n            <button ion-button style="height:40px" class="btn" block (click)="Filtro()"> Filtrar </button>\n\n        </ion-item>\n\n    </div>\n\n</div>\n\n\n\n</ion-content>'/*ion-inline-end:"C:\Users\ELIAS\Desktop\ZAD\src\pages\filtro-modal\filtro-modal.html"*/,
+            selector: 'page-recovery-password',template:/*ion-inline-start:"C:\Users\ELIAS\Desktop\ZAD\src\pages\recovery-password\recovery-password.html"*/'<ion-header no-border>\n\n  <ion-navbar transparent class="navbar only-mobile">\n\n    <ion-title>\n\n      <ion-label>Recuperar Senha</ion-label>\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content class="recovery-password">\n\n\n\n  <div class="logo">\n\n    <ion-grid class="img img-centralize img-logo">\n\n      <img src="assets/imgs/logo.png" />\n\n    </ion-grid>\n\n  </div>\n\n\n\n  <ion-grid class="grid-form">\n\n\n\n    <ion-row justify-content-center>\n\n      <div class="form-margin">\n\n        <form class="form" [formGroup]="recoveryForm" novalidate>\n\n          <div text-center>\n\n            <ion-input type="email" #email formControlName="email" id="email" placeholder="Email"\n\n              (keyup.enter)="focusInput(password)"></ion-input>\n\n            <ion-label class="error-message" *ngIf="recoveryForm.controls.email.invalid  && (submitAttempt)">Insira um\n\n              email válido</ion-label>\n\n          </div>\n\n        </form>\n\n\n\n        <button ion-button (click)="recovery()" class="btn" block>Recuperar</button>\n\n\n\n      </div>\n\n    </ion-row>\n\n  </ion-grid>\n\n\n\n  <div class="logo">\n\n    <ion-grid class="img img-centralize img-logo logo-amc">\n\n      <ion-row align-items-center justify-content-center>\n\n        <ion-col align-items-center class="img-logo1-menu">\n\n          <img src="assets/imgs/logo-backwhite-cipetran.png" />\n\n        </ion-col>\n\n      </ion-row>\n\n    </ion-grid>\n\n  </div>\n\n\n\n</ion-content>'/*ion-inline-end:"C:\Users\ELIAS\Desktop\ZAD\src\pages\recovery-password\recovery-password.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ModalController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* ViewController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* Events */]])
-    ], FiltroModalPage);
-    return FiltroModalPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* MenuController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* LoadingController */],
+            __WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormBuilder"],
+            __WEBPACK_IMPORTED_MODULE_3__providers_auth_auth__["a" /* AuthProvider */],
+            __WEBPACK_IMPORTED_MODULE_4__providers_user_user__["a" /* UserProvider */]])
+    ], RecoveryPasswordPage);
+    return RecoveryPasswordPage;
 }());
 
-//# sourceMappingURL=filtro-modal.js.map
+//# sourceMappingURL=recovery-password.js.map
 
 /***/ })
 

@@ -1,3 +1,4 @@
+import { TicketcomprovantePage } from './../pages/ticketcomprovante/ticketcomprovante';
 import { environment } from './environment';
 export class Constants {
 
@@ -11,6 +12,10 @@ export class Constants {
     public static HOME_PAGE = { id: 'home', name: 'HomePage' };
     public static INITIAL_PAGE = { id: 'initial', name: 'InitialPage' };
     public static PRINCIPAL_PAGE = { id: 'principal', name: 'PrincipalPage' };
+    public static VAGAS_PAGE = {id: 'vagas', name: 'VagaslivresPage'};
+    public static CAMERA_PAGE = {id: 'camera', name: 'CamerascanPage'};
+    public static TIMER_PAGE = {id: 'timer', name: 'TimerparapagarPage'}
+    public static TICKETCOMPROVANTE_PAGE = {id: 'ticketcomprovante', name: 'TicketcomprovantePage'}
     public static ESTACIONADOS_MODAL_PAGE = { id: 'estacionados-modal', name: 'EstacionadosModalPage' };
     public static LOGIN_PAGE = { id: 'login', name: 'LoginPage' };
     public static PAGAMENTOS_PAGE = { id: 'pagamentos', name: 'PagamentosPage' };

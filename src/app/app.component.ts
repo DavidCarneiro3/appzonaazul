@@ -102,7 +102,7 @@ export class MyApp {
 
                     this.events.publish('user', user)
                     this.user = user
-                    console.log(this.user)
+                    //console.log(this.user)
                     this.rootPage = Constants.INITIAL_PAGE.name;
                     //this.setVisibleMenu(false);
                     // }

@@ -95175,6 +95175,10 @@ areas-modal ion-item {
   color: #acacac;
 }
 
+page-camerascan .backg {
+  background-color: #000000;
+}
+
 page-cancelar-transacao .scroll-content {
   background-color: #E5E5E5;
   font-family: "kanit";
@@ -101443,6 +101447,1515 @@ page-terms .content .btn-row .btn {
   position: fixed;
   left: 5%;
   bottom: 0;
+}
+
+page-ticketcomprovante {
+  font-family: "kanit";
+}
+
+page-ticketcomprovante .title-header {
+  font-family: "kanit";
+  width: 300px;
+  margin-left: 30px;
+}
+
+page-ticketcomprovante .select-city .select-icon {
+  color: #f2f2f2;
+  position: relative;
+  width: 14px;
+  height: 20px;
+  margin-top: 5px;
+}
+
+page-ticketcomprovante .select-ios {
+  max-width: 65%;
+}
+
+page-ticketcomprovante .select-ios .select-text {
+  margin-left: 5px;
+}
+
+page-ticketcomprovante .select-md .select-icon .select-icon-inner {
+  color: #fff;
+}
+
+page-ticketcomprovante .time {
+  font-size: 1pc;
+  color: #fff;
+  background-color: transparent;
+}
+
+page-ticketcomprovante .header-icon {
+  color: #fff;
+  margin-right: 5px;
+}
+
+page-ticketcomprovante .pin-icon {
+  color: #fff;
+  margin-right: 15px;
+}
+
+page-ticketcomprovante .vaga-icon {
+  width: 30px;
+  width: 30px;
+}
+
+page-ticketcomprovante .img-top {
+  background-color: #4a83d4;
+  width: 111%;
+  margin-top: -40px;
+  margin-left: -16px;
+}
+
+page-ticketcomprovante .img-top img {
+  width: 110%;
+}
+
+page-ticketcomprovante .img-top .title {
+  text-align: left;
+  margin-left: 20px;
+  font-size: 32px;
+  font-weight: bold;
+  color: #fff;
+  margin-top: -80px;
+}
+
+page-ticketcomprovante .img-top .price {
+  margin-top: -10px;
+  margin-left: 20px;
+  color: #6fcf97;
+}
+
+page-ticketcomprovante .btn-comprar {
+  width: 50px;
+  height: 40px;
+  margin-top: -55px;
+  margin-bottom: 15px;
+  border-radius: 50px !important;
+  background-color: #27ae60;
+  color: #fff;
+  font-size: 11pt;
+  margin-right: 5%;
+  float: right;
+}
+
+page-ticketcomprovante .content {
+  background: #f2f2f2;
+}
+
+page-ticketcomprovante .content .select {
+  color: #3f65ff;
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+page-ticketcomprovante .content .list-item {
+  height: 80px;
+  border-radius: 5px;
+}
+
+page-ticketcomprovante .content .class0 {
+  -webkit-box-shadow: 1px 1px 1px 1px #d2d2d2;
+  box-shadow: 1px 1px 1px 1px #d2d2d2;
+  border-left: 6px solid #c511ed;
+  color: #fff;
+  border-radius: 5px;
+  width: 100%;
+  height: 80px;
+  margin-left: 0%;
+  margin-top: 10%;
+  background-color: #fff;
+}
+
+page-ticketcomprovante .content .class0 .btn-estacionar {
+  width: 160px;
+  height: 40px;
+  margin-top: 4px;
+  margin-right: -10px;
+  margin-bottom: 0px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 9pt;
+  float: right;
+}
+
+page-ticketcomprovante .content .class0 .btn-estacionar img {
+  width: 25px;
+  height: 20px;
+  margin-top: -4px;
+  margin-right: 2px;
+  float: right;
+}
+
+page-ticketcomprovante .content .class0 ion-select {
+  width: 50%;
+}
+
+page-ticketcomprovante .content .class0 .title-select {
+  color: #243060;
+  font-size: 18px;
+}
+
+page-ticketcomprovante .content .class0 p {
+  margin-top: 5px;
+  color: #ccc;
+}
+
+page-ticketcomprovante .content .class1 {
+  -webkit-box-shadow: 1px 1px 1px 1px #d2d2d2;
+  box-shadow: 1px 1px 1px 1px #d2d2d2;
+  border-left: 6px solid #11c1ed;
+  color: #243060;
+  border-radius: 5px;
+  width: 100%;
+  height: 80px;
+  margin-left: 0%;
+  margin-top: 3%;
+  background-color: #fff;
+}
+
+page-ticketcomprovante .content .class1 .btn-estacionar {
+  width: 130px;
+  height: 40px;
+  margin-top: 4px;
+  margin-right: -10px;
+  margin-bottom: 0px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 9pt;
+  float: right;
+}
+
+page-ticketcomprovante .content .class1 .btn-estacionar img {
+  width: 25px;
+  height: 20px;
+  margin-top: -4px;
+  margin-right: 2px;
+  float: right;
+}
+
+page-ticketcomprovante .content .class1 ion-select {
+  width: 50%;
+}
+
+page-ticketcomprovante .content .class1 .title-select {
+  color: #243060;
+  font-size: 18px;
+}
+
+page-ticketcomprovante .content .class1 p {
+  margin-top: 5px;
+  color: #ccc;
+}
+
+page-ticketcomprovante .content .class2 {
+  -webkit-box-shadow: 1px 1px 1px 1px #d2d2d2;
+  box-shadow: 1px 1px 1px 1px #d2d2d2;
+  border-left: 6px solid #11ed86;
+  color: #243060;
+  border-radius: 5px;
+  width: 100%;
+  height: 80px;
+  margin-left: 0%;
+  margin-top: 3%;
+  background-color: #fff;
+}
+
+page-ticketcomprovante .content .class2 .btn-estacionar {
+  width: 130px;
+  height: 40px;
+  margin-top: 4px;
+  margin-right: -10px;
+  margin-bottom: 0px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 9pt;
+  float: right;
+}
+
+page-ticketcomprovante .content .class2 .btn-estacionar img {
+  width: 25px;
+  height: 20px;
+  margin-top: -4px;
+  margin-right: 2px;
+  float: right;
+}
+
+page-ticketcomprovante .content .class2 ion-select {
+  width: 50%;
+}
+
+page-ticketcomprovante .content .class2 .title-select {
+  color: #243060;
+  font-size: 18px;
+}
+
+page-ticketcomprovante .content .class2 p {
+  margin-top: 5px;
+  color: #ccc;
+}
+
+page-ticketcomprovante .content .class3 {
+  -webkit-box-shadow: 1px 1px 1px 1px #d2d2d2;
+  box-shadow: 1px 1px 1px 1px #d2d2d2;
+  border-left: 6px solid #2711ed;
+  color: #fff;
+  border-radius: 5px;
+  width: 100%;
+  height: 80px;
+  margin-left: 0%;
+  margin-top: 3%;
+  background-color: #fff;
+}
+
+page-ticketcomprovante .content .class3 .btn-estacionar {
+  width: 130px;
+  height: 40px;
+  margin-top: 4px;
+  margin-right: -10px;
+  margin-bottom: 0px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 9pt;
+  float: right;
+}
+
+page-ticketcomprovante .content .class3 .btn-estacionar img {
+  width: 25px;
+  height: 20px;
+  margin-top: -4px;
+  margin-right: 2px;
+  float: right;
+}
+
+page-ticketcomprovante .content .class3 ion-select {
+  width: 50%;
+}
+
+page-ticketcomprovante .content .class3 .title-select {
+  color: #243060;
+  font-size: 18px;
+}
+
+page-ticketcomprovante .content .class3 p {
+  margin-top: 5px;
+  color: #ccc;
+}
+
+page-ticketcomprovante .content .class4 {
+  -webkit-box-shadow: 1px 1px 1px 1px #d2d2d2;
+  box-shadow: 1px 1px 1px 1px #d2d2d2;
+  border-left: 6px solid #ed1111;
+  color: #243060;
+  border-radius: 5px;
+  width: 100%;
+  height: 80px;
+  margin-left: 0%;
+  margin-top: 3%;
+  background-color: #fff;
+}
+
+page-ticketcomprovante .content .class4 .btn-estacionar {
+  width: 130px;
+  height: 40px;
+  margin-top: 4px;
+  margin-right: -10px;
+  margin-bottom: 0px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 9pt;
+  float: right;
+}
+
+page-ticketcomprovante .content .class4 .btn-estacionar img {
+  width: 25px;
+  height: 20px;
+  margin-top: -4px;
+  margin-right: 2px;
+  float: right;
+}
+
+page-ticketcomprovante .content .class4 ion-select {
+  width: 50%;
+}
+
+page-ticketcomprovante .content .class4 .title-select {
+  color: #243060;
+  font-size: 18px;
+}
+
+page-ticketcomprovante .content .class4 p {
+  margin-top: 5px;
+  color: #ccc;
+}
+
+page-ticketcomprovante .content .class5 {
+  -webkit-box-shadow: 1px 1px 1px 1px #d2d2d2;
+  box-shadow: 1px 1px 1px 1px #d2d2d2;
+  border-left: 6px solid #e6ed11;
+  color: #243060;
+  border-radius: 5px;
+  width: 100%;
+  height: 80px;
+  margin-left: 0%;
+  margin-top: 3%;
+  background-color: #fff;
+}
+
+page-ticketcomprovante .content .class5 .btn-estacionar {
+  width: 130px;
+  height: 40px;
+  margin-top: 0px;
+  margin-right: 5px;
+  margin-bottom: 0px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 9pt;
+  float: right;
+}
+
+page-ticketcomprovante .content .class5 .btn-estacionar img {
+  width: 25px;
+  height: 20px;
+  margin-top: -4px;
+  margin-right: 2px;
+  float: right;
+}
+
+page-ticketcomprovante .content .class5 ion-item {
+  background-color: #fff;
+}
+
+page-ticketcomprovante .content .class5 .title-select {
+  color: #243060;
+  font-size: 18px;
+}
+
+page-ticketcomprovante .content .class5 p {
+  margin-top: 5px;
+  color: #ccc;
+}
+
+page-ticketcomprovante .content .btn-estacionar {
+  width: 123px;
+  height: 40px;
+  margin-top: 87px;
+  margin-left: 8px;
+  margin-right: 5px;
+  margin-bottom: 0px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 10pt;
+  float: right;
+}
+
+page-ticketcomprovante .content .btn-estacionar .pin-view {
+  width: 25px;
+  height: 20px;
+  margin-top: -6px;
+  margin-right: 13px;
+  float: right;
+}
+
+page-ticketcomprovante .card-background-page ion-card {
+  position: relative;
+  text-align: center;
+}
+
+page-ticketcomprovante .card-background-page .card-title {
+  position: absolute;
+  top: 36%;
+  font-size: 2em;
+  width: 100%;
+  font-weight: bold;
+  color: #fff;
+}
+
+page-ticketcomprovante .card-background-page .card-subtitle {
+  font-size: 1em;
+  position: absolute;
+  top: 52%;
+  width: 100%;
+  color: #fff;
+}
+
+page-ticketcomprovante .label {
+  color: #3f65ff;
+  font-size: 18px;
+  font-weight: 100;
+}
+
+page-ticketcomprovante .custo {
+  color: #27ae60;
+}
+
+page-ticketcomprovante .botaobaixar {
+  width: 100%;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-radius: 26px;
+  color: #828282;
+  border: 2px solid #828282;
+}
+
+page-ticketcomprovante .botaobaixar ion-icon {
+  margin-left: 5px;
+  margin-top: -1px;
+}
+
+page-timerparapagar {
+  font-family: "kanit";
+}
+
+page-timerparapagar .title-header {
+  font-family: "kanit";
+  width: 300px;
+  margin-left: 30px;
+}
+
+page-timerparapagar .select-city .select-icon {
+  color: #f2f2f2;
+  position: relative;
+  width: 14px;
+  height: 20px;
+  margin-top: 5px;
+}
+
+page-timerparapagar .select-ios {
+  max-width: 65%;
+}
+
+page-timerparapagar .select-ios .select-text {
+  margin-left: 5px;
+}
+
+page-timerparapagar .select-md .select-icon .select-icon-inner {
+  color: #fff;
+}
+
+page-timerparapagar .time {
+  font-size: 1pc;
+  color: #fff;
+  background-color: transparent;
+}
+
+page-timerparapagar .header-icon {
+  color: #fff;
+  margin-right: 5px;
+}
+
+page-timerparapagar .pin-icon {
+  color: #fff;
+  margin-right: 15px;
+}
+
+page-timerparapagar .vaga-icon {
+  width: 30px;
+  width: 30px;
+}
+
+page-timerparapagar .img-top {
+  background-color: #4a83d4;
+  width: 111%;
+  margin-top: -40px;
+  margin-left: -16px;
+}
+
+page-timerparapagar .img-top img {
+  width: 110%;
+}
+
+page-timerparapagar .img-top .title {
+  text-align: left;
+  margin-left: 20px;
+  font-size: 32px;
+  font-weight: bold;
+  color: #fff;
+  margin-top: -80px;
+}
+
+page-timerparapagar .img-top .price {
+  margin-top: -10px;
+  margin-left: 20px;
+  color: #6fcf97;
+}
+
+page-timerparapagar .btn-comprar {
+  width: 50px;
+  height: 40px;
+  margin-top: -55px;
+  margin-bottom: 15px;
+  border-radius: 50px !important;
+  background-color: #27ae60;
+  color: #fff;
+  font-size: 11pt;
+  margin-right: 5%;
+  float: right;
+}
+
+page-timerparapagar .content {
+  background: #f2f2f2;
+}
+
+page-timerparapagar .content .select {
+  color: #3f65ff;
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+page-timerparapagar .content .list-item {
+  height: 80px;
+  border-radius: 5px;
+}
+
+page-timerparapagar .content .class0 {
+  -webkit-box-shadow: 1px 1px 1px 1px #d2d2d2;
+  box-shadow: 1px 1px 1px 1px #d2d2d2;
+  border-left: 6px solid #c511ed;
+  color: #fff;
+  border-radius: 5px;
+  width: 100%;
+  height: 80px;
+  margin-left: 0%;
+  margin-top: 10%;
+  background-color: #fff;
+}
+
+page-timerparapagar .content .class0 .btn-estacionar {
+  width: 160px;
+  height: 40px;
+  margin-top: 4px;
+  margin-right: -10px;
+  margin-bottom: 0px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 9pt;
+  float: right;
+}
+
+page-timerparapagar .content .class0 .btn-estacionar img {
+  width: 25px;
+  height: 20px;
+  margin-top: -4px;
+  margin-right: 2px;
+  float: right;
+}
+
+page-timerparapagar .content .class0 ion-select {
+  width: 50%;
+}
+
+page-timerparapagar .content .class0 .title-select {
+  color: #243060;
+  font-size: 18px;
+}
+
+page-timerparapagar .content .class0 p {
+  margin-top: 5px;
+  color: #ccc;
+}
+
+page-timerparapagar .content .class1 {
+  -webkit-box-shadow: 1px 1px 1px 1px #d2d2d2;
+  box-shadow: 1px 1px 1px 1px #d2d2d2;
+  border-left: 6px solid #11c1ed;
+  color: #243060;
+  border-radius: 5px;
+  width: 100%;
+  height: 80px;
+  margin-left: 0%;
+  margin-top: 3%;
+  background-color: #fff;
+}
+
+page-timerparapagar .content .class1 .btn-estacionar {
+  width: 130px;
+  height: 40px;
+  margin-top: 4px;
+  margin-right: -10px;
+  margin-bottom: 0px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 9pt;
+  float: right;
+}
+
+page-timerparapagar .content .class1 .btn-estacionar img {
+  width: 25px;
+  height: 20px;
+  margin-top: -4px;
+  margin-right: 2px;
+  float: right;
+}
+
+page-timerparapagar .content .class1 ion-select {
+  width: 50%;
+}
+
+page-timerparapagar .content .class1 .title-select {
+  color: #243060;
+  font-size: 18px;
+}
+
+page-timerparapagar .content .class1 p {
+  margin-top: 5px;
+  color: #ccc;
+}
+
+page-timerparapagar .content .class2 {
+  -webkit-box-shadow: 1px 1px 1px 1px #d2d2d2;
+  box-shadow: 1px 1px 1px 1px #d2d2d2;
+  border-left: 6px solid #11ed86;
+  color: #243060;
+  border-radius: 5px;
+  width: 100%;
+  height: 80px;
+  margin-left: 0%;
+  margin-top: 3%;
+  background-color: #fff;
+}
+
+page-timerparapagar .content .class2 .btn-estacionar {
+  width: 130px;
+  height: 40px;
+  margin-top: 4px;
+  margin-right: -10px;
+  margin-bottom: 0px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 9pt;
+  float: right;
+}
+
+page-timerparapagar .content .class2 .btn-estacionar img {
+  width: 25px;
+  height: 20px;
+  margin-top: -4px;
+  margin-right: 2px;
+  float: right;
+}
+
+page-timerparapagar .content .class2 ion-select {
+  width: 50%;
+}
+
+page-timerparapagar .content .class2 .title-select {
+  color: #243060;
+  font-size: 18px;
+}
+
+page-timerparapagar .content .class2 p {
+  margin-top: 5px;
+  color: #ccc;
+}
+
+page-timerparapagar .content .class3 {
+  -webkit-box-shadow: 1px 1px 1px 1px #d2d2d2;
+  box-shadow: 1px 1px 1px 1px #d2d2d2;
+  border-left: 6px solid #2711ed;
+  color: #fff;
+  border-radius: 5px;
+  width: 100%;
+  height: 80px;
+  margin-left: 0%;
+  margin-top: 3%;
+  background-color: #fff;
+}
+
+page-timerparapagar .content .class3 .btn-estacionar {
+  width: 130px;
+  height: 40px;
+  margin-top: 4px;
+  margin-right: -10px;
+  margin-bottom: 0px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 9pt;
+  float: right;
+}
+
+page-timerparapagar .content .class3 .btn-estacionar img {
+  width: 25px;
+  height: 20px;
+  margin-top: -4px;
+  margin-right: 2px;
+  float: right;
+}
+
+page-timerparapagar .content .class3 ion-select {
+  width: 50%;
+}
+
+page-timerparapagar .content .class3 .title-select {
+  color: #243060;
+  font-size: 18px;
+}
+
+page-timerparapagar .content .class3 p {
+  margin-top: 5px;
+  color: #ccc;
+}
+
+page-timerparapagar .content .class4 {
+  -webkit-box-shadow: 1px 1px 1px 1px #d2d2d2;
+  box-shadow: 1px 1px 1px 1px #d2d2d2;
+  border-left: 6px solid #ed1111;
+  color: #243060;
+  border-radius: 5px;
+  width: 100%;
+  height: 80px;
+  margin-left: 0%;
+  margin-top: 3%;
+  background-color: #fff;
+}
+
+page-timerparapagar .content .class4 .btn-estacionar {
+  width: 130px;
+  height: 40px;
+  margin-top: 4px;
+  margin-right: -10px;
+  margin-bottom: 0px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 9pt;
+  float: right;
+}
+
+page-timerparapagar .content .class4 .btn-estacionar img {
+  width: 25px;
+  height: 20px;
+  margin-top: -4px;
+  margin-right: 2px;
+  float: right;
+}
+
+page-timerparapagar .content .class4 ion-select {
+  width: 50%;
+}
+
+page-timerparapagar .content .class4 .title-select {
+  color: #243060;
+  font-size: 18px;
+}
+
+page-timerparapagar .content .class4 p {
+  margin-top: 5px;
+  color: #ccc;
+}
+
+page-timerparapagar .content .class5 {
+  -webkit-box-shadow: 1px 1px 1px 1px #d2d2d2;
+  box-shadow: 1px 1px 1px 1px #d2d2d2;
+  border-left: 6px solid #e6ed11;
+  color: #243060;
+  border-radius: 5px;
+  width: 100%;
+  height: 80px;
+  margin-left: 0%;
+  margin-top: 3%;
+  background-color: #fff;
+}
+
+page-timerparapagar .content .class5 .btn-estacionar {
+  width: 130px;
+  height: 40px;
+  margin-top: 0px;
+  margin-right: 5px;
+  margin-bottom: 0px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 9pt;
+  float: right;
+}
+
+page-timerparapagar .content .class5 .btn-estacionar img {
+  width: 25px;
+  height: 20px;
+  margin-top: -4px;
+  margin-right: 2px;
+  float: right;
+}
+
+page-timerparapagar .content .class5 ion-item {
+  background-color: #fff;
+}
+
+page-timerparapagar .content .class5 .title-select {
+  color: #243060;
+  font-size: 18px;
+}
+
+page-timerparapagar .content .class5 p {
+  margin-top: 5px;
+  color: #ccc;
+}
+
+page-timerparapagar .content .btn-estacionar {
+  width: 123px;
+  height: 40px;
+  margin-top: 87px;
+  margin-left: 8px;
+  margin-right: 5px;
+  margin-bottom: 0px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 10pt;
+  float: right;
+}
+
+page-timerparapagar .content .btn-estacionar .pin-view {
+  width: 25px;
+  height: 20px;
+  margin-top: -6px;
+  margin-right: 13px;
+  float: right;
+}
+
+page-timerparapagar .card-background-page ion-card {
+  position: relative;
+  text-align: center;
+}
+
+page-timerparapagar .card-background-page .card-title {
+  position: absolute;
+  top: 36%;
+  font-size: 2em;
+  width: 100%;
+  font-weight: bold;
+  color: #fff;
+}
+
+page-timerparapagar .card-background-page .card-subtitle {
+  font-size: 1em;
+  position: absolute;
+  top: 52%;
+  width: 100%;
+  color: #fff;
+}
+
+page-timerparapagar .label {
+  color: #3f65ff;
+  font-size: 18px;
+  font-weight: 100;
+}
+
+page-timerparapagar .custo {
+  color: #27ae60;
+}
+
+page-timerparapagar .timer {
+  display: block;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-size: 48px;
+  color: #ea1d25;
+}
+
+page-timerparapagar .botaopagar {
+  width: 100%;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-radius: 26px;
+  color: #3F65FF;
+  border: 2px solid #3F65FF;
+}
+
+page-timerparapagar .botaopagar ion-icon {
+  margin-left: 5px;
+  margin-top: -1px;
+}
+
+page-timerparapagar .danger {
+  width: 100%;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-radius: 26px;
+  color: #ea1d25;
+  border: 2px solid #ea1d25;
+}
+
+page-timerparapagar .danger ion-icon {
+  margin-left: 5px;
+  margin-top: -1px;
+}
+
+page-vagaslivres {
+  font-family: "kanit";
+}
+
+page-vagaslivres .title-header {
+  font-family: "kanit";
+  width: 300px;
+  margin-left: 30px;
+}
+
+page-vagaslivres .select-city .select-icon {
+  color: #f2f2f2;
+  position: relative;
+  width: 14px;
+  height: 20px;
+  margin-top: 5px;
+}
+
+page-vagaslivres .select-ios {
+  max-width: 65%;
+}
+
+page-vagaslivres .select-ios .select-text {
+  margin-left: 5px;
+}
+
+page-vagaslivres .select-md .select-icon .select-icon-inner {
+  color: #fff;
+}
+
+page-vagaslivres .time {
+  font-size: 1pc;
+  color: #fff;
+  background-color: transparent;
+}
+
+page-vagaslivres .header-icon {
+  color: #fff;
+  margin-right: 5px;
+}
+
+page-vagaslivres .pin-icon {
+  color: #fff;
+  margin-right: 15px;
+}
+
+page-vagaslivres .vaga-icon {
+  width: 30px;
+  width: 30px;
+}
+
+page-vagaslivres .img-top {
+  background-color: #4a83d4;
+  width: 111%;
+  margin-top: -40px;
+  margin-left: -16px;
+}
+
+page-vagaslivres .img-top img {
+  width: 110%;
+}
+
+page-vagaslivres .img-top .title {
+  text-align: left;
+  margin-left: 20px;
+  font-size: 32px;
+  font-weight: bold;
+  color: #fff;
+  margin-top: -80px;
+}
+
+page-vagaslivres .img-top .price {
+  margin-top: -10px;
+  margin-left: 20px;
+  color: #6fcf97;
+}
+
+page-vagaslivres .btn-comprar {
+  width: 50px;
+  height: 40px;
+  margin-top: -55px;
+  margin-bottom: 15px;
+  border-radius: 50px !important;
+  background-color: #27ae60;
+  color: #fff;
+  font-size: 11pt;
+  margin-right: 5%;
+  float: right;
+}
+
+page-vagaslivres .content {
+  background: #f2f2f2;
+}
+
+page-vagaslivres .content .select {
+  color: #3f65ff;
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+page-vagaslivres .content .btn-add {
+  width: 129px;
+  margin-left: 4%;
+  margin-top: 35px;
+  border-radius: 26px;
+  color: #828282;
+  border: 2px solid #828282;
+}
+
+page-vagaslivres .content .btn-add ion-icon {
+  margin-left: 5px;
+  margin-top: -1px;
+}
+
+page-vagaslivres .content .list-item {
+  height: 80px;
+  border-radius: 5px;
+}
+
+page-vagaslivres .content .class0 {
+  -webkit-box-shadow: 1px 1px 1px 1px #d2d2d2;
+  box-shadow: 1px 1px 1px 1px #d2d2d2;
+  border-left: 6px solid #c511ed;
+  color: #fff;
+  border-radius: 5px;
+  width: 100%;
+  height: 80px;
+  margin-left: 0%;
+  margin-top: 10%;
+  background-color: #fff;
+}
+
+page-vagaslivres .content .class0 .btn-estacionar {
+  width: 160px;
+  height: 40px;
+  margin-top: 4px;
+  margin-right: -10px;
+  margin-bottom: 0px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 9pt;
+  float: right;
+}
+
+page-vagaslivres .content .class0 .btn-estacionar img {
+  width: 25px;
+  height: 20px;
+  margin-top: -4px;
+  margin-right: 2px;
+  float: right;
+}
+
+page-vagaslivres .content .class0 ion-select {
+  width: 50%;
+}
+
+page-vagaslivres .content .class0 .title-select {
+  color: #243060;
+  font-size: 18px;
+}
+
+page-vagaslivres .content .class0 p {
+  margin-top: 5px;
+  color: #ccc;
+}
+
+page-vagaslivres .content .class1 {
+  -webkit-box-shadow: 1px 1px 1px 1px #d2d2d2;
+  box-shadow: 1px 1px 1px 1px #d2d2d2;
+  border-left: 6px solid #11c1ed;
+  color: #243060;
+  border-radius: 5px;
+  width: 100%;
+  height: 80px;
+  margin-left: 0%;
+  margin-top: 3%;
+  background-color: #fff;
+}
+
+page-vagaslivres .content .class1 .btn-estacionar {
+  width: 130px;
+  height: 40px;
+  margin-top: 4px;
+  margin-right: -10px;
+  margin-bottom: 0px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 9pt;
+  float: right;
+}
+
+page-vagaslivres .content .class1 .btn-estacionar img {
+  width: 25px;
+  height: 20px;
+  margin-top: -4px;
+  margin-right: 2px;
+  float: right;
+}
+
+page-vagaslivres .content .class1 ion-select {
+  width: 50%;
+}
+
+page-vagaslivres .content .class1 .title-select {
+  color: #243060;
+  font-size: 18px;
+}
+
+page-vagaslivres .content .class1 p {
+  margin-top: 5px;
+  color: #ccc;
+}
+
+page-vagaslivres .content .class2 {
+  -webkit-box-shadow: 1px 1px 1px 1px #d2d2d2;
+  box-shadow: 1px 1px 1px 1px #d2d2d2;
+  border-left: 6px solid #11ed86;
+  color: #243060;
+  border-radius: 5px;
+  width: 100%;
+  height: 80px;
+  margin-left: 0%;
+  margin-top: 3%;
+  background-color: #fff;
+}
+
+page-vagaslivres .content .class2 .btn-estacionar {
+  width: 130px;
+  height: 40px;
+  margin-top: 4px;
+  margin-right: -10px;
+  margin-bottom: 0px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 9pt;
+  float: right;
+}
+
+page-vagaslivres .content .class2 .btn-estacionar img {
+  width: 25px;
+  height: 20px;
+  margin-top: -4px;
+  margin-right: 2px;
+  float: right;
+}
+
+page-vagaslivres .content .class2 ion-select {
+  width: 50%;
+}
+
+page-vagaslivres .content .class2 .title-select {
+  color: #243060;
+  font-size: 18px;
+}
+
+page-vagaslivres .content .class2 p {
+  margin-top: 5px;
+  color: #ccc;
+}
+
+page-vagaslivres .content .class3 {
+  -webkit-box-shadow: 1px 1px 1px 1px #d2d2d2;
+  box-shadow: 1px 1px 1px 1px #d2d2d2;
+  border-left: 6px solid #2711ed;
+  color: #fff;
+  border-radius: 5px;
+  width: 100%;
+  height: 80px;
+  margin-left: 0%;
+  margin-top: 3%;
+  background-color: #fff;
+}
+
+page-vagaslivres .content .class3 .btn-estacionar {
+  width: 130px;
+  height: 40px;
+  margin-top: 4px;
+  margin-right: -10px;
+  margin-bottom: 0px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 9pt;
+  float: right;
+}
+
+page-vagaslivres .content .class3 .btn-estacionar img {
+  width: 25px;
+  height: 20px;
+  margin-top: -4px;
+  margin-right: 2px;
+  float: right;
+}
+
+page-vagaslivres .content .class3 ion-select {
+  width: 50%;
+}
+
+page-vagaslivres .content .class3 .title-select {
+  color: #243060;
+  font-size: 18px;
+}
+
+page-vagaslivres .content .class3 p {
+  margin-top: 5px;
+  color: #ccc;
+}
+
+page-vagaslivres .content .class4 {
+  -webkit-box-shadow: 1px 1px 1px 1px #d2d2d2;
+  box-shadow: 1px 1px 1px 1px #d2d2d2;
+  border-left: 6px solid #ed1111;
+  color: #243060;
+  border-radius: 5px;
+  width: 100%;
+  height: 80px;
+  margin-left: 0%;
+  margin-top: 3%;
+  background-color: #fff;
+}
+
+page-vagaslivres .content .class4 .btn-estacionar {
+  width: 130px;
+  height: 40px;
+  margin-top: 4px;
+  margin-right: -10px;
+  margin-bottom: 0px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 9pt;
+  float: right;
+}
+
+page-vagaslivres .content .class4 .btn-estacionar img {
+  width: 25px;
+  height: 20px;
+  margin-top: -4px;
+  margin-right: 2px;
+  float: right;
+}
+
+page-vagaslivres .content .class4 ion-select {
+  width: 50%;
+}
+
+page-vagaslivres .content .class4 .title-select {
+  color: #243060;
+  font-size: 18px;
+}
+
+page-vagaslivres .content .class4 p {
+  margin-top: 5px;
+  color: #ccc;
+}
+
+page-vagaslivres .content .class5 {
+  -webkit-box-shadow: 1px 1px 1px 1px #d2d2d2;
+  box-shadow: 1px 1px 1px 1px #d2d2d2;
+  border-left: 6px solid #e6ed11;
+  color: #243060;
+  border-radius: 5px;
+  width: 100%;
+  height: 80px;
+  margin-left: 0%;
+  margin-top: 3%;
+  background-color: #fff;
+}
+
+page-vagaslivres .content .class5 .btn-estacionar {
+  width: 130px;
+  height: 40px;
+  margin-top: 0px;
+  margin-right: 5px;
+  margin-bottom: 0px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 9pt;
+  float: right;
+}
+
+page-vagaslivres .content .class5 .btn-estacionar img {
+  width: 25px;
+  height: 20px;
+  margin-top: -4px;
+  margin-right: 2px;
+  float: right;
+}
+
+page-vagaslivres .content .class5 ion-item {
+  background-color: #fff;
+}
+
+page-vagaslivres .content .class5 .title-select {
+  color: #243060;
+  font-size: 18px;
+}
+
+page-vagaslivres .content .class5 p {
+  margin-top: 5px;
+  color: #ccc;
+}
+
+page-vagaslivres .content .btn-estacionar {
+  width: 123px;
+  height: 40px;
+  margin-top: 87px;
+  margin-left: 8px;
+  margin-right: 5px;
+  margin-bottom: 0px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 10pt;
+  float: right;
+}
+
+page-vagaslivres .content .btn-estacionar .pin-view {
+  width: 25px;
+  height: 20px;
+  margin-top: -6px;
+  margin-right: 13px;
+  float: right;
+}
+
+page-vagaslivres .card-background-page ion-card {
+  position: relative;
+  text-align: center;
+}
+
+page-vagaslivres .card-background-page .card-title {
+  position: absolute;
+  top: 36%;
+  font-size: 2em;
+  width: 100%;
+  font-weight: bold;
+  color: #fff;
+}
+
+page-vagaslivres .card-background-page .card-subtitle {
+  font-size: 1em;
+  position: absolute;
+  top: 52%;
+  width: 100%;
+  color: #fff;
+}
+
+page-vagaslivres .btn-add {
+  width: 129px;
+  margin-left: 4%;
+  margin-top: 35px;
+  border-radius: 26px;
+  color: #828282;
+  border: 2px solid #828282;
+}
+
+page-vagaslivres .btn-add ion-icon {
+  margin-left: 5px;
+  margin-top: -1px;
+}
+
+page-vagaslivres .btn-estacionamento {
+  width: 140px;
+  position: relative;
+  color: #3f65ff;
+  border: 2px solid #3f65ff;
+  height: 40px;
+  margin-left: 8px;
+  margin-bottom: 0px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 10pt;
+  float: right;
+}
+
+page-vagaslivres .btn-estacionamento ion-icon {
+  margin-left: 5px;
+  margin-top: -1px;
+}
+
+page-vagaslivres .btn-estacionamento .pin-view {
+  width: 25px;
+  height: 20px;
+  margin-top: -6px;
+  margin-right: 13px;
+  float: right;
+}
+
+page-vagaslivres .btn-ticket {
+  width: 140px;
+  font-size: 12px;
+  height: 40px;
+  float: right;
+  position: relative;
+  color: #6fcf97;
+  border: 2px solid #6fcf97;
+}
+
+page-vagaslivres .btn-ticket ion-icon {
+  margin-left: 5px;
+  margin-top: -1px;
+}
+
+page-vagaslivres .item-md .item-button {
+  font-size: 10pt;
+}
+
+page-vagaslivres .info {
+  margin-top: -2.9%;
+  text-align: center;
+  color: white;
+  background-color: #283e81;
+  padding: 5px;
+}
+
+page-vagaslivres .info p {
+  margin: 0px;
+}
+
+page-vagaslivres .info .alert-wrapper {
+  background-color: #4d90fe;
+  color: #fff;
+}
+
+page-vagaslivres .conteudo {
+  width: 90%;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+page-vagaslivres .item {
+  margin-top: 5%;
+  margin-left: 5%;
+  display: block;
+}
+
+page-vagaslivres .item-md ion-thumbnail[item-start] {
+  margin: 0px 0px 0px 0;
+}
+
+page-vagaslivres .item-md ion-thumbnail img {
+  width: 32px;
+  height: 37px;
+}
+
+page-vagaslivres .text-endereco {
+  margin-top: 37px;
+  margin-bottom: 23px;
+}
+
+page-vagaslivres .text-vaga {
+  margin-top: 37px;
+  margin-bottom: 23px;
+  text-align: left;
+}
+
+page-vagaslivres .text-vaga p {
+  font-size: 11px;
+}
+
+page-vagaslivres .item-md.item-block .item-inner {
+  margin-top: -35px;
+}
+
+page-vagaslivres .imag {
+  width: 32px;
+  height: 37px;
 }
 
 page-veiculo-estacionado .header-icon {

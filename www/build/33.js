@@ -1,14 +1,14 @@
 webpackJsonp([33],{
 
-/***/ 743:
+/***/ 750:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EstacionadosModalPageModule", function() { return EstacionadosModalPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PermissionsModalPageModule", function() { return PermissionsModalPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(35);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__estacionados_modal__ = __webpack_require__(795);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__permissions_screen__ = __webpack_require__(807);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,33 +18,35 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var EstacionadosModalPageModule = /** @class */ (function () {
-    function EstacionadosModalPageModule() {
+var PermissionsModalPageModule = /** @class */ (function () {
+    function PermissionsModalPageModule() {
     }
-    EstacionadosModalPageModule = __decorate([
+    PermissionsModalPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__estacionados_modal__["a" /* EstacionadosModalPage */],
+                __WEBPACK_IMPORTED_MODULE_2__permissions_screen__["a" /* PermissionsModalPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__estacionados_modal__["a" /* EstacionadosModalPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__permissions_screen__["a" /* PermissionsModalPage */]),
             ],
         })
-    ], EstacionadosModalPageModule);
-    return EstacionadosModalPageModule;
+    ], PermissionsModalPageModule);
+    return PermissionsModalPageModule;
 }());
 
-//# sourceMappingURL=estacionados-modal.module.js.map
+//# sourceMappingURL=permissions-screen.module.js.map
 
 /***/ }),
 
-/***/ 795:
+/***/ 807:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EstacionadosModalPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PermissionsModalPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ionic_native_android_permissions__ = __webpack_require__(200);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_user_user__ = __webpack_require__(43);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -56,66 +58,170 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-var EstacionadosModalPage = /** @class */ (function () {
-    function EstacionadosModalPage(navCtrl, navParams, viewCtrl) {
-        this.navCtrl = navCtrl;
+
+
+var PermissionsModalPage = /** @class */ (function () {
+    function PermissionsModalPage(navParams, alertCtrl, userProvider, androidPermissions, viewCtrl) {
         this.navParams = navParams;
+        this.alertCtrl = alertCtrl;
+        this.userProvider = userProvider;
+        this.androidPermissions = androidPermissions;
         this.viewCtrl = viewCtrl;
-        this.todosVeiculos = [];
-        this.copiaVeiculos = [];
-        this.veiculos = [];
-        this.veiculoSelecionado = [];
-        this.getVeiculos();
+        this.fromPage = '';
+        this.title = '';
+        this.reason = '';
     }
-    EstacionadosModalPage.prototype.ionViewWillLoad = function () {
+    PermissionsModalPage.prototype.ionViewWillLoad = function () {
+        this.getPage();
     };
-    EstacionadosModalPage.prototype.dismiss = function () {
-        this.viewCtrl.dismiss();
-    };
-    EstacionadosModalPage.prototype.getVeiculos = function () {
+    PermissionsModalPage.prototype.ionViewCanEnter = function () {
         var _this = this;
+        this.userProvider.getUserLocal().then(function (userID) {
+            if (userID) {
+                _this.user_id = userID;
+                _this.userProvider.byId(userID)
+                    .subscribe(function (user) {
+                    _this.user = user;
+                });
+                return true;
+            }
+        });
+    };
+    // PROCURAR AQUI PARA DIVIDER CADA PERMISSÃO EM UMA TELA SEPARADA
+    PermissionsModalPage.prototype.getPage = function () {
+        var _this = this;
+        var IMEI = "O Zona F\u00E1cil precisar\u00E1 do seu IMEI para prosseguir. O IMEI \u00E9 o identificador \u00FAnico do seu smartphone e ele garantir\u00E1 a seguran\u00E7a das suas transa\u00E7\u00F5es.";
+        var localização = "O Zona F\u00E1cil est\u00E1 \u00E0 sua disposi\u00E7\u00E3o em muitos bairros, e para melhor atend\u00EA-lo, gostar\u00EDamos da sua permiss\u00E3o para acessar a sua localiza\u00E7\u00E3o para selecionar automaticamente o bairro onde voc\u00EA est\u00E1 localizado e para informar vagas dispon\u00EDveis, nos bairros onde h\u00E1 este servi\u00E7o.";
+        var camera = "O Zona F\u00E1cil precisar\u00E1 acessar sua c\u00E2mera ou arquivos de m\u00EDdia para prosseguir. Isso porque ser\u00E1 necess\u00E1rio enviar uma foto do documento.";
         return new Promise(function (resolve) {
-            var veiculos = _this.navParams.get('veiculos');
-            console.log(veiculos);
-            _this.copiaVeiculos = veiculos ? veiculos : [];
-            _this.veiculos = veiculos ? veiculos : [];
-            console.log(_this.veiculos);
+            _this.fromPage = _this.navParams.get('fromPage');
+            if (_this.fromPage == 'profile-edit') {
+                _this.title = 'Acesso a Câmera e Galeria!';
+                _this.reason = 'O Zona Fácil precisa de acesso a camera e a galeria para alterar a foto de perfil!';
+            }
+            else if (_this.fromPage === 'phone') {
+                _this.title = 'Acesso ao Telefone';
+                _this.reason = IMEI;
+            }
+            else if (_this.fromPage === 'pdv-empresa') {
+                _this.title = 'Acesso a Câmera e Galeria!';
+                _this.reason = camera;
+            }
+            else {
+                _this.title = 'Acesso a Localização!';
+                _this.reason = localização;
+            }
             resolve(true);
         });
     };
-    EstacionadosModalPage.prototype.select = function (veiculo) {
-        this.veiculoSelecionado = veiculo;
-    };
-    EstacionadosModalPage.prototype.procurarVeiculos = function (event) {
-        var placa = event.target.value;
-        if (placa) {
-            if (placa.trim == '') {
-                this.veiculos = this.copiaVeiculos;
-            }
-            else {
-                this.veiculos = this.copiaVeiculos.filter(function (veiculos) {
-                    console.log(veiculos);
-                    return (veiculos && veiculos.veiculo.placa.toUpperCase().indexOf(placa.toUpperCase()) > -1);
-                });
-            }
+    PermissionsModalPage.prototype.askPermissions = function () {
+        if (this.fromPage == 'profile-edit' || this.fromPage == 'pdv-empresa') {
+            this.askCameraPermission();
+        }
+        else if (this.fromPage == 'phone') {
+            this.askPhonePermision();
         }
         else {
-            this.veiculos = this.copiaVeiculos;
+            this.askLocationPermission();
         }
     };
-    EstacionadosModalPage.prototype.selectVeiculo = function () {
-        this.viewCtrl.dismiss(this.veiculoSelecionado);
+    PermissionsModalPage.prototype.askCameraPermission = function () {
+        var _this = this;
+        this.androidPermissions.requestPermissions([
+            this.androidPermissions.PERMISSION.CAMERA,
+            this.androidPermissions.PERMISSION.WRITE_EXTERNAL_STORAGE
+        ])
+            .then(function () {
+            _this.closePage();
+        })
+            .catch(function (error) {
+        });
     };
-    EstacionadosModalPage = __decorate([
+    PermissionsModalPage.prototype.askPhonePermision = function () {
+        var _this = this;
+        this.androidPermissions.requestPermission(this.androidPermissions.PERMISSION.READ_PHONE_STATE)
+            .then(function (result) {
+            if (result.hasPermission) {
+                _this.userProvider.updateUuidOrImei(_this.user_id, function (uuid) {
+                    _this.user.uidAparelho = uuid;
+                });
+                _this.closePage();
+            }
+            else {
+                _this.androidPermissions.checkPermission(_this.androidPermissions.PERMISSION.READ_PHONE_STATE)
+                    .then(function (result) {
+                    if (result.hasPermission) {
+                        _this.closePage();
+                    }
+                    else {
+                        _this.showAlert('Permissão Importante!', 'O Zona Fácil precisa de acesso ao Telefone, para obter o IMEI do dispositivo para o funcionamento do sistema.', 'alert-button-group');
+                    }
+                })
+                    .catch(function (error) {
+                });
+            }
+        });
+    };
+    PermissionsModalPage.prototype.askLocationPermission = function () {
+        var _this = this;
+        this.androidPermissions.requestPermission(this.androidPermissions.PERMISSION.ACCESS_FINE_LOCATION)
+            .then(function (result) {
+            _this.closePage();
+        })
+            .catch(function (err) { return console.log(err); });
+    };
+    PermissionsModalPage.prototype.askPhonePermission = function () {
+        var _this = this;
+        this.androidPermissions.requestPermission(this.androidPermissions.PERMISSION.READ_PHONE_STATE)
+            .then(function (result) {
+            if (result.hasPermission) {
+                _this.userProvider.updateUuidOrImei(_this.user_id, function (uuid) {
+                });
+                _this.closePage();
+            }
+        });
+    };
+    PermissionsModalPage.prototype.closePage = function () {
+        this.viewCtrl.dismiss();
+    };
+    PermissionsModalPage.prototype.showAlert = function (title, msg, type) {
+        var _this = this;
+        this.alertCtrl.create({
+            title: title,
+            message: msg,
+            cssClass: type,
+            buttons: [
+                {
+                    text: 'Autorizar',
+                    cssClass: 'btn-ok',
+                    handler: function () {
+                        _this.askPhonePermission();
+                    }
+                },
+                {
+                    text: 'Cancelar',
+                    cssClass: 'btn-warning',
+                    handler: function () {
+                        _this.closePage();
+                    }
+                }
+            ]
+        }).present();
+    };
+    PermissionsModalPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-estacionados-modal',template:/*ion-inline-start:"C:\Users\ELIAS\Desktop\ZAD\src\pages\estacionados-modal\estacionados-modal.html"*/'<ion-header>\n\n    <ion-navbar color="header" text-center>\n\n        <ion-title>\n\n            <ion-label>\n\n                Selecione seu veículo\n\n            </ion-label>\n\n        </ion-title>\n\n\n\n        <ion-buttons left>\n\n            <button ion-button icon-only (click)="dismiss()">\n\n                <span color="light" class="header-icon" showWhen="ios">Fechar</span>\n\n                <ion-icon name="md-arrow-back" class="header-icon" showWhen="android,windows"></ion-icon>\n\n            </button>\n\n        </ion-buttons>\n\n    </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content>\n\n    <ion-searchbar class="search" placeholder="Buscar por placa" color="primary" (ionInput)="procurarVeiculos($event)"></ion-searchbar>\n\n    <!-- <ion-list radio-group>\n\n        <ion-item *ngFor="let veiculo of veiculos" text-wrap>\n\n            <ion-label>\n\n                <p class="titulo">{{veiculo.veiculo.placa}}</p>\n\n                <p class="subtitulo">{{veiculo.veiculo.marca}} {{veiculo.veiculo.modelo}}</p>\n\n            </ion-label>\n\n            <ion-radio item-left slot="start" (ionSelect)="select(veiculo)" mode="md"></ion-radio>\n\n        </ion-item>\n\n    </ion-list> -->\n\n</ion-content>\n\n\n\n<ion-footer class="footer">\n\n    <ion-toolbar class="toolbar">\n\n        <ion-title>\n\n            <ion-row class="btn-rows">\n\n                <ion-col>\n\n                    <button ion-button block class="btn-cancelar" (click)="dismiss()" mode="md">Cancelar</button>\n\n                </ion-col>\n\n\n\n                <ion-col>\n\n                    <button ion-button block class="btn" (click)="selectVeiculo()"\n\n                        [disabled]="this.veiculoSelecionado.length <= 0" mode="md">OK</button>\n\n                </ion-col>\n\n            </ion-row>\n\n        </ion-title>\n\n    </ion-toolbar>\n\n</ion-footer>'/*ion-inline-end:"C:\Users\ELIAS\Desktop\ZAD\src\pages\estacionados-modal\estacionados-modal.html"*/,
+            selector: 'permissions-screen',template:/*ion-inline-start:"C:\Users\ELIAS\Desktop\ZAD\src\pages\permissions\permissions-screen.html"*/'<ion-header no-border text-center>\n\n    <ion-navbar color="header" text-center>\n\n        <ion-title>\n\n            <ion-label>\n\n                Permissão Requerida\n\n            </ion-label>\n\n        </ion-title>\n\n    </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding>\n\n    <p class="conteudo-titulo">\n\n        {{title}}\n\n    </p>\n\n    <p class="conteudo-texto">\n\n        {{reason}}\n\n    </p>\n\n</ion-content>\n\n\n\n<ion-footer class="footer">\n\n    <ion-toolbar>\n\n        <button ion-button block (click)="askPermissions()" mode="md">Continuar</button>\n\n    </ion-toolbar>\n\n</ion-footer>'/*ion-inline-end:"C:\Users\ELIAS\Desktop\ZAD\src\pages\permissions\permissions-screen.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* ViewController */]])
-    ], EstacionadosModalPage);
-    return EstacionadosModalPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["n" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* AlertController */],
+            __WEBPACK_IMPORTED_MODULE_3__providers_user_user__["a" /* UserProvider */],
+            __WEBPACK_IMPORTED_MODULE_1__ionic_native_android_permissions__["a" /* AndroidPermissions */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["r" /* ViewController */]])
+    ], PermissionsModalPage);
+    return PermissionsModalPage;
 }());
 
-//# sourceMappingURL=estacionados-modal.js.map
+//# sourceMappingURL=permissions-screen.js.map
 
 /***/ })
 

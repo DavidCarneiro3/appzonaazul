@@ -67,6 +67,7 @@ import { ProgressBarModule } from "../components/progress-bar/progress-bar.modul
 
 import { MyApp } from './app.component';
 import { environment } from '../environments/environment';
+import { ApiTesteProvider } from '../providers/api-teste/api-teste';
 
 
 
@@ -157,7 +158,8 @@ import { environment } from '../environments/environment';
         CieloProvider,
         Clipboard,
         ConsultarPlacaProvider,
-        HolidaysProvider
+        HolidaysProvider,
+    ApiTesteProvider
     ]
 })
 export class AppModule {

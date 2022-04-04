@@ -1,14 +1,14 @@
 webpackJsonp([35],{
 
-/***/ 736:
+/***/ 746:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SetoresModalPageModule", function() { return SetoresModalPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FiltroPagamentoPageModule", function() { return FiltroPagamentoPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(35);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__areas_modal__ = __webpack_require__(784);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__filtro_pagamento__ = __webpack_require__(803);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,31 +18,31 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var SetoresModalPageModule = /** @class */ (function () {
-    function SetoresModalPageModule() {
+var FiltroPagamentoPageModule = /** @class */ (function () {
+    function FiltroPagamentoPageModule() {
     }
-    SetoresModalPageModule = __decorate([
+    FiltroPagamentoPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__areas_modal__["a" /* AreasModalPage */],
+                __WEBPACK_IMPORTED_MODULE_2__filtro_pagamento__["a" /* FiltroPagamentoPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__areas_modal__["a" /* AreasModalPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__filtro_pagamento__["a" /* FiltroPagamentoPage */]),
             ],
         })
-    ], SetoresModalPageModule);
-    return SetoresModalPageModule;
+    ], FiltroPagamentoPageModule);
+    return FiltroPagamentoPageModule;
 }());
 
-//# sourceMappingURL=areas-modal.module.js.map
+//# sourceMappingURL=filtro-pagamento.module.js.map
 
 /***/ }),
 
-/***/ 784:
+/***/ 803:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AreasModalPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FiltroPagamentoPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(35);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -56,63 +56,55 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-var AreasModalPage = /** @class */ (function () {
-    function AreasModalPage(viewCtrl, navParams) {
-        this.viewCtrl = viewCtrl;
+var FiltroPagamentoPage = /** @class */ (function () {
+    function FiltroPagamentoPage(navCtrl, navParams, viewCtlr, event) {
+        this.navCtrl = navCtrl;
         this.navParams = navParams;
-        this.areas = [];
-        this.copiaAreas = [];
-        this.codigoArea = '';
+        this.viewCtlr = viewCtlr;
+        this.event = event;
+        this.selectOption = {
+            title: 'Tipo',
+            subtitle: 'Escolha o tipo do Filtro',
+            mode: 'ios'
+        };
+        this.filter = {
+            data: "",
+            qtdCads: "",
+            valor: ""
+        };
+        this.data = navParams.get('data');
     }
-    AreasModalPage.prototype.dismiss = function () {
-        this.viewCtrl.dismiss();
+    FiltroPagamentoPage.prototype.ionViewDidLoad = function () {
     };
-    AreasModalPage.prototype.ionViewWillLoad = function () {
-        this.getAreas();
-    };
-    AreasModalPage.prototype.getAreas = function () {
-        var _this = this;
-        return new Promise(function (resolve) {
-            var areas = _this.navParams.get('datas');
-            _this.areas = areas ? areas : [];
-            _this.copiaAreas = areas ? areas : [];
-            resolve(true);
-        });
-    };
-    AreasModalPage.prototype.confirmar = function () {
-        this.viewCtrl.dismiss(this.codigoArea);
-    };
-    AreasModalPage.prototype.selectArea = function (codigo) {
-        this.codigoArea = codigo;
-    };
-    AreasModalPage.prototype.procurarBairro = function (event) {
-        var area = '';
-        area = event.target.value;
-        if (area) {
-            if (area.trim() === '') {
-                this.areas = this.copiaAreas;
-            }
-            else {
-                this.areas = this.copiaAreas.filter(function (areas) {
-                    return (areas.endereco && areas.endereco.toUpperCase().indexOf(area.toUpperCase()) > -1);
-                });
-            }
+    FiltroPagamentoPage.prototype.Filtro = function () {
+        if (this.filter.data !== "") {
+            this.formatDate();
         }
-        else {
-            this.areas = this.copiaAreas;
-        }
+        this.event.publish('pay_filter_event', this.filter);
+        this.navCtrl.pop();
     };
-    AreasModalPage = __decorate([
+    FiltroPagamentoPage.prototype.formatDate = function () {
+        var format = this.filter.data.split("-");
+        var result = new Date(parseInt(format[0]), parseInt(format[1]) - 1, parseInt(format[2])).toDateString();
+        return this.filter.data = result;
+    };
+    FiltroPagamentoPage.prototype.closeModal = function () {
+        this.event.publish('', this.filter);
+        this.navCtrl.pop();
+    };
+    FiltroPagamentoPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'areas-modal',template:/*ion-inline-start:"C:\Users\ELIAS\Desktop\ZAD\src\pages\areas-modal\areas-modal.html"*/'<ion-header no-border text-center>\n\n  <ion-navbar color="header" text-center>\n\n\n\n    <ion-title>\n\n      <ion-label>Selecione o bairro</ion-label>\n\n    </ion-title>\n\n\n\n    <ion-buttons right>\n\n      <button ion-button (click)="dismiss()">\n\n        <ion-icon name="close" class="header-icon"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding>\n\n\n\n  <ion-searchbar placeholder="Buscar Bairro" color="secondary" (ionInput)="procurarBairro($event)"></ion-searchbar>\n\n  <ion-list radio-group>\n\n    <ion-item *ngFor="let area of areas" text-warp>\n\n      <ion-label>{{ area.codigo }} - {{area.endereco}}</ion-label>\n\n      <ion-radio item-left slot="start" (ionSelect)="selectArea(area.codigo)" mode="md"></ion-radio>\n\n    </ion-item>\n\n  </ion-list>\n\n\n\n</ion-content>\n\n\n\n<ion-footer class="footer">\n\n  <ion-toolbar>\n\n    <ion-title>\n\n      <ion-row class="btn-rows">\n\n        <ion-col>\n\n          <button ion-button block (click)="dismiss()" mode="md">Cancelar</button>\n\n        </ion-col>\n\n        <ion-col>\n\n          <button ion-button block (click)="confirmar()" color="default" [disabled]="codigoArea.length <= 0"\n\n            mode="md">OK</button>\n\n        </ion-col>\n\n      </ion-row>\n\n    </ion-title>\n\n  </ion-toolbar>\n\n</ion-footer>'/*ion-inline-end:"C:\Users\ELIAS\Desktop\ZAD\src\pages\areas-modal\areas-modal.html"*/
+            selector: 'page-filtro-pagamento',template:/*ion-inline-start:"C:\Users\ELIAS\Desktop\ZAD\src\pages\filtro-pagamento\filtro-pagamento.html"*/'<ion-header no-border>\n\n    <ion-navbar color="header" no-margin no-padding>\n\n        <ion-buttons left>\n\n            <button ion-button icon-only (click)="closeModal()">\n\n                <span color="light" class="header-icon" showWhen="ios">Fechar</span>\n\n                <ion-icon name="md-arrow-back" class="header-icon" showWhen="android,windows"></ion-icon>\n\n            </button>\n\n        </ion-buttons>\n\n\n\n        <ion-title class="header-title">Filtros</ion-title>\n\n    </ion-navbar>\n\n</ion-header>\n\n\n\n\n\n<ion-content padding class="content">\n\n    <div class="informacoes-body">\n\n\n\n        <div class="informacoes-body-list">\n\n           \n\n            <ion-item class="informacoes-body-list-item" no-lines>\n\n                <ion-label  style="max-width:10%;"><ion-icon name="ios-calendar-outline"></ion-icon></ion-label>\n\n                <ion-datetime displayFormat="DD/MM/YYYY" placeholder="DD/MM/YYYY" [min]="data.min" [max]="data.today"\n\n                    cancelText="Cancelar" doneText="Selecionar" [(ngModel)]=\'filter.data\' name=\'data\' color="yellow-dark">\n\n                </ion-datetime><button class="menu-btn" ion-button clear  type="button" item-right> <ion-icon ios="ios-checkmark-circle-outline" class="{{filter.data?\'icon-blue icon icon-ios ion-ios-checkmark-circle-outline\':\'icon-grey icon icon-ios ion-ios-checkmark-circle-outline\'}}"></ion-icon> </button>\n\n            </ion-item>\n\n        \n\n            <ion-item class="informacoes-body-list-item" no-lines>\n\n                <ion-label class="btn-icon"><ion-icon name="ios-basket-outline"></ion-icon></ion-label>\n\n                <ion-input type="tel" placeholder="Quantidade de CADs" [(ngModel)]="filter.qtdCads" name="qtdCads" class="{{filter.qtdCads?\'blue-component\':\'grey-component\'}}"> \n\n\n\n                </ion-input><button class="menu-btn" ion-button clear  type="button" item-right> <ion-icon ios="ios-checkmark-circle-outline" class="{{filter.qtdCads?\'icon-blue icon icon-ios ion-ios-checkmark-circle-outline\':\'icon-grey icon icon-ios ion-ios-checkmark-circle-outline\'}}"></ion-icon> </button>\n\n            </ion-item>\n\n        \n\n            <ion-item class="informacoes-body-list-item" no-lines>\n\n                <ion-label class="btn-icon"><ion-icon name="ios-pricetags-outline"></ion-icon></ion-label>\n\n                <ion-input type="tel" placeholder="R$ 10,00" [(ngModel)]="filter.valor" name="valor" class="{{filter.valor?\'blue-component\':\'grey-component\'}}"> \n\n\n\n                </ion-input><button class="menu-btn" ion-button clear  type="button" item-right> <ion-icon ios="ios-checkmark-circle-outline" class="{{filter.valor?\'icon-blue icon icon-ios ion-ios-checkmark-circle-outline\':\'icon-grey icon icon-ios ion-ios-checkmark-circle-outline\'}}"></ion-icon> </button>\n\n            </ion-item>\n\n    \n\n            <ion-item class="btn-row" no-lines>\n\n                <button ion-button style="height:40px" class="btn" block (click)="Filtro()"> Filtrar </button>\n\n            </ion-item>\n\n        </div>\n\n    </div>\n\n\n\n    <!-- <ion-grid class="grid-historico-estacionamento">\n\n\n\n        <ion-row>\n\n            <ion-col width-30 style="margin-top:9px; ">\n\n                <ion-label class="label" color="primary">Data</ion-label>\n\n            </ion-col>\n\n            <ion-col>\n\n                <ion-datetime displayFormat="DD/MM/YYYY" placeholder="DD/MM/YYYY" [min]="data.min" [max]="data.today"\n\n                    cancelText="Cancelar" doneText="Selecionar" [(ngModel)]=\'filter.data\' name=\'data\'>\n\n                </ion-datetime>\n\n            </ion-col>\n\n        </ion-row>\n\n\n\n        <ion-row>\n\n            <ion-col width-30 style="margin-top:9px; ">\n\n                <ion-label class="label" color="primary">Quantidade CADS</ion-label>\n\n            </ion-col>\n\n            <ion-col>\n\n                <ion-input type="text" placeholder="1" [(ngModel)]="filter.qtdCads" name="qtdCads"> </ion-input>\n\n            </ion-col>\n\n        </ion-row>\n\n\n\n        <ion-row>\n\n            <ion-col width-30 style="margin-top:9px; ">\n\n                <ion-label class="label" color="primary">Valor gasto</ion-label>\n\n            </ion-col>\n\n            <ion-col>\n\n                <ion-input type="text" placeholder="10,00" [(ngModel)]=\'filter.valor\' name="valor">\n\n                </ion-input>\n\n            </ion-col>\n\n        </ion-row>\n\n\n\n        <ion-item class="btn-row" no-lines>\n\n            <button ion-button style="height:40px" class="btn" block (click)="Filtro()"> Filtrar </button>\n\n        </ion-item>\n\n    </ion-grid> -->\n\n\n\n</ion-content>'/*ion-inline-end:"C:\Users\ELIAS\Desktop\ZAD\src\pages\filtro-pagamento\filtro-pagamento.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* ViewController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavParams */]])
-    ], AreasModalPage);
-    return AreasModalPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* ViewController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* Events */]])
+    ], FiltroPagamentoPage);
+    return FiltroPagamentoPage;
 }());
 
-//# sourceMappingURL=areas-modal.js.map
+//# sourceMappingURL=filtro-pagamento.js.map
 
 /***/ })
 

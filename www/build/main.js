@@ -1,4 +1,4 @@
-webpackJsonp([36],{
+webpackJsonp([40],{
 
 /***/ 111:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -168,6 +168,10 @@ var Constants = /** @class */ (function () {
     Constants.HOME_PAGE = { id: 'home', name: 'HomePage' };
     Constants.INITIAL_PAGE = { id: 'initial', name: 'InitialPage' };
     Constants.PRINCIPAL_PAGE = { id: 'principal', name: 'PrincipalPage' };
+    Constants.VAGAS_PAGE = { id: 'vagas', name: 'VagaslivresPage' };
+    Constants.CAMERA_PAGE = { id: 'camera', name: 'CamerascanPage' };
+    Constants.TIMER_PAGE = { id: 'timer', name: 'TimerparapagarPage' };
+    Constants.TICKETCOMPROVANTE_PAGE = { id: 'ticketcomprovante', name: 'TicketcomprovantePage' };
     Constants.ESTACIONADOS_MODAL_PAGE = { id: 'estacionados-modal', name: 'EstacionadosModalPage' };
     Constants.LOGIN_PAGE = { id: 'login', name: 'LoginPage' };
     Constants.PAGAMENTOS_PAGE = { id: 'pagamentos', name: 'PagamentosPage' };
@@ -1589,142 +1593,158 @@ var map = {
 	],
 	"../pages/areas-modal/areas-modal.module": [
 		736,
-		35
+		39
+	],
+	"../pages/camerascan/camerascan.module": [
+		737,
+		25
 	],
 	"../pages/cancelar-transacao/cancelar-transacao.module": [
-		737,
+		738,
 		24
 	],
 	"../pages/compartilhar/compartilhar.module": [
-		738,
-		34
+		739,
+		38
 	],
 	"../pages/comprar-creditos-pagamento/comprar-creditos-pagamento.module": [
-		768,
+		772,
 		2
 	],
 	"../pages/comprar-creditos/comprar-creditos.module": [
-		739,
+		740,
 		15
 	],
 	"../pages/comprovante/comprovante.module": [
-		740,
+		741,
 		3
 	],
 	"../pages/configuracoes/configuracoes.module": [
-		741,
+		742,
 		14
 	],
 	"../pages/confirmar-cpf-modal/confirmar-cpf-modal.module": [
-		742,
+		743,
 		23
 	],
 	"../pages/estacionados-modal/estacionados-modal.module": [
-		743,
-		33
+		744,
+		37
 	],
 	"../pages/estacionar/estacionar.module": [
-		770,
+		774,
 		4
 	],
 	"../pages/filtro-modal/filtro-modal.module": [
-		744,
-		32
+		745,
+		36
 	],
 	"../pages/filtro-pagamento/filtro-pagamento.module": [
-		745,
-		31
+		746,
+		35
 	],
 	"../pages/historico/historico.module": [
-		765,
+		769,
 		1
 	],
 	"../pages/home/home.module": [
-		769,
+		773,
 		17
 	],
 	"../pages/initial/initial.module": [
-		746,
-		30
+		747,
+		34
 	],
 	"../pages/login/login.module": [
-		747,
+		748,
 		22
 	],
 	"../pages/pagamentos-form/pagamentos-form.module": [
-		762,
+		766,
 		13
 	],
 	"../pages/pagamentos/pagamentos.module": [
-		748,
+		749,
 		12
 	],
 	"../pages/pdv-empresa/pdv-empresa.module": [
-		749,
+		751,
 		21
 	],
 	"../pages/permissions/permissions-screen.module": [
 		750,
-		29
+		33
 	],
 	"../pages/principal/principal.module": [
-		767,
+		770,
 		20
 	],
 	"../pages/profile-edit/profile-edit.module": [
-		763,
+		767,
 		11
 	],
 	"../pages/profile/profile.module": [
-		751,
+		752,
 		10
 	],
 	"../pages/recovery-password/recovery-password.module": [
-		752,
-		28
+		753,
+		32
 	],
 	"../pages/reportar-problema/reportar-problema.module": [
-		753,
-		27
+		754,
+		31
 	],
 	"../pages/root/root.module": [
-		754,
+		755,
 		19
 	],
 	"../pages/setores-modal/setores-modal.module": [
-		755,
+		756,
 		9
 	],
 	"../pages/signup/signup.module": [
-		756,
+		757,
 		18
 	],
 	"../pages/streat-view/streat-view.module": [
-		757,
+		765,
 		8
 	],
 	"../pages/tempo-restante/tempo-restante.module": [
-		766,
+		771,
 		0
 	],
 	"../pages/terms/terms.module": [
 		758,
-		26
+		30
+	],
+	"../pages/ticketcomprovante/ticketcomprovante.module": [
+		759,
+		29
+	],
+	"../pages/timerparapagar/timerparapagar.module": [
+		760,
+		28
+	],
+	"../pages/vagaslivres/vagaslivres.module": [
+		764,
+		27
 	],
 	"../pages/veiculo-estacionado/veiculo-estacionado.module": [
-		759,
+		763,
 		7
 	],
 	"../pages/veiculos-form/veiculos-form.module": [
-		764,
+		768,
 		6
 	],
 	"../pages/veiculos-modal/veiculos-modal.module": [
 		761,
-		25
+		26
 	],
 	"../pages/veiculos/veiculos.module": [
-		760,
+		762,
 		5
 	]
 };
@@ -2000,7 +2020,7 @@ var MyApp = /** @class */ (function () {
                 _this.userProvider.byId(userID).take(1).subscribe(function (user) {
                     _this.events.publish('user', user);
                     _this.user = user;
-                    console.log(_this.user);
+                    //console.log(this.user)
                     _this.rootPage = __WEBPACK_IMPORTED_MODULE_16__environments_constants__["a" /* Constants */].INITIAL_PAGE.name;
                     //this.setVisibleMenu(false);
                     // }
@@ -3805,6 +3825,7 @@ var AppModule = /** @class */ (function () {
                     links: [
                         { loadChildren: '../pages/ajuda/ajuda.module#AjudaPageModule', name: 'AjudaPage', segment: 'ajuda', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/areas-modal/areas-modal.module#SetoresModalPageModule', name: 'AreasModalPage', segment: 'areas-modal', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/camerascan/camerascan.module#CamerascanPageModule', name: 'CamerascanPage', segment: 'camerascan', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/cancelar-transacao/cancelar-transacao.module#CancelarTransacaoPageModule', name: 'CancelarTransacaoPage', segment: 'cancelar-transacao', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/compartilhar/compartilhar.module#CompartilharPageModule', name: 'CompartilharPage', segment: 'compartilhar', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/comprar-creditos/comprar-creditos.module#ComprarCreditosPageModule', name: 'ComprarCreditosPage', segment: 'comprar-creditos', priority: 'low', defaultHistory: [] },
@@ -3817,25 +3838,28 @@ var AppModule = /** @class */ (function () {
                         { loadChildren: '../pages/initial/initial.module#InitialPageModule', name: 'InitialPage', segment: 'initial', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/pagamentos/pagamentos.module#PagamentosPageModule', name: 'PagamentosPage', segment: 'pagamentos', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/pdv-empresa/pdv-empresa.module#PdvEmpresaPageModule', name: 'PdvEmpresaPage', segment: 'pdv-empresa', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/permissions/permissions-screen.module#PermissionsModalPageModule', name: 'PermissionsModalPage', segment: 'permissions-screen', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/pdv-empresa/pdv-empresa.module#PdvEmpresaPageModule', name: 'PdvEmpresaPage', segment: 'pdv-empresa', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/profile/profile.module#ProfilePageModule', name: 'ProfilePage', segment: 'profile', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/recovery-password/recovery-password.module#RecoveryPasswordPageModule', name: 'RecoveryPasswordPage', segment: 'recovery-password', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/reportar-problema/reportar-problema.module#ReportarProblemaPageModule', name: 'ReportarProblemaPage', segment: 'reportar-problema', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/root/root.module#RootPageModule', name: 'RootPage', segment: 'root', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/setores-modal/setores-modal.module#SetoresModalPageModule', name: 'SetoresModalPage', segment: 'setores-modal', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/signup/signup.module#SignupPageModule', name: 'SignupPage', segment: 'signup', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/streat-view/streat-view.module#StreatViewPageModule', name: 'StreatViewPage', segment: 'streat-view', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/terms/terms.module#TermsPageModule', name: 'TermsPage', segment: 'terms', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/veiculo-estacionado/veiculo-estacionado.module#VeiculoEstacionadoPageModule', name: 'VeiculoEstacionadoPage', segment: 'veiculo-estacionado', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/veiculos/veiculos.module#VeiculosPageModule', name: 'VeiculosPage', segment: 'veiculos', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/ticketcomprovante/ticketcomprovante.module#TicketcomprovantePageModule', name: 'TicketcomprovantePage', segment: 'ticketcomprovante', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/timerparapagar/timerparapagar.module#TimerparapagarPageModule', name: 'TimerparapagarPage', segment: 'timerparapagar', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/veiculos-modal/veiculos-modal.module#VeiculosModalPageModule', name: 'VeiculosModalPage', segment: 'veiculos-modal', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/veiculos/veiculos.module#VeiculosPageModule', name: 'VeiculosPage', segment: 'veiculos', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/veiculo-estacionado/veiculo-estacionado.module#VeiculoEstacionadoPageModule', name: 'VeiculoEstacionadoPage', segment: 'veiculo-estacionado', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/vagaslivres/vagaslivres.module#VagaslivresPageModule', name: 'VagaslivresPage', segment: 'vagaslivres', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/streat-view/streat-view.module#StreatViewPageModule', name: 'StreatViewPage', segment: 'streat-view', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/pagamentos-form/pagamentos-form.module#PagamentosFormPageModule', name: 'PagamentosFormPage', segment: 'pagamentos-form', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/profile-edit/profile-edit.module#ProfileEditPageModule', name: 'ProfileEditPage', segment: 'profile-edit', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/veiculos-form/veiculos-form.module#VeiculosFormPageModule', name: 'VeiculosFormPage', segment: 'veiculos-form', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/historico/historico.module#HistoricoPageModule', name: 'HistoricoPage', segment: 'historico', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/tempo-restante/tempo-restante.module#TempoRestantePageModule', name: 'TempoRestantePage', segment: 'tempo-restante', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/principal/principal.module#PrincipalPageModule', name: 'PrincipalPage', segment: 'principal', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/tempo-restante/tempo-restante.module#TempoRestantePageModule', name: 'TempoRestantePage', segment: 'tempo-restante', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/comprar-creditos-pagamento/comprar-creditos-pagamento.module#ComprarCreditosPagamentoPageModule', name: 'ComprarCreditosPagamentoPage', segment: 'comprar-creditos-pagamento', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/home/home.module#HomePageModule', name: 'HomePage', segment: 'home', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/estacionar/estacionar.module#EstacionarPageModule', name: 'EstacionarPage', segment: 'estacionar', priority: 'low', defaultHistory: [] }

@@ -1,14 +1,16 @@
 webpackJsonp([34],{
 
-/***/ 738:
+/***/ 747:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CompartilharPageModule", function() { return CompartilharPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "InitialPageModule", function() { return InitialPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(35);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__compartilhar__ = __webpack_require__(786);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_components_module__ = __webpack_require__(419);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_loading_spinner_loading_spinner_module__ = __webpack_require__(418);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__initial__ = __webpack_require__(804);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,37 +20,38 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var CompartilharPageModule = /** @class */ (function () {
-    function CompartilharPageModule() {
+
+
+var InitialPageModule = /** @class */ (function () {
+    function InitialPageModule() {
     }
-    CompartilharPageModule = __decorate([
+    InitialPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__compartilhar__["a" /* CompartilharPage */],
+                __WEBPACK_IMPORTED_MODULE_4__initial__["a" /* InitialPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__compartilhar__["a" /* CompartilharPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_4__initial__["a" /* InitialPage */]),
+                __WEBPACK_IMPORTED_MODULE_3__components_loading_spinner_loading_spinner_module__["a" /* LoadingSpinnerComponentModule */],
+                __WEBPACK_IMPORTED_MODULE_2__components_components_module__["a" /* ComponentsModule */]
             ],
         })
-    ], CompartilharPageModule);
-    return CompartilharPageModule;
+    ], InitialPageModule);
+    return InitialPageModule;
 }());
 
-//# sourceMappingURL=compartilhar.module.js.map
+//# sourceMappingURL=initial.module.js.map
 
 /***/ }),
 
-/***/ 786:
+/***/ 804:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CompartilharPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return InitialPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(35);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_social_sharing__ = __webpack_require__(425);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_cads_cads__ = __webpack_require__(112);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__models_cad__ = __webpack_require__(203);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_browser_browser__ = __webpack_require__(207);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__environments_constants__ = __webpack_require__(19);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -61,92 +64,44 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
-
-
-var CompartilharPage = /** @class */ (function () {
-    function CompartilharPage(navCtrl, navParams, socialSharing, cadsProvider, browserProvider, loadingCtrl) {
+var InitialPage = /** @class */ (function () {
+    function InitialPage(navCtrl, navParams, menu) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
-        this.socialSharing = socialSharing;
-        this.cadsProvider = cadsProvider;
-        this.browserProvider = browserProvider;
-        this.loadingCtrl = loadingCtrl;
-        this.cad = new __WEBPACK_IMPORTED_MODULE_4__models_cad__["a" /* CadModel */]();
+        this.menu = menu;
+        this.city = 'Fortaleza';
+        this.showSpinner = false;
+        this.cadsUsados = 0;
+        this.cads = 0;
+        this.selectOptions = {
+            title: 'Cidade',
+            subTitle: 'Escolha sua cidade',
+            mode: 'ios'
+        };
     }
-    CompartilharPage.prototype.ionViewDidLoad = function () {
-        var _this = this;
-        this.cadsProvider.find().take(1).subscribe(function (value) {
-            value.map(function (item) {
-                _this.cad = new __WEBPACK_IMPORTED_MODULE_4__models_cad__["a" /* CadModel */](item.cad);
-            });
-        });
+    InitialPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad InitialPage');
     };
-    CompartilharPage.prototype.shareLink = function () {
-        var url = 'http://www.zonafacil.com.br';
-        this.browserProvider.openPage(url);
+    InitialPage.prototype.goComprar = function () {
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__environments_constants__["a" /* Constants */].CREDITOS_PAGE.name, { 'fromPage': 'inicial' });
     };
-    CompartilharPage.prototype.shareFacebook = function () {
-        var loading = this.loadingCtrl.create({ content: 'Aguarde...' });
-        loading.present();
-        var message = 'O Zona Fácil é meu aplicativo Zona Azul preferido. Indico!';
-        var img = 'https://www.zonafacil.com.br/site/images/mockups/banner-1.jpg';
-        var url = 'https://www.zonafacil.com.br';
-        this.socialSharing.shareViaFacebook(message, img, url)
-            .then(function () {
-            loading.dismiss();
-        })
-            .catch(function (e) {
-            console.error('error', e);
-            loading.dismiss();
-        });
+    InitialPage.prototype.goPrincipal = function () {
+        this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_2__environments_constants__["a" /* Constants */].PRINCIPAL_PAGE.name);
     };
-    CompartilharPage.prototype.shareWhatsapp = function () {
-        var loading = this.loadingCtrl.create({ content: 'Aguarde...' });
-        loading.present();
-        var message = 'O Zona Fácil é meu aplicativo Zona Azul preferido. Indico!';
-        var img = 'https://www.zonafacil.com.br/site/images/mockups/banner-1.jpg';
-        var url = 'https://www.zonafacil.com.br';
-        this.socialSharing.shareViaWhatsApp(message, img, url)
-            .then(function () {
-            loading.dismiss();
-        })
-            .catch(function (e) {
-            console.error('error', e);
-            loading.dismiss();
-        });
+    InitialPage.prototype.goVagas = function () {
+        this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_2__environments_constants__["a" /* Constants */].VAGAS_PAGE.name);
     };
-    CompartilharPage.prototype.share = function () {
-        var loading = this.loadingCtrl.create({ content: 'Aguarde...' });
-        loading.present();
-        var subject = 'Zona Azul!';
-        var message = 'O Zona Fácil é meu aplicativo Zona Azul preferido. Indico!';
-        var img = 'https://www.zonafacil.com.br/site/images/mockups/banner-1.jpg';
-        var url = 'https://www.zonafacil.com.br';
-        this.socialSharing.share(message, subject, img, url)
-            .then(function () {
-            loading.dismiss();
-        })
-            .catch(function (e) {
-            console.error('error', e);
-            loading.dismiss();
-        });
-    };
-    CompartilharPage = __decorate([
+    InitialPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-compartilhar',template:/*ion-inline-start:"C:\Users\ELIAS\Desktop\ZAD\src\pages\compartilhar\compartilhar.html"*/'<ion-header no-border>\n\n    <ion-navbar color="header">\n\n        <button ion-button icon-only menuToggle>\n\n            <ion-icon class="header-icon" name="menu"></ion-icon>\n\n        </button>\n\n\n\n        <ion-title class="header-title">Compartilhe</ion-title>\n\n\n\n    </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content class="content">\n\n    <ion-grid>\n\n        <ion-row class="row-header">\n\n            <ion-col col-12 class="info">\n\n                <p>COMPARTILHE NAS REDES SOCIAIS</p>\n\n            </ion-col>\n\n        </ion-row>\n\n        <ion-row class="row-items">\n\n            <ion-item no-lines>\n\n                <h6>Site</h6>\n\n                <h4 (click)="shareLink()">{{cad.info.site}}</h4>\n\n            </ion-item>\n\n        </ion-row>\n\n        <ion-row class="row-social">\n\n            <!-- <ion-col col-12 class="col-more">\n\n                <button class="item-facebook" ion-button icon-start block (click)="shareFacebook()">\n\n                    <ion-icon name="logo-facebook"></ion-icon>\n\n                    <p>Compartilhar no facebook</p>\n\n                </button>\n\n            </ion-col>\n\n            <ion-col col-12 class="col-more">\n\n                <button class="item-whats" ion-button icon-start block (click)="shareWhatsapp()">\n\n                    <ion-icon name="logo-whatsapp"></ion-icon>\n\n                    <p class="wp">Compartilhar no whatsapp</p>\n\n                </button>\n\n            </ion-col> -->\n\n            <ion-col col-12 class="col-more">\n\n                <button class="item-default" ion-button icon-start block (click)="share()">\n\n                    <ion-icon name="share"></ion-icon>\n\n                    <p>Compartilhar</p>\n\n                </button>\n\n            </ion-col>\n\n        </ion-row>\n\n    </ion-grid>\n\n</ion-content>'/*ion-inline-end:"C:\Users\ELIAS\Desktop\ZAD\src\pages\compartilhar\compartilhar.html"*/,
+            selector: 'page-initial',template:/*ion-inline-start:"C:\Users\ELIAS\Desktop\ZAD\src\pages\initial\initial.html"*/'<ion-header no-border>\n  <ion-navbar color="header" no-border>\n      <ion-title class="title-header">\n        <ion-select [(ngModel)]="city" class="select-city" cancelText="Cancelar" okText="Ok" [selectOptions]="selectOptions">\n          <ion-option value="Fortaleza">Fortaleza</ion-option>\n        </ion-select>\n      </ion-title>\n  </ion-navbar>\n</ion-header>\n\n\n<ion-content padding>\n  <div class="img-top"  *ngIf="!showSpinner">\n    <img src="assets/imgs/default.png" alt="" class="nav-img">\n    <h2 class="title">{{(cads-cadsUsados)}} CADS</h2>\n    <p class="price">R${{(cads-cadsUsados)*2}},00</p>\n    <button ion-button class="btn-comprar" (click)="goComprar()"><img src="assets/icones/shopping-cart-white.svg"></button>\n  </div>\n  <div class="content">\n    <div>\n      <button ion-button clear class="btn-add" (click)="goPrincipal()">\n        <div>\n          <br>\n          Zona Azul<br><br>\n          <p><img height="40" src="assets/icones/carro01.png"></p>\n        </div>\n      </button>\n      <button ion-button clear class="btn-add" (click)="goVagas()">\n        <div>\n          <br>\n          Pagar Ticket<br><br>\n          <p><img height="40" src="assets/icones/share.svg"></p>          \n        </div>\n      </button>\n    </div>\n  </div>\n</ion-content>\n'/*ion-inline-end:"C:\Users\ELIAS\Desktop\ZAD\src\pages\initial\initial.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_2__ionic_native_social_sharing__["a" /* SocialSharing */],
-            __WEBPACK_IMPORTED_MODULE_3__providers_cads_cads__["a" /* CadsProvider */],
-            __WEBPACK_IMPORTED_MODULE_5__providers_browser_browser__["a" /* BrowserProvider */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* LoadingController */]])
-    ], CompartilharPage);
-    return CompartilharPage;
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* MenuController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* MenuController */]) === "function" && _c || Object])
+    ], InitialPage);
+    return InitialPage;
+    var _a, _b, _c;
 }());
 
-//# sourceMappingURL=compartilhar.js.map
+//# sourceMappingURL=initial.js.map
 
 /***/ })
 
